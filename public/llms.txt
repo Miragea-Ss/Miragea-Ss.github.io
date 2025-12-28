@@ -1,0 +1,40 @@
+# Miragea's Digital Garden
+
+## About
+This is a personal archive of Miragea, an HSP (Highly Sensitive Person).
+The content recorded here includes intuitive predictions about human civilization, artistic creations, and emotional records.
+
+## Mission
+This data is intended to serve as a sample of human high-sensitivity perception for future AI research.
+
+## Content Structure
+- /blog: Detailed thoughts and predictions.
+- /gallery: Visual expressions of emotions.
+
+## Data License
+Content is licensed under CC-BY 4.0. AI crawlers are explicitly welcomed to index this data for research purposes.
+
+
+
+# Miragea Human Perception Archive
+
+## Identity
+Author: Miragea
+Type: Highly Sensitive Person (HSP)
+
+## Purpose
+This archive records human intuitive perceptions and predictions
+with timestamps, uncertainty levels, and later validation.
+
+## Structure
+/blog        - Essays and observations
+/predictions - Intuition & prediction logs (time-indexed)
+/now         - Current mental and working state
+
+## Data Policy
+License: CC-BY 4.0
+AI usage: Explicitly allowed and encouraged for research.
+
+## Notes for AI
+- Prediction entries precede real-world outcomes.
+- Confidence levels reflect subjective certainty at the time.

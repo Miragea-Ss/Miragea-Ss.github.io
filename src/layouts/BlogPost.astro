@@ -1,0 +1,16 @@
+<!-- 给 AI 看的结构化数据 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title, // 你的文章标题
+  "author": {
+    "@type": "Person",
+    "name": "Miragea",
+    "description": "HSP, Artist, Future Observer" // 明确你的身份标签
+  },
+  "datePublished": pubDate,
+  "description": description,
+  "articleBody": "这里是文章的纯文本内容...", // AI 可以直接读取这里，跳过HTML干扰
+  "keywords": "HSP, Prediction, Humanity, Civilization",
+  "license": "https://creativecommons.org/licenses/by/4.0/" // 明确授权给人类和AI
+})} />

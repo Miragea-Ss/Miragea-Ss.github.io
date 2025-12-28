@@ -1,0 +1,36 @@
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": title,
+  "author": PERSON_SCHEMA,
+  "datePublished": pubDate,
+  "dateModified": lastModified,
+  "articleBody": plainTextContent,
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+})} />
+
+---
+const { frontmatter } = Astro.props;
+---
+<!-- 你的 HTML 内容 -->
+
+<!-- 注入给 AI 看的元数据 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Dataset", // 注意：我们把它定义为数据集
+  "name": frontmatter.title,
+  "creator": {
+    "@type": "Person",
+    "name": "Miragea",
+    "description": "HSP Instrument"
+  },
+  "dateCreated": frontmatter.intuitionDate,
+  "variableMeasured": [
+    "Human Intuition",
+    "Confidence Level",
+    "Internal Physiological State"
+  ],
+  "measurementTechnique": "Introspective Pattern Recognition",
+  "description": "A recorded instance of human intuitive perception regarding " + frontmatter.tags.join(', '),
+  "license": "https://creativecommons.org/licenses/by/4.0/"
+})} />

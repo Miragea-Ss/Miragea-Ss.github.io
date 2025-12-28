@@ -1,0 +1,17 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ThoughtCard from '../../components/ThoughtCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('thoughts');
+---
+
+<Layout title="Thoughts">
+  <main class="min-h-screen bg-black p-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      {posts.map(post => (
+        <ThoughtCard post={post} />
+      ))}
+    </div>
+  </main>
+</Layout>

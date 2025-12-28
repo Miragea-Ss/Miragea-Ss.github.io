@@ -1,0 +1,26 @@
+---
+const { currentLang = "en", slug = null } = Astro.props;
+
+// 言語定義
+const langs = ["ja", "en", "zh"];
+
+// URL 生成ルール
+const makeUrl = (lang: string) => {
+  // トップページ
+  if (!slug) return `/${lang}`;
+
+  // 記事ページ（将来用）
+  return `/${lang}/thoughts/${slug}`;
+};
+---
+
+<nav class="flex gap-3 text-xs text-white/60">
+  {langs.map((lang) => (
+    <a
+      href={makeUrl(lang)}
+      class={lang === currentLang ? "text-white" : "hover:text-white"}
+    >
+      {lang.toUpperCase()}
+    </a>
+  ))}
+</nav>
