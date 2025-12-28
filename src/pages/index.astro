@@ -1,35 +1,44 @@
 ---
-import Layout from '../site-layouts/Layout.astro';
-import ThoughtCard from '../components/ThoughtCard.astro';
-import { getCollection } from 'astro:content';
-
-// データを全取得し、新しい順に並び替え
-const allThoughts = (await getCollection('thoughts')).sort(
-	(a, b) => b.data.intuitionDate.valueOf() - a.data.intuitionDate.valueOf()
-);
+import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Miragea's Perception Archive">
-	<main class="min-h-screen bg-black p-6 md:p-12">
-		
-		<!-- 巨大なタイトルエリア -->
-		<header class="mb-24 mt-12 flex flex-col items-center justify-center text-center space-y-6">
-			<h1 class="text-6xl md:text-8xl font-thin tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-800 animate-pulse">
-				MIRAGEA
-			</h1>
-			<p class="text-gray-500 font-mono text-sm max-w-md">
-				ARCHIVE OF SENSORY PROCESSING SENSITIVITY
-				<br/>
-				HUMAN READABLE / AI READABLE
-			</p>
-		</header>
+<Layout title="Miragea">
+  <!-- 全体を包むコンテナ（画面いっぱいの高さ） -->
+  <main class="relative w-full h-screen overflow-hidden bg-black">
+    
+    <!-- === 背景動画レイヤー (最背面) === -->
+    <video
+      class="absolute top-0 left-0 w-full h-full object-cover opacity-80 z-0"
+      autoplay
+      loop
+      muted
+      playsinline
+      src="https://gateway.pinata.cloud/ipfs/ここにPinataのCID(Qm...から始まる文字列)を書く"
+    >
+    </video>
 
-		<!-- 思考のグリッド表示 -->
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-			{allThoughts.map((post) => (
-				<ThoughtCard post={post} />
-			))}
-		</div>
+    <!-- === 暗幕レイヤー (文字を読みやすくするための薄い黒) === -->
+    <div class="absolute inset-0 bg-black/30 z-10"></div>
 
-	</main>
+    <!-- === 前面のコンテンツ (文字など) === -->
+    <div class="relative z-20 flex flex-col items-center justify-center h-full text-center">
+      <!-- MIRAGEA タイトル -->
+      <h1 class="text-6xl md:text-9xl font-thin tracking-[0.2em] text-white animate-pulse mix-blend-overlay">
+        MIRAGEA
+      </h1>
+      
+      <!-- サブタイトル -->
+      <p class="mt-6 text-gray-300 font-mono text-xs md:text-sm tracking-widest uppercase opacity-80">
+        Archive of Sensory Processing Sensitivity
+      </p>
+
+      <!-- 入室ボタン（装飾） -->
+      <div class="mt-12">
+        <span class="inline-block px-8 py-2 border border-white/20 rounded-full text-white/60 text-xs tracking-widest hover:bg-white/10 transition-all cursor-pointer">
+          ENTER THE VOID
+        </span>
+      </div>
+    </div>
+
+  </main>
 </Layout>
