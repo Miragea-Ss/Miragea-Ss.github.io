@@ -1,0 +1,26 @@
+---
+// src/layouts/Layout.astro
+import '../styles/global.css'; // Tailwindのスタイルを読み込む（必須！）
+import { ViewTransitions } from 'astro:transitions'; // ページ遷移のアニメーション
+
+interface Props {
+	title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Miragea's Perception Archive" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+		<!-- ページ移動を滑らかにする魔法の1行 -->
+		<ViewTransitions />
+	</head>
+	<body class="bg-black text-gray-200 antialiased">
+		<!-- ここに各ページの中身が入ります -->
+		<slot />
+	</body>
+</html>

@@ -1,0 +1,150 @@
+{
+  "name": "Miragea_Core_Controller_Full",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "miragea-input",
+        "httpMethod": "POST",
+        "responseMode": "lastNode"
+      },
+      "id": "Webhook_In",
+      "name": "Webhook In",
+      "type": "n8n-nodes-base.webhook",
+      "position": [-700, 0]
+    },
+    {
+      "parameters": {
+        "functionCode": "const text = $json.text || \"\";\nlet intent = \"thought\";\nif (/publish|release/i.test(text)) intent = \"publish\";\nelse if (/review|check|audit/i.test(text)) intent = \"review\";\nreturn [{ json: { text, intent } }];"
+      },
+      "id": "Classifier",
+      "name": "Input Classifier",
+      "type": "n8n-nodes-base.function",
+      "position": [-450, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            { "value1": "={{$json.intent}}", "operation": "equal", "value2": "thought" }
+          ]
+        }
+      },
+      "id": "IF_Thought",
+      "name": "IF Thought",
+      "type": "n8n-nodes-base.if",
+      "position": [-200, -200]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            { "value1": "={{$json.intent}}", "operation": "equal", "value2": "review" }
+          ]
+        }
+      },
+      "id": "IF_Review",
+      "name": "IF Review",
+      "type": "n8n-nodes-base.if",
+      "position": [-200, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            { "value1": "={{$json.intent}}", "operation": "equal", "value2": "publish" }
+          ]
+        }
+      },
+      "id": "IF_Publish",
+      "name": "IF Publish",
+      "type": "n8n-nodes-base.if",
+      "position": [-200, 200]
+    },
+
+    {
+      "parameters": {
+        "url": "https://api.dify.ai/v1/chat-messages",
+        "method": "POST",
+        "jsonParameters": true,
+        "bodyParametersJson": "{ \"inputs\": { \"text\": \"{{$json.text}}\" }, \"response_mode\": \"blocking\", \"conversation_id\": null }",
+        "headerParametersJson": "{ \"Authorization\": \"Bearer YOUR_DIFY_API_KEY\", \"X-App-Id\": \"CURATOR_APP_ID\" }"
+      },
+      "id": "Curator",
+      "name": "Curator Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [100, -200]
+    },
+    {
+      "parameters": {
+        "functionCode": "return [{ json: { state: \"curated\", result: $json } }];"
+      },
+      "id": "Set_Curated",
+      "name": "Set State: Curated",
+      "type": "n8n-nodes-base.function",
+      "position": [350, -200]
+    },
+
+    {
+      "parameters": {
+        "url": "https://api.dify.ai/v1/chat-messages",
+        "method": "POST",
+        "jsonParameters": true,
+        "bodyParametersJson": "{ \"inputs\": { \"text\": \"{{$json.text}}\" }, \"response_mode\": \"blocking\" }",
+        "headerParametersJson": "{ \"Authorization\": \"Bearer YOUR_DIFY_API_KEY\", \"X-App-Id\": \"SENTINEL_APP_ID\" }"
+      },
+      "id": "Sentinel",
+      "name": "Sentinel Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [100, 0]
+    },
+    {
+      "parameters": {
+        "functionCode": "const ok = /approve|pass/i.test(JSON.stringify($json));\nreturn [{ json: { state: ok ? \"approved\" : \"rejected\", result: $json } }];"
+      },
+      "id": "Set_Review",
+      "name": "Set Review State",
+      "type": "n8n-nodes-base.function",
+      "position": [350, 0]
+    },
+
+    {
+      "parameters": {
+        "url": "https://api.dify.ai/v1/chat-messages",
+        "method": "POST",
+        "jsonParameters": true,
+        "bodyParametersJson": "{ \"inputs\": { \"text\": \"{{$json.text}}\" }, \"response_mode\": \"blocking\" }",
+        "headerParametersJson": "{ \"Authorization\": \"Bearer YOUR_DIFY_API_KEY\", \"X-App-Id\": \"PUBLISHER_APP_ID\" }"
+      },
+      "id": "Publisher",
+      "name": "Publisher Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [100, 200]
+    },
+    {
+      "parameters": {
+        "functionCode": "return [{ json: { state: \"released\", result: $json } }];"
+      },
+      "id": "Set_Released",
+      "name": "Set State: Released",
+      "type": "n8n-nodes-base.function",
+      "position": [350, 200]
+    }
+  ],
+  "connections": {
+    "Webhook In": { "main": [[{ "node": "Input Classifier", "type": "main" }]] },
+    "Input Classifier": {
+      "main": [
+        [{ "node": "IF Thought", "type": "main" }],
+        [{ "node": "IF Review", "type": "main" }],
+        [{ "node": "IF Publish", "type": "main" }]
+      ]
+    },
+    "IF Thought": { "main": [[{ "node": "Curator Agent", "type": "main" }]] },
+    "Curator Agent": { "main": [[{ "node": "Set State: Curated", "type": "main" }]] },
+    "IF Review": { "main": [[{ "node": "Sentinel Agent", "type": "main" }]] },
+    "Sentinel Agent": { "main": [[{ "node": "Set Review State", "type": "main" }]] },
+    "IF Publish": { "main": [[{ "node": "Publisher Agent", "type": "main" }]] },
+    "Publisher Agent": { "main": [[{ "node": "Set State: Released", "type": "main" }]] }
+  },
+  "active": false
+}

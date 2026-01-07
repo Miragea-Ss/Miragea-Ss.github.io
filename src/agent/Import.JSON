@@ -1,0 +1,119 @@
+{
+  "name": "Miragea_Core_Controller",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "miragea-input",
+        "httpMethod": "POST",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "Webhook_In",
+      "name": "Webhook In",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [-600, 0]
+    },
+    {
+      "parameters": {
+        "functionCode": "const text = $json.text || \"\";\n\nlet intent = \"thought\";\nif (/publish|release/i.test(text)) intent = \"publish\";\nif (/review|check/i.test(text)) intent = \"review\";\n\nreturn [{\n  json: {\n    original_text: text,\n    intent\n  }\n}];"
+      },
+      "id": "Classifier",
+      "name": "Input Classifier",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [-350, 0]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json.intent}}",
+              "operation": "equal",
+              "value2": "thought"
+            }
+          ]
+        }
+      },
+      "id": "IF_Thought",
+      "name": "IF Thought",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [-100, -150]
+    },
+    {
+      "parameters": {
+        "url": "https://api.dify.ai/v1/chat-messages",
+        "method": "POST",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "{\n  \"inputs\": {\"text\": \"{{$json.original_text}}\"},\n  \"response_mode\": \"blocking\",\n  \"conversation_id\": null\n}",
+        "headerParametersJson": "{\n  \"Authorization\": \"Bearer YOUR_DIFY_API_KEY\",\n  \"Content-Type\": \"application/json\"\n}"
+      },
+      "id": "Curator_Agent",
+      "name": "Curator Agent (Dify)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [150, -150]
+    },
+    {
+      "parameters": {
+        "functionCode": "return [{\n  json: {\n    state: \"curated\",\n    content: $json\n  }\n}];"
+      },
+      "id": "State_Curated",
+      "name": "Set State: Curated",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [400, -150]
+    }
+  ],
+  "connections": {
+    "Webhook In": {
+      "main": [
+        [
+          {
+            "node": "Input Classifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input Classifier": {
+      "main": [
+        [
+          {
+            "node": "IF Thought",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Thought": {
+      "main": [
+        [
+          {
+            "node": "Curator Agent (Dify)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Curator Agent (Dify)": {
+      "main": [
+        [
+          {
+            "node": "Set State: Curated",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false
+}

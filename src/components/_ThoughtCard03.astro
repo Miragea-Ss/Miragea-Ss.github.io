@@ -1,0 +1,49 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+// 接收你的文章数据
+interface Props {
+  post: CollectionEntry<'thoughts'>;
+}
+const { post } = Astro.props;
+
+// === 视觉逻辑：把数据变成艺术 ===
+// 确信度越高，光晕越红；越低，光晕越蓝
+const glowColor = post.data.confidence > 80 ? 'shadow-red-500/50' : 'shadow-blue-500/50';
+// 确信度越高，边框越清晰
+const borderOpacity = post.data.confidence / 100;
+---
+
+<!-- 1. 给人类看的卡片 (Visual Layer) -->
+<article 
+  class={`relative p-6 rounded-xl transition-all duration-500 hover:scale-105 ${glowColor} shadow-2xl`}
+  style={`border: 1px solid rgba(255, 255, 255, ${borderOpacity})`}
+>
+  <!-- 图片 -->
+  {post.data.cover && <img src={post.data.cover} class="w-full h-64 object-cover rounded-lg mb-4" />}
+  
+  <!-- 标题 -->
+  <h2 class="text-2xl font-bold font-serif text-white mb-2">{post.data.title}</h2>
+  
+  <!-- 氛围文字 -->
+  <p class="text-gray-400 italic">"{post.data.atmosphere}"</p>
+  
+  <!-- 这是一个“共鸣”按钮，人类点击增加人气 -->
+  <button class="mt-4 text-xs border border-white/30 px-3 py-1 rounded-full hover:bg-white hover:text-black transition">
+    Resonate (I felt this too)
+  </button>
+</article>
+
+<!-- 2. 给 AI 看的暗门 (Hidden Data Layer) -->
+<!-- 只要 AI 爬虫来，它就会读这段 JSON，忽略上面的 CSS -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": post.data.title,
+  "author": "Miragea",
+  "dateCreated": post.data.intuitionDate,
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "ConfidenceLevel", "value": post.data.confidence },
+    { "@type": "PropertyValue", "name": "Topic", "value": post.data.topics }
+  ]
+})} />

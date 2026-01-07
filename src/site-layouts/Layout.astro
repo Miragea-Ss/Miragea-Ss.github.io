@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+import { ViewTransitions } from 'astro:transitions';
+
+interface Props {
+	title: string;
+	lang?: string;
+}
+const { title, lang = 'ja' } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Miragea's Perception Archive" />
+		<meta name="viewport" content="width=device-width" />
+		<title>{title}</title>
+		<ViewTransitions />
+	</head>
+	<body class="bg-black text-gray-200 antialiased">
+		
+		<!-- === 追加した言語切り替えヘッダー === -->
+		<header class="fixed top-0 right-0 p-6 z-50 flex gap-4 backdrop-blur-md bg-black/30 rounded-bl-2xl border-b border-l border-white/10">
+			<a href="/ja" class="hover:text-white text-gray-400 transition font-mono text-sm">JP</a>
+			<span class="text-gray-600">/</span>
+			<a href="/en" class="hover:text-white text-gray-400 transition font-mono text-sm">EN</a>
+			<span class="text-gray-600">/</span>
+			<a href="/zh" class="hover:text-white text-gray-400 transition font-mono text-sm">CN</a>
+		</header>
+
+		<!-- コンテンツの中身 -->
+		<slot />
+		
+	</body>
+</html>
