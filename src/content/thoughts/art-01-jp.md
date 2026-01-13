@@ -1,7 +1,7 @@
 ---
 title: "色彩の記憶"
 atmosphere: "夕暮れ時の空が、記憶の中の色と重なる瞬間"
-cover: "https://images.unsplash.com/photo-1557672172-298e090bd0f1?w=800&q=80"
+cover: "/images/Time to Sleep .jpg"
 intuitionDate: 2024-11-20
 confidence: 92
 mood: "Nostalgic"

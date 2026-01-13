@@ -1,0 +1,293 @@
+---
+// src/components/InfiniteGallery.astro
+import defaultWorks from '../data/works.json';
+
+const { 
+  lang = 'en', 
+  works = defaultWorks 
+} = Astro.props;
+
+const displayWorks = works;
+
+const uiText = {
+  en: { loading: "Loading memories..." },
+  ja: { loading: "記憶を読み込み中..." },
+  zh: { loading: "正在读取记忆..." }
+};
+const t = uiText[lang] || uiText.en;
+---
+
+<!-- ギャラリーコンテナ -->
+{displayWorks.length > 0 ? (
+  <div class="gallery-wrapper">
+    
+    <!-- 画像リスト -->
+    <div id="masonry-grid" class="masonry-grid">
+      {displayWorks.map((work, index) => (
+        <div class="work-item hidden-item"> 
+          <!-- 
+            修正点：onclick属性ではなく、クラス名とデータ属性で制御します 
+            これで確実にスライドショーが動きます
+          -->
+          <a 
+            href={work.file} 
+            class="work-link group"
+            data-index={index}
+          >
+            <div class="image-container">
+              <img 
+                src={work.file} 
+                alt={work.title} 
+                loading="lazy"
+                decoding="async"
+              />
+              <!-- ★修正：文字を MIRAGEA にして復活させました -->
+              <div class="overlay">
+                <span class="view-text">MIRAGEA</span>
+              </div>
+            </div>
+            
+            <div class="meta-info">
+              <h3 class="work-title">{work.title}</h3>
+              <div class="work-tags">
+                {work.tags.slice(0, 3).map(tag => <span>#{tag}</span>)}
+              </div>
+            </div>
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- ローディング表示 -->
+    <div id="loading-trigger" class="loading-state">
+      <div class="spinner"></div>
+      <p>{t.loading}</p>
+    </div>
+
+  </div>
+) : (
+  <div class="empty-state">Void...</div>
+)}
+
+<!-- ============================================ -->
+<!-- 🖼️ スライドショー（ライトボックス）画面 -->
+<!-- ============================================ -->
+<div id="lightbox" class="lightbox">
+  <!-- 閉じるボタン -->
+  <button id="close-btn" class="control-btn close-btn">×</button>
+  
+  <!-- ナビゲーション（前へ/次へ） -->
+  <button id="prev-btn" class="control-btn nav-btn prev-btn">‹</button>
+  <button id="next-btn" class="control-btn nav-btn next-btn">›</button>
+  
+  <!-- 画像表示エリア -->
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="">
+    <div class="caption-area">
+      <h2 id="lightbox-title"></h2>
+      <p id="lightbox-desc" class="lightbox-desc"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ▼ スクリプト（修正版：クリックイベントを確実にキャッチする） ▼ -->
+<script is:inline define:vars={{ works: displayWorks }}>
+  
+  // --- 変数定義 ---
+  let currentIndex = 0;
+  let slideIndex = 0;
+  const BATCH_SIZE = 12; // 一度に表示する枚数
+
+  // --- 1. 無限スクロール ---
+  function initInfiniteScroll() {
+    const grid = document.getElementById('masonry-grid');
+    if (!grid) return;
+
+    const allItems = Array.from(grid.querySelectorAll('.hidden-item'));
+    const trigger = document.getElementById('loading-trigger');
+    
+    const loadMore = () => {
+      const nextBatch = allItems.slice(currentIndex, currentIndex + BATCH_SIZE);
+      if (nextBatch.length === 0) {
+        if(trigger) trigger.style.display = 'none';
+        return;
+      }
+      nextBatch.forEach((item, i) => {
+        setTimeout(() => {
+          item.classList.remove('hidden-item');
+          item.classList.add('reveal-item');
+        }, i * 100); 
+      });
+      currentIndex += BATCH_SIZE;
+    };
+
+    loadMore(); // 初回実行
+
+    if (trigger) {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) setTimeout(loadMore, 300);
+      }, { rootMargin: '200px' });
+      observer.observe(trigger);
+    }
+  }
+
+  // --- 2. スライドショー制御 ---
+  function initLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    const title = document.getElementById('lightbox-title');
+    const links = document.querySelectorAll('.work-link');
+
+    // 全ての画像リンクにクリックイベントを設定
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault(); // ★重要：リンク移動をキャンセルする
+        const index = link.getAttribute('data-index');
+        openSlideshow(parseInt(index));
+      });
+    });
+
+    // スライドショーを開く
+    function openSlideshow(index) {
+      slideIndex = index;
+      updateImage();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden'; // 背景固定
+    }
+
+    // 画像を更新する
+    function updateImage() {
+      const work = works[slideIndex];
+      img.style.opacity = 0; // フェード効果
+      setTimeout(() => {
+        img.src = work.file;
+        title.innerText = work.title;
+        img.style.opacity = 1;
+      }, 200);
+    }
+
+    // 閉じる・次へ・前へ
+    document.getElementById('close-btn').onclick = closeSlideshow;
+    document.getElementById('next-btn').onclick = () => changeSlide(1);
+    document.getElementById('prev-btn').onclick = () => changeSlide(-1);
+
+    function closeSlideshow() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function changeSlide(dir) {
+      slideIndex += dir;
+      if (slideIndex >= works.length) slideIndex = 0;
+      if (slideIndex < 0) slideIndex = works.length - 1;
+      updateImage();
+    }
+
+    // キーボード操作
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'ArrowRight') changeSlide(1);
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+      if (e.key === 'Escape') closeSlideshow();
+    });
+  }
+
+  // ページ読み込み時に実行
+  document.addEventListener('DOMContentLoaded', () => {
+    initInfiniteScroll();
+    initLightbox();
+  });
+  
+  // Astroのページ遷移対応
+  document.addEventListener('astro:page-load', () => {
+    initInfiniteScroll();
+    initLightbox();
+  });
+
+</script>
+
+<style>
+  /* === Masonry Grid === */
+  .masonry-grid {
+    column-count: 1; column-gap: 2rem; max-width: 1800px; margin: 0 auto;
+  }
+  @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
+  @media (min-width: 1200px) { .masonry-grid { column-count: 3; } }
+  @media (min-width: 1600px) { .masonry-grid { column-count: 4; } }
+
+  .work-item { break-inside: avoid; margin-bottom: 3rem; }
+  .hidden-item { display: none; }
+  .reveal-item { display: block; animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+  
+  @keyframes slideUpFade { 
+    from { opacity: 0; transform: translateY(40px); } 
+    to { opacity: 1; transform: translateY(0); } 
+  }
+
+  /* === 画像カード === */
+  .image-container {
+    border-radius: 1.5rem; overflow: hidden; background: #111; position: relative;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5); transition: transform 0.5s;
+    cursor: zoom-in;
+  }
+  .work-link:hover .image-container { transform: translateY(-5px); }
+  img { width: 100%; height: auto; display: block; opacity: 0.8; transition: opacity 0.5s; }
+  .work-link:hover img { opacity: 1; }
+
+  /* オーバーレイ（MIRAGEA文字） */
+  .overlay {
+    position: absolute; inset: 0; background: rgba(0,0,0,0.4);
+    opacity: 0; transition: opacity 0.4s ease;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(2px);
+  }
+  .work-link:hover .overlay { opacity: 1; }
+  
+  .view-text {
+    color: #fff; font-weight: 100; letter-spacing: 0.3em; 
+    font-size: 0.9rem; font-family: serif; 
+    border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;
+  }
+
+  /* タイトルなど */
+  .meta-info { padding: 1rem 0.5rem; opacity: 0.6; }
+  .work-title { font-size: 0.95rem; font-weight: 300; color: #eee; margin-bottom: 0.5rem; }
+  .work-tags span { font-size: 0.75rem; color: #666; margin-right: 0.5rem; }
+
+  /* === ライトボックス（スライドショー） === */
+  .lightbox {
+    position: fixed; inset: 0; z-index: 10000;
+    background: rgba(5, 5, 5, 0.98); backdrop-filter: blur(15px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.4s ease;
+  }
+  .lightbox.active { opacity: 1; pointer-events: auto; }
+
+  .lightbox-content { text-align: center; max-width: 90vw; max-height: 90vh; position: relative; }
+  #lightbox-img {
+    max-width: 100%; max-height: 80vh; border-radius: 4px;
+    box-shadow: 0 20px 80px rgba(0,0,0,1); transition: opacity 0.3s;
+  }
+  #lightbox-title { 
+    margin-top: 1.5rem; color: #fff; font-weight: 300; 
+    font-family: serif; font-size: 1.2rem; letter-spacing: 0.05em;
+  }
+
+  /* コントロールボタン */
+  .control-btn {
+    background: none; border: none; cursor: pointer; color: #666; 
+    transition: all 0.3s; padding: 1rem;
+  }
+  .control-btn:hover { color: #fff; transform: scale(1.1); }
+  
+  .close-btn { position: absolute; top: 20px; right: 30px; font-size: 3rem; font-weight: 100; z-index: 10001; }
+  .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); font-size: 4rem; font-weight: 100; z-index: 10001; }
+  .prev-btn { left: 20px; }
+  .next-btn { right: 20px; }
+
+  /* ローディング */
+  .loading-state { text-align: center; padding: 4rem; color: #666; font-family: monospace; font-size: 0.8rem; }
+  .spinner { width: 30px; height: 30px; border: 2px solid #333; border-top-color: #888; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .empty-state { text-align: center; padding: 5rem; color: #333; font-style: italic; }
+</style>

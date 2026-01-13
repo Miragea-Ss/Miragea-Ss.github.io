@@ -1,0 +1,79 @@
+---
+// src/pages/[lang]/gallery/[tag].astro
+// 役割：クリックされたタグ（例：#Body）に合う画像だけを集めて表示する「画層」ページ
+
+import Layout from '../../../layouts/Layout.astro';
+import InfiniteGallery from '../../../components/InfiniteGallery.astro';
+import allWorks from '../../../data/works.json';
+
+// 1. 存在するすべての「言語」と「タグ」の組み合わせを計算して、ページを生成する
+export async function getStaticPaths() {
+  // works.jsonの中から、使われている全タグを抽出して重複を消す
+  const uniqueTags = [...new Set(allWorks.flatMap(work => work.tags))];
+  const languages = ['en', 'ja', 'zh'];
+
+  // 全言語 × 全タグ の組み合わせを作る
+  // 例: /ja/gallery/Body, /en/gallery/Art ...
+  return languages.flatMap(lang => 
+    uniqueTags.map(tag => ({
+      params: { lang, tag },
+      props: { lang, tag }
+    }))
+  );
+}
+
+// URLから言語とタグを受け取る
+const { lang, tag } = Astro.props;
+
+// 2. そのタグが含まれている作品だけをフィルタリング（抽出）する
+const filteredWorks = allWorks.filter(work => work.tags.includes(tag));
+
+// UIテキスト
+const uiText = {
+  en: { back: "← Surface", layer: "Layer" },
+  ja: { back: "← 表層へ戻る", layer: "画層" },
+  zh: { back: "← 返回表层", layer: "图层" }
+};
+const t = uiText[lang] || uiText.en;
+---
+
+<Layout title={`#${tag} | MIRAGEA Archive`} lang={lang}>
+  <main class="min-h-screen bg-black text-gray-200">
+    
+    <!-- ヘッダーエリア：深層への入り口 -->
+    <div class="pt-12 pb-8 px-6 md:px-12 flex flex-col items-center relative z-10">
+      
+      <!-- 戻るボタン -->
+      <a href={`/${lang}`} class="absolute left-6 top-12 text-xs font-mono text-gray-500 hover:text-white transition-colors tracking-widest no-underline">
+        {t.back}
+      </a>
+
+      <!-- タグタイトル -->
+      <h1 class="text-5xl md:text-7xl font-thin tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-800 mb-4 animate-fade-in-up">
+        #{tag}
+      </h1>
+      
+      <!-- 件数表示 -->
+      <p class="font-mono text-xs text-gray-600 tracking-[0.2em]">
+        {t.layer} / {filteredWorks.length} ITEMS
+      </p>
+    </div>
+
+    <!-- 3. フィルタリングされた画像だけを無限スクロール表示 -->
+    <div class="px-4 pb-32">
+      <InfiniteGallery works={filteredWorks} lang={lang} />
+    </div>
+
+  </main>
+</Layout>
+
+<style>
+  /* フェードインアニメーション */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+</style>

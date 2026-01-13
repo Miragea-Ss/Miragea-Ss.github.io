@@ -1,8 +1,8 @@
 ---
 title: "音の層"
 atmosphere: "複数の音が重なり、新しい質感を生み出す瞬間"
-cover: "https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=800&q=80"
-intuitionDate: 2024-10-30
+cover: "/images/Miragea.jpg"
+intuitionDate: 2026-10-30
 confidence: 87
 mood: "Layered"
 language: "jp"

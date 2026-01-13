@@ -1,42 +1,55 @@
 ---
-import Layout from '../../site-layouts/Layout.astro';
+// src/pages/en/index.astro
+import Layout from '../../layouts/Layout.astro';
 import ThoughtCard from '../../components/ThoughtCard.astro';
 import { getCollection } from 'astro:content';
 
-// Strict language filtering: English articles only (Miragea aesthetic: preserve linguistic purity)
+// ★ 英語 (en) の記事だけをフィルタリング
 const allThoughts = (await getCollection('thoughts'))
-	.filter((post) => post.data.language === 'en')
-	.sort((a, b) => b.data.intuitionDate.valueOf() - a.data.intuitionDate.valueOf());
+  .filter((post) => post.data.language === 'en')
+  .sort((a, b) => b.data.intuitionDate.valueOf() - a.data.intuitionDate.valueOf());
 ---
 
 <Layout title="Miragea's Perception Archive" lang="en">
-	<main class="min-h-screen bg-black p-6 md:p-12">
-		
-		<!-- Large title area -->
-		<header class="mb-24 mt-12 flex flex-col items-center justify-center text-center space-y-6">
-			<h1 class="text-6xl md:text-8xl font-thin tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-800 animate-pulse">
-				MIRAGEA
-			</h1>
-			<p class="text-gray-500 font-mono text-sm max-w-md">
-				ARCHIVE OF SENSORY PROCESSING SENSITIVITY
-				<br/>
-				HUMAN READABLE / AI READABLE
-			</p>
-		</header>
+  
+  <!-- 言語切り替えヘッダー（固定表示） -->
+  <header class="fixed top-0 right-0 p-6 z-50 flex gap-4 backdrop-blur-md bg-black/30 rounded-bl-2xl border-b border-l border-white/10">
+    <a href="/ja" class="hover:text-white text-gray-400 transition font-mono text-sm">JP</a>
+    <span class="text-gray-600">/</span>
+    <a href="/en" class="hover:text-white text-gray-400 transition font-mono text-sm font-bold text-white">EN</a>
+    <span class="text-gray-600">/</span>
+    <a href="/zh" class="hover:text-white text-gray-400 transition font-mono text-sm">CN</a>
+  </header>
 
-		<!-- Asymmetric grid display of thoughts (Miragea aesthetic: uneven placement, intentional drift) -->
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto px-4">
-			{allThoughts.map((post, index) => {
-				// Asymmetric placement: vary width at specific indices
-				const isWide = index % 5 === 0;
-				const marginOffset = index % 4 === 1 ? 'md:mt-12' : index % 4 === 3 ? 'md:mb-12' : '';
-				return (
-					<div class={`${isWide ? 'md:col-span-2' : ''} ${marginOffset} transition-all duration-700`}>
-						<ThoughtCard post={post} />
-					</div>
-				);
-			})}
-		</div>
+  <main class="min-h-screen bg-black p-6 md:p-12">
+    
+    <!-- 巨大なタイトルエリア（日本語版と完全一致） -->
+    <header class="mb-24 mt-12 flex flex-col items-center justify-center text-center space-y-6">
+      <h1 class="text-6xl md:text-8xl font-thin tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-800 animate-pulse">
+        MIRAGEA
+      </h1>
+      <p class="text-gray-500 font-mono text-sm max-w-md">
+        ARCHIVE OF SENSORY PROCESSING SENSITIVITY
+        <br/>
+        HUMAN READABLE / AI READABLE
+      </p>
+    </header>
 
-	</main>
+    <!-- 思考の非対称グリッド表示 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto px-4">
+      {allThoughts.map((post, index) => {
+        // 日本語版と同じ非対称レイアウトロジック
+        const isWide = index % 5 === 0;
+        const marginOffset = index % 4 === 1 ? 'md:mt-12' : index % 4 === 3 ? 'md:mb-12' : '';
+        
+        return (
+          <div class={`${isWide ? 'md:col-span-2' : ''} ${marginOffset} transition-all duration-700`}>
+            <!-- カードコンポーネント呼び出し（言語は en を渡す） -->
+            <ThoughtCard post={post} lang="en" />
+          </div>
+        );
+      })}
+    </div>
+
+  </main>
 </Layout>
