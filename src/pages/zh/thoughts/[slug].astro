@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../site-layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('thoughts');
+  return entries
+    .filter((entry) => !entry.slug.includes('/'))
+    .map((entry) => ({
+      params: { slug: entry.slug },
+      props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title}>
+  <main class="min-h-screen bg-black px-6 py-24 text-gray-200">
+    <article class="mx-auto max-w-3xl">
+      {entry.data.cover && (
+        <img src={entry.data.cover} alt={entry.data.title} class="mb-10 h-80 w-full rounded-2xl object-cover" />
+      )}
+      <h1 class="mb-4 text-4xl font-bold md:text-5xl">{entry.data.title}</h1>
+      <div class="mb-10 flex flex-wrap gap-3 font-mono text-sm text-gray-500">
+        <span>{entry.data.intuitionDate.toISOString().split('T')[0]}</span>
+        <span>CONFIDENCE: {entry.data.confidence}%</span>
+      </div>
+      <div class="space-y-6 leading-8 text-gray-300">
+        <Content />
+      </div>
+      <a href="/zh/" class="mt-14 inline-flex text-gray-400 transition hover:text-white">Back to Archive</a>
+    </article>
+  </main>
+</Layout>
