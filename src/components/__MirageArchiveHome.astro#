@@ -1,0 +1,307 @@
+---
+import ThoughtCard from './ThoughtCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  thoughts: CollectionEntry<'thoughts'>[];
+  lang?: 'en' | 'ja' | 'zh';
+}
+
+const { thoughts, lang = 'en' } = Astro.props;
+
+const copy = {
+  en: {
+    eyebrow: 'Art & Visuals x Words / HSP Perception Archive',
+    heroTitle: 'Miragea is the sensory origin of Eliora.',
+    heroLead:
+      'A permanent archive for perception, visual language, words, HSP nervous-system analysis, and AI-readable memory. Miragea preserves the creator. Eliora turns that energy into services.',
+    heroNote:
+      'This is the home of Miragea thought, art, sensitivity, and experiments. Business, products, consulting, and community continue to Eliora.',
+    identityTitle: 'Identity',
+    identityCopy:
+      'The archive should feel like a living index of Miragea perception, not just a profile page. It keeps the symbolic, visual, and analytical parts together.',
+    visualTitle: 'Art & Visuals',
+    visualCopy: 'Images, 3DCG, atmosphere, symbolic forms, and the quiet weight of color and space.',
+    wordsTitle: 'Language Field',
+    wordsCopy: 'Short phrases, poetic fragments, essays, prompts, and AI-readable descriptions.',
+    hspTitle: 'Nervous System Map',
+    hspCopy: 'Patterns of sensitivity, emotion, sensory load, recovery, and deep perception.',
+    exTitle: 'The EX System',
+    exCopy:
+      "Miragea X profile repeats the EX pattern. This can become Miragea's signature language: experience becomes expression, then execution.",
+    routesTitle: 'Routes',
+    routesCopy:
+      'Miragea is the archive, IPFS is the durable mirror, and Eliora is the production service layer.',
+    recordsTitle: 'Perception Records',
+    recordsCopy:
+      'Existing thoughts remain as the archive body: silence, sensory processing, emotion, music, color, memory, and system.',
+    enterEliora: 'Enter Eliora',
+    followX: 'Follow on X',
+    ipfsMirror: 'IPFS Mirror',
+    githubLayer: 'GitHub Pages',
+    githubCopy: 'The readable archive for portfolio, essays, identity, and public links.',
+    openArchive: 'Open Mirage Archive',
+    ipfsCopy: 'A durable mirror that keeps the archive reachable outside ordinary hosting.',
+    openIpfs: 'Open IPFS Mirror',
+    elioraCopy: 'The production home for AI services, digital products, consulting, and community.',
+  },
+  ja: {
+    eyebrow: '視覚表現 x 言葉 / HSP感覚アーカイブ',
+    heroTitle: 'Mirageaは、Elioraの感覚的な起点です。',
+    heroLead:
+      '感覚、視覚言語、言葉、HSP的な神経システムの読み解き、AIにも読める記憶を保存する永続アーカイブです。Mirageaは創作者を保存し、Elioraはその力をサービスへ変えます。',
+    heroNote:
+      'ここは、Mirageaの思想、作品、感受性、実験の本拠地です。事業、商品、コンサルティング、コミュニティはElioraへつなげます。',
+    identityTitle: 'アイデンティティ',
+    identityCopy:
+      'このアーカイブは単なるプロフィールではなく、Mirageaの感覚の索引として機能します。象徴、視覚、言語、分析をひとつの場所にまとめます。',
+    visualTitle: 'アートと視覚表現',
+    visualCopy: '画像、3DCG、空気感、象徴的な形、色と余白の静かな重みを記録します。',
+    wordsTitle: '言葉の領域',
+    wordsCopy: '短いフレーズ、詩的断片、エッセイ、プロンプト、AIが読める説明文を扱います。',
+    hspTitle: '神経システムの地図',
+    hspCopy: '感受性、感情、感覚負荷、回復、深い知覚のパターンを読み解きます。',
+    exTitle: 'EXシステム',
+    exCopy:
+      'XプロフィールにあるEXの連なりを、Mirageaの署名言語として整理します。経験が表現になり、表現が実行へ進みます。',
+    routesTitle: '導線',
+    routesCopy:
+      'Mirageaはアーカイブ、IPFSは耐久性のあるミラー、Elioraは本番サービスのレイヤーです。',
+    recordsTitle: '感覚記録',
+    recordsCopy:
+      '既存の記事は、静寂、感覚処理、感情、音楽、色、記憶、システムを保存する本文として残します。',
+    enterEliora: 'Elioraへ進む',
+    followX: 'Xを開く',
+    ipfsMirror: 'IPFSミラー',
+    githubLayer: 'GitHub Pages',
+    githubCopy: 'ポートフォリオ、エッセイ、思想、公開リンクを読める形で置くアーカイブです。',
+    openArchive: 'Mirage Archiveを開く',
+    ipfsCopy: '通常のホスティングとは別に、アーカイブを残すための耐久ミラーです。',
+    openIpfs: 'IPFSミラーを開く',
+    elioraCopy: 'AIサービス、デジタル商品、コンサルティング、コミュニティの本番拠点です。',
+  },
+  zh: {
+    eyebrow: '视觉表达 x 文字 / HSP感知档案',
+    heroTitle: 'Miragea 是 Eliora 的感知起点。',
+    heroLead:
+      '这是一个长期保存感知、视觉语言、文字、HSP神经系统观察与 AI 可读记忆的档案。Miragea 保存创作者本身，Eliora 将这份能量转化为服务。',
+    heroNote:
+      '这里保存Miragea的思想、作品、敏感性与实验。事业、商品、咨询与社群，将由 Eliora 承接。',
+    identityTitle: '身份',
+    identityCopy:
+      '这个档案不只是个人简介，而是Miragea的感知索引。它把象征、视觉、语言与分析放在同一个结构中。',
+    visualTitle: '艺术与视觉',
+    visualCopy: '记录图像、3DCG、氛围、象征形式，以及色彩与留白的安静重量。',
+    wordsTitle: '语言场',
+    wordsCopy: '保存短句、诗性片段、文章、提示词，以及 AI 可以阅读的说明。',
+    hspTitle: '神经系统地图',
+    hspCopy: '整理敏感性、情绪、感官负荷、恢复与深层感知的模式。',
+    exTitle: 'EX 系统',
+    exCopy:
+      'X 个人资料中的 EX 词组，可以成为 Miragea 的标志性语言。经验变成表达，表达再进入执行。',
+    routesTitle: '路径',
+    routesCopy:
+      'Miragea 是档案，IPFS 是耐久镜像，Eliora 是正式服务层。',
+    recordsTitle: '感知记录',
+    recordsCopy:
+      '既有文章会作为档案主体保留：静寂、感官处理、情绪、音乐、色彩、记忆与系统。',
+    enterEliora: '进入 Eliora',
+    followX: '打开 X',
+    ipfsMirror: 'IPFS 镜像',
+    githubLayer: 'GitHub Pages',
+    githubCopy: '用于展示作品集、文章、身份与公开链接的可阅读档案。',
+    openArchive: '打开 Mirage Archive',
+    ipfsCopy: '在普通托管之外，保存档案可访问性的耐久镜像。',
+    openIpfs: '打开 IPFS 镜像',
+    elioraCopy: 'AI 服务、数字商品、咨询与社群的正式运营入口。',
+  },
+}[lang];
+
+const exItems = [
+  ['Extreme', 'High-intensity perception.'],
+  ['Experience', 'Body, memory, and emotion.'],
+  ['Execution', 'Turning sensitivity into work.'],
+  ['Example', 'Making invisible patterns visible.'],
+  ['Exchange', 'Community, service, dialogue.'],
+  ['Excitation', 'Energy, signal, and resonance.'],
+  ['Extra', 'The surplus that becomes style.'],
+  ['Express', 'The final visible form.'],
+];
+
+---
+
+<main class="min-h-screen bg-[#050505] text-[#f7f2ea]">
+  <section class="relative overflow-hidden px-6 pb-16 pt-28 md:px-12">
+    <div class="absolute inset-0 opacity-80 [background-image:linear-gradient(rgba(255,255,255,.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.025)_1px,transparent_1px),linear-gradient(125deg,rgba(240,123,154,.17),transparent_32%),linear-gradient(245deg,rgba(116,216,231,.12),transparent_38%)] [background-size:38px_38px,38px_38px,auto,auto]"></div>
+    <div class="relative mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1fr_420px]">
+      <div>
+        <div class="mb-6 inline-flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-stone-400">
+          <span class="h-2 w-2 rounded-full bg-rose-400 shadow-[0_0_18px_rgba(251,113,133,.85)]"></span>
+          {copy.eyebrow}
+        </div>
+        <h1 class="max-w-4xl text-5xl font-extralight leading-[0.94] tracking-normal md:text-8xl">
+          {copy.heroTitle}
+        </h1>
+        <p class="mt-7 max-w-3xl text-lg leading-8 text-stone-400 md:text-xl">
+          {copy.heroLead}
+        </p>
+        <p class="mt-5 max-w-3xl leading-8 text-stone-300">
+          {copy.heroNote}
+        </p>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <!-- 修正①: hrefを /eliora/ から /eliora/index.html に変更 -->
+          <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-stone-100 px-5 font-bold text-black transition hover:bg-rose-200" href="/eliora/index.html">
+            {copy.enterEliora}
+          </a>
+          <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 px-5 font-bold text-stone-100 transition hover:border-white/35" href="https://x.com/Miragea_S/">
+            {copy.followX}
+          </a>
+          <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 px-5 font-bold text-stone-100 transition hover:border-white/35" href="https://a4977a63.pinit.eth.limo/">
+            {copy.ipfsMirror}
+          </a>
+        </div>
+      </div>
+
+      <aside class="overflow-hidden rounded-lg border border-white/15 bg-black/55">
+        <img
+          class="aspect-video w-full object-cover"
+          src="https://pbs.twimg.com/profile_banners/1384657958613635074/1714738084"
+          alt="Miragea visual banner"
+        />
+        <div class="grid grid-cols-[76px_1fr] items-center gap-4 p-5">
+          <img
+            class="h-[76px] w-[76px] rounded-lg border border-white/15 object-cover"
+            src="https://pbs.twimg.com/profile_images/1786367070315454464/p40uTio3_200x200.jpg"
+            alt="Miragea profile image"
+          />
+          <div>
+            <strong class="block text-xl text-stone-100">EX_Her / Miragea</strong>
+            <span class="mt-1 block leading-7 text-stone-400">
+              Art, visuals, words, HSP perception, nervous-system domino dissection.
+            </span>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:px-12">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <h2 class="text-4xl font-light tracking-normal md:text-6xl">{copy.identityTitle}</h2>
+        <p class="max-w-xl leading-8 text-stone-400">
+          {copy.identityCopy}
+        </p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <article class="rounded-lg border border-white/15 bg-white/[.055] p-6">
+          <span class="mb-5 inline-flex rounded-full border border-white/15 px-3 py-1 text-xs text-stone-400">Visual</span>
+          <b class="mb-3 block text-xl">{copy.visualTitle}</b>
+          <p class="leading-8 text-stone-400">{copy.visualCopy}</p>
+        </article>
+        <article class="rounded-lg border border-white/15 bg-white/[.055] p-6">
+          <span class="mb-5 inline-flex rounded-full border border-white/15 px-3 py-1 text-xs text-stone-400">Words</span>
+          <b class="mb-3 block text-xl">{copy.wordsTitle}</b>
+          <p class="leading-8 text-stone-400">{copy.wordsCopy}</p>
+        </article>
+        <article class="rounded-lg border border-white/15 bg-white/[.055] p-6">
+          <span class="mb-5 inline-flex rounded-full border border-white/15 px-3 py-1 text-xs text-stone-400">HSP</span>
+          <b class="mb-3 block text-xl">{copy.hspTitle}</b>
+          <p class="leading-8 text-stone-400">{copy.hspCopy}</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:px-12">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <h2 class="text-4xl font-light tracking-normal md:text-6xl">{copy.exTitle}</h2>
+        <p class="max-w-xl leading-8 text-stone-400">
+          {copy.exCopy}
+        </p>
+      </div>
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {exItems.map(([title, copy]) => (
+          <div class="min-h-28 rounded-lg border border-white/15 bg-white/[.045] p-5">
+            <strong class="mb-2 block text-lg">{title}</strong>
+            <span class="text-sm leading-6 text-stone-400">{copy}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:px-12">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-8 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <h2 class="text-4xl font-light tracking-normal md:text-6xl">{copy.routesTitle}</h2>
+        <p class="max-w-xl leading-8 text-stone-400">
+          {copy.routesCopy}
+        </p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <article class="rounded-lg border border-white/15 bg-black/55 p-6">
+          <span class="mb-4 block text-xs uppercase tracking-[0.16em] text-yellow-300">Layer 1</span>
+          <h3 class="mb-3 text-2xl">{copy.githubLayer}</h3>
+          <p class="mb-5 leading-8 text-stone-400">{copy.githubCopy}</p>
+          <!-- 改善①: 言語（lang）に応じて、該当言語のアーカイブに飛べるように動的URLに変更 -->
+          <a class="font-bold" href={`https://miragea-ss.github.io/${lang}/`}>{copy.openArchive}</a>
+        </article>
+        <article class="rounded-lg border border-white/15 bg-black/55 p-6">
+          <span class="mb-4 block text-xs uppercase tracking-[0.16em] text-yellow-300">Mirror</span>
+          <h3 class="mb-3 text-2xl">IPFS</h3>
+          <p class="mb-5 leading-8 text-stone-400">{copy.ipfsCopy}</p>
+          <a class="font-bold" href="https://a4977a63.pinit.eth.limo/">{copy.openIpfs}</a>
+        </article>
+        <article class="rounded-lg border border-white/15 bg-black/55 p-6">
+          <span class="mb-4 block text-xs uppercase tracking-[0.16em] text-yellow-300">Layer 2</span>
+          <h3 class="mb-3 text-2xl">Eliora</h3>
+          <p class="mb-5 leading-8 text-stone-400">{copy.elioraCopy}</p>
+          <!-- 修正②: hrefを /eliora/ から /eliora/index.html に変更 -->
+          <a class="font-bold" href="/eliora/index.html">{copy.enterEliora}</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-20 md:px-12">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-10 text-center">
+        <h2 class="text-4xl font-light tracking-normal md:text-6xl">{copy.recordsTitle}</h2>
+        <p class="mx-auto mt-5 max-w-2xl leading-8 text-stone-400">
+          {copy.recordsCopy}
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {thoughts.map((post) => (
+          <ThoughtCard post={post} />
+        ))}
+      </div>
+    </div>
+  </section>
+</main>
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Miragea',
+  alternateName: 'EX_Her',
+  // 改善②: SEOメタデータ用のURLも言語に応じて動的に変化するように変更
+  url: `https://miragea-ss.github.io/${lang}/`,
+  sameAs: [
+    'https://x.com/Miragea_S/',
+    'https://a4977a63.pinit.eth.limo/',
+    '/eliora/index.html', // 修正③: ここも /eliora/index.html に統一
+  ],
+  knowsAbout: [
+    'Art',
+    'Visuals',
+    'Words',
+    'HSP',
+    '3DCG',
+    'AI Services',
+    'Digital Products',
+    'Data Sovereignty',
+  ],
+})} />

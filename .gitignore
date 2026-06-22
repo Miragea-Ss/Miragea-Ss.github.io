@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# 100MBを超える大容量動画をGitのアップロード対象から除外する
+public/videos/If_this_lullaby.mp4
+public/videos/If this lullaby..mp4
+public/videos/The Fusion　Vol.01.mp4

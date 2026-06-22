@@ -16,10 +16,10 @@ const copy = {
     heroLead:
       'A permanent archive for perception, visual language, words, HSP nervous-system analysis, and AI-readable memory. Miragea preserves the creator. Eliora turns that energy into services.',
     heroNote:
-      'This is the home of your thought, art, sensitivity, and experiments. Business, products, consulting, and community continue to Eliora.',
+      "This is the home of Miragea's thoughts, art, sensitivity, and experiments. Business, products, consulting, and community continue in Eliora.",
     identityTitle: 'Identity',
     identityCopy:
-      'The archive should feel like a living index of your perception, not just a profile page. It keeps the symbolic, visual, and analytical parts together.',
+      "The archive should feel like a living index of Miragea's perception, not just a profile page. It keeps the symbolic, visual, and analytical parts together.",
     visualTitle: 'Art & Visuals',
     visualCopy: 'Images, 3DCG, atmosphere, symbolic forms, and the quiet weight of color and space.',
     wordsTitle: 'Language Field',
@@ -28,7 +28,7 @@ const copy = {
     hspCopy: 'Patterns of sensitivity, emotion, sensory load, recovery, and deep perception.',
     exTitle: 'The EX System',
     exCopy:
-      "Your X profile repeats the EX pattern. This can become Miragea's signature language: experience becomes expression, then execution.",
+      "Miragea's X profile repeats the EX pattern. This can become Miragea's signature language: experience becomes expression, then execution.",
     routesTitle: 'Routes',
     routesCopy:
       'Miragea is the archive, IPFS is the durable mirror, and Eliora is the production service layer.',
@@ -39,7 +39,7 @@ const copy = {
     followX: 'Follow on X',
     ipfsMirror: 'IPFS Mirror',
     githubLayer: 'GitHub Pages',
-    githubCopy: 'The readable archive for portfolio, essays, identity, and public links.',
+    githubCopy: "The readable archive for Miragea's portfolio, essays, identity, and public links.",
     openArchive: 'Open Mirage Archive',
     ipfsCopy: 'A durable mirror that keeps the archive reachable outside ordinary hosting.',
     openIpfs: 'Open IPFS Mirror',
@@ -51,10 +51,10 @@ const copy = {
     heroLead:
       '感覚、視覚言語、言葉、HSP的な神経システムの読み解き、AIにも読める記憶を保存する永続アーカイブです。Mirageaは創作者を保存し、Elioraはその力をサービスへ変えます。',
     heroNote:
-      'ここは、あなたの思想、作品、感受性、実験の本拠地です。事業、商品、コンサルティング、コミュニティはElioraへつなげます。',
+      'ここは、Mirageaの思想、作品、感受性、実験の本拠地です。事業、商品、コンサルティング、コミュニティはElioraへつなげます。',
     identityTitle: 'アイデンティティ',
     identityCopy:
-      'このアーカイブは単なるプロフィールではなく、あなたの感覚の索引として機能します。象徴、視覚、言語、分析をひとつの場所にまとめます。',
+      'このアーカイブは単なるプロフィールではなく、Mirageaの感覚の索引として機能します。象徴、視覚、言語、分析をひとつの場所にまとめます。',
     visualTitle: 'アートと視覚表現',
     visualCopy: '画像、3DCG、空気感、象徴的な形、色と余白の静かな重みを記録します。',
     wordsTitle: '言葉の領域',
@@ -86,10 +86,10 @@ const copy = {
     heroLead:
       '这是一个长期保存感知、视觉语言、文字、HSP神经系统观察与 AI 可读记忆的档案。Miragea 保存创作者本身，Eliora 将这份能量转化为服务。',
     heroNote:
-      '这里保存你的思想、作品、敏感性与实验。事业、商品、咨询与社群，将由 Eliora 承接。',
+      '这里保存 Miragea 的思想、作品、敏感度与实验。事业、商品、咨询与社群，将由 Eliora 承接。',
     identityTitle: '身份',
     identityCopy:
-      '这个档案不只是个人简介，而是你的感知索引。它把象征、视觉、语言与分析放在同一个结构中。',
+      '这个档案不常是个人简介，而是 Miragea 的感知索引。它把象征、视觉、语言与分析放在同一个结构中。',
     visualTitle: '艺术与视觉',
     visualCopy: '记录图像、3DCG、氛围、象征形式，以及色彩与留白的安静重量。',
     wordsTitle: '语言场',
@@ -127,7 +127,6 @@ const exItems = [
   ['Extra', 'The surplus that becomes style.'],
   ['Express', 'The final visible form.'],
 ];
-
 ---
 
 <main class="min-h-screen bg-[#050505] text-[#f7f2ea]">
@@ -149,7 +148,7 @@ const exItems = [
           {copy.heroNote}
         </p>
         <div class="mt-9 flex flex-wrap gap-3">
-          <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-stone-100 px-5 font-bold text-black transition hover:bg-rose-200" href="https://eliora.com/">
+          <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-stone-100 px-5 font-bold text-black transition hover:bg-rose-200" href="/eliora/index.html">
             {copy.enterEliora}
           </a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 px-5 font-bold text-stone-100 transition hover:border-white/35" href="https://x.com/Miragea_S/">
@@ -244,7 +243,7 @@ const exItems = [
           <span class="mb-4 block text-xs uppercase tracking-[0.16em] text-yellow-300">Layer 1</span>
           <h3 class="mb-3 text-2xl">{copy.githubLayer}</h3>
           <p class="mb-5 leading-8 text-stone-400">{copy.githubCopy}</p>
-          <a class="font-bold" href="https://miragea-ss.github.io/en/">{copy.openArchive}</a>
+          <a class="font-bold" href={`https://miragea-ss.github.io/${lang}/`}>{copy.openArchive}</a>
         </article>
         <article class="rounded-lg border border-white/15 bg-black/55 p-6">
           <span class="mb-4 block text-xs uppercase tracking-[0.16em] text-yellow-300">Mirror</span>
@@ -256,7 +255,7 @@ const exItems = [
           <span class="mb-4 block text-xs uppercase tracking-[0.16em] text-yellow-300">Layer 2</span>
           <h3 class="mb-3 text-2xl">Eliora</h3>
           <p class="mb-5 leading-8 text-stone-400">{copy.elioraCopy}</p>
-          <a class="font-bold" href="https://eliora.com/">{copy.enterEliora}</a>
+          <a class="font-bold" href="/eliora/index.html">{copy.enterEliora}</a>
         </article>
       </div>
     </div>
@@ -284,11 +283,11 @@ const exItems = [
   '@type': 'Person',
   name: 'Miragea',
   alternateName: 'EX_Her',
-  url: 'https://miragea-ss.github.io/en/',
+  url: `https://miragea-ss.github.io/${lang}/`,
   sameAs: [
     'https://x.com/Miragea_S/',
     'https://a4977a63.pinit.eth.limo/',
-    'https://eliora.com/',
+    '/eliora/index.html',
   ],
   knowsAbout: [
     'Art',
