@@ -1,0 +1,124 @@
+---
+import Layout from '../../../site-layouts/Layout.astro';
+import { exOrder, exPages, languages, type ExSlug, type Lang } from '../../../data/ex-system';
+
+export function getStaticPaths() {
+  return languages.flatMap((lang) =>
+    exOrder.map((slug) => ({
+      params: { lang, slug },
+      props: { lang, slug },
+    })),
+  );
+}
+
+const { lang, slug } = Astro.props as { lang: Lang; slug: ExSlug };
+const entry = exPages[slug];
+const copy = entry.content[lang];
+
+const ui = {
+  en: {
+    back: 'Back to Mirage Archive',
+    source: 'Selected X fragments',
+    route: 'EX route',
+    openX: 'Open source on X',
+    openEliora: 'Enter Eliora',
+    sourceNote: 'These are compact excerpts and translated fragments from the public X timeline, shaped into the Miragea archive.',
+  },
+  ja: {
+    back: 'Mirage Archiveへ戻る',
+    source: 'Xから選んだ断片',
+    route: 'EXルート',
+    openX: 'Xの元投稿を開く',
+    openEliora: 'Elioraへ進む',
+    sourceNote: '公開Xタイムラインから選んだ短い断片と翻訳を、Miragea Archiveの構造へ整えています。',
+  },
+  zh: {
+    back: '返回 Mirage Archive',
+    source: '从 X 选择的片段',
+    route: 'EX 路径',
+    openX: '打开 X 原帖',
+    openEliora: '进入 Eliora',
+    sourceNote: '这些是从公开 X 时间线中选择的短片段与翻译，并整理为 Miragea Archive 的结构。',
+  },
+}[lang];
+---
+
+<Layout title={`Miragea EX | ${entry.title}`} lang={lang}>
+  <main class="min-h-screen bg-[#050505] text-[#f7f2ea]">
+    <section class="relative overflow-hidden px-6 pb-16 pt-28 md:px-12">
+      <div class="absolute inset-0 opacity-85 [background-image:linear-gradient(rgba(255,255,255,.028)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.028)_1px,transparent_1px),linear-gradient(120deg,rgba(244,114,182,.15),transparent_36%),linear-gradient(245deg,rgba(34,211,238,.10),transparent_42%)] [background-size:42px_42px,42px_42px,auto,auto]"></div>
+      <div class="relative mx-auto max-w-6xl">
+        <a class="mb-10 inline-flex min-h-11 items-center rounded-lg border border-white/15 px-4 text-sm font-bold text-stone-200 transition hover:border-white/35" href={`/${lang}/`}>
+          {ui.back}
+        </a>
+        <div class="grid gap-10 lg:grid-cols-[1fr_360px] lg:items-end">
+          <div>
+            <p class="mb-4 text-xs uppercase tracking-[0.18em] text-rose-200">{entry.symbol} / {copy.kicker}</p>
+            <h1 class="max-w-4xl text-5xl font-extralight leading-[0.94] tracking-normal md:text-8xl">{entry.title}</h1>
+            <p class="mt-7 max-w-3xl text-2xl leading-9 text-stone-100">{copy.headline}</p>
+            <p class="mt-5 max-w-3xl leading-8 text-stone-400">{copy.summary}</p>
+          </div>
+          <aside class="rounded-lg border border-white/15 bg-black/55 p-6">
+            <span class="text-xs uppercase tracking-[0.16em] text-cyan-200">{ui.route}</span>
+            <nav class="mt-5 grid grid-cols-2 gap-2">
+              {exOrder.map((item) => (
+                <a
+                  class:list={[
+                    'rounded-lg border px-3 py-3 text-sm font-bold transition',
+                    item === slug
+                      ? 'border-rose-200 bg-rose-200 text-black'
+                      : 'border-white/15 bg-white/[.04] text-stone-300 hover:border-white/35',
+                  ]}
+                  href={`/${lang}/ex/${item}/`}
+                >
+                  {exPages[item].title}
+                </a>
+              ))}
+            </nav>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-6 py-16 md:px-12">
+      <div class="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[420px_1fr]">
+        <article class="rounded-lg border border-white/15 bg-white/[.05] p-6">
+          <p class="mb-5 text-xs uppercase tracking-[0.16em] text-yellow-200">{ui.source}</p>
+          <div class="space-y-4">
+            {copy.xLines.map((line) => (
+              <blockquote class="border-l border-rose-200/60 pl-4 leading-8 text-stone-200">
+                {line}
+              </blockquote>
+            ))}
+          </div>
+          <p class="mt-6 text-sm leading-7 text-stone-500">{ui.sourceNote}</p>
+          {entry.sourceUrl && (
+            <a class="mt-5 inline-flex min-h-11 items-center rounded-lg border border-white/15 px-4 text-sm font-bold text-stone-100 transition hover:border-white/35" href={entry.sourceUrl}>
+              {ui.openX}
+            </a>
+          )}
+        </article>
+
+        <div class="grid gap-6">
+          <article class="rounded-lg border border-white/15 bg-black/55 p-7">
+            <h2 class="mb-4 text-3xl font-light tracking-normal">{copy.readingTitle}</h2>
+            <p class="text-lg leading-9 text-stone-300">{copy.reading}</p>
+          </article>
+          <article class="rounded-lg border border-white/15 bg-black/55 p-7">
+            <h2 class="mb-5 text-3xl font-light tracking-normal">{copy.practiceTitle}</h2>
+            <div class="grid gap-3">
+              {copy.practices.map((practice) => (
+                <div class="rounded-lg border border-white/10 bg-white/[.045] p-4 leading-7 text-stone-300">
+                  {practice}
+                </div>
+              ))}
+            </div>
+          </article>
+          <a class="inline-flex min-h-12 w-fit items-center justify-center rounded-lg bg-stone-100 px-5 font-bold text-black transition hover:bg-rose-200" href="/eliora/index.html">
+            {ui.openEliora}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

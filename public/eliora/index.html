@@ -1,328 +1,243 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Eliora — Local-first AI services for creators. Turning HSP perception into ComfyUI workflows, visual production, and digital products.">
-  <meta name="robots" content="index, follow">
-  <title>Eliora | Turning Perception into Creation</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Inter:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&family=Noto+Sans+SC:wght@300;400&family=Noto+Serif+JP:wght@300;400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
-  <!-- Privacy banner (every page) -->
-  <div class="privacy-banner" role="note">
-    <span class="lang-en"><strong>Local execution only.</strong> All workflows delivered for local execution only. Full privacy guaranteed.</span>
-    <span class="lang-ja"><strong>ローカル実行専用。</strong> すべてのワークフローはローカル実行用に提供されます。完全なプライバシーを保証します。</span>
-    <span class="lang-zh"><strong>仅限本地执行。</strong> 所有工作流均仅供本地运行。完全保障隐私。</span>
-  </div>
-  <nav class="ecosystem-bar" aria-label="Miragea ecosystem">
-    <span class="eco-label lang-en">Ecosystem</span>
-    <span class="eco-label lang-ja">エコシステム</span>
-    <span class="eco-label lang-zh">生态</span>
-    <span class="eco-sep">·</span>
-    <a href="https://miragea-ss.github.io/en/" data-miragea-archive>Miragea</a>
-    <span class="eco-sep">·</span>
-    <a href="https://a4977a63.pinit.eth.limo/" target="_blank" rel="noopener">IPFS</a>
-    <span class="eco-sep">·</span>
-    <a href="https://x.com/Miragea_S" target="_blank" rel="noopener">@Miragea_S</a>
-    <span class="eco-sep">·</span>
-    <span class="eco-current">Eliora</span>
-  </nav>
-  <!-- Header -->
-  <header class="site-header">
-    <a href="#" class="logo">Eli<span>ora</span></a>
-    <nav class="nav-main" aria-label="Main navigation">
-      <a href="#experience" data-i18n-nav="experience">Experience</a>
-      <a href="#execution" data-i18n-nav="execution">Execution</a>
-      <a href="#express" data-i18n-nav="express">Express</a>
-      <a href="#exchange" data-i18n-nav="exchange">Exchange</a>
-      <a href="#fragments" data-i18n-nav="fragments">Perception Fragments</a>
-      <a href="https://miragea-ss.github.io/en/" data-miragea-archive target="_blank" rel="noopener">Miragea</a>
-    </nav>
-    <div class="header-actions">
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" data-lang="en" class="is-active">EN</button>
-        <button type="button" data-lang="ja">JA</button>
-        <button type="button" data-lang="zh">CN</button>
-      </div>
-      <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-  <!-- Mobile nav -->
-  <nav class="nav-drawer" aria-label="Mobile navigation" aria-hidden="true">
-    <a href="#experience">Experience</a>
-    <a href="#execution">Execution</a>
-    <a href="#express">Express</a>
-    <a href="#exchange">Exchange</a>
-    <a href="#fragments">Perception Fragments</a>
-    <a href="#pricing">Pricing</a>
-    <a href="https://miragea-ss.github.io/en/" data-miragea-archive target="_blank" rel="noopener">Back to Miragea</a>
-    <a href="https://x.com/Miragea_S" target="_blank" rel="noopener">@Miragea_S</a>
-  </nav>
-  <main>
-    <!-- Hero -->
-    <section class="hero" id="top">
-      <div class="hero-bg" aria-hidden="true">
-        <div class="hero-gradient"></div>
-      </div>
-      <div class="hero-content fade-in">
-        <p class="hero-eyebrow lang-en">From Miragea · EX System</p>
-        <p class="hero-eyebrow lang-ja">Miragea より · EX System</p>
-        <p class="hero-eyebrow lang-zh">源自 Miragea · EX System</p>
-        <h1 class="hero-title">
-          <span class="lang-en">Eliora<br><em>Turning Perception into Creation</em></span>
-          <span class="lang-ja">Eliora<br><em>知覚を、創造へ</em></span>
-          <span class="lang-zh">Eliora<br><em>将感知，化为创造</em></span>
-        </h1>
-        <p class="hero-subtitle lang-en">Local-First AI Services</p>
-        <p class="hero-subtitle lang-ja">ローカルファースト AI サービス</p>
-        <p class="hero-subtitle lang-zh">本地优先 AI 服务</p>
-        <div class="hero-cta">
-          <a href="#fragments" class="btn btn-primary lang-en">Explore Fragments</a>
-          <a href="#fragments" class="btn btn-primary lang-ja">Fragments を見る</a>
-          <a href="#fragments" class="btn btn-primary lang-zh">浏览 Fragments</a>
-          <a href="#pricing" class="btn btn-ghost lang-en">View Services</a>
-          <a href="#pricing" class="btn btn-ghost lang-ja">サービスを見る</a>
-          <a href="#pricing" class="btn btn-ghost lang-zh">查看服务</a>
-          <a href="https://x.com/Miragea_S" class="btn btn-ghost lang-en" target="_blank" rel="noopener">Follow @Miragea_S</a>
-          <a href="https://x.com/Miragea_S" class="btn btn-ghost lang-ja" target="_blank" rel="noopener">@Miragea_S をフォロー</a>
-          <a href="https://x.com/Miragea_S" class="btn btn-ghost lang-zh" target="_blank" rel="noopener">关注 @Miragea_S</a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eliora | Local-First AI Studio</title>
+    <meta name="description" content="Eliora is Miragea's production layer for AI services, Infinite Canvas, digital products, consulting, and community." />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #050505;
+        --panel: rgba(11, 11, 12, 0.74);
+        --line: rgba(255, 255, 255, 0.14);
+        --muted: #a7a29a;
+        --text: #f6f1e8;
+        --rose: #f2799a;
+        --amber: #f5b864;
+        --cyan: #7bd8e8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.028) 1px, transparent 1px),
+          linear-gradient(125deg, rgba(242,121,154,.16), transparent 35%),
+          linear-gradient(245deg, rgba(245,184,100,.12), transparent 42%),
+          var(--bg);
+        background-size: 42px 42px, 42px 42px, auto, auto;
+        color: var(--text);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      a { color: inherit; text-decoration: none; }
+      .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 0;
+        backdrop-filter: blur(18px);
+      }
+      .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+      .brand img { width: 48px; height: 48px; border-radius: 8px; object-fit: cover; border: 1px solid var(--line); }
+      .brand strong { display: block; font-size: 18px; letter-spacing: 0; }
+      .brand span { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
+      .nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+      .nav a, .button {
+        min-height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0 14px;
+        background: rgba(255,255,255,.045);
+        font-weight: 700;
+        font-size: 14px;
+      }
+      .button.primary { background: #f4eee4; color: #050505; border-color: #f4eee4; }
+      .hero { min-height: calc(100vh - 86px); display: grid; grid-template-columns: 1.06fr .94fr; gap: 44px; align-items: center; padding: 34px 0 70px; }
+      .eyebrow { color: var(--amber); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; font-weight: 800; }
+      h1 { margin: 18px 0 0; font-size: clamp(56px, 9vw, 118px); line-height: .9; font-weight: 200; letter-spacing: 0; }
+      .lead { margin: 28px 0 0; max-width: 680px; color: #d2cbc2; font-size: clamp(18px, 2vw, 23px); line-height: 1.65; }
+      .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+      .hero-media {
+        min-height: 540px;
+        display: grid;
+        place-items: center;
+        border-left: 1px solid var(--line);
+        padding-left: 44px;
+      }
+      .hero-media img {
+        width: min(100%, 500px);
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid rgba(255,255,255,.16);
+        box-shadow: 0 38px 90px rgba(0,0,0,.58);
+      }
+      section { padding: 86px 0; }
+      .section-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 28px; }
+      h2 { margin: 0; font-size: clamp(36px, 5vw, 68px); line-height: 1; font-weight: 250; letter-spacing: 0; }
+      .section-head p { margin: 0; max-width: 560px; color: var(--muted); line-height: 1.75; }
+      .grid { display: grid; gap: 14px; }
+      .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        padding: 24px;
+      }
+      .card b { display: block; margin-bottom: 12px; font-size: 22px; }
+      .card p { margin: 0; color: var(--muted); line-height: 1.75; }
+      .tag { display: inline-flex; margin-bottom: 18px; color: var(--cyan); text-transform: uppercase; letter-spacing: .14em; font-size: 11px; font-weight: 800; }
+      .canvas-preview {
+        min-height: 420px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        background:
+          linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px),
+          #080808;
+        background-size: 34px 34px;
+        position: relative;
+      }
+      .node {
+        position: absolute;
+        width: 230px;
+        border: 1px solid rgba(255,255,255,.18);
+        border-radius: 8px;
+        background: rgba(0,0,0,.72);
+        padding: 16px;
+        box-shadow: 0 24px 70px rgba(0,0,0,.45);
+      }
+      .node:nth-child(1) { left: 8%; top: 13%; }
+      .node:nth-child(2) { left: 48%; top: 28%; border-color: rgba(242,121,154,.38); }
+      .node:nth-child(3) { left: 27%; top: 62%; border-color: rgba(123,216,232,.34); }
+      .node strong { display: block; margin-bottom: 8px; }
+      .node span { color: var(--muted); font-size: 13px; line-height: 1.5; }
+      .lang {
+        margin-top: 22px;
+        display: grid;
+        gap: 10px;
+        color: #d6d0c8;
+        line-height: 1.75;
+      }
+      code {
+        color: #f4d38e;
+        background: rgba(255,255,255,.06);
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 6px;
+        padding: 2px 6px;
+      }
+      footer { padding: 50px 0 70px; color: var(--muted); border-top: 1px solid var(--line); }
+      @media (max-width: 860px) {
+        .topbar { align-items: flex-start; flex-direction: column; }
+        .hero { grid-template-columns: 1fr; min-height: auto; }
+        .hero-media { min-height: auto; border-left: 0; padding-left: 0; }
+        .grid.three, .grid.two { grid-template-columns: 1fr; }
+        .section-head { align-items: flex-start; flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wrap topbar">
+      <a class="brand" href="/eliora/index.html">
+        <img src="/assets/brand/eliora-logo.png" alt="Eliora logo" />
+        <span>
+          <strong>Eliora</strong>
+          <span>AI Service Layer</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/en/">Miragea</a>
+        <a href="/eliora/infinite-canvas.html">Canvas</a>
+        <a href="https://github.com/Miragea-Ss">GitHub</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="wrap hero">
+        <div>
+          <div class="eyebrow">Layer 2 / Production Site</div>
+          <h1>Eliora</h1>
+          <p class="lead">
+            A local-first AI studio for Infinite Canvas, digital products, consulting, and community. Miragea preserves the origin; Eliora turns it into working systems.
+          </p>
+          <div class="lang">
+            <div>JP: Elioraは、AIサービス、Infinite Canvas、デジタル商品、コンサルティング、コミュニティの本番サイトです。</div>
+            <div>ZH: Eliora 是 AI 服务、Infinite Canvas、数字商品、咨询与社区的正式服务层。</div>
+          </div>
+          <div class="actions">
+            <a class="button primary" href="/eliora/infinite-canvas.html">Open Infinite Canvas</a>
+            <a class="button" href="/en/">Back to Miragea</a>
+          </div>
         </div>
-      </div>
-      <span class="hero-scroll lang-en">Scroll</span>
-      <span class="hero-scroll lang-ja">スクロール</span>
-      <span class="hero-scroll lang-zh">滚动</span>
-    </section>
-    <!-- EX System strip -->
-    <aside class="ex-strip">
-      <div class="container">
-        <dl class="ex-strip-grid">
-          <div class="ex-strip-item">
-            <dt>Experience</dt>
-            <dd class="lang-en">Body, memory, emotion</dd>
-            <dd class="lang-ja">身体・記憶・感情</dd>
-            <dd class="lang-zh">身体 · 记忆 · 情感</dd>
-          </div>
-          <div class="ex-strip-item">
-            <dt>Execution</dt>
-            <dd class="lang-en">Sensitivity into work</dd>
-            <dd class="lang-ja">感受性を仕事へ</dd>
-            <dd class="lang-zh">将敏感化为工作</dd>
-          </div>
-          <div class="ex-strip-item">
-            <dt>Express</dt>
-            <dd class="lang-en">The visible form</dd>
-            <dd class="lang-ja">可視化された形</dd>
-            <dd class="lang-zh">可见的形式</dd>
-          </div>
-          <div class="ex-strip-item">
-            <dt>Exchange</dt>
-            <dd class="lang-en">Dialogue &amp; service</dd>
-            <dd class="lang-ja">対話とサービス</dd>
-            <dd class="lang-zh">对话与服务</dd>
-          </div>
-        </dl>
-      </div>
-    </aside>
-    <!-- Services -->
-    <section class="section" id="services">
-      <div class="container">
-        <p class="section-label fade-in lang-en">Services · EX System</p>
-        <p class="section-label fade-in lang-ja">サービス · EX System</p>
-        <p class="section-label fade-in lang-zh">服务 · EX System</p>
-        <h2 class="section-title fade-in lang-en">Where perception becomes craft</h2>
-        <h2 class="section-title fade-in lang-ja">知覚が、技術になる場所</h2>
-        <h2 class="section-title fade-in lang-zh">感知化为技艺之处</h2>
-        <p class="section-lead fade-in lang-en">
-          Eliora is the production layer born from Miragea. Every deliverable runs on your machine — never on our servers. Private entertainment, celebrity references, and personal experiments stay local by design.
-        </p>
-        <p class="section-lead fade-in lang-ja">
-          Eliora は Miragea から生まれた生産層です。すべての成果物はあなたのマシン上で動作します。私的な娯楽コンテンツや有名人関連の素材は、公開せずローカル管理を推奨します。
-        </p>
-        <p class="section-lead fade-in lang-zh">
-          Eliora 是 Miragea 衍生的生产层。所有交付物均在您的机器上运行。私人娱乐内容、名人相关素材建议严格本地管理，绝不公开。
-        </p>
-        <div class="services-grid">
-          <!-- Experience -->
-          <article class="service-card fade-in" id="experience" data-ex="experience">
-            <p class="service-ex-tag">EX · Experience</p>
-            <h3 class="lang-en">Digital Products — JSON Packs</h3>
-            <h3 class="lang-ja">デジタルプロダクト — JSON パック</h3>
-            <h3 class="lang-zh">数字产品 — JSON 包</h3>
-            <p class="lang-en">Curated ComfyUI workflow collections shaped by HSP perception. Ready to import, tune locally, and make your own.</p>
-            <p class="lang-ja">HSP 的知覚で設計された ComfyUI ワークフロー集。インポートしてローカルで調整し、あなただけのものに。</p>
-            <p class="lang-zh">以 HSP 感知设计的 ComfyUI 工作流合集。导入后在本地调整，化为独有之作。</p>
-            <ul class="service-features">
-              <li class="lang-en">Themed JSON packs (atmosphere, portrait, abstract)</li>
-              <li class="lang-en">Documentation in EN / JA / CN</li>
-              <li class="lang-en">No cloud dependency</li>
-              <li class="lang-ja">テーマ別 JSON パック（雰囲気・ポートレート・抽象）</li>
-              <li class="lang-ja">日英中ドキュメント付き</li>
-              <li class="lang-ja">クラウド非依存</li>
-              <li class="lang-zh">主题 JSON 包（氛围 · 肖像 · 抽象）</li>
-              <li class="lang-zh">中英日文档</li>
-              <li class="lang-zh">无云端依赖</li>
-            </ul>
-            <a href="#fragments" class="btn btn-ghost btn-sm lang-en">Browse packs</a>
-            <a href="#fragments" class="btn btn-ghost btn-sm lang-ja">パックを見る</a>
-            <a href="#fragments" class="btn btn-ghost btn-sm lang-zh">浏览包</a>
+        <div class="hero-media">
+          <img src="/assets/brand/eliora-logo.png" alt="Eliora phoenix logo" />
+        </div>
+      </section>
+
+      <section class="wrap">
+        <div class="section-head">
+          <h2>Service Map</h2>
+          <p>One entrance, several business routes: AI tools, local workflows, digital assets, learning products, and consulting.</p>
+        </div>
+        <div class="grid three">
+          <article class="card">
+            <span class="tag">AI Studio</span>
+            <b>Prompt, image, and knowledge workflows</b>
+            <p>Reusable AI workflows for writing, visuals, product planning, research, and personal data sovereignty.</p>
           </article>
-          <!-- Execution -->
-          <article class="service-card fade-in" id="execution" data-ex="execution">
-            <p class="service-ex-tag">EX · Execution</p>
-            <h3 class="lang-en">Custom JSON Workflows &amp; Local AI Factory</h3>
-            <h3 class="lang-ja">カスタム JSON ワークフロー &amp; ローカル AI ファクトリー</h3>
-            <h3 class="lang-zh">定制 JSON 工作流 &amp; 本地 AI 工厂</h3>
-            <p class="lang-en">Bespoke ComfyUI pipelines for studios and serious creators. Full local stack setup — GPU, nodes, versioning, and your privacy boundary.</p>
-            <p class="lang-ja">スタジオ・本格クリエイター向けの ComfyUI パイプライン構築。GPU・ノード・バージョン管理まで、プライバシー境界を守ったローカル環境。</p>
-            <p class="lang-zh">为工作室与专业创作者定制 ComfyUI 管道。GPU、节点、版本管理与隐私边界，完整的本地环境搭建。</p>
-            <ul class="service-features">
-              <li class="lang-en">Custom node graphs &amp; automation</li>
-              <li class="lang-en">Local factory architecture</li>
-              <li class="lang-en">Workflow maintenance retainer</li>
-              <li class="lang-ja">カスタムノードグラフ &amp; 自動化</li>
-              <li class="lang-ja">ローカルファクトリー設計</li>
-              <li class="lang-ja">ワークフロー保守契約</li>
-              <li class="lang-zh">定制节点图 &amp; 自动化</li>
-              <li class="lang-zh">本地工厂架构</li>
-              <li class="lang-zh">工作流维护合约</li>
-            </ul>
-            <a href="#pricing" class="btn btn-ghost btn-sm lang-en">Request quote</a>
-            <a href="#pricing" class="btn btn-ghost btn-sm lang-ja">見積もり依頼</a>
-            <a href="#pricing" class="btn btn-ghost btn-sm lang-zh">询价</a>
+          <article class="card">
+            <span class="tag">Canvas</span>
+            <b>Infinite visual thinking surface</b>
+            <p>A practical board for notes, product maps, AI pipelines, image references, and service planning.</p>
           </article>
-          <!-- Express (Houdini removed) -->
-          <article class="service-card fade-in" id="express" data-ex="express">
-            <p class="service-ex-tag">EX · Express</p>
-            <h3 class="lang-en">AI Visual Services — Image / Video</h3>
-            <h3 class="lang-ja">AI ビジュアルサービス — 画像 / 動画</h3>
-            <h3 class="lang-zh">AI 视觉服务 — 图像 / 视频</h3>
-            <p class="lang-en">Poetic visuals with technical precision. Still and motion content created with ComfyUI.</p>
-            <p class="lang-ja">詩的な美学と技術的精度を両立。ComfyUI による静止画・映像制作。</p>
-            <p class="lang-zh">诗性美学与技术精度并存。ComfyUI 创作的静帧与影像。</p>
-            <ul class="service-features">
-              <li class="lang-en">Campaign &amp; album visuals</li>
-              <li class="lang-en">AI-assisted video loops</li>
-              <li class="lang-ja">キャンペーン &amp; アルバムビジュアル</li>
-              <li class="lang-ja">AI 支援映像ループ</li>
-              <li class="lang-zh">Campaign &amp; 专辑视觉</li>
-              <li class="lang-zh">AI 辅助视频循环</li>
-            </ul>
-            <a href="#pricing" class="btn btn-ghost btn-sm lang-en">Discuss project</a>
-            <a href="#pricing" class="btn btn-ghost btn-sm lang-ja">プロジェクト相談</a>
-            <a href="#pricing" class="btn btn-ghost btn-sm lang-zh">项目咨询</a>
-          </article>
-          <!-- Exchange -->
-          <article class="service-card fade-in" id="exchange" data-ex="exchange">
-            <p class="service-ex-tag">EX · Exchange</p>
-            <h3 class="lang-en">Consulting &amp; Perception Workshops</h3>
-            <h3 class="lang-ja">コンサルティング &amp; 知覚ワークショップ</h3>
-            <h3 class="lang-zh">咨询 &amp; 感知工作坊</h3>
-            <p class="lang-en">For teams who want depth without noise. HSP-informed creative direction, AI literacy, and sensory-aware brand language.</p>
-            <p class="lang-ja">ノイズのない深さを求めるチームへ。HSP 視点のクリエイティブディレクション、AI リテラシー、感覚に配慮したブランド言語。</p>
-            <p class="lang-zh">为追求深度而非噪音的团队而设。HSP 视角的创意指导、AI 素养与感官友好的品牌语言。</p>
-            <ul class="service-features">
-              <li class="lang-en">1:1 creative consulting</li>
-              <li class="lang-en">Team perception workshops</li>
-              <li class="lang-en">AI workflow audits</li>
-              <li class="lang-ja">1:1 クリエイティブコンサル</li>
-              <li class="lang-ja">チーム向け知覚ワークショップ</li>
-              <li class="lang-ja">AI ワークフロー監査</li>
-              <li class="lang-zh">1:1 创意咨询</li>
-              <li class="lang-zh">团队感知工作坊</li>
-              <li class="lang-zh">AI 工作流审计</li>
-            </ul>
-            <a href="#pricing" class="btn btn-ghost btn-sm lang-en">Book a session</a>
-            <a href="#pricing" class="btn btn-ghost btn-sm lang-ja">セッション予約</a>
-            <a href="#pricing" class="btn btn-ghost btn-sm lang-zh">预约咨询</a>
+          <article class="card">
+            <span class="tag">Market</span>
+            <b>Digital products and consulting</b>
+            <p>3DCG assets, visual archives, templates, courses, and advisory work can grow from the same system.</p>
           </article>
         </div>
-      </div>
-    </section>
-    <!-- Perception Fragments Gallery -->
-    <section class="section" id="fragments">
-      <div class="container">
-        <p class="section-label fade-in lang-en">Gallery</p>
-        <p class="section-label fade-in lang-ja">ギャラリー</p>
-        <p class="section-label fade-in lang-zh">画廊</p>
-        <h2 class="section-title fade-in lang-en">Perception Fragments</h2>
-        <h2 class="section-title fade-in lang-ja">Perception Fragments — 知覚の断片</h2>
-        <h2 class="section-title fade-in lang-zh">Perception Fragments — 感知碎片</h2>
-        <p class="section-lead fade-in lang-en">
-          Experience-shaped JSON samples. Each fragment is a doorway — download a simplified workflow, or commission the full perception.
-        </p>
-        <p class="section-lead fade-in lang-ja">
-          体験として設計された JSON サンプル。各断片は入口 — 簡易ワークフローをダウンロードするか、完全版を依頼してください。
-        </p>
-        <p class="section-lead fade-in lang-zh">
-          以体验塑造的 JSON 样本。每一片段都是入口 — 下载简易工作流，或委托完整感知版本。
-        </p>
-        <div class="fragments-grid">
-          <!-- Fragment 1 -->
-          <article class="fragment-card fade-in">
-            <div class="fragment-visual">
-              <div class="fragment-placeholder" style="background: linear-gradient(135deg, #1a2038 0%, #2a2848 40%, #1a2838 100%);" aria-hidden="true"></div>
-            </div>
-            <div class="fragment-body">
-              <h3 class="fragment-poetic-title lang-en">"Where silence learns to glow"</h3>
-              <h3 class="fragment-poetic-title lang-ja">「静寂が、光を覚える場所」</h3>
-              <h3 class="fragment-poetic-title lang-zh">「静寂学会发光的地方」</h3>
-              <p class="fragment-meta">EX · Experience · Nocturne</p>
-              <p class="fragment-hsp lang-en">
-                For nervous systems that hear color in the dark. Low-contrast luminance, soft grain, no sharp edges — visual lullaby for overstimulated eyes.
-              </p>
-              <p class="fragment-hsp lang-ja">
-                暗闇の中で色を聴く神経系のために。低コントラストの輝度、柔らかな粒子、鋭い境界線なし — 過刺激の目に視覚的子守唄。
-              </p>
-              <p class="fragment-hsp lang-zh">
-                为在黑暗中「听见」颜色的神经而设。低对比辉度、柔和颗粒、无锐边 — 给过度刺激双眼的视觉摇篮曲。
-              </p>
-              <div class="fragment-actions">
-                <a href="assets/json/big_hea.json" class="btn btn-sm btn-download" download>Free sample JSON</a>
-                <a href="#pricing" class="btn btn-sm btn-custom">Custom request</a>
-              </div>
-            </div>
-          </article>
-          <!-- Fragment 2 -->
-          <article class="fragment-card fade-in">
-            <div class="fragment-visual">
-              <div class="fragment-placeholder" style="background: linear-gradient(160deg, #182028 0%, #283848 50%, #382838 100%);" aria-hidden="true"></div>
-            </div>
-            <div class="fragment-body">
-              <h3 class="fragment-poetic-title lang-en">"Petals falling through memory"</h3>
-              <h3 class="fragment-poetic-title lang-ja">「記憶を通り抜ける花びら」</h3>
-              <h3 class="fragment-poetic-title lang-zh">「穿过记忆飘落的花瓣」</h3>
-              <p class="fragment-meta">EX · Express · Flora</p>
-              <p class="fragment-hsp lang-en">
-                Pastel decay without sadness. Translucent layers, floral noise fields, gentle motion blur — beauty that does not demand attention.
-              </p>
-              <p class="fragment-hsp lang-ja">
-                悲しみのないパステルの静けさ。半透明レイヤー、花のノイズ場、穏やかなモーションブラー — 注意を要求しない美。
-              </p>
-              <p class="fragment-hsp lang-zh">
-                无悲戚的 pastel 静谧。半透明层、花之噪声场、轻柔动态模糊 — 不索取注意力的美。
-              </p>
-              <div class="fragment-actions">
-                <a href="assets/json/Flux2-Klein_ex_bk.json" class="btn btn-sm btn-download" download>Free sample JSON</a>
-                <a href="#pricing" class="btn btn-sm btn-custom">Custom request</a>
-              </div>
-            </div>
-          </article>
-          <!-- Fragment 3 and 4 can be added similarly if needed -->
+      </section>
+
+      <section class="wrap">
+        <div class="section-head">
+          <h2>Infinite Canvas</h2>
+          <p>The public page includes a lightweight browser canvas. The advanced local runner stays on this PC and can be launched from H drive.</p>
         </div>
-      </div>
-    </section>
-    <!-- Pricing / CTA and Footer remain your original -->
-  </main>
-  <footer class="site-footer">
-    <!-- your original footer code here -->
-  </footer>
-  <script src="js/i18n.js"></script>
-  <script src="js/main.js"></script>
-</body>
+        <div class="grid two">
+          <div class="canvas-preview" aria-label="Infinite Canvas preview">
+            <div class="node"><strong>Miragea Archive</strong><span>Source fragments, EX routes, X works, visual memory.</span></div>
+            <div class="node"><strong>Eliora Service</strong><span>AI products, consulting, community, local-first workflows.</span></div>
+            <div class="node"><strong>Local Data</strong><span>GitHub, Docker, PostgreSQL, backups, private workspaces.</span></div>
+          </div>
+          <article class="card">
+            <span class="tag">Local Runner</span>
+            <b>H:\Infinite-Canvas\Infinite-Canvas</b>
+            <p>
+              The advanced local project remains on your PC. Launch the local runner when you want the full desktop workflow. The public Eliora page links to the lightweight canvas and credits the reference project.
+            </p>
+            <div class="actions">
+              <a class="button primary" href="/eliora/infinite-canvas.html">Open Web Canvas</a>
+              <a class="button" href="https://github.com/hero8152/Infinite-Canvas">Reference GitHub</a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">Eliora by Miragea. Local-first, archive-aware, service-ready.</div>
+    </footer>
+  </body>
 </html>
