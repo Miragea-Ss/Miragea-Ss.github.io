@@ -4,45 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Eliora Infinite Canvas</title>
+    <meta name="description" content="A local-first infinite canvas for Eliora, Miragea, and llama.cpp workflows." />
     <style>
       :root {
         color-scheme: dark;
         --bg: #050505;
-        --panel: rgba(8, 8, 9, .84);
-        --line: rgba(255,255,255,.16);
+        --panel: rgba(8, 8, 9, .86);
+        --line: rgba(255,255,255,.15);
+        --line2: rgba(255,255,255,.26);
         --text: #f7f2ea;
-        --muted: #aaa39a;
+        --muted: #aaa29a;
+        --faint: #746d66;
         --rose: #f2799a;
         --cyan: #7bd8e8;
         --amber: #f5b864;
+        --green: #9ed79d;
       }
       * { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; overflow: hidden; }
       body {
-        margin: 0;
-        height: 100vh;
-        overflow: hidden;
-        background: var(--bg);
+        background:
+          radial-gradient(circle at 17% 14%, rgba(242,121,154,.14), transparent 32%),
+          radial-gradient(circle at 82% 76%, rgba(123,216,232,.10), transparent 34%),
+          #050505;
         color: var(--text);
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
-      .app { height: 100vh; display: grid; grid-template-rows: auto 1fr; }
-      .bar {
-        z-index: 3;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 12px;
-        border-bottom: 1px solid var(--line);
-        background: rgba(0,0,0,.72);
-        backdrop-filter: blur(18px);
-      }
-      .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-      .brand img { width: 38px; height: 38px; border-radius: 8px; object-fit: cover; border: 1px solid var(--line); }
-      .brand strong { display: block; font-size: 16px; }
-      .brand span { color: var(--muted); font-size: 12px; }
-      .tools { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; }
-      button, a.tool {
+      a { color: inherit; text-decoration: none; }
+      button, input, textarea, select { font: inherit; }
+      button, .tool-link {
         min-height: 38px;
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -54,216 +44,772 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        text-decoration: none;
+        gap: 8px;
       }
+      button:hover, .tool-link:hover { border-color: var(--line2); background: rgba(255,255,255,.08); }
       button.primary { background: #f4eee4; color: #050505; border-color: #f4eee4; }
+      button.active { border-color: rgba(242,121,154,.82); box-shadow: 0 0 24px rgba(242,121,154,.24); }
+      button.icon { width: 38px; padding: 0; font-size: 18px; }
+      input, textarea, select {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(0,0,0,.38);
+        color: var(--text);
+        padding: 10px 11px;
+        outline: none;
+      }
+      textarea { min-height: 94px; resize: vertical; line-height: 1.55; }
+      input:focus, textarea:focus, select:focus { border-color: rgba(123,216,232,.62); box-shadow: 0 0 0 3px rgba(123,216,232,.12); }
+      .app { height: 100%; display: grid; grid-template-rows: auto 1fr; }
+      .bar {
+        z-index: 5;
+        display: grid;
+        grid-template-columns: minmax(230px, auto) 1fr minmax(210px, 320px);
+        align-items: center;
+        gap: 14px;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(0,0,0,.76);
+        backdrop-filter: blur(18px);
+      }
+      .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
+      .brand img { width: 38px; height: 38px; border-radius: 50%; object-fit: contain; padding: 3px; background: rgba(0,0,0,.72); border: 1px solid var(--line); }
+      .brand strong { display: block; font-size: 16px; white-space: nowrap; }
+      .brand span span { display: block; color: var(--muted); font-size: 12px; white-space: nowrap; }
+      .tools { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
+      .layout { min-height: 0; display: grid; grid-template-columns: 260px 1fr 330px; }
+      .rail, .inspector {
+        min-height: 0;
+        overflow: auto;
+        background: rgba(0,0,0,.5);
+        backdrop-filter: blur(14px);
+      }
+      .rail { border-right: 1px solid var(--line); }
+      .inspector { border-left: 1px solid var(--line); }
+      .panel { padding: 14px; }
+      .panel + .panel { border-top: 1px solid var(--line); }
+      .panel h2 { margin: 0 0 12px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; }
+      .palette { display: grid; gap: 8px; }
+      .palette button { justify-content: flex-start; min-height: 48px; text-align: left; }
+      .palette b { display: block; font-size: 13px; }
+      .palette small { display: block; color: var(--muted); font-size: 11px; font-weight: 650; }
+      .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .stat { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: rgba(255,255,255,.035); }
+      .stat b { display: block; font-size: 18px; }
+      .stat span { color: var(--muted); font-size: 12px; }
+      .stage-wrap { position: relative; min-width: 0; min-height: 0; overflow: hidden; }
       .stage {
-        position: relative;
+        position: absolute;
+        inset: 0;
         overflow: hidden;
+        cursor: grab;
         background:
-          linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
-          radial-gradient(circle at 25% 15%, rgba(242,121,154,.12), transparent 32%),
-          radial-gradient(circle at 76% 78%, rgba(123,216,232,.10), transparent 34%),
+          linear-gradient(rgba(255,255,255,.042) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,.042) 1px, transparent 1px),
+          radial-gradient(circle at 24% 16%, rgba(242,121,154,.13), transparent 30%),
+          radial-gradient(circle at 78% 78%, rgba(123,216,232,.10), transparent 35%),
           #050505;
         background-size: 42px 42px, 42px 42px, auto, auto;
-        cursor: grab;
       }
       .stage.dragging { cursor: grabbing; }
-      .world { position: absolute; left: 0; top: 0; transform-origin: 0 0; width: 1px; height: 1px; }
+      .world { position: absolute; left: 0; top: 0; width: 1px; height: 1px; transform-origin: 0 0; }
+      .edges { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible; }
+      .edge path { fill: none; stroke: rgba(242,121,154,.5); stroke-width: 2; pointer-events: stroke; cursor: pointer; filter: drop-shadow(0 0 10px rgba(242,121,154,.35)); }
+      .edge.selected path { stroke: var(--cyan); stroke-width: 3; filter: drop-shadow(0 0 14px rgba(123,216,232,.45)); }
+      .edge text { fill: var(--muted); font-size: 12px; paint-order: stroke; stroke: #050505; stroke-width: 4px; stroke-linejoin: round; }
       .node {
         position: absolute;
-        width: 280px;
-        min-height: 130px;
+        width: 292px;
+        min-height: 132px;
         border: 1px solid rgba(255,255,255,.18);
         border-radius: 8px;
         background: var(--panel);
-        box-shadow: 0 28px 80px rgba(0,0,0,.55);
-        padding: 16px;
+        box-shadow: 0 28px 80px rgba(0,0,0,.62);
+        padding: 14px;
         user-select: none;
       }
-      .node.selected { outline: 2px solid var(--rose); }
-      .node h3 { margin: 0 0 10px; font-size: 20px; letter-spacing: 0; }
-      .node p { margin: 0; color: var(--muted); line-height: 1.6; }
-      .node small { display: block; margin-top: 12px; color: var(--cyan); text-transform: uppercase; letter-spacing: .12em; font-weight: 800; }
+      .node[data-kind="Image"] { width: 332px; }
+      .node.selected { box-shadow: 0 32px 90px rgba(0,0,0,.68), 0 0 0 2px rgba(242,121,154,.2), 0 0 34px rgba(242,121,154,.24); }
+      .node.dimmed { opacity: .24; }
+      .node.connect-source { box-shadow: 0 0 34px rgba(123,216,232,.30); }
+      .node-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+      .kind { color: var(--cyan); text-transform: uppercase; letter-spacing: .12em; font-size: 10px; font-weight: 900; }
+      .node h3 { margin: 5px 0 0; font-size: 20px; line-height: 1.18; letter-spacing: 0; }
+      .dot { width: 11px; height: 11px; flex: 0 0 auto; border-radius: 50%; margin-top: 5px; background: #050505; box-shadow: 0 0 20px 10px rgba(242,121,154,.58); }
+      .node p { margin: 0; color: var(--muted); line-height: 1.58; white-space: pre-wrap; }
+      .node img.preview { width: 100%; max-height: 188px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px; display: block; }
+      .node a.node-url { display: inline-flex; margin-top: 12px; color: #f6d594; font-size: 13px; word-break: break-all; }
+      .node-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+      .node-tags span { border: 1px solid rgba(255,255,255,.1); border-radius: 6px; color: var(--faint); padding: 4px 6px; font-size: 11px; }
+      [contenteditable="true"] { outline: none; cursor: text; }
+      [contenteditable="true"]:focus { background: rgba(255,255,255,.045); border-radius: 6px; box-shadow: 0 0 0 4px rgba(255,255,255,.045); }
       .hud {
         position: absolute;
         left: 12px;
         bottom: 12px;
-        z-index: 2;
+        z-index: 4;
         display: flex;
         gap: 8px;
         flex-wrap: wrap;
         color: var(--muted);
         font-size: 12px;
+        pointer-events: none;
       }
-      .pill { border: 1px solid var(--line); border-radius: 8px; background: rgba(0,0,0,.62); padding: 8px 10px; }
-      @media (max-width: 780px) {
-        .bar { align-items: flex-start; flex-direction: column; }
-        .tools { justify-content: flex-start; }
-        .node { width: 240px; }
+      .pill { border: 1px solid var(--line); border-radius: 8px; background: rgba(0,0,0,.66); padding: 8px 10px; }
+      .minimap {
+        position: absolute;
+        right: 12px;
+        bottom: 12px;
+        z-index: 4;
+        width: 168px;
+        height: 112px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(0,0,0,.62);
+        box-shadow: 0 24px 70px rgba(0,0,0,.45);
+      }
+      .field { display: grid; gap: 6px; margin-bottom: 12px; }
+      .field label { color: var(--muted); font-size: 12px; font-weight: 800; }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+      .color-row { display: flex; gap: 8px; flex-wrap: wrap; }
+      .swatch { width: 32px; min-height: 32px; border-radius: 50%; padding: 0; border-color: rgba(255,255,255,.24); }
+      .swatch[data-color="rose"] { background: rgba(242,121,154,.42); }
+      .swatch[data-color="cyan"] { background: rgba(123,216,232,.42); }
+      .swatch[data-color="amber"] { background: rgba(245,184,100,.48); }
+      .swatch[data-color="green"] { background: rgba(158,215,157,.46); }
+      .empty, .ai-status { color: var(--muted); line-height: 1.65; margin: 0; font-size: 13px; }
+      .hidden { display: none !important; }
+      @media (max-width: 1120px) {
+        .layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; }
+        .rail { max-height: 226px; border-right: 0; border-bottom: 1px solid var(--line); }
+        .inspector { max-height: 285px; border-left: 0; border-top: 1px solid var(--line); }
+        .stage-wrap { min-height: 46vh; }
+        .palette { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      }
+      @media (max-width: 760px) {
+        .bar { grid-template-columns: 1fr; align-items: stretch; }
+        .tools { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+        .node, .node[data-kind="Image"] { width: 248px; }
+        .minimap { display: none; }
       }
     </style>
   </head>
   <body>
     <div class="app">
       <header class="bar">
-        <a class="brand" href="/eliora/index.html">
-          <img src="/assets/brand/eliora-logo.png" alt="Eliora logo" />
-          <span><strong>Eliora Infinite Canvas</strong><span>Local-first visual workspace</span></span>
+        <a class="brand" href="./index.html">
+          <img src="../assets/brand/eliora-logo.png" alt="Eliora logo" />
+          <span><strong>Eliora Infinite Canvas</strong><span>llama.cpp local-first workspace</span></span>
         </a>
-        <div class="tools">
-          <button class="primary" id="addNote">Add Note</button>
-          <button id="addWorkflow">Add Workflow</button>
-          <button id="fit">Fit</button>
-          <button id="exportJson">Export</button>
-          <button id="reset">Reset</button>
-          <a class="tool" href="/en/">Miragea</a>
+        <div class="tools" aria-label="Canvas tools">
+          <button class="primary" id="addNote" title="Add note">Add</button>
+          <button id="addImage" title="Add image card">Image</button>
+          <button id="connect" title="Connect cards">Connect</button>
+          <button id="duplicate" title="Duplicate">Duplicate</button>
+          <button id="delete" title="Delete">Delete</button>
+          <button id="fit" title="Fit view">Fit</button>
+          <button id="zoomOut" class="icon" title="Zoom out">-</button>
+          <button id="zoomIn" class="icon" title="Zoom in">+</button>
+          <button id="exportJson" title="Export JSON">Export</button>
+          <button id="importJson" title="Import JSON">Import</button>
+          <a class="tool-link" href="../en/" title="Back to Miragea">Miragea</a>
         </div>
+        <input id="search" type="search" placeholder="Search canvas" autocomplete="off" />
       </header>
-      <main class="stage" id="stage">
-        <div class="world" id="world"></div>
-        <div class="hud">
-          <span class="pill" id="zoomLabel">100%</span>
-          <span class="pill">Drag canvas / wheel zoom / drag nodes</span>
-          <span class="pill">Saved in this browser</span>
-        </div>
-      </main>
+
+      <div class="layout">
+        <aside class="rail">
+          <section class="panel">
+            <h2>Palette</h2>
+            <div class="palette">
+              <button data-template="note"><span><b>Note</b><small>Fragment, thought, task</small></span></button>
+              <button data-template="prompt"><span><b>Prompt</b><small>AI instruction block</small></span></button>
+              <button data-template="workflow"><span><b>Workflow</b><small>Process and pipeline</small></span></button>
+              <button data-template="product"><span><b>Product</b><small>Offer, asset, service</small></span></button>
+              <button data-template="archive"><span><b>Archive</b><small>Miragea source memory</small></span></button>
+              <button data-template="group"><span><b>Group</b><small>Area marker</small></span></button>
+            </div>
+          </section>
+          <section class="panel">
+            <h2>Board</h2>
+            <div class="stats">
+              <div class="stat"><b id="nodeCount">0</b><span>cards</span></div>
+              <div class="stat"><b id="edgeCount">0</b><span>links</span></div>
+            </div>
+          </section>
+          <section class="panel">
+            <h2>llama.cpp</h2>
+            <div class="field"><label for="llamaEndpoint">Endpoint</label><input id="llamaEndpoint" value="http://127.0.0.1:8080/v1/chat/completions" /></div>
+            <div class="row">
+              <div class="field"><label for="llamaModel">Model</label><input id="llamaModel" value="local-model" /></div>
+              <div class="field"><label for="llamaKey">Key</label><input id="llamaKey" type="password" placeholder="optional" /></div>
+            </div>
+            <div class="field"><label for="llamaSystem">System</label><textarea id="llamaSystem">You are Eliora, a concise local AI collaborator. Turn the selected card into useful next steps.</textarea></div>
+            <button id="askLlama" class="primary">Ask llama.cpp</button>
+            <p id="aiStatus" class="ai-status"></p>
+          </section>
+          <section class="panel">
+            <h2>File</h2>
+            <div class="tools" style="justify-content:flex-start">
+              <button id="exportMd">Markdown</button>
+              <button id="reset">Reset</button>
+            </div>
+          </section>
+        </aside>
+
+        <main class="stage-wrap">
+          <div class="stage" id="stage" tabindex="0" aria-label="Infinite Canvas workspace">
+            <div class="world" id="world">
+              <svg class="edges" id="edges" aria-hidden="true"></svg>
+              <div id="nodes"></div>
+            </div>
+            <div class="hud">
+              <span class="pill" id="zoomLabel">100%</span>
+              <span class="pill" id="modeLabel">Select</span>
+              <span class="pill" id="selectionLabel">No selection</span>
+              <span class="pill" id="savedAt">Saved</span>
+            </div>
+            <canvas class="minimap" id="minimap" width="168" height="112" aria-hidden="true"></canvas>
+          </div>
+        </main>
+
+        <aside class="inspector">
+          <section class="panel">
+            <h2>Inspector</h2>
+            <p class="empty" id="emptyInspector">Select a card or connection.</p>
+            <div id="nodeInspector" class="hidden">
+              <div class="field"><label for="fieldTitle">Title</label><input id="fieldTitle" /></div>
+              <div class="field"><label for="fieldKind">Kind</label><select id="fieldKind"></select></div>
+              <div class="field"><label for="fieldText">Text</label><textarea id="fieldText"></textarea></div>
+              <div class="field"><label for="fieldUrl">URL or image</label><input id="fieldUrl" placeholder="https://..." /></div>
+              <div class="field"><label for="fieldTags">Tags</label><input id="fieldTags" placeholder="AI, Miragea, Product" /></div>
+              <div class="field">
+                <label>Color</label>
+                <div class="color-row">
+                  <button class="swatch" data-color="rose" title="Rose"></button>
+                  <button class="swatch" data-color="cyan" title="Cyan"></button>
+                  <button class="swatch" data-color="amber" title="Amber"></button>
+                  <button class="swatch" data-color="green" title="Green"></button>
+                </div>
+              </div>
+            </div>
+            <div id="edgeInspector" class="hidden">
+              <div class="field"><label for="fieldEdgeLabel">Connection label</label><input id="fieldEdgeLabel" /></div>
+              <button id="reverseEdge">Reverse</button>
+            </div>
+          </section>
+        </aside>
+      </div>
     </div>
 
+    <input id="fileInput" class="hidden" type="file" accept="application/json,.json" />
+
     <script>
-      const stage = document.getElementById('stage');
-      const world = document.getElementById('world');
-      const zoomLabel = document.getElementById('zoomLabel');
-      const storageKey = 'eliora-infinite-canvas-v1';
-      let camera = { x: innerWidth / 2 - 220, y: innerHeight / 2 - 130, z: 1 };
+      const $ = (id) => document.getElementById(id);
+      const stage = $('stage');
+      const world = $('world');
+      const nodeLayer = $('nodes');
+      const edgeLayer = $('edges');
+      const minimap = $('minimap');
+      const storageKey = 'eliora-infinite-canvas-v3';
+      const settingsKey = 'eliora-llamacpp-settings-v1';
+      const kinds = ['Note', 'Prompt', 'Workflow', 'Product', 'Archive', 'Image', 'Group', 'AI'];
+      const colors = {
+        rose: { line: 'rgba(242,121,154,.54)', glow: 'rgba(242,121,154,.58)', border: 'rgba(242,121,154,.34)' },
+        cyan: { line: 'rgba(123,216,232,.54)', glow: 'rgba(123,216,232,.44)', border: 'rgba(123,216,232,.34)' },
+        amber: { line: 'rgba(245,184,100,.54)', glow: 'rgba(245,184,100,.44)', border: 'rgba(245,184,100,.34)' },
+        green: { line: 'rgba(158,215,157,.54)', glow: 'rgba(158,215,157,.38)', border: 'rgba(158,215,157,.34)' },
+      };
+      const templates = {
+        note: ['Note', 'New Signal', 'Write the fragment before it fades.', 'rose', 'Signal'],
+        prompt: ['Prompt', 'AI Prompt', 'Role:\\nContext:\\nOutput:\\nReview:', 'cyan', 'AI,Prompt'],
+        workflow: ['Workflow', 'Workflow Route', 'Input -> model -> review -> archive -> product', 'amber', 'Workflow'],
+        product: ['Product', 'Digital Product', 'Audience, promise, asset, price, delivery.', 'green', 'Product'],
+        archive: ['Archive', 'Miragea Source', 'X fragment, visual memory, EX route, perception record.', 'rose', 'Miragea,Archive'],
+        group: ['Group', 'Area', 'Collect related cards here.', 'cyan', 'Group'],
+      };
+      let camera = { x: innerWidth / 2 - 220, y: innerHeight / 2 - 160, z: 1 };
       let nodes = [];
+      let edges = [];
+      let selectedNode = null;
+      let selectedEdge = null;
+      let connectSource = null;
+      let mode = 'select';
       let dragCanvas = null;
       let dragNode = null;
-      let selected = null;
+      let searchTerm = '';
+      let saveTimer = null;
 
-      const seed = [
-        { id: crypto.randomUUID(), x: -360, y: -150, kind: 'Archive', title: 'Miragea', text: 'EX routes, X works, perception records, visual language.' },
-        { id: crypto.randomUUID(), x: 40, y: -40, kind: 'Service', title: 'Eliora', text: 'AI services, digital products, consulting, community.' },
-        { id: crypto.randomUUID(), x: -150, y: 210, kind: 'Data', title: 'Local First', text: 'GitHub, Docker, PostgreSQL, backups, private memory.' },
+      function uid() {
+        return crypto && crypto.randomUUID ? crypto.randomUUID() : 'id-' + Math.random().toString(36).slice(2);
+      }
+      function tags(value) {
+        return Array.isArray(value) ? value.map(String).map((x) => x.trim()).filter(Boolean) : String(value || '').split(',').map((x) => x.trim()).filter(Boolean);
+      }
+      function esc(value = '') {
+        return String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      }
+      function nodeBy(id) { return nodes.find((node) => node.id === id); }
+      function edgeBy(id) { return edges.find((edge) => edge.id === id); }
+      function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
+      function screenToWorld(x, y) { return { x: (x - camera.x) / camera.z, y: (y - camera.y) / camera.z }; }
+      function centerOf(node) { return { x: node.x + (node.kind === 'Image' ? 166 : 146), y: node.y + 76 }; }
+
+      const seedNodes = [
+        { x: -520, y: -190, kind: 'Archive', title: 'Miragea Archive', text: 'EX routes, X works, perception records, visual language, HSP nervous-system notes.', tagText: 'Miragea,Origin', color: 'rose', url: '../en/' },
+        { x: -120, y: -80, kind: 'Workflow', title: 'AI Service Flow', text: 'Collect signal -> structure prompt -> generate asset -> review -> publish -> archive.', tagText: 'AI,Service', color: 'cyan' },
+        { x: 300, y: -170, kind: 'Product', title: 'Digital Product', text: '3DCG assets, prompt packs, templates, courses, consulting routes.', tagText: 'Market', color: 'amber' },
+        { x: -320, y: 190, kind: 'Prompt', title: 'llama.cpp Prompt Memory', text: 'Keep reusable roles, constraints, evaluation notes, and local model style rules here.', tagText: 'llama.cpp,Prompt', color: 'green' },
+        { x: 150, y: 210, kind: 'Image', title: 'Visual Reference', text: 'Use this as a visual source card for Eliora or Miragea.', tagText: 'Visual', color: 'rose', url: './assets/images/miragea.png' },
       ];
-
+      function freshBoard() {
+        nodes = seedNodes.map((n) => ({ ...n, id: uid(), tags: tags(n.tagText) }));
+        edges = [
+          { id: uid(), from: nodes[0].id, to: nodes[1].id, label: 'origin' },
+          { id: uid(), from: nodes[1].id, to: nodes[2].id, label: 'service' },
+          { id: uid(), from: nodes[0].id, to: nodes[3].id, label: 'memory' },
+          { id: uid(), from: nodes[3].id, to: nodes[4].id, label: 'visual' },
+        ];
+      }
       function load() {
         try {
-          const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
-          nodes = saved?.nodes?.length ? saved.nodes : seed;
-          camera = saved?.camera || camera;
+          const data = JSON.parse(localStorage.getItem(storageKey) || 'null');
+          if (data && Array.isArray(data.nodes) && Array.isArray(data.edges)) {
+            nodes = data.nodes;
+            edges = data.edges;
+            camera = data.camera || camera;
+          } else freshBoard();
+          const settings = JSON.parse(localStorage.getItem(settingsKey) || '{}');
+          if (settings.endpoint) $('llamaEndpoint').value = settings.endpoint;
+          if (settings.model) $('llamaModel').value = settings.model;
+          if (settings.key) $('llamaKey').value = settings.key;
+          if (settings.system) $('llamaSystem').value = settings.system;
         } catch {
-          nodes = seed;
+          freshBoard();
         }
       }
-
       function save() {
-        localStorage.setItem(storageKey, JSON.stringify({ nodes, camera }));
+        localStorage.setItem(storageKey, JSON.stringify({ version: 3, camera, nodes, edges }));
+        localStorage.setItem(settingsKey, JSON.stringify({
+          endpoint: $('llamaEndpoint').value,
+          model: $('llamaModel').value,
+          key: $('llamaKey').value,
+          system: $('llamaSystem').value,
+        }));
+        $('savedAt').textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      }
+      function scheduleSave() {
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(save, 120);
       }
 
       function render() {
         world.style.transform = `translate(${camera.x}px, ${camera.y}px) scale(${camera.z})`;
-        zoomLabel.textContent = `${Math.round(camera.z * 100)}%`;
-        world.innerHTML = '';
+        $('zoomLabel').textContent = `${Math.round(camera.z * 100)}%`;
+        $('modeLabel').textContent = mode === 'connect' ? (connectSource ? 'Pick target' : 'Pick source') : 'Select';
+        $('selectionLabel').textContent = selectedNode ? (nodeBy(selectedNode)?.title || 'Card') : selectedEdge ? 'Connection' : 'No selection';
+        $('nodeCount').textContent = nodes.length;
+        $('edgeCount').textContent = edges.length;
+        renderEdges();
+        renderNodes();
+        renderInspector();
+        drawMinimap();
+        scheduleSave();
+      }
+      function renderEdges() {
+        edgeLayer.innerHTML = '';
+        for (const edge of edges) {
+          const from = nodeBy(edge.from);
+          const to = nodeBy(edge.to);
+          if (!from || !to) continue;
+          const a = centerOf(from);
+          const b = centerOf(to);
+          const dx = Math.max(80, Math.abs(b.x - a.x) * .45);
+          const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          group.setAttribute('class', 'edge' + (selectedEdge === edge.id ? ' selected' : ''));
+          path.setAttribute('d', `M ${a.x} ${a.y} C ${a.x + dx} ${a.y}, ${b.x - dx} ${b.y}, ${b.x} ${b.y}`);
+          path.addEventListener('pointerdown', (event) => {
+            event.stopPropagation();
+            selectedEdge = edge.id;
+            selectedNode = null;
+            render();
+          });
+          group.appendChild(path);
+          if (edge.label) {
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.setAttribute('x', (a.x + b.x) / 2);
+            text.setAttribute('y', (a.y + b.y) / 2 - 8);
+            text.setAttribute('text-anchor', 'middle');
+            text.textContent = edge.label;
+            group.appendChild(text);
+          }
+          edgeLayer.appendChild(group);
+        }
+      }
+      function renderNodes() {
+        nodeLayer.innerHTML = '';
+        const term = searchTerm.toLowerCase();
         for (const node of nodes) {
+          const color = colors[node.color] || colors.rose;
+          const hay = `${node.title} ${node.kind} ${node.text} ${tags(node.tags).join(' ')}`.toLowerCase();
           const el = document.createElement('article');
-          el.className = 'node' + (selected === node.id ? ' selected' : '');
+          el.className = 'node' + (selectedNode === node.id ? ' selected' : '') + (term && !hay.includes(term) ? ' dimmed' : '') + (connectSource === node.id ? ' connect-source' : '');
           el.style.left = `${node.x}px`;
           el.style.top = `${node.y}px`;
+          el.style.borderColor = selectedNode === node.id ? color.line : color.border;
           el.dataset.id = node.id;
-          el.innerHTML = `<h3 contenteditable="true">${escapeHtml(node.title)}</h3><p contenteditable="true">${escapeHtml(node.text)}</p><small>${escapeHtml(node.kind)}</small>`;
-          el.addEventListener('pointerdown', startNodeDrag);
-          el.addEventListener('input', () => {
-            const current = nodes.find((item) => item.id === node.id);
-            current.title = el.querySelector('h3').innerText;
-            current.text = el.querySelector('p').innerText;
-            save();
+          el.dataset.kind = node.kind;
+          const image = node.kind === 'Image' && node.url ? `<img class="preview" src="${esc(node.url)}" alt="${esc(node.title)}" loading="lazy" />` : '';
+          const link = node.url && node.kind !== 'Image' ? `<a class="node-url" href="${esc(node.url)}" target="_blank" rel="noreferrer">${esc(node.url)}</a>` : '';
+          const tagHtml = tags(node.tags).map((tag) => `<span>#${esc(tag)}</span>`).join('');
+          el.innerHTML = `
+            <div class="node-head">
+              <div><div class="kind">${esc(node.kind)}</div><h3 contenteditable="true" data-field="title">${esc(node.title)}</h3></div>
+              <span class="dot" style="box-shadow:0 0 20px 10px ${color.glow}"></span>
+            </div>
+            ${image}
+            <p contenteditable="true" data-field="text">${esc(node.text)}</p>
+            ${link}
+            <div class="node-tags">${tagHtml}</div>
+          `;
+          el.addEventListener('pointerdown', startNodePointer);
+          el.addEventListener('input', (event) => {
+            const field = event.target.dataset.field;
+            if (!field) return;
+            node[field] = event.target.innerText;
+            updateInspectorFields();
+            scheduleSave();
           });
-          world.appendChild(el);
+          nodeLayer.appendChild(el);
         }
-        save();
       }
-
-      function escapeHtml(value) {
-        return value.replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
-      }
-
-      function screenToWorld(x, y) {
-        return { x: (x - camera.x) / camera.z, y: (y - camera.y) / camera.z };
-      }
-
-      function startNodeDrag(event) {
-        const nodeEl = event.currentTarget;
-        selected = nodeEl.dataset.id;
-        const node = nodes.find((item) => item.id === selected);
-        if (event.target.isContentEditable) return;
+      function startNodePointer(event) {
         event.stopPropagation();
-        nodeEl.setPointerCapture(event.pointerId);
-        const point = screenToWorld(event.clientX, event.clientY);
-        dragNode = { id: node.id, dx: point.x - node.x, dy: point.y - node.y };
+        const node = nodeBy(event.currentTarget.dataset.id);
+        if (!node) return;
+        selectedNode = node.id;
+        selectedEdge = null;
+        if (mode === 'connect') {
+          if (!connectSource) connectSource = node.id;
+          else if (connectSource !== node.id) {
+            if (!edges.some((e) => e.from === connectSource && e.to === node.id)) edges.push({ id: uid(), from: connectSource, to: node.id, label: '' });
+            connectSource = null;
+            mode = 'select';
+            $('connect').classList.remove('active');
+          }
+          render();
+          return;
+        }
+        if (event.target.isContentEditable || event.target.tagName === 'A') {
+          renderInspector();
+          return;
+        }
+        event.currentTarget.setPointerCapture(event.pointerId);
+        const p = screenToWorld(event.clientX, event.clientY);
+        dragNode = { id: node.id, dx: p.x - node.x, dy: p.y - node.y };
         render();
       }
 
       stage.addEventListener('pointerdown', (event) => {
+        selectedNode = null;
+        selectedEdge = null;
+        if (mode === 'connect') connectSource = null;
         stage.classList.add('dragging');
+        stage.setPointerCapture(event.pointerId);
         dragCanvas = { x: event.clientX, y: event.clientY, cx: camera.x, cy: camera.y };
+        render();
       });
-
       stage.addEventListener('pointermove', (event) => {
         if (dragNode) {
-          const node = nodes.find((item) => item.id === dragNode.id);
-          const point = screenToWorld(event.clientX, event.clientY);
-          node.x = Math.round(point.x - dragNode.dx);
-          node.y = Math.round(point.y - dragNode.dy);
+          const node = nodeBy(dragNode.id);
+          const p = screenToWorld(event.clientX, event.clientY);
+          node.x = Math.round(p.x - dragNode.dx);
+          node.y = Math.round(p.y - dragNode.dy);
           render();
-          return;
-        }
-        if (dragCanvas) {
+        } else if (dragCanvas) {
           camera.x = dragCanvas.cx + event.clientX - dragCanvas.x;
           camera.y = dragCanvas.cy + event.clientY - dragCanvas.y;
           render();
         }
       });
-
-      stage.addEventListener('pointerup', () => {
+      window.addEventListener('pointerup', () => {
         stage.classList.remove('dragging');
         dragCanvas = null;
         dragNode = null;
       });
-
       stage.addEventListener('wheel', (event) => {
         event.preventDefault();
         const before = screenToWorld(event.clientX, event.clientY);
-        const delta = Math.exp(-event.deltaY * 0.001);
-        camera.z = Math.min(2.6, Math.max(0.28, camera.z * delta));
+        camera.z = clamp(camera.z * Math.exp(-event.deltaY * .001), .18, 3.8);
         const after = screenToWorld(event.clientX, event.clientY);
         camera.x += (after.x - before.x) * camera.z;
         camera.y += (after.y - before.y) * camera.z;
         render();
       }, { passive: false });
 
-      function addNode(kind, title, text) {
-        const center = screenToWorld(innerWidth / 2, innerHeight / 2);
-        nodes.unshift({ id: crypto.randomUUID(), x: Math.round(center.x - 140), y: Math.round(center.y - 65), kind, title, text });
+      function addNode(templateKey = 'note') {
+        const template = templates[templateKey] || templates.note;
+        const c = screenToWorld(stage.clientWidth / 2, stage.clientHeight / 2);
+        const node = { id: uid(), x: Math.round(c.x - 146 + Math.random() * 28), y: Math.round(c.y - 70 + Math.random() * 28), kind: template[0], title: template[1], text: template[2], color: template[3], tags: tags(template[4]), url: '' };
+        nodes.unshift(node);
+        selectedNode = node.id;
+        selectedEdge = null;
+        render();
+      }
+      function addImageNode() {
+        const url = prompt('Image URL', './assets/images/miragea.png') || '';
+        addNode('note');
+        const node = nodeBy(selectedNode);
+        Object.assign(node, { kind: 'Image', title: 'Image Reference', text: 'Visual source for Eliora or Miragea.', url: url.trim(), tags: ['Image', 'Reference'] });
+        render();
+      }
+      function duplicateSelected() {
+        if (!selectedNode) return;
+        const node = nodeBy(selectedNode);
+        const copy = { ...node, id: uid(), x: node.x + 36, y: node.y + 36, title: node.title + ' Copy', tags: [...tags(node.tags)] };
+        nodes.unshift(copy);
+        selectedNode = copy.id;
+        selectedEdge = null;
+        render();
+      }
+      function deleteSelected() {
+        if (selectedNode) {
+          nodes = nodes.filter((node) => node.id !== selectedNode);
+          edges = edges.filter((edge) => edge.from !== selectedNode && edge.to !== selectedNode);
+          selectedNode = null;
+        } else if (selectedEdge) {
+          edges = edges.filter((edge) => edge.id !== selectedEdge);
+          selectedEdge = null;
+        }
+        render();
+      }
+      function setZoom(z) {
+        const c = { x: stage.clientWidth / 2, y: stage.clientHeight / 2 };
+        const before = screenToWorld(c.x, c.y);
+        camera.z = clamp(z, .18, 3.8);
+        const after = screenToWorld(c.x, c.y);
+        camera.x += (after.x - before.x) * camera.z;
+        camera.y += (after.y - before.y) * camera.z;
+        render();
+      }
+      function fitView() {
+        if (!nodes.length) return;
+        const minX = Math.min(...nodes.map((n) => n.x));
+        const minY = Math.min(...nodes.map((n) => n.y));
+        const maxX = Math.max(...nodes.map((n) => n.x + (n.kind === 'Image' ? 332 : 292)));
+        const maxY = Math.max(...nodes.map((n) => n.y + 190));
+        const w = Math.max(1, maxX - minX);
+        const h = Math.max(1, maxY - minY);
+        camera.z = clamp(Math.min(stage.clientWidth / (w + 220), stage.clientHeight / (h + 220)), .22, 1.45);
+        camera.x = stage.clientWidth / 2 - (minX + w / 2) * camera.z;
+        camera.y = stage.clientHeight / 2 - (minY + h / 2) * camera.z;
         render();
       }
 
-      document.getElementById('addNote').onclick = () => addNode('Note', 'New Signal', 'Write the fragment before it fades.');
-      document.getElementById('addWorkflow').onclick = () => addNode('Workflow', 'AI Workflow', 'Input -> model -> review -> archive -> product.');
-      document.getElementById('fit').onclick = () => { camera = { x: innerWidth / 2 - 190, y: innerHeight / 2 - 120, z: 1 }; render(); };
-      document.getElementById('reset').onclick = () => { nodes = seed.map((item) => ({ ...item, id: crypto.randomUUID() })); camera = { x: innerWidth / 2 - 220, y: innerHeight / 2 - 130, z: 1 }; render(); };
-      document.getElementById('exportJson').onclick = () => {
-        const blob = new Blob([JSON.stringify({ nodes, camera }, null, 2)], { type: 'application/json' });
+      function renderInspector() {
+        $('emptyInspector').classList.toggle('hidden', Boolean(selectedNode || selectedEdge));
+        $('nodeInspector').classList.toggle('hidden', !selectedNode);
+        $('edgeInspector').classList.toggle('hidden', !selectedEdge);
+        if (selectedNode) updateInspectorFields();
+        if (selectedEdge) $('fieldEdgeLabel').value = edgeBy(selectedEdge)?.label || '';
+      }
+      function updateInspectorFields() {
+        const node = nodeBy(selectedNode);
+        if (!node) return;
+        const kindSelect = $('fieldKind');
+        if (!kindSelect.options.length) kinds.forEach((kind) => kindSelect.appendChild(new Option(kind, kind)));
+        $('fieldTitle').value = node.title || '';
+        kindSelect.value = node.kind || 'Note';
+        $('fieldText').value = node.text || '';
+        $('fieldUrl').value = node.url || '';
+        $('fieldTags').value = tags(node.tags).join(', ');
+      }
+      function bindInspector() {
+        [['fieldTitle','title'], ['fieldKind','kind'], ['fieldText','text'], ['fieldUrl','url']].forEach(([id, key]) => {
+          $(id).addEventListener('input', (event) => {
+            const node = nodeBy(selectedNode);
+            if (!node) return;
+            node[key] = event.target.value;
+            render();
+          });
+        });
+        $('fieldTags').addEventListener('input', (event) => {
+          const node = nodeBy(selectedNode);
+          if (!node) return;
+          node.tags = tags(event.target.value);
+          render();
+        });
+        document.querySelectorAll('.swatch').forEach((button) => button.addEventListener('click', () => {
+          const node = nodeBy(selectedNode);
+          if (!node) return;
+          node.color = button.dataset.color;
+          render();
+        }));
+        $('fieldEdgeLabel').addEventListener('input', (event) => {
+          const edge = edgeBy(selectedEdge);
+          if (!edge) return;
+          edge.label = event.target.value;
+          render();
+        });
+        $('reverseEdge').addEventListener('click', () => {
+          const edge = edgeBy(selectedEdge);
+          if (!edge) return;
+          [edge.from, edge.to] = [edge.to, edge.from];
+          render();
+        });
+      }
+
+      async function askLlama() {
+        const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
+        if (!source) return;
+        $('aiStatus').textContent = 'Calling local llama.cpp...';
+        save();
+        try {
+          const headers = { 'Content-Type': 'application/json' };
+          const key = $('llamaKey').value.trim();
+          if (key) headers.Authorization = `Bearer ${key}`;
+          const response = await fetch($('llamaEndpoint').value.trim(), {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+              model: $('llamaModel').value.trim() || 'local-model',
+              temperature: 0.7,
+              messages: [
+                { role: 'system', content: $('llamaSystem').value },
+                { role: 'user', content: `Title: ${source.title}\nKind: ${source.kind}\nTags: ${tags(source.tags).join(', ')}\n\n${source.text}` },
+              ],
+            }),
+          });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const data = await response.json();
+          const text = data.choices?.[0]?.message?.content || data.content || JSON.stringify(data, null, 2);
+          const node = { id: uid(), x: source.x + 360, y: source.y + 40, kind: 'AI', title: 'llama.cpp Response', text, tags: ['llama.cpp', 'local'], color: 'cyan', url: '' };
+          nodes.unshift(node);
+          edges.push({ id: uid(), from: source.id, to: node.id, label: 'local ai' });
+          selectedNode = node.id;
+          selectedEdge = null;
+          $('aiStatus').textContent = 'Response added.';
+          render();
+        } catch (error) {
+          $('aiStatus').textContent = `llama.cpp unavailable: ${error.message}`;
+        }
+      }
+
+      function download(name, content, type) {
+        const blob = new Blob([content], { type });
         const a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
-        a.download = 'eliora-canvas.json';
+        a.download = name;
+        document.body.appendChild(a);
         a.click();
+        a.remove();
         URL.revokeObjectURL(a.href);
-      };
+      }
+      function exportJson() {
+        download('eliora-canvas.json', JSON.stringify({ version: 3, exportedAt: new Date().toISOString(), camera, nodes, edges }, null, 2), 'application/json');
+      }
+      function exportMarkdown() {
+        const out = ['# Eliora Infinite Canvas', '', `Exported: ${new Date().toISOString()}`, ''];
+        nodes.forEach((node) => {
+          out.push(`## ${node.title}`, '', `Kind: ${node.kind}`, `Tags: ${tags(node.tags).map((tag) => '#' + tag).join(' ')}`, '', node.text || '', '');
+          if (node.url) out.push(`URL: ${node.url}`, '');
+        });
+        out.push('## Connections', '');
+        edges.forEach((edge) => out.push(`- ${nodeBy(edge.from)?.title || edge.from} -> ${nodeBy(edge.to)?.title || edge.to}${edge.label ? ': ' + edge.label : ''}`));
+        download('eliora-canvas.md', out.join('\n'), 'text/markdown');
+      }
+      function importJson(file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const data = JSON.parse(reader.result);
+            if (!Array.isArray(data.nodes) || !Array.isArray(data.edges)) throw new Error();
+            nodes = data.nodes;
+            edges = data.edges;
+            camera = data.camera || camera;
+            selectedNode = null;
+            selectedEdge = null;
+            render();
+          } catch {
+            alert('Could not import this JSON file.');
+          }
+        };
+        reader.readAsText(file);
+      }
+      function drawMinimap() {
+        const ctx = minimap.getContext('2d');
+        ctx.clearRect(0, 0, minimap.width, minimap.height);
+        ctx.fillStyle = 'rgba(0,0,0,.28)';
+        ctx.fillRect(0, 0, minimap.width, minimap.height);
+        if (!nodes.length) return;
+        const minX = Math.min(...nodes.map((n) => n.x));
+        const minY = Math.min(...nodes.map((n) => n.y));
+        const maxX = Math.max(...nodes.map((n) => n.x + 332));
+        const maxY = Math.max(...nodes.map((n) => n.y + 190));
+        const scale = Math.min((minimap.width - 18) / Math.max(1, maxX - minX), (minimap.height - 18) / Math.max(1, maxY - minY));
+        const ox = 9 - minX * scale;
+        const oy = 9 - minY * scale;
+        edges.forEach((edge) => {
+          const from = nodeBy(edge.from);
+          const to = nodeBy(edge.to);
+          if (!from || !to) return;
+          const a = centerOf(from);
+          const b = centerOf(to);
+          ctx.strokeStyle = 'rgba(242,121,154,.36)';
+          ctx.beginPath();
+          ctx.moveTo(a.x * scale + ox, a.y * scale + oy);
+          ctx.lineTo(b.x * scale + ox, b.y * scale + oy);
+          ctx.stroke();
+        });
+        nodes.forEach((node) => {
+          ctx.fillStyle = (colors[node.color] || colors.rose).line;
+          ctx.fillRect(node.x * scale + ox, node.y * scale + oy, 16, 10);
+        });
+      }
 
+      $('addNote').addEventListener('click', () => addNode('note'));
+      $('addImage').addEventListener('click', addImageNode);
+      document.querySelectorAll('[data-template]').forEach((button) => button.addEventListener('click', () => addNode(button.dataset.template)));
+      $('connect').addEventListener('click', (event) => {
+        mode = mode === 'connect' ? 'select' : 'connect';
+        connectSource = null;
+        event.currentTarget.classList.toggle('active', mode === 'connect');
+        render();
+      });
+      $('duplicate').addEventListener('click', duplicateSelected);
+      $('delete').addEventListener('click', deleteSelected);
+      $('fit').addEventListener('click', fitView);
+      $('zoomOut').addEventListener('click', () => setZoom(camera.z / 1.18));
+      $('zoomIn').addEventListener('click', () => setZoom(camera.z * 1.18));
+      $('exportJson').addEventListener('click', exportJson);
+      $('exportMd').addEventListener('click', exportMarkdown);
+      $('importJson').addEventListener('click', () => $('fileInput').click());
+      $('fileInput').addEventListener('change', () => $('fileInput').files[0] && importJson($('fileInput').files[0]));
+      $('askLlama').addEventListener('click', askLlama);
+      $('reset').addEventListener('click', () => {
+        if (!confirm('Reset this local canvas?')) return;
+        freshBoard();
+        selectedNode = null;
+        selectedEdge = null;
+        camera = { x: innerWidth / 2 - 220, y: innerHeight / 2 - 160, z: 1 };
+        render();
+      });
+      $('search').addEventListener('input', (event) => { searchTerm = event.target.value.trim(); render(); });
+      ['llamaEndpoint', 'llamaModel', 'llamaKey', 'llamaSystem'].forEach((id) => $(id).addEventListener('input', scheduleSave));
+      window.addEventListener('keydown', (event) => {
+        if (event.target.matches('input, textarea, [contenteditable="true"]')) return;
+        if (event.key === 'Delete' || event.key === 'Backspace') deleteSelected();
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'd') { event.preventDefault(); duplicateSelected(); }
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') { event.preventDefault(); save(); }
+        if (event.key === 'Escape') { mode = 'select'; connectSource = null; $('connect').classList.remove('active'); render(); }
+      });
+      window.addEventListener('resize', drawMinimap);
+      bindInspector();
       load();
       render();
+      setTimeout(fitView, 120);
     </script>
   </body>
 </html>
