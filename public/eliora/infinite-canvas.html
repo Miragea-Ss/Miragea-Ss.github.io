@@ -98,6 +98,60 @@
       .stat { border: 1px solid var(--line); border-radius: 8px; padding: 10px; background: rgba(255,255,255,.035); }
       .stat b { display: block; font-size: 18px; }
       .stat span { color: var(--muted); font-size: 12px; }
+      .check-row {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+      }
+      .check-row input { width: auto; accent-color: var(--rose); }
+      .workflow-list {
+        display: grid;
+        gap: 7px;
+        max-height: 256px;
+        overflow: auto;
+        padding-right: 2px;
+      }
+      .workflow-item {
+        min-height: 0;
+        width: 100%;
+        justify-content: flex-start;
+        text-align: left;
+        padding: 9px 10px;
+        display: grid;
+        gap: 5px;
+      }
+      .workflow-item strong {
+        display: block;
+        font-size: 12px;
+        line-height: 1.32;
+        overflow-wrap: anywhere;
+      }
+      .workflow-item small {
+        display: block;
+        color: var(--faint);
+        font-size: 10px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+      .workflow-item.selected {
+        border-color: rgba(123,216,232,.64);
+        box-shadow: 0 0 22px rgba(123,216,232,.16);
+      }
+      .workflow-badge {
+        display: inline-flex;
+        width: fit-content;
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 999px;
+        padding: 2px 6px;
+        color: var(--cyan);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+      }
       .stage-wrap { position: relative; min-width: 0; min-height: 0; overflow: hidden; }
       .stage {
         position: absolute;
@@ -261,11 +315,46 @@
               <div class="field"><label for="comfyHeight">Height</label><input id="comfyHeight" value="1024" /></div>
             </div>
             <div class="field"><label for="comfyWorkflow">API workflow JSON</label><textarea id="comfyWorkflow" spellcheck="false" placeholder="Optional. Leave empty for automatic text-to-image. Paste ComfyUI API-format JSON for custom image/video workflows. Use {{prompt}}, {{negative}}, {{seed}}."></textarea></div>
+            <label class="check-row"><input id="comfyAutoInject" type="checkbox" checked /> Inject canvas context</label>
             <div class="tools" style="justify-content:flex-start">
               <button id="sendComfy" class="primary">Send ComfyUI</button>
               <button id="checkComfy">Check Result</button>
             </div>
             <p id="comfyStatus" class="ai-status">Empty workflow = automatic text-to-image. Paste an API-format video workflow when you want video output.</p>
+          </section>
+          <section class="panel">
+            <h2>Workflow Import</h2>
+            <div class="tools" style="justify-content:flex-start">
+              <button id="pickWorkflowFiles" class="primary">Import JSON</button>
+              <button id="pickWorkflowFolder">Folder</button>
+            </div>
+            <div class="field"><label for="workflowSearch">Search</label><input id="workflowSearch" placeholder="wan, ltx, qwen, image, video" /></div>
+            <div class="row">
+              <div class="field">
+                <label for="workflowType">Type</label>
+                <select id="workflowType">
+                  <option value="">All</option>
+                  <option value="unknown">Unknown</option>
+                  <option value="api">API</option>
+                  <option value="ui">UI</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="workflowLimit">Show</label>
+                <select id="workflowLimit">
+                  <option value="120">120</option>
+                  <option value="300">300</option>
+                  <option value="800">800</option>
+                </select>
+              </div>
+            </div>
+            <p id="workflowStats" class="ai-status">Import ComfyUI workflow JSON directly.</p>
+            <div id="workflowList" class="workflow-list"></div>
+            <div class="tools" style="justify-content:flex-start; margin-top:10px">
+              <button id="useWorkflow">Use Selected</button>
+              <button id="runWorkflow" class="primary">Run Selected</button>
+            </div>
           </section>
           <section class="panel">
             <h2>File</h2>
@@ -322,6 +411,8 @@
     </div>
 
     <input id="fileInput" class="hidden" type="file" accept="application/json,.json" />
+    <input id="workflowFolderInput" class="hidden" type="file" accept="application/json,.json" webkitdirectory directory multiple />
+    <input id="workflowFilesInput" class="hidden" type="file" accept="application/json,.json" multiple />
 
     <script>
       const $ = (id) => document.getElementById(id);
@@ -363,6 +454,9 @@
       let saveTimer = null;
       let lastComfyPromptId = '';
       let lastComfySourceId = '';
+      let workflowItems = [];
+      let selectedWorkflowId = '';
+      let objectInfoCache = null;
 
       function uid() {
         return crypto && crypto.randomUUID ? crypto.randomUUID() : 'id-' + Math.random().toString(36).slice(2);
@@ -441,6 +535,7 @@
           if (comfy.workflow) $('comfyWorkflow').value = comfy.workflow;
           if (comfy.width) $('comfyWidth').value = comfy.width;
           if (comfy.height) $('comfyHeight').value = comfy.height;
+          if (typeof comfy.autoInject === 'boolean') $('comfyAutoInject').checked = comfy.autoInject;
           if (comfy.lastPromptId) lastComfyPromptId = comfy.lastPromptId;
           if (comfy.lastSourceId) lastComfySourceId = comfy.lastSourceId;
         } catch {
@@ -461,6 +556,7 @@
           workflow: $('comfyWorkflow').value,
           width: $('comfyWidth').value,
           height: $('comfyHeight').value,
+          autoInject: $('comfyAutoInject').checked,
           lastPromptId: lastComfyPromptId,
           lastSourceId: lastComfySourceId,
         }));
@@ -814,9 +910,148 @@
           return value
             .replaceAll('{{prompt}}', replacements.prompt)
             .replaceAll('{{negative}}', replacements.negative)
-            .replaceAll('{{seed}}', String(replacements.seed));
+            .replaceAll('{{seed}}', String(replacements.seed))
+            .replaceAll('{{width}}', String(replacements.width))
+            .replaceAll('{{height}}', String(replacements.height))
+            .replaceAll('{{image}}', replacements.image)
+            .replaceAll('{{video}}', replacements.video)
+            .replaceAll('{{audio}}', replacements.audio);
         }
         return value;
+      }
+      function apiRoot(data) {
+        if (!data || typeof data !== 'object' || Array.isArray(data)) return null;
+        const values = Object.values(data);
+        if (values.some((value) => value && typeof value === 'object' && value.class_type)) return data;
+        if (data.prompt && typeof data.prompt === 'object') return apiRoot(data.prompt);
+        return null;
+      }
+      function isUiWorkflow(data) {
+        return data && typeof data === 'object' && Array.isArray(data.nodes) && Array.isArray(data.links);
+      }
+      function detectWorkflowKind(data) {
+        if (apiRoot(data)) return 'api';
+        if (isUiWorkflow(data)) return 'ui';
+        return 'other';
+      }
+      function workflowSource() {
+        const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
+        return source || null;
+      }
+      function mediaNameFromUrl(value = '') {
+        const raw = String(value || '').trim();
+        if (!raw) return '';
+        try {
+          const url = new URL(raw, location.href);
+          const file = url.searchParams.get('filename');
+          if (file) return file;
+          return decodeURIComponent(url.pathname.split('/').filter(Boolean).pop() || raw);
+        } catch {
+          return raw.split(/[\\/]/).pop().split(/[?#]/)[0];
+        }
+      }
+      function selectedMedia(kind) {
+        const source = workflowSource();
+        if (!source) return '';
+        const pool = [source, ...connectedTo(source.id)];
+        const match = pool.find((node) => {
+          const haystack = `${node.kind || ''} ${tags(node.tags).join(' ')} ${node.title || ''}`.toLowerCase();
+          return haystack.includes(kind);
+        });
+        return mediaNameFromUrl(match?.url || '');
+      }
+      function workflowReplacements(seed) {
+        return {
+          prompt: selectedPromptText(),
+          negative: $('comfyNegative').value.trim(),
+          seed,
+          width: Math.max(256, Math.min(4096, parseInt($('comfyWidth').value, 10) || 1024)),
+          height: Math.max(256, Math.min(4096, parseInt($('comfyHeight').value, 10) || 1024)),
+          image: selectedMedia('image'),
+          video: selectedMedia('video'),
+          audio: selectedMedia('audio'),
+        };
+      }
+      function injectCanvasContext(workflow, replacements) {
+        if (!$('comfyAutoInject').checked) return workflow;
+        Object.values(workflow).forEach((node) => {
+          if (!node || typeof node !== 'object' || !node.inputs) return;
+          const title = `${node.class_type || ''} ${node._meta?.title || ''}`.toLowerCase();
+          Object.entries(node.inputs).forEach(([key, value]) => {
+            const k = key.toLowerCase();
+            if (typeof value === 'string') {
+              if (k.includes('negative') || title.includes('negative')) node.inputs[key] = replacements.negative;
+              else if (k === 'text' || k.includes('prompt') || k.includes('caption') || title.includes('positive prompt')) node.inputs[key] = replacements.prompt;
+              else if (replacements.image && k.includes('image')) node.inputs[key] = replacements.image;
+              else if (replacements.video && k.includes('video')) node.inputs[key] = replacements.video;
+              else if (replacements.audio && k.includes('audio')) node.inputs[key] = replacements.audio;
+            } else if (typeof value === 'number') {
+              if (k.includes('seed')) node.inputs[key] = replacements.seed;
+              if (k === 'width') node.inputs[key] = replacements.width;
+              if (k === 'height') node.inputs[key] = replacements.height;
+            }
+          });
+        });
+        return workflow;
+      }
+      async function getObjectInfo() {
+        if (objectInfoCache) return objectInfoCache;
+        try {
+          const response = await fetch(`${comfyBase()}/object_info`);
+          if (!response.ok) throw new Error(`object_info HTTP ${response.status}`);
+          objectInfoCache = await response.json();
+        } catch {
+          objectInfoCache = {};
+        }
+        return objectInfoCache;
+      }
+      function linkMapFromUi(ui) {
+        const map = new Map();
+        (ui.links || []).forEach((link) => {
+          if (Array.isArray(link)) map.set(link[0], [String(link[1]), link[2] || 0]);
+          else if (link && typeof link === 'object') map.set(link.id, [String(link.origin_id), link.origin_slot || 0]);
+        });
+        return map;
+      }
+      function widgetNamesForNode(node, info) {
+        const connected = new Set((node.inputs || []).filter((input) => input.link != null).map((input) => input.name));
+        const uiNames = (node.inputs || [])
+          .filter((input) => input.link == null && input.widget?.name)
+          .map((input) => input.widget.name);
+        const names = [...uiNames];
+        const nodeInfo = info?.[node.type]?.input || {};
+        ['required', 'optional'].forEach((group) => {
+          Object.keys(nodeInfo[group] || {}).forEach((name) => {
+            if (!connected.has(name) && !names.includes(name)) names.push(name);
+          });
+        });
+        return names;
+      }
+      async function uiWorkflowToApi(ui) {
+        const info = await getObjectInfo();
+        const links = linkMapFromUi(ui);
+        const api = {};
+        (ui.nodes || []).forEach((node) => {
+          if (!node || node.mode === 2 || !node.type) return;
+          const id = String(node.id);
+          const inputs = {};
+          (node.inputs || []).forEach((input) => {
+            if (!input || input.link == null || !links.has(input.link)) return;
+            inputs[input.name] = links.get(input.link);
+          });
+          const widgetNames = widgetNamesForNode(node, info);
+          const values = Array.isArray(node.widgets_values) ? node.widgets_values : [];
+          values.forEach((value, index) => {
+            const name = widgetNames[index];
+            if (name && inputs[name] === undefined) inputs[name] = value;
+          });
+          api[id] = { class_type: node.type, inputs, _meta: { title: node.title || node.type } };
+        });
+        return api;
+      }
+      function prepareComfyWorkflow(workflow, seed) {
+        const replacements = workflowReplacements(seed);
+        return injectCanvasContext(deepReplace(workflow, replacements), replacements);
       }
       async function getFirstCheckpoint() {
         const response = await fetch(`${comfyBase()}/object_info/CheckpointLoaderSimple`);
@@ -860,12 +1095,14 @@
           $('comfyStatus').textContent = 'Building automatic text-to-image workflow...';
           return automaticTextToImageWorkflow(await getFirstCheckpoint(), seed);
         }
-        const workflow = JSON.parse(raw);
-        return deepReplace(workflow, {
-          prompt: selectedPromptText(),
-          negative: $('comfyNegative').value.trim(),
-          seed,
-        });
+        const data = JSON.parse(raw);
+        const api = apiRoot(data);
+        if (api) return prepareComfyWorkflow(api, seed);
+        if (isUiWorkflow(data)) {
+          $('comfyStatus').textContent = 'Converting UI workflow to ComfyUI API format...';
+          return prepareComfyWorkflow(await uiWorkflowToApi(data), seed);
+        }
+        throw new Error('This JSON is not a ComfyUI API or UI workflow.');
       }
       function comfyBase() {
         return $('comfyEndpoint').value.trim().replace(/\/$/, '');
@@ -972,6 +1209,112 @@
         render();
       }
 
+      function workflowPath(file) {
+        return file.webkitRelativePath || file.name;
+      }
+      function workflowKindName(kind) {
+        return ({ api: 'API', ui: 'UI', other: 'Other', invalid: 'Invalid', unknown: 'Unknown' })[kind] || 'Unknown';
+      }
+      function addWorkflowFiles(fileList) {
+        const files = [...fileList].filter((file) => /\.json$/i.test(file.name));
+        const seen = new Set(workflowItems.map((item) => `${item.path}:${item.size}`));
+        files.forEach((file) => {
+          const path = workflowPath(file);
+          const key = `${path}:${file.size}`;
+          if (seen.has(key)) return;
+          seen.add(key);
+          workflowItems.push({
+            id: uid(),
+            file,
+            path,
+            name: file.name,
+            size: file.size,
+            kind: 'unknown',
+            text: '',
+            data: null,
+            error: '',
+            nodeCount: '',
+          });
+        });
+        if (!selectedWorkflowId && workflowItems.length) selectedWorkflowId = workflowItems[0].id;
+        renderWorkflowList();
+      }
+      async function readWorkflowItem(item) {
+        if (item.text || item.error) return item;
+        try {
+          item.text = await item.file.text();
+          item.data = JSON.parse(item.text);
+          item.kind = detectWorkflowKind(item.data);
+          if (item.kind === 'api') item.nodeCount = Object.keys(apiRoot(item.data) || {}).length;
+          if (item.kind === 'ui') item.nodeCount = item.data.nodes?.length || 0;
+        } catch (error) {
+          item.kind = 'invalid';
+          item.error = error.message || 'Could not read JSON';
+        }
+        return item;
+      }
+      function renderWorkflowList() {
+        const list = $('workflowList');
+        const query = $('workflowSearch').value.trim().toLowerCase();
+        const type = $('workflowType').value;
+        const limit = parseInt($('workflowLimit').value, 10) || 120;
+        const filtered = workflowItems.filter((item) => {
+          const haystack = `${item.path} ${item.kind}`.toLowerCase();
+          return (!query || haystack.includes(query)) && (!type || item.kind === type);
+        });
+        $('workflowStats').textContent = workflowItems.length
+          ? `${workflowItems.length} workflow file(s), showing ${Math.min(filtered.length, limit)}. Select one to import or run.`
+          : 'Import ComfyUI workflow JSON directly.';
+        list.innerHTML = filtered.slice(0, limit).map((item) => `
+          <button class="workflow-item${item.id === selectedWorkflowId ? ' selected' : ''}" data-workflow-id="${esc(item.id)}" title="${esc(item.path)}">
+            <span class="workflow-badge">${esc(workflowKindName(item.kind))}${item.nodeCount ? ' / ' + esc(item.nodeCount) : ''}</span>
+            <strong>${esc(item.name)}</strong>
+            <small>${esc(item.path)} / ${Math.round(item.size / 1024)} KB</small>
+          </button>
+        `).join('');
+        list.querySelectorAll('[data-workflow-id]').forEach((button) => {
+          button.addEventListener('click', async () => {
+            selectedWorkflowId = button.dataset.workflowId;
+            const item = workflowItems.find((entry) => entry.id === selectedWorkflowId);
+            if (item) {
+              await readWorkflowItem(item);
+              $('workflowStats').textContent = item.error
+                ? `Invalid JSON: ${item.error}`
+                : `Selected ${workflowKindName(item.kind)} workflow: ${item.path}`;
+            }
+            renderWorkflowList();
+          });
+        });
+      }
+      async function selectedWorkflow() {
+        const item = workflowItems.find((entry) => entry.id === selectedWorkflowId);
+        if (!item) throw new Error('No workflow selected.');
+        await readWorkflowItem(item);
+        if (item.error) throw new Error(item.error);
+        return item;
+      }
+      async function useSelectedWorkflow() {
+        try {
+          const item = await selectedWorkflow();
+          $('comfyWorkflow').value = item.text;
+          $('comfyStatus').textContent = `${workflowKindName(item.kind)} workflow imported: ${item.name}`;
+          $('workflowStats').textContent = `Imported ${workflowKindName(item.kind)} workflow into ComfyUI panel.`;
+          scheduleSave();
+          return item;
+        } catch (error) {
+          $('workflowStats').textContent = `Import failed: ${error.message}`;
+          throw error;
+        }
+      }
+      async function runSelectedWorkflow() {
+        try {
+          await useSelectedWorkflow();
+          await sendComfy();
+        } catch (error) {
+          $('workflowStats').textContent = `Run failed: ${error.message}`;
+        }
+      }
+
       function download(name, content, type) {
         const blob = new Blob([content], { type });
         const a = document.createElement('a');
@@ -1065,6 +1408,15 @@
       $('exportMd').addEventListener('click', exportMarkdown);
       $('importJson').addEventListener('click', () => $('fileInput').click());
       $('fileInput').addEventListener('change', () => $('fileInput').files[0] && importJson($('fileInput').files[0]));
+      $('pickWorkflowFiles').addEventListener('click', () => $('workflowFilesInput').click());
+      $('pickWorkflowFolder').addEventListener('click', () => $('workflowFolderInput').click());
+      $('workflowFilesInput').addEventListener('change', () => addWorkflowFiles($('workflowFilesInput').files));
+      $('workflowFolderInput').addEventListener('change', () => addWorkflowFiles($('workflowFolderInput').files));
+      $('workflowSearch').addEventListener('input', renderWorkflowList);
+      $('workflowType').addEventListener('change', renderWorkflowList);
+      $('workflowLimit').addEventListener('change', renderWorkflowList);
+      $('useWorkflow').addEventListener('click', useSelectedWorkflow);
+      $('runWorkflow').addEventListener('click', runSelectedWorkflow);
       $('askLlama').addEventListener('click', askLlama);
       $('sendComfy').addEventListener('click', sendComfy);
       $('checkComfy').addEventListener('click', () => checkComfy(true));
@@ -1078,6 +1430,7 @@
       });
       $('search').addEventListener('input', (event) => { searchTerm = event.target.value.trim(); render(); });
       ['llamaEndpoint', 'llamaModel', 'llamaKey', 'llamaSystem', 'comfyEndpoint', 'comfyNegative', 'comfyWorkflow', 'comfyWidth', 'comfyHeight'].forEach((id) => $(id).addEventListener('input', scheduleSave));
+      $('comfyAutoInject').addEventListener('change', scheduleSave);
       window.addEventListener('keydown', (event) => {
         if (event.target.matches('input, textarea, [contenteditable="true"]')) return;
         if (event.key === 'Delete' || event.key === 'Backspace') deleteSelected();
