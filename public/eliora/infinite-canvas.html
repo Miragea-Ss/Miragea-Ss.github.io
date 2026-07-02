@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Eliora Infinite Canvas</title>
-    <meta name="description" content="A local-first infinite canvas for Eliora, Miragea, and llama.cpp workflows." />
+    <meta name="description" content="A local-first infinite canvas for Eliora, Miragea, llama.cpp, and ComfyUI workflows." />
     <style>
       :root {
         color-scheme: dark;
@@ -138,7 +138,7 @@
       .node h3 { margin: 5px 0 0; font-size: 20px; line-height: 1.18; letter-spacing: 0; }
       .dot { width: 11px; height: 11px; flex: 0 0 auto; border-radius: 50%; margin-top: 5px; background: #050505; box-shadow: 0 0 20px 10px rgba(242,121,154,.58); }
       .node p { margin: 0; color: var(--muted); line-height: 1.58; white-space: pre-wrap; }
-      .node img.preview { width: 100%; max-height: 188px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px; display: block; }
+      .node img.preview, .node video.preview { width: 100%; max-height: 188px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px; display: block; background: #000; }
       .node a.node-url { display: inline-flex; margin-top: 12px; color: #f6d594; font-size: 13px; word-break: break-all; }
       .node-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
       .node-tags span { border: 1px solid rgba(255,255,255,.1); border-radius: 6px; color: var(--faint); padding: 4px 6px; font-size: 11px; }
@@ -200,10 +200,13 @@
       <header class="bar">
         <a class="brand" href="./index.html">
           <img src="../assets/brand/eliora-logo.png" alt="Eliora logo" />
-          <span><strong>Eliora Infinite Canvas</strong><span>llama.cpp local-first workspace</span></span>
+          <span><strong>Eliora Infinite Canvas</strong><span>llama.cpp + ComfyUI workspace</span></span>
         </a>
         <div class="tools" aria-label="Canvas tools">
           <button class="primary" id="addNote" title="Add note">Add</button>
+          <button id="imagePrompt" title="Create image prompt card">Image Prompt</button>
+          <button id="videoPrompt" title="Create video prompt card">Video Prompt</button>
+          <button id="composeContext" title="Combine connected cards into one instruction">Combine</button>
           <button id="addImage" title="Add image card">Image</button>
           <button id="connect" title="Connect cards">Connect</button>
           <button id="duplicate" title="Duplicate">Duplicate</button>
@@ -248,6 +251,21 @@
             <div class="field"><label for="llamaSystem">System</label><textarea id="llamaSystem">You are Eliora, a concise local AI collaborator. Turn the selected card into useful next steps.</textarea></div>
             <button id="askLlama" class="primary">Ask llama.cpp</button>
             <p id="aiStatus" class="ai-status"></p>
+          </section>
+          <section class="panel">
+            <h2>ComfyUI</h2>
+            <div class="field"><label for="comfyEndpoint">Endpoint</label><input id="comfyEndpoint" value="http://127.0.0.1:8188" /></div>
+            <div class="field"><label for="comfyNegative">Negative</label><textarea id="comfyNegative">low quality, blurry, broken anatomy, bad hands, watermark, text artifacts</textarea></div>
+            <div class="row">
+              <div class="field"><label for="comfyWidth">Width</label><input id="comfyWidth" value="1024" /></div>
+              <div class="field"><label for="comfyHeight">Height</label><input id="comfyHeight" value="1024" /></div>
+            </div>
+            <div class="field"><label for="comfyWorkflow">API workflow JSON</label><textarea id="comfyWorkflow" spellcheck="false" placeholder="Optional. Leave empty for automatic text-to-image. Paste ComfyUI API-format JSON for custom image/video workflows. Use {{prompt}}, {{negative}}, {{seed}}."></textarea></div>
+            <div class="tools" style="justify-content:flex-start">
+              <button id="sendComfy" class="primary">Send ComfyUI</button>
+              <button id="checkComfy">Check Result</button>
+            </div>
+            <p id="comfyStatus" class="ai-status">Empty workflow = automatic text-to-image. Paste an API-format video workflow when you want video output.</p>
           </section>
           <section class="panel">
             <h2>File</h2>
@@ -314,7 +332,8 @@
       const minimap = $('minimap');
       const storageKey = 'eliora-infinite-canvas-v3';
       const settingsKey = 'eliora-llamacpp-settings-v1';
-      const kinds = ['Note', 'Prompt', 'Workflow', 'Product', 'Archive', 'Image', 'Group', 'AI'];
+      const comfySettingsKey = 'eliora-comfyui-settings-v1';
+      const kinds = ['Note', 'Prompt', 'Workflow', 'Product', 'Archive', 'Image', 'Video', 'Group', 'AI'];
       const colors = {
         rose: { line: 'rgba(242,121,154,.54)', glow: 'rgba(242,121,154,.58)', border: 'rgba(242,121,154,.34)' },
         cyan: { line: 'rgba(123,216,232,.54)', glow: 'rgba(123,216,232,.44)', border: 'rgba(123,216,232,.34)' },
@@ -328,6 +347,8 @@
         product: ['Product', 'Digital Product', 'Audience, promise, asset, price, delivery.', 'green', 'Product'],
         archive: ['Archive', 'Miragea Source', 'X fragment, visual memory, EX route, perception record.', 'rose', 'Miragea,Archive'],
         group: ['Group', 'Area', 'Collect related cards here.', 'cyan', 'Group'],
+        imagePrompt: ['Prompt', 'Image Prompt', 'Subject:\\nMood:\\nLighting:\\nCamera:\\nStyle:\\nDetails:', 'rose', 'ComfyUI,Image'],
+        videoPrompt: ['Prompt', 'Video Prompt', 'Opening frame:\\nMotion:\\nCamera movement:\\nDuration:\\nStyle:\\nLoop / ending:', 'cyan', 'ComfyUI,Video'],
       };
       let camera = { x: innerWidth / 2 - 220, y: innerHeight / 2 - 160, z: 1 };
       let nodes = [];
@@ -340,6 +361,8 @@
       let dragNode = null;
       let searchTerm = '';
       let saveTimer = null;
+      let lastComfyPromptId = '';
+      let lastComfySourceId = '';
 
       function uid() {
         return crypto && crypto.randomUUID ? crypto.randomUUID() : 'id-' + Math.random().toString(36).slice(2);
@@ -355,6 +378,33 @@
       function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
       function screenToWorld(x, y) { return { x: (x - camera.x) / camera.z, y: (y - camera.y) / camera.z }; }
       function centerOf(node) { return { x: node.x + (node.kind === 'Image' ? 166 : 146), y: node.y + 76 }; }
+      function connectedTo(id) {
+        const ids = new Set();
+        edges.forEach((edge) => {
+          if (edge.from === id) ids.add(edge.to);
+          if (edge.to === id) ids.add(edge.from);
+        });
+        return [...ids].map(nodeBy).filter(Boolean);
+      }
+      function cardText(node) {
+        return [
+          `Title: ${node.title}`,
+          `Kind: ${node.kind}`,
+          `Tags: ${tags(node.tags).join(', ')}`,
+          node.url ? `URL: ${node.url}` : '',
+          node.text || '',
+        ].filter(Boolean).join('\n');
+      }
+      function graphContextText(source) {
+        if (!source) return '';
+        const connected = connectedTo(source.id);
+        const parts = [`PRIMARY CARD\n${cardText(source)}`];
+        if (connected.length) {
+          parts.push('CONNECTED MATERIALS');
+          connected.forEach((node, index) => parts.push(`[${index + 1}]\n${cardText(node)}`));
+        }
+        return parts.join('\n\n');
+      }
 
       const seedNodes = [
         { x: -520, y: -190, kind: 'Archive', title: 'Miragea Archive', text: 'EX routes, X works, perception records, visual language, HSP nervous-system notes.', tagText: 'Miragea,Origin', color: 'rose', url: '../en/' },
@@ -385,6 +435,14 @@
           if (settings.model) $('llamaModel').value = settings.model;
           if (settings.key) $('llamaKey').value = settings.key;
           if (settings.system) $('llamaSystem').value = settings.system;
+          const comfy = JSON.parse(localStorage.getItem(comfySettingsKey) || '{}');
+          if (comfy.endpoint) $('comfyEndpoint').value = comfy.endpoint;
+          if (comfy.negative) $('comfyNegative').value = comfy.negative;
+          if (comfy.workflow) $('comfyWorkflow').value = comfy.workflow;
+          if (comfy.width) $('comfyWidth').value = comfy.width;
+          if (comfy.height) $('comfyHeight').value = comfy.height;
+          if (comfy.lastPromptId) lastComfyPromptId = comfy.lastPromptId;
+          if (comfy.lastSourceId) lastComfySourceId = comfy.lastSourceId;
         } catch {
           freshBoard();
         }
@@ -396,6 +454,15 @@
           model: $('llamaModel').value,
           key: $('llamaKey').value,
           system: $('llamaSystem').value,
+        }));
+        localStorage.setItem(comfySettingsKey, JSON.stringify({
+          endpoint: $('comfyEndpoint').value,
+          negative: $('comfyNegative').value,
+          workflow: $('comfyWorkflow').value,
+          width: $('comfyWidth').value,
+          height: $('comfyHeight').value,
+          lastPromptId: lastComfyPromptId,
+          lastSourceId: lastComfySourceId,
         }));
         $('savedAt').textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       }
@@ -462,6 +529,7 @@
           el.dataset.id = node.id;
           el.dataset.kind = node.kind;
           const image = node.kind === 'Image' && node.url ? `<img class="preview" src="${esc(node.url)}" alt="${esc(node.title)}" loading="lazy" />` : '';
+          const video = node.kind === 'Video' && node.url ? `<video class="preview" src="${esc(node.url)}" controls loop playsinline></video>` : '';
           const link = node.url && node.kind !== 'Image' ? `<a class="node-url" href="${esc(node.url)}" target="_blank" rel="noreferrer">${esc(node.url)}</a>` : '';
           const tagHtml = tags(node.tags).map((tag) => `<span>#${esc(tag)}</span>`).join('');
           el.innerHTML = `
@@ -470,6 +538,7 @@
               <span class="dot" style="box-shadow:0 0 20px 10px ${color.glow}"></span>
             </div>
             ${image}
+            ${video}
             <p contenteditable="true" data-field="text">${esc(node.text)}</p>
             ${link}
             <div class="node-tags">${tagHtml}</div>
@@ -563,6 +632,40 @@
         addNode('note');
         const node = nodeBy(selectedNode);
         Object.assign(node, { kind: 'Image', title: 'Image Reference', text: 'Visual source for Eliora or Miragea.', url: url.trim(), tags: ['Image', 'Reference'] });
+        render();
+      }
+      function createPromptNode(templateKey) {
+        const source = selectedNode ? nodeBy(selectedNode) : null;
+        addNode(templateKey);
+        const node = nodeBy(selectedNode);
+        if (source) {
+          node.text = `${templates[templateKey][2]}\n\nSource:\n${source.title}\n${source.text}`;
+          node.x = source.x + 360;
+          node.y = source.y + (templateKey === 'videoPrompt' ? 120 : 40);
+          edges.push({ id: uid(), from: source.id, to: node.id, label: templateKey === 'videoPrompt' ? 'video prompt' : 'image prompt' });
+        }
+        render();
+      }
+      function composeConnectedContext() {
+        const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
+        if (!source) return;
+        const context = graphContextText(source);
+        const node = {
+          id: uid(),
+          x: source.x + 380,
+          y: source.y - 90,
+          kind: 'Prompt',
+          title: 'Combined Instruction',
+          text: `Use these connected materials as one production brief.\n\n${context}\n\nOutput goal:\n`,
+          tags: ['Combine', 'Instruction'],
+          color: 'amber',
+          url: '',
+        };
+        nodes.unshift(node);
+        edges.push({ id: uid(), from: source.id, to: node.id, label: 'combine' });
+        connectedTo(source.id).forEach((item) => edges.push({ id: uid(), from: item.id, to: node.id, label: 'material' }));
+        selectedNode = node.id;
+        selectedEdge = null;
         render();
       }
       function duplicateSelected() {
@@ -678,7 +781,7 @@
               temperature: 0.7,
               messages: [
                 { role: 'system', content: $('llamaSystem').value },
-                { role: 'user', content: `Title: ${source.title}\nKind: ${source.kind}\nTags: ${tags(source.tags).join(', ')}\n\n${source.text}` },
+                { role: 'user', content: graphContextText(source) },
               ],
             }),
           });
@@ -695,6 +798,178 @@
         } catch (error) {
           $('aiStatus').textContent = `llama.cpp unavailable: ${error.message}`;
         }
+      }
+
+      function selectedPromptText() {
+        const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
+        if (!source) return '';
+        return graphContextText(source).trim();
+      }
+      function deepReplace(value, replacements) {
+        if (Array.isArray(value)) return value.map((item) => deepReplace(item, replacements));
+        if (value && typeof value === 'object') {
+          return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, deepReplace(item, replacements)]));
+        }
+        if (typeof value === 'string') {
+          return value
+            .replaceAll('{{prompt}}', replacements.prompt)
+            .replaceAll('{{negative}}', replacements.negative)
+            .replaceAll('{{seed}}', String(replacements.seed));
+        }
+        return value;
+      }
+      async function getFirstCheckpoint() {
+        const response = await fetch(`${comfyBase()}/object_info/CheckpointLoaderSimple`);
+        if (!response.ok) throw new Error(`Checkpoint list HTTP ${response.status}`);
+        const info = await response.json();
+        const values = info?.CheckpointLoaderSimple?.input?.required?.ckpt_name?.[0];
+        if (!Array.isArray(values) || !values.length) throw new Error('No ComfyUI checkpoint found');
+        return values[0];
+      }
+      function automaticTextToImageWorkflow(ckptName, seed) {
+        const width = Math.max(256, Math.min(2048, parseInt($('comfyWidth').value, 10) || 1024));
+        const height = Math.max(256, Math.min(2048, parseInt($('comfyHeight').value, 10) || 1024));
+        return {
+          "1": { class_type: "CheckpointLoaderSimple", inputs: { ckpt_name: ckptName } },
+          "2": { class_type: "CLIPTextEncode", inputs: { text: selectedPromptText(), clip: ["1", 1] } },
+          "3": { class_type: "CLIPTextEncode", inputs: { text: $('comfyNegative').value.trim(), clip: ["1", 1] } },
+          "4": { class_type: "EmptyLatentImage", inputs: { width, height, batch_size: 1 } },
+          "5": {
+            class_type: "KSampler",
+            inputs: {
+              seed,
+              steps: 28,
+              cfg: 6.5,
+              sampler_name: "euler",
+              scheduler: "normal",
+              denoise: 1,
+              model: ["1", 0],
+              positive: ["2", 0],
+              negative: ["3", 0],
+              latent_image: ["4", 0]
+            }
+          },
+          "6": { class_type: "VAEDecode", inputs: { samples: ["5", 0], vae: ["1", 2] } },
+          "7": { class_type: "SaveImage", inputs: { filename_prefix: "Eliora", images: ["6", 0] } }
+        };
+      }
+      async function buildComfyWorkflow() {
+        const seed = Math.floor(Math.random() * 900000000000000);
+        const raw = $('comfyWorkflow').value.trim();
+        if (!raw) {
+          $('comfyStatus').textContent = 'Building automatic text-to-image workflow...';
+          return automaticTextToImageWorkflow(await getFirstCheckpoint(), seed);
+        }
+        const workflow = JSON.parse(raw);
+        return deepReplace(workflow, {
+          prompt: selectedPromptText(),
+          negative: $('comfyNegative').value.trim(),
+          seed,
+        });
+      }
+      function comfyBase() {
+        return $('comfyEndpoint').value.trim().replace(/\/$/, '');
+      }
+      async function sendComfy() {
+        const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
+        if (!source) return;
+        $('comfyStatus').textContent = 'Sending prompt to ComfyUI...';
+        save();
+        try {
+          const response = await fetch(`${comfyBase()}/prompt`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ prompt: await buildComfyWorkflow(), client_id: uid() }),
+          });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const data = await response.json();
+          lastComfyPromptId = data.prompt_id || '';
+          lastComfySourceId = source.id;
+          $('comfyStatus').textContent = lastComfyPromptId ? `Queued: ${lastComfyPromptId}` : 'Queued. No prompt_id returned.';
+          save();
+          if (lastComfyPromptId) pollComfy(18, 2500);
+        } catch (error) {
+          $('comfyStatus').textContent = `ComfyUI unavailable: ${error.message}`;
+        }
+      }
+      async function pollComfy(times = 1, delayMs = 0) {
+        for (let i = 0; i < times; i += 1) {
+          if (delayMs) await new Promise((resolve) => setTimeout(resolve, delayMs));
+          const found = await checkComfy(false);
+          if (found) return;
+        }
+      }
+      function collectComfyFiles(output) {
+        const files = [];
+        for (const key of ['images', 'gifs', 'videos']) {
+          const list = output?.[key];
+          if (Array.isArray(list)) {
+            for (const item of list) {
+              if (item?.filename) files.push({ ...item, mediaKey: key });
+            }
+          }
+        }
+        return files;
+      }
+      function comfyViewUrl(file) {
+        const params = new URLSearchParams({
+          filename: file.filename,
+          subfolder: file.subfolder || '',
+          type: file.type || 'output',
+        });
+        return `${comfyBase()}/view?${params.toString()}`;
+      }
+      async function checkComfy(showWaiting = true) {
+        if (!lastComfyPromptId) {
+          $('comfyStatus').textContent = 'No ComfyUI job yet.';
+          return false;
+        }
+        try {
+          const response = await fetch(`${comfyBase()}/history/${lastComfyPromptId}`);
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const history = await response.json();
+          const item = history[lastComfyPromptId];
+          const outputs = item?.outputs || {};
+          const files = Object.values(outputs).flatMap(collectComfyFiles);
+          if (!files.length) {
+            if (showWaiting) $('comfyStatus').textContent = `Still waiting: ${lastComfyPromptId}`;
+            return false;
+          }
+          addComfyResults(files);
+          $('comfyStatus').textContent = `Added ${files.length} ComfyUI result card(s).`;
+          lastComfyPromptId = '';
+          save();
+          return true;
+        } catch (error) {
+          $('comfyStatus').textContent = `Result check failed: ${error.message}`;
+          return false;
+        }
+      }
+      function addComfyResults(files) {
+        const source = nodeBy(lastComfySourceId) || (selectedNode ? nodeBy(selectedNode) : nodes[0]);
+        const baseX = source ? source.x + 380 : 120;
+        const baseY = source ? source.y + 80 : 120;
+        files.forEach((file, index) => {
+          const url = comfyViewUrl(file);
+          const ext = file.filename.split('.').pop().toLowerCase();
+          const kind = ['mp4', 'webm', 'mov', 'gif'].includes(ext) || file.mediaKey === 'videos' || file.mediaKey === 'gifs' ? 'Video' : 'Image';
+          const node = {
+            id: uid(),
+            x: baseX + index * 38,
+            y: baseY + index * 38,
+            kind,
+            title: `${kind} Result`,
+            text: `ComfyUI output\n${file.filename}`,
+            tags: ['ComfyUI', kind],
+            color: kind === 'Video' ? 'cyan' : 'rose',
+            url,
+          };
+          nodes.unshift(node);
+          if (source) edges.push({ id: uid(), from: source.id, to: node.id, label: 'ComfyUI' });
+          selectedNode = node.id;
+          selectedEdge = null;
+        });
+        render();
       }
 
       function download(name, content, type) {
@@ -770,6 +1045,9 @@
       }
 
       $('addNote').addEventListener('click', () => addNode('note'));
+      $('imagePrompt').addEventListener('click', () => createPromptNode('imagePrompt'));
+      $('videoPrompt').addEventListener('click', () => createPromptNode('videoPrompt'));
+      $('composeContext').addEventListener('click', composeConnectedContext);
       $('addImage').addEventListener('click', addImageNode);
       document.querySelectorAll('[data-template]').forEach((button) => button.addEventListener('click', () => addNode(button.dataset.template)));
       $('connect').addEventListener('click', (event) => {
@@ -788,6 +1066,8 @@
       $('importJson').addEventListener('click', () => $('fileInput').click());
       $('fileInput').addEventListener('change', () => $('fileInput').files[0] && importJson($('fileInput').files[0]));
       $('askLlama').addEventListener('click', askLlama);
+      $('sendComfy').addEventListener('click', sendComfy);
+      $('checkComfy').addEventListener('click', () => checkComfy(true));
       $('reset').addEventListener('click', () => {
         if (!confirm('Reset this local canvas?')) return;
         freshBoard();
@@ -797,7 +1077,7 @@
         render();
       });
       $('search').addEventListener('input', (event) => { searchTerm = event.target.value.trim(); render(); });
-      ['llamaEndpoint', 'llamaModel', 'llamaKey', 'llamaSystem'].forEach((id) => $(id).addEventListener('input', scheduleSave));
+      ['llamaEndpoint', 'llamaModel', 'llamaKey', 'llamaSystem', 'comfyEndpoint', 'comfyNegative', 'comfyWorkflow', 'comfyWidth', 'comfyHeight'].forEach((id) => $(id).addEventListener('input', scheduleSave));
       window.addEventListener('keydown', (event) => {
         if (event.target.matches('input, textarea, [contenteditable="true"]')) return;
         if (event.key === 'Delete' || event.key === 'Backspace') deleteSelected();
