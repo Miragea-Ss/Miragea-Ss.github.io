@@ -2,7 +2,7 @@
 const { currentLang = "en", slug = null } = Astro.props;
 
 // 言語定義
-const langs = ["ja", "en", "zh"];
+const langs = ["en", "ja", "zh"];
 
 // URL 生成ルール
 const makeUrl = (lang: string) => {
@@ -20,7 +20,7 @@ const makeUrl = (lang: string) => {
       href={makeUrl(lang)}
       class={lang === currentLang ? "text-white" : "hover:text-white"}
     >
-      {lang.toUpperCase()}
+      {lang === "ja" ? "JP" : lang === "zh" ? "ZH" : "EN"}
     </a>
   ))}
 </nav>

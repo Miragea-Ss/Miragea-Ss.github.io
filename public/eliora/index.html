@@ -17,7 +17,26 @@
         --amber: #f5b864;
         --cyan: #7bd8e8;
       }
+      @keyframes elioraLogoAura {
+        0%, 100% {
+          border-color: rgba(255,255,255,.72);
+          box-shadow:
+            0 0 0 1px rgba(255,255,255,.28),
+            0 0 12px rgba(255,255,255,.32),
+            0 0 34px rgba(255,255,255,.15),
+            inset 0 0 18px rgba(255,255,255,.05);
+        }
+        50% {
+          border-color: rgba(255,255,255,.96);
+          box-shadow:
+            0 0 0 2px rgba(255,255,255,.42),
+            0 0 20px rgba(255,255,255,.5),
+            0 0 54px rgba(255,255,255,.24),
+            inset 0 0 22px rgba(255,255,255,.08);
+        }
+      }
       * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
         min-height: 100vh;
@@ -32,6 +51,7 @@
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
       a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
       .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
       .topbar {
         position: sticky;
@@ -44,12 +64,22 @@
         padding: 16px 0;
         backdrop-filter: blur(18px);
       }
-      .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
-      .brand img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
-      .brand strong { display: block; font-size: 18px; letter-spacing: 0; }
+      .brand { display: flex; align-items: center; gap: 13px; min-width: 0; }
+      .brand img {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        object-fit: contain;
+        padding: 5px;
+        background: rgba(0,0,0,.78);
+        border: 1px solid rgba(255,255,255,.72);
+        box-shadow: 0 0 34px rgba(255,255,255,.15);
+        animation: elioraLogoAura 4.2s ease-in-out infinite;
+      }
+      .brand strong { display: block; font-size: 20px; letter-spacing: 0; }
       .brand span { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
       .nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
-      .nav a, .button {
+      .nav a, .button, .lang-switch button {
         min-height: 42px;
         display: inline-flex;
         align-items: center;
@@ -58,14 +88,32 @@
         border-radius: 8px;
         padding: 0 14px;
         background: rgba(255,255,255,.045);
+        color: var(--text);
         font-weight: 700;
         font-size: 14px;
+        cursor: pointer;
       }
-      .button.primary { background: #f4eee4; color: #050505; border-color: #f4eee4; }
-      .hero { min-height: calc(100vh - 86px); display: grid; grid-template-columns: 1.06fr .94fr; gap: 44px; align-items: center; padding: 34px 0 70px; }
+      .button.primary, .lang-switch button.active { background: #f4eee4; color: #050505; border-color: #f4eee4; }
+      .lang-switch { display: flex; align-items: center; gap: 7px; margin-left: 12px; }
+      .lang-corner {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 40;
+        margin-left: 0;
+        padding: 18px 22px;
+        border-left: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        border-radius: 0 0 0 18px;
+        background: rgba(0,0,0,.32);
+        backdrop-filter: blur(18px);
+      }
+      .lang-switch button { min-width: 46px; padding: 0 10px; }
+      .hero { min-height: calc(100vh - 100px); display: grid; grid-template-columns: 1.06fr .94fr; gap: 44px; align-items: center; padding: 30px 0 70px; }
       .eyebrow { color: var(--amber); text-transform: uppercase; letter-spacing: .16em; font-size: 12px; font-weight: 800; }
       h1 { margin: 18px 0 0; font-size: clamp(56px, 9vw, 118px); line-height: .9; font-weight: 200; letter-spacing: 0; }
       .lead { margin: 28px 0 0; max-width: 680px; color: #d2cbc2; font-size: clamp(18px, 2vw, 23px); line-height: 1.65; }
+      .lang-note { margin: 24px 0 0; max-width: 650px; color: #d6d0c8; font-size: 16px; line-height: 1.8; }
       .actions { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
       .hero-media {
         min-height: 540px;
@@ -114,17 +162,18 @@
       }
       .eliora-round-logo {
         position: absolute;
-        left: 14px;
-        bottom: 14px;
+        left: 12px;
+        bottom: 6px;
         z-index: 1;
-        width: 58px;
-        height: 58px;
+        width: 78px;
+        height: 78px;
         border-radius: 50%;
         object-fit: contain;
-        padding: 4px;
+        padding: 5px;
         background: rgba(0,0,0,.74);
-        border: 1px solid rgba(255,255,255,.34);
-        box-shadow: 0 24px 60px rgba(0,0,0,.68);
+        border: 1px solid rgba(255,255,255,.72);
+        box-shadow: 0 0 34px rgba(255,255,255,.15);
+        animation: elioraLogoAura 4.2s ease-in-out infinite;
       }
       .eliora-panel-title strong { display: block; font-size: 30px; font-weight: 300; }
       .eliora-panel-title span { display: block; margin-top: 6px; color: var(--muted); line-height: 1.5; }
@@ -139,7 +188,9 @@
         padding: 14px 16px;
         background: rgba(0,0,0,.42);
         color: #d8d1c8;
+        transition: border-color .2s ease, background .2s ease, transform .2s ease;
       }
+      .signal-row:hover { border-color: rgba(123,216,232,.42); background: rgba(255,255,255,.07); transform: translateX(4px); }
       .signal-row b { color: var(--text); font-size: 14px; }
       .signal-row span { color: var(--cyan); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; font-weight: 800; }
       section { padding: 86px 0; }
@@ -184,13 +235,6 @@
       .node:nth-child(3) { left: 27%; top: 62%; border-color: rgba(123,216,232,.34); }
       .node strong { display: block; margin-bottom: 8px; }
       .node span { color: var(--muted); font-size: 13px; line-height: 1.5; }
-      .lang {
-        margin-top: 22px;
-        display: grid;
-        gap: 10px;
-        color: #d6d0c8;
-        line-height: 1.75;
-      }
       code {
         color: #f4d38e;
         background: rgba(255,255,255,.06);
@@ -206,6 +250,12 @@
         .grid.three, .grid.two { grid-template-columns: 1fr; }
         .section-head { align-items: flex-start; flex-direction: column; }
       }
+      @media (prefers-reduced-motion: reduce) {
+        .brand img,
+        .eliora-round-logo {
+          animation: none;
+        }
+      }
     </style>
   </head>
   <body>
@@ -214,7 +264,7 @@
         <img src="/assets/brand/eliora-logo.png" alt="Eliora logo" />
         <span>
           <strong>Eliora</strong>
-          <span>AI Service Layer</span>
+          <span data-i18n="brandSub">AI Service Layer</span>
         </span>
       </a>
       <nav class="nav" aria-label="Primary">
@@ -224,21 +274,24 @@
       </nav>
     </header>
 
+    <div class="lang-switch lang-corner" aria-label="Language">
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ja">JP</button>
+      <button type="button" data-lang="zh">ZH</button>
+    </div>
+
     <main>
       <section class="wrap hero">
         <div>
-          <div class="eyebrow">Layer 2 / Production Site</div>
-          <h1>Eliora</h1>
-          <p class="lead">
+          <div class="eyebrow" data-i18n="eyebrow">Layer 2 / Production Site</div>
+          <h1 data-i18n="title">Eliora</h1>
+          <p class="lead" data-i18n="lead">
             A local-first AI studio for Infinite Canvas, digital products, consulting, and community. Miragea preserves the origin; Eliora turns it into working systems.
           </p>
-          <div class="lang">
-            <div>JP: Elioraは、AIサービス、Infinite Canvas、デジタル商品、コンサルティング、コミュニティの本番サイトです。</div>
-            <div>ZH: Eliora 是 AI 服务、Infinite Canvas、数字商品、咨询与社区的正式服务层。</div>
-          </div>
+          <p class="lang-note" data-i18n="note">Eliora is the service layer where AI, Infinite Canvas, digital products, consulting, and community become practical tools.</p>
           <div class="actions">
-            <a class="button primary" href="/eliora/infinite-canvas.html">Open Infinite Canvas</a>
-            <a class="button" href="/en/">Back to Miragea</a>
+            <a class="button primary" href="/eliora/infinite-canvas.html" data-i18n="openCanvas">Open Infinite Canvas</a>
+            <a class="button" href="/en/" data-i18n="backMiragea">Back to Miragea</a>
           </div>
         </div>
         <div class="hero-media">
@@ -248,63 +301,63 @@
               <img class="eliora-round-logo" src="/assets/brand/eliora-logo.png" alt="Eliora phoenix logo" />
             </div>
             <div class="eliora-panel-title">
-              <strong>Eliora</strong>
-              <span>Service layer for AI, canvas, products, consulting, and community.</span>
+              <strong data-i18n="panelTitle">Eliora</strong>
+              <span data-i18n="panelCopy">Service layer for AI, canvas, products, consulting, and community.</span>
             </div>
             <div class="signal-stack">
-              <div class="signal-row"><b>Infinite Canvas</b><span>open</span></div>
-              <div class="signal-row"><b>Local AI Studio</b><span>private</span></div>
-              <div class="signal-row"><b>Digital Products</b><span>ready</span></div>
-              <div class="signal-row"><b>Consulting Route</b><span>next</span></div>
+              <a class="signal-row" href="/eliora/infinite-canvas.html"><b data-i18n="signalCanvas">Infinite Canvas</b><span data-i18n="signalOpen">open</span></a>
+              <a class="signal-row" href="#service-map"><b data-i18n="signalStudio">Local AI Studio</b><span data-i18n="signalPrivate">private</span></a>
+              <a class="signal-row" href="#service-map"><b data-i18n="signalProducts">Digital Products</b><span data-i18n="signalReady">ready</span></a>
+              <a class="signal-row" href="#service-map"><b data-i18n="signalConsulting">Consulting Route</b><span data-i18n="signalNext">next</span></a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="wrap">
+      <section class="wrap" id="service-map">
         <div class="section-head">
-          <h2>Service Map</h2>
-          <p>One entrance, several business routes: AI tools, local workflows, digital assets, learning products, and consulting.</p>
+          <h2 data-i18n="serviceTitle">Service Map</h2>
+          <p data-i18n="serviceCopy">One entrance, several business routes: AI tools, local workflows, digital assets, learning products, and consulting.</p>
         </div>
         <div class="grid three">
           <article class="card">
             <span class="tag">AI Studio</span>
-            <b>Prompt, image, and knowledge workflows</b>
-            <p>Reusable AI workflows for writing, visuals, product planning, research, and personal data sovereignty.</p>
+            <b data-i18n="cardAiTitle">Prompt, image, and knowledge workflows</b>
+            <p data-i18n="cardAiCopy">Reusable AI workflows for writing, visuals, product planning, research, and personal data sovereignty.</p>
           </article>
           <article class="card">
             <span class="tag">Canvas</span>
-            <b>Infinite visual thinking surface</b>
-            <p>A practical board for notes, product maps, AI pipelines, image references, and service planning.</p>
+            <b data-i18n="cardCanvasTitle">Infinite visual thinking surface</b>
+            <p data-i18n="cardCanvasCopy">A practical board for notes, product maps, AI pipelines, image references, and service planning.</p>
           </article>
           <article class="card">
             <span class="tag">Market</span>
-            <b>Digital products and consulting</b>
-            <p>3DCG assets, visual archives, templates, courses, and advisory work can grow from the same system.</p>
+            <b data-i18n="cardMarketTitle">Digital products and consulting</b>
+            <p data-i18n="cardMarketCopy">3DCG assets, visual archives, templates, courses, and advisory work can grow from the same system.</p>
           </article>
         </div>
       </section>
 
       <section class="wrap">
         <div class="section-head">
-          <h2>Infinite Canvas</h2>
-          <p>The public page includes a lightweight browser canvas. The advanced local runner stays on this PC and can be launched from H drive.</p>
+          <h2 data-i18n="canvasTitle">Infinite Canvas</h2>
+          <p data-i18n="canvasCopy">The public page includes a lightweight browser canvas. The advanced local runner stays on this PC and can be launched from H drive.</p>
         </div>
         <div class="grid two">
           <div class="canvas-preview" aria-label="Infinite Canvas preview">
-            <div class="node"><strong>Miragea Archive</strong><span>Source fragments, EX routes, X works, visual memory.</span></div>
-            <div class="node"><strong>Eliora Service</strong><span>AI products, consulting, community, local-first workflows.</span></div>
-            <div class="node"><strong>Local Data</strong><span>GitHub, Docker, PostgreSQL, backups, private workspaces.</span></div>
+            <div class="node"><strong>Miragea Archive</strong><span data-i18n="nodeArchive">Source fragments, EX routes, X works, visual memory.</span></div>
+            <div class="node"><strong>Eliora Service</strong><span data-i18n="nodeService">AI products, consulting, community, local-first workflows.</span></div>
+            <div class="node"><strong>Local Data</strong><span data-i18n="nodeData">GitHub, Docker, PostgreSQL, backups, private workspaces.</span></div>
           </div>
           <article class="card">
             <span class="tag">Local Runner</span>
             <b>H:\Infinite-Canvas\Infinite-Canvas</b>
-            <p>
+            <p data-i18n="runnerCopy">
               The advanced local project remains on your PC. Launch the local runner when you want the full desktop workflow. The public Eliora page links to the lightweight canvas and credits the reference project.
             </p>
             <div class="actions">
-              <a class="button primary" href="/eliora/infinite-canvas.html">Open Web Canvas</a>
-              <a class="button" href="https://github.com/hero8152/Infinite-Canvas">Reference GitHub</a>
+              <a class="button primary" href="/eliora/infinite-canvas.html" data-i18n="openWebCanvas">Open Web Canvas</a>
+              <a class="button" href="https://github.com/hero8152/Infinite-Canvas" data-i18n="referenceGitHub">Reference GitHub</a>
             </div>
           </article>
         </div>
@@ -312,7 +365,138 @@
     </main>
 
     <footer>
-      <div class="wrap">Eliora by Miragea. Local-first, archive-aware, service-ready.</div>
+      <div class="wrap" data-i18n="footer">Eliora by Miragea. Local-first, archive-aware, service-ready.</div>
     </footer>
+
+    <script>
+      const translations = {
+        en: {
+          brandSub: 'AI Service Layer',
+          eyebrow: 'Layer 2 / Production Site',
+          title: 'Eliora',
+          lead: 'A local-first AI studio for Infinite Canvas, digital products, consulting, and community. Miragea preserves the origin; Eliora turns it into working systems.',
+          note: 'Eliora is the service layer where AI, Infinite Canvas, digital products, consulting, and community become practical tools.',
+          openCanvas: 'Open Infinite Canvas',
+          backMiragea: 'Back to Miragea',
+          panelTitle: 'Eliora',
+          panelCopy: 'Service layer for AI, canvas, products, consulting, and community.',
+          signalCanvas: 'Infinite Canvas',
+          signalStudio: 'Local AI Studio',
+          signalProducts: 'Digital Products',
+          signalConsulting: 'Consulting Route',
+          signalOpen: 'open',
+          signalPrivate: 'private',
+          signalReady: 'ready',
+          signalNext: 'next',
+          serviceTitle: 'Service Map',
+          serviceCopy: 'One entrance, several business routes: AI tools, local workflows, digital assets, learning products, and consulting.',
+          cardAiTitle: 'Prompt, image, and knowledge workflows',
+          cardAiCopy: 'Reusable AI workflows for writing, visuals, product planning, research, and personal data sovereignty.',
+          cardCanvasTitle: 'Infinite visual thinking surface',
+          cardCanvasCopy: 'A practical board for notes, product maps, AI pipelines, image references, and service planning.',
+          cardMarketTitle: 'Digital products and consulting',
+          cardMarketCopy: '3DCG assets, visual archives, templates, courses, and advisory work can grow from the same system.',
+          canvasTitle: 'Infinite Canvas',
+          canvasCopy: 'The public page includes a lightweight browser canvas. The advanced local runner stays on this PC and can be launched from H drive.',
+          nodeArchive: 'Source fragments, EX routes, X works, visual memory.',
+          nodeService: 'AI products, consulting, community, local-first workflows.',
+          nodeData: 'GitHub, Docker, PostgreSQL, backups, private workspaces.',
+          runnerCopy: 'The advanced local project remains on your PC. Launch the local runner when you want the full desktop workflow. The public Eliora page links to the lightweight canvas and credits the reference project.',
+          openWebCanvas: 'Open Web Canvas',
+          referenceGitHub: 'Reference GitHub',
+          footer: 'Eliora by Miragea. Local-first, archive-aware, service-ready.',
+        },
+        ja: {
+          brandSub: 'AIサービス層',
+          eyebrow: 'Layer 2 / 本番サービスサイト',
+          title: 'Eliora',
+          lead: 'Elioraは、Infinite Canvas、デジタル商品、コンサルティング、コミュニティのためのローカルファーストAIスタジオです。Mirageaが起点を保存し、Elioraがそれを実用システムへ変えます。',
+          note: 'Elioraは、AI、Infinite Canvas、デジタル商品、コンサルティング、コミュニティを実際に使える道具へ変えるサービス層です。',
+          openCanvas: 'Infinite Canvasを開く',
+          backMiragea: 'Mirageaへ戻る',
+          panelTitle: 'Eliora',
+          panelCopy: 'AI、Canvas、商品、コンサルティング、コミュニティのサービス層。',
+          signalCanvas: 'Infinite Canvas',
+          signalStudio: 'ローカルAIスタジオ',
+          signalProducts: 'デジタル商品',
+          signalConsulting: 'コンサルティング導線',
+          signalOpen: 'open',
+          signalPrivate: 'private',
+          signalReady: 'ready',
+          signalNext: 'next',
+          serviceTitle: 'Service Map',
+          serviceCopy: '一つの入口から、AIツール、ローカルWorkflow、デジタル素材、学習商品、コンサルティングへ展開します。',
+          cardAiTitle: 'プロンプト、画像、知識Workflow',
+          cardAiCopy: '文章、ビジュアル、商品設計、研究、データ主権のための再利用できるAI Workflow。',
+          cardCanvasTitle: '視覚的に考えるInfinite Canvas',
+          cardCanvasCopy: 'メモ、商品マップ、AIパイプライン、画像参照、サービス設計のための実用ボード。',
+          cardMarketTitle: 'デジタル商品とコンサルティング',
+          cardMarketCopy: '3DCG素材、視覚アーカイブ、テンプレート、講座、相談サービスを同じシステムから育てます。',
+          canvasTitle: 'Infinite Canvas',
+          canvasCopy: '公開ページには軽量Web Canvasを置き、本格的なローカル実行環境はこのPC側に残します。',
+          nodeArchive: '断片、EXルート、X作品、視覚記憶。',
+          nodeService: 'AI商品、相談、コミュニティ、ローカルファーストWorkflow。',
+          nodeData: 'GitHub、Docker、PostgreSQL、バックアップ、プライベート作業空間。',
+          runnerCopy: '高度なローカルプロジェクトはPC内に残します。フル機能のデスクトップWorkflowが必要な時にローカル実行します。',
+          openWebCanvas: 'Web Canvasを開く',
+          referenceGitHub: '参考GitHub',
+          footer: 'Eliora by Miragea. Local-first, archive-aware, service-ready.',
+        },
+        zh: {
+          brandSub: 'AI 服务层',
+          eyebrow: 'Layer 2 / 正式服务站点',
+          title: 'Eliora',
+          lead: 'Eliora 是面向 Infinite Canvas、数字商品、咨询与社区的本地优先 AI 工作室。Miragea 保存源头，Eliora 把它转化为可工作的系统。',
+          note: 'Eliora 是把 AI、Infinite Canvas、数字商品、咨询与社区变成实用工具的服务层。',
+          openCanvas: '打开 Infinite Canvas',
+          backMiragea: '返回 Miragea',
+          panelTitle: 'Eliora',
+          panelCopy: 'AI、Canvas、产品、咨询与社区的服务层。',
+          signalCanvas: 'Infinite Canvas',
+          signalStudio: '本地 AI 工作室',
+          signalProducts: '数字商品',
+          signalConsulting: '咨询路线',
+          signalOpen: 'open',
+          signalPrivate: 'private',
+          signalReady: 'ready',
+          signalNext: 'next',
+          serviceTitle: 'Service Map',
+          serviceCopy: '一个入口，连接 AI 工具、本地 Workflow、数字资产、学习产品与咨询路线。',
+          cardAiTitle: '提示词、图像与知识 Workflow',
+          cardAiCopy: '用于写作、视觉、产品规划、研究和个人数据主权的可复用 AI Workflow。',
+          cardCanvasTitle: '视觉化思考的 Infinite Canvas',
+          cardCanvasCopy: '用于笔记、产品地图、AI 管线、图像参考与服务规划的实用画布。',
+          cardMarketTitle: '数字商品与咨询',
+          cardMarketCopy: '3DCG 素材、视觉档案、模板、课程与咨询服务，都可以从同一系统生长出来。',
+          canvasTitle: 'Infinite Canvas',
+          canvasCopy: '公开页面提供轻量 Web Canvas，高级本地运行环境保留在这台 PC 上。',
+          nodeArchive: '源头片段、EX 路线、X 作品、视觉记忆。',
+          nodeService: 'AI 产品、咨询、社区、本地优先 Workflow。',
+          nodeData: 'GitHub、Docker、PostgreSQL、备份、私有工作空间。',
+          runnerCopy: '高级本地项目保留在你的 PC 中。需要完整桌面 Workflow 时，再启动本地运行器。',
+          openWebCanvas: '打开 Web Canvas',
+          referenceGitHub: '参考 GitHub',
+          footer: 'Eliora by Miragea. Local-first, archive-aware, service-ready.',
+        },
+      };
+
+      function setLanguage(lang) {
+        const current = translations[lang] ? lang : 'en';
+        document.documentElement.lang = current === 'zh' ? 'zh' : current === 'ja' ? 'ja' : 'en';
+        localStorage.setItem('eliora-lang', current);
+        document.querySelectorAll('[data-i18n]').forEach((node) => {
+          const key = node.getAttribute('data-i18n');
+          if (translations[current][key]) node.textContent = translations[current][key];
+        });
+        document.querySelectorAll('[data-lang]').forEach((button) => {
+          button.classList.toggle('active', button.dataset.lang === current);
+        });
+      }
+
+      document.querySelectorAll('[data-lang]').forEach((button) => {
+        button.addEventListener('click', () => setLanguage(button.dataset.lang));
+      });
+      setLanguage(localStorage.getItem('eliora-lang') || 'en');
+    </script>
   </body>
 </html>

@@ -3,34 +3,68 @@ import '../styles/global.css';
 import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
-	title: string;
-	lang?: 'en' | 'ja' | 'zh';
+  title: string;
+  lang?: 'en' | 'ja' | 'zh';
 }
+
 const { title, lang = 'en' } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang === 'zh' ? 'zh' : lang === 'ja' ? 'ja' : 'en'}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Miragea's Perception Archive" />
-		<meta name="viewport" content="width=device-width" />
-		<title>{title}</title>
-		<ViewTransitions />
-	</head>
-	<body class="bg-black text-gray-200 antialiased">
-		
-		<!-- === 追加した言語切り替えヘッダー === -->
-		<header class="fixed top-0 right-0 p-6 z-50 flex gap-4 backdrop-blur-md bg-black/30 rounded-bl-2xl border-b border-l border-white/10">
-			<a href="/ja" class:list={['hover:text-white transition font-mono text-sm', lang === 'ja' ? 'text-white font-bold' : 'text-gray-400']}>JP</a>
-			<span class="text-gray-600">/</span>
-			<a href="/en" class:list={['hover:text-white transition font-mono text-sm', lang === 'en' ? 'text-white font-bold' : 'text-gray-400']}>EN</a>
-			<span class="text-gray-600">/</span>
-			<a href="/zh" class:list={['hover:text-white transition font-mono text-sm', lang === 'zh' ? 'text-white font-bold' : 'text-gray-400']}>CN</a>
-		</header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Miragea's Perception Archive" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <ViewTransitions />
+    <style is:global>
+      @keyframes mirageLogoAura {
+        0%, 100% {
+          border-color: rgba(255, 255, 255, .74);
+          box-shadow:
+            0 0 0 1px rgba(255, 255, 255, .28),
+            0 0 12px rgba(255, 255, 255, .34),
+            0 0 34px rgba(255, 255, 255, .16),
+            inset 0 0 18px rgba(255, 255, 255, .05);
+        }
+        50% {
+          border-color: rgba(255, 255, 255, .98);
+          box-shadow:
+            0 0 0 2px rgba(255, 255, 255, .44),
+            0 0 20px rgba(255, 255, 255, .52),
+            0 0 54px rgba(255, 255, 255, .25),
+            inset 0 0 22px rgba(255, 255, 255, .08);
+        }
+      }
 
-		<!-- コンテンツの中身 -->
-		<slot />
-		
-	</body>
+      .mirage-logo-orb {
+        border-color: rgba(255, 255, 255, .8) !important;
+        animation: mirageLogoAura 4.2s ease-in-out infinite;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .mirage-logo-orb {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-black text-gray-200 antialiased">
+    <header class="fixed left-0 top-0 z-50 p-5">
+      <a href="/en/" class="group flex items-center rounded-br-2xl border-b border-r border-white/10 bg-black/30 p-4 backdrop-blur-md transition hover:bg-black/50" aria-label="Miragea home">
+        <img class="mirage-logo-orb h-16 w-16 rounded-full border bg-black/75 object-contain p-1.5 ring-1 ring-white/10 transition" src="/assets/brand/miragea-logo.png" alt="Miragea logo" />
+      </a>
+    </header>
+
+    <header class="fixed right-0 top-0 z-50 flex gap-4 rounded-bl-2xl border-b border-l border-white/10 bg-black/30 p-6 backdrop-blur-md">
+      <a href="/en" class:list={['font-mono text-sm transition hover:text-white', lang === 'en' ? 'font-bold text-white' : 'text-gray-400']}>EN</a>
+      <span class="text-gray-600">/</span>
+      <a href="/ja" class:list={['font-mono text-sm transition hover:text-white', lang === 'ja' ? 'font-bold text-white' : 'text-gray-400']}>JP</a>
+      <span class="text-gray-600">/</span>
+      <a href="/zh" class:list={['font-mono text-sm transition hover:text-white', lang === 'zh' ? 'font-bold text-white' : 'text-gray-400']}>ZH</a>
+    </header>
+
+    <slot />
+  </body>
 </html>
