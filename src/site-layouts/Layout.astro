@@ -21,25 +21,20 @@ const { title, lang = 'en' } = Astro.props;
     <style is:global>
       @keyframes mirageLogoAura {
         0%, 100% {
-          border-color: rgba(255, 255, 255, .74);
-          box-shadow:
-            0 0 0 1px rgba(255, 255, 255, .28),
-            0 0 12px rgba(255, 255, 255, .34),
-            0 0 34px rgba(255, 255, 255, .16),
-            inset 0 0 18px rgba(255, 255, 255, .05);
+          filter:
+            drop-shadow(0 0 10px rgba(255, 255, 255, .42))
+            drop-shadow(0 0 34px rgba(255, 255, 255, .18));
+          transform: translateZ(0) scale(1);
         }
         50% {
-          border-color: rgba(255, 255, 255, .98);
-          box-shadow:
-            0 0 0 2px rgba(255, 255, 255, .44),
-            0 0 20px rgba(255, 255, 255, .52),
-            0 0 54px rgba(255, 255, 255, .25),
-            inset 0 0 22px rgba(255, 255, 255, .08);
+          filter:
+            drop-shadow(0 0 16px rgba(255, 255, 255, .68))
+            drop-shadow(0 0 58px rgba(255, 255, 255, .32));
+          transform: translateZ(0) scale(1.025);
         }
       }
 
       .mirage-logo-orb {
-        border-color: rgba(255, 255, 255, .8) !important;
         animation: mirageLogoAura 4.2s ease-in-out infinite;
       }
 
@@ -53,7 +48,7 @@ const { title, lang = 'en' } = Astro.props;
   <body class="bg-black text-gray-200 antialiased">
     <header class="fixed left-0 top-0 z-50 p-5">
       <a href="/en/" class="group flex items-center rounded-br-2xl border-b border-r border-white/10 bg-black/30 p-4 backdrop-blur-md transition hover:bg-black/50" aria-label="Miragea home">
-        <img class="mirage-logo-orb h-16 w-16 rounded-full border bg-black/75 object-contain p-1.5 ring-1 ring-white/10 transition" src="/assets/brand/miragea-logo.png" alt="Miragea logo" />
+        <img class="mirage-logo-orb h-20 w-20 object-contain transition" src="/assets/brand/miragea-logo-orb.png" alt="Miragea logo" />
       </a>
     </header>
 
