@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Eliora | Local-First AI Studio</title>
     <meta name="description" content="Eliora is Miragea's production layer for AI services, Infinite Canvas, digital products, consulting, and community." />
+    <link rel="stylesheet" href="/assets/brand/brand-glow.css" />
     <style>
       :root {
         color-scheme: dark;
@@ -16,22 +17,6 @@
         --rose: #f2799a;
         --amber: #f5b864;
         --cyan: #7bd8e8;
-      }
-      @keyframes elioraLogoAura {
-        0%, 100% {
-          filter:
-            drop-shadow(0 0 5px rgba(255,255,255,.72))
-            drop-shadow(0 0 18px rgba(255,255,255,.34))
-            drop-shadow(0 0 32px rgba(255,255,255,.14));
-          transform: translateZ(0) scale(1);
-        }
-        50% {
-          filter:
-            drop-shadow(0 0 8px rgba(255,255,255,.9))
-            drop-shadow(0 0 26px rgba(255,255,255,.46))
-            drop-shadow(0 0 46px rgba(245,184,100,.2));
-          transform: translateZ(0) scale(1.025);
-        }
       }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; }
@@ -63,12 +48,6 @@
         backdrop-filter: blur(18px);
       }
       .brand { display: flex; align-items: center; gap: 13px; min-width: 0; }
-      .brand img {
-        width: 82px;
-        height: 82px;
-        object-fit: contain;
-        animation: elioraLogoAura 4.2s ease-in-out infinite;
-      }
       .brand strong { display: block; font-size: 20px; letter-spacing: 0; }
       .brand span { display: block; margin-top: 2px; color: var(--muted); font-size: 12px; }
       .nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
@@ -155,13 +134,14 @@
       }
       .eliora-round-logo {
         position: absolute;
-        left: 8px;
-        bottom: 2px;
+        left: 12px;
+        bottom: 6px;
         z-index: 1;
-        width: 88px;
-        height: 88px;
-        object-fit: contain;
-        animation: elioraLogoAura 4.2s ease-in-out infinite;
+        width: 64px;
+        height: 64px;
+        padding: 0;
+        --brand-logo-scale: 1.00;
+        --brand-glow-inset: -14%;
       }
       .eliora-panel-title strong { display: block; font-size: 30px; font-weight: 300; }
       .eliora-panel-title span { display: block; margin-top: 6px; color: var(--muted); line-height: 1.5; }
@@ -231,6 +211,13 @@
         padding: 2px 6px;
       }
       footer { padding: 50px 0 70px; color: var(--muted); border-top: 1px solid var(--line); }
+      .brand .brand-moon-orb {
+        width: 68px;
+        height: 68px;
+        padding: 0;
+        --brand-logo-scale: 1.00;
+        --brand-glow-inset: -14%;
+      }
       @media (max-width: 860px) {
         .topbar { align-items: flex-start; flex-direction: column; }
         .hero { grid-template-columns: 1fr; min-height: auto; }
@@ -239,17 +226,14 @@
         .section-head { align-items: flex-start; flex-direction: column; }
       }
       @media (prefers-reduced-motion: reduce) {
-        .brand img,
-        .eliora-round-logo {
-          animation: none;
-        }
+        .brand-moon-orb > .moon-glow { animation: none; }
       }
     </style>
   </head>
   <body>
     <header class="wrap topbar">
       <a class="brand" href="/eliora/index.html">
-        <img src="/assets/brand/eliora-logo-orb.png" alt="Eliora logo" />
+        <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--strong"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/eliora-logo-transparent.png" alt="Eliora logo" /></span>
         <span>
           <strong>Eliora</strong>
           <span data-i18n="brandSub">AI Service Layer</span>
@@ -274,7 +258,7 @@
           <div class="eyebrow" data-i18n="eyebrow">Layer 2 / Production Site</div>
           <h1 data-i18n="title">Eliora</h1>
           <p class="lead" data-i18n="lead">
-            A local-first AI studio for Infinite Canvas, digital products, consulting, and community. Miragea preserves the origin; Eliora turns it into working systems.
+            A local-first AI service layer for Infinite Canvas, digital products, consulting, and community. Miragea preserves the origin; Eliora turns it into working systems.
           </p>
           <p class="lang-note" data-i18n="note">Eliora is the service layer where AI, Infinite Canvas, digital products, consulting, and community become practical tools.</p>
           <div class="actions">
@@ -286,7 +270,7 @@
           <div class="eliora-panel">
             <div class="eliora-visual">
               <img src="/eliora/assets/images/miragea.png" alt="Eliora fantasy visual" />
-              <img class="eliora-round-logo" src="/assets/brand/eliora-logo-orb.png" alt="Eliora phoenix logo" />
+              <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--strong eliora-round-logo" aria-label="Eliora phoenix logo"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/eliora-logo-transparent.png" alt="Eliora phoenix logo" /></span>
             </div>
             <div class="eliora-panel-title">
               <strong data-i18n="panelTitle">Eliora</strong>
@@ -362,7 +346,7 @@
           brandSub: 'AI Service Layer',
           eyebrow: 'Layer 2 / Production Site',
           title: 'Eliora',
-          lead: 'A local-first AI studio for Infinite Canvas, digital products, consulting, and community. Miragea preserves the origin; Eliora turns it into working systems.',
+          lead: 'A local-first AI service layer for Infinite Canvas, digital products, consulting, and community. Miragea preserves the origin; Eliora turns it into working systems.',
           note: 'Eliora is the service layer where AI, Infinite Canvas, digital products, consulting, and community become practical tools.',
           openCanvas: 'Open Infinite Canvas',
           backMiragea: 'Back to Miragea',

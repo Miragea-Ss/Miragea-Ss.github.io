@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Eliora Infinite Canvas</title>
-    <meta name="description" content="A local-first infinite canvas demo for Eliora product kits, Miragea, llama.cpp, and ComfyUI workflows." />
+    <meta name="description" content="A local-first infinite canvas for Eliora, Miragea, llama.cpp, and ComfyUI workflows." />
+    <link rel="stylesheet" href="/assets/brand/brand-glow.css" />
     <style>
       :root {
         color-scheme: dark;
@@ -19,22 +20,6 @@
         --cyan: #7bd8e8;
         --amber: #f5b864;
         --green: #9ed79d;
-      }
-      @keyframes operatorLogoAura {
-        0%, 100% {
-          filter:
-            drop-shadow(0 0 4px rgba(255,255,255,.68))
-            drop-shadow(0 0 14px rgba(255,255,255,.3))
-            drop-shadow(0 0 24px rgba(255,255,255,.12));
-          transform: translateZ(0) scale(1);
-        }
-        50% {
-          filter:
-            drop-shadow(0 0 7px rgba(255,255,255,.86))
-            drop-shadow(0 0 21px rgba(255,255,255,.42))
-            drop-shadow(0 0 36px rgba(242,121,154,.18));
-          transform: translateZ(0) scale(1.02);
-        }
       }
       * { box-sizing: border-box; }
       html, body { height: 100%; margin: 0; overflow: hidden; }
@@ -90,7 +75,7 @@
         backdrop-filter: blur(18px);
       }
       .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
-      .brand img { width: 42px; height: 42px; object-fit: contain; animation: operatorLogoAura 4.4s ease-in-out infinite; }
+      .brand .brand-moon-orb { width: 56px; height: 56px; padding: 0; --brand-logo-scale: 1; --brand-glow-inset: -16%; --brand-glow-opacity: 1; }
       .brand strong { display: block; font-size: 16px; white-space: nowrap; }
       .brand span span { display: block; color: var(--muted); font-size: 12px; white-space: nowrap; }
       .tools { display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
@@ -257,11 +242,9 @@
         .stage-wrap { min-height: 46vh; }
         .palette { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       }
-      @media (max-width: 900px) {
+      @media (max-width: 760px) {
         .bar { grid-template-columns: 1fr; align-items: stretch; }
         .tools { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
-      }
-      @media (max-width: 760px) {
         .node, .node[data-kind="Image"] { width: 248px; }
         .minimap { display: none; }
       }
@@ -271,8 +254,8 @@
     <div class="app">
       <header class="bar">
         <a class="brand" href="./index.html">
-          <img src="../assets/brand/eliora-logo-orb.png" alt="Eliora logo" />
-          <span><strong>Eliora Infinite Canvas</strong><span>local AI demo + product kit showroom</span></span>
+          <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--soft" aria-label="Eliora logo"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/eliora-logo-transparent.png" alt="Eliora logo" /></span>
+          <span><strong>Eliora Infinite Canvas</strong><span>llama.cpp + ComfyUI workspace</span></span>
         </a>
         <div class="tools" aria-label="Canvas tools">
           <button class="primary" id="addNote" title="Add note">Add</button>
@@ -288,7 +271,6 @@
           <button id="zoomIn" class="icon" title="Zoom in">+</button>
           <button id="exportJson" title="Export JSON">Export</button>
           <button id="importJson" title="Import JSON">Import</button>
-          <a class="tool-link" href="mailto:hello@eliora.studio?subject=Eliora%20Local%20AI%20Kit%20Request" title="Request a local Eliora kit">Request Kit</a>
           <a class="tool-link" href="../en/" title="Back to Miragea">Miragea</a>
         </div>
         <input id="search" type="search" placeholder="Search canvas" autocomplete="off" />
@@ -521,8 +503,8 @@
 
       const seedNodes = [
         { x: -520, y: -190, kind: 'Archive', title: 'Miragea Archive', text: 'EX routes, X works, perception records, visual language, HSP nervous-system notes.', tagText: 'Miragea,Origin', color: 'rose', url: '../en/' },
-        { x: -120, y: -80, kind: 'Workflow', title: 'Local AI Kit Flow', text: 'Collect signal -> structure prompt -> run local workflow -> review asset -> package kit -> support user.', tagText: 'AI,Local Kit', color: 'cyan' },
-        { x: 300, y: -170, kind: 'Product', title: 'Local Product Kit', text: '3DCG assets, prompt packs, templates, local workflow kits, courses, and setup consulting.', tagText: 'Market,Local', color: 'amber' },
+        { x: -120, y: -80, kind: 'Workflow', title: 'AI Service Flow', text: 'Collect signal -> structure prompt -> generate asset -> review -> publish -> archive.', tagText: 'AI,Service', color: 'cyan' },
+        { x: 300, y: -170, kind: 'Product', title: 'Digital Product', text: '3DCG assets, prompt packs, templates, courses, consulting routes.', tagText: 'Market', color: 'amber' },
         { x: -320, y: 190, kind: 'Prompt', title: 'llama.cpp Prompt Memory', text: 'Keep reusable roles, constraints, evaluation notes, and local model style rules here.', tagText: 'llama.cpp,Prompt', color: 'green' },
         { x: 150, y: 210, kind: 'Image', title: 'Visual Reference', text: 'Use this as a visual source card for Eliora or Miragea.', tagText: 'Visual', color: 'rose', url: './assets/images/miragea.png' },
       ];

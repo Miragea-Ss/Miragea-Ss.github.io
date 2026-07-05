@@ -1,0 +1,93 @@
+:root {
+  --brand-moon-white: rgba(255, 255, 248, 0.95);
+  --brand-moon-cream: rgba(255, 247, 219, 0.62);
+  --brand-moon-gold: rgba(247, 199, 72, 0.34);
+  --brand-moon-soft: rgba(255, 255, 248, 0.18);
+}
+
+.brand-moon-orb {
+  --brand-logo-scale: 1.00;
+  --brand-glow-inset: -16%;
+  --brand-glow-blur: 10px;
+  --brand-glow-opacity: 0.96;
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  isolation: isolate;
+  border-radius: 999px;
+  overflow: visible;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  flex: 0 0 auto;
+}
+
+.brand-moon-orb > .moon-glow {
+  position: absolute;
+  inset: var(--brand-glow-inset);
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: var(--brand-glow-opacity);
+  filter: blur(var(--brand-glow-blur));
+  background:
+    radial-gradient(circle,
+      rgba(255,255,248,0.50) 0%,
+      rgba(255,255,248,0.42) 42%,
+      rgba(255,255,250,1) 62%,
+      rgba(255,247,219,0.62) 78%,
+      rgba(255,255,255,0.00) 100%);
+  box-shadow:
+    0 0 18px rgba(255,255,250,0.72),
+    0 0 48px rgba(255,247,219,0.58),
+    0 0 88px rgba(255,255,248,0.24);
+  will-change: transform, opacity, filter;
+}
+
+.brand-moon-orb > .brand-moon-logo {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: calc(100% * var(--brand-logo-scale));
+  height: calc(100% * var(--brand-logo-scale));
+  object-fit: contain;
+  border-radius: inherit;
+  background: transparent !important;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 248, 0.16));
+}
+
+.brand-moon-orb--miragea > .moon-glow {
+  animation: brandMoonBreathMiragea 6.6s ease-in-out infinite;
+}
+
+.brand-moon-orb--eliora > .moon-glow {
+  animation: brandMoonBreathEliora 6.2s ease-in-out infinite;
+}
+
+.brand-moon-orb--strong {
+  --brand-logo-scale: 1.00;
+  --brand-glow-inset: -16%;
+  --brand-glow-blur: 10px;
+  --brand-glow-opacity: 1;
+}
+
+.brand-moon-orb--soft {
+  --brand-logo-scale: 1.00;
+  --brand-glow-inset: -14%;
+  --brand-glow-blur: 9px;
+  --brand-glow-opacity: 0.96;
+}
+
+@keyframes brandMoonBreathMiragea {
+  0%, 100% { transform: scale(0.985); opacity: calc(var(--brand-glow-opacity) * 0.72); filter: blur(calc(var(--brand-glow-blur) * 0.9)); }
+  50% { transform: scale(1.065); opacity: var(--brand-glow-opacity); filter: blur(calc(var(--brand-glow-blur) * 1.34)); }
+}
+
+@keyframes brandMoonBreathEliora {
+  0%, 100% { transform: scale(0.985); opacity: calc(var(--brand-glow-opacity) * 0.70); filter: blur(calc(var(--brand-glow-blur) * 0.9)); }
+  50% { transform: scale(1.055); opacity: var(--brand-glow-opacity); filter: blur(calc(var(--brand-glow-blur) * 1.28)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-moon-orb > .moon-glow { animation: none; }
+}

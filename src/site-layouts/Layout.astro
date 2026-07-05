@@ -16,39 +16,14 @@ const { title, lang = 'en' } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Miragea's Perception Archive" />
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/assets/brand/brand-glow.css" />
     <title>{title}</title>
     <ViewTransitions />
-    <style is:global>
-      @keyframes mirageLogoAura {
-        0%, 100% {
-          filter:
-            drop-shadow(0 0 10px rgba(255, 255, 255, .42))
-            drop-shadow(0 0 34px rgba(255, 255, 255, .18));
-          transform: translateZ(0) scale(1);
-        }
-        50% {
-          filter:
-            drop-shadow(0 0 16px rgba(255, 255, 255, .68))
-            drop-shadow(0 0 58px rgba(255, 255, 255, .32));
-          transform: translateZ(0) scale(1.025);
-        }
-      }
-
-      .mirage-logo-orb {
-        animation: mirageLogoAura 4.2s ease-in-out infinite;
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .mirage-logo-orb {
-          animation: none;
-        }
-      }
-    </style>
-  </head>
+    </head>
   <body class="bg-black text-gray-200 antialiased">
     <header class="fixed left-0 top-0 z-50 p-5">
-      <a href="/en/" class="group flex items-center rounded-br-2xl border-b border-r border-white/10 bg-black/30 p-4 backdrop-blur-md transition hover:bg-black/50" aria-label="Miragea home">
-        <img class="mirage-logo-orb h-20 w-20 object-contain transition" src="/assets/brand/miragea-logo-orb.png" alt="Miragea logo" />
+      <a href="/en/" class="group flex items-center p-0 transition" aria-label="Miragea home">
+        <span class="brand-moon-orb brand-moon-orb--miragea brand-moon-orb--strong mirage-logo-orb h-16 w-16 transition [--brand-logo-scale:1] [--brand-glow-inset:-16%]" aria-label="Miragea logo"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/miragea-logo-transparent.png" alt="Miragea logo" /></span>
       </a>
     </header>
 
