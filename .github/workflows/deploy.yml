@@ -69,7 +69,7 @@ jobs:
 
       - name: Verify contact form is wired
         run: |
-          if grep -q 'formsubmit.co' dist/eliora/atelier/ja/contact/index.html; then
+          if grep -q 'formsubmit.co/' dist/eliora/atelier/ja/contact/index.html; then
             echo "OK: FormSubmit endpoint present in built contact page"
           else
             echo "::error::Built contact page has no FormSubmit endpoint. Set secrets.CONTACT_INBOX (or vars.CONTACT_INBOX) and redeploy."

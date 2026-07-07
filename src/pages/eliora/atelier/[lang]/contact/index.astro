@@ -10,9 +10,8 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: AtelierLang };
 const copy = contactCopy[lang];
-const sent = Astro.url.searchParams.get('sent') === '1';
 ---
 
 <AtelierLayout title={copy.meta.title} description={copy.meta.description} lang={lang}>
-  <AtelierContact lang={lang} copy={copy} sent={sent} />
+  <AtelierContact lang={lang} copy={copy} />
 </AtelierLayout>

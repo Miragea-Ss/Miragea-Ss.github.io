@@ -23,9 +23,9 @@ export function getContactEndpoint(): string {
   return '';
 }
 
-export function contactFormAjaxUrl(): string {
+export function contactFormPostUrl(): string {
   const endpoint = getContactEndpoint();
-  return endpoint ? `https://formsubmit.co/ajax/${endpoint}` : '';
+  return endpoint ? `https://formsubmit.co/${endpoint}` : '';
 }
 
 export function isContactFormReady(): boolean {
