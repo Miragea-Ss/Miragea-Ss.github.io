@@ -3,7 +3,7 @@ import type { AtelierLang } from '../../data/atelier-copy';
 import { atelierHomeCopy } from '../../data/atelier-copy';
 import type { ContactCopy } from '../../data/contact-copy';
 import {
-  contactFormAction,
+  contactFormAjaxUrl,
   contactFormNext,
   contactFormSubject,
   atelierContactPath,
@@ -19,6 +19,9 @@ interface Props {
 
 const { lang, copy, sent } = Astro.props;
 const formReady = isContactFormReady();
+const ajaxUrl = contactFormAjaxUrl();
+const nextUrl = contactFormNext(lang);
+const subject = contactFormSubject(lang);
 const homeCopy = atelierHomeCopy[lang];
 const homePath = `/eliora/atelier/${lang}/`;
 const nav = [
@@ -63,108 +66,159 @@ const nav = [
             !formReady && copy.formNotReady ? (
               <p class="contact-note contact-form-pending">{copy.formNotReady}</p>
             ) : (
-          <form
-            class="contact-form"
-            action={contactFormAction()}
-            method="POST"
-            accept-charset="UTF-8"
-          >
-            <input type="hidden" name="_subject" value={contactFormSubject(lang)} />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_autoresponse" value={copy.autoresponse} />
-            <input type="hidden" name="_next" value={contactFormNext(lang)} />
-            <input type="hidden" name="locale" value={lang} />
-            <input
-              type="text"
-              name="_honey"
-              class="contact-honey"
-              tabindex="-1"
-              autocomplete="off"
-              aria-hidden="true"
-            />
+              <>
+                <form class="contact-form" id="contact-form" method="post" accept-charset="UTF-8">
+                  <input type="hidden" name="_subject" value={subject} />
+                  <input type="hidden" name="_template" value="table" />
+                  <input type="hidden" name="_autoresponse" value={copy.autoresponse} />
+                  <input type="hidden" name="locale" value={lang} />
+                  <input
+                    type="text"
+                    name="_honey"
+                    class="contact-honey"
+                    tabindex="-1"
+                    autocomplete="off"
+                    aria-hidden="true"
+                  />
 
-            <div class="form-row">
-              <label for="contact-name">
-                {copy.fields.name}
-                <span class="form-required">{copy.fields.required}</span>
-              </label>
-              <input
-                id="contact-name"
-                type="text"
-                name="name"
-                required
-                minlength="1"
-                maxlength="120"
-                placeholder={copy.fields.namePlaceholder}
-                autocomplete="name"
-              />
-            </div>
+                  <div class="form-row">
+                    <label for="contact-name">
+                      {copy.fields.name}
+                      <span class="form-required">{copy.fields.required}</span>
+                    </label>
+                    <input
+                      id="contact-name"
+                      type="text"
+                      name="name"
+                      required
+                      minlength="1"
+                      maxlength="120"
+                      placeholder={copy.fields.namePlaceholder}
+                      autocomplete="name"
+                    />
+                  </div>
 
-            <div class="form-row">
-              <label for="contact-email">
-                {copy.fields.email}
-                <span class="form-required">{copy.fields.required}</span>
-              </label>
-              <input
-                id="contact-email"
-                type="email"
-                name="email"
-                required
-                maxlength="254"
-                placeholder={copy.fields.emailPlaceholder}
-                autocomplete="email"
-              />
-            </div>
+                  <div class="form-row">
+                    <label for="contact-email">
+                      {copy.fields.email}
+                      <span class="form-required">{copy.fields.required}</span>
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      name="email"
+                      required
+                      maxlength="254"
+                      placeholder={copy.fields.emailPlaceholder}
+                      autocomplete="email"
+                    />
+                  </div>
 
-            <div class="form-row">
-              <label for="contact-company">{copy.fields.company}</label>
-              <input
-                id="contact-company"
-                type="text"
-                name="company"
-                maxlength="160"
-                placeholder={copy.fields.companyPlaceholder}
-                autocomplete="organization"
-              />
-            </div>
+                  <div class="form-row">
+                    <label for="contact-company">{copy.fields.company}</label>
+                    <input
+                      id="contact-company"
+                      type="text"
+                      name="company"
+                      maxlength="160"
+                      placeholder={copy.fields.companyPlaceholder}
+                      autocomplete="organization"
+                    />
+                  </div>
 
-            <div class="form-row">
-              <label for="contact-type">
-                {copy.fields.inquiryType}
-                <span class="form-required">{copy.fields.required}</span>
-              </label>
-              <select id="contact-type" name="inquiry_type" required>
-                {
-                  copy.inquiryTypes.map((opt) => (
-                    <option value={opt.value}>{opt.label}</option>
-                  ))
-                }
-              </select>
-            </div>
+                  <div class="form-row">
+                    <label for="contact-type">
+                      {copy.fields.inquiryType}
+                      <span class="form-required">{copy.fields.required}</span>
+                    </label>
+                    <select id="contact-type" name="inquiry_type" required>
+                      {
+                        copy.inquiryTypes.map((opt) => (
+                          <option value={opt.value}>{opt.label}</option>
+                        ))
+                      }
+                    </select>
+                  </div>
 
-            <div class="form-row">
-              <label for="contact-message">
-                {copy.fields.message}
-                <span class="form-required">{copy.fields.required}</span>
-              </label>
-              <textarea
-                id="contact-message"
-                name="message"
-                required
-                minlength="20"
-                maxlength="4000"
-                rows="8"
-                placeholder={copy.fields.messagePlaceholder}
-              />
-            </div>
+                  <div class="form-row">
+                    <label for="contact-message">
+                      {copy.fields.message}
+                      <span class="form-required">{copy.fields.required}</span>
+                    </label>
+                    <textarea
+                      id="contact-message"
+                      name="message"
+                      required
+                      minlength="20"
+                      maxlength="4000"
+                      rows="8"
+                      placeholder={copy.fields.messagePlaceholder}
+                    />
+                  </div>
 
-            <p class="form-privacy">{copy.privacy}</p>
-            <p class="form-autoreply-hint">{copy.formAutoreplyHint}</p>
+                  <p class="form-privacy">{copy.privacy}</p>
+                  <p class="form-autoreply-hint">{copy.formAutoreplyHint}</p>
 
-            <button type="submit" class="btn btn-primary contact-submit">
-              {copy.fields.submit}
-            </button>
-          </form>
+                  <button type="submit" class="btn btn-primary contact-submit" data-submit-label={copy.fields.submit}>
+                    {copy.fields.submit}
+                  </button>
+                </form>
+                <script
+                  is:inline
+                  define:vars={{
+                    ajaxUrl,
+                    nextUrl,
+                    submitLabel: copy.fields.submit,
+                    submittingLabel: copy.fields.submitting,
+                    submitError: copy.fields.submitError,
+                    networkError: copy.fields.networkError,
+                  }}
+                >
+                  (function () {
+                    var form = document.getElementById('contact-form');
+                    if (!form || !ajaxUrl) return;
+
+                    form.addEventListener('submit', function (e) {
+                      e.preventDefault();
+                      if (!form.reportValidity()) return;
+
+                      var btn = form.querySelector('button[type="submit"]');
+                      var honey = form.querySelector('input[name="_honey"]');
+                      if (honey && honey.value) return;
+
+                      if (btn) {
+                        btn.disabled = true;
+                        btn.textContent = submittingLabel;
+                      }
+
+                      var payload = {};
+                      new FormData(form).forEach(function (value, key) {
+                        payload[key] = value;
+                      });
+
+                      fetch(ajaxUrl, {
+                        method: 'POST',
+                        headers: {
+                          'Content-Type': 'application/json',
+                          Accept: 'application/json',
+                        },
+                        body: JSON.stringify(payload),
+                      })
+                        .then(function (res) {
+                          if (!res.ok) throw new Error('submit failed');
+                          window.location.href = nextUrl;
+                        })
+                        .catch(function () {
+                          alert(networkError + '\n' + submitError);
+                          if (btn) {
+                            btn.disabled = false;
+                            btn.textContent = submitLabel;
+                          }
+                        });
+                    });
+                  })();
+                </script>
+              </>
             )
           }
         </section>

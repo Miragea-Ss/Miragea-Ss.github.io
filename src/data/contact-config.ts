@@ -17,14 +17,19 @@ export function atelierContactPath(lang: AtelierLang): string {
   return `/eliora/atelier/${lang}/contact/`;
 }
 
-export function contactFormAction(): string {
-  if (FORM_SUBMIT_TOKEN) return `https://formsubmit.co/${FORM_SUBMIT_TOKEN}`;
-  if (CONTACT_INBOX.includes('@')) return `https://formsubmit.co/${CONTACT_INBOX}`;
+export function getContactEndpoint(): string {
+  if (FORM_SUBMIT_TOKEN) return FORM_SUBMIT_TOKEN;
+  if (CONTACT_INBOX.includes('@')) return CONTACT_INBOX;
   return '';
 }
 
+export function contactFormAjaxUrl(): string {
+  const endpoint = getContactEndpoint();
+  return endpoint ? `https://formsubmit.co/ajax/${endpoint}` : '';
+}
+
 export function isContactFormReady(): boolean {
-  return FORM_SUBMIT_TOKEN.length > 0 || CONTACT_INBOX.includes('@');
+  return getContactEndpoint().length > 0;
 }
 
 export function contactFormNext(lang: AtelierLang): string {

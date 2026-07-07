@@ -24,6 +24,9 @@ export interface ContactCopy {
     message: string;
     messagePlaceholder: string;
     submit: string;
+    submitting: string;
+    submitError: string;
+    networkError: string;
     required: string;
   };
   inquiryTypes: { value: string; label: string }[];
@@ -69,6 +72,9 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       messagePlaceholder:
         'Goal, timeline, budget range, tech stack, deliverables. The more concrete, the faster we can scope.',
       submit: 'Send inquiry',
+      submitting: 'Sending…',
+      submitError: 'Submission failed. Please try again in a moment.',
+      networkError: 'Network error. Check your connection and try again.',
       required: 'Required',
     },
     inquiryTypes: [
@@ -120,6 +126,9 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       messagePlaceholder:
         '目的、希望納期、予算感、技術環境、成果物のイメージを具体的にご記入ください。',
       submit: '送信する',
+      submitting: '送信中…',
+      submitError: '送信に失敗しました。しばらくして再度お試しください。',
+      networkError: 'ネットワークエラーです。接続を確認して再度お試しください。',
       required: '必須',
     },
     inquiryTypes: [
@@ -167,6 +176,9 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       message: '需求详情',
       messagePlaceholder: '目标、时间线、预算范围、技术栈、交付物 — 越具体越容易评估。',
       submit: '提交咨询',
+      submitting: '提交中…',
+      submitError: '提交失败，请稍后再试。',
+      networkError: '网络错误，请检查连接后重试。',
       required: '必填',
     },
     inquiryTypes: [
