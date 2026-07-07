@@ -31,7 +31,8 @@ jobs:
 
       - name: Build
         env:
-          PUBLIC_CONTACT_INBOX: ${{ vars.CONTACT_INBOX }}
+          PUBLIC_FORM_SUBMIT_TOKEN: ${{ secrets.FORM_SUBMIT_TOKEN }}
+          PUBLIC_CONTACT_INBOX: ${{ secrets.CONTACT_INBOX }}
         run: npm run build
 
       - name: Setup Pages

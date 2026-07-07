@@ -1,12 +1,15 @@
 import type { AtelierLang } from './atelier-copy';
 
 /**
- * 受信メール（FormSubmit 用・サイトには表示しない）
- * GitHub → Settings → Secrets and variables → Actions → Variables
- *   名前: CONTACT_INBOX  値: 実在するメールアドレス
- * 初回送信時に FormSubmit から確認メールが届く → リンクで有効化
+ * FormSubmit 受信設定（いずれもサイトUIには表示しない）
+ *
+ * 推奨: GitHub Actions Secret `FORM_SUBMIT_TOKEN`
+ *   FormSubmit 有効化後に届くランダム文字列（メールアドレスをHTMLに出さない）
+ *
+ * 初回のみ: Secret `CONTACT_INBOX` に実メールを入れて有効化 → その後 TOKEN に切替
  */
-export const CONTACT_EMAIL = import.meta.env.PUBLIC_CONTACT_INBOX ?? '';
+const FORM_SUBMIT_TOKEN = import.meta.env.PUBLIC_FORM_SUBMIT_TOKEN ?? '';
+const CONTACT_INBOX = import.meta.env.PUBLIC_CONTACT_INBOX ?? '';
 
 export const CONTACT_SITE = 'https://miragea-ss.github.io';
 
@@ -15,12 +18,13 @@ export function atelierContactPath(lang: AtelierLang): string {
 }
 
 export function contactFormAction(): string {
-  if (!CONTACT_EMAIL) return '';
-  return `https://formsubmit.co/${CONTACT_EMAIL}`;
+  if (FORM_SUBMIT_TOKEN) return `https://formsubmit.co/${FORM_SUBMIT_TOKEN}`;
+  if (CONTACT_INBOX.includes('@')) return `https://formsubmit.co/${CONTACT_INBOX}`;
+  return '';
 }
 
 export function isContactFormReady(): boolean {
-  return CONTACT_EMAIL.length > 0 && CONTACT_EMAIL.includes('@');
+  return FORM_SUBMIT_TOKEN.length > 0 || CONTACT_INBOX.includes('@');
 }
 
 export function contactFormNext(lang: AtelierLang): string {
