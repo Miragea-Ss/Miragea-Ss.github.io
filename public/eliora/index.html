@@ -254,6 +254,15 @@
         padding: 2px 6px;
       }
       footer { padding: 50px 0 70px; color: var(--muted); border-top: 1px solid var(--line); }
+      .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+      .origin-whisper {
+        color: var(--muted);
+        opacity: 0.32;
+        font-size: 11px;
+        letter-spacing: 0.24em;
+        transition: opacity 0.2s ease;
+      }
+      .origin-whisper:hover { opacity: 0.72; }
       .brand .brand-moon-orb {
         width: 68px;
         height: 68px;
@@ -417,7 +426,10 @@
     </main>
 
     <footer>
-      <div class="wrap" data-i18n="footer">Eliora by Miragea. Local-first, archive-aware, service-ready.</div>
+      <div class="wrap footer-inner">
+        <div data-i18n="footer">Eliora by Miragea. Local-first, archive-aware, service-ready.</div>
+        <a href="/eliora/perception.html" class="origin-whisper" title="Turning Perception into Creation" aria-label="Eliora perception origin">···</a>
+      </div>
     </footer>
 
     <script>

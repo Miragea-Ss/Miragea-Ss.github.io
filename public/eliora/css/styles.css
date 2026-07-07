@@ -164,6 +164,19 @@ ul {
   text-shadow: 0 0 18px var(--rose-glow);
 }
 
+.eco-studio-link,
+.footer-studio-link {
+  color: var(--text-muted);
+  opacity: 0.55;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.eco-studio-link:hover,
+.footer-studio-link:hover {
+  opacity: 1;
+  color: var(--text-primary);
+}
+
 /* Header */
 .site-header {
   position: sticky;

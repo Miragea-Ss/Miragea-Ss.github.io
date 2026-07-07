@@ -5,7 +5,8 @@ EX_Her / Miragea — HSP perception, art × words, AI × cosmos × fantasy, musi
 
 ## Site layers (https://miragea-ss.github.io)
 - /en/ /ja/ /zh/ — Layer 1: Perception archive, EX system (8 routes), perception records
-- /eliora/index.html — Layer 2: Eliora local-first AI studio, Infinite Canvas, service map
+- /eliora/index.html — Layer 2: Eliora enterprise AI workflow studio, Infinite Canvas, service map
+- /eliora/perception.html — Layer 2 origin: Turning Perception into Creation (personal palette, EX System prose; discreet entry from studio footer)
 - /eliora/atelier/en/ /ja/ /zh/ — Layer 3: Cosmic Atelier (tri-regional editorial products, not translations)
 - /[lang]/ex/[slug]/ — EX routes built from public X fragments
 - /eliora/infinite-canvas.html — Miragea · Eliora web canvas (in development; board works in-browser; local AI on PC)

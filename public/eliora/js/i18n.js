@@ -7,9 +7,9 @@
   const SUPPORTED = ["en", "ja", "zh"];
 
   const MIRAGEA_PATHS = {
-    en: "https://miragea-ss.github.io/en/",
-    ja: "https://miragea-ss.github.io/ja/",
-    zh: "https://miragea-ss.github.io/zh/",
+    en: "/en/",
+    ja: "/ja/",
+    zh: "/zh/",
   };
 
   function getLangFromUrl() {
@@ -28,12 +28,20 @@
     });
   }
 
+  function updateContactLinks(lang) {
+    const contactUrl = `/eliora/atelier/${lang}/contact/`;
+    document.querySelectorAll("[data-contact-link]").forEach((el) => {
+      el.setAttribute("href", contactUrl);
+    });
+  }
+
   function setLang(lang) {
     if (!SUPPORTED.includes(lang)) lang = DEFAULT_LANG;
 
     document.documentElement.lang = lang;
     localStorage.setItem(STORAGE_KEY, lang);
     updateMirageaLinks(lang);
+    updateContactLinks(lang);
 
     document.querySelectorAll(".lang-toggle button").forEach((btn) => {
       btn.classList.toggle("is-active", btn.dataset.lang === lang);
