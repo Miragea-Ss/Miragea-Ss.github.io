@@ -8,7 +8,8 @@ EX_Her / Miragea — HSP perception, art × words, AI × cosmos × fantasy, musi
 - /eliora/index.html — Layer 2: Eliora local-first AI studio, Infinite Canvas, service map
 - /eliora/atelier/en/ /ja/ /zh/ — Layer 3: Cosmic Atelier (tri-regional editorial products, not translations)
 - /[lang]/ex/[slug]/ — EX routes built from public X fragments
-- /eliora/infinite-canvas.html — Lightweight web canvas
+- /eliora/infinite-canvas.html — Miragea · Eliora web canvas (in development; board works in-browser; local AI on PC)
+- /eliora/operator-canvas.html — Local operator variant for llama.cpp + ComfyUI
 
 ## Tri-regional note
 EN, JA, ZH are editorial products with different commercial angles. Layer 3 Atelier is the most region-specific surface.

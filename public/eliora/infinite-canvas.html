@@ -235,6 +235,23 @@
       .swatch[data-color="green"] { background: rgba(158,215,157,.46); }
       .empty, .ai-status { color: var(--muted); line-height: 1.65; margin: 0; font-size: 13px; }
       .hidden { display: none !important; }
+      .env-banner {
+        padding: 9px 14px;
+        border-bottom: 1px solid var(--line);
+        font-size: 12px;
+        line-height: 1.55;
+        font-weight: 700;
+        text-align: center;
+      }
+      .env-banner.remote {
+        background: rgba(245, 184, 100, .12);
+        color: #f0d4a8;
+      }
+      .env-banner.local {
+        background: rgba(158, 215, 157, .1);
+        color: #cfe8cf;
+      }
+      .minimap { cursor: crosshair; }
       @media (max-width: 1120px) {
         .layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; }
         .rail { max-height: 226px; border-right: 0; border-bottom: 1px solid var(--line); }
@@ -271,10 +288,13 @@
           <button id="zoomIn" class="icon" title="Zoom in">+</button>
           <button id="exportJson" title="Export JSON">Export</button>
           <button id="importJson" title="Import JSON">Import</button>
-          <a class="tool-link" href="../en/" title="Back to Miragea">Miragea</a>
+          <a class="tool-link" id="openComfyTop" href="http://127.0.0.1:8188/" target="_blank" rel="noreferrer" title="Open ComfyUI">ComfyUI</a>
+          <a class="tool-link" href="/eliora/index.html" title="Back to Eliora">Eliora</a>
+          <a class="tool-link" href="/" title="Back to Miragea">Miragea</a>
         </div>
         <input id="search" type="search" placeholder="Search canvas" autocomplete="off" />
       </header>
+      <p id="envBanner" class="env-banner remote" role="status"></p>
 
       <div class="layout">
         <aside class="rail">
@@ -320,6 +340,7 @@
             <div class="tools" style="justify-content:flex-start">
               <button id="sendComfy" class="primary">Send ComfyUI</button>
               <button id="checkComfy">Check Result</button>
+              <a class="tool-link" id="openComfyPanel" href="http://127.0.0.1:8188/" target="_blank" rel="noreferrer">Open ComfyUI</a>
             </div>
             <p id="comfyStatus" class="ai-status">Empty workflow = automatic text-to-image. Paste an API-format video workflow when you want video output.</p>
           </section>
@@ -458,6 +479,7 @@
       let workflowItems = [];
       let selectedWorkflowId = '';
       let objectInfoCache = null;
+      let minimapTransform = null;
 
       function uid() {
         return crypto && crypto.randomUUID ? crypto.randomUUID() : 'id-' + Math.random().toString(36).slice(2);
@@ -502,7 +524,7 @@
       }
 
       const seedNodes = [
-        { x: -520, y: -190, kind: 'Archive', title: 'Miragea Archive', text: 'EX routes, X works, perception records, visual language, HSP nervous-system notes.', tagText: 'Miragea,Origin', color: 'rose', url: '../en/' },
+        { x: -520, y: -190, kind: 'Archive', title: 'Miragea Archive', text: 'EX routes, X works, perception records, visual language, HSP nervous-system notes.', tagText: 'Miragea,Origin', color: 'rose', url: '/en/' },
         { x: -120, y: -80, kind: 'Workflow', title: 'AI Service Flow', text: 'Collect signal -> structure prompt -> generate asset -> review -> publish -> archive.', tagText: 'AI,Service', color: 'cyan' },
         { x: 300, y: -170, kind: 'Product', title: 'Digital Product', text: '3DCG assets, prompt packs, templates, courses, consulting routes.', tagText: 'Market', color: 'amber' },
         { x: -320, y: 190, kind: 'Prompt', title: 'llama.cpp Prompt Memory', text: 'Keep reusable roles, constraints, evaluation notes, and local model style rules here.', tagText: 'llama.cpp,Prompt', color: 'green' },
@@ -1108,6 +1130,30 @@
       function comfyBase() {
         return $('comfyEndpoint').value.trim().replace(/\/$/, '');
       }
+      function comfyUiUrl() {
+        return `${comfyBase().replace('0.0.0.0', '127.0.0.1').replace('[::]', '127.0.0.1')}/`;
+      }
+      function syncComfyLinks() {
+        ['openComfyTop', 'openComfyPanel'].forEach((id) => {
+          const link = $(id);
+          if (link) link.href = comfyUiUrl();
+        });
+      }
+      function isLocalHost() {
+        const host = location.hostname;
+        return !host || host === 'localhost' || host === '127.0.0.1';
+      }
+      function updateEnvBanner() {
+        const banner = $('envBanner');
+        if (!banner) return;
+        if (isLocalHost()) {
+          banner.className = 'env-banner local';
+          banner.textContent = 'Local mode — board saves in this browser. llama.cpp and ComfyUI connect when running on this machine.';
+        } else {
+          banner.className = 'env-banner remote';
+          banner.textContent = 'Web mode — the board works here. llama.cpp / ComfyUI need the local operator on your PC (not available from GitHub Pages).';
+        }
+      }
       async function sendComfy() {
         const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
         if (!source) return;
@@ -1119,15 +1165,65 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ prompt: await buildComfyWorkflow(), client_id: uid() }),
           });
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          if (!response.ok) {
+            const details = await response.text().catch(() => '');
+            throw new Error(`HTTP ${response.status}${details ? ': ' + details.slice(0, 900) : ''}`);
+          }
           const data = await response.json();
           lastComfyPromptId = data.prompt_id || '';
           lastComfySourceId = source.id;
-          $('comfyStatus').textContent = lastComfyPromptId ? `Queued: ${lastComfyPromptId}` : 'Queued. No prompt_id returned.';
+          $('comfyStatus').textContent = lastComfyPromptId
+            ? `Queued: ${lastComfyPromptId}. Watch or fix details in ComfyUI.`
+            : 'Queued. No prompt_id returned. Watch ComfyUI for details.';
           save();
           if (lastComfyPromptId) pollComfy(18, 2500);
         } catch (error) {
-          $('comfyStatus').textContent = `ComfyUI unavailable: ${error.message}`;
+          const message = error.message || String(error);
+          $('comfyStatus').textContent = message.startsWith('HTTP')
+            ? `ComfyUI workflow error: ${message}. Open ComfyUI, fix the workflow, then run again.`
+            : `Cannot reach ComfyUI: ${message}`;
+        }
+      }
+      async function loadBuiltinWorkflows() {
+        try {
+          const res = await fetch('/eliora/workflows/high-vram/manifest.json');
+          if (!res.ok) return;
+          const manifest = await res.json();
+          const lang = (navigator.language || 'en').startsWith('ja')
+            ? 'ja'
+            : (navigator.language || '').startsWith('zh')
+              ? 'zh'
+              : 'en';
+          for (const entry of manifest.workflows || []) {
+            const path = entry.file;
+            if (workflowItems.some((item) => item.path === path)) continue;
+            const jsonRes = await fetch(path);
+            if (!jsonRes.ok) continue;
+            const text = await jsonRes.text();
+            const title = entry.title?.[lang] || entry.title?.en || path.split('/').pop();
+            const blob = new Blob([text], { type: 'application/json' });
+            const file = new File([blob], path.split('/').pop(), { type: 'application/json' });
+            workflowItems.push({
+              id: uid(),
+              file,
+              path,
+              name: title,
+              size: blob.size,
+              kind: 'unknown',
+              text: '',
+              data: null,
+              error: '',
+              nodeCount: '',
+              builtin: true,
+            });
+          }
+          if (!selectedWorkflowId && workflowItems.length) selectedWorkflowId = workflowItems[0].id;
+          renderWorkflowList();
+          if (workflowItems.length) {
+            $('workflowStats').textContent = `Loaded ${workflowItems.length} Eliora workflow(s) from site library. Select one to import or run locally.`;
+          }
+        } catch (error) {
+          console.warn('Builtin workflows unavailable', error);
         }
       }
       async function pollComfy(times = 1, delayMs = 0) {
@@ -1362,7 +1458,10 @@
         ctx.clearRect(0, 0, minimap.width, minimap.height);
         ctx.fillStyle = 'rgba(0,0,0,.28)';
         ctx.fillRect(0, 0, minimap.width, minimap.height);
-        if (!nodes.length) return;
+        if (!nodes.length) {
+          minimapTransform = null;
+          return;
+        }
         const minX = Math.min(...nodes.map((n) => n.x));
         const minY = Math.min(...nodes.map((n) => n.y));
         const maxX = Math.max(...nodes.map((n) => n.x + 332));
@@ -1370,6 +1469,7 @@
         const scale = Math.min((minimap.width - 18) / Math.max(1, maxX - minX), (minimap.height - 18) / Math.max(1, maxY - minY));
         const ox = 9 - minX * scale;
         const oy = 9 - minY * scale;
+        minimapTransform = { minX, minY, scale, ox, oy };
         edges.forEach((edge) => {
           const from = nodeBy(edge.from);
           const to = nodeBy(edge.to);
@@ -1386,6 +1486,24 @@
           ctx.fillStyle = (colors[node.color] || colors.rose).line;
           ctx.fillRect(node.x * scale + ox, node.y * scale + oy, 16, 10);
         });
+        const viewW = stage.clientWidth / camera.z;
+        const viewH = stage.clientHeight / camera.z;
+        const viewX = (-camera.x) / camera.z;
+        const viewY = (-camera.y) / camera.z;
+        ctx.strokeStyle = 'rgba(123,216,232,.72)';
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(viewX * scale + ox, viewY * scale + oy, viewW * scale, viewH * scale);
+      }
+      function jumpMinimap(event) {
+        if (!minimapTransform) return;
+        const rect = minimap.getBoundingClientRect();
+        const x = (event.clientX - rect.left) * (minimap.width / rect.width);
+        const y = (event.clientY - rect.top) * (minimap.height / rect.height);
+        const worldX = (x - minimapTransform.ox) / minimapTransform.scale;
+        const worldY = (y - minimapTransform.oy) / minimapTransform.scale;
+        camera.x = stage.clientWidth / 2 - worldX * camera.z;
+        camera.y = stage.clientHeight / 2 - worldY * camera.z;
+        render();
       }
 
       $('addNote').addEventListener('click', () => addNode('note'));
@@ -1431,7 +1549,9 @@
       });
       $('search').addEventListener('input', (event) => { searchTerm = event.target.value.trim(); render(); });
       ['llamaEndpoint', 'llamaModel', 'llamaKey', 'llamaSystem', 'comfyEndpoint', 'comfyNegative', 'comfyWorkflow', 'comfyWidth', 'comfyHeight'].forEach((id) => $(id).addEventListener('input', scheduleSave));
+      $('comfyEndpoint').addEventListener('input', syncComfyLinks);
       $('comfyAutoInject').addEventListener('change', scheduleSave);
+      minimap.addEventListener('click', jumpMinimap);
       window.addEventListener('keydown', (event) => {
         if (event.target.matches('input, textarea, [contenteditable="true"]')) return;
         if (event.key === 'Delete' || event.key === 'Backspace') deleteSelected();
@@ -1442,7 +1562,10 @@
       window.addEventListener('resize', drawMinimap);
       bindInspector();
       load();
+      updateEnvBanner();
+      syncComfyLinks();
       render();
+      loadBuiltinWorkflows();
       setTimeout(fitView, 120);
     </script>
   </body>
