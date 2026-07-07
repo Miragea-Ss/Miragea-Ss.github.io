@@ -6,8 +6,16 @@ ideas:
     title: ComfyUI batch pipeline → enterprise PoC candidate
     url: /eliora/atelier/ja/
     buildable: 82
+    period:
+      en: "Scored Jul 7, 2026 · buildable 82%"
+      ja: "2026年7月7日スコア · 開発適合 82%"
+      zh: "2026年7月7日评分 · 可开发 82%"
   - at: "2026-07-06T04:00:00Z"
     type: score
     title: Music-video + AI series → EN atelier route
     url: /eliora/atelier/en/
     buildable: 76
+    period:
+      en: "Scored Jul 6, 2026 · buildable 76%"
+      ja: "2026年7月6日スコア · 開発適合 76%"
+      zh: "2026年7月6日评分 · 可开发 76%"

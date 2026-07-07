@@ -61,6 +61,33 @@
     return Math.floor(h / 24) + 'd';
   }
 
+  function formatPeriod(ev, locale) {
+    var ended = locale === 'ja' ? '終了' : locale === 'zh' ? '已结束' : 'Ended';
+    var base = '';
+    if (ev.period) {
+      base = ev.period[locale] || ev.period.en;
+    } else {
+      var loc = locale === 'ja' ? 'ja-JP' : locale === 'zh' ? 'zh-CN' : 'en-US';
+      var opts = { year: 'numeric', month: 'short', day: 'numeric' };
+      if (ev.startsAt && ev.deadline) {
+        var s = new Date(ev.startsAt).toLocaleDateString(loc, opts);
+        var e = new Date(ev.deadline).toLocaleDateString(loc, opts);
+        base = s + ' – ' + e;
+      } else if (ev.deadline) {
+        var until = new Date(ev.deadline).toLocaleDateString(loc, opts);
+        base = (locale === 'ja' ? '締切 ' : locale === 'zh' ? '截止 ' : 'Until ') + until;
+      } else if (ev.startsAt) {
+        base = new Date(ev.startsAt).toLocaleDateString(loc, opts);
+      } else if (ev.ongoing) {
+        base = locale === 'ja' ? '継続中' : locale === 'zh' ? '进行中' : 'Ongoing';
+      }
+    }
+    if (ev.expired) {
+      return base ? '[' + ended + '] ' + base : '[' + ended + ']';
+    }
+    return base;
+  }
+
   function statusLabel(status, locale) {
     var map = {
       en: { active: 'active', queued: 'queued', idle: 'idle', error: 'error' },
@@ -116,12 +143,15 @@
       var pill = statusLabel(st, locale);
       var latest = locale === 'zh' ? '最近状态：' : locale === 'ja' ? '最新ステータス：' : 'Latest: ';
       var events = (agent.events || []).slice(0, 5).map(function (ev) {
+        var period = formatPeriod(ev, locale);
         var t = new Date(ev.at).toISOString().slice(0, 16).replace('T', ' ');
         var external = ev.url && /^https?:\/\//.test(ev.url);
         var title = ev.url
           ? '<a href="' + ev.url + '"' + (external ? ' target="_blank" rel="noopener"' : '') + ' style="color:var(--champagne)">' + ev.title + '</a>'
           : ev.title;
-        return '<li><span class="ev-time">' + t + ' · ' + ev.type + '</span>' + title + '</li>';
+        var periodClass = 'ev-period' + (ev.expired ? ' ev-period--ended' : '');
+        var periodHtml = period ? '<span class="' + periodClass + '">' + period + '</span>' : '';
+        return '<li>' + periodHtml + '<span class="ev-time">' + t + ' · ' + ev.type + '</span>' + title + '</li>';
       }).join('');
       return '<article class="agent-detail" id="' + key + '"><div class="detail-head"><span class="status-pill ' + st + '">' + pill + '</span><h2>' + meta.icon + ' ' + name + '</h2><div class="agent-id" style="margin-top:6px">' + key + '</div></div><div class="detail-body"><p>' + desc + '</p><p><strong style="color:var(--moonlight)">' + latest + '</strong>' + (agent.summary[locale] || agent.summary.en) + '</p><ul class="event-list">' + events + '</ul></div></article>';
     }).join('');

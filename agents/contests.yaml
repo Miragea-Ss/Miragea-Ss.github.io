@@ -1,14 +1,35 @@
-# campaign-watcher — curated public contests (manual edit, no X API)
-# Tags: investor | ai-contest | bilibili | miragea
+# campaign-watcher — verified public sources only (no fabricated contest names)
+# Each entry MUST link to an official page. See agents/README.md.
 contests:
-  - at: "2026-07-06T14:00:00Z"
-    type: ai-contest
-    title: Runway Gen-4 Creative Challenge
-    url: https://runwayml.com/
-    deadline: "2026-08-15"
-    tags: [ai-contest]
+  - at: "2026-07-07T06:00:00Z"
+    type: community-challenge
+    title: Runway Daily Challenge
+    url: https://help.runwayml.com/hc/en-us/articles/4402586286355-Runway-by-the-community
+    ongoing: true
+    period:
+      en: "Daily · Discord & Reddit"
+      ja: "毎日 · Discord & Reddit"
+      zh: "每日 · Discord & Reddit"
+    sourceNote: "Runway Help Center — community Daily Challenge"
+
+  - at: "2026-07-01T12:00:00Z"
+    type: festival-event
+    title: "AIF 2026 Tokyo — Runway AI Festival"
+    url: https://luma.com/aif-tokyo
+    startsAt: "2026-07-30T09:30:00+09:00"
+    deadline: "2026-07-30T13:30:00+09:00"
+    period:
+      en: "Jul 30, 2026 · 18:30–22:30 JST · TOKYO NODE HALL"
+      ja: "2026年7月30日 · 18:30–22:30 JST · TOKYO NODE HALL"
+      zh: "2026年7月30日 · 18:30–22:30 JST · TOKYO NODE HALL"
+    sourceNote: "Luma event page by Runway — festival screening, not film submission"
+
   - at: "2026-07-04T18:00:00Z"
     type: miragea
     title: Follow Miragea_S on X for live contest signals
     url: https://x.com/Miragea_S/
-    tags: [miragea]
+    ongoing: true
+    period:
+      en: "Ongoing · manual curation"
+      ja: "継続 · 手動キュレーション"
+      zh: "持续 · 人工整理"

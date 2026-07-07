@@ -1,29 +1,54 @@
 {
-  "generatedAt": "2026-07-07T13:05:23.057Z",
+  "generatedAt": "2026-07-07T13:26:32.880Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-06T14:00:00Z",
+      "lastRun": "2026-07-07T06:00:00Z",
       "summary": {
-        "en": "2 creative contests curated this week (manual feed)",
-        "ja": "今週2件の創作コンテストを手動キュレーション",
-        "zh": "本周整理 2 个可跟进的创作赛事（手动キュレーション）"
+        "en": "3 creative contests curated this week (manual feed)",
+        "ja": "今週3件の創作コンテストを手動キュレーション",
+        "zh": "本周整理 3 个可跟进的创作赛事（手动キュレーション）"
       },
       "metrics": {
-        "contestsFlagged": 2
+        "contestsFlagged": 3
       },
       "events": [
         {
-          "at": "2026-07-06T14:00:00Z",
-          "type": "ai-contest",
-          "title": "Runway Gen-4 Creative Challenge",
-          "url": "https://runwayml.com/"
+          "at": "2026-07-07T06:00:00Z",
+          "type": "community-challenge",
+          "title": "Runway Daily Challenge",
+          "url": "https://help.runwayml.com/hc/en-us/articles/4402586286355-Runway-by-the-community",
+          "ongoing": true,
+          "period": {
+            "en": "Daily · Discord & Reddit",
+            "ja": "毎日 · Discord & Reddit",
+            "zh": "每日 · Discord & Reddit"
+          }
         },
         {
           "at": "2026-07-04T18:00:00Z",
           "type": "miragea",
           "title": "Follow Miragea_S on X for live contest signals",
-          "url": "https://x.com/Miragea_S/"
+          "url": "https://x.com/Miragea_S/",
+          "ongoing": true,
+          "period": {
+            "en": "Ongoing · manual curation",
+            "ja": "継続 · 手動キュレーション",
+            "zh": "持续 · 人工整理"
+          }
+        },
+        {
+          "at": "2026-07-01T12:00:00Z",
+          "type": "festival-event",
+          "title": "AIF 2026 Tokyo — Runway AI Festival",
+          "url": "https://luma.com/aif-tokyo",
+          "startsAt": "2026-07-30T09:30:00+09:00",
+          "deadline": "2026-07-30T13:30:00+09:00",
+          "period": {
+            "en": "Jul 30, 2026 · 18:30–22:30 JST · TOKYO NODE HALL",
+            "ja": "2026年7月30日 · 18:30–22:30 JST · TOKYO NODE HALL",
+            "zh": "2026年7月30日 · 18:30–22:30 JST · TOKYO NODE HALL"
+          }
         }
       ]
     },
@@ -44,7 +69,12 @@
           "at": "2026-07-06T22:10:00Z",
           "type": "article",
           "title": "Kardashev Type-II — production log",
-          "url": "https://x.com/Miragea_S/status/2000229459916681467"
+          "url": "https://x.com/Miragea_S/status/2000229459916681467",
+          "period": {
+            "en": "Logged Jul 6, 2026 · draft queued",
+            "ja": "2026年7月6日記録 · ドラフト待ち",
+            "zh": "2026年7月6日记录 · 草稿排队中"
+          }
         }
       ]
     },
@@ -64,7 +94,12 @@
           "at": "2026-07-05T16:00:00Z",
           "type": "publish",
           "title": "If this lullaby becomes your nightly crave",
-          "url": "https://x.com/Miragea_S/status/1966830399239450670"
+          "url": "https://x.com/Miragea_S/status/1966830399239450670",
+          "period": {
+            "en": "Published Jul 5, 2026 · X",
+            "ja": "2026年7月5日配信 · X",
+            "zh": "2026年7月5日发布 · X"
+          }
         }
       ]
     },
@@ -85,13 +120,23 @@
           "at": "2026-07-07T04:00:00Z",
           "type": "score",
           "title": "ComfyUI batch pipeline → enterprise PoC candidate",
-          "url": "/eliora/atelier/ja/"
+          "url": "/eliora/atelier/ja/",
+          "period": {
+            "en": "Scored Jul 7, 2026 · buildable 82%",
+            "ja": "2026年7月7日スコア · 開発適合 82%",
+            "zh": "2026年7月7日评分 · 可开发 82%"
+          }
         },
         {
           "at": "2026-07-06T04:00:00Z",
           "type": "score",
           "title": "Music-video + AI series → EN atelier route",
-          "url": "/eliora/atelier/en/"
+          "url": "/eliora/atelier/en/",
+          "period": {
+            "en": "Scored Jul 6, 2026 · buildable 76%",
+            "ja": "2026年7月6日スコア · 開発適合 76%",
+            "zh": "2026年7月6日评分 · 可开发 76%"
+          }
         }
       ]
     }

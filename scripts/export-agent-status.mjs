@@ -13,10 +13,25 @@ function loadYaml(filename) {
   return parseYaml(readFileSync(path, 'utf8')) ?? {};
 }
 
-function pickEvent({ at, type, title, url }) {
-  const event = { at, type, title };
-  if (url) event.url = url;
+function pickEvent(item, now = new Date()) {
+  const event = { at: item.at, type: item.type, title: item.title };
+  if (item.url) event.url = item.url;
+  if (item.startsAt) event.startsAt = item.startsAt;
+  if (item.deadline) event.deadline = item.deadline;
+  if (item.ongoing) {
+    event.ongoing = true;
+  } else if (item.deadline && new Date(item.deadline) < now) {
+    event.expired = true;
+  }
+  if (item.period) event.period = item.period;
   return event;
+}
+
+function isContestActive(item, now) {
+  if (item.ongoing) return true;
+  if (item.deadline) return new Date(item.deadline) >= now;
+  if (item.startsAt) return new Date(item.startsAt) >= now;
+  return false;
 }
 
 function latestIso(dates) {
@@ -27,15 +42,12 @@ function latestIso(dates) {
 function buildCampaignWatcher(data) {
   const contests = data.contests ?? [];
   const now = new Date();
-  const active = contests.filter((item) => {
-    if (!item.deadline) return true;
-    return new Date(item.deadline) >= now;
-  });
+  const active = contests.filter((item) => isContestActive(item, now));
 
   const events = [...contests]
     .sort((a, b) => new Date(b.at) - new Date(a.at))
     .slice(0, 10)
-    .map(pickEvent);
+    .map((item) => pickEvent(item, now));
 
   const count = active.length;
   return {

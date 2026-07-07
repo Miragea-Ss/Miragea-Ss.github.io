@@ -5,6 +5,17 @@ const EventSchema = z.object({
   type: z.string(),
   title: z.string(),
   url: z.string().optional(),
+  startsAt: z.string().optional(),
+  deadline: z.string().optional(),
+  ongoing: z.boolean().optional(),
+  expired: z.boolean().optional(),
+  period: z
+    .object({
+      zh: z.string().max(80),
+      ja: z.string().max(80),
+      en: z.string().max(80),
+    })
+    .optional(),
 });
 
 export const AgentEntrySchema = z.object({

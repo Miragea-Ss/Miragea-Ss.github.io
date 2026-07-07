@@ -629,6 +629,21 @@ section.block { padding: 44px 0; }
 
 .event-list li:last-child { border-bottom: none; }
 
+.event-list .ev-period {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--champagne);
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+
+.event-list .ev-period--ended {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(200, 160, 98, 0.45);
+}
+
 .event-list .ev-time {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.65rem;
