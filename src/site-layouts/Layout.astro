@@ -5,9 +5,12 @@ import { ViewTransitions } from 'astro:transitions';
 interface Props {
   title: string;
   lang?: 'en' | 'ja' | 'zh';
+  robots?: string;
+  mirror?: boolean;
 }
 
-const { title, lang = 'en' } = Astro.props;
+const { title, lang = 'en', robots, mirror = false } = Astro.props;
+const homeHref = mirror ? `/${lang}/mirror/` : `/${lang}/`;
 ---
 
 <!doctype html>
@@ -16,23 +19,24 @@ const { title, lang = 'en' } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Miragea's Perception Archive" />
     <meta name="viewport" content="width=device-width" />
+    {robots && <meta name="robots" content={robots} />}
     <link rel="stylesheet" href="/assets/brand/brand-glow.css" />
     <title>{title}</title>
     <ViewTransitions />
     </head>
   <body class="bg-black text-gray-200 antialiased">
     <header class="fixed left-0 top-0 z-50 p-5">
-      <a href="/en/" class="group flex items-center p-0 transition" aria-label="Miragea home">
+      <a href={homeHref} class="group flex items-center p-0 transition" aria-label="Miragea home">
         <span class="brand-moon-orb brand-moon-orb--miragea brand-moon-orb--strong mirage-logo-orb h-16 w-16 transition [--brand-logo-scale:1] [--brand-glow-inset:-16%]" aria-label="Miragea logo"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/miragea-logo-transparent.png" alt="Miragea logo" /></span>
       </a>
     </header>
 
     <header class="fixed right-0 top-0 z-50 flex gap-4 rounded-bl-2xl border-b border-l border-white/10 bg-black/30 p-6 backdrop-blur-md">
-      <a href="/en" class:list={['font-mono text-sm transition hover:text-white', lang === 'en' ? 'font-bold text-white' : 'text-gray-400']}>EN</a>
+      <a href={mirror ? '/en/mirror/' : '/en/'} class:list={['font-mono text-sm transition hover:text-white', lang === 'en' ? 'font-bold text-white' : 'text-gray-400']}>EN</a>
       <span class="text-gray-600">/</span>
-      <a href="/ja" class:list={['font-mono text-sm transition hover:text-white', lang === 'ja' ? 'font-bold text-white' : 'text-gray-400']}>JP</a>
+      <a href={mirror ? '/ja/mirror/' : '/ja/'} class:list={['font-mono text-sm transition hover:text-white', lang === 'ja' ? 'font-bold text-white' : 'text-gray-400']}>JP</a>
       <span class="text-gray-600">/</span>
-      <a href="/zh" class:list={['font-mono text-sm transition hover:text-white', lang === 'zh' ? 'font-bold text-white' : 'text-gray-400']}>ZH</a>
+      <a href={mirror ? '/zh/mirror/' : '/zh/'} class:list={['font-mono text-sm transition hover:text-white', lang === 'zh' ? 'font-bold text-white' : 'text-gray-400']}>ZH</a>
     </header>
 
     <slot />

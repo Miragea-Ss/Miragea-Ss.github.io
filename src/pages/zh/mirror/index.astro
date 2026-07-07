@@ -1,0 +1,13 @@
+---
+import Layout from '../../../site-layouts/Layout.astro';
+import MirageArchiveMirror from '../../../components/MirageArchiveMirror.astro';
+import { getCollection } from 'astro:content';
+
+const allThoughts = (await getCollection('thoughts')).sort(
+  (a, b) => b.data.intuitionDate.valueOf() - a.data.intuitionDate.valueOf()
+);
+---
+
+<Layout title="Miragea | Archive Mirror" lang="zh" robots="noindex, follow" mirror>
+  <MirageArchiveMirror thoughts={allThoughts} lang="zh" />
+</Layout>
