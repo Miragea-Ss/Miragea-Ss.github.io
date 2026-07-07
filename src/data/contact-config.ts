@@ -32,8 +32,12 @@ export function isContactFormReady(): boolean {
   return getContactEndpoint().length > 0;
 }
 
+export function contactFormPageUrl(lang: AtelierLang): string {
+  return `${CONTACT_SITE}${atelierContactPath(lang)}`;
+}
+
 export function contactFormNext(lang: AtelierLang): string {
-  return `${CONTACT_SITE}${atelierContactPath(lang)}?sent=1`;
+  return `${contactFormPageUrl(lang)}?sent=1`;
 }
 
 export function contactFormSubject(lang: AtelierLang): string {

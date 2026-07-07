@@ -33,10 +33,13 @@ jobs:
         env:
           SECRET_CONTACT_INBOX: ${{ secrets.CONTACT_INBOX }}
           VAR_CONTACT_INBOX: ${{ vars.CONTACT_INBOX }}
-          PUBLIC_FORM_SUBMIT_TOKEN: ${{ secrets.FORM_SUBMIT_TOKEN }}
+          SECRET_FORM_SUBMIT_TOKEN: ${{ secrets.FORM_SUBMIT_TOKEN }}
+          VAR_FORM_SUBMIT_TOKEN: ${{ vars.FORM_SUBMIT_TOKEN }}
         run: |
-          if [ -n "$PUBLIC_FORM_SUBMIT_TOKEN" ]; then
-            echo "OK: FORM_SUBMIT_TOKEN is set (length ${#PUBLIC_FORM_SUBMIT_TOKEN})"
+          if [ -n "$SECRET_FORM_SUBMIT_TOKEN" ]; then
+            echo "OK: secrets.FORM_SUBMIT_TOKEN is set (length ${#SECRET_FORM_SUBMIT_TOKEN})"
+          elif [ -n "$VAR_FORM_SUBMIT_TOKEN" ]; then
+            echo "OK: vars.FORM_SUBMIT_TOKEN is set (length ${#VAR_FORM_SUBMIT_TOKEN})"
           elif [ -n "$SECRET_CONTACT_INBOX" ]; then
             echo "OK: secrets.CONTACT_INBOX is set (length ${#SECRET_CONTACT_INBOX})"
           elif [ -n "$VAR_CONTACT_INBOX" ]; then
@@ -53,11 +56,15 @@ jobs:
         env:
           SECRET_CONTACT_INBOX: ${{ secrets.CONTACT_INBOX }}
           VAR_CONTACT_INBOX: ${{ vars.CONTACT_INBOX }}
-          PUBLIC_FORM_SUBMIT_TOKEN: ${{ secrets.FORM_SUBMIT_TOKEN }}
+          SECRET_FORM_SUBMIT_TOKEN: ${{ secrets.FORM_SUBMIT_TOKEN }}
+          VAR_FORM_SUBMIT_TOKEN: ${{ vars.FORM_SUBMIT_TOKEN }}
         run: |
-          if [ -n "$PUBLIC_FORM_SUBMIT_TOKEN" ]; then
-            export PUBLIC_FORM_SUBMIT_TOKEN="$PUBLIC_FORM_SUBMIT_TOKEN"
-            echo "Contact: using FORM_SUBMIT_TOKEN"
+          if [ -n "$SECRET_FORM_SUBMIT_TOKEN" ]; then
+            export PUBLIC_FORM_SUBMIT_TOKEN="$SECRET_FORM_SUBMIT_TOKEN"
+            echo "Contact: using secrets.FORM_SUBMIT_TOKEN"
+          elif [ -n "$VAR_FORM_SUBMIT_TOKEN" ]; then
+            export PUBLIC_FORM_SUBMIT_TOKEN="$VAR_FORM_SUBMIT_TOKEN"
+            echo "Contact: using vars.FORM_SUBMIT_TOKEN"
           elif [ -n "$SECRET_CONTACT_INBOX" ]; then
             export PUBLIC_CONTACT_INBOX="$SECRET_CONTACT_INBOX"
             echo "Contact: using secrets.CONTACT_INBOX"

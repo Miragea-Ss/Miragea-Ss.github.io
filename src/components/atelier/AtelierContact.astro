@@ -5,6 +5,7 @@ import type { ContactCopy } from '../../data/contact-copy';
 import {
   contactFormPostUrl,
   contactFormNext,
+  contactFormPageUrl,
   contactFormSubject,
   atelierContactPath,
   isContactFormReady,
@@ -20,6 +21,7 @@ const { lang, copy } = Astro.props;
 const formReady = isContactFormReady();
 const postUrl = contactFormPostUrl();
 const nextUrl = contactFormNext(lang);
+const pageUrl = contactFormPageUrl(lang);
 const subject = contactFormSubject(lang);
 const homeCopy = atelierHomeCopy[lang];
 const homePath = `/eliora/atelier/${lang}/`;
@@ -74,6 +76,7 @@ const nav = [
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_autoresponse" value={copy.autoresponse} />
             <input type="hidden" name="_next" value={nextUrl} />
+            <input type="hidden" name="_url" value={pageUrl} />
             <input type="hidden" name="locale" value={lang} />
             <input
               type="text"
