@@ -30,6 +30,8 @@ jobs:
         run: npm run agents:validate
 
       - name: Build
+        env:
+          PUBLIC_CONTACT_INBOX: ${{ vars.CONTACT_INBOX }}
         run: npm run build
 
       - name: Setup Pages

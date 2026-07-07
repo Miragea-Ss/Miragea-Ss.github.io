@@ -28,7 +28,7 @@ export interface ContactCopy {
   };
   inquiryTypes: { value: string; label: string }[];
   privacy: string;
-  directEmail: string;
+  formNotReady?: string;
 }
 
 export const contactCopy: Record<AtelierLang, ContactCopy> = {
@@ -51,10 +51,9 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
     successPoints: [
       'An auto-reply email has been sent to your inbox (check spam if needed).',
       'A team member will respond within 3 business days.',
-      'Urgent: hello@eliora.studio',
     ],
     autoresponse:
-      'Thank you for contacting Miragea · Eliora (Cosmic AI Atelier). [Auto-reply] Your inquiry was received successfully. We will respond to the email address you provided within 3 business days. Urgent: hello@eliora.studio — Please do not reply to this automated message.',
+      'Thank you for contacting Miragea · Eliora (Cosmic AI Atelier). [Auto-reply] Your inquiry was received successfully. We will respond to the email address you provided within 3 business days. Please do not reply to this automated message.',
     formAutoreplyHint:
       'After you send, an auto-reply confirmation goes to your email. Personal reply within 3 business days.',
     backHome: '← Back to Atelier home',
@@ -81,7 +80,8 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
     ],
     privacy:
       'Your email is used only to reply to this inquiry. No newsletter signup.',
-    directEmail: 'Prefer email directly?',
+    formNotReady:
+      'The inquiry form is being configured. Please check back shortly or reach out via X @Miragea_S.',
   },
   ja: {
     meta: {
@@ -102,10 +102,9 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
     successPoints: [
       '受付確認の自動返信メールを送信しました（届かない場合は迷惑メールをご確認ください）。',
       '内容を確認のうえ、3営業日以内に担当よりご記入のメールアドレスへ返信します。',
-      'お急ぎの場合: hello@eliora.studio',
     ],
     autoresponse:
-      'お問い合わせありがとうございます。Miragea · Eliora（Cosmic AI Atelier）です。【自動返信】お問い合わせは正常に届きました。内容を確認のうえ、3営業日以内にご記入のメールアドレスへ担当より返信いたします。お急ぎ: hello@eliora.studio ※本メールへの返信は受け付けておりません。',
+      'お問い合わせありがとうございます。Miragea · Eliora（Cosmic AI Atelier）です。【自動返信】お問い合わせは正常に届きました。内容を確認のうえ、3営業日以内にご記入のメールアドレスへ担当より返信いたします。※本メールへの返信は受け付けておりません。',
     formAutoreplyHint:
       '送信後、ご記入のメールアドレスへ受付確認の自動返信をお送りします。担当からの返信は3営業日以内です。',
     backHome: '← アトリエホームへ',
@@ -131,7 +130,8 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       { value: 'other', label: 'その他（下記に記載）' },
     ],
     privacy: 'メールアドレスは返信のみに使用します。ニュースレター登録はありません。',
-    directEmail: 'メールで直接連絡する場合',
+    formNotReady:
+      'お問い合わせフォームは現在設定中です。しばらくお待ちいただくか、X @Miragea_S までご連絡ください。',
   },
   zh: {
     meta: {
@@ -151,10 +151,9 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
     successPoints: [
       '自动确认邮件已发送（如未收到请查看垃圾邮件）。',
       '我们将在 3 个工作日内回复您填写的邮箱。',
-      '紧急联系：hello@eliora.studio',
     ],
     autoresponse:
-      '感谢您联系 Miragea · Eliora（Cosmic AI Atelier）。【自动回复】您的咨询已成功送达。我们将在 3 个工作日内回复您填写的邮箱。紧急：hello@eliora.studio — 请勿回复本自动邮件。',
+      '感谢您联系 Miragea · Eliora（Cosmic AI Atelier）。【自动回复】您的咨询已成功送达。我们将在 3 个工作日内回复您填写的邮箱。请勿回复本自动邮件。',
     formAutoreplyHint: '提交后，系统会向您的邮箱发送自动确认。人工回复将在 3 个工作日内发出。',
     backHome: '← 返回工坊首页',
     fields: {
@@ -178,6 +177,6 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       { value: 'other', label: '其他（请在下方说明）' },
     ],
     privacy: '邮箱仅用于回复本次咨询，不订阅邮件列表。',
-    directEmail: '想直接发邮件？',
+    formNotReady: '咨询表单正在配置中。请稍后再试，或通过 X @Miragea_S 联系。',
   },
 };
