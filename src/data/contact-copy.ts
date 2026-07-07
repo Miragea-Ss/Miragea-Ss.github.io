@@ -53,10 +53,10 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       'Your message reached Miragea · Eliora. A confirmation email was sent to the address you entered.',
     successPoints: [
       'An auto-reply email has been sent to your inbox (check spam if needed).',
-      'A team member will respond within 3 business days.',
+      'Miragea · Eliora (principal) will reply within 3 business days.',
     ],
     autoresponse:
-      'Thank you for contacting Miragea · Eliora (Cosmic AI Atelier). [Auto-reply] Your inquiry was received successfully. We will respond to the email address you provided within 3 business days. Please do not reply to this automated message.',
+      'Thank you for contacting Miragea · Eliora. [Auto-reply] Your inquiry was received successfully. I will respond to the email address you provided within 3 business days. Please do not reply to this automated message.',
     formAutoreplyHint:
       'After you send, an auto-reply confirmation goes to your email. Personal reply within 3 business days.',
     backHome: '← Back to Atelier home',
@@ -70,7 +70,7 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       inquiryType: 'Inquiry type',
       message: 'Project details',
       messagePlaceholder:
-        'Goal, timeline, budget range, tech stack, deliverables. The more concrete, the faster we can scope.',
+        'Goal, timeline, budget range, tech stack, deliverables. The more concrete, the faster I can scope.',
       submit: 'Send inquiry',
       submitting: 'Sending…',
       submitError: 'Submission failed. Please try again in a moment.',
@@ -107,10 +107,10 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       'お問い合わせは正常に届きました。ご記入のメールアドレスへ自動返信メールをお送りしています。',
     successPoints: [
       '受付確認の自動返信メールを送信しました（届かない場合は迷惑メールをご確認ください）。',
-      '内容を確認のうえ、3営業日以内に担当よりご記入のメールアドレスへ返信します。',
+      '内容を確認のうえ、3営業日以内にMiragea · Eliora（担当）よりご記入のメールアドレスへ返信します。',
     ],
     autoresponse:
-      'お問い合わせありがとうございます。Miragea · Eliora（Cosmic AI Atelier）です。【自動返信】お問い合わせは正常に届きました。内容を確認のうえ、3営業日以内にご記入のメールアドレスへ担当より返信いたします。※本メールへの返信は受け付けておりません。',
+      'お問い合わせありがとうございます。Miragea · Elioraです。【自動返信】お問い合わせは正常に届きました。内容を確認のうえ、3営業日以内にご記入のメールアドレスへ返信いたします。※本メールへの返信は受け付けておりません。',
     formAutoreplyHint:
       '送信後、ご記入のメールアドレスへ受付確認の自動返信をお送りします。担当からの返信は3営業日以内です。',
     backHome: '← アトリエホームへ',
@@ -156,13 +156,13 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
     note:
       '适合：可复现管线、本地 bf16/fp16、API 化、批量生产 — 非单张图片定制。',
     successTitle: '咨询已受理',
-    successLead: '您的咨询已成功送达。我们已向您填写的邮箱发送自动确认邮件。',
+    successLead: '您的咨询已成功送达。已向填写的邮箱发送自动确认邮件。',
     successPoints: [
       '自动确认邮件已发送（如未收到请查看垃圾邮件）。',
-      '我们将在 3 个工作日内回复您填写的邮箱。',
+      'Miragea · Eliora（负责人）将在 3 个工作日内回复您填写的邮箱。',
     ],
     autoresponse:
-      '感谢您联系 Miragea · Eliora（Cosmic AI Atelier）。【自动回复】您的咨询已成功送达。我们将在 3 个工作日内回复您填写的邮箱。请勿回复本自动邮件。',
+      '感谢您联系 Miragea · Eliora。【自动回复】您的咨询已成功送达。我将在 3 个工作日内回复您填写的邮箱。请勿回复本自动邮件。',
     formAutoreplyHint: '提交后，系统会向您的邮箱发送自动确认。人工回复将在 3 个工作日内发出。',
     backHome: '← 返回工坊首页',
     fields: {

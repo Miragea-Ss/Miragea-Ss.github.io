@@ -136,9 +136,9 @@ const regionTags: Record<AtelierLang, string> = {
 export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
   en: {
     meta: {
-      title: 'Miragea · Eliora — AI Filmmaker & Systems Atelier',
+      title: 'Miragea · Eliora — Enterprise AI Workflow Studio',
       description:
-        'Who Will Govern the Future? AI filmmaker, cosmic worldbuilder, and systems that run work through AI.',
+        'ComfyUI automation, reproducible pipelines, local bf16/fp16 stacks, and PoC for production teams — not one-off image requests.',
     },
     brandSubtitle: 'Cosmic AI Atelier',
     nav: [
@@ -150,17 +150,14 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
     ],
     regionTags,
     hero: {
-      badge: 'Atelier Operations · Live',
-      title: { line1: 'Who Will', emphasis: 'Govern', line2: 'the Future?' },
+      badge: 'Enterprise workflows · PoC',
+      title: { line1: 'Reproducible', emphasis: 'AI production', line2: 'for teams' },
       lead:
-        'AI filmmaker, future civilization worldbuilder, and architect of systems that advance the next job — not commands waiting in a queue.',
+        'ComfyUI pipelines, local bf16/fp16 operation, API export, and batch production. I build systems that automate creative work — not single images on demand.',
       ctas: [
-        {
-          href: 'https://x.com/Miragea_S/status/2000229459916681467',
-          label: 'Watch on X — Kardashev Type-II',
-          variant: 'primary',
-        },
-        { href: '/eliora/atelier/en/atelier/', label: 'Open 4 Agents →', variant: 'agent' },
+        { href: '/eliora/atelier/en/contact/', label: 'Project inquiry', variant: 'primary' },
+        { href: '#studio', label: 'View workflows', variant: 'secondary' },
+        { href: '/eliora/atelier/en/atelier/', label: 'Atelier Ops →', variant: 'agent' },
       ],
     },
     panel: {
@@ -223,7 +220,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         { ep: 'EP.01 · 3:12', title: 'The Question', description: 'Who decides when machines decide?' },
         { ep: 'EP.02 · 2:58', title: 'The Archive', description: 'Memory, power, and what we keep.' },
         { ep: 'EP.03 · 3:05', title: 'The Pipeline', description: 'From prompt to policy — who governs?' },
-        { ep: 'EP.04 · soon', title: 'The Agent', description: 'When AI advances the next job alone.' },
+        { ep: 'EP.04', title: 'The Agent', description: 'When AI advances the next job alone.' },
       ],
       channels: ['X', 'YouTube', 'Patreon', 'Gumroad', 'Substack', 'Product Hunt'],
     },
@@ -250,7 +247,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         },
       ],
       links: [
-        { href: '/eliora/index.html', label: 'Layer 2 · Service Map' },
+        { href: '/eliora/index.html', label: 'Eliora Service Map' },
         { href: '/en/', label: 'Miragea Archive' },
         { href: 'https://x.com/Miragea_S/', label: 'X' },
         { href: '/eliora/atelier/en/atelier/', label: 'Agent hub' },
@@ -304,14 +301,17 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       title: '世界観 · 信頼 · 継続シリーズ',
       cards: [
         {
+          href: '/eliora/atelier/ja/contact/',
           title: 'ComfyUI 業務自動化ケース',
           description: 'ノード操作ではなく、再現性とAPI化の実装記録。',
         },
         {
+          href: '/eliora/atelier/ja/atelier/',
           title: '大容量VRAMワークフロー',
           description: 'ローカルAI・重い制作向けパイプライン設計。',
         },
         {
+          href: '/ja/ex/extreme/',
           title: 'EX System',
           description: '知覚アーカイブ — 8つのルート。',
         },
@@ -378,7 +378,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         },
       ],
       links: [
-        { href: '/eliora/index.html', label: 'Layer 2 · サービスマップ' },
+        { href: '/eliora/index.html', label: 'Elioraサービスマップ' },
         { href: '/ja/', label: 'Miragea Archive' },
         { href: '/eliora/atelier/ja/atelier/', label: 'Agentハブ' },
         { href: '/eliora/atelier/ja/contact/', label: 'お仕事のご相談' },
@@ -406,9 +406,9 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       lead:
         '一边构建作品世界，一边把制作过程完整展示出来。把日本/英语圈的 AI 趋势翻译成中文创作者能用的工作流与解说。',
       ctas: [
-        { href: '#bts', label: '观看制作解说', variant: 'primary' },
-        { href: '/eliora/atelier/zh/atelier/', label: '打开 4 个 Agent →', variant: 'agent' },
+        { href: '/eliora/atelier/zh/contact/', label: '项目咨询', variant: 'primary' },
         { href: '#studio', label: '获取工作流', variant: 'secondary' },
+        { href: '/eliora/atelier/zh/atelier/', label: '打开 4 个 Agent →', variant: 'agent' },
       ],
     },
     panel: {
@@ -505,7 +505,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         },
       ],
       links: [
-        { href: '/eliora/index.html', label: 'Layer 2 · 服务地图' },
+        { href: '/eliora/index.html', label: 'Eliora 服务地图' },
         { href: '/zh/', label: 'Miragea Archive' },
         { href: '/eliora/atelier/zh/atelier/', label: 'Agent 中心' },
         { href: '/eliora/atelier/zh/contact/', label: '项目咨询' },
@@ -543,7 +543,7 @@ export const atelierHubCopy: Record<AtelierLang, AtelierHubCopy> = {
     ctas: [
       { href: '/eliora/atelier/en/', label: '← Back to Home', variant: 'secondary' },
       { href: '/eliora/atelier/en/contact/', label: 'Project inquiry', variant: 'primary' },
-      { href: '/eliora/index.html', label: 'Layer 2 · Service Map', variant: 'secondary' },
+      { href: '/eliora/index.html', label: 'Eliora Service Map', variant: 'secondary' },
     ],
     footer: [
       { title: 'Data source', body: 'data/agents/status.json · weekly GH Action' },
@@ -580,7 +580,7 @@ export const atelierHubCopy: Record<AtelierLang, AtelierHubCopy> = {
     ctas: [
       { href: '/eliora/atelier/ja/', label: '← ホームへ', variant: 'secondary' },
       { href: '/eliora/atelier/ja/contact/', label: 'お仕事のご相談', variant: 'primary' },
-      { href: '/eliora/index.html', label: 'Layer 2 · サービス', variant: 'secondary' },
+      { href: '/eliora/index.html', label: 'Elioraサービス', variant: 'secondary' },
     ],
     footer: [
       { title: 'データ', body: 'data/agents/status.json' },

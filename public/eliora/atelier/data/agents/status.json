@@ -7,7 +7,7 @@
       "summary": {
         "en": "3 creative contests curated this week (manual feed)",
         "ja": "今週3件の創作コンテストを手動キュレーション",
-        "zh": "本周整理 3 个可跟进的创作赛事（手动キュレーション）"
+        "zh": "本周整理 3 个可跟进的创作赛事（人工筛选）"
       },
       "metrics": {
         "contestsFlagged": 3
@@ -58,7 +58,7 @@
       "summary": {
         "en": "Large X work production notes → explainer draft",
         "ja": "大型X作品の制作メモ → 解説記事ドラフト",
-        "zh": "大型 X 作品の制作メモ → 解説記事ドラフト"
+        "zh": "大型 X 作品制作笔记 → 解说文章草稿"
       },
       "metrics": {
         "stepsRecorded": 8,

@@ -46,7 +46,7 @@ jobs:
             echo "OK: vars.CONTACT_INBOX is set (length ${#VAR_CONTACT_INBOX})"
           else
             echo "::error::No contact inbox configured."
-            echo "Add Repository secret CONTACT_INBOX = wolf6gl@gmail.com"
+            echo "Add Repository secret CONTACT_INBOX with your inquiry inbox email"
             echo "  Settings → Secrets and variables → Actions → Repository secrets → New secret"
             echo "Or add Repository variable CONTACT_INBOX (Variables tab)."
             exit 1
