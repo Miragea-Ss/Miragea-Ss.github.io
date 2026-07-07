@@ -3,13 +3,16 @@ import type { AtelierLang } from './atelier-copy';
 /**
  * FormSubmit 受信設定（いずれもサイトUIには表示しない）
  *
- * 推奨: GitHub Actions Secret `FORM_SUBMIT_TOKEN`
- *   FormSubmit 有効化後に届くランダム文字列（メールアドレスをHTMLに出さない）
- *
- * 初回のみ: Secret `CONTACT_INBOX` に実メールを入れて有効化 → その後 TOKEN に切替
+ * 1. Secret `CONTACT_INBOX` = 受信メール（初回有効化に必須）
+ * 2. 有効化メールのリンクを開いた後、任意で Secret `FORM_SUBMIT_TOKEN` に切替
+ *    （トークンは有効化前だと FormSubmit がメール形式エラーを返す）
  */
 const FORM_SUBMIT_TOKEN = import.meta.env.PUBLIC_FORM_SUBMIT_TOKEN ?? '';
 const CONTACT_INBOX = import.meta.env.PUBLIC_CONTACT_INBOX ?? '';
+
+function isEmailEndpoint(value: string): boolean {
+  return value.includes('@');
+}
 
 export const CONTACT_SITE = 'https://miragea-ss.github.io';
 
@@ -18,8 +21,8 @@ export function atelierContactPath(lang: AtelierLang): string {
 }
 
 export function getContactEndpoint(): string {
+  if (isEmailEndpoint(CONTACT_INBOX)) return CONTACT_INBOX;
   if (FORM_SUBMIT_TOKEN) return FORM_SUBMIT_TOKEN;
-  if (CONTACT_INBOX.includes('@')) return CONTACT_INBOX;
   return '';
 }
 

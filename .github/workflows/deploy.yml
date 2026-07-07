@@ -59,18 +59,19 @@ jobs:
           SECRET_FORM_SUBMIT_TOKEN: ${{ secrets.FORM_SUBMIT_TOKEN }}
           VAR_FORM_SUBMIT_TOKEN: ${{ vars.FORM_SUBMIT_TOKEN }}
         run: |
-          if [ -n "$SECRET_FORM_SUBMIT_TOKEN" ]; then
-            export PUBLIC_FORM_SUBMIT_TOKEN="$SECRET_FORM_SUBMIT_TOKEN"
-            echo "Contact: using secrets.FORM_SUBMIT_TOKEN"
-          elif [ -n "$VAR_FORM_SUBMIT_TOKEN" ]; then
-            export PUBLIC_FORM_SUBMIT_TOKEN="$VAR_FORM_SUBMIT_TOKEN"
-            echo "Contact: using vars.FORM_SUBMIT_TOKEN"
-          elif [ -n "$SECRET_CONTACT_INBOX" ]; then
+          if [ -n "$SECRET_CONTACT_INBOX" ]; then
             export PUBLIC_CONTACT_INBOX="$SECRET_CONTACT_INBOX"
             echo "Contact: using secrets.CONTACT_INBOX"
-          else
+          elif [ -n "$VAR_CONTACT_INBOX" ]; then
             export PUBLIC_CONTACT_INBOX="$VAR_CONTACT_INBOX"
             echo "Contact: using vars.CONTACT_INBOX"
+          fi
+          if [ -n "$SECRET_FORM_SUBMIT_TOKEN" ]; then
+            export PUBLIC_FORM_SUBMIT_TOKEN="$SECRET_FORM_SUBMIT_TOKEN"
+            echo "Contact: FORM_SUBMIT_TOKEN also set (used only after inbox activation)"
+          elif [ -n "$VAR_FORM_SUBMIT_TOKEN" ]; then
+            export PUBLIC_FORM_SUBMIT_TOKEN="$VAR_FORM_SUBMIT_TOKEN"
+            echo "Contact: vars.FORM_SUBMIT_TOKEN also set (used only after inbox activation)"
           fi
           npm run build
 
