@@ -1,0 +1,80 @@
+---
+import type { AtelierHubCopy, AtelierLang } from '../../data/atelier-copy';
+import AtelierTopbar from './AtelierTopbar.astro';
+
+interface Props {
+  lang: AtelierLang;
+  copy: AtelierHubCopy;
+}
+
+const { lang, copy } = Astro.props;
+const hubPath = `/eliora/atelier/${lang}/atelier/`;
+---
+
+<div class="wrap">
+  <AtelierTopbar
+    lang={lang}
+    brandSubtitle={copy.brandSubtitle}
+    nav={copy.nav}
+    regionTags={{ en: '', ja: '', zh: '' }}
+    activeNav={hubPath}
+    hubMode
+  />
+
+  <div class="stale-banner" role="status">{copy.staleBanner}</div>
+
+  <header class="atelier-hero">
+    <span class="badge">{copy.hero.badge}</span>
+    <h1>{copy.hero.title}</h1>
+    <p>{copy.hero.lead}</p>
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;margin-top:12px">
+      <span data-sync-label>{copy.hero.syncing}</span> · <span data-sync-time></span>
+    </p>
+  </header>
+
+  <div class="workflow-preview">
+    <div>{copy.workflow.label}</div>
+    <div class="nodes">
+      {
+        copy.workflow.nodes.map((node, i) => (
+          <>
+            {i > 0 && <span class="arrow">→</span>}
+            <span class="node">{node}</span>
+          </>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="agent-detail-grid" id="agent-detail-grid"></div>
+
+  <div class="cta-row" style="justify-content:center;padding-bottom:48px">
+    {
+      copy.ctas.map((cta) => (
+        <a class={`btn btn-${cta.variant}`} href={cta.href}>
+          {cta.label}
+        </a>
+      ))
+    }
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      {
+        copy.footer.map((col) => (
+          <div>
+            <strong>{col.title}</strong>
+            <br />
+            {
+              col.title === 'Author' ? (
+                <a href="https://x.com/Miragea_S/" style="color:var(--champagne)">{col.body}</a>
+              ) : (
+                col.body
+              )
+            }
+          </div>
+        ))
+      }
+    </div>
+  </footer>
+</div>

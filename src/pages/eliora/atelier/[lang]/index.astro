@@ -1,0 +1,20 @@
+---
+import AtelierLayout from '../../../../site-layouts/AtelierLayout.astro';
+import AtelierHome from '../../../../components/atelier/AtelierHome.astro';
+import {
+  atelierHomeCopy,
+  atelierLanguages,
+  type AtelierLang,
+} from '../../../../data/atelier-copy';
+
+export function getStaticPaths() {
+  return atelierLanguages.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: AtelierLang };
+const copy = atelierHomeCopy[lang];
+---
+
+<AtelierLayout title={copy.meta.title} description={copy.meta.description} lang={lang}>
+  <AtelierHome lang={lang} copy={copy} />
+</AtelierLayout>

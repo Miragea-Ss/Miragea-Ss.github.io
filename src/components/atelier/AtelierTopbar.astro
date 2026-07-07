@@ -1,0 +1,66 @@
+---
+import type { AtelierLang } from '../../data/atelier-copy';
+import { atelierLanguages } from '../../data/atelier-copy';
+
+interface Props {
+  lang: AtelierLang;
+  brandSubtitle: string;
+  nav: { href: string; label: string }[];
+  regionTags: Record<AtelierLang, string>;
+  activeNav?: string;
+  hubMode?: boolean;
+}
+
+const { lang, brandSubtitle, nav, regionTags, activeNav, hubMode = false } = Astro.props;
+const base = `/eliora/atelier/${lang}/`;
+---
+
+<header class="topbar">
+  <a class="brand" href={base}>
+    <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--strong" aria-label="Eliora logo">
+      <span class="moon-glow" aria-hidden="true"></span>
+      <img class="brand-moon-logo" src="/assets/brand/eliora-logo-transparent.png" alt="Eliora logo" />
+    </span>
+    <div class="brand-text">
+      <strong>Miragea · Eliora</strong>
+      <span>{brandSubtitle}</span>
+    </div>
+  </a>
+  <nav class="nav" aria-label="Primary">
+    {
+      nav.map((item) => {
+        const isAgent = item.href.includes('/atelier/');
+        const isActive = activeNav
+          ? item.href === activeNav || item.href.endsWith(activeNav)
+          : isAgent && !hubMode;
+        return (
+          <a
+            href={item.href}
+            class:list={[{ 'nav-agent': isAgent, active: isActive }]}
+          >
+            {item.label}
+          </a>
+        );
+      })
+    }
+  </nav>
+  <div class="regions" aria-label="Regions">
+    {
+      hubMode
+        ? atelierLanguages.map((l) => (
+            <a
+              href={`/eliora/atelier/${l}/atelier/`}
+              class:list={[{ active: l === lang }]}
+            >
+              {l.toUpperCase()}
+            </a>
+          ))
+        : atelierLanguages.map((l) => (
+            <a href={`/eliora/atelier/${l}/`} class:list={[{ active: l === lang }]}>
+              {l.toUpperCase()}
+              <span class="tag">{regionTags[l]}</span>
+            </a>
+          ))
+    }
+  </div>
+</header>

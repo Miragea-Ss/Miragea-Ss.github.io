@@ -1,0 +1,267 @@
+---
+import type { AtelierHomeCopy, AtelierLang } from '../../data/atelier-copy';
+import AtelierTopbar from './AtelierTopbar.astro';
+
+interface Props {
+  lang: AtelierLang;
+  copy: AtelierHomeCopy;
+}
+
+const { lang, copy } = Astro.props;
+const hub = `/eliora/atelier/${lang}/atelier/`;
+---
+
+<div class="wrap">
+  <AtelierTopbar
+    lang={lang}
+    brandSubtitle={copy.brandSubtitle}
+    nav={copy.nav}
+    regionTags={copy.regionTags}
+  />
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="badge">{copy.hero.badge}</span>
+        <h1>
+          {copy.hero.title.line1}
+          <br />
+          <em>{copy.hero.title.emphasis}</em>
+          {copy.hero.title.line2 && <><br />{copy.hero.title.line2}</>}
+        </h1>
+        <p class="hero-lead">{copy.hero.lead}</p>
+        <div class="cta-row">
+          {
+            copy.hero.ctas.map((cta) => (
+              <a
+                class={`btn btn-${cta.variant}`}
+                href={cta.href}
+                target={cta.href.startsWith('http') ? '_blank' : undefined}
+                rel={cta.href.startsWith('http') ? 'noopener' : undefined}
+              >
+                {cta.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <aside class="glass-panel" aria-label="Agent preview">
+        <div class="panel-header">
+          <span>{copy.panel.header}</span>
+          <span class="live">
+            <span class="agent-dot pulse"></span>
+            <span data-sync-label>{copy.panel.syncing}</span>
+          </span>
+        </div>
+        <div class="agent-grid-2x2" id="agent-grid-mini"></div>
+        <div class="panel-footer">
+          <span data-sync-time></span> ·
+          <a href={hub} style="color:var(--champagne)">{copy.panel.viewAll}</a>
+        </div>
+      </aside>
+    </section>
+
+    <section class="atelier-section" id="atelier">
+      <div class="stale-banner" role="status">{copy.atelierSection.staleBanner}</div>
+      <div class="atelier-section-header">
+        <div>
+          <div class="section-label">{copy.atelierSection.label}</div>
+          <h2>{copy.atelierSection.title}</h2>
+        </div>
+        <p>{copy.atelierSection.description}</p>
+      </div>
+      <div class="agent-grid-4" id="agent-grid-home"></div>
+      <div class="cta-row" style="margin-top:24px">
+        <a class="btn btn-agent" href={hub}>{copy.atelierSection.cta}</a>
+      </div>
+    </section>
+
+    {
+      copy.bts && (
+        <section class="block" id={copy.bts.id}>
+          <div class="section-label">{copy.bts.label}</div>
+          <h2 class="section-title">{copy.bts.title}</h2>
+          <div class="works-grid">
+            {copy.bts.cards.map((card) => (
+              <article class="work-card">
+                <div class="work-thumb" />
+                <div class="work-body">
+                  <h3>{card.title}</h3>
+                  <p>{card.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div class="channel-strip">
+            {copy.bts.channels.map((ch) => (
+              <span class="channel-pill">{ch}</span>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      copy.works && (
+        <section class="block" id={copy.works.id}>
+          <div class="section-label">{copy.works.label}</div>
+          <h2 class="section-title">{copy.works.title}</h2>
+          <div class="works-grid">
+            {copy.works.cards.map((card) => {
+              const Tag = card.href ? 'a' : 'article';
+              return (
+                <Tag
+                  class="work-card"
+                  href={card.href}
+                  target={card.external ? '_blank' : undefined}
+                  rel={card.external ? 'noopener' : undefined}
+                >
+                  <div class="work-thumb" />
+                  <div class="work-body">
+                    <h3>{card.title}</h3>
+                    <p>{card.description}</p>
+                  </div>
+                </Tag>
+              );
+            })}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      copy.worksRail && (
+        <section class="block" id={copy.worksRail.id}>
+          <div class="section-label">{copy.worksRail.label}</div>
+          <h2 class="section-title">{copy.worksRail.title}</h2>
+          <div class="series-rail">
+            {copy.worksRail.cards.map((card) => (
+              <article class="series-card">
+                <div class="ep">{card.ep}</div>
+                <h4>{card.title}</h4>
+                <p>{card.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    <section class="block" id={copy.studio.id}>
+      <div class="section-label">{copy.studio.label}</div>
+      <h2 class="section-title">{copy.studio.title}</h2>
+      <p style="color:var(--muted);font-size:0.88rem;max-width:52ch;margin:-12px 0 20px">
+        {copy.studio.lead}
+      </p>
+      <div class="studio-grid">
+        {
+          copy.studio.tiles.map((tile) => (
+            <div class="studio-tile">
+              <div class="icon">{tile.icon}</div>
+              <h4>{tile.title}</h4>
+            </div>
+          ))
+        }
+      </div>
+      {
+        copy.studio.channels && (
+          <div class="channel-strip">
+            {copy.studio.channels.map((ch) => (
+              <span class="channel-pill">{ch}</span>
+            ))}
+          </div>
+        )
+      }
+      {
+        copy.studio.cta && (
+          <div class="cta-row" style="margin-top:20px">
+            <a class={`btn btn-${copy.studio.cta.variant}`} href={copy.studio.cta.href}>
+              {copy.studio.cta.label}
+            </a>
+          </div>
+        )
+      }
+    </section>
+
+    {
+      copy.series && (
+        <section class="block" id={copy.series.id}>
+          <div class="section-label">{copy.series.label}</div>
+          <h2 class="section-title">{copy.series.title}</h2>
+          <div class="series-rail">
+            {copy.series.cards.map((card) => (
+              <article class="series-card">
+                <div class="ep">{card.ep}</div>
+                <h4>{card.title}</h4>
+                <p>{card.description}</p>
+              </article>
+            ))}
+          </div>
+          <div class="channel-strip">
+            {copy.series.channels.map((ch) => (
+              <span class="channel-pill">{ch}</span>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      copy.learn && (
+        <section class="block" id={copy.learn.id}>
+          <div class="section-label">{copy.learn.label}</div>
+          <h2 class="section-title">{copy.learn.title}</h2>
+          <div class="series-rail">
+            {copy.learn.cards.map((card) => (
+              <article class="series-card">
+                <div class="ep">{card.ep}</div>
+                <h4>{card.title}</h4>
+                <p>{card.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      copy.enterprise && (
+        <section class="block" id={copy.enterprise.id}>
+          <div class="section-label">{copy.enterprise.label}</div>
+          <h2 class="section-title">{copy.enterprise.title}</h2>
+          <p style="color:var(--muted);font-size:0.9rem;max-width:56ch">{copy.enterprise.lead}</p>
+          <a class={`btn btn-${copy.enterprise.cta.variant}`} href={copy.enterprise.cta.href}>
+            {copy.enterprise.cta.label}
+          </a>
+        </section>
+      )
+    }
+  </main>
+
+  <footer id="profile">
+    <div class="footer-grid">
+      {
+        copy.footer.columns.map((col) => (
+          <div>
+            <strong>{col.title}</strong>
+            <br />
+            {col.body}
+            {
+              col.link && (
+                <>
+                  <br />
+                  <a href={col.link.href} style="color:var(--champagne)">{col.link.label}</a>
+                </>
+              )
+            }
+          </div>
+        ))
+      }
+    </div>
+    <div class="footer-links">
+      {copy.footer.links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </div>
+  </footer>
+</div>
