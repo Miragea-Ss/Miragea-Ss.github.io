@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier Operations — 4 Agents | Miragea · Eliora</title>
+  <meta name="description" content="Campaign Watcher, Production Recorder, Work Distributor, Idea Miner — systems that run work through AI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/brand/brand-glow.css" />
+  <link rel="stylesheet" href="/eliora/atelier/assets/css/atelier.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="brand" href="/eliora/atelier/en/">
+        <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--strong" aria-label="Eliora logo">
+          <span class="moon-glow" aria-hidden="true"></span>
+          <img class="brand-moon-logo" src="/assets/brand/eliora-logo-transparent.png" alt="Eliora logo" />
+        </span>
+        <div class="brand-text">
+          <strong>Miragea · Eliora</strong>
+          <span>Atelier Operations</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="/eliora/atelier/en/">Home</a>
+        <a href="/eliora/atelier/en/#works">Works</a>
+        <a href="/eliora/atelier/en/#studio">Studio</a>
+        <a href="/eliora/atelier/en/atelier/" class="nav-agent active">Atelier Ops</a>
+      </nav>
+      <div class="regions">
+        <a href="/eliora/atelier/en/atelier/" class="active">EN</a>
+        <a href="/eliora/atelier/ja/atelier/">JA</a>
+        <a href="/eliora/atelier/zh/atelier/">ZH</a>
+      </div>
+    </header>
+
+    <div class="stale-banner" role="status">Agent status may be stale.</div>
+
+    <header class="atelier-hero">
+      <span class="badge">Systems · Not commands</span>
+      <h1>Atelier Operations</h1>
+      <p>
+        Four agents that advance production, distribution, contests, and ideas —
+        so AI runs the next job, not just waits for orders.
+      </p>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:0.75rem;margin-top:12px">
+        <span data-sync-label>Syncing…</span> · <span data-sync-time></span>
+      </p>
+    </header>
+
+    <div class="workflow-preview">
+      <div>COMFYUI WORKFLOW PREVIEW (read-only)</div>
+      <div class="nodes">
+        <span class="node">Load Checkpoint</span>
+        <span class="arrow">→</span>
+        <span class="node">IP-Adapter</span>
+        <span class="arrow">→</span>
+        <span class="node">KSampler</span>
+        <span class="arrow">→</span>
+        <span class="node">VAE Decode</span>
+        <span class="arrow">→</span>
+        <span class="node">API Export</span>
+      </div>
+    </div>
+
+    <div class="agent-detail-grid" id="agent-detail-grid"></div>
+
+    <div class="cta-row" style="justify-content:center;padding-bottom:48px">
+      <a class="btn btn-secondary" href="/eliora/atelier/en/">← Back to Home</a>
+      <a class="btn btn-primary" href="/eliora/index.html">Layer 2 · Service Map</a>
+    </div>
+
+    <footer>
+      <div class="footer-grid">
+        <div><strong>Data source</strong><br />data/agents/status.json · weekly GH Action</div>
+        <div><strong>v1</strong><br />campaign-watcher uses curated contests.yaml</div>
+        <div><strong>Next</strong><br />Local runners → auto push when PC online</div>
+      </div>
+    </footer>
+  </div>
+  <script src="/eliora/atelier/assets/js/site.js"></script>
+</body>
+</html>

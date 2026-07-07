@@ -262,7 +262,8 @@
           </p>
           <p class="lang-note" data-i18n="note">Eliora is the service layer where AI, Infinite Canvas, digital products, consulting, and community become practical tools.</p>
           <div class="actions">
-            <a class="button primary" href="/eliora/infinite-canvas.html" data-i18n="openCanvas">Open Infinite Canvas</a>
+            <a class="button primary" href="/eliora/atelier/en/" data-atelier-link data-i18n="openAtelier">Enter Cosmic Atelier</a>
+            <a class="button" href="/eliora/infinite-canvas.html" data-i18n="openCanvas">Open Infinite Canvas</a>
             <a class="button" href="/en/" data-i18n="backMiragea">Back to Miragea</a>
           </div>
         </div>
@@ -277,6 +278,7 @@
               <span data-i18n="panelCopy">Service layer for AI, canvas, products, consulting, and community.</span>
             </div>
             <div class="signal-stack">
+              <a class="signal-row" href="/eliora/atelier/en/" data-atelier-link><b data-i18n="signalAtelier">Cosmic Atelier</b><span data-i18n="signalAtelierStatus">live</span></a>
               <a class="signal-row" href="/eliora/infinite-canvas.html"><b data-i18n="signalCanvas">Infinite Canvas</b><span data-i18n="signalOpen">open</span></a>
               <a class="signal-row" href="#service-map"><b data-i18n="signalStudio">Local AI Studio</b><span data-i18n="signalPrivate">private</span></a>
               <a class="signal-row" href="#service-map"><b data-i18n="signalProducts">Digital Products</b><span data-i18n="signalReady">ready</span></a>
@@ -348,8 +350,11 @@
           title: 'Eliora',
           lead: 'A local-first AI service layer for Infinite Canvas, digital products, consulting, and community. Miragea preserves the origin; Eliora turns it into working systems.',
           note: 'Eliora is the service layer where AI, Infinite Canvas, digital products, consulting, and community become practical tools.',
+          openAtelier: 'Enter Cosmic Atelier',
           openCanvas: 'Open Infinite Canvas',
           backMiragea: 'Back to Miragea',
+          signalAtelier: 'Cosmic Atelier',
+          signalAtelierStatus: 'live',
           panelTitle: 'Eliora',
           panelCopy: 'Service layer for AI, canvas, products, consulting, and community.',
           signalCanvas: 'Infinite Canvas',
@@ -384,8 +389,11 @@
           title: 'Eliora',
           lead: 'Elioraは、Infinite Canvas、デジタル商品、コンサルティング、コミュニティのためのローカルファーストAIスタジオです。Mirageaが起点を保存し、Elioraがそれを実用システムへ変えます。',
           note: 'Elioraは、AI、Infinite Canvas、デジタル商品、コンサルティング、コミュニティを実際に使える道具へ変えるサービス層です。',
+          openAtelier: '宇宙AIアトリエへ',
           openCanvas: 'Infinite Canvasを開く',
           backMiragea: 'Mirageaへ戻る',
+          signalAtelier: '宇宙AIアトリエ',
+          signalAtelierStatus: '公開中',
           panelTitle: 'Eliora',
           panelCopy: 'AI、Canvas、商品、コンサルティング、コミュニティのサービス層。',
           signalCanvas: 'Infinite Canvas',
@@ -420,8 +428,11 @@
           title: 'Eliora',
           lead: 'Eliora 是面向 Infinite Canvas、数字商品、咨询与社区的本地优先 AI 工作室。Miragea 保存源头，Eliora 把它转化为可工作的系统。',
           note: 'Eliora 是把 AI、Infinite Canvas、数字商品、咨询与社区变成实用工具的服务层。',
+          openAtelier: '进入宇宙AI工坊',
           openCanvas: '打开 Infinite Canvas',
           backMiragea: '返回 Miragea',
+          signalAtelier: '宇宙AI工坊',
+          signalAtelierStatus: '已上线',
           panelTitle: 'Eliora',
           panelCopy: 'AI、Canvas、产品、咨询与社区的服务层。',
           signalCanvas: 'Infinite Canvas',
@@ -462,6 +473,9 @@
         });
         document.querySelectorAll('[data-lang]').forEach((button) => {
           button.classList.toggle('active', button.dataset.lang === current);
+        });
+        document.querySelectorAll('[data-atelier-link]').forEach((node) => {
+          node.setAttribute('href', '/eliora/atelier/' + current + '/');
         });
       }
 
