@@ -9,6 +9,9 @@ export interface ContactCopy {
   note: string;
   successTitle: string;
   successLead: string;
+  successPoints: string[];
+  autoresponse: string;
+  formAutoreplyHint: string;
   backHome: string;
   fields: {
     name: string;
@@ -42,9 +45,18 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       'Use this form for PoC, ComfyUI automation, workflow builds, and consulting. I reply to the email address you provide.',
     note:
       'Typical scope: reproducible pipelines, local bf16/fp16 stacks, API export, batch production — not one-off image requests.',
-    successTitle: 'Inquiry sent',
+    successTitle: 'Inquiry received',
     successLead:
-      'Thank you. If this is the first message through this form, FormSubmit may ask hello@eliora.studio to confirm once — after that, replies go directly to your inbox.',
+      'Your message reached Miragea · Eliora. A confirmation email was sent to the address you entered.',
+    successPoints: [
+      'An auto-reply email has been sent to your inbox (check spam if needed).',
+      'A team member will respond within 3 business days.',
+      'Urgent: hello@eliora.studio',
+    ],
+    autoresponse:
+      'Thank you for contacting Miragea · Eliora (Cosmic AI Atelier). [Auto-reply] Your inquiry was received successfully. We will respond to the email address you provided within 3 business days. Urgent: hello@eliora.studio — Please do not reply to this automated message.',
+    formAutoreplyHint:
+      'After you send, an auto-reply confirmation goes to your email. Personal reply within 3 business days.',
     backHome: '← Back to Atelier home',
     fields: {
       name: 'Your name',
@@ -84,9 +96,18 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       '企業向けPoC、ComfyUI業務自動化、ワークフロー構築、コンサルティングのご相談はこのフォームから。ご記入のメールアドレスへ返信します。',
     note:
       '対象例：再現性のあるパイプライン、ローカルbf16/fp16運用、API化、バッチ量産 — 単発画像生成の依頼ではありません。',
-    successTitle: '送信しました',
+    successTitle: 'お問い合わせを受け付けました',
     successLead:
-      'ありがとうございます。初回のみ hello@eliora.studio への確認メールが届く場合があります。確認後は、ご記入のメールアドレスへ直接返信できます。',
+      'お問い合わせは正常に届きました。ご記入のメールアドレスへ自動返信メールをお送りしています。',
+    successPoints: [
+      '受付確認の自動返信メールを送信しました（届かない場合は迷惑メールをご確認ください）。',
+      '内容を確認のうえ、3営業日以内に担当よりご記入のメールアドレスへ返信します。',
+      'お急ぎの場合: hello@eliora.studio',
+    ],
+    autoresponse:
+      'お問い合わせありがとうございます。Miragea · Eliora（Cosmic AI Atelier）です。【自動返信】お問い合わせは正常に届きました。内容を確認のうえ、3営業日以内にご記入のメールアドレスへ担当より返信いたします。お急ぎ: hello@eliora.studio ※本メールへの返信は受け付けておりません。',
+    formAutoreplyHint:
+      '送信後、ご記入のメールアドレスへ受付確認の自動返信をお送りします。担当からの返信は3営業日以内です。',
     backHome: '← アトリエホームへ',
     fields: {
       name: 'お名前',
@@ -125,9 +146,16 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       '企业 PoC、ComfyUI 自动化、工作流搭建、顾问咨询请用此表单。我会回复到你填写的邮箱。',
     note:
       '适合：可复现管线、本地 bf16/fp16、API 化、批量生产 — 非单张图片定制。',
-    successTitle: '已发送',
-    successLead:
-      '感谢提交。首次使用表单时，hello@eliora.studio 可能需要一次确认；确认后可直接回复你的邮箱。',
+    successTitle: '咨询已受理',
+    successLead: '您的咨询已成功送达。我们已向您填写的邮箱发送自动确认邮件。',
+    successPoints: [
+      '自动确认邮件已发送（如未收到请查看垃圾邮件）。',
+      '我们将在 3 个工作日内回复您填写的邮箱。',
+      '紧急联系：hello@eliora.studio',
+    ],
+    autoresponse:
+      '感谢您联系 Miragea · Eliora（Cosmic AI Atelier）。【自动回复】您的咨询已成功送达。我们将在 3 个工作日内回复您填写的邮箱。紧急：hello@eliora.studio — 请勿回复本自动邮件。',
+    formAutoreplyHint: '提交后，系统会向您的邮箱发送自动确认。人工回复将在 3 个工作日内发出。',
     backHome: '← 返回工坊首页',
     fields: {
       name: '姓名',

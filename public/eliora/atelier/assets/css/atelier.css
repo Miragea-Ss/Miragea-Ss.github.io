@@ -827,3 +827,27 @@ footer {
   opacity: 0;
   pointer-events: none;
 }
+
+.form-autoreply-hint {
+  font-size: 0.75rem;
+  color: var(--champagne);
+  line-height: 1.55;
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(201, 169, 98, 0.22);
+  background: rgba(201, 169, 98, 0.06);
+}
+
+.contact-success-list {
+  margin: 16px 0 0;
+  padding-left: 1.2rem;
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+.contact-success-list li + li {
+  margin-top: 8px;
+}

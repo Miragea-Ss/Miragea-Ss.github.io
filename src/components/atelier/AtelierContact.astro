@@ -41,7 +41,12 @@ const nav = [
         <section class="block contact-success-panel" aria-live="polite">
           <span class="badge">{copy.badge}</span>
           <h1 class="section-title">{copy.successTitle}</h1>
-          <p style="color:var(--muted);max-width:52ch;line-height:1.7">{copy.successLead}</p>
+          <p class="contact-lead">{copy.successLead}</p>
+          <ul class="contact-success-list">
+            {copy.successPoints.map((point) => (
+              <li>{point}</li>
+            ))}
+          </ul>
           <a class="btn btn-secondary" href={homePath} style="margin-top:20px">
             {copy.backHome}
           </a>
@@ -61,7 +66,7 @@ const nav = [
           >
             <input type="hidden" name="_subject" value={contactFormSubject(lang)} />
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_autoresponse" value={copy.autoresponse} />
             <input type="hidden" name="_next" value={contactFormNext(lang)} />
             <input type="hidden" name="locale" value={lang} />
             <input
@@ -149,6 +154,7 @@ const nav = [
             </div>
 
             <p class="form-privacy">{copy.privacy}</p>
+            <p class="form-autoreply-hint">{copy.formAutoreplyHint}</p>
 
             <button type="submit" class="btn btn-primary contact-submit">
               {copy.fields.submit}
