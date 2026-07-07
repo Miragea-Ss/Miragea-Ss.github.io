@@ -66,6 +66,49 @@
         cursor: pointer;
       }
       .button.primary, .lang-switch button.active { background: #f4eee4; color: #050505; border-color: #f4eee4; }
+      .button.atelier {
+        background: linear-gradient(135deg, #c9a962, #a88b4a);
+        color: #050505;
+        border-color: #c9a962;
+        box-shadow: 0 4px 24px rgba(201, 169, 98, 0.35);
+      }
+      .button.atelier:hover { filter: brightness(1.06); }
+      .nav-atelier {
+        border-color: rgba(201, 169, 98, 0.45) !important;
+        color: #f4d38e !important;
+        background: rgba(201, 169, 98, 0.12) !important;
+      }
+      .layer3-strip {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin: 0 auto 8px;
+        padding: 12px 16px;
+        border: 1px solid rgba(201, 169, 98, 0.35);
+        border-radius: 8px;
+        background: linear-gradient(90deg, rgba(201,169,98,.14), rgba(46,74,158,.12));
+      }
+      .layer3-strip .tag-l3 {
+        color: #c9a962;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+      }
+      .layer3-strip a {
+        color: #f4eee4;
+        font-weight: 700;
+        font-size: 14px;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .signal-row.atelier-row {
+        border-color: rgba(201, 169, 98, 0.42);
+        background: rgba(201, 169, 98, 0.08);
+      }
+      .signal-row.atelier-row span { color: #c9a962; }
       .lang-switch { display: flex; align-items: center; gap: 7px; margin-left: 12px; }
       .lang-corner {
         position: fixed;
@@ -240,11 +283,17 @@
         </span>
       </a>
       <nav class="nav" aria-label="Primary">
+        <a href="/eliora/atelier/en/" class="nav-atelier" data-atelier-link data-i18n="navAtelier">Layer 3 · Atelier</a>
         <a href="/en/">Miragea</a>
         <a href="/eliora/infinite-canvas.html">Canvas</a>
         <a href="https://github.com/Miragea-Ss">GitHub</a>
       </nav>
     </header>
+
+    <div class="wrap layer3-strip" role="region" aria-label="Layer 3 entry">
+      <span class="tag-l3" data-i18n="layer3Tag">Layer 3 / Cosmic Atelier</span>
+      <a href="/eliora/atelier/en/" data-atelier-link data-i18n="layer3Link">Enter Cosmic Atelier →</a>
+    </div>
 
     <div class="lang-switch lang-corner" aria-label="Language">
       <button type="button" data-lang="en">EN</button>
@@ -262,8 +311,8 @@
           </p>
           <p class="lang-note" data-i18n="note">Eliora is the service layer where AI, Infinite Canvas, digital products, consulting, and community become practical tools.</p>
           <div class="actions">
-            <a class="button primary" href="/eliora/atelier/en/" data-atelier-link data-i18n="openAtelier">Enter Cosmic Atelier</a>
-            <a class="button" href="/eliora/infinite-canvas.html" data-i18n="openCanvas">Open Infinite Canvas</a>
+            <a class="button atelier" href="/eliora/atelier/en/" data-atelier-link data-i18n="openAtelier">Enter Cosmic Atelier</a>
+            <a class="button primary" href="/eliora/infinite-canvas.html" data-i18n="openCanvas">Open Infinite Canvas</a>
             <a class="button" href="/en/" data-i18n="backMiragea">Back to Miragea</a>
           </div>
         </div>
@@ -278,7 +327,7 @@
               <span data-i18n="panelCopy">Service layer for AI, canvas, products, consulting, and community.</span>
             </div>
             <div class="signal-stack">
-              <a class="signal-row" href="/eliora/atelier/en/" data-atelier-link><b data-i18n="signalAtelier">Cosmic Atelier</b><span data-i18n="signalAtelierStatus">live</span></a>
+              <a class="signal-row atelier-row" href="/eliora/atelier/en/" data-atelier-link><b data-i18n="signalAtelier">Cosmic Atelier · Layer 3</b><span data-i18n="signalAtelierStatus">live</span></a>
               <a class="signal-row" href="/eliora/infinite-canvas.html"><b data-i18n="signalCanvas">Infinite Canvas</b><span data-i18n="signalOpen">open</span></a>
               <a class="signal-row" href="#service-map"><b data-i18n="signalStudio">Local AI Studio</b><span data-i18n="signalPrivate">private</span></a>
               <a class="signal-row" href="#service-map"><b data-i18n="signalProducts">Digital Products</b><span data-i18n="signalReady">ready</span></a>
@@ -350,10 +399,13 @@
           title: 'Eliora',
           lead: 'A local-first AI service layer for Infinite Canvas, digital products, consulting, and community. Miragea preserves the origin; Eliora turns it into working systems.',
           note: 'Eliora is the service layer where AI, Infinite Canvas, digital products, consulting, and community become practical tools.',
+          navAtelier: 'Layer 3 · Atelier',
+          layer3Tag: 'Layer 3 / Cosmic Atelier',
+          layer3Link: 'Enter Cosmic Atelier →',
           openAtelier: 'Enter Cosmic Atelier',
           openCanvas: 'Open Infinite Canvas',
           backMiragea: 'Back to Miragea',
-          signalAtelier: 'Cosmic Atelier',
+          signalAtelier: 'Cosmic Atelier · Layer 3',
           signalAtelierStatus: 'live',
           panelTitle: 'Eliora',
           panelCopy: 'Service layer for AI, canvas, products, consulting, and community.',
@@ -389,10 +441,13 @@
           title: 'Eliora',
           lead: 'Elioraは、Infinite Canvas、デジタル商品、コンサルティング、コミュニティのためのローカルファーストAIスタジオです。Mirageaが起点を保存し、Elioraがそれを実用システムへ変えます。',
           note: 'Elioraは、AI、Infinite Canvas、デジタル商品、コンサルティング、コミュニティを実際に使える道具へ変えるサービス層です。',
+          navAtelier: 'Layer 3 · アトリエ',
+          layer3Tag: 'Layer 3 / 宇宙AIアトリエ',
+          layer3Link: '宇宙AIアトリエへ入る →',
           openAtelier: '宇宙AIアトリエへ',
           openCanvas: 'Infinite Canvasを開く',
           backMiragea: 'Mirageaへ戻る',
-          signalAtelier: '宇宙AIアトリエ',
+          signalAtelier: '宇宙AIアトリエ · Layer 3',
           signalAtelierStatus: '公開中',
           panelTitle: 'Eliora',
           panelCopy: 'AI、Canvas、商品、コンサルティング、コミュニティのサービス層。',
@@ -428,10 +483,13 @@
           title: 'Eliora',
           lead: 'Eliora 是面向 Infinite Canvas、数字商品、咨询与社区的本地优先 AI 工作室。Miragea 保存源头，Eliora 把它转化为可工作的系统。',
           note: 'Eliora 是把 AI、Infinite Canvas、数字商品、咨询与社区变成实用工具的服务层。',
+          navAtelier: 'Layer 3 · 工坊',
+          layer3Tag: 'Layer 3 / 宇宙AI工坊',
+          layer3Link: '进入宇宙AI工坊 →',
           openAtelier: '进入宇宙AI工坊',
           openCanvas: '打开 Infinite Canvas',
           backMiragea: '返回 Miragea',
-          signalAtelier: '宇宙AI工坊',
+          signalAtelier: '宇宙AI工坊 · Layer 3',
           signalAtelierStatus: '已上线',
           panelTitle: 'Eliora',
           panelCopy: 'AI、Canvas、产品、咨询与社区的服务层。',
