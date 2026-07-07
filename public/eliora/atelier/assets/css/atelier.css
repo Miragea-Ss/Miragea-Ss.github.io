@@ -713,3 +713,117 @@ footer {
 }
 
 .stale-banner.visible { display: block; }
+
+/* ── Contact form ── */
+.contact-page { padding-bottom: 48px; }
+
+.contact-section,
+.contact-success-panel {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.contact-lead {
+  color: var(--moonlight);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  max-width: 56ch;
+  margin: 12px 0 8px;
+}
+
+.contact-note {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.65;
+  max-width: 56ch;
+  margin-bottom: 28px;
+  padding-left: 12px;
+  border-left: 2px solid rgba(201, 169, 98, 0.35);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.form-row label {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--moonlight);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.form-required {
+  margin-left: 6px;
+  font-size: 0.65rem;
+  color: var(--champagne);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: rgba(10, 10, 15, 0.65);
+  color: var(--text);
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(168, 176, 192, 0.55);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: rgba(201, 169, 98, 0.55);
+  box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.12);
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 160px;
+  line-height: 1.6;
+}
+
+.form-privacy {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.contact-submit {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+.contact-direct {
+  margin-top: 28px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.contact-direct a {
+  color: var(--champagne);
+}
+
+.contact-honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}

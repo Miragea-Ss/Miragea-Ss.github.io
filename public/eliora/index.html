@@ -312,7 +312,8 @@
           <p class="lang-note" data-i18n="note">Eliora is the service layer where AI, Infinite Canvas, digital products, consulting, and community become practical tools.</p>
           <div class="actions">
             <a class="button atelier" href="/eliora/atelier/en/" data-atelier-link data-i18n="openAtelier">Enter Cosmic Atelier</a>
-            <a class="button primary" href="/eliora/infinite-canvas.html" data-i18n="openCanvas">Open Infinite Canvas</a>
+            <a class="button primary" href="/eliora/atelier/en/contact/" data-contact-link data-i18n="openContact">Project inquiry</a>
+            <a class="button" href="/eliora/infinite-canvas.html" data-i18n="openCanvas">Open Infinite Canvas</a>
             <a class="button" href="/en/" data-i18n="backMiragea">Back to Miragea</a>
           </div>
         </div>
@@ -332,7 +333,7 @@
               <a class="signal-row" href="/eliora/infinite-canvas.html"><b data-i18n="signalCanvas">Infinite Canvas</b><span data-i18n="signalOpen">open</span></a>
               <a class="signal-row" href="#service-map"><b data-i18n="signalStudio">Local AI Studio</b><span data-i18n="signalPrivate">private</span></a>
               <a class="signal-row" href="#service-map"><b data-i18n="signalProducts">Digital Products</b><span data-i18n="signalReady">ready</span></a>
-              <a class="signal-row" href="#service-map"><b data-i18n="signalConsulting">Consulting Route</b><span data-i18n="signalNext">next</span></a>
+              <a class="signal-row atelier-row" href="/eliora/atelier/en/contact/" data-contact-link><b data-i18n="signalContact">Project inquiry form</b><span data-i18n="signalContactStatus">open</span></a>
             </div>
           </div>
         </div>
@@ -358,6 +359,7 @@
             <span class="tag">Market</span>
             <b data-i18n="cardMarketTitle">Digital products and consulting</b>
             <p data-i18n="cardMarketCopy">3DCG assets, visual archives, templates, courses, and advisory work can grow from the same system.</p>
+            <a class="button" href="/eliora/atelier/en/contact/" data-contact-link data-i18n="cardMarketCta" style="margin-top:14px">Open inquiry form</a>
           </article>
         </div>
       </section>
@@ -404,6 +406,7 @@
           layer3Tag: 'Layer 3 / Cosmic Atelier',
           layer3Link: 'Enter Cosmic Atelier →',
           openAtelier: 'Enter Cosmic Atelier',
+          openContact: 'Project inquiry',
           openCanvas: 'Open Infinite Canvas',
           backMiragea: 'Back to Miragea',
           signalAtelier: 'Cosmic Atelier · Layer 3',
@@ -416,6 +419,9 @@
           signalStudio: 'Local AI Studio',
           signalProducts: 'Digital Products',
           signalConsulting: 'Consulting Route',
+          signalContact: 'Project inquiry form',
+          signalContactStatus: 'open',
+          cardMarketCta: 'Open inquiry form',
           signalOpen: 'open',
           signalPrivate: 'private',
           signalReady: 'ready',
@@ -449,6 +455,7 @@
           layer3Tag: 'Layer 3 / 宇宙AIアトリエ',
           layer3Link: '宇宙AIアトリエへ入る →',
           openAtelier: '宇宙AIアトリエへ',
+          openContact: 'お仕事のご相談',
           openCanvas: 'Infinite Canvasを開く',
           backMiragea: 'Mirageaへ戻る',
           signalAtelier: '宇宙AIアトリエ · Layer 3',
@@ -461,6 +468,9 @@
           signalStudio: 'ローカルAIスタジオ',
           signalProducts: 'デジタル商品',
           signalConsulting: 'コンサルティング導線',
+          signalContact: 'お問い合わせフォーム',
+          signalContactStatus: '受付中',
+          cardMarketCta: 'お問い合わせフォーム',
           signalOpen: '公開',
           signalPrivate: '非公開',
           signalReady: '準備完了',
@@ -494,6 +504,7 @@
           layer3Tag: 'Layer 3 / 宇宙AI工坊',
           layer3Link: '进入宇宙AI工坊 →',
           openAtelier: '进入宇宙AI工坊',
+          openContact: '项目咨询',
           openCanvas: '打开 Infinite Canvas',
           backMiragea: '返回 Miragea',
           signalAtelier: '宇宙AI工坊 · Layer 3',
@@ -506,6 +517,9 @@
           signalStudio: '本地 AI 工作室',
           signalProducts: '数字商品',
           signalConsulting: '咨询路线',
+          signalContact: '项目咨询表单',
+          signalContactStatus: '开放',
+          cardMarketCta: '打开咨询表单',
           signalOpen: '已开放',
           signalPrivate: '非公开',
           signalReady: '已就绪',
@@ -547,6 +561,9 @@
         });
         document.querySelectorAll('[data-atelier-hub-link]').forEach((node) => {
           node.setAttribute('href', '/eliora/atelier/' + current + '/atelier/');
+        });
+        document.querySelectorAll('[data-contact-link]').forEach((node) => {
+          node.setAttribute('href', '/eliora/atelier/' + current + '/contact/');
         });
         refreshAgentCount(current);
       }

@@ -1,0 +1,168 @@
+---
+import type { AtelierLang } from '../../data/atelier-copy';
+import { atelierHomeCopy } from '../../data/atelier-copy';
+import type { ContactCopy } from '../../data/contact-copy';
+import {
+  CONTACT_EMAIL,
+  contactFormAction,
+  contactFormNext,
+  contactFormSubject,
+  atelierContactPath,
+} from '../../data/contact-config';
+import AtelierTopbar from './AtelierTopbar.astro';
+
+interface Props {
+  lang: AtelierLang;
+  copy: ContactCopy;
+  sent: boolean;
+}
+
+const { lang, copy, sent } = Astro.props;
+const homeCopy = atelierHomeCopy[lang];
+const homePath = `/eliora/atelier/${lang}/`;
+const nav = [
+  ...homeCopy.nav.filter((item) => !item.href.includes('/contact/')),
+  { href: atelierContactPath(lang), label: lang === 'ja' ? 'お問い合わせ' : lang === 'zh' ? '联系' : 'Contact' },
+];
+---
+
+<div class="wrap">
+  <AtelierTopbar
+    lang={lang}
+    brandSubtitle={copy.brandSubtitle}
+    nav={nav}
+    regionTags={homeCopy.regionTags}
+    activeNav={atelierContactPath(lang)}
+  />
+
+  <main class="contact-page">
+    {
+      sent ? (
+        <section class="block contact-success-panel" aria-live="polite">
+          <span class="badge">{copy.badge}</span>
+          <h1 class="section-title">{copy.successTitle}</h1>
+          <p style="color:var(--muted);max-width:52ch;line-height:1.7">{copy.successLead}</p>
+          <a class="btn btn-secondary" href={homePath} style="margin-top:20px">
+            {copy.backHome}
+          </a>
+        </section>
+      ) : (
+        <section class="block contact-section">
+          <span class="badge">{copy.badge}</span>
+          <h1 class="section-title">{copy.title}</h1>
+          <p class="contact-lead">{copy.lead}</p>
+          <p class="contact-note">{copy.note}</p>
+
+          <form
+            class="contact-form"
+            action={contactFormAction()}
+            method="POST"
+            accept-charset="UTF-8"
+          >
+            <input type="hidden" name="_subject" value={contactFormSubject(lang)} />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_next" value={contactFormNext(lang)} />
+            <input type="hidden" name="locale" value={lang} />
+            <input
+              type="text"
+              name="_honey"
+              class="contact-honey"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+
+            <div class="form-row">
+              <label for="contact-name">
+                {copy.fields.name}
+                <span class="form-required">{copy.fields.required}</span>
+              </label>
+              <input
+                id="contact-name"
+                type="text"
+                name="name"
+                required
+                minlength="1"
+                maxlength="120"
+                placeholder={copy.fields.namePlaceholder}
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="contact-email">
+                {copy.fields.email}
+                <span class="form-required">{copy.fields.required}</span>
+              </label>
+              <input
+                id="contact-email"
+                type="email"
+                name="email"
+                required
+                maxlength="254"
+                placeholder={copy.fields.emailPlaceholder}
+                autocomplete="email"
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="contact-company">{copy.fields.company}</label>
+              <input
+                id="contact-company"
+                type="text"
+                name="company"
+                maxlength="160"
+                placeholder={copy.fields.companyPlaceholder}
+                autocomplete="organization"
+              />
+            </div>
+
+            <div class="form-row">
+              <label for="contact-type">
+                {copy.fields.inquiryType}
+                <span class="form-required">{copy.fields.required}</span>
+              </label>
+              <select id="contact-type" name="inquiry_type" required>
+                {
+                  copy.inquiryTypes.map((opt) => (
+                    <option value={opt.value}>{opt.label}</option>
+                  ))
+                }
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="contact-message">
+                {copy.fields.message}
+                <span class="form-required">{copy.fields.required}</span>
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                required
+                minlength="20"
+                maxlength="4000"
+                rows="8"
+                placeholder={copy.fields.messagePlaceholder}
+              />
+            </div>
+
+            <p class="form-privacy">{copy.privacy}</p>
+
+            <button type="submit" class="btn btn-primary contact-submit">
+              {copy.fields.submit}
+            </button>
+          </form>
+
+          <p class="contact-direct">
+            {copy.directEmail}{' '}
+            <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(contactFormSubject(lang))}`}>
+              {CONTACT_EMAIL}
+            </a>
+          </p>
+        </section>
+      )
+    }
+  </main>
+</div>

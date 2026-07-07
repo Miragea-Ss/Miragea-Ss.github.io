@@ -146,7 +146,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       { href: '#studio', label: 'Studio' },
       { href: '/eliora/atelier/en/atelier/', label: 'Atelier Ops' },
       { href: '#series', label: 'Series' },
-      { href: '#profile', label: 'Profile' },
+      { href: '/eliora/atelier/en/contact/', label: 'Contact' },
     ],
     regionTags,
     hero: {
@@ -227,6 +227,18 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       ],
       channels: ['X', 'YouTube', 'Patreon', 'Gumroad', 'Substack', 'Product Hunt'],
     },
+    enterprise: {
+      id: 'enterprise',
+      label: 'Enterprise & Projects',
+      title: 'Serious work inquiries',
+      lead:
+        'PoC, ComfyUI automation, workflow builds, consulting. Use the fixed inquiry form — replies go to your email.',
+      cta: {
+        href: '/eliora/atelier/en/contact/',
+        label: 'Open inquiry form',
+        variant: 'primary',
+      },
+    },
     footer: {
       columns: [
         { title: 'Miragea AI Lab', body: 'Perception archive · EX system · IPFS mirror' },
@@ -242,6 +254,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         { href: '/en/', label: 'Miragea Archive' },
         { href: 'https://x.com/Miragea_S/', label: 'X' },
         { href: '/eliora/atelier/en/atelier/', label: 'Agent hub' },
+        { href: '/eliora/atelier/en/contact/', label: 'Project inquiry' },
       ],
     },
   },
@@ -258,7 +271,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       { href: '#studio', label: 'スタジオ' },
       { href: '/eliora/atelier/ja/atelier/', label: 'アトリエ運用' },
       { href: '#learn', label: '講座' },
-      { href: '#profile', label: 'プロフィール' },
+      { href: '/eliora/atelier/ja/contact/', label: 'お問い合わせ' },
     ],
     regionTags,
     hero: {
@@ -269,7 +282,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       ctas: [
         { href: '#studio', label: 'ワークフローを見る', variant: 'primary' },
         { href: '/eliora/atelier/ja/atelier/', label: '4つのAgent →', variant: 'agent' },
-        { href: '#enterprise', label: '企業相談', variant: 'secondary' },
+        { href: '/eliora/atelier/ja/contact/', label: 'お仕事のご相談', variant: 'secondary' },
       ],
     },
     panel: {
@@ -346,10 +359,11 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       id: 'enterprise',
       label: 'Enterprise',
       title: '企業向け PoC · 業務自動化',
-      lead: '売るのは画像ではなく、企業の制作業務を自動化する仕組み。事例資料はメールゲート後に共有（T2）。',
+      lead:
+        '売るのは画像ではなく、企業の制作業務を自動化する仕組み。お名前・メール・ご用件の固定フォームからご連絡ください。返信はご記入のメールアドレスへ送ります。',
       cta: {
-        href: 'mailto:contact@miragea.lab?subject=Enterprise%20PoC',
-        label: '企業相談をする',
+        href: '/eliora/atelier/ja/contact/',
+        label: 'お問い合わせフォームを開く',
         variant: 'primary',
       },
     },
@@ -367,6 +381,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         { href: '/eliora/index.html', label: 'Layer 2 · サービスマップ' },
         { href: '/ja/', label: 'Miragea Archive' },
         { href: '/eliora/atelier/ja/atelier/', label: 'Agentハブ' },
+        { href: '/eliora/atelier/ja/contact/', label: 'お仕事のご相談' },
       ],
     },
   },
@@ -382,7 +397,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       { href: '#studio', label: '工作室' },
       { href: '/eliora/atelier/zh/atelier/', label: '工坊运作' },
       { href: '#bts', label: '制作解说' },
-      { href: '#profile', label: '关于' },
+      { href: '/eliora/atelier/zh/contact/', label: '联系' },
     ],
     regionTags,
     hero: {
@@ -467,6 +482,18 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       ],
       cta: { href: '#studio', label: '获取 3D+AI 工作流', variant: 'primary' },
     },
+    enterprise: {
+      id: 'enterprise',
+      label: 'Enterprise',
+      title: '企业合作与项目咨询',
+      lead:
+        '企业 PoC、ComfyUI 自动化、工作流搭建。请用固定格式表单（姓名、邮箱、需求详情），我会回复到你填写的邮箱。',
+      cta: {
+        href: '/eliora/atelier/zh/contact/',
+        label: '打开咨询表单',
+        variant: 'primary',
+      },
+    },
     footer: {
       columns: [
         { title: 'Miragea AI Lab', body: '感知档案 · EX 系统' },
@@ -481,6 +508,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         { href: '/eliora/index.html', label: 'Layer 2 · 服务地图' },
         { href: '/zh/', label: 'Miragea Archive' },
         { href: '/eliora/atelier/zh/atelier/', label: 'Agent 中心' },
+        { href: '/eliora/atelier/zh/contact/', label: '项目咨询' },
       ],
     },
   },
@@ -514,7 +542,8 @@ export const atelierHubCopy: Record<AtelierLang, AtelierHubCopy> = {
     },
     ctas: [
       { href: '/eliora/atelier/en/', label: '← Back to Home', variant: 'secondary' },
-      { href: '/eliora/index.html', label: 'Layer 2 · Service Map', variant: 'primary' },
+      { href: '/eliora/atelier/en/contact/', label: 'Project inquiry', variant: 'primary' },
+      { href: '/eliora/index.html', label: 'Layer 2 · Service Map', variant: 'secondary' },
     ],
     footer: [
       { title: 'Data source', body: 'data/agents/status.json · weekly GH Action' },
@@ -550,7 +579,8 @@ export const atelierHubCopy: Record<AtelierLang, AtelierHubCopy> = {
     },
     ctas: [
       { href: '/eliora/atelier/ja/', label: '← ホームへ', variant: 'secondary' },
-      { href: '/eliora/index.html', label: 'Layer 2 · サービス', variant: 'primary' },
+      { href: '/eliora/atelier/ja/contact/', label: 'お仕事のご相談', variant: 'primary' },
+      { href: '/eliora/index.html', label: 'Layer 2 · サービス', variant: 'secondary' },
     ],
     footer: [
       { title: 'データ', body: 'data/agents/status.json' },
@@ -585,7 +615,8 @@ export const atelierHubCopy: Record<AtelierLang, AtelierHubCopy> = {
     },
     ctas: [
       { href: '/eliora/atelier/zh/', label: '← 返回首页', variant: 'secondary' },
-      { href: '/eliora/index.html', label: 'Layer 2 · 服务地图', variant: 'primary' },
+      { href: '/eliora/atelier/zh/contact/', label: '项目咨询', variant: 'primary' },
+      { href: '/eliora/index.html', label: 'Layer 2 · 服务地图', variant: 'secondary' },
     ],
     footer: [
       { title: '数据源', body: 'data/agents/status.json' },

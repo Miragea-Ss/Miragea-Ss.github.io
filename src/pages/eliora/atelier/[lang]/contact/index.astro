@@ -1,0 +1,18 @@
+---
+import AtelierLayout from '../../../../../site-layouts/AtelierLayout.astro';
+import AtelierContact from '../../../../../components/atelier/AtelierContact.astro';
+import { atelierLanguages, type AtelierLang } from '../../../../../data/atelier-copy';
+import { contactCopy } from '../../../../../data/contact-copy';
+
+export function getStaticPaths() {
+  return atelierLanguages.map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: AtelierLang };
+const copy = contactCopy[lang];
+const sent = Astro.url.searchParams.get('sent') === '1';
+---
+
+<AtelierLayout title={copy.meta.title} description={copy.meta.description} lang={lang}>
+  <AtelierContact lang={lang} copy={copy} sent={sent} />
+</AtelierLayout>

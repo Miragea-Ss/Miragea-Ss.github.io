@@ -29,7 +29,7 @@ const base = `/eliora/atelier/${lang}/`;
   <nav class="nav" aria-label="Primary">
     {
       nav.map((item) => {
-        const isAgent = item.href.includes('/atelier/');
+        const isAgent = item.href.endsWith('/atelier/');
         const isActive = activeNav
           ? item.href === activeNav || item.href.endsWith(activeNav)
           : isAgent && !hubMode;
