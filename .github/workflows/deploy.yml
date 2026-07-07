@@ -26,6 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Validate agent status JSON
+        run: npm run agents:validate
+
       - name: Build
         run: npm run build
 

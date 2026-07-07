@@ -1,0 +1,8 @@
+# work-distributor — publish events (add entry when a work goes live)
+status: idle
+publishes:
+  - at: "2026-07-05T16:00:00Z"
+    type: publish
+    title: If this lullaby becomes your nightly crave
+    url: https://x.com/Miragea_S/status/1966830399239450670
+    channels: [x]

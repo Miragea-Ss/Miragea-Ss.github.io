@@ -1,0 +1,14 @@
+# campaign-watcher — curated public contests (manual edit, no X API)
+# Tags: investor | ai-contest | bilibili | miragea
+contests:
+  - at: "2026-07-06T14:00:00Z"
+    type: ai-contest
+    title: Runway Gen-4 Creative Challenge
+    url: https://runwayml.com/
+    deadline: "2026-08-15"
+    tags: [ai-contest]
+  - at: "2026-07-04T18:00:00Z"
+    type: miragea
+    title: Follow Miragea_S on X for live contest signals
+    url: https://x.com/Miragea_S/
+    tags: [miragea]

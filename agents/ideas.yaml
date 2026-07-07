@@ -1,0 +1,13 @@
+# idea-miner — curated AI case scores (RSS automation optional in v1.5)
+status: active
+ideas:
+  - at: "2026-07-07T04:00:00Z"
+    type: score
+    title: ComfyUI batch pipeline → enterprise PoC candidate
+    url: /eliora/atelier/ja/
+    buildable: 82
+  - at: "2026-07-06T04:00:00Z"
+    type: score
+    title: Music-video + AI series → EN atelier route
+    url: /eliora/atelier/en/
+    buildable: 76

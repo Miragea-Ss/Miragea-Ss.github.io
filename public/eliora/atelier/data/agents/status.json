@@ -1,58 +1,98 @@
 {
-  "generatedAt": "2026-07-07T06:00:00Z",
+  "generatedAt": "2026-07-07T12:59:18.573Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-07T05:45:00Z",
+      "lastRun": "2026-07-06T14:00:00Z",
       "summary": {
-        "zh": "本周整理 2 个可跟进的创作赛事（手动キュレーション）",
+        "en": "2 creative contests curated this week (manual feed)",
         "ja": "今週2件の創作コンテストを手動キュレーション",
-        "en": "2 creative contests curated this week (manual feed)"
+        "zh": "本周整理 2 个可跟进的创作赛事（手动キュレーション）"
       },
-      "metrics": { "contestsFlagged": 2 },
+      "metrics": {
+        "contestsFlagged": 2
+      },
       "events": [
-        { "at": "2026-07-06T14:00:00Z", "type": "ai-contest", "title": "Runway Gen-4 Creative Challenge", "url": "https://runwayml.com/" },
-        { "at": "2026-07-04T18:00:00Z", "type": "miragea", "title": "Follow Miragea_S on X for live contest signals", "url": "https://x.com/Miragea_S/" }
+        {
+          "at": "2026-07-06T14:00:00Z",
+          "type": "ai-contest",
+          "title": "Runway Gen-4 Creative Challenge",
+          "url": "https://runwayml.com/"
+        },
+        {
+          "at": "2026-07-04T18:00:00Z",
+          "type": "miragea",
+          "title": "Follow Miragea_S on X for live contest signals",
+          "url": "https://x.com/Miragea_S/"
+        }
       ]
     },
     "production-recorder": {
       "status": "queued",
       "lastRun": "2026-07-06T22:10:00Z",
       "summary": {
-        "zh": "大型 X 作品の制作メモ → 解説記事ドラフト",
+        "en": "Large X work production notes → explainer draft",
         "ja": "大型X作品の制作メモ → 解説記事ドラフト",
-        "en": "Large X work production notes → explainer draft"
+        "zh": "大型 X 作品の制作メモ → 解説記事ドラフト"
       },
-      "metrics": { "stepsRecorded": 8, "draftArticles": 1 },
+      "metrics": {
+        "stepsRecorded": 8,
+        "draftArticles": 1
+      },
       "events": [
-        { "at": "2026-07-06T22:10:00Z", "type": "article", "title": "Kardashev Type-II — production log", "url": "https://x.com/Miragea_S/status/2000229459916681467" }
+        {
+          "at": "2026-07-06T22:10:00Z",
+          "type": "article",
+          "title": "Kardashev Type-II — production log",
+          "url": "https://x.com/Miragea_S/status/2000229459916681467"
+        }
       ]
     },
     "work-distributor": {
       "status": "idle",
       "lastRun": "2026-07-05T16:00:00Z",
       "summary": {
-        "zh": "上次分发：X 原帖联动",
-        "ja": "前回配信：X原帖連携",
-        "en": "Last publish: X source posts"
+        "en": "Last publish: 1 channel",
+        "ja": "前回配信：1チャネル",
+        "zh": "上次分发：1 个渠道"
       },
-      "metrics": { "lastPublishChannels": 1 },
+      "metrics": {
+        "lastPublishChannels": 1
+      },
       "events": [
-        { "at": "2026-07-05T16:00:00Z", "type": "publish", "title": "If this lullaby becomes your nightly crave", "url": "https://x.com/Miragea_S/status/1966830399239450670" }
+        {
+          "at": "2026-07-05T16:00:00Z",
+          "type": "publish",
+          "title": "If this lullaby becomes your nightly crave",
+          "url": "https://x.com/Miragea_S/status/1966830399239450670"
+        }
       ]
     },
     "idea-miner": {
       "status": "active",
       "lastRun": "2026-07-07T04:00:00Z",
       "summary": {
-        "zh": "从公开 AI 案例中提取可制作的工作流线索",
+        "en": "Workflow leads extracted from public AI cases",
         "ja": "公開AI事例から再現可能なWorkflow手がかりを抽出",
-        "en": "Workflow leads extracted from public AI cases"
+        "zh": "从公开 AI 案例中提取可制作的工作流线索"
       },
-      "metrics": { "ideasScored": 2 },
+      "metrics": {
+        "ideasScored": 2,
+        "buildableAvg": 79
+      },
       "events": [
-        { "at": "2026-07-07T04:00:00Z", "type": "score", "title": "ComfyUI batch pipeline → enterprise PoC candidate", "url": "/eliora/atelier/ja/" },
-        { "at": "2026-07-06T04:00:00Z", "type": "score", "title": "Music-video + AI series → EN atelier route", "url": "/eliora/atelier/en/" }
+        {
+          "at": "2026-07-07T04:00:00Z",
+          "type": "score",
+          "title": "ComfyUI batch pipeline → enterprise PoC candidate",
+          "url": "/eliora/atelier/ja/"
+        },
+        {
+          "at": "2026-07-06T04:00:00Z",
+          "type": "score",
+          "title": "Music-video + AI series → EN atelier route",
+          "url": "/eliora/atelier/en/"
+        }
       ]
     }
   }

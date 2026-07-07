@@ -117,7 +117,11 @@
       var latest = locale === 'zh' ? '最近状态：' : locale === 'ja' ? '最新ステータス：' : 'Latest: ';
       var events = (agent.events || []).slice(0, 5).map(function (ev) {
         var t = new Date(ev.at).toISOString().slice(0, 16).replace('T', ' ');
-        return '<li><span class="ev-time">' + t + ' · ' + ev.type + '</span>' + ev.title + '</li>';
+        var external = ev.url && /^https?:\/\//.test(ev.url);
+        var title = ev.url
+          ? '<a href="' + ev.url + '"' + (external ? ' target="_blank" rel="noopener"' : '') + ' style="color:var(--champagne)">' + ev.title + '</a>'
+          : ev.title;
+        return '<li><span class="ev-time">' + t + ' · ' + ev.type + '</span>' + title + '</li>';
       }).join('');
       return '<article class="agent-detail" id="' + key + '"><div class="detail-head"><span class="status-pill ' + st + '">' + pill + '</span><h2>' + meta.icon + ' ' + name + '</h2><div class="agent-id" style="margin-top:6px">' + key + '</div></div><div class="detail-body"><p>' + desc + '</p><p><strong style="color:var(--moonlight)">' + latest + '</strong>' + (agent.summary[locale] || agent.summary.en) + '</p><ul class="event-list">' + events + '</ul></div></article>';
     }).join('');

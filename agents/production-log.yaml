@@ -1,0 +1,9 @@
+# production-recorder — on-demand production notes (strip local paths before commit)
+status: queued
+logs:
+  - at: "2026-07-06T22:10:00Z"
+    type: article
+    title: Kardashev Type-II — production log
+    url: https://x.com/Miragea_S/status/2000229459916681467
+    stepsRecorded: 8
+    draftArticles: 1
