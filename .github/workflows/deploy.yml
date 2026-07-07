@@ -31,9 +31,31 @@ jobs:
 
       - name: Build
         env:
+          SECRET_CONTACT_INBOX: ${{ secrets.CONTACT_INBOX }}
+          VAR_CONTACT_INBOX: ${{ vars.CONTACT_INBOX }}
           PUBLIC_FORM_SUBMIT_TOKEN: ${{ secrets.FORM_SUBMIT_TOKEN }}
-          PUBLIC_CONTACT_INBOX: ${{ secrets.CONTACT_INBOX }}
-        run: npm run build
+        run: |
+          if [ -n "$PUBLIC_FORM_SUBMIT_TOKEN" ]; then
+            echo "Contact: using FORM_SUBMIT_TOKEN"
+          elif [ -n "$SECRET_CONTACT_INBOX" ]; then
+            export PUBLIC_CONTACT_INBOX="$SECRET_CONTACT_INBOX"
+            echo "Contact: using secrets.CONTACT_INBOX"
+          elif [ -n "$VAR_CONTACT_INBOX" ]; then
+            export PUBLIC_CONTACT_INBOX="$VAR_CONTACT_INBOX"
+            echo "Contact: using vars.CONTACT_INBOX"
+          else
+            echo "::warning::CONTACT_INBOX not set — inquiry form will be disabled on site"
+          fi
+          npm run build
+
+      - name: Verify contact form is wired
+        run: |
+          if grep -q 'formsubmit.co' dist/eliora/atelier/ja/contact/index.html; then
+            echo "OK: FormSubmit endpoint present in built contact page"
+          else
+            echo "::error::Built contact page has no FormSubmit endpoint. Set secrets.CONTACT_INBOX (or vars.CONTACT_INBOX) and redeploy."
+            exit 1
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

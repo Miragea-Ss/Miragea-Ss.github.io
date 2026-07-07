@@ -60,17 +60,14 @@ const nav = [
           <p class="contact-note">{copy.note}</p>
 
           {
-            !formReady && copy.formNotReady && (
+            !formReady && copy.formNotReady ? (
               <p class="contact-note contact-form-pending">{copy.formNotReady}</p>
-            )
-          }
-
+            ) : (
           <form
             class="contact-form"
             action={contactFormAction()}
             method="POST"
             accept-charset="UTF-8"
-            hidden={!formReady}
           >
             <input type="hidden" name="_subject" value={contactFormSubject(lang)} />
             <input type="hidden" name="_template" value="table" />
@@ -168,6 +165,8 @@ const nav = [
               {copy.fields.submit}
             </button>
           </form>
+            )
+          }
         </section>
       )
     }
