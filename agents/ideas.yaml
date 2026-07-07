@@ -1,6 +1,11 @@
 # idea-miner — curated AI case scores (RSS automation optional in v1.5)
 status: active
 ideas:
+  - at: "2026-07-07T13:30:00Z"
+    type: score
+    title: High-VRAM workflow pack live — 5 ComfyUI JSON (48–96GB)
+    url: /eliora/atelier/ja/#workflows
+    buildable: 88
   - at: "2026-07-07T04:00:00Z"
     type: score
     title: ComfyUI batch pipeline → enterprise PoC candidate

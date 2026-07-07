@@ -1,6 +1,7 @@
 ---
 import type { AtelierHomeCopy, AtelierLang } from '../../data/atelier-copy';
 import AtelierTopbar from './AtelierTopbar.astro';
+import AtelierWorkflows from './AtelierWorkflows.astro';
 
 interface Props {
   lang: AtelierLang;
@@ -146,6 +147,8 @@ const hub = `/eliora/atelier/${lang}/atelier/`;
         </section>
       )
     }
+
+    <AtelierWorkflows lang={lang} />
 
     <section class="block" id={copy.studio.id}>
       <div class="section-label">{copy.studio.label}</div>

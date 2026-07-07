@@ -1,0 +1,89 @@
+---
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import type { AtelierLang } from '../../data/atelier-copy';
+
+interface Props {
+  lang: AtelierLang;
+}
+
+const { lang } = Astro.props;
+
+const manifestPath = join(process.cwd(), 'public/eliora/workflows/high-vram/manifest.json');
+const manifest = JSON.parse(readFileSync(manifestPath, 'utf8')) as {
+  targetVram: string;
+  policy: string;
+  workflows: {
+    id: string;
+    file: string;
+    line: string;
+    credit: string;
+    title: Record<AtelierLang, string>;
+    desc: Record<AtelierLang, string>;
+    minVramGb: number;
+    sourceFile: string;
+  }[];
+};
+
+const ui = {
+  en: {
+    label: 'High-VRAM Workflow Pack',
+    title: 'Production workflows — 48–96 GB class',
+    lead: 'Adapted from the author\'s ComfyUI library. Larger tiles, tiling off, PurgeVRAM bypassed. Local execution only — verify model paths.',
+    vram: 'Min VRAM',
+    download: 'Download JSON',
+    credit: 'Source',
+  },
+  ja: {
+    label: '大容量VRAMワークフロー',
+    title: '48–96 GB クラス · 制作ワークフロー',
+    lead: '作者のComfyUIライブラリを96GB向けに調整済み。タイル拡大・PurgeVRAMバイパス。ローカル実行のみ — モデルパスを要確認。',
+    vram: '最小VRAM',
+    download: 'JSONをダウンロード',
+    credit: '出典',
+  },
+  zh: {
+    label: '大容量 VRAM 工作流',
+    title: '48–96 GB 级 · 生产工作流',
+    lead: '由作者 ComfyUI 库针对 96GB 显存调整。更大瓦片、关闭分块、绕过 PurgeVRAM。仅本地运行 — 请核对模型路径。',
+    vram: '最低显存',
+    download: '下载 JSON',
+    credit: '来源',
+  },
+}[lang];
+---
+
+<section class="block" id="workflows">
+  <div class="section-label">{ui.label}</div>
+  <h2 class="section-title">{ui.title}</h2>
+  <p style="color:var(--muted);font-size:0.88rem;max-width:62ch;margin:-8px 0 20px">{ui.lead}</p>
+  <p style="font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--sapphire);margin-bottom:20px">
+    {manifest.targetVram} · {manifest.workflows.length} files
+  </p>
+  <div class="works-grid">
+    {
+      manifest.workflows.map((wf) => (
+        <article class="work-card">
+          <div class="work-body">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:0.65rem;color:var(--champagne);margin-bottom:8px">
+              {ui.vram}: {wf.minVramGb} GB+ · {wf.line}
+            </div>
+            <h3>{wf.title[lang] || wf.title.en}</h3>
+            <p>{wf.desc[lang] || wf.desc.en}</p>
+            <p style="font-size:0.72rem;color:var(--muted);margin-top:10px">
+              {ui.credit}: {wf.credit}
+            </p>
+            <a
+              class="btn btn-primary"
+              style="margin-top:14px;display:inline-flex"
+              href={wf.file}
+              download
+            >
+              {ui.download}
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

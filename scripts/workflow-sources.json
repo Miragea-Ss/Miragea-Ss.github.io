@@ -1,0 +1,92 @@
+[
+  {
+    "id": "seedvr2-upscale",
+    "source": "F:/ComfyUI_Json/TTP+seedVR2 亿级像素超分放大By像素幻想Lab.json",
+    "out": "seedvr2-upscale-hivram.json",
+    "line": "product-imaging",
+    "credit": "像素幻想Lab (adapted by Miragea · Eliora)",
+    "title": {
+      "en": "SeedVR2 billion-pixel upscale",
+      "ja": "SeedVR2 億級ピクセル超解像",
+      "zh": "SeedVR2 亿级像素超分"
+    },
+    "desc": {
+      "en": "Tiled upscale tuned for 48–96GB VRAM — larger tiles, PurgeVRAM bypassed.",
+      "ja": "48–96GB VRAM向け。タイル拡大・PurgeVRAMバイパス済み。",
+      "zh": "面向 48–96GB VRAM。更大瓦片，已绕过 PurgeVRAM。"
+    },
+    "minVramGb": 48
+  },
+  {
+    "id": "flux2-klein-edit",
+    "source": "F:/ComfyUI_Json/Flux2_klein_TrueV2图像编辑全功能合集.json",
+    "out": "flux2-klein-edit-hivram.json",
+    "line": "ad-workflows",
+    "credit": "TrueV2 collection (adapted by Miragea · Eliora)",
+    "title": {
+      "en": "Flux2 Klein — full image edit suite",
+      "ja": "Flux2 Klein 画像編集フルセット",
+      "zh": "Flux2 Klein 图像编辑全集"
+    },
+    "desc": {
+      "en": "Multi-route Klein edit flow — 1536→2048+ longest edge, tiling off where possible.",
+      "ja": "Klein編集複数ルート。最長辺2048+、タイル処理オフ優先。",
+      "zh": "Klein 多路线编辑。最长边 2048+，优先关闭分块。"
+    },
+    "minVramGb": 32
+  },
+  {
+    "id": "wan22-i2v-14b",
+    "source": "F:/Json/video_wan2_2_14B_i2v.json",
+    "out": "wan22-i2v-14b-hivram.json",
+    "line": "video-pipeline",
+    "credit": "Comfy-Org Wan 2.2 repack (adapted by Miragea · Eliora)",
+    "title": {
+      "en": "Wan 2.2 — 14B image-to-video",
+      "ja": "Wan 2.2 — 14B 画像→動画",
+      "zh": "Wan 2.2 — 14B 图生视频"
+    },
+    "desc": {
+      "en": "14B I2V — higher frame size preset for 80GB+ class GPUs. Swap fp8→fp16 weights if you have headroom.",
+      "ja": "14B I2V。80GB+向けに解像度プリセット拡大。余裕があれば fp8→fp16 へ。",
+      "zh": "14B 图生视频。80GB+ 分辨率预设提升。显存充足可换 fp16 权重。"
+    },
+    "minVramGb": 80
+  },
+  {
+    "id": "dual-upscale",
+    "source": "F:/ComfyUI_Json/双采样极速洗图优化版+超清放大By像素幻想Lab.json",
+    "out": "dual-sampler-upscale-hivram.json",
+    "line": "product-imaging",
+    "credit": "像素幻想Lab (adapted by Miragea · Eliora)",
+    "title": {
+      "en": "Dual-sampler wash + ultra upscale",
+      "ja": "デュアルサンプラー洗图＋超解像",
+      "zh": "双采样洗图 + 超清放大"
+    },
+    "desc": {
+      "en": "Fast wash + upscale path for large VRAM — fewer VRAM purge passes.",
+      "ja": "大容量VRAM向け洗图・超解像。VRAMパージ削減。",
+      "zh": "大显存洗图超分路径，减少 VRAM 清理节点。"
+    },
+    "minVramGb": 48
+  },
+  {
+    "id": "klein-t2i-portrait",
+    "source": "F:/Json/flux2/▶klein-文生图标准流(人物优化lora).json",
+    "out": "flux2-klein-t2i-portrait-hivram.json",
+    "line": "character-consistency",
+    "credit": "flux2 klein portrait (adapted by Miragea · Eliora)",
+    "title": {
+      "en": "Flux2 Klein T2I — portrait LoRA",
+      "ja": "Flux2 Klein 文生图 — 人物LoRA",
+      "zh": "Flux2 Klein 文生图 — 人物 LoRA"
+    },
+    "desc": {
+      "en": "Portrait-optimized Klein T2I — latent size bumped for 48GB+.",
+      "ja": "人物最適化Klein T2I。48GB+向け latent 拡大。",
+      "zh": "人物优化 Klein 文生图。48GB+ latent 提升。"
+    },
+    "minVramGb": 48
+  }
+]
