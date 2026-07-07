@@ -346,7 +346,7 @@
           <div class="eliora-panel">
             <div class="eliora-visual">
               <img src="/eliora/assets/images/miragea.png" alt="Eliora fantasy visual" />
-              <a href="/en/mirror/" data-mirror-link class="origin-logo-gate" aria-label="Eliora phoenix logo">
+              <a href="/eliora/archive-mirror.html" class="origin-logo-gate" aria-label="Eliora phoenix logo">
                 <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--strong"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/eliora-logo-transparent.png" alt="" /></span>
               </a>
             </div>
@@ -446,7 +446,7 @@
     <footer>
       <div class="wrap footer-inner">
         <div data-i18n="footer">Eliora by Miragea. Local-first, archive-aware, service-ready.</div>
-        <a href="/eliora/perception.html" class="origin-whisper" title="Turning Perception into Creation" aria-label="Eliora perception origin">···</a>
+        <a href="/eliora/archive-mirror.html" class="origin-whisper" title="Archive Mirror" aria-label="Archive Mirror">···</a>
       </div>
     </footer>
 
@@ -668,9 +668,6 @@
         });
         document.querySelectorAll('[data-contact-link]').forEach((node) => {
           node.setAttribute('href', '/eliora/atelier/' + current + '/contact/');
-        });
-        document.querySelectorAll('[data-mirror-link]').forEach((node) => {
-          node.setAttribute('href', '/' + current + '/mirror/');
         });
         refreshAgentCount(current);
       }
