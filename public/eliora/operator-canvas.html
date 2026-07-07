@@ -168,6 +168,22 @@
         background-size: 42px 42px, 42px 42px, auto, auto;
       }
       .stage.dragging { cursor: grabbing; }
+      .stage.drop-ready { box-shadow: inset 0 0 0 2px rgba(123,216,232,.42); }
+      .drop-overlay {
+        position: absolute;
+        inset: 18px;
+        z-index: 3;
+        display: grid;
+        place-items: center;
+        border: 2px dashed rgba(123,216,232,.56);
+        border-radius: 12px;
+        background: rgba(5,5,5,.72);
+        color: var(--cyan);
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: .04em;
+        pointer-events: none;
+      }
       .world { position: absolute; left: 0; top: 0; width: 1px; height: 1px; transform-origin: 0 0; }
       .edges { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible; }
       .edge path { fill: none; stroke: rgba(242,121,154,.5); stroke-width: 2; pointer-events: stroke; cursor: pointer; filter: drop-shadow(0 0 10px rgba(242,121,154,.35)); }
@@ -188,6 +204,41 @@
       .node.selected { box-shadow: 0 32px 90px rgba(0,0,0,.68), 0 0 0 2px rgba(242,121,154,.2), 0 0 34px rgba(242,121,154,.24); }
       .node.dimmed { opacity: .24; }
       .node.connect-source { box-shadow: 0 0 34px rgba(123,216,232,.30); }
+      .node.connect-target { box-shadow: 0 0 28px rgba(242,121,154,.28); }
+      .port {
+        position: absolute;
+        top: 50%;
+        width: 14px;
+        height: 14px;
+        margin-top: -7px;
+        border-radius: 50%;
+        border: 2px solid rgba(123,216,232,.72);
+        background: #050505;
+        box-shadow: 0 0 16px rgba(123,216,232,.34);
+        cursor: crosshair;
+        z-index: 2;
+        padding: 0;
+        min-height: 0;
+      }
+      .port.in { left: -8px; }
+      .port.out { right: -8px; border-color: rgba(242,121,154,.78); box-shadow: 0 0 16px rgba(242,121,154,.34); }
+      .port.active { transform: scale(1.15); background: rgba(123,216,232,.22); }
+      .port.out.active { background: rgba(242,121,154,.22); }
+      .connect-hint {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 4;
+        border: 1px solid rgba(123,216,232,.42);
+        border-radius: 999px;
+        background: rgba(0,0,0,.78);
+        color: var(--cyan);
+        padding: 8px 14px;
+        font-size: 12px;
+        font-weight: 800;
+        pointer-events: none;
+      }
       .node-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
       .kind { color: var(--cyan); text-transform: uppercase; letter-spacing: .12em; font-size: 10px; font-weight: 900; }
       .node h3 { margin: 5px 0 0; font-size: 20px; line-height: 1.18; letter-spacing: 0; }
@@ -285,8 +336,8 @@
           <button id="imagePrompt" title="Create image prompt card">Image Prompt</button>
           <button id="videoPrompt" title="Create video prompt card">Video Prompt</button>
           <button id="composeContext" title="Combine connected cards into one instruction">Combine</button>
-          <button id="addImage" title="Add image card">Image</button>
-          <button id="connect" title="Connect cards">Connect</button>
+          <button id="addImage" title="Upload image file (drag-drop or paste also works)">Image</button>
+          <button id="connect" title="Connect cards: click source, then target (or use card ports)">Connect</button>
           <button id="duplicate" title="Duplicate">Duplicate</button>
           <button id="delete" title="Delete">Delete</button>
           <button id="fit" title="Fit view">Fit</button>
@@ -406,6 +457,8 @@
               <span class="pill" id="savedAt">Saved</span>
             </div>
             <canvas class="minimap" id="minimap" width="168" height="112" aria-hidden="true"></canvas>
+            <div class="drop-overlay hidden" id="dropOverlay" aria-hidden="true">Drop images to add cards</div>
+            <div class="connect-hint hidden" id="connectHint" aria-live="polite"></div>
           </div>
         </main>
 
@@ -417,7 +470,13 @@
               <div class="field"><label for="fieldTitle">Title</label><input id="fieldTitle" /></div>
               <div class="field"><label for="fieldKind">Kind</label><select id="fieldKind"></select></div>
               <div class="field"><label for="fieldText">Text</label><textarea id="fieldText"></textarea></div>
-              <div class="field"><label for="fieldUrl">URL or image</label><input id="fieldUrl" placeholder="https://..." /></div>
+              <div class="field">
+                <label for="fieldUrl">URL or image</label>
+                <div class="row" style="grid-template-columns: 1fr auto">
+                  <input id="fieldUrl" placeholder="https://... or uploaded image" />
+                  <button id="uploadImageInspector" type="button" title="Upload image file">Upload</button>
+                </div>
+              </div>
               <div class="field"><label for="fieldTags">Tags</label><input id="fieldTags" placeholder="AI, Miragea, Product" /></div>
               <div class="field">
                 <label>Color</label>
@@ -439,6 +498,7 @@
     </div>
 
     <input id="fileInput" class="hidden" type="file" accept="application/json,.json" />
+    <input id="imageFilesInput" class="hidden" type="file" accept="image/*" multiple />
     <input id="workflowFolderInput" class="hidden" type="file" accept="application/json,.json" webkitdirectory directory multiple />
     <input id="workflowFilesInput" class="hidden" type="file" accept="application/json,.json" multiple />
 
@@ -452,6 +512,12 @@
       const storageKey = 'eliora-infinite-canvas-v3';
       const settingsKey = 'eliora-llamacpp-settings-v1';
       const comfySettingsKey = 'eliora-comfyui-settings-v1';
+      const imageDbName = 'eliora-canvas-images-v1';
+      const imageUrlPrefix = 'eliora-img://';
+      let imageDbPromise = null;
+      const previewUrls = new Map();
+      let dropDepth = 0;
+      let imageUploadMode = 'new';
       const kinds = ['Note', 'Prompt', 'Workflow', 'Product', 'Archive', 'Image', 'Video', 'Group', 'AI'];
       const colors = {
         rose: { line: 'rgba(242,121,154,.54)', glow: 'rgba(242,121,154,.58)', border: 'rgba(242,121,154,.34)' },
@@ -500,7 +566,14 @@
       function edgeBy(id) { return edges.find((edge) => edge.id === id); }
       function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
       function screenToWorld(x, y) { return { x: (x - camera.x) / camera.z, y: (y - camera.y) / camera.z }; }
-      function centerOf(node) { return { x: node.x + (node.kind === 'Image' ? 166 : 146), y: node.y + 76 }; }
+      function nodeWidth(node) { return node.kind === 'Image' ? 332 : 292; }
+      function nodeAnchor(node, side) {
+        const y = node.y + 76;
+        return side === 'out'
+          ? { x: node.x + nodeWidth(node), y }
+          : { x: node.x, y };
+      }
+      function centerOf(node) { return nodeAnchor(node, 'out'); }
       function connectedTo(id) {
         const ids = new Set();
         edges.forEach((edge) => {
@@ -527,6 +600,178 @@
           connected.forEach((node, index) => parts.push(`[${index + 1}]\n${cardText(node)}`));
         }
         return parts.join('\n\n');
+      }
+      function isStoredImageUrl(url) {
+        return typeof url === 'string' && url.startsWith(imageUrlPrefix);
+      }
+      function imageIdFromUrl(url) {
+        return isStoredImageUrl(url) ? url.slice(imageUrlPrefix.length) : '';
+      }
+      function openImageDb() {
+        if (!imageDbPromise) {
+          imageDbPromise = new Promise((resolve, reject) => {
+            const request = indexedDB.open(imageDbName, 1);
+            request.onupgradeneeded = () => request.result.createObjectStore('images');
+            request.onsuccess = () => resolve(request.result);
+            request.onerror = () => reject(request.error);
+          });
+        }
+        return imageDbPromise;
+      }
+      function idbRequest(request) {
+        return new Promise((resolve, reject) => {
+          request.onsuccess = () => resolve(request.result);
+          request.onerror = () => reject(request.error);
+        });
+      }
+      async function putImageBlob(id, blob) {
+        const db = await openImageDb();
+        const tx = db.transaction('images', 'readwrite');
+        tx.objectStore('images').put(blob, id);
+        await new Promise((resolve, reject) => {
+          tx.oncomplete = () => resolve();
+          tx.onerror = () => reject(tx.error);
+        });
+      }
+      async function getImageBlob(id) {
+        const db = await openImageDb();
+        const tx = db.transaction('images', 'readonly');
+        return idbRequest(tx.objectStore('images').get(id));
+      }
+      function cachePreviewUrl(id, blob) {
+        const prev = previewUrls.get(id);
+        if (prev) URL.revokeObjectURL(prev);
+        previewUrls.set(id, URL.createObjectURL(blob));
+      }
+      function previewSrc(url) {
+        if (!url) return '';
+        if (isStoredImageUrl(url)) return previewUrls.get(imageIdFromUrl(url)) || '';
+        return url;
+      }
+      async function hydrateImagePreviews() {
+        const ids = new Set();
+        nodes.forEach((node) => {
+          if (node.kind === 'Image' && isStoredImageUrl(node.url)) ids.add(imageIdFromUrl(node.url));
+        });
+        await Promise.all([...ids].map(async (id) => {
+          if (previewUrls.has(id)) return;
+          const blob = await getImageBlob(id);
+          if (blob) cachePreviewUrl(id, blob);
+        }));
+      }
+      function blobToDataUrl(blob) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = () => reject(reader.error);
+          reader.readAsDataURL(blob);
+        });
+      }
+      async function prepareImageBlob(file) {
+        if (!file?.type?.startsWith('image/')) return null;
+        const maxBytes = 1.6 * 1024 * 1024;
+        if (file.size <= maxBytes) return file;
+        return compressImageFile(file, 2048, 0.84);
+      }
+      function compressImageFile(file, maxSide, quality) {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          const objectUrl = URL.createObjectURL(file);
+          img.onload = () => {
+            URL.revokeObjectURL(objectUrl);
+            let { width, height } = img;
+            const scale = Math.min(1, maxSide / Math.max(width, height, 1));
+            width = Math.max(1, Math.round(width * scale));
+            height = Math.max(1, Math.round(height * scale));
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+            canvas.toBlob((blob) => {
+              if (!blob) reject(new Error('Could not compress image.'));
+              else resolve(blob);
+            }, 'image/jpeg', quality);
+          };
+          img.onerror = () => {
+            URL.revokeObjectURL(objectUrl);
+            reject(new Error('Could not read image file.'));
+          };
+          img.src = objectUrl;
+        });
+      }
+      async function createImageNodeFromBlob(blob, name, point) {
+        const imageId = uid();
+        await putImageBlob(imageId, blob);
+        cachePreviewUrl(imageId, blob);
+        const c = point || screenToWorld(stage.clientWidth / 2, stage.clientHeight / 2);
+        const node = {
+          id: uid(),
+          x: Math.round(c.x - 166 + Math.random() * 28),
+          y: Math.round(c.y - 70 + Math.random() * 28),
+          kind: 'Image',
+          title: String(name || 'Uploaded Image').replace(/\.[^.]+$/, ''),
+          text: 'Uploaded visual reference.',
+          color: 'rose',
+          tags: ['Image', 'Upload'],
+          url: imageUrlPrefix + imageId,
+        };
+        nodes.unshift(node);
+        selectedNode = node.id;
+        selectedEdge = null;
+        render();
+        return node;
+      }
+      async function createImageNodesFromFiles(files, point) {
+        const imageFiles = [...files].filter((file) => file.type.startsWith('image/'));
+        if (!imageFiles.length) return 0;
+        for (let index = 0; index < imageFiles.length; index += 1) {
+          const blob = await prepareImageBlob(imageFiles[index]);
+          if (!blob) continue;
+          const offset = point
+            ? { x: point.x + index * 40, y: point.y + index * 40 }
+            : null;
+          await createImageNodeFromBlob(blob, imageFiles[index].name, offset);
+        }
+        return imageFiles.length;
+      }
+      async function assignImageToSelectedNode(file) {
+        const node = nodeBy(selectedNode);
+        if (!node) return false;
+        const blob = await prepareImageBlob(file);
+        if (!blob) return false;
+        const imageId = uid();
+        await putImageBlob(imageId, blob);
+        cachePreviewUrl(imageId, blob);
+        node.kind = 'Image';
+        node.url = imageUrlPrefix + imageId;
+        if (!node.title || node.title === 'New Signal') {
+          node.title = String(file.name || 'Uploaded Image').replace(/\.[^.]+$/, '');
+        }
+        node.tags = tags([...tags(node.tags), 'Image', 'Upload']);
+        render();
+        return true;
+      }
+      async function importStoredImages(importNodes) {
+        return Promise.all(importNodes.map(async (node) => {
+          if (node.kind !== 'Image' || !node.url || !node.url.startsWith('data:image/')) return node;
+          const imageId = uid();
+          const blob = await (await fetch(node.url)).blob();
+          await putImageBlob(imageId, blob);
+          cachePreviewUrl(imageId, blob);
+          return { ...node, url: imageUrlPrefix + imageId };
+        }));
+      }
+      async function embedImageUrls(exportNodes) {
+        return Promise.all(exportNodes.map(async (node) => {
+          if (node.kind !== 'Image' || !isStoredImageUrl(node.url)) return node;
+          const blob = await getImageBlob(imageIdFromUrl(node.url));
+          if (!blob) return node;
+          return { ...node, url: await blobToDataUrl(blob) };
+        }));
+      }
+      function setDropState(active) {
+        stage.classList.toggle('drop-ready', active);
+        $('dropOverlay').classList.toggle('hidden', !active);
       }
 
       const seedNodes = [
@@ -599,7 +844,16 @@
       function render() {
         world.style.transform = `translate(${camera.x}px, ${camera.y}px) scale(${camera.z})`;
         $('zoomLabel').textContent = `${Math.round(camera.z * 100)}%`;
-        $('modeLabel').textContent = mode === 'connect' ? (connectSource ? 'Pick target' : 'Pick source') : 'Select';
+        $('modeLabel').textContent = mode === 'connect' ? (connectSource ? 'Pick target card/port' : 'Pick source card/port') : 'Select';
+        const hint = $('connectHint');
+        if (mode === 'connect') {
+          hint.classList.remove('hidden');
+          hint.textContent = connectSource
+            ? '接続先をクリック — もう1枚のカード、または左の●ポート'
+            : '接続元をクリック — カードまたは右の●ポート';
+        } else {
+          hint.classList.add('hidden');
+        }
         $('selectionLabel').textContent = selectedNode ? (nodeBy(selectedNode)?.title || 'Card') : selectedEdge ? 'Connection' : 'No selection';
         $('nodeCount').textContent = nodes.length;
         $('edgeCount').textContent = edges.length;
@@ -615,8 +869,8 @@
           const from = nodeBy(edge.from);
           const to = nodeBy(edge.to);
           if (!from || !to) continue;
-          const a = centerOf(from);
-          const b = centerOf(to);
+          const a = nodeAnchor(from, 'out');
+          const b = nodeAnchor(to, 'in');
           const dx = Math.max(80, Math.abs(b.x - a.x) * .45);
           const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
           const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -647,17 +901,23 @@
           const color = colors[node.color] || colors.rose;
           const hay = `${node.title} ${node.kind} ${node.text} ${tags(node.tags).join(' ')}`.toLowerCase();
           const el = document.createElement('article');
-          el.className = 'node' + (selectedNode === node.id ? ' selected' : '') + (term && !hay.includes(term) ? ' dimmed' : '') + (connectSource === node.id ? ' connect-source' : '');
+          el.className = 'node'
+            + (selectedNode === node.id ? ' selected' : '')
+            + (term && !hay.includes(term) ? ' dimmed' : '')
+            + (connectSource === node.id ? ' connect-source' : '')
+            + (mode === 'connect' && connectSource && connectSource !== node.id ? ' connect-target' : '');
           el.style.left = `${node.x}px`;
           el.style.top = `${node.y}px`;
           el.style.borderColor = selectedNode === node.id ? color.line : color.border;
           el.dataset.id = node.id;
           el.dataset.kind = node.kind;
-          const image = node.kind === 'Image' && node.url ? `<img class="preview" src="${esc(node.url)}" alt="${esc(node.title)}" loading="lazy" />` : '';
+          const image = node.kind === 'Image' && node.url ? `<img class="preview" src="${esc(previewSrc(node.url))}" alt="${esc(node.title)}" loading="lazy" />` : '';
           const video = node.kind === 'Video' && node.url ? `<video class="preview" src="${esc(node.url)}" controls loop playsinline></video>` : '';
           const link = node.url && node.kind !== 'Image' ? `<a class="node-url" href="${esc(node.url)}" target="_blank" rel="noreferrer">${esc(node.url)}</a>` : '';
           const tagHtml = tags(node.tags).map((tag) => `<span>#${esc(tag)}</span>`).join('');
           el.innerHTML = `
+            <button class="port in" type="button" data-port="in" title="Connect to this card (input)"></button>
+            <button class="port out" type="button" data-port="out" title="Connect from this card (output)"></button>
             <div class="node-head">
               <div><div class="kind">${esc(node.kind)}</div><h3 contenteditable="true" data-field="title">${esc(node.title)}</h3></div>
               <span class="dot" style="box-shadow:0 0 20px 10px ${color.glow}"></span>
@@ -668,6 +928,8 @@
             ${link}
             <div class="node-tags">${tagHtml}</div>
           `;
+          el.querySelector('[data-port="in"]').addEventListener('pointerdown', (event) => startPortPointer(event, node, 'in'));
+          el.querySelector('[data-port="out"]').addEventListener('pointerdown', (event) => startPortPointer(event, node, 'out'));
           el.addEventListener('pointerdown', startNodePointer);
           el.addEventListener('input', (event) => {
             const field = event.target.dataset.field;
@@ -679,21 +941,58 @@
           nodeLayer.appendChild(el);
         }
       }
+      function addConnection(fromId, toId) {
+        if (!fromId || !toId || fromId === toId) return false;
+        if (edges.some((edge) => edge.from === fromId && edge.to === toId)) return false;
+        edges.push({ id: uid(), from: fromId, to: toId, label: '' });
+        return true;
+      }
+      function finishConnectMode(created) {
+        connectSource = null;
+        mode = 'select';
+        $('connect').classList.remove('active');
+        if (created) $('savedAt').textContent = 'Link added';
+      }
+      function beginConnectFrom(nodeId) {
+        mode = 'connect';
+        connectSource = nodeId;
+        $('connect').classList.add('active');
+        selectedNode = nodeId;
+        selectedEdge = null;
+        render();
+      }
+      function tryConnectTo(nodeId) {
+        if (!connectSource) return false;
+        const created = addConnection(connectSource, nodeId);
+        finishConnectMode(created);
+        render();
+        return created;
+      }
+      function startPortPointer(event, node, portSide) {
+        event.stopPropagation();
+        event.preventDefault();
+        selectedNode = node.id;
+        selectedEdge = null;
+        if (portSide === 'out') {
+          beginConnectFrom(node.id);
+          return;
+        }
+        if (!connectSource) {
+          beginConnectFrom(node.id);
+          return;
+        }
+        tryConnectTo(node.id);
+      }
       function startNodePointer(event) {
+        if (event.target.closest('[data-port]')) return;
         event.stopPropagation();
         const node = nodeBy(event.currentTarget.dataset.id);
         if (!node) return;
         selectedNode = node.id;
         selectedEdge = null;
         if (mode === 'connect') {
-          if (!connectSource) connectSource = node.id;
-          else if (connectSource !== node.id) {
-            if (!edges.some((e) => e.from === connectSource && e.to === node.id)) edges.push({ id: uid(), from: connectSource, to: node.id, label: '' });
-            connectSource = null;
-            mode = 'select';
-            $('connect').classList.remove('active');
-          }
-          render();
+          if (!connectSource) beginConnectFrom(node.id);
+          else tryConnectTo(node.id);
           return;
         }
         if (event.target.isContentEditable || event.target.tagName === 'A') {
@@ -707,9 +1006,15 @@
       }
 
       stage.addEventListener('pointerdown', (event) => {
+        if (mode === 'connect') {
+          if (connectSource) {
+            $('savedAt').textContent = 'Pick target card or left port';
+            render();
+            return;
+          }
+        }
         selectedNode = null;
         selectedEdge = null;
-        if (mode === 'connect') connectSource = null;
         stage.classList.add('dragging');
         stage.setPointerCapture(event.pointerId);
         dragCanvas = { x: event.clientX, y: event.clientY, cx: camera.x, cy: camera.y };
@@ -753,7 +1058,12 @@
         render();
       }
       function addImageNode() {
-        const url = prompt('Image URL', './assets/images/miragea.png') || '';
+        imageUploadMode = 'new';
+        $('imageFilesInput').click();
+      }
+      async function addImageFromUrl() {
+        const url = prompt('Image URL', './assets/images/miragea.png');
+        if (!url) return;
         addNode('note');
         const node = nodeBy(selectedNode);
         Object.assign(node, { kind: 'Image', title: 'Image Reference', text: 'Visual source for Eliora or Miragea.', url: url.trim(), tags: ['Image', 'Reference'] });
@@ -1155,10 +1465,10 @@
         if (!banner) return;
         if (isLocalHost()) {
           banner.className = 'env-banner local';
-          banner.textContent = 'Local operator — board saves in this browser. llama.cpp and ComfyUI connect when running on this machine.';
+          banner.textContent = 'Local operator — board + image upload save in this browser. llama.cpp and ComfyUI connect when running on this machine.';
         } else {
           banner.className = 'env-banner remote';
-          banner.textContent = 'Remote view — open this file locally or use /eliora/operator-canvas.html on your machine for full AI hooks.';
+          banner.textContent = 'Remote view — board + image upload work here. Open locally for llama.cpp / ComfyUI hooks.';
         }
       }
       async function loadBuiltinWorkflows() {
@@ -1427,8 +1737,9 @@
         a.remove();
         URL.revokeObjectURL(a.href);
       }
-      function exportJson() {
-        download('eliora-canvas.json', JSON.stringify({ version: 3, exportedAt: new Date().toISOString(), camera, nodes, edges }, null, 2), 'application/json');
+      async function exportJson() {
+        const exportNodes = await embedImageUrls(nodes);
+        download('eliora-canvas.json', JSON.stringify({ version: 3, exportedAt: new Date().toISOString(), camera, nodes: exportNodes, edges }, null, 2), 'application/json');
       }
       function exportMarkdown() {
         const out = ['# Eliora Infinite Canvas', '', `Exported: ${new Date().toISOString()}`, ''];
@@ -1442,15 +1753,16 @@
       }
       function importJson(file) {
         const reader = new FileReader();
-        reader.onload = () => {
+        reader.onload = async () => {
           try {
             const data = JSON.parse(reader.result);
             if (!Array.isArray(data.nodes) || !Array.isArray(data.edges)) throw new Error();
-            nodes = data.nodes;
+            nodes = await importStoredImages(data.nodes);
             edges = data.edges;
             camera = data.camera || camera;
             selectedNode = null;
             selectedEdge = null;
+            await hydrateImagePreviews();
             render();
           } catch {
             alert('Could not import this JSON file.');
@@ -1516,11 +1828,76 @@
       $('videoPrompt').addEventListener('click', () => createPromptNode('videoPrompt'));
       $('composeContext').addEventListener('click', composeConnectedContext);
       $('addImage').addEventListener('click', addImageNode);
+      $('addImage').addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+        addImageFromUrl();
+      });
+      $('imageFilesInput').addEventListener('change', async () => {
+        const files = [...$('imageFilesInput').files];
+        $('imageFilesInput').value = '';
+        if (!files.length) return;
+        if (imageUploadMode === 'selected' && selectedNode && await assignImageToSelectedNode(files[0])) {
+          $('savedAt').textContent = 'Image uploaded to card';
+          imageUploadMode = 'new';
+          return;
+        }
+        const count = await createImageNodesFromFiles(files);
+        imageUploadMode = 'new';
+        if (count) $('savedAt').textContent = `${count} image(s) added`;
+      });
+      $('uploadImageInspector').addEventListener('click', () => {
+        imageUploadMode = 'selected';
+        $('imageFilesInput').click();
+      });
+      stage.addEventListener('dragenter', (event) => {
+        if (![...event.dataTransfer.types].includes('Files')) return;
+        event.preventDefault();
+        dropDepth += 1;
+        setDropState(true);
+      });
+      stage.addEventListener('dragover', (event) => {
+        if (![...event.dataTransfer.types].includes('Files')) return;
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'copy';
+        setDropState(true);
+      });
+      stage.addEventListener('dragleave', () => {
+        dropDepth = Math.max(0, dropDepth - 1);
+        if (!dropDepth) setDropState(false);
+      });
+      stage.addEventListener('drop', async (event) => {
+        if (![...event.dataTransfer.types].includes('Files')) return;
+        event.preventDefault();
+        dropDepth = 0;
+        setDropState(false);
+        const point = screenToWorld(event.clientX, event.clientY);
+        const count = await createImageNodesFromFiles(event.dataTransfer.files, point);
+        if (count) $('savedAt').textContent = `${count} image(s) dropped`;
+      });
+      window.addEventListener('paste', async (event) => {
+        if (event.target.matches('input, textarea, [contenteditable="true"]')) return;
+        const files = [...event.clipboardData.items]
+          .filter((item) => item.kind === 'file' && item.type.startsWith('image/'))
+          .map((item) => item.getAsFile())
+          .filter(Boolean);
+        if (!files.length) return;
+        event.preventDefault();
+        if (selectedNode && await assignImageToSelectedNode(files[0])) {
+          $('savedAt').textContent = 'Image pasted to card';
+          return;
+        }
+        const count = await createImageNodesFromFiles(files);
+        if (count) $('savedAt').textContent = `${count} image(s) pasted`;
+      });
       document.querySelectorAll('[data-template]').forEach((button) => button.addEventListener('click', () => addNode(button.dataset.template)));
       $('connect').addEventListener('click', (event) => {
-        mode = mode === 'connect' ? 'select' : 'connect';
-        connectSource = null;
-        event.currentTarget.classList.toggle('active', mode === 'connect');
+        if (mode === 'connect') {
+          finishConnectMode(false);
+        } else {
+          mode = 'connect';
+          connectSource = null;
+          event.currentTarget.classList.add('active');
+        }
         render();
       });
       $('duplicate').addEventListener('click', duplicateSelected);
@@ -1569,9 +1946,11 @@
       load();
       updateEnvBanner();
       syncComfyLinks();
-      render();
-      loadBuiltinWorkflows();
-      setTimeout(fitView, 120);
+      hydrateImagePreviews().then(() => {
+        render();
+        loadBuiltinWorkflows();
+        setTimeout(fitView, 120);
+      });
     </script>
   </body>
 </html>

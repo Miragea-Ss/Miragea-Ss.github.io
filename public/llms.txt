@@ -10,7 +10,7 @@ EX_Her / Miragea — HSP perception, art × words, AI × cosmos × fantasy, musi
 - /eliora/ipfs-mirror/ — IPFS Mirror origin (MIRAGEA pulse, rose/cyan cards, confidence glow): discreet entry via hero-image logo on /eliora/index.html; canonical public mirror https://a4977a63.pinit.eth.limo/
 - /eliora/atelier/en/ /ja/ /zh/ — Layer 3: Cosmic Atelier (tri-regional editorial products, not translations)
 - /[lang]/ex/[slug]/ — EX routes built from public X fragments
-- /eliora/infinite-canvas.html — Miragea · Eliora web canvas (in development; board works in-browser; local AI on PC)
+- /eliora/infinite-canvas.html — Miragea · Eliora web canvas (board + image upload in-browser; llama.cpp/ComfyUI on local PC)
 - /eliora/operator-canvas.html — Local operator variant for llama.cpp + ComfyUI
 
 ## Tri-regional note
