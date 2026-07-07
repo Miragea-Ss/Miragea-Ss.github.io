@@ -5,70 +5,54 @@
       "status": "active",
       "lastRun": "2026-07-07T05:45:00Z",
       "summary": {
-        "zh": "本周标记 3 个 AI 竞赛与赏金机会",
-        "ja": "今週3件のAIコンテスト・賞金企画を検出",
-        "en": "3 AI contests and prize campaigns flagged this week"
+        "zh": "本周整理 2 个可跟进的创作赛事（手动キュレーション）",
+        "ja": "今週2件の創作コンテストを手動キュレーション",
+        "en": "2 creative contests curated this week (manual feed)"
       },
-      "metrics": {
-        "contestsFlagged": 3,
-        "investorPosts": 1,
-        "deadlinesSoon": 2
-      },
+      "metrics": { "contestsFlagged": 2 },
       "events": [
-        { "at": "2026-07-06T14:00:00Z", "type": "ai-contest", "title": "Runway Gen-4 Creative Challenge", "url": "#" },
-        { "at": "2026-07-05T09:30:00Z", "type": "investor", "title": "AI infra seed round — X signal", "url": "#" },
-        { "at": "2026-07-04T18:00:00Z", "type": "bilibili", "title": "B站 AI 创作大赛 — 3D+ComfyUI 赛道", "url": "#" }
+        { "at": "2026-07-06T14:00:00Z", "type": "ai-contest", "title": "Runway Gen-4 Creative Challenge", "url": "https://runwayml.com/" },
+        { "at": "2026-07-04T18:00:00Z", "type": "miragea", "title": "Follow Miragea_S on X for live contest signals", "url": "https://x.com/Miragea_S/" }
       ]
     },
     "production-recorder": {
       "status": "queued",
       "lastRun": "2026-07-06T22:10:00Z",
       "summary": {
-        "zh": "Ep.04 剪辑日志 → 小红书文章草稿就绪",
-        "ja": "Ep.04 編集ログ → note/Zenn 記事ドラフト生成済",
-        "en": "Ep.04 edit log → Substack article draft ready"
+        "zh": "大型 X 作品の制作メモ → 解説記事ドラフト",
+        "ja": "大型X作品の制作メモ → 解説記事ドラフト",
+        "en": "Large X work production notes → explainer draft"
       },
-      "metrics": {
-        "stepsRecorded": 12,
-        "draftArticles": 1
-      },
+      "metrics": { "stepsRecorded": 8, "draftArticles": 1 },
       "events": [
-        { "at": "2026-07-06T22:10:00Z", "type": "article", "title": "ComfyUI node graph breakdown — Ep.04", "url": "#" }
+        { "at": "2026-07-06T22:10:00Z", "type": "article", "title": "Kardashev Type-II — production log", "url": "https://x.com/Miragea_S/status/2000229459916681467" }
       ]
     },
     "work-distributor": {
       "status": "idle",
       "lastRun": "2026-07-05T16:00:00Z",
       "summary": {
-        "zh": "上次分发：B站 + 小红书 + 视频号",
-        "ja": "前回配信：note + BOOTH + YouTube",
-        "en": "Last publish: X + YouTube + Patreon"
+        "zh": "上次分发：X 原帖联动",
+        "ja": "前回配信：X原帖連携",
+        "en": "Last publish: X source posts"
       },
-      "metrics": {
-        "channelsQueued": 0,
-        "lastPublishChannels": 3
-      },
+      "metrics": { "lastPublishChannels": 1 },
       "events": [
-        { "at": "2026-07-05T16:00:00Z", "type": "publish", "title": "Who Will Govern the Future? Ep.03", "url": "#" }
+        { "at": "2026-07-05T16:00:00Z", "type": "publish", "title": "If this lullaby becomes your nightly crave", "url": "https://x.com/Miragea_S/status/1966830399239450670" }
       ]
     },
     "idea-miner": {
       "status": "active",
       "lastRun": "2026-07-07T04:00:00Z",
       "summary": {
-        "zh": "3 个案例已评分：B站潜力 87% · 可开发 72%",
-        "ja": "3件スコアリング：企業PoC適合 81% · 再現性 94%",
-        "en": "3 cases scored: investor appeal 76% · buildable 87%"
+        "zh": "从公开 AI 案例中提取可制作的工作流线索",
+        "ja": "公開AI事例から再現可能なWorkflow手がかりを抽出",
+        "en": "Workflow leads extracted from public AI cases"
       },
-      "metrics": {
-        "ideasScored": 3,
-        "buildableAvg": 87,
-        "bilibiliAvg": 72
-      },
+      "metrics": { "ideasScored": 2 },
       "events": [
-        { "at": "2026-07-07T04:00:00Z", "type": "score", "title": "CN: Liblib workflow → app candidate 87%", "url": "#" },
-        { "at": "2026-07-06T04:00:00Z", "type": "score", "title": "JP: ComfyUI batch API case → PoC 81%", "url": "#" },
-        { "at": "2026-07-05T04:00:00Z", "type": "score", "title": "EN: Agent orchestration trend → PH launch 76%", "url": "#" }
+        { "at": "2026-07-07T04:00:00Z", "type": "score", "title": "ComfyUI batch pipeline → enterprise PoC candidate", "url": "/eliora/atelier/ja/" },
+        { "at": "2026-07-06T04:00:00Z", "type": "score", "title": "Music-video + AI series → EN atelier route", "url": "/eliora/atelier/en/" }
       ]
     }
   }

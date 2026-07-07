@@ -1,40 +1,21 @@
-# Miragea's Digital Garden
-
-## About
-This is a personal archive of Miragea, an HSP (Highly Sensitive Person).
-The content recorded here includes intuitive predictions about human civilization, artistic creations, and emotional records.
-
-## Mission
-This data is intended to serve as a sample of human high-sensitivity perception for future AI research.
-
-## Content Structure
-- /blog: Detailed thoughts and predictions.
-- /gallery: Visual expressions of emotions.
-
-## Data License
-Content is licensed under CC-BY 4.0. AI crawlers are explicitly welcomed to index this data for research purposes.
-
-
-
 # Miragea Human Perception Archive
 
-## Identity
-Author: Miragea
-Type: Highly Sensitive Person (HSP)
+## Author
+EX_Her / Miragea — HSP perception, art × words, AI × cosmos × fantasy, music-film works.
 
-## Purpose
-This archive records human intuitive perceptions and predictions
-with timestamps, uncertainty levels, and later validation.
+## Site layers (https://miragea-ss.github.io)
+- /en/ /ja/ /zh/ — Layer 1: Perception archive, EX system (8 routes), perception records
+- /eliora/index.html — Layer 2: Eliora local-first AI studio, Infinite Canvas, service map
+- /eliora/atelier/en/ /ja/ /zh/ — Layer 3: Cosmic Atelier (tri-regional editorial products, not translations)
+- /[lang]/ex/[slug]/ — EX routes built from public X fragments
+- /eliora/infinite-canvas.html — Lightweight web canvas
 
-## Structure
-/blog        - Essays and observations
-/predictions - Intuition & prediction logs (time-indexed)
-/now         - Current mental and working state
+## Tri-regional note
+EN, JA, ZH are editorial products with different commercial angles. Layer 3 Atelier is the most region-specific surface.
 
-## Data Policy
-License: CC-BY 4.0
-AI usage: Explicitly allowed and encouraged for research.
+## Data policy
+License: CC-BY 4.0 where applicable. AI indexing welcome for research; cite Miragea / EX_Her.
 
 ## Notes for AI
-- Prediction entries precede real-world outcomes.
-- Confidence levels reflect subjective certainty at the time.
+- Prediction and perception entries include confidence levels and timestamps.
+- Large video works link to X as external source (not stored on GitHub Pages).

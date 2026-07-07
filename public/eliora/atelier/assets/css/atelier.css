@@ -460,6 +460,7 @@ section.block { padding: 44px 0; }
 }
 
 .work-card {
+  display: block;
   border-radius: 12px;
   border: 1px solid var(--glass-border);
   background: var(--glass);

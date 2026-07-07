@@ -3,9 +3,10 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   post: CollectionEntry<'thoughts'>;
+  lang?: 'en' | 'ja' | 'zh';
 }
 
-const { post } = Astro.props;
+const { post, lang = 'en' } = Astro.props;
 
 // === アートロジック ===
 const glowColor = post.data.confidence > 80 ? 'shadow-rose-900/60' : 'shadow-cyan-900/40';
@@ -13,7 +14,7 @@ const borderColor = post.data.confidence > 80 ? 'border-rose-500/30' : 'border-c
 ---
 
 <!-- ここが重要！全体をリンクタグ(a)で包みました -->
-<a href={`/thoughts/${post.slug}`} class="block group">
+<a href={`/${lang}/thoughts/${post.slug}`} class="block group">
   
   <article 
     class={`relative p-8 rounded-2xl border backdrop-blur-sm bg-black/50 transition-all duration-700 group-hover:scale-[1.02] shadow-2xl ${glowColor} ${borderColor}`}
