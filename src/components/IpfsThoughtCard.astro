@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'thoughts'>;
+  lang?: 'en' | 'ja' | 'zh';
+  class?: string;
+}
+
+const { post, lang = 'ja', class: className = '' } = Astro.props;
+
+const isRose = post.data.confidence > 80;
+const glowColor = isRose ? 'shadow-rose-900/60' : 'shadow-cyan-900/40';
+const borderColor = isRose ? 'border-rose-500/30' : 'border-cyan-500/30';
+const dotRgb = isRose ? '251, 113, 133' : '103, 232, 249';
+const blur = (post.data.confidence * 0.2).toFixed(1);
+const spread = (post.data.confidence * 0.15).toFixed(1);
+---
+
+<a href={`/${lang}/thoughts/${post.slug}/`} class={`block group ${className}`}>
+  <article
+    class={`relative p-8 rounded-2xl border backdrop-blur-sm bg-black/50 transition-all duration-700 group-hover:scale-[1.02] shadow-2xl ${glowColor} ${borderColor}`}
+  >
+    <div
+      class="absolute top-4 right-4 h-3 w-3 rounded-full opacity-60"
+      style={`box-shadow: 0 0 ${blur}px ${spread}px rgba(${dotRgb}, 0.8);`}
+      title={`Confidence: ${post.data.confidence}%`}
+      aria-hidden="true"
+    ></div>
+
+    {post.data.cover && (
+      <img
+        src={post.data.cover}
+        alt={post.data.title}
+        class="mb-6 h-48 w-full rounded-lg object-cover opacity-80 transition duration-500 group-hover:opacity-100"
+      />
+    )}
+
+    <div class="mb-4 font-mono text-xs tracking-widest text-gray-600">
+      {post.data.intuitionDate.toISOString().split('T')[0]}
+    </div>
+
+    <h2 class="mb-4 text-2xl font-bold leading-tight text-gray-100 transition group-hover:text-white md:text-3xl">
+      {post.data.title}
+    </h2>
+
+    <p class="mb-6 border-l-2 border-gray-700 pl-4 text-sm italic text-gray-400">
+      "{post.data.atmosphere}"
+    </p>
+
+    <div class="mt-4 flex flex-wrap gap-2">
+      {post.data.topics.map((tag) => (
+        <span class="rounded border border-white/10 px-2 py-1 text-xs text-gray-400">#{tag}</span>
+      ))}
+    </div>
+  </article>
+</a>

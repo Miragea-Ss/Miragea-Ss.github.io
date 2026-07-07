@@ -1,0 +1,13 @@
+---
+import Layout from '../../../site-layouts/Layout.astro';
+import IpfsMirrorHome from '../../../components/IpfsMirrorHome.astro';
+import { getCollection } from 'astro:content';
+
+const allThoughts = (await getCollection('thoughts')).sort(
+  (a, b) => b.data.intuitionDate.valueOf() - a.data.intuitionDate.valueOf()
+);
+---
+
+<Layout title="Miragea | IPFS Mirror" lang="ja" robots="noindex, follow">
+  <IpfsMirrorHome thoughts={allThoughts} lang="ja" />
+</Layout>

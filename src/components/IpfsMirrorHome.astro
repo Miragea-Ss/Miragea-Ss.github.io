@@ -1,0 +1,52 @@
+---
+import IpfsThoughtCard from './IpfsThoughtCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  thoughts: CollectionEntry<'thoughts'>[];
+  lang?: 'en' | 'ja' | 'zh';
+}
+
+const { thoughts, lang = 'ja' } = Astro.props;
+
+const layoutClasses = [
+  'md:col-span-2',
+  'md:mt-12',
+  '',
+  'md:mb-12',
+  '',
+  'md:col-span-2 md:mt-12',
+  '',
+  'md:mb-12',
+];
+---
+
+<main class="min-h-screen bg-black p-6 md:p-12">
+  <header class="mb-24 mt-12 flex flex-col items-center justify-center space-y-6 text-center">
+    <h1
+      class="animate-pulse bg-gradient-to-b from-white to-gray-800 bg-clip-text text-6xl font-thin tracking-tighter text-transparent md:text-8xl"
+    >
+      MIRAGEA
+    </h1>
+    <p class="max-w-md font-mono text-sm text-gray-500">
+      ARCHIVE OF SENSORY PROCESSING SENSITIVITY
+      <br />
+      HUMAN READABLE / AI READABLE
+    </p>
+  </header>
+
+  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+    {
+      thoughts.map((post, index) => (
+        <div class={`transition-all duration-700 ${layoutClasses[index % layoutClasses.length]}`}>
+          <IpfsThoughtCard post={post} lang={lang} />
+        </div>
+      ))
+    }
+  </div>
+
+  <footer class="mx-auto mt-20 max-w-7xl border-t border-white/10 px-4 py-8 text-center text-xs text-gray-600">
+    IPFS Mirror origin ·
+    <a href="/eliora/index.html" class="text-gray-400 transition hover:text-gray-200">Eliora Studio</a>
+  </footer>
+</main>
