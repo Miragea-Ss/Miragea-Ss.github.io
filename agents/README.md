@@ -12,8 +12,13 @@ This site is a **serious business entry point**, not a demo or play homepage.
 ## Edit → export → push
 
 ```bash
+# Quick add (verified URL required)
+npm run agents:add -- contest --title "Runway Daily Challenge" --url "https://help.runwayml.com/..." --ongoing
+npm run agents:add -- publish --title "Work title" --url "https://x.com/Miragea_S/status/..."
+
 npm run agents:export
 npm run agents:validate
+npm run build
 ```
 
 | File | Agent | When to edit |

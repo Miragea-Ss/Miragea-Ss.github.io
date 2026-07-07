@@ -42,5 +42,6 @@ jobs:
             echo "No changes to status.json"
           else
             git commit -m "chore(agents): sync status $(date -u +%Y-%m-%dT%H:%MZ)"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi

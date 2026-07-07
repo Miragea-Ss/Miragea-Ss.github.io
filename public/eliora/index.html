@@ -328,6 +328,7 @@
             </div>
             <div class="signal-stack">
               <a class="signal-row atelier-row" href="/eliora/atelier/en/" data-atelier-link><b data-i18n="signalAtelier">Cosmic Atelier · Layer 3</b><span data-i18n="signalAtelierStatus">live</span></a>
+              <a class="signal-row atelier-row" href="/eliora/atelier/en/atelier/" data-atelier-hub-link><b data-i18n="signalAgents">Atelier Ops · 4 Agents</b><span data-agent-count>…</span></a>
               <a class="signal-row" href="/eliora/infinite-canvas.html"><b data-i18n="signalCanvas">Infinite Canvas</b><span data-i18n="signalOpen">open</span></a>
               <a class="signal-row" href="#service-map"><b data-i18n="signalStudio">Local AI Studio</b><span data-i18n="signalPrivate">private</span></a>
               <a class="signal-row" href="#service-map"><b data-i18n="signalProducts">Digital Products</b><span data-i18n="signalReady">ready</span></a>
@@ -407,6 +408,8 @@
           backMiragea: 'Back to Miragea',
           signalAtelier: 'Cosmic Atelier · Layer 3',
           signalAtelierStatus: 'live',
+          signalAgents: 'Atelier Ops · 4 Agents',
+          signalAgentsActive: 'active',
           panelTitle: 'Eliora',
           panelCopy: 'Service layer for AI, canvas, products, consulting, and community.',
           signalCanvas: 'Infinite Canvas',
@@ -450,16 +453,18 @@
           backMiragea: 'Mirageaへ戻る',
           signalAtelier: '宇宙AIアトリエ · Layer 3',
           signalAtelierStatus: '公開中',
+          signalAgents: 'アトリエ運用 · 4 Agent',
+          signalAgentsActive: '稼働中',
           panelTitle: 'Eliora',
           panelCopy: 'AI、Canvas、商品、コンサルティング、コミュニティのサービス層。',
           signalCanvas: 'Infinite Canvas',
           signalStudio: 'ローカルAIスタジオ',
           signalProducts: 'デジタル商品',
           signalConsulting: 'コンサルティング導線',
-          signalOpen: 'open',
-          signalPrivate: 'private',
-          signalReady: 'ready',
-          signalNext: 'next',
+          signalOpen: '公開',
+          signalPrivate: '非公開',
+          signalReady: '準備完了',
+          signalNext: '次期',
           serviceTitle: 'Service Map',
           serviceCopy: '一つの入口から、AIツール、ローカルWorkflow、デジタル素材、学習商品、コンサルティングへ展開します。',
           cardAiTitle: 'プロンプト、画像、知識Workflow',
@@ -493,16 +498,18 @@
           backMiragea: '返回 Miragea',
           signalAtelier: '宇宙AI工坊 · Layer 3',
           signalAtelierStatus: '已上线',
+          signalAgents: '工坊运作 · 4 Agent',
+          signalAgentsActive: '运行中',
           panelTitle: 'Eliora',
           panelCopy: 'AI、Canvas、产品、咨询与社区的服务层。',
           signalCanvas: 'Infinite Canvas',
           signalStudio: '本地 AI 工作室',
           signalProducts: '数字商品',
           signalConsulting: '咨询路线',
-          signalOpen: 'open',
-          signalPrivate: 'private',
-          signalReady: 'ready',
-          signalNext: 'next',
+          signalOpen: '已开放',
+          signalPrivate: '非公开',
+          signalReady: '已就绪',
+          signalNext: '下一期',
           serviceTitle: 'Service Map',
           serviceCopy: '一个入口，连接 AI 工具、本地 Workflow、数字资产、学习产品与咨询路线。',
           cardAiTitle: '提示词、图像与知识 Workflow',
@@ -538,6 +545,32 @@
         document.querySelectorAll('[data-atelier-link]').forEach((node) => {
           node.setAttribute('href', '/eliora/atelier/' + current + '/');
         });
+        document.querySelectorAll('[data-atelier-hub-link]').forEach((node) => {
+          node.setAttribute('href', '/eliora/atelier/' + current + '/atelier/');
+        });
+        refreshAgentCount(current);
+      }
+
+      function refreshAgentCount(lang) {
+        const node = document.querySelector('[data-agent-count]');
+        if (!node) return;
+        const labels = {
+          en: { active: 'active', idle: 'idle' },
+          ja: { active: '稼働中', idle: '待機' },
+          zh: { active: '运行中', idle: '空闲' },
+        };
+        const L = labels[lang] || labels.en;
+        fetch('/eliora/atelier/data/agents/status.json')
+          .then((r) => r.json())
+          .then((data) => {
+            const agents = data.agents || {};
+            const active = Object.values(agents).filter((a) => a.status === 'active').length;
+            const total = Object.keys(agents).length;
+            node.textContent = active > 0 ? active + '/' + total + ' ' + L.active : L.idle;
+          })
+          .catch(() => {
+            node.textContent = translations[lang]?.signalAgentsActive || '…';
+          });
       }
 
       document.querySelectorAll('[data-lang]').forEach((button) => {

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Agent status JSON is fetched by the site UI; no need to index raw feed
+Disallow: /eliora/atelier/data/agents/

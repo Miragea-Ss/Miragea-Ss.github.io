@@ -1,0 +1,109 @@
+---
+interface Props {
+  lang?: 'en' | 'ja' | 'zh';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const copy = {
+  en: {
+    label: 'Atelier Operations',
+    badge: 'Live systems',
+    syncing: 'Syncing…',
+    stale: 'Status may be stale — check Agent hub',
+    hub: 'Open Agent hub →',
+    initializing: 'Atelier systems initializing',
+  },
+  ja: {
+    label: 'アトリエ運用',
+    badge: '実行システム',
+    syncing: '同期中…',
+    stale: 'ステータスが古い可能性 — Agentハブを確認',
+    hub: 'Agentハブを開く →',
+    initializing: 'アトリエシステム初期化中',
+  },
+  zh: {
+    label: '工坊运作',
+    badge: '执行系统',
+    syncing: '同步中…',
+    stale: '状态可能已过期 — 请查看 Agent 中心',
+    hub: '打开 Agent 中心 →',
+    initializing: '工坊系统初始化中',
+  },
+}[lang];
+
+const hub = `/eliora/atelier/${lang}/atelier/`;
+---
+
+<section class="border-y border-amber-200/10 bg-black/40 px-6 py-16 md:px-12" id="atelier-ops-strip">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <span class="mb-3 inline-flex rounded-lg border border-amber-200/25 px-3 py-1 text-xs uppercase tracking-[0.14em] text-amber-100/80">
+          {copy.badge}
+        </span>
+        <h2 class="text-3xl font-light tracking-normal text-stone-100 md:text-5xl">{copy.label}</h2>
+      </div>
+      <p class="max-w-md text-sm leading-7 text-stone-400" data-agent-sync-note>{copy.syncing}</p>
+    </div>
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4" id="archive-agent-grid" data-agent-fallback={copy.initializing}></div>
+    <div class="mt-8 flex flex-wrap items-center gap-4">
+      <a class="font-bold text-amber-100 transition hover:text-amber-50" href={hub}>{copy.hub}</a>
+      <span class="font-mono text-xs text-stone-500" data-agent-sync-time></span>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ lang, hub }}>
+  (function () {
+    var STATUS_URL = '/eliora/atelier/data/agents/status.json';
+    var ORDER = ['campaign-watcher', 'production-recorder', 'work-distributor', 'idea-miner'];
+    var NAMES = {
+      'campaign-watcher': { en: 'Campaign Watcher', ja: 'キャンペーン監視', zh: '竞赛监控' },
+      'production-recorder': { en: 'Production Recorder', ja: '制作工程記録', zh: '制作工程记录' },
+      'work-distributor': { en: 'Work Distributor', ja: '作品展開', zh: '作品分发' },
+      'idea-miner': { en: 'Idea Miner', ja: 'Idea Miner', zh: 'Idea Miner' },
+    };
+    var STATUS = {
+      en: { active: 'active', queued: 'queued', idle: 'idle', error: 'error' },
+      ja: { active: '稼働中', queued: '待機', idle: '待機中', error: 'エラー' },
+      zh: { active: '运行中', queued: '排队', idle: '空闲', error: '错误' },
+    };
+
+    function rel(iso) {
+      var h = Math.floor((Date.now() - new Date(iso)) / 3600000);
+      if (h < 1) return '<1h';
+      if (h < 48) return h + 'h';
+      return Math.floor(h / 24) + 'd';
+    }
+
+    var grid = document.getElementById('archive-agent-grid');
+    var note = document.querySelector('[data-agent-sync-note]');
+    var time = document.querySelector('[data-agent-sync-time]');
+    var fallback = grid && grid.getAttribute('data-agent-fallback');
+
+    fetch(STATUS_URL)
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (!grid || !data.agents) return;
+        var labels = STATUS[lang] || STATUS.en;
+        grid.innerHTML = ORDER.map(function (key) {
+          var agent = data.agents[key];
+          if (!agent) return '';
+          var name = (NAMES[key] && (NAMES[key][lang] || NAMES[key].en)) || key;
+          var summary = agent.summary[lang] || agent.summary.en;
+          var pill = labels[agent.status] || agent.status;
+          return '<article class="rounded-lg border border-white/10 bg-white/[.04] p-4"><div class="mb-2 flex items-center justify-between gap-2"><strong class="text-sm text-stone-100">' + name + '</strong><span class="rounded-full border border-amber-200/20 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide text-amber-100/90">' + pill + '</span></div><p class="line-clamp-2 text-xs leading-6 text-stone-400">' + summary + '</p></article>';
+        }).join('');
+        var stale = (Date.now() - new Date(data.generatedAt)) > 48 * 3600000;
+        if (note) {
+          var synced = lang === 'ja' ? '同期 ' + rel(data.generatedAt) + '前' : lang === 'zh' ? '同步于 ' + rel(data.generatedAt) + '前' : 'Synced ' + rel(data.generatedAt) + ' ago';
+          note.textContent = stale ? (lang === 'ja' ? 'ステータスが古い可能性 — Agentハブを確認' : lang === 'zh' ? '状态可能已过期 — 请查看 Agent 中心' : 'Status may be stale — check Agent hub') : synced;
+        }
+        if (time) time.textContent = data.generatedAt.replace('T', ' ').replace('Z', ' UTC');
+      })
+      .catch(function () {
+        if (grid && fallback) grid.innerHTML = '<p class="col-span-full text-sm text-stone-500">' + fallback + '</p>';
+      });
+  })();
+</script>

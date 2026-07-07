@@ -4,7 +4,8 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run agents:validate && astro build",
+    "agents:add": "node scripts/agent-add.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "agents:export": "node scripts/export-agent-status.mjs",
