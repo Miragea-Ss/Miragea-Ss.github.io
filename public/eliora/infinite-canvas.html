@@ -465,6 +465,18 @@
       }
       .cloud-details[open] summary { color: var(--cyan); }
       .cloud-details .panel-inner { padding: 0 14px 14px; }
+      .connect-fix {
+        margin-top: 10px;
+        padding: 10px 11px;
+        border: 1px solid rgba(245, 184, 100, .34);
+        border-radius: 8px;
+        background: rgba(245, 184, 100, .08);
+        color: #f0d4a8;
+        font-size: 11px;
+        line-height: 1.55;
+        font-weight: 650;
+      }
+      .connect-fix.hidden { display: none; }
       button.tool-primary-local {
         background: rgba(158, 215, 157, .16);
         border-color: rgba(158, 215, 157, .48);
@@ -604,7 +616,11 @@
               <span class="service-pill checking" id="llamaServicePill">llama.cpp</span>
               <span class="service-pill checking" id="comfyServicePill">ComfyUI</span>
               <button id="checkLocalServices" type="button" style="min-height:28px;padding:0 10px;font-size:10px">再確認</button>
+              <button id="useComfyBridge" type="button" style="min-height:28px;padding:0 10px;font-size:10px" title="CORS 回避ブリッジ 8190">Bridge 8190</button>
             </div>
+            <p id="comfyConnectFix" class="connect-fix hidden" role="status">
+              ComfyUI は起動中でもブラウザがブロックすることがあります。<strong>① start-eliora-bridge.bat を起動</strong> → <strong>② Bridge 8190</strong> を押す。または <strong>open-local-canvas.bat</strong> でローカル HTML を開く。
+            </p>
             <p class="panel-sub">普段はここ。llama-server を 127.0.0.1:8080 で起動。上の <strong>Ask Local</strong> または Ctrl+Enter。</p>
             <div class="field"><label for="llamaEndpoint">Endpoint</label><input id="llamaEndpoint" value="http://127.0.0.1:8080/v1/chat/completions" /></div>
             <div class="row">
@@ -837,6 +853,8 @@
       let hoveredEdgeId = '';
       let onboardIndex = 0;
       let aiMode = 'local';
+      let comfyWorkingBase = '';
+      const comfyBridgeBase = 'http://127.0.0.1:8190';
       const onboardingSteps = [
         {
           title: 'カードを置く',
@@ -1884,17 +1902,69 @@
         pill.classList.remove('checking', 'online', 'offline');
         pill.classList.add(state);
       }
+      function comfyPrimaryBase() {
+        return $('comfyEndpoint').value.trim().replace(/\/$/, '');
+      }
+      function comfyActiveBase() {
+        return comfyWorkingBase || comfyPrimaryBase();
+      }
+      async function comfyRequest(path, options = {}) {
+        const bases = [comfyPrimaryBase()];
+        if (!bases[0].includes(':8190')) bases.push(comfyBridgeBase);
+        let lastError = null;
+        for (const base of bases) {
+          try {
+            const response = await fetch(`${base}${path}`, options);
+            if (response.ok || (response.status >= 400 && response.status < 500)) {
+              comfyWorkingBase = base;
+              return response;
+            }
+            lastError = new Error(`HTTP ${response.status}`);
+          } catch (error) {
+            lastError = error;
+          }
+        }
+        throw lastError || new Error('Failed to fetch');
+      }
+      function updateComfyConnectFix(comfyOk) {
+        const fix = $('comfyConnectFix');
+        if (!fix) return;
+        fix.classList.toggle('hidden', comfyOk);
+      }
+      function useComfyBridgeEndpoint() {
+        $('comfyEndpoint').value = comfyBridgeBase;
+        comfyWorkingBase = comfyBridgeBase;
+        $('comfyStatus').textContent = 'Bridge 8190 に切替しました。start-eliora-bridge.bat が起動していることを確認してください。';
+        syncComfyLinks();
+        scheduleSave();
+        checkLocalServices();
+      }
       async function checkLocalServices() {
         setServicePill('llamaServicePill', 'checking');
         setServicePill('comfyServicePill', 'checking');
         const llamaBase = $('llamaEndpoint').value.trim().replace(/\/v1\/chat\/completions\/?$/i, '');
-        const comfyBaseUrl = $('comfyEndpoint').value.trim().replace(/\/$/, '');
-        const [llamaOk, comfyOk] = await Promise.all([
-          fetch(`${llamaBase}/v1/models`, { method: 'GET' }).then((r) => r.ok).catch(() => false),
-          fetch(`${comfyBaseUrl}/system_stats`, { method: 'GET' }).then((r) => r.ok).catch(() => false),
-        ]);
+        const llamaOk = await fetch(`${llamaBase}/v1/models`, { method: 'GET' }).then((r) => r.ok).catch(() => false);
+        let comfyOk = false;
+        const bases = [comfyPrimaryBase()];
+        if (!bases[0].includes(':8190')) bases.push(comfyBridgeBase);
+        for (const base of bases) {
+          try {
+            const ok = await fetch(`${base}/system_stats`, { method: 'GET' }).then((r) => r.ok);
+            if (ok) {
+              comfyOk = true;
+              comfyWorkingBase = base;
+              if (base === comfyBridgeBase && comfyPrimaryBase() !== comfyBridgeBase) {
+                $('comfyStatus').textContent = 'Bridge 8190 経由で ComfyUI に接続できました。';
+              }
+              break;
+            }
+          } catch {
+            /* try next base */
+          }
+        }
         setServicePill('llamaServicePill', llamaOk ? 'online' : 'offline');
         setServicePill('comfyServicePill', comfyOk ? 'online' : 'offline');
+        updateComfyConnectFix(comfyOk);
         return { llamaOk, comfyOk };
       }
       function applyAiMode(persist = true) {
@@ -2017,7 +2087,7 @@
       async function getObjectInfo() {
         if (objectInfoCache) return objectInfoCache;
         try {
-          const response = await fetch(`${comfyBase()}/object_info`);
+          const response = await comfyRequest('/object_info');
           if (!response.ok) throw new Error(`object_info HTTP ${response.status}`);
           objectInfoCache = await response.json();
         } catch {
@@ -2074,7 +2144,7 @@
         return injectCanvasContext(deepReplace(workflow, replacements), replacements);
       }
       async function getFirstCheckpoint() {
-        const response = await fetch(`${comfyBase()}/object_info/CheckpointLoaderSimple`);
+        const response = await comfyRequest('/object_info/CheckpointLoaderSimple');
         if (!response.ok) throw new Error(`Checkpoint list HTTP ${response.status}`);
         const info = await response.json();
         const values = info?.CheckpointLoaderSimple?.input?.required?.ckpt_name?.[0];
@@ -2125,10 +2195,12 @@
         throw new Error('This JSON is not a ComfyUI API or UI workflow.');
       }
       function comfyBase() {
-        return $('comfyEndpoint').value.trim().replace(/\/$/, '');
+        return comfyActiveBase();
       }
       function comfyUiUrl() {
-        return `${comfyBase().replace('0.0.0.0', '127.0.0.1').replace('[::]', '127.0.0.1')}/`;
+        const raw = comfyPrimaryBase().replace('0.0.0.0', '127.0.0.1').replace('[::]', '127.0.0.1');
+        if (raw.includes(':8190')) return 'http://127.0.0.1:8188/';
+        return `${raw}/`;
       }
       function syncComfyLinks() {
         ['openComfyTop', 'openComfyPanel'].forEach((id) => {
@@ -2162,7 +2234,7 @@
         $('comfyStatus').textContent = 'Sending prompt to ComfyUI...';
         save();
         try {
-          const response = await fetch(`${comfyBase()}/prompt`, {
+          const response = await comfyRequest('/prompt', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ prompt: await buildComfyWorkflow(), client_id: uid() }),
@@ -2181,9 +2253,10 @@
           if (lastComfyPromptId) pollComfy(18, 2500);
         } catch (error) {
           const message = error.message || String(error);
+          updateComfyConnectFix(false);
           $('comfyStatus').textContent = message.startsWith('HTTP')
             ? `ComfyUI ワークフローエラー: ${message}。ComfyUI で内容を確認してから再実行してください。`
-            : `ComfyUI に接続できません: ${message}`;
+            : `ComfyUI に接続できません: ${message}。Bridge: H:\\Grok\\miragea-infinite-canvas-2026-07-08\\start-eliora-bridge.bat`;
         }
       }
       async function loadBuiltinWorkflows() {
@@ -2261,7 +2334,7 @@
           return false;
         }
         try {
-          const response = await fetch(`${comfyBase()}/history/${lastComfyPromptId}`);
+          const response = await comfyRequest(`/history/${lastComfyPromptId}`);
           if (!response.ok) throw new Error(`HTTP ${response.status}`);
           const history = await response.json();
           const item = history[lastComfyPromptId];
@@ -2642,6 +2715,7 @@
       $('askCloud').addEventListener('click', askCloud);
       $('presetOpenRouter').addEventListener('click', presetOpenRouter);
       $('checkLocalServices').addEventListener('click', checkLocalServices);
+      $('useComfyBridge').addEventListener('click', useComfyBridgeEndpoint);
       $('modeLocal').addEventListener('click', () => setAiMode('local'));
       $('modeCloud').addEventListener('click', () => { setAiMode('cloud'); $('cloudApiWrap').open = true; });
       $('sendComfy').addEventListener('click', sendComfy);
