@@ -477,6 +477,43 @@
         font-weight: 650;
       }
       .connect-fix.hidden { display: none; }
+      .activity-log {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 6;
+        width: min(360px, calc(100% - 24px));
+        max-height: 220px;
+        overflow: auto;
+        border: 1px solid rgba(123, 216, 232, .34);
+        border-radius: 10px;
+        background: rgba(0, 0, 0, .82);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, .55);
+        pointer-events: none;
+      }
+      .activity-log h3 {
+        margin: 0;
+        padding: 8px 11px;
+        border-bottom: 1px solid var(--line);
+        font-size: 10px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: var(--cyan);
+      }
+      .activity-lines { padding: 6px 8px 8px; display: grid; gap: 4px; }
+      .activity-line {
+        font-size: 11px;
+        line-height: 1.45;
+        font-weight: 650;
+        padding: 5px 7px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, .04);
+      }
+      .activity-line.info { color: var(--muted); }
+      .activity-line.ok { color: #b8e8c8; background: rgba(158, 215, 157, .1); }
+      .activity-line.warn { color: #f0d4a8; background: rgba(245, 184, 100, .1); }
+      .activity-line.error { color: #f0b0b8; background: rgba(242, 121, 154, .12); }
       button.tool-primary-local {
         background: rgba(158, 215, 157, .16);
         border-color: rgba(158, 215, 157, .48);
@@ -735,6 +772,10 @@
             <canvas class="minimap" id="minimap" width="168" height="112" aria-hidden="true"></canvas>
             <div class="drop-overlay hidden" id="dropOverlay" aria-hidden="true">Drop images to add cards</div>
             <div class="connect-hint hidden" id="connectHint" aria-live="polite"></div>
+            <div class="activity-log" id="activityLog" aria-live="polite">
+              <h3>Activity</h3>
+              <div class="activity-lines" id="activityLines"></div>
+            </div>
           </div>
         </main>
 
@@ -1908,13 +1949,30 @@
       function comfyActiveBase() {
         return comfyWorkingBase || comfyPrimaryBase();
       }
+      function logActivity(message, level = 'info') {
+        const lines = $('activityLines');
+        if (!lines) return;
+        const row = document.createElement('div');
+        row.className = `activity-line ${level}`;
+        const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        row.textContent = `${time} ${message}`;
+        lines.prepend(row);
+        while (lines.children.length > 24) lines.removeChild(lines.lastChild);
+        $('savedAt').textContent = message.length > 42 ? message.slice(0, 42) + '…' : message;
+      }
       async function comfyRequest(path, options = {}) {
         const bases = [comfyPrimaryBase()];
         if (!bases[0].includes(':8190')) bases.push(comfyBridgeBase);
+        const fetchOptions = { ...options };
+        if (fetchOptions.body instanceof FormData && fetchOptions.headers) {
+          const headers = { ...fetchOptions.headers };
+          delete headers['Content-Type'];
+          fetchOptions.headers = headers;
+        }
         let lastError = null;
         for (const base of bases) {
           try {
-            const response = await fetch(`${base}${path}`, options);
+            const response = await fetch(`${base}${path}`, fetchOptions);
             if (response.ok || (response.status >= 400 && response.status < 500)) {
               comfyWorkingBase = base;
               return response;
@@ -1925,6 +1983,49 @@
           }
         }
         throw lastError || new Error('Failed to fetch');
+      }
+      async function uploadImageToComfy(blob, filename) {
+        const form = new FormData();
+        form.append('image', blob, filename);
+        logActivity(`画像を ComfyUI へアップロード: ${filename}`, 'info');
+        const response = await comfyRequest('/upload/image', { method: 'POST', body: form });
+        if (!response.ok) {
+          const details = await response.text().catch(() => '');
+          throw new Error(`upload HTTP ${response.status}${details ? ': ' + details.slice(0, 240) : ''}`);
+        }
+        const data = await response.json();
+        const name = data.name || filename;
+        logActivity(`ComfyUI input 準備完了: ${name}`, 'ok');
+        return name;
+      }
+      function findWorkflowImageNode() {
+        const source = workflowSource();
+        if (!source) return null;
+        const pool = [source, ...connectedTo(source.id)];
+        return pool.find((node) => {
+          if (node.kind === 'Image') return true;
+          const hay = `${node.kind || ''} ${tags(node.tags).join(' ')} ${node.title || ''} ${node.url || ''} ${node.text || ''}`.toLowerCase();
+          return hay.includes('image') || /\.(png|jpe?g|webp|gif|bmp)$/i.test(node.url || '') || /\.(png|jpe?g|webp|gif|bmp)$/i.test(node.text || '');
+        }) || null;
+      }
+      async function ensureComfyInputImage() {
+        const imageNode = findWorkflowImageNode();
+        if (!imageNode) {
+          logActivity('Image カード未接続 — テキストのみで実行します', 'warn');
+          return '';
+        }
+        if (isStoredImageUrl(imageNode.url)) {
+          const blob = await getImageBlob(imageIdFromUrl(imageNode.url));
+          if (!blob) throw new Error('Canvas 内の画像データが見つかりません。Image ボタンで再取り込みしてください。');
+          let filename = (imageNode.title || 'eliora-input').replace(/[\\/:*?"<>|]+/g, '_').trim();
+          if (!/\.[a-z0-9]{2,5}$/i.test(filename)) filename += '.png';
+          return uploadImageToComfy(blob, filename);
+        }
+        const raw = String(imageNode.url || imageNode.text || '').trim();
+        const filename = mediaNameFromUrl(raw);
+        if (!filename) throw new Error('画像ファイル名を取得できません。Image カードに TEST001.png 等を設定するか、Image ボタンで取り込んでください。');
+        logActivity(`ComfyUI input の既存ファイルを使用: ${filename}`, 'info');
+        return filename;
       }
       function updateComfyConnectFix(comfyOk) {
         const fix = $('comfyConnectFix');
@@ -2067,12 +2168,15 @@
         Object.values(workflow).forEach((node) => {
           if (!node || typeof node !== 'object' || !node.inputs) return;
           const title = `${node.class_type || ''} ${node._meta?.title || ''}`.toLowerCase();
+          if (node.class_type === 'LoadImage' && replacements.image) {
+            node.inputs.image = replacements.image;
+          }
           Object.entries(node.inputs).forEach(([key, value]) => {
             const k = key.toLowerCase();
             if (typeof value === 'string') {
               if (k.includes('negative') || title.includes('negative')) node.inputs[key] = replacements.negative;
               else if (k === 'text' || k.includes('prompt') || k.includes('caption') || title.includes('positive prompt')) node.inputs[key] = replacements.prompt;
-              else if (replacements.image && k.includes('image')) node.inputs[key] = replacements.image;
+              else if (replacements.image && (k === 'image' || k.includes('image'))) node.inputs[key] = replacements.image;
               else if (replacements.video && k.includes('video')) node.inputs[key] = replacements.video;
               else if (replacements.audio && k.includes('audio')) node.inputs[key] = replacements.audio;
             } else if (typeof value === 'number') {
@@ -2083,6 +2187,17 @@
           });
         });
         return workflow;
+      }
+      async function prepareComfyWorkflow(workflow, seed) {
+        const replacements = workflowReplacements(seed);
+        try {
+          const uploaded = await ensureComfyInputImage();
+          if (uploaded) replacements.image = uploaded;
+        } catch (error) {
+          logActivity(`画像準備エラー: ${error.message}`, 'error');
+          throw error;
+        }
+        return injectCanvasContext(deepReplace(workflow, replacements), replacements);
       }
       async function getObjectInfo() {
         if (objectInfoCache) return objectInfoCache;
@@ -2138,10 +2253,6 @@
           api[id] = { class_type: node.type, inputs, _meta: { title: node.title || node.type } };
         });
         return api;
-      }
-      function prepareComfyWorkflow(workflow, seed) {
-        const replacements = workflowReplacements(seed);
-        return injectCanvasContext(deepReplace(workflow, replacements), replacements);
       }
       async function getFirstCheckpoint() {
         const response = await comfyRequest('/object_info/CheckpointLoaderSimple');
@@ -2228,16 +2339,40 @@
           banner.textContent = 'リモート閲覧 — ボードはこのブラウザに保存。生成は自宅 PC の llama / ComfyUI。外出先のみ Cloud API を展開。';
         }
       }
+      function addComfyJobCard(source, promptId, state, detail = '') {
+        const node = {
+          id: uid(),
+          x: (source?.x || 0) + 40,
+          y: (source?.y || 0) - 120,
+          kind: 'Workflow',
+          title: `ComfyUI ${state}`,
+          text: `prompt_id: ${promptId || '—'}\n${detail}`.trim(),
+          tags: ['ComfyUI', 'Job'],
+          color: state === 'Error' ? 'rose' : state === 'Done' ? 'green' : 'amber',
+          url: promptId ? `${comfyUiUrl()}?queue` : '',
+        };
+        nodes.unshift(node);
+        if (source) edges.push({ id: uid(), from: source.id, to: node.id, label: 'comfy job' });
+        selectedNode = node.id;
+        render();
+      }
       async function sendComfy() {
         const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
-        if (!source) return;
-        $('comfyStatus').textContent = 'Sending prompt to ComfyUI...';
+        if (!source) {
+          logActivity('カードがありません — Prompt または Image を選んでください', 'error');
+          return;
+        }
+        logActivity(`Send Comfy 開始: ${source.title}`, 'info');
+        $('comfyStatus').textContent = 'ComfyUI に送信中...';
         save();
         try {
+          logActivity('ワークフロー組み立て中...', 'info');
+          const workflow = await buildComfyWorkflow();
+          logActivity(`ワークフロー準備完了（${Object.keys(workflow).length} ノード）`, 'ok');
           const response = await comfyRequest('/prompt', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt: await buildComfyWorkflow(), client_id: uid() }),
+            body: JSON.stringify({ prompt: workflow, client_id: uid() }),
           });
           if (!response.ok) {
             const details = await response.text().catch(() => '');
@@ -2246,17 +2381,24 @@
           const data = await response.json();
           lastComfyPromptId = data.prompt_id || '';
           lastComfySourceId = source.id;
-          $('comfyStatus').textContent = lastComfyPromptId
-            ? `Queued: ${lastComfyPromptId}. Watch or fix details in ComfyUI.`
-            : 'Queued. No prompt_id returned. Watch ComfyUI for details.';
+          if (lastComfyPromptId) {
+            logActivity(`ComfyUI キュー投入 OK: ${lastComfyPromptId}`, 'ok');
+            addComfyJobCard(source, lastComfyPromptId, 'Queued', 'ComfyUI で実行中。完了すると結果カードが追加されます。');
+            $('comfyStatus').textContent = `Queued: ${lastComfyPromptId}`;
+          } else {
+            logActivity('prompt_id が返りませんでした — ComfyUI を確認', 'warn');
+            $('comfyStatus').textContent = 'Queued. No prompt_id returned.';
+          }
           save();
-          if (lastComfyPromptId) pollComfy(18, 2500);
+          if (lastComfyPromptId) pollComfy(24, 2500);
         } catch (error) {
           const message = error.message || String(error);
+          logActivity(`Send Comfy 失敗: ${message}`, 'error');
+          addComfyJobCard(source, '', 'Error', message);
           updateComfyConnectFix(false);
           $('comfyStatus').textContent = message.startsWith('HTTP')
-            ? `ComfyUI ワークフローエラー: ${message}。ComfyUI で内容を確認してから再実行してください。`
-            : `ComfyUI に接続できません: ${message}。Bridge: H:\\Grok\\miragea-infinite-canvas-2026-07-08\\start-eliora-bridge.bat`;
+            ? `ComfyUI ワークフローエラー: ${message}`
+            : `ComfyUI に接続できません: ${message}`;
         }
       }
       async function loadBuiltinWorkflows() {
@@ -2302,11 +2444,17 @@
         }
       }
       async function pollComfy(times = 1, delayMs = 0) {
+        logActivity(`結果待ち開始（最大 ${Math.round(times * delayMs / 1000)} 秒）`, 'info');
         for (let i = 0; i < times; i += 1) {
           if (delayMs) await new Promise((resolve) => setTimeout(resolve, delayMs));
+          const msg = `生成中… ${i + 1}/${times} — ${lastComfyPromptId}`;
+          $('comfyStatus').textContent = msg;
+          logActivity(msg, 'info');
           const found = await checkComfy(false);
           if (found) return;
         }
+        logActivity('タイムアウト — Check Result を押すか ComfyUI を確認', 'warn');
+        $('comfyStatus').textContent = `Still running: ${lastComfyPromptId} — Check Result または ComfyUI キューを確認`;
       }
       function collectComfyFiles(output) {
         const files = [];
@@ -2344,12 +2492,17 @@
             if (showWaiting) $('comfyStatus').textContent = `Still waiting: ${lastComfyPromptId}`;
             return false;
           }
+          const donePromptId = lastComfyPromptId;
           addComfyResults(files);
+          logActivity(`完了 — 結果カード ${files.length} 枚を Canvas に追加`, 'ok');
           $('comfyStatus').textContent = `Added ${files.length} ComfyUI result card(s).`;
+          const source = nodeBy(lastComfySourceId);
+          if (source) addComfyJobCard(source, donePromptId, 'Done', `${files.length} file(s) added to canvas`);
           lastComfyPromptId = '';
           save();
           return true;
         } catch (error) {
+          logActivity(`結果確認失敗: ${error.message}`, 'error');
           $('comfyStatus').textContent = `Result check failed: ${error.message}`;
           return false;
         }
@@ -2523,10 +2676,14 @@
       }
       async function runSelectedWorkflow() {
         try {
-          await useSelectedWorkflow();
+          logActivity('Run Selected: ワークフロー読込', 'info');
+          const item = await useSelectedWorkflow();
+          logActivity(`Run Selected: ${item.name}（${workflowKindName(item.kind)}）`, 'ok');
           await sendComfy();
         } catch (error) {
+          logActivity(`Run Selected 失敗: ${error.message}`, 'error');
           $('workflowStats').textContent = `Run failed: ${error.message}`;
+          $('comfyStatus').textContent = `Run failed: ${error.message}`;
         }
       }
 
@@ -2848,6 +3005,7 @@
       updateEnvBanner();
       syncComfyLinks();
       checkLocalServices();
+      logActivity('Eliora Infinite Canvas 準備完了', 'ok');
       if (!localStorage.getItem(onboardingKey)) showOnboarding();
       hydrateImagePreviews().then(() => {
         render();
