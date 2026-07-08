@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Eliora Infinite Canvas</title>
-    <meta name="description" content="A local-first infinite canvas for Eliora, Miragea, llama.cpp, and ComfyUI workflows." />
+    <meta name="description" content="Local-first infinite canvas for Eliora — llama.cpp + ComfyUI on your GPU. Cloud API (BYOK) when away from home." />
     <link rel="stylesheet" href="/assets/brand/brand-glow.css" />
     <style>
       :root {
@@ -360,6 +360,120 @@
         background: rgba(158, 215, 157, .1);
         color: #cfe8cf;
       }
+      .env-banner.cloud {
+        background: rgba(123, 216, 232, .1);
+        color: #b8e8f0;
+      }
+      .mode-switch {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .mode-switch button {
+        min-height: 44px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        padding: 10px 11px;
+        text-align: left;
+      }
+      .mode-switch button b { font-size: 13px; }
+      .mode-switch button small {
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 650;
+        line-height: 1.35;
+      }
+      .mode-switch button.active {
+        border-color: rgba(123, 216, 232, .72);
+        box-shadow: 0 0 22px rgba(123, 216, 232, .18);
+        background: rgba(123, 216, 232, .08);
+      }
+      .privacy-note {
+        margin: 0 0 12px;
+        padding: 9px 10px;
+        border: 1px solid rgba(158, 215, 157, .28);
+        border-radius: 8px;
+        background: rgba(158, 215, 157, .06);
+        color: #b8d4b8;
+        font-size: 11px;
+        line-height: 1.55;
+        font-weight: 650;
+      }
+      .panel-sub {
+        margin: -4px 0 12px;
+        color: var(--faint);
+        font-size: 11px;
+        line-height: 1.5;
+        font-weight: 650;
+      }
+      .panel-local {
+        border-left: 2px solid rgba(158, 215, 157, .42);
+      }
+      .local-status {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+      .service-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 5px 9px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .04em;
+        text-transform: uppercase;
+      }
+      .service-pill::before {
+        content: '';
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--faint);
+        box-shadow: 0 0 8px rgba(255,255,255,.12);
+      }
+      .service-pill.online::before { background: var(--green); box-shadow: 0 0 10px rgba(158,215,157,.55); }
+      .service-pill.offline::before { background: #c46a6a; box-shadow: 0 0 10px rgba(196,106,106,.4); }
+      .service-pill.checking::before { background: var(--amber); animation: pulse-dot 1s ease infinite; }
+      @keyframes pulse-dot { 50% { opacity: .35; } }
+      .cloud-details {
+        border-top: 1px solid var(--line);
+      }
+      .cloud-details summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 14px;
+        font-size: 12px;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: .14em;
+        font-weight: 900;
+      }
+      .cloud-details summary::-webkit-details-marker { display: none; }
+      .cloud-details summary::after {
+        content: '（外出先・GPUなし用）';
+        margin-left: 8px;
+        color: var(--faint);
+        font-size: 10px;
+        letter-spacing: .06em;
+        text-transform: none;
+      }
+      .cloud-details[open] summary { color: var(--cyan); }
+      .cloud-details .panel-inner { padding: 0 14px 14px; }
+      button.tool-primary-local {
+        background: rgba(158, 215, 157, .16);
+        border-color: rgba(158, 215, 157, .48);
+        color: #d8f0d8;
+      }
+      button.tool-primary-local:hover {
+        background: rgba(158, 215, 157, .24);
+        border-color: rgba(158, 215, 157, .62);
+      }
       .minimap { cursor: crosshair; }
       .link-nudge {
         margin-top: 10px;
@@ -435,9 +549,11 @@
       <header class="bar">
         <a class="brand" href="./index.html">
           <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--soft" aria-label="Eliora logo"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/eliora-logo-transparent.png" alt="Eliora logo" /></span>
-          <span><strong>Eliora Infinite Canvas</strong><span>llama.cpp + ComfyUI workspace</span></span>
+          <span><strong>Eliora Infinite Canvas</strong><span>Local-first · llama.cpp + ComfyUI</span></span>
         </a>
         <div class="tools" aria-label="Canvas tools">
+          <button class="tool-primary-local" id="askLlamaTop" title="選択カードを llama.cpp に送る（Ctrl+Enter）">Ask Local</button>
+          <button class="tool-primary-local" id="sendComfyTop" title="選択カードを ComfyUI に送る（Ctrl+Shift+Enter）">Send Comfy</button>
           <button class="primary" id="addNote" title="Add note">Add</button>
           <button id="imagePrompt" title="Create image prompt card">Image Prompt</button>
           <button id="videoPrompt" title="Create video prompt card">Video Prompt</button>
@@ -482,8 +598,14 @@
               線が0本です。<strong>右の●をドラッグ</strong>して左の●へドロップ（ComfyUI 方式）。うまくいかないときは下の <strong>Reset</strong> で初期ボードに戻せます。
             </p>
           </section>
-          <section class="panel">
-            <h2>llama.cpp</h2>
+          <section class="panel panel-local" id="localAiPanel">
+            <h2>Local AI · llama.cpp</h2>
+            <div class="local-status" aria-live="polite">
+              <span class="service-pill checking" id="llamaServicePill">llama.cpp</span>
+              <span class="service-pill checking" id="comfyServicePill">ComfyUI</span>
+              <button id="checkLocalServices" type="button" style="min-height:28px;padding:0 10px;font-size:10px">再確認</button>
+            </div>
+            <p class="panel-sub">普段はここ。llama-server を 127.0.0.1:8080 で起動。上の <strong>Ask Local</strong> または Ctrl+Enter。</p>
             <div class="field"><label for="llamaEndpoint">Endpoint</label><input id="llamaEndpoint" value="http://127.0.0.1:8080/v1/chat/completions" /></div>
             <div class="row">
               <div class="field"><label for="llamaModel">Model</label><input id="llamaModel" value="local-model" /></div>
@@ -493,13 +615,14 @@
             <button id="askLlama" class="primary">Ask llama.cpp</button>
             <p id="aiStatus" class="ai-status"></p>
           </section>
-          <section class="panel">
-            <h2>ComfyUI</h2>
+          <section class="panel panel-local" id="localImagePanel">
+            <h2>Local Image · ComfyUI</h2>
+            <p class="panel-sub">GPU 画像・動画はここ。ComfyUI を 127.0.0.1:8188 で起動。上の <strong>Send Comfy</strong> または Ctrl+Shift+Enter。</p>
             <div class="field"><label for="comfyEndpoint">Endpoint</label><input id="comfyEndpoint" value="http://127.0.0.1:8188" /></div>
             <div class="field"><label for="comfyNegative">Negative</label><textarea id="comfyNegative">low quality, blurry, broken anatomy, bad hands, watermark, text artifacts</textarea></div>
             <div class="row">
-              <div class="field"><label for="comfyWidth">Width</label><input id="comfyWidth" value="1024" /></div>
-              <div class="field"><label for="comfyHeight">Height</label><input id="comfyHeight" value="1024" /></div>
+              <div class="field"><label for="comfyWidth">Width</label><input id="comfyWidth" value="1536" /></div>
+              <div class="field"><label for="comfyHeight">Height</label><input id="comfyHeight" value="1536" /></div>
             </div>
             <div class="field"><label for="comfyWorkflow">API workflow JSON</label><textarea id="comfyWorkflow" spellcheck="false" placeholder="Optional. Leave empty for automatic text-to-image. Paste ComfyUI API-format JSON for custom image/video workflows. Use {{prompt}}, {{negative}}, {{seed}}."></textarea></div>
             <label class="check-row"><input id="comfyAutoInject" type="checkbox" checked /> Inject canvas context</label>
@@ -508,7 +631,15 @@
               <button id="checkComfy">Check Result</button>
               <a class="tool-link" id="openComfyPanel" href="http://127.0.0.1:8188/" target="_blank" rel="noreferrer">Open ComfyUI</a>
             </div>
-            <p id="comfyStatus" class="ai-status">Empty workflow = automatic text-to-image. Paste an API-format video workflow when you want video output.</p>
+            <p id="comfyStatus" class="ai-status">ワークフロー空欄 = 自動 text-to-image。動画は API 形式 JSON を貼って Send Comfy。</p>
+          </section>
+          <section class="panel">
+            <h2>AI Mode</h2>
+            <p class="panel-sub">基本はローカル。外出先だけクラウドに切替。</p>
+            <div class="mode-switch" role="group" aria-label="AI connection mode">
+              <button id="modeLocal" type="button" class="active" aria-pressed="true"><b>ローカル</b><small>llama + ComfyUI（既定）</small></button>
+              <button id="modeCloud" type="button" aria-pressed="false"><b>クラウド</b><small>BYOK・補助用</small></button>
+            </div>
           </section>
           <section class="panel">
             <h2>Workflow Import</h2>
@@ -544,6 +675,24 @@
               <button id="runWorkflow" class="primary">Run Selected</button>
             </div>
           </section>
+          <details class="cloud-details" id="cloudApiWrap">
+            <summary>Cloud API · BYOK</summary>
+            <div class="panel-inner" id="cloudApiPanel">
+              <p class="panel-sub">Eliora は仲介しません。キーは端末内のみ。普段はローカルで十分なら開かなくて OK。</p>
+              <p class="privacy-note">localStorage のみ保存。実名必須の中国系 API は非対応。</p>
+              <div class="tools" style="justify-content:flex-start; margin-bottom:12px">
+                <button id="presetOpenRouter" type="button">OpenRouter プリセット</button>
+              </div>
+              <div class="field"><label for="cloudEndpoint">Chat endpoint</label><input id="cloudEndpoint" placeholder="https://openrouter.ai/api/v1/chat/completions" /></div>
+              <div class="row">
+                <div class="field"><label for="cloudModel">Model</label><input id="cloudModel" placeholder="openai/gpt-4o-mini" /></div>
+                <div class="field"><label for="cloudKey">API Key (BYOK)</label><input id="cloudKey" type="password" placeholder="sk-or-..." autocomplete="off" /></div>
+              </div>
+              <div class="field"><label for="cloudSystem">System</label><textarea id="cloudSystem">You are Eliora, a concise AI collaborator. Turn the selected card into useful next steps.</textarea></div>
+              <button id="askCloud" class="primary">Ask Cloud API</button>
+              <p id="cloudStatus" class="ai-status"></p>
+            </div>
+          </details>
           <section class="panel">
             <h2>File</h2>
             <div class="tools" style="justify-content:flex-start">
@@ -619,7 +768,7 @@
 
     <div id="onboardBackdrop" class="onboard-backdrop hidden" aria-hidden="true">
       <div class="onboard-card" role="dialog" aria-modal="true" aria-labelledby="onboardTitle">
-        <p class="onboard-step" id="onboardStep">1 / 3</p>
+        <p class="onboard-step" id="onboardStep">1 / 4</p>
         <h2 id="onboardTitle">カードを置く</h2>
         <p id="onboardBody">左の Palette か上の Add でメモ・プロンプト・画像カードを追加できます。</p>
         <div class="onboard-actions">
@@ -639,9 +788,11 @@
       const wireOverlay = $('wireOverlay');
       const minimap = $('minimap');
       const storageKey = 'eliora-infinite-canvas-v3';
-      const onboardingKey = 'eliora-canvas-onboarding-v1';
+      const onboardingKey = 'eliora-canvas-onboarding-v2';
       const settingsKey = 'eliora-llamacpp-settings-v1';
       const comfySettingsKey = 'eliora-comfyui-settings-v1';
+      const cloudSettingsKey = 'eliora-cloud-api-settings-v1';
+      const aiModeKey = 'eliora-ai-mode-v1';
       const imageDbName = 'eliora-canvas-images-v1';
       const imageUrlPrefix = 'eliora-img://';
       let imageDbPromise = null;
@@ -685,6 +836,7 @@
       let wireDrag = null;
       let hoveredEdgeId = '';
       let onboardIndex = 0;
+      let aiMode = 'local';
       const onboardingSteps = [
         {
           title: 'カードを置く',
@@ -697,6 +849,10 @@
         {
           title: '画像と自動保存',
           body: 'Image ボタン・ドラッグ＆ドロップ・貼り付けで画像カードを追加できます。ボードはこのブラウザに自動保存され、リロード後も残ります。',
+        },
+        {
+          title: 'ローカルが主役',
+          body: '普段は Ask Local（Ctrl+Enter）と Send Comfy（Ctrl+Shift+Enter）。llama.cpp :8080、ComfyUI :8188 を起動して使います。外出先だけ Cloud API（折りたたみ）に切替。',
         },
       ];
 
@@ -994,6 +1150,15 @@
           if (typeof comfy.autoInject === 'boolean') $('comfyAutoInject').checked = comfy.autoInject;
           if (comfy.lastPromptId) lastComfyPromptId = comfy.lastPromptId;
           if (comfy.lastSourceId) lastComfySourceId = comfy.lastSourceId;
+          const cloud = JSON.parse(localStorage.getItem(cloudSettingsKey) || '{}');
+          if (cloud.endpoint) $('cloudEndpoint').value = cloud.endpoint;
+          if (cloud.model) $('cloudModel').value = cloud.model;
+          if (cloud.key) $('cloudKey').value = cloud.key;
+          if (cloud.system) $('cloudSystem').value = cloud.system;
+          const savedMode = localStorage.getItem(aiModeKey);
+          if (isLocalHost()) aiMode = 'local';
+          else if (savedMode === 'local' || savedMode === 'cloud') aiMode = savedMode;
+          applyAiMode(false);
         } catch {
           freshBoard();
         }
@@ -1016,6 +1181,13 @@
           lastPromptId: lastComfyPromptId,
           lastSourceId: lastComfySourceId,
         }));
+        localStorage.setItem(cloudSettingsKey, JSON.stringify({
+          endpoint: $('cloudEndpoint').value,
+          model: $('cloudModel').value,
+          key: $('cloudKey').value,
+          system: $('cloudSystem').value,
+        }));
+        localStorage.setItem(aiModeKey, aiMode);
         $('savedAt').textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       }
       function scheduleSave() {
@@ -1615,40 +1787,133 @@
         $('deleteEdge').addEventListener('click', deleteSelectedEdge);
       }
 
+      function chatApiHeaders(key, endpoint = '') {
+        const headers = { 'Content-Type': 'application/json' };
+        if (key) headers.Authorization = `Bearer ${key}`;
+        if (/openrouter\.ai/i.test(endpoint)) {
+          headers['HTTP-Referer'] = location.origin || 'https://miragea-ss.github.io';
+          headers['X-OpenRouter-Title'] = 'Eliora Infinite Canvas';
+        }
+        return headers;
+      }
+      async function callChatApi({ endpoint, key, model, system, userContent, statusEl }) {
+        const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
+        if (!source) return null;
+        if (!endpoint) throw new Error('エンドポイントを入力してください');
+        statusEl.textContent = 'API に接続中...';
+        save();
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: chatApiHeaders(key, endpoint),
+          body: JSON.stringify({
+            model: model || 'gpt-4o-mini',
+            temperature: 0.7,
+            messages: [
+              { role: 'system', content: system },
+              { role: 'user', content: userContent || graphContextText(source) },
+            ],
+          }),
+        });
+        if (!response.ok) {
+          const details = await response.text().catch(() => '');
+          throw new Error(`HTTP ${response.status}${details ? ': ' + details.slice(0, 400) : ''}`);
+        }
+        const data = await response.json();
+        const text = data.choices?.[0]?.message?.content || data.content || JSON.stringify(data, null, 2);
+        return { source, text };
+      }
+      function addAiResponseCard(source, text, title, tag, label) {
+        const node = { id: uid(), x: source.x + 360, y: source.y + 40, kind: 'AI', title, text, tags: tag, color: 'cyan', url: '' };
+        nodes.unshift(node);
+        edges.push({ id: uid(), from: source.id, to: node.id, label });
+        selectedNode = node.id;
+        selectedEdge = null;
+        render();
+      }
       async function askLlama() {
         const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
         if (!source) return;
         $('aiStatus').textContent = 'Calling local llama.cpp...';
-        save();
         try {
-          const headers = { 'Content-Type': 'application/json' };
-          const key = $('llamaKey').value.trim();
-          if (key) headers.Authorization = `Bearer ${key}`;
-          const response = await fetch($('llamaEndpoint').value.trim(), {
-            method: 'POST',
-            headers,
-            body: JSON.stringify({
-              model: $('llamaModel').value.trim() || 'local-model',
-              temperature: 0.7,
-              messages: [
-                { role: 'system', content: $('llamaSystem').value },
-                { role: 'user', content: graphContextText(source) },
-              ],
-            }),
+          const result = await callChatApi({
+            endpoint: $('llamaEndpoint').value.trim(),
+            key: $('llamaKey').value.trim(),
+            model: $('llamaModel').value.trim() || 'local-model',
+            system: $('llamaSystem').value,
+            statusEl: $('aiStatus'),
           });
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
-          const data = await response.json();
-          const text = data.choices?.[0]?.message?.content || data.content || JSON.stringify(data, null, 2);
-          const node = { id: uid(), x: source.x + 360, y: source.y + 40, kind: 'AI', title: 'llama.cpp Response', text, tags: ['llama.cpp', 'local'], color: 'cyan', url: '' };
-          nodes.unshift(node);
-          edges.push({ id: uid(), from: source.id, to: node.id, label: 'local ai' });
-          selectedNode = node.id;
-          selectedEdge = null;
+          if (!result) return;
+          addAiResponseCard(result.source, result.text, 'llama.cpp Response', ['llama.cpp', 'local'], 'local ai');
           $('aiStatus').textContent = 'Response added.';
-          render();
         } catch (error) {
           $('aiStatus').textContent = `llama.cpp に接続できません: ${error.message}`;
         }
+      }
+      async function askCloud() {
+        const key = $('cloudKey').value.trim();
+        if (!key) {
+          $('cloudStatus').textContent = 'API キーを入力してください（BYOK）。キーはこの端末のみに保存されます。';
+          return;
+        }
+        try {
+          const result = await callChatApi({
+            endpoint: $('cloudEndpoint').value.trim(),
+            key,
+            model: $('cloudModel').value.trim(),
+            system: $('cloudSystem').value,
+            statusEl: $('cloudStatus'),
+          });
+          if (!result) return;
+          addAiResponseCard(result.source, result.text, 'Cloud API Response', ['cloud-api', 'openai'], 'cloud api');
+          $('cloudStatus').textContent = 'クラウド API の応答をカードに追加しました。';
+        } catch (error) {
+          $('cloudStatus').textContent = `クラウド API に接続できません: ${error.message}`;
+        }
+      }
+      function presetOpenRouter() {
+        $('cloudEndpoint').value = 'https://openrouter.ai/api/v1/chat/completions';
+        if (!$('cloudModel').value.trim()) $('cloudModel').value = 'openai/gpt-4o-mini';
+        $('cloudStatus').textContent = 'OpenRouter プリセットを適用しました。API キーだけ入力してください。';
+        setAiMode('cloud');
+        $('cloudApiWrap').open = true;
+        scheduleSave();
+      }
+      function setServicePill(id, state) {
+        const pill = $(id);
+        if (!pill) return;
+        pill.classList.remove('checking', 'online', 'offline');
+        pill.classList.add(state);
+      }
+      async function checkLocalServices() {
+        setServicePill('llamaServicePill', 'checking');
+        setServicePill('comfyServicePill', 'checking');
+        const llamaBase = $('llamaEndpoint').value.trim().replace(/\/v1\/chat\/completions\/?$/i, '');
+        const comfyBaseUrl = $('comfyEndpoint').value.trim().replace(/\/$/, '');
+        const [llamaOk, comfyOk] = await Promise.all([
+          fetch(`${llamaBase}/v1/models`, { method: 'GET' }).then((r) => r.ok).catch(() => false),
+          fetch(`${comfyBaseUrl}/system_stats`, { method: 'GET' }).then((r) => r.ok).catch(() => false),
+        ]);
+        setServicePill('llamaServicePill', llamaOk ? 'online' : 'offline');
+        setServicePill('comfyServicePill', comfyOk ? 'online' : 'offline');
+        return { llamaOk, comfyOk };
+      }
+      function applyAiMode(persist = true) {
+        const localBtn = $('modeLocal');
+        const cloudBtn = $('modeCloud');
+        const isLocal = aiMode === 'local';
+        localBtn.classList.toggle('active', isLocal);
+        cloudBtn.classList.toggle('active', !isLocal);
+        localBtn.setAttribute('aria-pressed', String(isLocal));
+        cloudBtn.setAttribute('aria-pressed', String(!isLocal));
+        const cloudWrap = $('cloudApiWrap');
+        if (cloudWrap) cloudWrap.open = !isLocal;
+        updateEnvBanner();
+        if (persist) scheduleSave();
+      }
+      function setAiMode(mode) {
+        if (mode !== 'local' && mode !== 'cloud') return;
+        aiMode = mode;
+        applyAiMode();
       }
 
       function selectedPromptText() {
@@ -1878,12 +2143,17 @@
       function updateEnvBanner() {
         const banner = $('envBanner');
         if (!banner) return;
+        if (aiMode === 'cloud') {
+          banner.className = 'env-banner cloud';
+          banner.textContent = 'クラウド補助モード — 普段はローカル推奨。キーは端末内のみ（Eliora は仲介しません）。';
+          return;
+        }
         if (isLocalHost()) {
           banner.className = 'env-banner local';
-          banner.textContent = 'Local mode — board saves in this browser. llama.cpp and ComfyUI connect when running on this machine.';
+          banner.textContent = 'ローカル優先 — Ask Local / Send Comfy が主役。llama :8080 · ComfyUI :8188 を起動して使います。';
         } else {
           banner.className = 'env-banner remote';
-          banner.textContent = 'Web mode — board + image upload work here (saved in this browser). llama.cpp / ComfyUI need the local operator on your PC.';
+          banner.textContent = 'リモート閲覧 — ボードはこのブラウザに保存。生成は自宅 PC の llama / ComfyUI。外出先のみ Cloud API を展開。';
         }
       }
       async function sendComfy() {
@@ -2368,7 +2638,14 @@
       $('useWorkflow').addEventListener('click', useSelectedWorkflow);
       $('runWorkflow').addEventListener('click', runSelectedWorkflow);
       $('askLlama').addEventListener('click', askLlama);
+      $('askLlamaTop').addEventListener('click', askLlama);
+      $('askCloud').addEventListener('click', askCloud);
+      $('presetOpenRouter').addEventListener('click', presetOpenRouter);
+      $('checkLocalServices').addEventListener('click', checkLocalServices);
+      $('modeLocal').addEventListener('click', () => setAiMode('local'));
+      $('modeCloud').addEventListener('click', () => { setAiMode('cloud'); $('cloudApiWrap').open = true; });
       $('sendComfy').addEventListener('click', sendComfy);
+      $('sendComfyTop').addEventListener('click', sendComfy);
       $('checkComfy').addEventListener('click', () => checkComfy(true));
       $('reset').addEventListener('click', () => {
         if (!confirm('Reset this local canvas?')) return;
@@ -2379,13 +2656,16 @@
         render();
       });
       $('search').addEventListener('input', (event) => { searchTerm = event.target.value.trim(); render(); });
-      ['llamaEndpoint', 'llamaModel', 'llamaKey', 'llamaSystem', 'comfyEndpoint', 'comfyNegative', 'comfyWorkflow', 'comfyWidth', 'comfyHeight'].forEach((id) => $(id).addEventListener('input', scheduleSave));
-      $('comfyEndpoint').addEventListener('input', syncComfyLinks);
+      ['llamaEndpoint', 'llamaModel', 'llamaKey', 'llamaSystem', 'cloudEndpoint', 'cloudModel', 'cloudKey', 'cloudSystem', 'comfyEndpoint', 'comfyNegative', 'comfyWorkflow', 'comfyWidth', 'comfyHeight'].forEach((id) => $(id).addEventListener('input', scheduleSave));
+      $('comfyEndpoint').addEventListener('input', () => { syncComfyLinks(); checkLocalServices(); });
+      $('llamaEndpoint').addEventListener('input', () => { scheduleSave(); checkLocalServices(); });
       $('comfyAutoInject').addEventListener('change', scheduleSave);
       minimap.addEventListener('click', jumpMinimap);
       window.addEventListener('keydown', (event) => {
         if (event.target.matches('input, textarea, [contenteditable="true"]')) return;
         if (event.key === 'Delete' || event.key === 'Backspace') deleteSelected();
+        if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'Enter') { event.preventDefault(); sendComfy(); }
+        else if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') { event.preventDefault(); askLlama(); }
         if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'd') { event.preventDefault(); duplicateSelected(); }
         if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') { event.preventDefault(); save(); }
         if (event.key === 'Escape') { mode = 'select'; connectSource = null; $('connect').classList.remove('active'); render(); }
@@ -2396,6 +2676,7 @@
       load();
       updateEnvBanner();
       syncComfyLinks();
+      checkLocalServices();
       if (!localStorage.getItem(onboardingKey)) showOnboarding();
       hydrateImagePreviews().then(() => {
         render();
