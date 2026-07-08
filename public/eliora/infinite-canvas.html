@@ -657,11 +657,11 @@
               <button id="modeCloud" type="button" aria-pressed="false"><b>クラウド</b><small>BYOK・補助用</small></button>
             </div>
           </section>
-          <section class="panel">
+          <section class="panel" id="workflowImportPanel">
             <h2>Workflow Import</h2>
             <div class="tools" style="justify-content:flex-start">
-              <button id="pickWorkflowFiles" class="primary">Import JSON</button>
-              <button id="pickWorkflowFolder">Folder</button>
+              <button id="pickWorkflowFiles" class="primary" type="button">Import JSON</button>
+              <button id="pickWorkflowFolder" type="button">Folder</button>
             </div>
             <div class="field"><label for="workflowSearch">Search</label><input id="workflowSearch" placeholder="wan, ltx, qwen, image, video" /></div>
             <div class="row">
@@ -684,7 +684,7 @@
                 </select>
               </div>
             </div>
-            <p id="workflowStats" class="ai-status">Import ComfyUI workflow JSON directly.</p>
+            <p id="workflowStats" class="ai-status">ComfyUI ワークフロー JSON を Import JSON で追加。選んだら <strong>Use Selected</strong> で ComfyUI 欄へ反映。</p>
             <div id="workflowList" class="workflow-list"></div>
             <div class="tools" style="justify-content:flex-start; margin-top:10px">
               <button id="useWorkflow">Use Selected</button>
@@ -777,10 +777,10 @@
       </div>
     </div>
 
-    <input id="fileInput" class="hidden" type="file" accept="application/json,.json" />
+    <input id="fileInput" class="hidden" type="file" accept=".json,application/json,text/json" />
     <input id="imageFilesInput" class="hidden" type="file" accept="image/*" multiple />
-    <input id="workflowFolderInput" class="hidden" type="file" accept="application/json,.json" webkitdirectory directory multiple />
-    <input id="workflowFilesInput" class="hidden" type="file" accept="application/json,.json" multiple />
+    <input id="workflowFolderInput" class="hidden" type="file" accept=".json,application/json,text/json" webkitdirectory directory multiple />
+    <input id="workflowFilesInput" class="hidden" type="file" accept=".json,application/json,text/json" multiple />
 
     <div id="onboardBackdrop" class="onboard-backdrop hidden" aria-hidden="true">
       <div class="onboard-card" role="dialog" aria-modal="true" aria-labelledby="onboardTitle">
@@ -2387,15 +2387,34 @@
       function workflowKindName(kind) {
         return ({ api: 'API', ui: 'UI', other: 'Other', invalid: 'Invalid', unknown: 'Unknown' })[kind] || 'Unknown';
       }
-      function addWorkflowFiles(fileList) {
-        const files = [...fileList].filter((file) => /\.json$/i.test(file.name));
+      function openFilePicker(inputId) {
+        const input = $(inputId);
+        if (!input) return;
+        input.value = '';
+        try {
+          if (typeof input.showPicker === 'function') input.showPicker();
+          else input.click();
+        } catch {
+          input.click();
+        }
+      }
+      function isCanvasExport(data) {
+        return data && Array.isArray(data.nodes) && Array.isArray(data.edges);
+      }
+      async function addWorkflowFiles(fileList, options = {}) {
+        const files = [...fileList].filter((file) => /\.json$/i.test(file.name) || (file.type || '').includes('json'));
+        if (!files.length) {
+          $('workflowStats').textContent = 'JSON ファイルが選ばれませんでした。.json を選ぶか、Workflow Import にドラッグ＆ドロップしてください。';
+          return 0;
+        }
         const seen = new Set(workflowItems.map((item) => `${item.path}:${item.size}`));
+        const added = [];
         files.forEach((file) => {
           const path = workflowPath(file);
           const key = `${path}:${file.size}`;
           if (seen.has(key)) return;
           seen.add(key);
-          workflowItems.push({
+          const item = {
             id: uid(),
             file,
             path,
@@ -2406,10 +2425,34 @@
             data: null,
             error: '',
             nodeCount: '',
-          });
+          };
+          workflowItems.push(item);
+          added.push(item);
         });
-        if (!selectedWorkflowId && workflowItems.length) selectedWorkflowId = workflowItems[0].id;
+        if (!added.length) {
+          $('workflowStats').textContent = '同じ JSON はすでにリストにあります。';
+          return 0;
+        }
+        await Promise.all(added.map((item) => readWorkflowItem(item)));
+        selectedWorkflowId = added[added.length - 1].id;
         renderWorkflowList();
+        const last = added[added.length - 1];
+        if (last.error) {
+          $('workflowStats').textContent = `JSON 読込エラー: ${last.error}`;
+          return added.length;
+        }
+        $('workflowStats').textContent = `${added.length} 件インポート: ${last.name}（${workflowKindName(last.kind)}）`;
+        if (options.autoUse !== false && added.length === 1 && last.kind !== 'invalid' && last.kind !== 'other') {
+          try {
+            await useSelectedWorkflow();
+            $('workflowStats').textContent = `ComfyUI 欄へ反映済み: ${last.name}`;
+          } catch (error) {
+            $('workflowStats').textContent = `リスト追加 OK。Use Selected を押してください（${error.message}）`;
+          }
+        } else if (last.kind === 'ui' || last.kind === 'api') {
+          $('workflowStats').textContent += ' → Use Selected で ComfyUI 欄へ反映';
+        }
+        return added.length;
       }
       async function readWorkflowItem(item) {
         if (item.text || item.error) return item;
@@ -2511,24 +2554,48 @@
         edges.forEach((edge) => out.push(`- ${nodeBy(edge.from)?.title || edge.from} -> ${nodeBy(edge.to)?.title || edge.to}${edge.label ? ': ' + edge.label : ''}`));
         download('eliora-canvas.md', out.join('\n'), 'text/markdown');
       }
-      function importJson(file) {
-        const reader = new FileReader();
-        reader.onload = async () => {
+      async function importCanvasJson(file) {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        if (!isCanvasExport(data)) throw new Error('canvas-format');
+        nodes = await importStoredImages(data.nodes);
+        edges = data.edges;
+        camera = data.camera || camera;
+        selectedNode = null;
+        selectedEdge = null;
+        await hydrateImagePreviews();
+        render();
+        save();
+        $('savedAt').textContent = `Imported ${file.name}`;
+      }
+      async function importJson(file) {
+        try {
+          const text = await file.text();
+          let data;
           try {
-            const data = JSON.parse(reader.result);
-            if (!Array.isArray(data.nodes) || !Array.isArray(data.edges)) throw new Error();
-            nodes = await importStoredImages(data.nodes);
-            edges = data.edges;
-            camera = data.camera || camera;
-            selectedNode = null;
-            selectedEdge = null;
-            await hydrateImagePreviews();
-            render();
-          } catch {
-            alert('Could not import this JSON file.');
+            data = JSON.parse(text);
+          } catch (error) {
+            alert(`JSON の形式が正しくありません: ${error.message}`);
+            return;
           }
-        };
-        reader.readAsText(file);
+          if (isCanvasExport(data)) {
+            await importCanvasJson(file);
+            return;
+          }
+          const kind = detectWorkflowKind(data);
+          if (kind === 'api' || kind === 'ui') {
+            const count = await addWorkflowFiles([file]);
+            if (count) $('comfyStatus').textContent = `ワークフロー JSON をインポートしました: ${file.name}`;
+            return;
+          }
+          alert('この JSON は Eliora ボード形式でも ComfyUI ワークフロー（API/UI）でもありません。\n\n・ボード復元: Export で保存した eliora-canvas.json\n・ComfyUI: Workflow Import の Import JSON を使う');
+        } catch (error) {
+          if (error.message === 'canvas-format') {
+            alert('ボード JSON には nodes と edges の配列が必要です。');
+            return;
+          }
+          alert(`インポートできませんでした: ${error.message || error}`);
+        }
       }
       function drawMinimap() {
         const ctx = minimap.getContext('2d');
@@ -2699,12 +2766,42 @@
       $('zoomIn').addEventListener('click', () => setZoom(camera.z * 1.18));
       $('exportJson').addEventListener('click', exportJson);
       $('exportMd').addEventListener('click', exportMarkdown);
-      $('importJson').addEventListener('click', () => $('fileInput').click());
-      $('fileInput').addEventListener('change', () => $('fileInput').files[0] && importJson($('fileInput').files[0]));
-      $('pickWorkflowFiles').addEventListener('click', () => $('workflowFilesInput').click());
-      $('pickWorkflowFolder').addEventListener('click', () => $('workflowFolderInput').click());
-      $('workflowFilesInput').addEventListener('change', () => addWorkflowFiles($('workflowFilesInput').files));
-      $('workflowFolderInput').addEventListener('change', () => addWorkflowFiles($('workflowFolderInput').files));
+      $('importJson').addEventListener('click', () => openFilePicker('fileInput'));
+      $('fileInput').addEventListener('change', async () => {
+        const file = $('fileInput').files[0];
+        $('fileInput').value = '';
+        if (file) await importJson(file);
+      });
+      $('pickWorkflowFiles').addEventListener('click', () => openFilePicker('workflowFilesInput'));
+      $('pickWorkflowFolder').addEventListener('click', () => openFilePicker('workflowFolderInput'));
+      $('workflowFilesInput').addEventListener('change', async () => {
+        await addWorkflowFiles($('workflowFilesInput').files);
+        $('workflowFilesInput').value = '';
+      });
+      $('workflowFolderInput').addEventListener('change', async () => {
+        await addWorkflowFiles($('workflowFolderInput').files, { autoUse: false });
+        $('workflowFolderInput').value = '';
+      });
+      const workflowPanel = $('workflowImportPanel');
+      if (workflowPanel) {
+        ['dragenter', 'dragover'].forEach((type) => {
+          workflowPanel.addEventListener(type, (event) => {
+            if (![...event.dataTransfer.types].includes('Files')) return;
+            event.preventDefault();
+            event.dataTransfer.dropEffect = 'copy';
+            workflowPanel.style.outline = '2px dashed rgba(123,216,232,.45)';
+          });
+        });
+        workflowPanel.addEventListener('dragleave', () => {
+          workflowPanel.style.outline = '';
+        });
+        workflowPanel.addEventListener('drop', async (event) => {
+          if (![...event.dataTransfer.types].includes('Files')) return;
+          event.preventDefault();
+          workflowPanel.style.outline = '';
+          await addWorkflowFiles(event.dataTransfer.files);
+        });
+      }
       $('workflowSearch').addEventListener('input', renderWorkflowList);
       $('workflowType').addEventListener('change', renderWorkflowList);
       $('workflowLimit').addEventListener('change', renderWorkflowList);
