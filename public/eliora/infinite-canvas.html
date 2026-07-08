@@ -186,8 +186,59 @@
       }
       .world { position: absolute; left: 0; top: 0; width: 1px; height: 1px; transform-origin: 0 0; }
       .edges { position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: visible; }
-      .edge path { fill: none; stroke: rgba(242,121,154,.5); stroke-width: 2; pointer-events: stroke; cursor: pointer; filter: drop-shadow(0 0 10px rgba(242,121,154,.35)); }
-      .edge.selected path { stroke: var(--cyan); stroke-width: 3; filter: drop-shadow(0 0 14px rgba(123,216,232,.45)); }
+      .edge path.edge-hit { fill: none; stroke: transparent; stroke-width: 18; pointer-events: stroke; cursor: pointer; }
+      .edge path.edge-line { fill: none; stroke: rgba(242,121,154,.5); stroke-width: 2; pointer-events: none; filter: drop-shadow(0 0 10px rgba(242,121,154,.35)); }
+      .edge.wire-preview, .wire-overlay { pointer-events: none; }
+      .wire-overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1px;
+        height: 1px;
+        overflow: visible;
+        z-index: 4;
+      }
+      .edge.wire-preview path {
+        stroke: rgba(123, 216, 232, .92);
+        stroke-width: 3;
+        stroke-dasharray: 8 5;
+        filter: drop-shadow(0 0 14px rgba(123, 216, 232, .55));
+      }
+      .stage.wiring { cursor: crosshair; }
+      .edge.selected path.edge-line { stroke: var(--cyan); stroke-width: 3; filter: drop-shadow(0 0 14px rgba(123,216,232,.45)); }
+      .link-controls {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1px;
+        height: 1px;
+        overflow: visible;
+        z-index: 2;
+        pointer-events: none;
+      }
+      .link-delete {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        margin: -12px 0 0 -12px;
+        border-radius: 50%;
+        border: 1px solid rgba(242, 121, 154, .45);
+        background: rgba(0, 0, 0, .82);
+        color: #f7b0c4;
+        font-size: 17px;
+        line-height: 1;
+        font-weight: 900;
+        cursor: pointer;
+        pointer-events: auto;
+        opacity: 0;
+        transition: opacity .12s ease;
+        padding: 0;
+        min-height: 0;
+      }
+      .link-delete.visible,
+      .link-delete.hover {
+        opacity: 1;
+      }
       .edge text { fill: var(--muted); font-size: 12px; paint-order: stroke; stroke: #050505; stroke-width: 4px; stroke-linejoin: round; }
       .node {
         position: absolute;
@@ -215,15 +266,22 @@
         border: 2px solid rgba(123,216,232,.72);
         background: #050505;
         box-shadow: 0 0 16px rgba(123,216,232,.34);
-        cursor: crosshair;
         z-index: 2;
         padding: 0;
         min-height: 0;
       }
-      .port.in { left: -8px; }
-      .port.out { right: -8px; border-color: rgba(242,121,154,.78); box-shadow: 0 0 16px rgba(242,121,154,.34); }
+      .port.in { left: -8px; cursor: pointer; }
+      .port.out {
+        right: -8px;
+        border-color: rgba(242,121,154,.78);
+        box-shadow: 0 0 16px rgba(242,121,154,.34);
+        cursor: grab;
+      }
+      .port.out:active { cursor: grabbing; }
       .port.active { transform: scale(1.15); background: rgba(123,216,232,.22); }
-      .port.out.active { background: rgba(242,121,154,.22); }
+      .port.out.active, .port.out.wire-source { transform: scale(1.22); background: rgba(242,121,154,.30); }
+      .port.in.wire-hover { transform: scale(1.32); background: rgba(123,216,232,.38); box-shadow: 0 0 22px rgba(123,216,232,.55); }
+      .node.wire-target { box-shadow: 0 0 30px rgba(123,216,232,.22), 0 0 0 2px rgba(123,216,232,.34); }
       .connect-hint {
         position: absolute;
         top: 12px;
@@ -303,6 +361,60 @@
         color: #cfe8cf;
       }
       .minimap { cursor: crosshair; }
+      .link-nudge {
+        margin-top: 10px;
+        padding: 10px 11px;
+        border: 1px solid rgba(245, 184, 100, .34);
+        border-radius: 8px;
+        background: rgba(245, 184, 100, .08);
+        color: #f0d4a8;
+        font-size: 12px;
+        line-height: 1.55;
+        font-weight: 650;
+      }
+      .onboard-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        background: rgba(0, 0, 0, .72);
+        backdrop-filter: blur(10px);
+      }
+      .onboard-card {
+        width: min(420px, 100%);
+        border: 1px solid var(--line2);
+        border-radius: 12px;
+        background: rgba(8, 8, 9, .96);
+        box-shadow: 0 28px 90px rgba(0, 0, 0, .72);
+        padding: 22px;
+      }
+      .onboard-step {
+        margin: 0 0 8px;
+        color: var(--cyan);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+      }
+      .onboard-card h2 {
+        margin: 0 0 10px;
+        font-size: 22px;
+        line-height: 1.25;
+      }
+      .onboard-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+        font-size: 14px;
+      }
+      .onboard-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 18px;
+      }
       @media (max-width: 1120px) {
         .layout { grid-template-columns: 1fr; grid-template-rows: auto 1fr auto; }
         .rail { max-height: 226px; border-right: 0; border-bottom: 1px solid var(--line); }
@@ -333,7 +445,7 @@
           <button id="addImage" title="Upload image file (drag-drop or paste also works)">Image</button>
           <button id="connect" title="Connect cards: click source, then target (or use card ports)">Connect</button>
           <button id="duplicate" title="Duplicate">Duplicate</button>
-          <button id="delete" title="Delete">Delete</button>
+          <button id="delete" title="選択したカードまたは線を削除">Delete</button>
           <button id="fit" title="Fit view">Fit</button>
           <button id="zoomOut" class="icon" title="Zoom out">-</button>
           <button id="zoomIn" class="icon" title="Zoom in">+</button>
@@ -366,6 +478,9 @@
               <div class="stat"><b id="nodeCount">0</b><span>cards</span></div>
               <div class="stat"><b id="edgeCount">0</b><span>links</span></div>
             </div>
+            <p id="linkNudge" class="link-nudge hidden" role="status">
+              線が0本です。<strong>右の●をドラッグ</strong>して左の●へドロップ（ComfyUI 方式）。うまくいかないときは下の <strong>Reset</strong> で初期ボードに戻せます。
+            </p>
           </section>
           <section class="panel">
             <h2>llama.cpp</h2>
@@ -442,7 +557,9 @@
           <div class="stage" id="stage" tabindex="0" aria-label="Infinite Canvas workspace">
             <div class="world" id="world">
               <svg class="edges" id="edges" aria-hidden="true"></svg>
+              <div id="linkControls" class="link-controls" aria-hidden="true"></div>
               <div id="nodes"></div>
+              <svg class="edges wire-overlay" id="wireOverlay" aria-hidden="true"></svg>
             </div>
             <div class="hud">
               <span class="pill" id="zoomLabel">100%</span>
@@ -483,8 +600,12 @@
               </div>
             </div>
             <div id="edgeInspector" class="hidden">
-              <div class="field"><label for="fieldEdgeLabel">Connection label</label><input id="fieldEdgeLabel" /></div>
-              <button id="reverseEdge">Reverse</button>
+              <p id="edgeSummary" class="ai-status"></p>
+              <div class="field"><label for="fieldEdgeLabel">線のラベル</label><input id="fieldEdgeLabel" /></div>
+              <div class="tools" style="justify-content:flex-start">
+                <button id="reverseEdge">向きを反転</button>
+                <button id="deleteEdge">線を削除</button>
+              </div>
             </div>
           </section>
         </aside>
@@ -496,14 +617,29 @@
     <input id="workflowFolderInput" class="hidden" type="file" accept="application/json,.json" webkitdirectory directory multiple />
     <input id="workflowFilesInput" class="hidden" type="file" accept="application/json,.json" multiple />
 
+    <div id="onboardBackdrop" class="onboard-backdrop hidden" aria-hidden="true">
+      <div class="onboard-card" role="dialog" aria-modal="true" aria-labelledby="onboardTitle">
+        <p class="onboard-step" id="onboardStep">1 / 3</p>
+        <h2 id="onboardTitle">カードを置く</h2>
+        <p id="onboardBody">左の Palette か上の Add でメモ・プロンプト・画像カードを追加できます。</p>
+        <div class="onboard-actions">
+          <button id="onboardSkip" type="button">スキップ</button>
+          <button id="onboardNext" class="primary" type="button">次へ</button>
+        </div>
+      </div>
+    </div>
+
     <script>
       const $ = (id) => document.getElementById(id);
       const stage = $('stage');
       const world = $('world');
       const nodeLayer = $('nodes');
       const edgeLayer = $('edges');
+      const linkControls = $('linkControls');
+      const wireOverlay = $('wireOverlay');
       const minimap = $('minimap');
       const storageKey = 'eliora-infinite-canvas-v3';
+      const onboardingKey = 'eliora-canvas-onboarding-v1';
       const settingsKey = 'eliora-llamacpp-settings-v1';
       const comfySettingsKey = 'eliora-comfyui-settings-v1';
       const imageDbName = 'eliora-canvas-images-v1';
@@ -546,6 +682,23 @@
       let selectedWorkflowId = '';
       let objectInfoCache = null;
       let minimapTransform = null;
+      let wireDrag = null;
+      let hoveredEdgeId = '';
+      let onboardIndex = 0;
+      const onboardingSteps = [
+        {
+          title: 'カードを置く',
+          body: '左の Palette か上の Add でメモ・プロンプト・Workflow カードを追加できます。ドラッグで自由に動かせます。',
+        },
+        {
+          title: '線でつなぐ',
+          body: '右の●をドラッグして線を引き、左の●へドロップ（ComfyUI / hero8152 方式）。間違えた線は線の上の × または Delete。',
+        },
+        {
+          title: '画像と自動保存',
+          body: 'Image ボタン・ドラッグ＆ドロップ・貼り付けで画像カードを追加できます。ボードはこのブラウザに自動保存され、リロード後も残ります。',
+        },
+      ];
 
       function uid() {
         return crypto && crypto.randomUUID ? crypto.randomUUID() : 'id-' + Math.random().toString(36).slice(2);
@@ -560,12 +713,47 @@
       function edgeBy(id) { return edges.find((edge) => edge.id === id); }
       function clamp(v, min, max) { return Math.min(max, Math.max(min, v)); }
       function screenToWorld(x, y) { return { x: (x - camera.x) / camera.z, y: (y - camera.y) / camera.z }; }
+      function pointerToWorld(clientX, clientY) {
+        const rect = stage.getBoundingClientRect();
+        return screenToWorld(clientX - rect.left, clientY - rect.top);
+      }
       function nodeWidth(node) { return node.kind === 'Image' ? 332 : 292; }
       function nodeAnchor(node, side) {
         const y = node.y + 76;
         return side === 'out'
           ? { x: node.x + nodeWidth(node), y }
           : { x: node.x, y };
+      }
+      function portPointFromDom(nodeId, side) {
+        const el = nodeLayer.querySelector(`.node[data-id="${CSS.escape(nodeId)}"]`);
+        const port = el?.querySelector(`[data-port="${side === 'out' ? 'out' : 'in'}"]`);
+        if (port) {
+          const r = port.getBoundingClientRect();
+          return pointerToWorld(r.left + r.width / 2, r.top + r.height / 2);
+        }
+        const node = nodeBy(nodeId);
+        return node ? nodeAnchor(node, side) : { x: 0, y: 0 };
+      }
+      function nearestInPortNodeId(clientX, clientY) {
+        const direct = document.elementFromPoint(clientX, clientY)?.closest?.('[data-port="in"]');
+        if (direct) {
+          const nodeId = direct.closest('.node')?.dataset?.id;
+          if (nodeId && (!wireDrag || nodeId !== wireDrag.fromId)) return nodeId;
+        }
+        let bestPort = null;
+        let bestDist = Infinity;
+        document.querySelectorAll('[data-port="in"]').forEach((port) => {
+          const nodeId = port.closest('.node')?.dataset?.id;
+          if (!nodeId || (wireDrag && nodeId === wireDrag.fromId)) return;
+          const r = port.getBoundingClientRect();
+          const d = Math.hypot(clientX - (r.left + r.width / 2), clientY - (r.top + r.height / 2));
+          if (d < bestDist) {
+            bestDist = d;
+            bestPort = port;
+          }
+        });
+        if (!bestPort || bestDist > 48) return null;
+        return bestPort.closest('.node')?.dataset?.id || null;
       }
       function centerOf(node) { return nodeAnchor(node, 'out'); }
       function connectedTo(id) {
@@ -838,9 +1026,18 @@
       function render() {
         world.style.transform = `translate(${camera.x}px, ${camera.y}px) scale(${camera.z})`;
         $('zoomLabel').textContent = `${Math.round(camera.z * 100)}%`;
-        $('modeLabel').textContent = mode === 'connect' ? (connectSource ? 'Pick target card/port' : 'Pick source card/port') : 'Select';
+        $('modeLabel').textContent = wireDrag
+          ? '線をドラッグ中'
+          : mode === 'connect'
+            ? (connectSource ? '接続先をクリック' : '接続元をクリック')
+            : 'Select';
         const hint = $('connectHint');
-        if (mode === 'connect') {
+        if (wireDrag) {
+          hint.classList.remove('hidden');
+          hint.textContent = wireDrag.hoverTargetId
+            ? '離すと接続 — 左の●またはカードへドロップ'
+            : '右の●からドラッグ — 左の●またはカードへドロップ';
+        } else if (mode === 'connect') {
           hint.classList.remove('hidden');
           hint.textContent = connectSource
             ? '接続先をクリック — もう1枚のカード、または左の●ポート'
@@ -851,31 +1048,54 @@
         $('selectionLabel').textContent = selectedNode ? (nodeBy(selectedNode)?.title || 'Card') : selectedEdge ? 'Connection' : 'No selection';
         $('nodeCount').textContent = nodes.length;
         $('edgeCount').textContent = edges.length;
+        const linkNudge = $('linkNudge');
+        if (linkNudge) linkNudge.classList.toggle('hidden', !(nodes.length >= 2 && edges.length === 0));
         renderEdges();
         renderNodes();
         renderInspector();
         drawMinimap();
         scheduleSave();
       }
+      function edgePathD(ax, ay, bx, by) {
+        const dx = Math.max(80, Math.abs(bx - ax) * .45);
+        return `M ${ax} ${ay} C ${ax + dx} ${ay}, ${bx - dx} ${by}, ${bx} ${by}`;
+      }
       function renderEdges() {
         edgeLayer.innerHTML = '';
+        linkControls.innerHTML = '';
+        const segments = [];
         for (const edge of edges) {
           const from = nodeBy(edge.from);
           const to = nodeBy(edge.to);
           if (!from || !to) continue;
-          const a = nodeAnchor(from, 'out');
-          const b = nodeAnchor(to, 'in');
-          const dx = Math.max(80, Math.abs(b.x - a.x) * .45);
+          segments.push({
+            edge,
+            a: portPointFromDom(edge.from, 'out'),
+            b: portPointFromDom(edge.to, 'in'),
+          });
+        }
+        segments.forEach(({ edge, a, b }) => {
           const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          const d = edgePathD(a.x, a.y, b.x, b.y);
+          const hitPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
           const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-          group.setAttribute('class', 'edge' + (selectedEdge === edge.id ? ' selected' : ''));
-          path.setAttribute('d', `M ${a.x} ${a.y} C ${a.x + dx} ${a.y}, ${b.x - dx} ${b.y}, ${b.x} ${b.y}`);
-          path.addEventListener('pointerdown', (event) => {
+          const selected = selectedEdge === edge.id;
+          const hovered = hoveredEdgeId === edge.id;
+          group.setAttribute('class', 'edge' + (selected ? ' selected' : ''));
+          hitPath.setAttribute('class', 'edge-hit');
+          hitPath.setAttribute('d', d);
+          path.setAttribute('class', 'edge-line');
+          path.setAttribute('d', d);
+          const selectEdge = (event) => {
             event.stopPropagation();
             selectedEdge = edge.id;
             selectedNode = null;
+            $('savedAt').textContent = '線を選択 — × または Delete';
             render();
-          });
+          };
+          hitPath.addEventListener('pointerdown', selectEdge);
+          path.addEventListener('pointerdown', selectEdge);
+          group.appendChild(hitPath);
           group.appendChild(path);
           if (edge.label) {
             const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -886,7 +1106,187 @@
             group.appendChild(text);
           }
           edgeLayer.appendChild(group);
+          const del = document.createElement('button');
+          del.type = 'button';
+          del.className = 'link-delete' + (selected || hovered ? ' visible' : '') + (hovered ? ' hover' : '');
+          del.textContent = '×';
+          del.title = '線を削除';
+          del.style.left = `${(a.x + b.x) / 2}px`;
+          del.style.top = `${(a.y + b.y) / 2}px`;
+          del.addEventListener('pointerdown', (event) => {
+            event.stopPropagation();
+            selectedEdge = edge.id;
+            deleteSelectedEdge();
+          });
+          del.addEventListener('pointerenter', () => {
+            hoveredEdgeId = edge.id;
+            renderEdges();
+          });
+          del.addEventListener('pointerleave', () => {
+            if (hoveredEdgeId === edge.id) hoveredEdgeId = '';
+            renderEdges();
+          });
+          linkControls.appendChild(del);
+        });
+      }
+      function findWireTargetAt(clientX, clientY) {
+        if (!wireDrag) return null;
+        const portNodeId = nearestInPortNodeId(clientX, clientY);
+        if (portNodeId) {
+          return { id: portNodeId, snap: portPointFromDom(portNodeId, 'in') };
         }
+        const p = pointerToWorld(clientX, clientY);
+        for (const node of nodes) {
+          if (node.id === wireDrag.fromId) continue;
+          const w = nodeWidth(node);
+          if (p.x >= node.x - 12 && p.x <= node.x + w + 12 && p.y >= node.y - 8 && p.y <= node.y + 168) {
+            return { id: node.id, snap: portPointFromDom(node.id, 'in') };
+          }
+        }
+        return null;
+      }
+      function updateEdgeHover(clientX, clientY) {
+        if (wireDrag || dragNode || dragCanvas) {
+          if (hoveredEdgeId) {
+            hoveredEdgeId = '';
+            renderEdges();
+          }
+          return;
+        }
+        const button = document.elementFromPoint(clientX, clientY)?.closest?.('.link-delete');
+        if (button) return;
+        const p = pointerToWorld(clientX, clientY);
+        const threshold = Math.max(10, 14 / camera.z);
+        let bestId = '';
+        let best = Infinity;
+        edges.forEach((edge) => {
+          const from = nodeBy(edge.from);
+          const to = nodeBy(edge.to);
+          if (!from || !to) return;
+          const a = portPointFromDom(edge.from, 'out');
+          const b = portPointFromDom(edge.to, 'in');
+          const mid = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
+          const d = Math.hypot(p.x - mid.x, p.y - mid.y);
+          if (d < best) {
+            best = d;
+            bestId = edge.id;
+          }
+        });
+        const next = best <= threshold ? bestId : '';
+        if (next !== hoveredEdgeId) {
+          hoveredEdgeId = next;
+          renderEdges();
+        }
+      }
+      function clearWireChrome() {
+        wireOverlay.innerHTML = '';
+        document.querySelectorAll('.port.in, .port.out, .node').forEach((el) => {
+          el.classList.remove('wire-hover', 'wire-source', 'wire-target');
+        });
+      }
+      function drawWirePreview() {
+        wireOverlay.innerHTML = '';
+        if (!wireDrag) return;
+        const tx = wireDrag.snapX ?? wireDrag.cx;
+        const ty = wireDrag.snapY ?? wireDrag.cy;
+        const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        group.setAttribute('class', 'edge wire-preview');
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', edgePathD(wireDrag.ax, wireDrag.ay, tx, ty));
+        group.appendChild(path);
+        wireOverlay.appendChild(group);
+        document.querySelectorAll('.port.out').forEach((port) => {
+          port.classList.toggle('wire-source', port.closest('.node')?.dataset.id === wireDrag.fromId);
+        });
+        document.querySelectorAll('.port.in').forEach((port) => {
+          const nodeId = port.closest('.node')?.dataset.id;
+          port.classList.toggle('wire-hover', nodeId === wireDrag.hoverTargetId);
+        });
+        document.querySelectorAll('.node').forEach((nodeEl) => {
+          nodeEl.classList.toggle('wire-target', nodeEl.dataset.id === wireDrag.hoverTargetId);
+        });
+        const hint = $('connectHint');
+        if (hint) {
+          hint.classList.remove('hidden');
+          hint.textContent = wireDrag.hoverTargetId
+            ? '離すと接続 — 左の●またはカードの上で離す'
+            : '右の●を押したまま — 左の●へドラッグ';
+        }
+      }
+      function updateWireDrag(clientX, clientY) {
+        if (!wireDrag) return;
+        const p = pointerToWorld(clientX, clientY);
+        wireDrag.cx = p.x;
+        wireDrag.cy = p.y;
+        const target = findWireTargetAt(clientX, clientY);
+        wireDrag.hoverTargetId = target?.id || null;
+        wireDrag.snapX = target ? target.snap.x : null;
+        wireDrag.snapY = target ? target.snap.y : null;
+        drawWirePreview();
+      }
+      function cancelWireDrag() {
+        wireDrag = null;
+        connectSource = null;
+        mode = 'select';
+        stage.classList.remove('wiring');
+        $('connect').classList.remove('active');
+        $('connectHint').classList.add('hidden');
+        $('modeLabel').textContent = 'Select';
+        clearWireChrome();
+      }
+      function finishWireDrag(event) {
+        if (!wireDrag) return false;
+        const target = findWireTargetAt(event.clientX, event.clientY);
+        const fromId = wireDrag.fromId;
+        cancelWireDrag();
+        if (target && target.id !== fromId && addConnection(fromId, target.id)) {
+          $('savedAt').textContent = '接続しました';
+          render();
+          return true;
+        }
+        $('savedAt').textContent = '接続なし';
+        return false;
+      }
+      function startPortDrag(event, node) {
+        event.stopPropagation();
+        event.preventDefault();
+        const anchor = portPointFromDom(node.id, 'out');
+        const p = pointerToWorld(event.clientX, event.clientY);
+        wireDrag = {
+          fromId: node.id,
+          ax: anchor.x,
+          ay: anchor.y,
+          cx: p.x,
+          cy: p.y,
+          snapX: null,
+          snapY: null,
+          hoverTargetId: null,
+          pointerId: event.pointerId,
+        };
+        mode = 'wire';
+        connectSource = node.id;
+        selectedNode = node.id;
+        selectedEdge = null;
+        $('modeLabel').textContent = '線をドラッグ中';
+        stage.classList.add('wiring');
+        stage.setPointerCapture(event.pointerId);
+        const onMove = (e) => {
+          if (!wireDrag || e.pointerId !== wireDrag.pointerId) return;
+          e.preventDefault();
+          updateWireDrag(e.clientX, e.clientY);
+        };
+        const onUp = (e) => {
+          if (!wireDrag || e.pointerId !== wireDrag.pointerId) return;
+          if (stage.hasPointerCapture(e.pointerId)) stage.releasePointerCapture(e.pointerId);
+          finishWireDrag(e);
+          window.removeEventListener('pointermove', onMove);
+          window.removeEventListener('pointerup', onUp);
+          window.removeEventListener('pointercancel', onUp);
+        };
+        window.addEventListener('pointermove', onMove);
+        window.addEventListener('pointerup', onUp);
+        window.addEventListener('pointercancel', onUp);
+        drawWirePreview();
       }
       function renderNodes() {
         nodeLayer.innerHTML = '';
@@ -910,8 +1310,8 @@
           const link = node.url && node.kind !== 'Image' ? `<a class="node-url" href="${esc(node.url)}" target="_blank" rel="noreferrer">${esc(node.url)}</a>` : '';
           const tagHtml = tags(node.tags).map((tag) => `<span>#${esc(tag)}</span>`).join('');
           el.innerHTML = `
-            <button class="port in" type="button" data-port="in" title="Connect to this card (input)"></button>
-            <button class="port out" type="button" data-port="out" title="Connect from this card (output)"></button>
+            <button class="port in" type="button" data-port="in" title="入力 — 右の●からドラッグしてここへドロップ"></button>
+            <button class="port out" type="button" data-port="out" title="出力 — ドラッグして線を引く（ComfyUI方式）"></button>
             <div class="node-head">
               <div><div class="kind">${esc(node.kind)}</div><h3 contenteditable="true" data-field="title">${esc(node.title)}</h3></div>
               <span class="dot" style="box-shadow:0 0 20px 10px ${color.glow}"></span>
@@ -968,14 +1368,18 @@
         selectedNode = node.id;
         selectedEdge = null;
         if (portSide === 'out') {
-          beginConnectFrom(node.id);
+          startPortDrag(event, node);
           return;
         }
-        if (!connectSource) {
-          beginConnectFrom(node.id);
+        if (wireDrag) {
+          if (wireDrag.fromId !== node.id) finishWireDrag(event);
           return;
         }
-        tryConnectTo(node.id);
+        if (mode === 'connect' && connectSource) {
+          tryConnectTo(node.id);
+          return;
+        }
+        $('savedAt').textContent = '右の●を押したままドラッグしてください';
       }
       function startNodePointer(event) {
         if (event.target.closest('[data-port]')) return;
@@ -994,12 +1398,13 @@
           return;
         }
         event.currentTarget.setPointerCapture(event.pointerId);
-        const p = screenToWorld(event.clientX, event.clientY);
+        const p = pointerToWorld(event.clientX, event.clientY);
         dragNode = { id: node.id, dx: p.x - node.x, dy: p.y - node.y };
         render();
       }
 
       stage.addEventListener('pointerdown', (event) => {
+        if (wireDrag) return;
         if (mode === 'connect') {
           if (connectSource) {
             $('savedAt').textContent = 'Pick target card or left port';
@@ -1015,9 +1420,11 @@
         render();
       });
       stage.addEventListener('pointermove', (event) => {
+        if (wireDrag) return;
+        updateEdgeHover(event.clientX, event.clientY);
         if (dragNode) {
           const node = nodeBy(dragNode.id);
-          const p = screenToWorld(event.clientX, event.clientY);
+          const p = pointerToWorld(event.clientX, event.clientY);
           node.x = Math.round(p.x - dragNode.dx);
           node.y = Math.round(p.y - dragNode.dy);
           render();
@@ -1028,15 +1435,16 @@
         }
       });
       window.addEventListener('pointerup', () => {
+        if (wireDrag) return;
         stage.classList.remove('dragging');
         dragCanvas = null;
         dragNode = null;
       });
       stage.addEventListener('wheel', (event) => {
         event.preventDefault();
-        const before = screenToWorld(event.clientX, event.clientY);
+        const before = pointerToWorld(event.clientX, event.clientY);
         camera.z = clamp(camera.z * Math.exp(-event.deltaY * .001), .18, 3.8);
-        const after = screenToWorld(event.clientX, event.clientY);
+        const after = pointerToWorld(event.clientX, event.clientY);
         camera.x += (after.x - before.x) * camera.z;
         camera.y += (after.y - before.y) * camera.z;
         render();
@@ -1114,8 +1522,13 @@
         } else if (selectedEdge) {
           edges = edges.filter((edge) => edge.id !== selectedEdge);
           selectedEdge = null;
+          $('savedAt').textContent = '線を削除しました';
         }
         render();
+      }
+      function deleteSelectedEdge() {
+        if (!selectedEdge) return;
+        deleteSelected();
       }
       function setZoom(z) {
         const c = { x: stage.clientWidth / 2, y: stage.clientHeight / 2 };
@@ -1145,7 +1558,15 @@
         $('nodeInspector').classList.toggle('hidden', !selectedNode);
         $('edgeInspector').classList.toggle('hidden', !selectedEdge);
         if (selectedNode) updateInspectorFields();
-        if (selectedEdge) $('fieldEdgeLabel').value = edgeBy(selectedEdge)?.label || '';
+        if (selectedEdge) {
+          const edge = edgeBy(selectedEdge);
+          $('fieldEdgeLabel').value = edge?.label || '';
+          const from = edge ? nodeBy(edge.from) : null;
+          const to = edge ? nodeBy(edge.to) : null;
+          $('edgeSummary').textContent = edge
+            ? `接続: ${from?.title || '?'} → ${to?.title || '?'}`
+            : '';
+        }
       }
       function updateInspectorFields() {
         const node = nodeBy(selectedNode);
@@ -1191,6 +1612,7 @@
           [edge.from, edge.to] = [edge.to, edge.from];
           render();
         });
+        $('deleteEdge').addEventListener('click', deleteSelectedEdge);
       }
 
       async function askLlama() {
@@ -1225,7 +1647,7 @@
           $('aiStatus').textContent = 'Response added.';
           render();
         } catch (error) {
-          $('aiStatus').textContent = `llama.cpp unavailable: ${error.message}`;
+          $('aiStatus').textContent = `llama.cpp に接続できません: ${error.message}`;
         }
       }
 
@@ -1490,8 +1912,8 @@
         } catch (error) {
           const message = error.message || String(error);
           $('comfyStatus').textContent = message.startsWith('HTTP')
-            ? `ComfyUI workflow error: ${message}. Open ComfyUI, fix the workflow, then run again.`
-            : `Cannot reach ComfyUI: ${message}`;
+            ? `ComfyUI ワークフローエラー: ${message}。ComfyUI で内容を確認してから再実行してください。`
+            : `ComfyUI に接続できません: ${message}`;
         }
       }
       async function loadBuiltinWorkflows() {
@@ -1806,6 +2228,38 @@
         ctx.lineWidth = 1.5;
         ctx.strokeRect(viewX * scale + ox, viewY * scale + oy, viewW * scale, viewH * scale);
       }
+      function renderOnboardingStep() {
+        const step = onboardingSteps[onboardIndex];
+        if (!step) return;
+        $('onboardStep').textContent = `${onboardIndex + 1} / ${onboardingSteps.length}`;
+        $('onboardTitle').textContent = step.title;
+        $('onboardBody').textContent = step.body;
+        $('onboardNext').textContent = onboardIndex === onboardingSteps.length - 1 ? 'はじめる' : '次へ';
+      }
+      function showOnboarding() {
+        onboardIndex = 0;
+        renderOnboardingStep();
+        const backdrop = $('onboardBackdrop');
+        backdrop.classList.remove('hidden');
+        backdrop.setAttribute('aria-hidden', 'false');
+      }
+      function finishOnboarding() {
+        localStorage.setItem(onboardingKey, 'done');
+        const backdrop = $('onboardBackdrop');
+        backdrop.classList.add('hidden');
+        backdrop.setAttribute('aria-hidden', 'true');
+      }
+      function bindOnboarding() {
+        $('onboardSkip').addEventListener('click', finishOnboarding);
+        $('onboardNext').addEventListener('click', () => {
+          if (onboardIndex >= onboardingSteps.length - 1) finishOnboarding();
+          else {
+            onboardIndex += 1;
+            renderOnboardingStep();
+          }
+        });
+      }
+
       function jumpMinimap(event) {
         if (!minimapTransform) return;
         const rect = minimap.getBoundingClientRect();
@@ -1865,7 +2319,7 @@
         event.preventDefault();
         dropDepth = 0;
         setDropState(false);
-        const point = screenToWorld(event.clientX, event.clientY);
+        const point = pointerToWorld(event.clientX, event.clientY);
         const count = await createImageNodesFromFiles(event.dataTransfer.files, point);
         if (count) $('savedAt').textContent = `${count} image(s) dropped`;
       });
@@ -1938,14 +2392,17 @@
       });
       window.addEventListener('resize', drawMinimap);
       bindInspector();
+      bindOnboarding();
       load();
       updateEnvBanner();
       syncComfyLinks();
+      if (!localStorage.getItem(onboardingKey)) showOnboarding();
       hydrateImagePreviews().then(() => {
         render();
         loadBuiltinWorkflows();
         setTimeout(fitView, 120);
       });
+      window.addEventListener('beforeunload', save);
     </script>
   </body>
 </html>
