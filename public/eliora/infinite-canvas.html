@@ -444,6 +444,7 @@
         box-shadow: 0 0 8px rgba(255,255,255,.12);
       }
       .service-pill.online::before { background: var(--green); box-shadow: 0 0 10px rgba(158,215,157,.55); }
+      .service-pill.busy::before { background: var(--cyan); box-shadow: 0 0 10px rgba(123,216,232,.55); animation: pulse-dot 1.2s ease infinite; }
       .service-pill.offline::before { background: #c46a6a; box-shadow: 0 0 10px rgba(196,106,106,.4); }
       .service-pill.checking::before { background: var(--amber); animation: pulse-dot 1s ease infinite; }
       @keyframes pulse-dot { 50% { opacity: .35; } }
@@ -918,6 +919,34 @@
       .lang-switch button.active { background: #f4eee4; color: #050505; border-color: #f4eee4; }
       .composer-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
       .composer-tools select { width: auto; min-height: 34px; font-size: 11px; font-weight: 800; }
+      #composerLocalUnet { max-width: min(320px, 42vw); }
+      select.model-list {
+        min-height: 196px;
+        font-size: 11px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        line-height: 1.35;
+      }
+      #comfyLocalUnetSearch { margin-bottom: 8px; }
+      .composer-run-meta {
+        width: 100%;
+        margin-top: 6px;
+        font-size: 10px;
+        line-height: 1.45;
+        color: var(--muted);
+        word-break: break-word;
+      }
+      .composer-run-meta b { color: var(--cyan); font-weight: 800; }
+      .composer-warn {
+        width: 100%;
+        margin-top: 6px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid rgba(245, 184, 100, .45);
+        background: rgba(245, 184, 100, .08);
+        color: #f5d9a8;
+        font-size: 11px;
+        line-height: 1.45;
+      }
       .asset-grid {
         display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px;
       }
@@ -1089,19 +1118,34 @@
             <p class="panel-sub" data-i18n="localComfySub">GPU images & video. Start ComfyUI on 127.0.0.1:8188. Use Send Comfy or Ctrl+Shift+Enter.</p>
             <div class="field"><label for="comfyEndpoint">Endpoint</label><input id="comfyEndpoint" value="http://127.0.0.1:8190" /></div>
             <div class="field">
-              <label for="comfyModelStack" data-i18n="modelStackLabel">Model stack (diffusion_models)</label>
-              <select id="comfyModelStack">
-                <option value="auto" data-i18n="modelStackAuto">Auto — pick best for task</option>
-              </select>
+              <label for="comfyLocalUnet" data-i18n="modelLocalUnetLabel">Local UNET (diffusion_models)</label>
+              <input id="comfyLocalUnetSearch" type="search" autocomplete="off" data-i18n-placeholder="modelLocalUnetSearchPh" placeholder="Search local models…" />
+              <label class="check-row" style="margin:8px 0"><input id="comfyLocalUnetImageOnly" type="checkbox" checked /> <span data-i18n="modelLocalUnetImageOnly">Image models only</span></label>
+              <select id="comfyLocalUnet" class="model-list" size="10" aria-label="Local UNET list"></select>
+              <p class="panel-sub" id="comfyLocalUnetMeta" data-i18n="modelLocalUnetMetaDefault">Connect ComfyUI to list your diffusion_models.</p>
             </div>
             <details class="cloud-details" style="margin:0 0 12px">
-              <summary data-i18n="modelUnetSummary">Advanced · choose UNET file</summary>
+              <summary data-i18n="modelAdvancedSummary">Presets · CLIP/VAE · VRAM</summary>
               <div class="panel-inner" style="padding-top:10px">
                 <div class="field">
-                  <label for="comfyUnetCustom" data-i18n="modelUnetLabel">UNET (diffusion_models)</label>
-                  <select id="comfyUnetCustom"><option value="" data-i18n="modelUnetDefault">— use stack default —</option></select>
+                  <label for="comfyModelStack" data-i18n="modelStackLabel">Quick preset</label>
+                  <select id="comfyModelStack">
+                    <option value="auto" data-i18n="modelStackAuto">Auto — pick best for task</option>
+                  </select>
                 </div>
-                <p class="panel-sub" data-i18n="modelUnetHint">Lists files from E:\ComfyUI\models\diffusion_models. Clip/VAE auto-paired. For full control use Open ComfyUI.</p>
+                <div class="field">
+                  <label for="comfyClipOverride" data-i18n="modelClipOverride">CLIP override</label>
+                  <select id="comfyClipOverride"><option value="" data-i18n="modelClipAuto">Auto (guess from UNET)</option></select>
+                </div>
+                <div class="field">
+                  <label for="comfyVaeOverride" data-i18n="modelVaeOverride">VAE override</label>
+                  <select id="comfyVaeOverride"><option value="" data-i18n="modelVaeAuto">Auto (guess from UNET)</option></select>
+                </div>
+                <div class="field">
+                  <label for="comfyWeightDtype" data-i18n="modelWeightDtype">Weight dtype (VRAM)</label>
+                  <select id="comfyWeightDtype"></select>
+                </div>
+                <p class="panel-sub" data-i18n="modelAdvancedHint">Pick a UNET above. Overrides help large-GPU local runs. Full graphs: Open ComfyUI.</p>
               </div>
             </details>
             <div class="field"><label for="comfyNegative">Negative</label><textarea id="comfyNegative">low quality, blurry, broken anatomy, bad hands, watermark, text artifacts</textarea></div>
@@ -1208,6 +1252,8 @@
                     </select>
                     <span id="composerStatus" class="composer-status" data-i18n="composerSelectCard">Select a card</span>
                   </div>
+                  <div id="composerRunMeta" class="composer-run-meta hidden" aria-live="polite"></div>
+                  <div id="composerWarn" class="composer-warn hidden" role="status"></div>
                   <div id="composerThumbs" class="composer-thumbs"></div>
                   <div id="composerPreview" class="composer-preview"></div>
                   <div class="composer-tools">
@@ -1217,8 +1263,8 @@
                     <select id="composerBatch" aria-label="Batch count">
                       <option value="1">×1</option><option value="2">×2</option><option value="4">×4</option><option value="8">×8</option>
                     </select>
-                    <select id="composerModelStack" aria-label="Model stack" title="Model stack">
-                      <option value="auto">Auto</option>
+                    <select id="composerLocalUnet" aria-label="Local UNET" title="Local UNET">
+                      <option value="" data-i18n="composerLocalUnetAuto">Panel model</option>
                     </select>
                   </div>
                   <textarea id="composerPrompt" class="composer-prompt" data-i18n-placeholder="composerPromptPh" placeholder="Prompt"></textarea>
@@ -1407,7 +1453,7 @@
           injectContext: 'Inject canvas context',
           comfyConnectFix: 'Cannot reach ComfyUI. Start ComfyUI or try Bridge 8190 below.',
           comfyConnectFixBtn: 'Use Bridge 8190',
-          comfyStatusDefault: 'Empty workflow = auto from diffusion_models (Z-Image / Flux2 / Qwen Edit). Import JSON to auto-run.',
+          comfyStatusDefault: 'Boogu edit JSON loaded from Eliora — wire images + prompt, then Run.',
           aiModeSub: 'Local by default. Switch to cloud only when away from home.',
           modeLocal: 'Local', modeLocalSub: 'llama + ComfyUI (default)',
           modeCloud: 'Cloud', modeCloudSub: 'BYOK · assist only',
@@ -1437,12 +1483,30 @@
           resetConfirm: 'Reset this local canvas?',
           assetSelectWarn: 'Select an image card with uploaded data.',
           closeTitle: 'Close',
-          modelStackLabel: 'Model stack (diffusion_models)',
+          modelLocalUnetLabel: 'Local UNET (diffusion_models)',
+          modelLocalUnetSearchPh: 'Search local models…',
+          modelLocalUnetImageOnly: 'Image models only (hide audio/video)',
+          modelLocalUnetMetaDefault: 'Connect ComfyUI to list your diffusion_models.',
+          modelLocalUnetMetaCount: '{n} UNETs from ComfyUI',
+          modelAdvancedSummary: 'Presets · CLIP/VAE · VRAM',
+          modelStackLabel: 'Quick preset',
           modelStackAuto: 'Auto — pick best for task',
-          modelUnetSummary: 'Advanced · choose UNET file',
-          modelUnetLabel: 'UNET (diffusion_models)',
-          modelUnetDefault: '— use stack default —',
-          modelUnetHint: 'Files from diffusion_models. Clip/VAE auto-paired. Full control: Open ComfyUI.',
+          modelClipOverride: 'CLIP override',
+          modelClipAuto: 'Auto (guess from UNET)',
+          modelVaeOverride: 'VAE override',
+          modelVaeAuto: 'Auto (guess from UNET)',
+          modelWeightDtype: 'Weight dtype (VRAM)',
+          modelAdvancedHint: 'Pick a UNET above. Overrides help large-GPU local runs. Full graphs: Open ComfyUI.',
+          composerLocalUnetAuto: 'Panel model',
+          composerRunMetaModel: 'Model',
+          composerRunMetaMode: 'Mode',
+          composerRunMetaPrompt: 'Prompt',
+          composerRunMetaImages: 'Images',
+          composerWarnNoPrompt: 'No prompt — write instructions in the box below or connect a Prompt card.',
+          composerWarnMultiEdit: 'Multi-image edit detected ({n} refs). Using Qwen Image Edit with up to 3 images.',
+          composerWarnImageEdit: 'Image edit instruction — auto-using Qwen Image Edit (not plain txt2img).',
+          composerWarnSingleImage: 'Only 1 image will be sent. Wire all reference images to the same card group.',
+          resultMetaHeader: 'ComfyUI generation',
           askLlamaTopTitle: 'Send selection to llama.cpp (Ctrl+Enter)',
           sendComfyTopTitle: 'Send selection to ComfyUI (Ctrl+Shift+Enter)',
           deleteTitle: 'Delete selected card or wire',
@@ -1482,7 +1546,7 @@
           injectContext: 'キャンバス文脈を注入',
           comfyConnectFix: 'ComfyUI に接続できません。ComfyUI を起動するか、下の Bridge 8190 を試してください。',
           comfyConnectFixBtn: 'Bridge 8190 を使う',
-          comfyStatusDefault: 'ワークフロー空欄 = diffusion_models 自動（Z-Image / Flux2 / Qwen Edit）。JSON Import で自動実行。',
+          comfyStatusDefault: 'Boogu 画像編集 JSON 読込済み — 画像を線でつないで ▶ 実行。',
           aiModeSub: '基本はローカル。外出先だけクラウドに切替。',
           modeLocal: 'ローカル', modeLocalSub: 'llama + ComfyUI（既定）',
           modeCloud: 'クラウド', modeCloudSub: 'BYOK・補助用',
@@ -1512,12 +1576,30 @@
           resetConfirm: 'このローカルキャンバスをリセットしますか？',
           assetSelectWarn: 'アップロード済みの画像カードを選択してください。',
           closeTitle: '閉じる',
-          modelStackLabel: 'モデルスタック（diffusion_models）',
+          modelLocalUnetLabel: 'ローカル UNET（diffusion_models）',
+          modelLocalUnetSearchPh: 'モデルを検索…',
+          modelLocalUnetImageOnly: '画像向けのみ（音声・動画を隠す）',
+          modelLocalUnetMetaDefault: 'ComfyUI 接続後に diffusion_models を一覧表示します。',
+          modelLocalUnetMetaCount: 'ComfyUI から {n} 件の UNET',
+          modelAdvancedSummary: 'プリセット · CLIP/VAE · VRAM',
+          modelStackLabel: 'クイックプリセット',
           modelStackAuto: '自動 — タスクに合わせて選択',
-          modelUnetSummary: '詳細 · UNET ファイルを指定',
-          modelUnetLabel: 'UNET（diffusion_models）',
-          modelUnetDefault: '— スタック既定 —',
-          modelUnetHint: 'diffusion_models の一覧。Clip/VAE は自動ペア。完全操作は ComfyUI を開く。',
+          modelClipOverride: 'CLIP 上書き',
+          modelClipAuto: '自動（UNET から推測）',
+          modelVaeOverride: 'VAE 上書き',
+          modelVaeAuto: '自動（UNET から推測）',
+          modelWeightDtype: '重み dtype（VRAM）',
+          modelAdvancedHint: '上で UNET を選んでください。上書きは大容量 GPU 向け。完全操作は ComfyUI を開く。',
+          composerLocalUnetAuto: 'パネルと同じ',
+          composerRunMetaModel: 'モデル',
+          composerRunMetaMode: 'モード',
+          composerRunMetaPrompt: 'プロンプト',
+          composerRunMetaImages: '参照画像',
+          composerWarnNoPrompt: 'プロンプトがありません。下の欄に指示を書くか、Prompt カードを線でつないでください。',
+          composerWarnMultiEdit: '複数画像の編集指示を検出（{n} 枚）。Qwen Image Edit で最大3枚まで送ります。',
+          composerWarnImageEdit: '画像の編集指示です — Qwen Image Edit を自動使用します（通常生成ではありません）。',
+          composerWarnSingleImage: '送れるのは1枚だけです。参照画像をすべて同じカード群に線でつないでください。',
+          resultMetaHeader: 'ComfyUI 生成',
           askLlamaTopTitle: '選択カードを llama.cpp に送る（Ctrl+Enter）',
           sendComfyTopTitle: '選択カードを ComfyUI に送る（Ctrl+Shift+Enter）',
           deleteTitle: '選択したカードまたは線を削除',
@@ -1568,6 +1650,9 @@
         render();
         $('langEn')?.classList.toggle('active', lang === 'en');
         $('langJa')?.classList.toggle('active', lang === 'ja');
+        const dtypeSel = $('comfyWeightDtype');
+        if (dtypeSel) delete dtypeSel.dataset.filled;
+        refreshModelStackSelect().catch(() => {});
       }
       function applyI18n() {
         document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
@@ -1739,10 +1824,30 @@
       let searchTerm = '';
       let saveTimer = null;
       let lastComfyPromptId = '';
+      let lastComfyRunMeta = null;
       let lastComfySourceId = '';
       let workflowItems = [];
       let selectedWorkflowId = '';
       let objectInfoCache = null;
+      const ELIORA_DEFAULT_WORKFLOW_URL = '/eliora/workflows/boogu-edit-0709.json';
+      const BUILTIN_COMFY_NODES = new Set([
+        'UNETLoader', 'CLIPLoader', 'DualCLIPLoader', 'VAELoader', 'LoadImage', 'CLIPTextEncode',
+        'ConditioningZeroOut', 'EmptyLatentImage', 'VAEEncode', 'VAEDecode', 'KSampler', 'SaveImage',
+        'ModelSamplingFlux', 'ModelSamplingAuraFlow', 'CFGNorm', 'SamplerCustom', 'KSamplerSelect', 'BasicScheduler', 'PreviewImage',
+        'TextEncodeQwenImageEdit', 'TextEncodeQwenImageEditPlus', 'TextEncodeBooguEdit',
+      ]);
+      function invalidateComfyCaches() {
+        modelInventoryCache = null;
+        objectInfoCache = null;
+      }
+      function comfyNodeLabel(type) {
+        const map = {
+          TextEncodeQwenImageEditPlus: 'Qwen 画像編集 Plus',
+          TextEncodeQwenImageEdit: 'Qwen 画像編集',
+          TTP_Tile_image_size: 'TTP_Tile（カスタム）',
+        };
+        return map[type] || type;
+      }
       let minimapTransform = null;
       let wireDrag = null;
       let hoveredEdgeId = '';
@@ -1824,6 +1929,113 @@
           if (edge.to === id) ids.add(edge.from);
         });
         return [...ids].map(nodeBy).filter(Boolean);
+      }
+      function reachableNodeIds(startId) {
+        const seen = new Set();
+        const queue = [startId];
+        while (queue.length) {
+          const id = queue.shift();
+          if (!id || seen.has(id)) continue;
+          seen.add(id);
+          edges.forEach((edge) => {
+            if (edge.from === id) queue.push(edge.to);
+            if (edge.to === id) queue.push(edge.from);
+          });
+        }
+        return seen;
+      }
+      function isComfyResultNode(node) {
+        if (!node || node.kind !== 'Image') return false;
+        const tagStr = tags(node.tags).join(' ').toLowerCase();
+        return /comfyui/.test(tagStr) && /result/i.test(`${node.title || ''} ${node.text || ''}`);
+      }
+      function isWorkflowImageNode(node) {
+        if (!node || node.kind !== 'Image') return false;
+        return Boolean(node.url || isStoredImageUrl(node.url));
+      }
+      function collectWorkflowImages(source) {
+        if (!source) return [];
+        const ids = reachableNodeIds(source.id);
+        const allImages = [...ids].map(nodeBy).filter((n) => isWorkflowImageNode(n));
+        const refs = allImages.filter((n) => !isComfyResultNode(n));
+        const pool = refs.length ? refs : allImages;
+        const promptNode = [...ids].map(nodeBy).find((n) => n?.kind === 'Prompt' || n?.kind === 'Note');
+        if (promptNode) {
+          const direct = connectedTo(promptNode.id).filter((n) => pool.includes(n));
+          const rest = pool.filter((n) => !direct.includes(n));
+          return [...direct, ...rest].slice(0, 3);
+        }
+        return pool.slice(0, 3);
+      }
+      function detectImageEditIntent(prompt, imageCount) {
+        if (imageCount < 1) return false;
+        const p = String(prompt || '').toLowerCase();
+        return /change|edit|realistic|portrait|background|modify|transform|convert|make this|remove |add |replace|fix the|画像.*変|背景.*変|変更|編集|リアル|直して|変えて|似せ|合成|リライト/i.test(p);
+      }
+      function detectMultiImageEditIntent(prompt, imageCount) {
+        if (imageCount < 2) return false;
+        const p = String(prompt || '');
+        return /第[一二三四1-4]|[1-4](枚|つ目)|first|second|third|複数|参考に|背景を変|リアル|合成|編集|change.*background|combine|merge/i.test(p);
+      }
+      function pickEditPrimaryIndex(prompt, count) {
+        const p = String(prompt || '');
+        if (count < 1) return 0;
+        if (/第1|1枚目|first.*(image|画像)|画像.*第1|1枚目の画像/i.test(p)) return 0;
+        if (count >= 3 && /第3|3枚目|第三|third/i.test(p)) return Math.min(2, count - 1);
+        if (count >= 2 && /第2|2枚目|第二|second/i.test(p) && !/第1|1枚目|第一/i.test(p)) return 1;
+        return 0;
+      }
+      function currentModelLabel() {
+        const unet = $('composerLocalUnet')?.value?.trim() || $('comfyLocalUnet')?.value?.trim() || '';
+        if (unet) return unet.split(/[\\/]/).pop();
+        const preset = $('comfyModelStack')?.value;
+        if (preset && preset !== 'auto') {
+          const row = MODEL_STACK_PRESETS?.find((item) => item.id === preset);
+          return row?.label || preset;
+        }
+        if (lastComfyRunMeta?.unet) return lastComfyRunMeta.unet.split(/[\\/]/).pop();
+        return t('modelStackAuto');
+      }
+      function formatRunMetaLine(meta) {
+        if (!meta) return '';
+        const prompt = meta.prompt ? `${meta.prompt.slice(0, 72)}${meta.prompt.length > 72 ? '…' : ''}` : '—';
+        const imgs = meta.imageNames?.length ? meta.imageNames.join(', ') : '—';
+        return `<b>${esc(t('composerRunMetaModel'))}</b> ${esc(meta.unet?.split(/[\\/]/).pop() || meta.label || '?')}`
+          + ` · <b>${esc(t('composerRunMetaMode'))}</b> ${esc(meta.mode || '?')}`
+          + ` · <b>${esc(t('composerRunMetaImages'))}</b> ${esc(imgs)}`
+          + `<br><b>${esc(t('composerRunMetaPrompt'))}</b> ${esc(prompt)}`;
+      }
+      function updateComposerRunPreview(node) {
+        const metaEl = $('composerRunMeta');
+        const warnEl = $('composerWarn');
+        if (!metaEl || !warnEl) return;
+        if (!node || ($('composerEngine')?.value || composerEngine) !== 'comfy') {
+          metaEl.classList.add('hidden');
+          warnEl.classList.add('hidden');
+          return;
+        }
+        const prompt = $('composerPrompt')?.value?.trim() || promptTextForComfy();
+        const images = collectWorkflowImages(node);
+        const model = currentModelLabel();
+        const imageEdit = detectImageEditIntent(prompt, images.length);
+        const multiEdit = detectMultiImageEditIntent(prompt, images.length);
+        const mode = images.length
+          ? (multiEdit && images.length >= 2 ? 'multi-edit' : imageEdit ? 'image-edit' : 'img2img')
+          : 'txt2img';
+        metaEl.innerHTML = `<b>${esc(t('composerRunMetaModel'))}</b> ${esc(model)} · <b>${esc(t('composerRunMetaMode'))}</b> ${esc(mode)} · <b>${esc(t('composerRunMetaImages'))}</b> ${images.length || 0}`
+          + (prompt ? `<br><b>${esc(t('composerRunMetaPrompt'))}</b> ${esc(prompt.slice(0, 120))}${prompt.length > 120 ? '…' : ''}` : '');
+        metaEl.classList.remove('hidden');
+        let warn = '';
+        if (!prompt || prompt.length < 2) warn = t('composerWarnNoPrompt');
+        else if (multiEdit && images.length >= 2) warn = t('composerWarnMultiEdit').replace('{n}', String(images.length));
+        else if (imageEdit && images.length >= 1) warn = t('composerWarnImageEdit');
+        else if (/第[一二三四1-4]|first|second|third|背景|参考/i.test(prompt) && images.length < 2) warn = t('composerWarnSingleImage');
+        if (warn) {
+          warnEl.textContent = warn;
+          warnEl.classList.remove('hidden');
+        } else {
+          warnEl.classList.add('hidden');
+        }
       }
       const promptBoilerplateRe = /^(subject|mood|lighting|camera|style|details|role|context|output|review|opening frame|motion|duration|source|write the fragment|primary card|connected materials):/i;
       function stripPromptBoilerplate(text) {
@@ -2082,7 +2294,15 @@
           if (comfy.height) $('comfyHeight').value = comfy.height;
           if (typeof comfy.autoInject === 'boolean') $('comfyAutoInject').checked = comfy.autoInject;
           if (comfy.modelStack && $('comfyModelStack')) $('comfyModelStack').value = comfy.modelStack;
-          if (comfy.unetCustom && $('comfyUnetCustom')) $('comfyUnetCustom').value = comfy.unetCustom;
+          const savedLocalUnet = comfy.localUnet || comfy.unetCustom || '';
+          if (savedLocalUnet && $('comfyLocalUnet')) $('comfyLocalUnet').value = savedLocalUnet;
+          if (savedLocalUnet && $('composerLocalUnet')) $('composerLocalUnet').value = savedLocalUnet;
+          if (comfy.clipOverride && $('comfyClipOverride')) $('comfyClipOverride').value = comfy.clipOverride;
+          if (comfy.vaeOverride && $('comfyVaeOverride')) $('comfyVaeOverride').value = comfy.vaeOverride;
+          if (comfy.weightDtype && $('comfyWeightDtype')) $('comfyWeightDtype').value = comfy.weightDtype;
+          if (typeof comfy.localUnetImageOnly === 'boolean' && $('comfyLocalUnetImageOnly')) {
+            $('comfyLocalUnetImageOnly').checked = comfy.localUnetImageOnly;
+          }
           if (comfy.lastPromptId) lastComfyPromptId = comfy.lastPromptId;
           if (comfy.lastSourceId) lastComfySourceId = comfy.lastSourceId;
           const cloud = JSON.parse(localStorage.getItem(cloudSettingsKey) || '{}');
@@ -2116,7 +2336,11 @@
           height: $('comfyHeight').value,
           autoInject: $('comfyAutoInject').checked,
           modelStack: $('comfyModelStack')?.value || 'auto',
-          unetCustom: $('comfyUnetCustom')?.value || '',
+          localUnet: $('comfyLocalUnet')?.value || '',
+          clipOverride: $('comfyClipOverride')?.value || '',
+          vaeOverride: $('comfyVaeOverride')?.value || '',
+          weightDtype: $('comfyWeightDtype')?.value || 'default',
+          localUnetImageOnly: $('comfyLocalUnetImageOnly')?.checked !== false,
           lastPromptId: lastComfyPromptId,
           lastSourceId: lastComfySourceId,
         }));
@@ -2812,11 +3036,60 @@
         $('cloudApiWrap').open = true;
         scheduleSave();
       }
-      function setServicePill(id, state) {
+      function setServicePill(id, state, label) {
         const pill = $(id);
         if (!pill) return;
-        pill.classList.remove('checking', 'online', 'offline');
+        pill.classList.remove('checking', 'online', 'offline', 'busy');
         pill.classList.add(state);
+        if (label) pill.textContent = label;
+      }
+      async function fetchComfyQueue() {
+        const response = await comfyRequest('/queue', {}, 15000);
+        if (!response.ok) throw new Error(`queue HTTP ${response.status}`);
+        const data = await response.json();
+        const running = Array.isArray(data.queue_running) ? data.queue_running.length : 0;
+        const pending = Array.isArray(data.queue_pending) ? data.queue_pending.length : 0;
+        return { running, pending, total: running + pending };
+      }
+      async function refreshComfyGpuStatus() {
+        if (!comfyOnline && !comfyWorkingBase) return { running: 0, pending: 0, total: 0 };
+        try {
+          const q = await fetchComfyQueue();
+          const lang = uiLang;
+          if (q.total > 0) {
+            setServicePill('comfyServicePill', 'busy', lang === 'ja' ? `ComfyUI · GPU ${q.total}件` : `ComfyUI · GPU ${q.total}`);
+            if (!comfyRunning && !$('comfyStatus')?.dataset.hasError) {
+              $('comfyStatus').textContent = lang === 'ja'
+                ? `ComfyUI は接続 OK。GPU で ${q.total} 件処理中（Canvas からも実行可）`
+                : `ComfyUI connected. GPU busy: ${q.total} job(s)`;
+            }
+          } else {
+            setServicePill('comfyServicePill', 'online', lang === 'ja' ? 'ComfyUI · 待機中' : 'ComfyUI · idle');
+            if (!comfyRunning && !$('comfyStatus')?.dataset.hasError) {
+              $('comfyStatus').textContent = lang === 'ja'
+                ? 'ComfyUI 接続 OK · GPU 待機中 — ▶ 実行できます'
+                : 'ComfyUI OK · GPU idle — ready to run';
+            }
+          }
+          return q;
+        } catch (_) {
+          return { running: 0, pending: 0, total: 0 };
+        }
+      }
+      async function clearStuckComfyRunning() {
+        if (!comfyRunning) return false;
+        try {
+          const q = await fetchComfyQueue();
+          if (q.total === 0) {
+            setComfyRunning(false);
+            logActivity('ComfyUI は待機中 — 前回の「実行中」表示を解除しました', 'info');
+            return true;
+          }
+        } catch (_) {
+          setComfyRunning(false);
+          return true;
+        }
+        return false;
       }
       function comfyPrimaryBase() {
         return $('comfyEndpoint').value.trim().replace(/\/$/, '');
@@ -2895,12 +3168,20 @@
         return ['Prompt', 'Image', 'Workflow', 'Video', 'Note', 'AI'].includes(node.kind);
       }
       function composerInputPool(node) {
-        return [node, ...connectedTo(node.id)];
+        if (!node) return [];
+        const seen = new Set([node.id]);
+        const pool = [node];
+        [...reachableNodeIds(node.id)].map(nodeBy).filter(Boolean).forEach((n) => {
+          if (seen.has(n.id)) return;
+          seen.add(n.id);
+          pool.push(n);
+        });
+        return pool;
       }
       function renderComposerThumbs(node) {
         const row = $('composerThumbs');
         if (!row) return;
-        const media = composerInputPool(node).filter((n) => n.kind === 'Image' || n.kind === 'Video' || (n.url && /\.(png|jpe?g|webp|gif|mp4|webm)/i.test(n.url)));
+        const media = collectWorkflowImages(node);
         if (!media.length) {
           row.innerHTML = '';
           return;
@@ -2974,7 +3255,11 @@
         loadComposerPrompt(node);
         if ($('composerEngine')) $('composerEngine').value = composerEngine;
         const engineLabel = { comfy: 'ComfyUI', llama: 'llama.cpp', cloud: 'Cloud BYOK' }[composerEngine] || 'ComfyUI';
-        $('composerStatus').textContent = `${node.title} · ${engineLabel}`;
+        const modelLabel = composerEngine === 'comfy' ? currentModelLabel() : '';
+        $('composerStatus').textContent = composerEngine === 'comfy'
+          ? `${node.title} · ${engineLabel} · ${modelLabel}`
+          : `${node.title} · ${engineLabel}`;
+        updateComposerRunPreview(node);
         if (runBtn) runBtn.disabled = comfyRunning;
         $('composerRun').textContent = composerEngine === 'comfy' ? t('composerRunComfy') : composerEngine === 'llama' ? t('composerRunLlama') : t('composerRunCloud');
       }
@@ -3088,9 +3373,13 @@
         if (!el) return;
         el.textContent = message;
         el.classList.add('error');
+        el.dataset.hasError = '1';
       }
       function clearComfyStatusError() {
-        $('comfyStatus')?.classList.remove('error');
+        const el = $('comfyStatus');
+        if (!el) return;
+        el.classList.remove('error');
+        delete el.dataset.hasError;
       }
       function setJobStatus(title, detail = '', level = 'working', options = {}) {
         const bar = $('jobBar');
@@ -3173,7 +3462,22 @@
       function humanizeComfyError(message) {
         const text = String(message || '');
         if (/clip input is invalid/i.test(text)) {
-          return 'CLIP が無効です — 古い checkpoints/SDXL は使いません。左のモデル選択を確認するか、Workflow JSON を Import してください。';
+          return 'CLIP が無効です — 画像の編集には右パネルで Qwen Image Edit を選ぶか、ローカル UNET を空にして自動選択にしてください。古い checkpoints/SDXL は使いません。';
+        }
+        if (/HTTP 502|HTTP 503|HTTP 504/.test(text)) {
+          return 'ComfyUI がビジーです（GPU 生成中）。30〜60秒待ってからもう一度 ▶ 実行してください。Bridge 8190 が起動しているかも確認してください。';
+        }
+        if (/not in list|value_not_in_list|failed to validate prompt/i.test(text)) {
+          return 'モデルファイルのパスが ComfyUI と一致しません。右パネルのローカル UNET を空にして自動選択するか、一覧から選び直してください。';
+        }
+        if (/missing_node_type|not found.*custom node|ComfyUI にないノード/i.test(text)) {
+          return '古い Workflow JSON が原因です — こちらで自動解除しました。△ 実行をもう一度押すだけで OK（あなたが直す必要はありません）。';
+        }
+        if (/ttp_|seedvr|gpenhal|tile_image_size/i.test(text)) {
+          return 'インポートした外部 Workflow（TTP/SeedVR 等）が原因です — 自動 Qwen 編集に切り替え済み。△ 再実行してください。';
+        }
+        if (/0枚|editprompt|画像.*0|image.*required|no image/i.test(text)) {
+          return '参照画像が Workflow JSON に渡っていません — JSON を自動解除しました。画像カードを線でつないだまま ▶ 再実行してください。';
         }
         if (/invalid image file/i.test(text)) {
           return '入力画像が ComfyUI に見つかりません。結果カードを選んだ場合は自動で再アップロードします — もう一度実行するか、元の Image カードを選んでください。';
@@ -3183,8 +3487,8 @@
       function formatNodeErrors(nodeErrors) {
         return Object.entries(nodeErrors || {}).map(([id, err]) => {
           const type = err?.class_type || 'node';
-          const msg = err?.errors?.[0]?.message || err?.errors?.[0]?.details || JSON.stringify(err);
-          return `#${id} ${type}: ${humanizeComfyError(msg)}`;
+          const raw = err?.errors?.map((e) => e?.message || e?.details || '').filter(Boolean).join(' · ') || JSON.stringify(err);
+          return `#${id} ${type}: ${humanizeComfyError(raw)}`;
         }).join('\n');
       }
       function extractComfyExecutionError(item) {
@@ -3209,21 +3513,37 @@
           delete headers['Content-Type'];
           fetchOptions.headers = headers;
         }
+        const retryable = new Set([502, 503, 504]);
+        const maxAttempts = path === '/prompt' ? 5 : path === '/upload/image' ? 4 : 2;
         let lastError = null;
-        for (const base of bases) {
-          try {
-            const response = await withTimeout(
-              fetch(`${base}${path}`, fetchOptions),
-              timeoutMs,
-              `${path} 接続`,
-            );
-            if (response.ok || (response.status >= 400 && response.status < 500)) {
-              comfyWorkingBase = base;
-              return response;
+        for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+          for (const base of bases) {
+            try {
+              const response = await withTimeout(
+                fetch(`${base}${path}`, fetchOptions),
+                timeoutMs,
+                `${path} 接続`,
+              );
+              if (response.ok) {
+                comfyWorkingBase = base;
+                return response;
+              }
+              if (retryable.has(response.status)) {
+                lastError = new Error(`HTTP ${response.status}`);
+                logActivity(`${path} → HTTP ${response.status}（リトライ ${attempt + 1}/${maxAttempts}）`, 'warn');
+                break;
+              }
+              if (response.status >= 400 && response.status < 500) {
+                comfyWorkingBase = base;
+                return response;
+              }
+              lastError = new Error(`HTTP ${response.status}`);
+            } catch (error) {
+              lastError = error;
             }
-            lastError = new Error(`HTTP ${response.status}`);
-          } catch (error) {
-            lastError = error;
+          }
+          if (attempt < maxAttempts - 1) {
+            await new Promise((resolve) => setTimeout(resolve, 1200 * (attempt + 1)));
           }
         }
         throw lastError || new Error('ComfyUI に接続できません（Bridge 8190 を確認）');
@@ -3244,13 +3564,11 @@
       }
       function findWorkflowImageNode() {
         const source = workflowSource();
-        if (!source) return null;
-        const pool = [source, ...connectedTo(source.id)];
-        return pool.find((node) => {
-          if (node.kind === 'Image') return true;
-          const hay = `${node.kind || ''} ${tags(node.tags).join(' ')} ${node.title || ''} ${node.url || ''} ${node.text || ''}`.toLowerCase();
-          return hay.includes('image') || /\.(png|jpe?g|webp|gif|bmp)$/i.test(node.url || '') || /\.(png|jpe?g|webp|gif|bmp)$/i.test(node.text || '');
-        }) || null;
+        const images = collectWorkflowImages(source);
+        if (!images.length) return null;
+        const prompt = promptTextForComfy();
+        const primaryIdx = pickEditPrimaryIndex(prompt, images.length);
+        return images[primaryIdx] || images[0];
       }
       function comfyInputFilename(imageNode) {
         let filename = (imageNode.title || 'eliora-input').replace(/[\\/:*?"<>|]+/g, '_').trim();
@@ -3275,27 +3593,39 @@
         if (!response.ok) throw new Error(`画像取得 HTTP ${response.status}`);
         return response.blob();
       }
-      async function ensureComfyInputImage() {
-        const imageNode = findWorkflowImageNode();
-        if (!imageNode) {
-          logActivity('Image カード未接続 — テキストのみで実行します', 'warn');
-          return '';
-        }
+      async function uploadWorkflowImageNode(imageNode) {
         if (isStoredImageUrl(imageNode.url)) {
           const blob = await getImageBlob(imageIdFromUrl(imageNode.url));
-          if (!blob) throw new Error('Canvas 内の画像データが見つかりません。Image ボタンで再取り込みしてください。');
+          if (!blob) throw new Error(`Canvas 内の画像データが見つかりません: ${imageNode.title || 'image'}`);
           return uploadImageToComfy(blob, comfyInputFilename(imageNode));
         }
         const raw = String(imageNode.url || imageNode.text || '').trim();
         if (/^https?:\/\//i.test(raw) || raw.includes('/view?')) {
-          logActivity(`結果画像を再アップロード: ${imageNode.title || 'image'}`, 'info');
+          logActivity(`画像を ComfyUI input へ再アップロード: ${imageNode.title || 'image'}`, 'info');
           const blob = await fetchImageBlobForComfy(raw);
           return uploadImageToComfy(blob, comfyInputFilename(imageNode));
         }
         const filename = mediaNameFromUrl(raw);
-        if (!filename) throw new Error('画像ファイル名を取得できません。Image ボタンで取り込むか、結果カードを選んで再実行してください。');
+        if (!filename) throw new Error(`画像ファイル名を取得できません: ${imageNode.title || 'image'}`);
         logActivity(`ComfyUI input の既存ファイルを使用: ${filename}`, 'info');
         return filename;
+      }
+      async function ensureComfyInputImages() {
+        const source = workflowSource();
+        const images = collectWorkflowImages(source);
+        if (!images.length) {
+          logActivity('Image カード未接続 — テキストのみで実行します', 'warn');
+          return [];
+        }
+        const uploaded = [];
+        for (const imageNode of images) {
+          uploaded.push(await uploadWorkflowImageNode(imageNode));
+        }
+        return uploaded;
+      }
+      async function ensureComfyInputImage() {
+        const list = await ensureComfyInputImages();
+        return list[0] || '';
       }
       function updateComfyConnectFix(comfyOk) {
         comfyOnline = comfyOk;
@@ -3401,11 +3731,20 @@
         }
         if (!comfyOk && lastCheckError) logActivity(`接続チェック: ${lastCheckError}`, 'warn');
         setServicePill('llamaServicePill', llamaOk ? 'online' : 'offline');
-        setServicePill('comfyServicePill', comfyOk ? 'online' : 'offline');
         comfyOnline = comfyOk;
+        if (comfyOk) {
+          await refreshComfyGpuStatus();
+          await clearStuckComfyRunning();
+        } else {
+          setServicePill('comfyServicePill', 'offline', 'ComfyUI');
+          invalidateComfyCaches();
+        }
         updateComfyConnectFix(comfyOk);
         if (comfyOk && !comfyRunning && $('jobBar')?.classList.contains('warn')) hideJobStatus();
-        if (comfyOk) refreshModelStackSelect().catch(() => {});
+        if (comfyOk) {
+          refreshModelStackSelect().catch(() => {});
+          runComfySelfTest().catch(() => {});
+        }
         return { llamaOk, comfyOk };
       }
       function applyAiMode(persist = true) {
@@ -3445,6 +3784,8 @@
             .replaceAll('{{width}}', String(replacements.width))
             .replaceAll('{{height}}', String(replacements.height))
             .replaceAll('{{image}}', replacements.image)
+            .replaceAll('{{image2}}', replacements.image2 || '')
+            .replaceAll('{{image3}}', replacements.image3 || '')
             .replaceAll('{{video}}', replacements.video)
             .replaceAll('{{audio}}', replacements.audio);
         }
@@ -3499,6 +3840,8 @@
           width: Math.max(256, Math.min(4096, parseInt($('comfyWidth').value, 10) || 1024)),
           height: Math.max(256, Math.min(4096, parseInt($('comfyHeight').value, 10) || 1024)),
           image: selectedMedia('image'),
+          image2: '',
+          image3: '',
           video: selectedMedia('video'),
           audio: selectedMedia('audio'),
         };
@@ -3506,10 +3849,29 @@
       function injectCanvasContext(workflow, replacements) {
         if (!$('comfyAutoInject').checked) return workflow;
         let positiveSet = false;
+        let loadImageIdx = 0;
+        const imageSlots = [replacements.image, replacements.image2, replacements.image3].filter(Boolean);
         Object.values(workflow).forEach((node) => {
           if (!node?.inputs) return;
-          if (node.class_type === 'LoadImage' && replacements.image) {
-            node.inputs.image = replacements.image;
+          if (node.class_type === 'LoadImage') {
+            const slot = imageSlots[loadImageIdx] || replacements.image;
+            if (slot) {
+              node.inputs.image = slot;
+              loadImageIdx += 1;
+            }
+            return;
+          }
+          if (/^TextEncodeQwenImageEdit/i.test(node.class_type || '') && replacements.prompt) {
+            if (typeof node.inputs.prompt === 'string') node.inputs.prompt = replacements.prompt;
+            return;
+          }
+          if (node.class_type === 'TextEncodeBooguEdit') {
+            if (replacements.prompt && node.inputs.prompt !== undefined) node.inputs.prompt = replacements.prompt;
+            if (replacements.negative && node.inputs.negative_prompt !== undefined) node.inputs.negative_prompt = replacements.negative;
+            return;
+          }
+          if (node.class_type === 'SamplerCustom' && replacements.seed) {
+            node.inputs.noise_seed = replacements.seed;
             return;
           }
           if (node.class_type !== 'CLIPTextEncode') return;
@@ -3533,32 +3895,84 @@
           throw new Error('この JSON は {{prompt}} が必要です。Note / Prompt カードに文章を書いて線でつないでください。');
         }
         if (raw.includes('{{image}}') && !replacements.image) {
-          throw new Error('この JSON は {{image}} が必要です。Image カードを線でつないでください。');
+          const linked = collectWorkflowImages(workflowSource()).length;
+          throw new Error(linked
+            ? '画像のアップロードに失敗しました。もう一度 ▶ 実行してください。'
+            : 'Image カードを線でつないでください（右の●→左の●）。Workflow JSON は空欄のままで OK です。');
         }
         if (replacements.prompt && /^(subject|mood):/i.test(replacements.prompt)) {
           throw new Error('Prompt カードはテンプレートのままです。あなたのプロンプトを書いてから Run してください。');
         }
         try {
-          const uploaded = await ensureComfyInputImage();
-          if (uploaded) replacements.image = uploaded;
+          const uploadedList = await ensureComfyInputImages();
+          const prompt = replacements.prompt || promptTextForComfy();
+          const primaryIdx = pickEditPrimaryIndex(prompt, uploadedList.length);
+          if (uploadedList.length) {
+            replacements.image = uploadedList[primaryIdx] || uploadedList[0];
+            replacements.image2 = uploadedList[1] || '';
+            replacements.image3 = uploadedList[2] || '';
+          }
         } catch (error) {
           logActivity(`画像準備エラー: ${error.message}`, 'error');
           throw error;
         }
-        if (replacements.prompt) logActivity(`使用プロンプト: ${replacements.prompt.slice(0, 80)}${replacements.prompt.length > 80 ? '…' : ''}`, 'info');
-        if (replacements.image) logActivity(`使用画像: ${replacements.image}`, 'info');
+        if (replacements.prompt) logActivity(`使用プロンプト: ${replacements.prompt.slice(0, 120)}${replacements.prompt.length > 120 ? '…' : ''}`, 'info');
+        if (lastComfyRunMeta) {
+          logActivity(`使用モデル: ${lastComfyRunMeta.unet} · ${lastComfyRunMeta.mode}`, 'info');
+        }
+        if (replacements.image) {
+          const names = [replacements.image, replacements.image2, replacements.image3].filter(Boolean);
+          logActivity(`使用画像 ${names.length} 枚: ${names.join(', ')}`, 'info');
+        }
         return injectCanvasContext(deepReplace(workflow, replacements), replacements);
       }
-      async function getObjectInfo() {
-        if (objectInfoCache) return objectInfoCache;
-        try {
-          const response = await comfyRequest('/object_info');
-          if (!response.ok) throw new Error(`object_info HTTP ${response.status}`);
-          objectInfoCache = await response.json();
-        } catch {
-          objectInfoCache = {};
+      async function getObjectInfo(force = false) {
+        if (!force && objectInfoCache && Object.keys(objectInfoCache).length > 20) return objectInfoCache;
+        const response = await comfyRequest('/object_info');
+        if (!response.ok) throw new Error(`object_info HTTP ${response.status}`);
+        const data = await response.json();
+        if (Object.keys(data).length > 20) objectInfoCache = data;
+        return data;
+      }
+      async function resolveQwenEncodeClass(needMulti) {
+        const info = await getObjectInfo(true);
+        if (needMulti) {
+          if (!info.TextEncodeQwenImageEditPlus) {
+            throw new Error('複数画像の編集には ComfyUI の Qwen Image Edit Plus ノードが必要です。ComfyUI を更新するか、参照画像を1枚に減らしてください。');
+          }
+          return 'TextEncodeQwenImageEditPlus';
         }
-        return objectInfoCache;
+        if (info.TextEncodeQwenImageEditPlus) return 'TextEncodeQwenImageEditPlus';
+        if (info.TextEncodeQwenImageEdit) return 'TextEncodeQwenImageEdit';
+        throw new Error('Qwen 画像編集ノードが ComfyUI にありません。ComfyUI を起動し、Qwen Image ノードを有効にしてください。');
+      }
+      function buildQwenEncodeNode(classType, prompt, clipRef, vaeRef, imageRefs) {
+        const inputs = { prompt, clip: clipRef, vae: vaeRef };
+        if (classType === 'TextEncodeQwenImageEditPlus') {
+          inputs.image1 = imageRefs[0];
+          if (imageRefs[1]) inputs.image2 = imageRefs[1];
+          if (imageRefs[2]) inputs.image3 = imageRefs[2];
+        } else {
+          inputs.image = imageRefs[0];
+        }
+        return { class_type: classType, inputs };
+      }
+      async function runComfySelfTest() {
+        try {
+          const inventory = await getModelInventory();
+          const qwen = resolveQwenEditStack(inventory);
+          const info = await getObjectInfo(true);
+          const encode = info.TextEncodeQwenImageEditPlus ? 'Plus' : info.TextEncodeQwenImageEdit ? 'Edit' : 'なし';
+          if (qwen && encode !== 'なし') {
+            logActivity(`ComfyUI 自己診断 OK · ${qwen.unet.split(/[\\/]/).pop()} · Qwen ${encode}`, 'ok');
+            return true;
+          }
+          logActivity('ComfyUI 自己診断: Qwen Image Edit のファイルまたはノードが不足', 'warn');
+          return false;
+        } catch (error) {
+          logActivity(`ComfyUI 自己診断失敗: ${error.message}`, 'warn');
+          return false;
+        }
       }
       function linkMapFromUi(ui) {
         const map = new Map();
@@ -3582,6 +3996,74 @@
         });
         return names;
       }
+      function applyUiWidgetFallbacks(node, inputs) {
+        const values = Array.isArray(node.widgets_values) ? node.widgets_values : [];
+        if (!values.length) return;
+        const type = node.type;
+        if (type === 'UNETLoader') {
+          if (inputs.unet_name === undefined) inputs.unet_name = values[0];
+          if (inputs.weight_dtype === undefined && values[1] !== undefined) inputs.weight_dtype = values[1];
+        } else if (type === 'CLIPLoader') {
+          if (inputs.clip_name === undefined) inputs.clip_name = values[0];
+          if (inputs.type === undefined && values[1] !== undefined) inputs.type = values[1];
+          if (inputs.device === undefined && values[2] !== undefined) inputs.device = values[2];
+        } else if (type === 'VAELoader' && inputs.vae_name === undefined) inputs.vae_name = values[0];
+        else if (type === 'LoadImage' && inputs.image === undefined) inputs.image = values[0];
+        else if (type === 'TextEncodeBooguEdit') {
+          if (inputs.prompt === undefined) inputs.prompt = values[0];
+          if (inputs.negative_prompt === undefined) inputs.negative_prompt = values[1] || '';
+        } else if (type === 'ModelSamplingAuraFlow' && inputs.shift === undefined) inputs.shift = values[0];
+        else if (type === 'KSamplerSelect' && inputs.sampler_name === undefined) inputs.sampler_name = values[0];
+        else if (type === 'BasicScheduler') {
+          if (inputs.scheduler === undefined) inputs.scheduler = values[0];
+          if (inputs.steps === undefined) inputs.steps = values[1];
+          if (inputs.denoise === undefined) inputs.denoise = values[2];
+        } else if (type === 'EmptyLatentImage') {
+          if (inputs.width === undefined) inputs.width = values[0];
+          if (inputs.height === undefined) inputs.height = values[1];
+          if (inputs.batch_size === undefined) inputs.batch_size = values[2];
+        } else if (type === 'SamplerCustom') {
+          if (inputs.add_noise === undefined) inputs.add_noise = values[0];
+          if (inputs.noise_seed === undefined) inputs.noise_seed = values[1];
+          if (inputs.cfg === undefined) inputs.cfg = values[3] ?? values[2];
+        }
+      }
+      function isOfficialBooguWorkflowText(raw) {
+        const text = String(raw || '');
+        return /TextEncodeBooguEdit/i.test(text) && /boogu_image_edit/i.test(text);
+      }
+      async function loadDefaultBooguWorkflow() {
+        try {
+          const res = await fetch(`${ELIORA_DEFAULT_WORKFLOW_URL}?v=0709`);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const text = await res.text();
+          if (!isOfficialBooguWorkflowText(text)) throw new Error('Boogu Workflow ではありません');
+          $('comfyWorkflow').value = text;
+          scheduleSave();
+          clearComfyStatusError();
+          $('comfyStatus').textContent = t('comfyStatusDefault');
+          logActivity('既定 Workflow: boogu-edit-0709.json を読み込みました', 'ok');
+          return true;
+        } catch (error) {
+          logActivity(`Boogu Workflow 読込失敗: ${error.message}`, 'warn');
+          return false;
+        }
+      }
+      async function ensureDefaultBooguWorkflow() {
+        const current = $('comfyWorkflow').value.trim();
+        if (isOfficialBooguWorkflowText(current)) {
+          $('comfyStatus').textContent = t('comfyStatusDefault');
+          return;
+        }
+        const assess = current ? await assessWorkflowJson(current) : { usable: false };
+        if (!assess.usable) {
+          if (current) {
+            $('comfyWorkflow').value = '';
+            logActivity(`問題のある JSON を解除: ${assess.message}`, 'info');
+          }
+          await loadDefaultBooguWorkflow();
+        }
+      }
       async function uiWorkflowToApi(ui) {
         const nodeCount = (ui.nodes || []).filter((n) => n && n.mode !== 2 && n.type).length;
         showStatusToast('JSON 変換中', `${nodeCount} ノードを API 形式に変換しています…`, 'working');
@@ -3604,6 +4086,7 @@
             const name = widgetNames[index];
             if (name && inputs[name] === undefined) inputs[name] = value;
           });
+          if (!widgetNames.length) applyUiWidgetFallbacks(node, inputs);
           api[id] = { class_type: node.type, inputs, _meta: { title: node.title || node.type } };
           converted += 1;
         });
@@ -3612,7 +4095,126 @@
         return api;
       }
       const comfyStackKey = 'eliora-comfy-stack-v2';
+      const recentUnetsKey = 'eliora-recent-unets-v1';
+      const maxRecentUnets = 12;
       let modelInventoryCache = null;
+      const WEIGHT_DTYPE_OPTIONS = [
+        { value: 'default', label: 'Auto (VRAM-friendly)', labelJa: '自動（VRAM節約）' },
+        { value: 'fp8_e4m3fn', label: 'FP8 e4m3 (fast, less VRAM)', labelJa: 'FP8 e4m3（速い・VRAM少）' },
+        { value: 'fp8_e5m2', label: 'FP8 e5m2', labelJa: 'FP8 e5m2' },
+        { value: 'fp16', label: 'FP16 (quality)', labelJa: 'FP16（画質優先）' },
+        { value: 'bf16', label: 'BF16', labelJa: 'BF16' },
+      ];
+      function loadRecentUnets() {
+        try {
+          const raw = localStorage.getItem(recentUnetsKey);
+          const list = raw ? JSON.parse(raw) : [];
+          return Array.isArray(list) ? list.filter((x) => typeof x === 'string').slice(0, maxRecentUnets) : [];
+        } catch (_) {
+          return [];
+        }
+      }
+      function rememberRecentUnet(name) {
+        if (!name) return;
+        const list = loadRecentUnets().filter((x) => x !== name);
+        list.unshift(name);
+        localStorage.setItem(recentUnetsKey, JSON.stringify(list.slice(0, maxRecentUnets)));
+      }
+      function isLikelyImageUnet(name) {
+        const n = String(name || '').toLowerCase();
+        if (!n || !/\.(safetensors|gguf|sft)$/.test(n)) return false;
+        if (/ace[-_]?step|music|audio|tts|voice|wav|song|depth|pose|lotus|wav2vec/.test(n)) return false;
+        if (/qwen.*vl|vision.*language|llm|text[-_]?only/.test(n)) return false;
+        return true;
+      }
+      function unetFolderLabel(name) {
+        const parts = String(name || '').replace(/\\/g, '/').split('/');
+        if (parts.length <= 1) return '(root)';
+        return parts.slice(0, -1).join('/') || '(root)';
+      }
+      function listUnetNames(inventory, imageOnly = true) {
+        const all = inventory?.unets || [];
+        const unetExclude = /wan|ltx|hunyuan|ovi|acestep|cosmos|kandinsky|seedvr|nsfw_wan|talk|animate|vace|flashvsr/i;
+        let names = imageOnly ? all.filter((n) => isLikelyImageUnet(n) && !unetExclude.test(n)) : all.slice();
+        return names;
+      }
+      function resolveWeightDtype(unetName, explicit) {
+        if (explicit && explicit !== 'default') return explicit;
+        const n = String(unetName || '').toLowerCase();
+        if (/fp8|_fp8|e4m3|e5m2|fp8mixed/.test(n)) return 'fp8_e4m3fn';
+        if (/bf16/.test(n)) return 'bf16';
+        if (/fp16|_f16/.test(n)) return 'fp16';
+        return 'default';
+      }
+      function guessClipType(clipName) {
+        const n = String(clipName || '').toLowerCase();
+        if (/qwen_2\.5_vl|qwen.*vl|qwen_image/i.test(n)) return 'qwen_image';
+        if (/qwen_3_4b|z_image|lumina/i.test(n)) return 'lumina2';
+        if (/flux2|klein|mistral/.test(n)) return 'flux2';
+        if (/flux/.test(n)) return 'flux';
+        return 'lumina2';
+      }
+      function applyStackOverrides(stack, inventory) {
+        if (!stack) return null;
+        const clipOverride = $('comfyClipOverride')?.value?.trim() || '';
+        const vaeOverride = $('comfyVaeOverride')?.value?.trim() || '';
+        const weightDtype = resolveWeightDtype(stack.unet, $('comfyWeightDtype')?.value || 'default');
+        let next = { ...stack, weightDtype };
+        if (vaeOverride) {
+          const vae = pickExisting(vaeOverride, inventory.vaes);
+          if (vae) next = { ...next, vae };
+        }
+        if (clipOverride && !stack.clip?.dual) {
+          const clip = pickExisting(clipOverride, inventory.clips);
+          if (clip) next = { ...next, clip: { name: clip, type: guessClipType(clip) } };
+        }
+        return next;
+      }
+      function buildLocalUnetOptionsHtml(names, query) {
+        const lang = uiLang;
+        const recent = loadRecentUnets().filter((r) => names.includes(r));
+        const chunks = [];
+        if (recent.length && !query) {
+          const label = lang === 'ja' ? '最近使った' : 'Recent';
+          chunks.push(`<optgroup label="${esc(label)}">${recent.map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join('')}</optgroup>`);
+        }
+        if (!query) {
+          const byFolder = new Map();
+          for (const name of names) {
+            const folder = unetFolderLabel(name);
+            if (!byFolder.has(folder)) byFolder.set(folder, []);
+            byFolder.get(folder).push(name);
+          }
+          for (const folder of [...byFolder.keys()].sort((a, b) => a.localeCompare(b))) {
+            const opts = byFolder.get(folder).map((name) => {
+              const short = name.split(/[\\/]/).pop();
+              return `<option value="${esc(name)}" title="${esc(name)}">${esc(short)}</option>`;
+            }).join('');
+            chunks.push(`<optgroup label="${esc(folder)}">${opts}</optgroup>`);
+          }
+        } else {
+          const label = lang === 'ja' ? '検索結果' : 'Search results';
+          chunks.push(`<optgroup label="${esc(label)}">${names.map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join('')}</optgroup>`);
+        }
+        return chunks.join('');
+      }
+      function updateLocalUnetMeta(count, stack) {
+        const meta = $('comfyLocalUnetMeta');
+        if (!meta) return;
+        if (!count) {
+          meta.textContent = t('modelLocalUnetMetaDefault');
+          return;
+        }
+        let text = t('modelLocalUnetMetaCount').replace('{n}', String(count));
+        if (stack?.unet) {
+          const clipLabel = stack.clip?.dual
+            ? `${stack.clip.name1} + ${stack.clip.name2}`
+            : stack.clip?.name || '?';
+          text += ` · CLIP ${clipLabel} · VAE ${stack.vae || '?'}`;
+          if (stack.weightDtype && stack.weightDtype !== 'default') text += ` · ${stack.weightDtype}`;
+        }
+        meta.textContent = text;
+      }
       const MODEL_STACK_PRESETS = [
         {
           id: 'z_image_turbo',
@@ -3622,6 +4224,7 @@
           unet: 'Z_image\\z_image_turbo_bf16.safetensors',
           clip: { name: 'Z\\qwen_3_4b.safetensors', type: 'lumina2' },
           vae: 'Z\\z_image_vae.safetensors',
+          preferTxt2img: true,
           negativeMode: 'zero_out',
           steps: 10,
           cfg: 1,
@@ -3634,8 +4237,9 @@
           img2img: true,
           qwenEdit: true,
           unet: 'Qwen\\qwen_image_edit_2511_fp8mixed.safetensors',
-          clip: { name: 'qwen_2.5_vl_7b_fp8_scaled.safetensors', type: 'qwen_image' },
-          vae: 'qwen_image_vae.safetensors',
+          clip: { name: 'Qwen\\qwen_2.5_vl_7b_fp8_scaled.safetensors', type: 'qwen_image' },
+          vae: 'Qwen\\qwen_image_vae.safetensors',
+          preferEdit: true,
           steps: 8,
           cfg: 1,
         },
@@ -3680,11 +4284,37 @@
         };
         return modelInventoryCache;
       }
+      function normalizeModelPath(name) {
+        return String(name || '').trim().replace(/\//g, '\\').replace(/\\+/g, '\\');
+      }
+      function canonicalModelPath(name, list) {
+        if (!name || !Array.isArray(list) || !list.length) return '';
+        const normalized = normalizeModelPath(name);
+        const exact = list.find((item) => item === name || item === normalized);
+        if (exact) return exact;
+        const base = normalized.split('\\').pop().toLowerCase();
+        return list.find((item) => String(item).split(/[\\/]/).pop().toLowerCase() === base) || '';
+      }
       function pickExisting(name, lists) {
-        if (!name) return '';
-        if (lists.some((item) => item === name)) return name;
-        const base = name.split(/[\\/]/).pop();
-        return lists.find((item) => item === base || item.endsWith(base) || item.endsWith('\\' + base) || item.endsWith('/' + base)) || '';
+        return canonicalModelPath(name, lists);
+      }
+      function finalizeStackPaths(stack, inventory) {
+        if (!stack || !inventory) return null;
+        const unet = canonicalModelPath(stack.unet, inventory.unets);
+        const vae = canonicalModelPath(stack.vae, inventory.vaes);
+        if (!unet || !vae) return null;
+        if (stack.clip?.dual) {
+          const clip1 = canonicalModelPath(stack.clip.name1, inventory.dualClips);
+          const clip2 = canonicalModelPath(stack.clip.name2, inventory.dualClips);
+          if (!clip1 || !clip2) return null;
+          return { ...stack, unet, vae, clip: { ...stack.clip, name1: clip1, name2: clip2 } };
+        }
+        if (stack.clip?.name) {
+          const clipName = canonicalModelPath(stack.clip.name, inventory.clips);
+          if (!clipName) return null;
+          return { ...stack, unet, vae, clip: { ...stack.clip, name: clipName } };
+        }
+        return { ...stack, unet, vae };
       }
       function stackIsAvailable(stack, inventory) {
         const unet = pickExisting(stack.unet, inventory.unets);
@@ -3700,27 +4330,301 @@
         if (!clip) return null;
         return { ...stack, unet, vae, clip: { ...stack.clip, name: clip } };
       }
+      function resolveQwenEditStack(inventory) {
+        const unet = inventory.unets.find((u) => /qwen_image_edit_2511/i.test(u))
+          || inventory.unets.find((u) => /qwen_image_edit/i.test(u));
+        const clip = inventory.clips.find((c) => /qwen_2\.5_vl_7b_fp8_scaled/i.test(c))
+          || inventory.clips.find((c) => /qwen_2\.5_vl.*fp8/i.test(c))
+          || inventory.clips.find((c) => /qwen_2\.5_vl/i.test(c))
+          || inventory.clips.find((c) => /qwen.*vl/i.test(c));
+        const vae = inventory.vaes.find((v) => /qwen_image_vae/i.test(v));
+        if (!unet || !clip || !vae) return null;
+        return {
+          id: 'qwen_image_edit',
+          label: unet.split(/[\\/]/).pop(),
+          txt2img: false,
+          img2img: true,
+          qwenEdit: true,
+          unet,
+          clip: { name: clip, type: 'qwen_image' },
+          vae,
+          steps: 8,
+          cfg: 1,
+        };
+      }
+      function resolveZImageStack(inventory, unetName) {
+        const unet = unetName
+          ? pickExisting(unetName, inventory.unets)
+          : (pickExisting('Z_image\\z_image_turbo_bf16.safetensors', inventory.unets)
+            || inventory.unets.find((u) => /z_image_turbo/i.test(u))
+            || inventory.unets.find((u) => /z_image|z-image|zit/i.test(u)));
+        const clip = pickExisting('Z\\qwen_3_4b.safetensors', inventory.clips)
+          || inventory.clips.find((c) => /qwen_3_4b/i.test(c));
+        const vae = pickExisting('Z\\z_image_vae.safetensors', inventory.vaes)
+          || inventory.vaes.find((v) => /z_image_vae/i.test(v));
+        if (!unet || !clip || !vae) return null;
+        return {
+          id: 'z_image_turbo',
+          label: unet.split(/[\\/]/).pop(),
+          txt2img: true,
+          img2img: true,
+          unet,
+          clip: { name: clip, type: 'lumina2' },
+          vae,
+          negativeMode: 'zero_out',
+          steps: 10,
+          cfg: 1,
+          denoiseImg2img: 0.62,
+        };
+      }
+      function assertStackClipReady(stack) {
+        if (!stack?.unet) throw new Error('UNET が未選択です。右パネルでローカル UNET を選ぶか、自動選択にしてください。');
+        if (stack.clip?.dual) {
+          if (!stack.clip.name1 || !stack.clip.name2) {
+            throw new Error('Dual CLIP が見つかりません。Flux.1 用の clip_l + t5 が必要です。');
+          }
+          return;
+        }
+        if (!stack.clip?.name) {
+          throw new Error('CLIP が見つかりません。画像編集なら Qwen Image Edit、生成なら Z-Image / Flux を選んでください。');
+        }
+      }
+      const EXTERNAL_WORKFLOW_RE = /ttp_|seedvr|gpenhal|tile_image_size|sd1\.5.*comfyui|wan22|flashvsr|cosmos|hunyuanvideo|ace[-_]?step/i;
+      function workflowJsonLooksExternal(raw) {
+        return EXTERNAL_WORKFLOW_RE.test(String(raw || '').toLowerCase());
+      }
+      function workflowJsonUnsafeSync(raw) {
+        const text = String(raw || '').trim();
+        if (!text) return '';
+        if (workflowJsonLooksExternal(text)) return '外部カスタムノード（TTP / SeedVR 等）';
+        try {
+          const data = JSON.parse(text);
+          if (isCanvasExport(data)) return 'Canvas ボード JSON（ワークフローではありません）';
+          const api = apiRoot(data);
+          if (api) {
+            const loaders = Object.values(api).filter((n) => /Loader$/i.test(n?.class_type || ''));
+            for (const node of loaders) {
+              for (const val of Object.values(node.inputs || {})) {
+                if (typeof val === 'string' && /\\\\/.test(val)) return 'モデルパス形式が古い（二重バックスラッシュ）';
+              }
+            }
+          }
+          if (!api && isUiWorkflow(data)) {
+            const types = (data.nodes || []).map((n) => n?.type).filter(Boolean).join(' ').toLowerCase();
+            if (EXTERNAL_WORKFLOW_RE.test(types)) return 'UI Workflow に未対応ノードがあります';
+          }
+        } catch { return 'JSON 形式が壊れています'; }
+        return '';
+      }
+      async function assessWorkflowJson(raw) {
+        const text = String(raw || '').trim();
+        if (!text) return { ok: true, usable: true, mode: 'auto', message: uiLang === 'ja' ? 'Boogu JSON を読み込み中…' : 'Loading Boogu JSON…' };
+        if (isOfficialBooguWorkflowText(text)) {
+          return { ok: true, usable: true, mode: 'boogu', message: uiLang === 'ja' ? 'Boogu 画像編集 JSON（検証済み）' : 'Boogu edit JSON (verified)' };
+        }
+        const syncBlock = workflowJsonUnsafeSync(text);
+        if (syncBlock) return { ok: false, usable: false, mode: 'blocked', message: syncBlock };
+        let data;
+        try {
+          data = JSON.parse(text);
+        } catch (error) {
+          return { ok: false, usable: false, mode: 'invalid', message: `JSON 形式エラー: ${error.message}` };
+        }
+        if (isCanvasExport(data)) return { ok: false, usable: false, mode: 'canvas', message: 'Canvas ボード JSON です' };
+        let api = apiRoot(data);
+        if (!api && isUiWorkflow(data)) {
+          try {
+            const info = await getObjectInfo(true);
+            const types = [...new Set((data.nodes || []).map((n) => n?.type).filter(Boolean))];
+            const missing = types.filter((t) => !info[t] && !BUILTIN_COMFY_NODES.has(t));
+            if (missing.length) {
+              return { ok: false, usable: false, mode: 'missing', message: `未インストール: ${missing.slice(0, 3).map(comfyNodeLabel).join(', ')}${missing.length > 3 ? ' …' : ''}`, missing };
+            }
+            return { ok: true, usable: true, mode: 'ui', message: `UI 形式 OK（${data.nodes?.length || 0} ノード）` };
+          } catch {
+            return { ok: false, usable: false, mode: 'offline', message: 'ComfyUI 未接続のため JSON を検証できません' };
+          }
+        }
+        if (!api) return { ok: false, usable: false, mode: 'unknown', message: 'ComfyUI API/UI 形式ではありません' };
+        try {
+          const missing = await findWorkflowMissingNodes(api);
+          if (missing.length) {
+            return { ok: false, usable: false, mode: 'missing', message: `未インストール: ${missing.slice(0, 3).join(', ')}${missing.length > 3 ? ' …' : ''}`, missing };
+          }
+        } catch {
+          return { ok: false, usable: false, mode: 'offline', message: 'ComfyUI 未接続のため JSON を検証できません' };
+        }
+        return { ok: true, usable: true, mode: 'api', message: `API 形式 OK（${Object.keys(api).length} ノード）` };
+      }
+      async function sanitizeSavedWorkflowOnLoad() {
+        const raw = $('comfyWorkflow').value.trim();
+        if (!raw) {
+          $('comfyStatus').textContent = t('comfyStatusDefault');
+          return;
+        }
+        const assess = await assessWorkflowJson(raw);
+        if (assess.usable) {
+          $('comfyStatus').textContent = assess.message;
+          return;
+        }
+        $('comfyWorkflow').value = '';
+        scheduleSave();
+        logActivity(`保存されていた問題 JSON を解除: ${assess.message}`, 'info');
+        $('comfyStatus').textContent = t('comfyStatusDefault');
+        showStatusToast('JSON 自動解除', `以前の Workflow JSON に問題がありました（${assess.message}）。空欄のまま ▶ 実行で自動編集します。`, 'info', 12000);
+      }
+      async function findWorkflowMissingNodes(workflow) {
+        const info = await getObjectInfo(true);
+        const missing = [];
+        for (const [id, node] of Object.entries(workflow || {})) {
+          const type = node?.class_type;
+          if (!type || info[type] || BUILTIN_COMFY_NODES.has(type)) continue;
+          missing.push(`${comfyNodeLabel(type)} (#${id})`);
+        }
+        return missing;
+      }
+      async function clearStaleWorkflowJson(reason) {
+        $('comfyWorkflow').value = '';
+        scheduleSave();
+        logActivity(reason, 'info');
+        showStatusToast('自動修正', reason, 'info', 10000);
+      }
+      async function resolveComfyWorkflowMode(source) {
+        const raw = $('comfyWorkflow').value.trim();
+        if (!raw) return false;
+        if (isOfficialBooguWorkflowText(raw)) return false;
+        if (workflowJsonLooksExternal(raw)) {
+          await clearStaleWorkflowJson('外部 Workflow JSON を解除 — 接続した画像から自動 Qwen 編集します（修正不要）');
+          return true;
+        }
+        let data;
+        try {
+          data = JSON.parse(raw);
+        } catch (_) {
+          await clearStaleWorkflowJson('壊れた Workflow JSON を解除 — 自動生成に切り替えます');
+          return true;
+        }
+        let api = apiRoot(data);
+        if (!api && isUiWorkflow(data)) {
+          const types = (data.nodes || []).map((n) => n?.type).filter(Boolean).join(' ').toLowerCase();
+          if (EXTERNAL_WORKFLOW_RE.test(types)) {
+            await clearStaleWorkflowJson('UI Workflow に未対応ノードがあります — 自動 Qwen 編集に切り替えます');
+            return true;
+          }
+          return false;
+        }
+        if (!api) return false;
+        const missing = await findWorkflowMissingNodes(api);
+        if (missing.length) {
+          await clearStaleWorkflowJson(`未インストールのノードを検出 — JSON 解除: ${missing.slice(0, 3).join(', ')}${missing.length > 3 ? ' …' : ''}`);
+          return true;
+        }
+        const prompt = promptTextForComfy();
+        const images = collectWorkflowImages(source);
+        const needsMulti = detectMultiImageEditIntent(prompt, images.length);
+        if (needsMulti && images.length >= 2 && !raw.includes('{{image2}}') && /LoadImage/.test(raw)) {
+          await clearStaleWorkflowJson('複数画像編集は自動 Qwen ワークフローを使用します（JSON 解除）');
+          return true;
+        }
+        return false;
+      }
+      function preflightComfyImages(source) {
+        const prompt = promptTextForComfy();
+        const images = collectWorkflowImages(source);
+        if (detectMultiImageEditIntent(prompt, images.length) && images.length < 2) {
+          return '複数画像の編集指示ですが、参照 Image が1枚しか見つかりません。2枚の Image カードを同じ線のグループにつないでください。';
+        }
+        if (detectImageEditIntent(prompt, images.length) && !images.length) {
+          return '画像編集の指示ですが、Image カードが線でつながっていません。右の●から左の●へ線を引いてください。';
+        }
+        if (/第[一二三四1-4]|参考に|背景.*変/i.test(prompt) && images.length < 2) {
+          return '「第2枚を参考に」などの指示には Image を2枚以上、線でつないでください。';
+        }
+        return '';
+      }
+      async function validateWorkflowNodes(workflow, options = {}) {
+        const { autoBuilt = false } = options;
+        if (autoBuilt) return;
+        let info = await getObjectInfo(true);
+        const findMissing = () => {
+          const missing = [];
+          for (const [id, node] of Object.entries(workflow || {})) {
+            const type = node?.class_type;
+            if (!type || info[type] || BUILTIN_COMFY_NODES.has(type)) continue;
+            missing.push(`${comfyNodeLabel(type)} (#${id})`);
+          }
+          return missing;
+        };
+        let missing = findMissing();
+        if (missing.length && Object.keys(info).length < 20) {
+          info = await getObjectInfo(true);
+          missing = findMissing();
+        }
+        if (!missing.length) return;
+        const preview = missing.slice(0, 3).join(', ');
+        throw new Error(`ComfyUI にないノード: ${preview}${missing.length > 3 ? ' …' : ''}。下の「API workflow JSON」を空にすると自動生成が使えます。`);
+      }
+      function sanitizeWorkflowModelPaths(workflow, inventory) {
+        const loaderMap = {
+          UNETLoader: ['unet_name', inventory.unets],
+          CLIPLoader: ['clip_name', inventory.clips],
+          VAELoader: ['vae_name', inventory.vaes],
+          DualCLIPLoader: [['clip_name1', inventory.dualClips], ['clip_name2', inventory.dualClips]],
+        };
+        for (const node of Object.values(workflow || {})) {
+          const spec = loaderMap[node?.class_type];
+          if (!spec || !node.inputs) continue;
+          if (node.class_type === 'DualCLIPLoader') {
+            for (const [key, list] of spec) {
+              if (node.inputs[key]) node.inputs[key] = canonicalModelPath(node.inputs[key], list) || node.inputs[key];
+            }
+            continue;
+          }
+          const [key, list] = spec;
+          if (node.inputs[key]) node.inputs[key] = canonicalModelPath(node.inputs[key], list) || node.inputs[key];
+        }
+        return workflow;
+      }
       function guessStackForUnet(unetName, inventory) {
         const name = String(unetName || '');
-        const base = MODEL_STACK_PRESETS.find((p) => p.id === 'z_image_turbo');
-        let preset = base;
-        if (/qwen_image_edit/i.test(name)) preset = MODEL_STACK_PRESETS.find((p) => p.id === 'qwen_image_edit') || base;
-        else if (/flux-2-klein|flux2|klein/i.test(name)) preset = MODEL_STACK_PRESETS.find((p) => p.id === 'flux2_klein') || base;
-        else if (/flux1|Flux[\\/]flux1/i.test(name)) preset = MODEL_STACK_PRESETS.find((p) => p.id === 'flux1_dev') || base;
-        else if (/z_image|z-image|zit/i.test(name)) preset = MODEL_STACK_PRESETS.find((p) => p.id === 'z_image_turbo') || base;
-        const resolved = stackIsAvailable({ ...preset, unet: name, label: name.split(/[\\/]/).pop() }, inventory);
-        return resolved || null;
+        if (/qwen_image_edit/i.test(name)) {
+          return resolveQwenEditStack(inventory) || stackIsAvailable({ ...MODEL_STACK_PRESETS.find((p) => p.id === 'qwen_image_edit'), unet: name, label: name.split(/[\\/]/).pop() }, inventory);
+        }
+        if (/flux-2-klein|flux2|klein/i.test(name)) {
+          const preset = MODEL_STACK_PRESETS.find((p) => p.id === 'flux2_klein');
+          return stackIsAvailable({ ...preset, unet: name, label: name.split(/[\\/]/).pop() }, inventory);
+        }
+        if (/flux1|Flux[\\/]flux1/i.test(name)) {
+          const preset = MODEL_STACK_PRESETS.find((p) => p.id === 'flux1_dev');
+          return stackIsAvailable({ ...preset, unet: name, label: name.split(/[\\/]/).pop() }, inventory);
+        }
+        if (/z_image|z-image|zit/i.test(name)) {
+          return resolveZImageStack(inventory, name);
+        }
+        return resolveZImageStack(inventory, name);
+      }
+      function selectedLocalUnet() {
+        return $('composerLocalUnet')?.value?.trim() || $('comfyLocalUnet')?.value?.trim() || '';
       }
       function selectedModelStackId() {
-        return $('composerModelStack')?.value || $('comfyModelStack')?.value || 'auto';
+        return $('comfyModelStack')?.value || 'auto';
       }
       async function refreshModelStackSelect() {
         const inventory = await getModelInventory();
         const stackSel = $('comfyModelStack');
-        const composerSel = $('composerModelStack');
-        const unetSel = $('comfyUnetCustom');
+        const localSel = $('comfyLocalUnet');
+        const composerLocal = $('composerLocalUnet');
+        const clipSel = $('comfyClipOverride');
+        const vaeSel = $('comfyVaeOverride');
+        const dtypeSel = $('comfyWeightDtype');
         const savedStack = localStorage.getItem(comfyStackKey) || $('comfyModelStack')?.value || 'auto';
-        const savedUnet = $('comfyUnetCustom')?.value || '';
+        const savedLocal = selectedLocalUnet();
+        const query = ($('comfyLocalUnetSearch')?.value || '').trim().toLowerCase();
+        const imageOnly = $('comfyLocalUnetImageOnly')?.checked !== false;
+        let names = listUnetNames(inventory, imageOnly);
+        if (query) names = names.filter((n) => n.toLowerCase().includes(query));
+        names.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+
         const stackOptions = [`<option value="auto">${esc(t('modelStackAuto'))}</option>`];
         for (const preset of MODEL_STACK_PRESETS) {
           if (!stackIsAvailable(preset, inventory)) continue;
@@ -3729,29 +4633,95 @@
           if (preset.img2img) modes.push('img2img');
           stackOptions.push(`<option value="${esc(preset.id)}">${esc(preset.label)} (${modes.join(' · ')})</option>`);
         }
-        const stackHtml = stackOptions.join('');
         if (stackSel) {
-          stackSel.innerHTML = stackHtml;
+          stackSel.innerHTML = stackOptions.join('');
           stackSel.value = [...stackSel.options].some((o) => o.value === savedStack) ? savedStack : 'auto';
         }
-        if (composerSel) {
-          composerSel.innerHTML = stackHtml;
-          composerSel.value = [...composerSel.options].some((o) => o.value === savedStack) ? savedStack : 'auto';
+
+        const localHtml = buildLocalUnetOptionsHtml(names, query);
+        if (localSel) {
+          localSel.innerHTML = localHtml;
+          const canonSaved = canonicalModelPath(savedLocal, inventory.unets);
+          if (canonSaved && names.includes(canonSaved)) localSel.value = canonSaved;
         }
-        if (unetSel) {
-          const unetExclude = /wan|ltx|hunyuan|ovi|acestep|depth|pose|lotus|cosmos|kandinsky|seedvr|nsfw_wan|wav2vec|audio|video|talk|animate|vace|flashvsr/i;
-          const unets = inventory.unets.filter((n) => !unetExclude.test(n));
-          unetSel.innerHTML = `<option value="">${esc(t('modelUnetDefault'))}</option>` + unets.map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
-          if (savedUnet && unets.includes(savedUnet)) unetSel.value = savedUnet;
+        if (composerLocal) {
+          const panelModel = $('comfyLocalUnet')?.value?.trim();
+          const autoLabel = esc(panelModel
+            ? `${t('composerLocalUnetAuto')} · ${panelModel.split(/[\\/]/).pop()}`
+            : t('composerLocalUnetAuto'));
+          const recent = loadRecentUnets().filter((r) => names.includes(r));
+          const composerNames = [...new Set([...(savedLocal && names.includes(savedLocal) ? [savedLocal] : []), ...recent])].slice(0, maxRecentUnets);
+          const composerOpts = [`<option value="">${autoLabel}</option>`]
+            .concat(composerNames.map((n) => `<option value="${esc(n)}">${esc(n.split(/[\\/]/).pop())}</option>`));
+          if (savedLocal && !composerNames.includes(savedLocal)) {
+            composerOpts.push(`<option value="${esc(savedLocal)}">${esc(savedLocal.split(/[\\/]/).pop())}</option>`);
+          }
+          composerLocal.innerHTML = composerOpts.join('');
+          if (savedLocal && names.includes(savedLocal)) composerLocal.value = savedLocal;
         }
+
+        if (clipSel) {
+          const savedClip = clipSel.value || '';
+          clipSel.innerHTML = `<option value="">${esc(t('modelClipAuto'))}</option>`
+            + (inventory.clips || []).map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
+          if (savedClip && inventory.clips.includes(savedClip)) clipSel.value = savedClip;
+        }
+        if (vaeSel) {
+          const savedVae = vaeSel.value || '';
+          vaeSel.innerHTML = `<option value="">${esc(t('modelVaeAuto'))}</option>`
+            + (inventory.vaes || []).map((n) => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
+          if (savedVae && inventory.vaes.includes(savedVae)) vaeSel.value = savedVae;
+        }
+        if (dtypeSel && !dtypeSel.dataset.filled) {
+          const lang = uiLang;
+          dtypeSel.innerHTML = WEIGHT_DTYPE_OPTIONS.map((row) => {
+            const label = lang === 'ja' ? row.labelJa : row.label;
+            return `<option value="${esc(row.value)}">${esc(label)}</option>`;
+          }).join('');
+          dtypeSel.dataset.filled = '1';
+        }
+
+        let previewStack = null;
+        if (savedLocal && names.includes(savedLocal)) {
+          previewStack = applyStackOverrides(guessStackForUnet(savedLocal, inventory), inventory);
+        }
+        updateLocalUnetMeta(names.length, previewStack);
       }
-      async function resolveModelStack(hasImage) {
+      function finishStack(stack, inventory) {
+        if (!stack) throw new Error('モデルスタックを解決できませんでした。');
+        const merged = applyStackOverrides(stack, inventory);
+        const finalized = finalizeStackPaths(merged, inventory);
+        if (!finalized) {
+          const label = stack?.unet?.split(/[\\/]/).pop() || stack?.label || '?';
+          throw new Error(`モデルファイルが ComfyUI 一覧にありません: ${label}`);
+        }
+        assertStackClipReady(finalized);
+        return finalized;
+      }
+      async function resolveModelStack(hasImage, hints = {}) {
         const inventory = await getModelInventory();
-        const customUnet = $('comfyUnetCustom')?.value?.trim();
-        if (customUnet) {
-          const guessed = guessStackForUnet(customUnet, inventory);
-          if (guessed) return guessed;
-          throw new Error(`UNET が見つかりません: ${customUnet}`);
+        if (hints.multiEdit || hints.imageEdit) {
+          const dynamic = resolveQwenEditStack(inventory);
+          const fallback = stackIsAvailable(MODEL_STACK_PRESETS.find((item) => item.id === 'qwen_image_edit'), inventory);
+          if (!dynamic && !fallback) {
+            throw new Error('画像の編集には Qwen Image Edit が必要です。ComfyUI の Qwen フォルダを確認するか、詳細で qwen_image_edit UNET を選んでください。');
+          }
+          const stack = finishStack(dynamic || fallback, inventory);
+          logActivity(hints.multiEdit ? '複数画像編集 → Qwen Image Edit を自動選択' : '画像編集指示 → Qwen Image Edit を自動選択', 'info');
+          return stack;
+        }
+        const localUnet = canonicalModelPath(selectedLocalUnet(), inventory.unets);
+        if (localUnet) {
+          const guessed = guessStackForUnet(localUnet, inventory);
+          if (!guessed) throw new Error(`UNET が見つかりません: ${localUnet}`);
+          const stack = finishStack(guessed, inventory);
+          if (hasImage && !stack.img2img && !stack.qwenEdit) {
+            throw new Error(`${stack.label} は画像編集（img2img）非対応です。別の UNET を選ぶか、ローカル UNET を空にして自動選択にしてください。`);
+          }
+          if (!hasImage && !stack.txt2img && stack.qwenEdit) {
+            throw new Error(`${stack.label} は編集専用です。画像カードを接続するか別 UNET を選んでください。`);
+          }
+          return stack;
         }
         const pick = selectedModelStackId();
         if (pick && pick !== 'auto') {
@@ -3759,34 +4729,56 @@
           if (!preset) throw new Error(`不明なモデルスタック: ${pick}`);
           if (hasImage && !preset.img2img) throw new Error(`${preset.label} は画像編集（img2img）非対応です。別スタックを選んでください。`);
           if (!hasImage && !preset.txt2img) throw new Error(`${preset.label} はテキスト生成（txt2img）非対応です。`);
-          const resolved = stackIsAvailable(preset, inventory);
-          if (resolved) return resolved;
-          throw new Error(`${preset.label} のファイルが ComfyUI に見つかりません。`);
+          const available = stackIsAvailable(preset, inventory);
+          if (!available) throw new Error(`${preset.label} のファイルが ComfyUI に見つかりません。`);
+          return finishStack(available, inventory);
         }
         const order = hasImage
           ? ['qwen_image_edit', 'z_image_turbo', 'flux2_klein', 'flux1_dev']
           : ['z_image_turbo', 'flux2_klein', 'flux1_dev'];
         for (const id of order) {
-          const preset = MODEL_STACK_PRESETS.find((item) => item.id === id);
-          if (!preset) continue;
-          if (hasImage && !preset.img2img) continue;
-          if (!hasImage && !preset.txt2img) continue;
-          const resolved = stackIsAvailable(preset, inventory);
-          if (resolved) return resolved;
+          let candidate = null;
+          if (id === 'qwen_image_edit') candidate = resolveQwenEditStack(inventory);
+          else if (id === 'z_image_turbo') candidate = resolveZImageStack(inventory);
+          else {
+            const preset = MODEL_STACK_PRESETS.find((item) => item.id === id);
+            if (!preset) continue;
+            if (hasImage && !preset.img2img) continue;
+            if (!hasImage && !preset.txt2img) continue;
+            candidate = stackIsAvailable(preset, inventory);
+          }
+          if (!candidate) continue;
+          try {
+            return finishStack(candidate, inventory);
+          } catch (_) {
+            continue;
+          }
         }
-        throw new Error('diffusion_models 用の自動スタックが見つかりません。左のモデル選択を確認してください。');
+        throw new Error('diffusion_models 用の自動スタックが見つかりません。ローカル UNET を選ぶか、プリセットを確認してください。');
       }
       function rememberModelStack(stack) {
+        if (stack?.unet) rememberRecentUnet(stack.unet);
         if (stack?.id) localStorage.setItem(comfyStackKey, stack.id);
+      }
+      function syncLocalUnetPickers(fromId) {
+        const src = $(fromId);
+        if (!src) return;
+        const val = src.value;
+        if ($('comfyLocalUnet') && fromId !== 'comfyLocalUnet') $('comfyLocalUnet').value = val;
+        if ($('composerLocalUnet') && fromId !== 'composerLocalUnet') $('composerLocalUnet').value = val;
+        scheduleSave();
+        refreshModelStackSelect().catch(() => {});
+        const node = selectedNode ? nodeBy(selectedNode) : null;
+        if (node) updateComposer();
       }
       function syncModelStackPickers(fromId) {
         const src = $(fromId);
         if (!src) return;
         const val = src.value;
         if ($('comfyModelStack') && fromId !== 'comfyModelStack') $('comfyModelStack').value = val;
-        if ($('composerModelStack') && fromId !== 'composerModelStack') $('composerModelStack').value = val;
         if (val !== 'auto') localStorage.setItem(comfyStackKey, val);
         scheduleSave();
+        refreshModelStackSelect().catch(() => {});
       }
       function latentSize() {
         const width = Math.max(256, Math.min(2048, parseInt($('comfyWidth').value, 10) || 1024));
@@ -3828,7 +4820,7 @@
         const { width, height } = latentSize();
         const prompt = promptTextForComfy() || 'high quality detailed image';
         const wf = {
-          '1': { class_type: 'UNETLoader', inputs: { unet_name: stack.unet, weight_dtype: 'default' } },
+          '1': { class_type: 'UNETLoader', inputs: { unet_name: stack.unet, weight_dtype: stack.weightDtype || 'default' } },
           '2': { class_type: 'VAELoader', inputs: { vae_name: stack.vae } },
         };
         const clipBlock = attachClipNodes(stack, prompt, 3);
@@ -3869,16 +4861,83 @@
         wf[String(nextId)] = { class_type: 'SaveImage', inputs: { filename_prefix: 'Eliora', images: [decodeId, 0] } };
         return wf;
       }
-      function automaticDiffusionImg2imgWorkflow(stack, seed) {
+      function automaticDiffusionQwenMultiEditWorkflow(stack, seed, imageCount, encodeClass = 'TextEncodeQwenImageEditPlus') {
+        const prompt = promptTextForComfy() || 'edit the image';
+        const primaryIdx = pickEditPrimaryIndex(prompt, imageCount);
+        const wf = {
+          '1': { class_type: 'UNETLoader', inputs: { unet_name: stack.unet, weight_dtype: stack.weightDtype || 'default' } },
+          '2': { class_type: 'CLIPLoader', inputs: { clip_name: stack.clip.name, type: stack.clip.type } },
+          '3': { class_type: 'VAELoader', inputs: { vae_name: stack.vae } },
+          '4': { class_type: 'LoadImage', inputs: { image: '{{image}}' } },
+        };
+        const imageRefs = [['4', 0]];
+        let nextId = 5;
+        if (imageCount >= 2) {
+          wf['5'] = { class_type: 'LoadImage', inputs: { image: '{{image2}}' } };
+          imageRefs.push(['5', 0]);
+          nextId = 6;
+        }
+        if (imageCount >= 3) {
+          wf[String(nextId)] = { class_type: 'LoadImage', inputs: { image: '{{image3}}' } };
+          imageRefs.push([String(nextId), 0]);
+          nextId += 1;
+        }
+        const encodeLoadId = String(4 + primaryIdx);
+        const posId = String(nextId);
+        wf[posId] = buildQwenEncodeNode(encodeClass, prompt, ['2', 0], ['3', 0], imageRefs);
+        nextId += 1;
+        const negId = String(nextId);
+        wf[negId] = buildQwenEncodeNode(encodeClass, '', ['2', 0], ['3', 0], imageRefs);
+        nextId += 1;
+        const encodeId = String(nextId);
+        wf[encodeId] = { class_type: 'VAEEncode', inputs: { pixels: [encodeLoadId, 0], vae: ['3', 0] } };
+        nextId += 1;
+        wf[String(nextId)] = { class_type: 'ModelSamplingAuraFlow', inputs: { shift: 3, model: ['1', 0] } };
+        const auraId = String(nextId);
+        nextId += 1;
+        wf[String(nextId)] = { class_type: 'CFGNorm', inputs: { strength: 1, model: [auraId, 0] } };
+        const cfgId = String(nextId);
+        nextId += 1;
+        const samplerId = String(nextId);
+        wf[samplerId] = {
+          class_type: 'KSampler',
+          inputs: {
+            seed,
+            steps: stack.steps,
+            cfg: stack.cfg,
+            sampler_name: 'euler',
+            scheduler: 'simple',
+            denoise: 1,
+            model: [cfgId, 0],
+            positive: [posId, 0],
+            negative: [negId, 0],
+            latent_image: [encodeId, 0],
+          },
+        };
+        nextId += 1;
+        const decodeId = String(nextId);
+        wf[decodeId] = { class_type: 'VAEDecode', inputs: { samples: [samplerId, 0], vae: ['3', 0] } };
+        nextId += 1;
+        wf[String(nextId)] = { class_type: 'SaveImage', inputs: { filename_prefix: 'Eliora', images: [decodeId, 0] } };
+        return wf;
+      }
+      function automaticDiffusionImg2imgWorkflow(stack, seed, opts = {}) {
+        const imageCount = Math.max(1, opts.imageCount || 1);
+        const multiEdit = Boolean(opts.multiEdit && imageCount >= 2);
+        const encodeClass = opts.encodeClass || 'TextEncodeQwenImageEditPlus';
+        if (stack.qwenEdit && multiEdit) {
+          return automaticDiffusionQwenMultiEditWorkflow(stack, seed, imageCount, encodeClass);
+        }
         if (stack.qwenEdit) {
           const prompt = promptTextForComfy() || 'enhance the image';
+          const imageRefs = [['4', 0]];
           return {
-            '1': { class_type: 'UNETLoader', inputs: { unet_name: stack.unet, weight_dtype: 'default' } },
+            '1': { class_type: 'UNETLoader', inputs: { unet_name: stack.unet, weight_dtype: stack.weightDtype || 'default' } },
             '2': { class_type: 'CLIPLoader', inputs: { clip_name: stack.clip.name, type: stack.clip.type } },
             '3': { class_type: 'VAELoader', inputs: { vae_name: stack.vae } },
             '4': { class_type: 'LoadImage', inputs: { image: '{{image}}' } },
-            '5': { class_type: 'TextEncodeQwenImageEditPlus', inputs: { prompt, clip: ['2', 0], vae: ['3', 0], image1: ['4', 0] } },
-            '6': { class_type: 'TextEncodeQwenImageEditPlus', inputs: { prompt: '', clip: ['2', 0], vae: ['3', 0], image1: ['4', 0] } },
+            '5': buildQwenEncodeNode(encodeClass, prompt, ['2', 0], ['3', 0], imageRefs),
+            '6': buildQwenEncodeNode(encodeClass, '', ['2', 0], ['3', 0], imageRefs),
             '7': { class_type: 'VAEEncode', inputs: { pixels: ['4', 0], vae: ['3', 0] } },
             '8': { class_type: 'ModelSamplingAuraFlow', inputs: { shift: 3, model: ['1', 0] } },
             '9': { class_type: 'CFGNorm', inputs: { strength: 1, model: ['8', 0] } },
@@ -3904,7 +4963,7 @@
         const prompt = promptTextForComfy() || 'high quality detailed image';
         const { width, height } = latentSize();
         const wf = {
-          '1': { class_type: 'UNETLoader', inputs: { unet_name: stack.unet, weight_dtype: 'default' } },
+          '1': { class_type: 'UNETLoader', inputs: { unet_name: stack.unet, weight_dtype: stack.weightDtype || 'default' } },
           '2': { class_type: 'VAELoader', inputs: { vae_name: stack.vae } },
           '3': { class_type: 'LoadImage', inputs: { image: '{{image}}' } },
         };
@@ -3950,14 +5009,44 @@
         const seed = Math.floor(Math.random() * 900000000000000);
         const raw = $('comfyWorkflow').value.trim();
         if (!raw) {
-          const hasImage = Boolean(findWorkflowImageNode());
+          const source = workflowSource();
+          const imageNodes = collectWorkflowImages(source);
+          const prompt = promptTextForComfy();
+          const imageEdit = detectImageEditIntent(prompt, imageNodes.length);
+          const multiEdit = detectMultiImageEditIntent(prompt, imageNodes.length);
+          const hasImage = imageNodes.length > 0;
           showStatusToast('自動ワークフロー', 'diffusion_models スタックを選択中…', 'working');
-          const stack = await resolveModelStack(hasImage);
+          const stack = await resolveModelStack(hasImage, { multiEdit, imageEdit });
           rememberModelStack(stack);
-          logActivity(`自動スタック: ${stack.label} · ${stack.unet}`, 'info');
-          $('comfyStatus').textContent = `${stack.label} · ${hasImage ? 'img2img' : 'txt2img'}（diffusion_models）`;
+          const mode = multiEdit && imageNodes.length >= 2
+            ? 'multi-edit'
+            : imageEdit && hasImage
+              ? 'image-edit'
+              : hasImage
+                ? 'img2img'
+                : 'txt2img';
+          lastComfyRunMeta = {
+            unet: stack.unet,
+            label: stack.label,
+            mode,
+            prompt,
+            imageNames: imageNodes.map((n) => n.title || 'Image'),
+            imageCount: imageNodes.length,
+            multiEdit,
+            at: Date.now(),
+          };
+          logActivity(`自動スタック: ${stack.unet} · ${mode}`, 'info');
+          if (prompt) logActivity(`指示文: ${prompt.slice(0, 140)}${prompt.length > 140 ? '…' : ''}`, 'info');
+          const modelShort = stack.unet.split(/[\\/]/).pop();
+          $('comfyStatus').textContent = `${modelShort} · ${mode}${prompt ? ` · ${prompt.slice(0, 48)}${prompt.length > 48 ? '…' : ''}` : ''}`;
+          updateComposerRunPreview(source);
+          let encodeClass = 'TextEncodeQwenImageEditPlus';
+          if (stack.qwenEdit) {
+            encodeClass = await resolveQwenEncodeClass(multiEdit && imageNodes.length >= 2);
+            logActivity(`Qwen encode node: ${encodeClass}`, 'info');
+          }
           const workflow = hasImage
-            ? automaticDiffusionImg2imgWorkflow(stack, seed)
+            ? automaticDiffusionImg2imgWorkflow(stack, seed, { multiEdit, imageCount: imageNodes.length, encodeClass })
             : automaticDiffusionTxt2imgWorkflow(stack, seed);
           return prepareComfyWorkflow(workflow, seed);
         }
@@ -3970,10 +5059,11 @@
         const api = apiRoot(data);
         if (api) {
           showStatusToast('API ワークフロー', `${Object.keys(api).length} ノードを準備中…`, 'working');
-          return prepareComfyWorkflow(api, seed);
+          return prepareComfyWorkflow(ensureBooguSaveOutput(api), seed);
         }
         if (isUiWorkflow(data)) {
-          return prepareComfyWorkflow(await uiWorkflowToApi(data), seed);
+          const converted = ensureBooguSaveOutput(await uiWorkflowToApi(data));
+          return prepareComfyWorkflow(converted, seed);
         }
         throw new Error('ComfyUI の API 形式または UI 形式 JSON ではありません。');
       }
@@ -4017,27 +5107,44 @@
         }
       }
       async function sendComfy(options = {}) {
-        const { queueOnly = false, skipRunningGuard = false } = options;
+        const { queueOnly = false, skipRunningGuard = false, _autoRetry = false } = options;
         if (comfyRunning && !skipRunningGuard) {
-          showStatusToast('実行中', '前のジョブがまだ動いています。完了までお待ちください。', 'warn', 5000);
-          return;
+          const cleared = await clearStuckComfyRunning();
+          if (!cleared) {
+            const q = await fetchComfyQueue().catch(() => ({ total: 1 }));
+            showStatusToast(
+              'ComfyUI GPU 使用中',
+              uiLang === 'ja'
+                ? `GPU で ${q.total || '?'} 件処理中です。ComfyUI 画面で完了を待つか、30秒後に再試行してください。`
+                : `GPU has ${q.total || '?'} job(s). Wait in ComfyUI or retry shortly.`,
+              'warn',
+              6000,
+            );
+            return;
+          }
         }
         const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
         if (!source) {
           showStatusToast('カード未選択', 'Prompt または Image カードを選んでから Run してください。', 'error', 8000);
           return;
         }
+        if (!_autoRetry) await resolveComfyWorkflowMode(source);
+        const preflight = preflightComfyImages(source);
+        if (preflight) {
+          setComfyStatusError(preflight);
+          showStatusToast('画像の接続', preflight, 'error', 15000);
+          return;
+        }
         const rawWorkflow = $('comfyWorkflow').value.trim();
         if (rawWorkflow) {
           const check = validateWorkflowText(rawWorkflow);
           if (!check.ok) {
-            setComfyStatusError(check.message);
-            showStatusToast('JSON エラー', check.message, 'error', 15000);
-            return;
+            await clearStaleWorkflowJson(check.message);
           }
         }
         if (!skipRunningGuard) setComfyRunning(true);
         clearComfyStatusError();
+        if (isOfficialBooguWorkflowText($('comfyWorkflow').value)) setBooguRunMeta(source);
         showStatusToast('ComfyUI 実行中', `${source.title} — 接続確認中…`, 'working');
         logActivity(`Send Comfy 開始: ${source.title}`, 'info');
         $('comfyStatus').textContent = 'ComfyUI 接続確認中...';
@@ -4046,7 +5153,11 @@
           await ensureComfyOnline();
           showStatusToast('ComfyUI 実行中', `${source.title} — ワークフロー準備中…`, 'working');
           $('comfyStatus').textContent = 'ワークフロー準備中...';
-          const workflow = await buildComfyWorkflow();
+          const usingAutoWorkflow = !rawWorkflow;
+          let workflow = await buildComfyWorkflow();
+          const inventory = await getModelInventory();
+          workflow = sanitizeWorkflowModelPaths(workflow, inventory);
+          await validateWorkflowNodes(workflow, { autoBuilt: usingAutoWorkflow });
           const nodeCount = Object.keys(workflow).length;
           logActivity(`ワークフロー準備完了（${nodeCount} ノード）`, 'ok');
           showStatusToast('ComfyUI 実行中', `${nodeCount} ノードをキューに送信中…`, 'working');
@@ -4058,11 +5169,11 @@
           const rawText = await response.text();
           let data = {};
           try { data = JSON.parse(rawText); } catch { data = {}; }
-          if (!response.ok) {
-            throw new Error(`HTTP ${response.status}: ${rawText.slice(0, 900)}`);
-          }
           if (data.node_errors && Object.keys(data.node_errors).length) {
             throw new Error(formatNodeErrors(data.node_errors));
+          }
+          if (!response.ok) {
+            throw new Error(humanizeComfyError(`HTTP ${response.status}: ${rawText.slice(0, 900)}`));
           }
           lastComfyPromptId = data.prompt_id || '';
           lastComfySourceId = source.id;
@@ -4075,14 +5186,24 @@
           }
           save();
           if (!queueOnly) await pollComfy(24, 2500);
+          await refreshComfyGpuStatus();
         } catch (error) {
-          const message = error.message || String(error);
+          const rawMsg = error.message || String(error);
+          const message = humanizeComfyError(rawMsg);
+          if (!_autoRetry && !isOfficialBooguWorkflowText($('comfyWorkflow').value) && ($('comfyWorkflow').value.trim() || workflowJsonLooksExternal(rawMsg))) {
+            const retryable = /ないノード|node_errors|not in list|missing_node|ttp_|seedvr|invalid image|value_not_in_list|0枚|editprompt/i.test(`${rawMsg} ${$('comfyWorkflow').value}`);
+            if (retryable) {
+              await loadDefaultBooguWorkflow();
+              return sendComfy({ queueOnly, skipRunningGuard: true, _autoRetry: true });
+            }
+          }
           logActivity(`失敗: ${message}`, 'error');
           showStatusToast('ComfyUI エラー', message, 'error', 30000);
-          if (/接続|Bridge|fetch|タイムアウト/i.test(message) && !/invalid image|node_errors|prompt_outputs/i.test(message)) {
-            updateComfyConnectFix(false);
-          }
+          const isDisconnect = /接続|Bridge|fetch|タイムアウト/i.test(message)
+            && !/invalid image|node_errors|prompt_outputs|ないノード|パスが|ビジー|502|503|自動解除|再実行/i.test(message);
+          if (isDisconnect) updateComfyConnectFix(false);
           setComfyStatusError(message);
+          await refreshComfyGpuStatus();
         } finally {
           if (!queueOnly) setComfyRunning(false);
         }
@@ -4116,7 +5237,9 @@
               builtin: true,
             });
           }
-          if (!selectedWorkflowId && workflowItems.length) selectedWorkflowId = workflowItems[0].id;
+          const defaultItem = workflowItems.find((item) => item.path?.includes('boogu-edit-0709'))
+            || workflowItems.find((item) => item.builtin);
+          if (!selectedWorkflowId && defaultItem) selectedWorkflowId = defaultItem.id;
           renderWorkflowList();
           if (workflowItems.length) {
             $('workflowStats').textContent = `Loaded ${workflowItems.length} Eliora workflow(s) from site library. Select one to import or run locally.`;
@@ -4125,22 +5248,83 @@
           console.warn('Builtin workflows unavailable', error);
         }
       }
+      function isBooguWorkflowActive() {
+        return isOfficialBooguWorkflowText($('comfyWorkflow')?.value || '');
+      }
+      function setBooguRunMeta(source) {
+        const prompt = promptTextForComfy();
+        const images = collectWorkflowImages(source);
+        lastComfyRunMeta = {
+          unet: 'Boogu-Image\\boogu_image_edit_bf16.safetensors',
+          label: 'Boogu Edit',
+          mode: images.length >= 2 ? 'boogu-multi-edit' : 'boogu-edit',
+          prompt,
+          imageNames: images.map((n) => n.title || 'Image'),
+          imageCount: images.length,
+          multiEdit: images.length >= 2,
+          at: Date.now(),
+        };
+      }
+      function ensureBooguSaveOutput(workflow) {
+        if (!isBooguWorkflowActive()) return workflow;
+        const hasSave = Object.values(workflow).some((n) => n?.class_type === 'SaveImage');
+        if (hasSave) return workflow;
+        const decodeEntry = Object.entries(workflow).find(([, n]) => n?.class_type === 'VAEDecode');
+        if (!decodeEntry) return workflow;
+        const [decodeId] = decodeEntry;
+        const nextId = String(Math.max(...Object.keys(workflow).map((k) => parseInt(k, 10)).filter((n) => !Number.isNaN(n)), 0) + 1);
+        workflow[nextId] = { class_type: 'SaveImage', inputs: { filename_prefix: 'Eliora', images: [decodeId, 0] } };
+        return workflow;
+      }
       async function pollComfy(times = 1, delayMs = 0) {
-        logActivity(`結果待ち（最大 ${Math.round(times * delayMs / 1000)} 秒）`, 'info');
-        for (let i = 0; i < times; i += 1) {
-          if (delayMs) await new Promise((resolve) => setTimeout(resolve, delayMs));
-          const msg = `生成中… ${i + 1}/${times}`;
+        const boogu = isBooguWorkflowActive();
+        const pollTimes = boogu ? Math.max(times, 90) : times;
+        const pollDelay = boogu ? Math.max(delayMs, 3000) : delayMs;
+        logActivity(`結果待ち（最大 ${Math.round(pollTimes * pollDelay / 1000)} 秒）`, 'info');
+        for (let i = 0; i < pollTimes; i += 1) {
+          if (pollDelay) await new Promise((resolve) => setTimeout(resolve, pollDelay));
+          const msg = boogu
+            ? `Boogu 生成中… ${i + 1}/${pollTimes}（1〜3分かかることがあります）`
+            : `生成中… ${i + 1}/${pollTimes}`;
           showStatusToast('ComfyUI 実行中', `${msg}\n${lastComfyPromptId}`, 'working');
           $('comfyStatus').textContent = `${msg} — ${lastComfyPromptId}`;
           const result = await checkComfy(false);
           if (result === 'done') {
             showStatusToast('完了', '結果カードを Canvas に追加しました。', 'ok', 6000);
+            setComfyRunning(false);
+            await refreshComfyGpuStatus();
             return;
           }
           if (result === 'error') return;
         }
-        showStatusToast('まだ実行中', `${lastComfyPromptId}\nComfyUI のキューを確認するか Check Result を押してください。`, 'error', 15000);
-        $('comfyStatus').textContent = `Still running: ${lastComfyPromptId}`;
+        if (lastComfyPromptId) {
+          showStatusToast(
+            '結果を自動取得中',
+            `${lastComfyPromptId}\nまだ GPU で処理中の可能性があります。30秒ごとに自動確認します…`,
+            'working',
+            12000,
+          );
+          for (let extra = 0; extra < 40; extra += 1) {
+            await new Promise((resolve) => setTimeout(resolve, 3000));
+            const result = await checkComfy(false);
+            if (result === 'done') {
+              showStatusToast('完了', '結果カードを Canvas に追加しました。', 'ok', 6000);
+              setComfyRunning(false);
+              await refreshComfyGpuStatus();
+              return;
+            }
+            if (result === 'error') return;
+          }
+        }
+        showStatusToast(
+          'まだ実行中',
+          `${lastComfyPromptId}\n右パネルの「結果確認」を1回押すと取り込めます。`,
+          'warn',
+          15000,
+        );
+        $('comfyStatus').textContent = uiLang === 'ja'
+          ? `処理中または待機 — ${lastComfyPromptId} · 「結果確認」で取り込み`
+          : `Processing — ${lastComfyPromptId} · press Check Result`;
       }
       function collectComfyFiles(output) {
         const files = [];
@@ -4189,7 +5373,17 @@
           }
           await addComfyResults(files);
           logActivity(`完了 — 結果 ${files.length} 件`, 'ok');
-          $('comfyStatus').textContent = `Added ${files.length} ComfyUI result card(s).`;
+          if (lastComfyRunMeta) {
+            const short = lastComfyRunMeta.unet?.split(/[\\/]/).pop() || lastComfyRunMeta.label;
+            $('comfyStatus').textContent = `完了 · ${short} · ${lastComfyRunMeta.mode} · 結果 ${files.length} 件`;
+            const metaEl = $('composerRunMeta');
+            if (metaEl) {
+              metaEl.innerHTML = formatRunMetaLine(lastComfyRunMeta);
+              metaEl.classList.remove('hidden');
+            }
+          } else {
+            $('comfyStatus').textContent = `Added ${files.length} ComfyUI result card(s).`;
+          }
           lastComfyPromptId = '';
           save();
           return 'done';
@@ -4220,14 +5414,25 @@
               logActivity(`結果のローカル保存に失敗（URLのみ）: ${error.message}`, 'warn');
             }
           }
+          const meta = lastComfyRunMeta;
+          const metaLines = meta
+            ? [
+              t('resultMetaHeader'),
+              `Model: ${meta.unet || meta.label || '?'}`,
+              `Mode: ${meta.mode || '?'}`,
+              meta.prompt ? `Prompt: ${meta.prompt}` : '',
+              meta.imageNames?.length ? `Refs: ${meta.imageNames.join(', ')}` : '',
+              `File: ${file.filename}`,
+            ].filter(Boolean)
+            : [`ComfyUI output`, file.filename];
           const node = {
             id: uid(),
             x: baseX + index * 38,
             y: baseY + index * 38,
             kind,
             title: `${kind} Result`,
-            text: `ComfyUI output\n${file.filename}`,
-            tags: ['ComfyUI', kind],
+            text: metaLines.join('\n'),
+            tags: ['ComfyUI', kind, 'Result'],
             color: kind === 'Video' ? 'cyan' : 'rose',
             url: storedUrl,
           };
@@ -4304,22 +5509,35 @@
           showStatusToast('JSON エラー', last.error, 'error', 20000);
           return added.length;
         }
+        const assess = await assessWorkflowJson(last.text || '');
+        last.usable = assess.usable;
+        last.assessMessage = assess.message;
+        if (!assess.usable) {
+          setWorkflowStatus(`リストのみ追加（使用不可）: ${last.name} — ${assess.message}`);
+          showStatusToast(
+            'JSON 問題あり',
+            uiLang === 'ja'
+              ? `この JSON は Eliora では使えません（${assess.message}）。JSON 欄は空のまま、画像を線でつないで ▶ 実行してください。`
+              : `This JSON cannot run in Eliora (${assess.message}). Leave JSON empty, wire images, press Run.`,
+            'warn',
+            15000,
+          );
+          return added.length;
+        }
         setWorkflowStatus(`${added.length} 件インポート: ${last.name}（${workflowKindName(last.kind)}）`);
-        if (options.autoUse !== false && added.length === 1 && last.kind !== 'invalid' && last.kind !== 'other') {
+        if (options.autoUse === true && added.length === 1 && last.kind !== 'invalid' && last.kind !== 'other') {
           try {
-            await useSelectedWorkflow();
-            setWorkflowStatus(`ComfyUI 欄へ反映済み: ${last.name}`);
-            showStatusToast('インポート完了', `${last.name} を読み込みました。実行を開始します…`, 'working');
-            if (options.autoRun !== false) {
-              await sendComfy();
-            }
+            await useSelectedWorkflow({ force: true });
+            setWorkflowStatus(`上級者向け: ComfyUI 欄へ反映済み ${last.name}`);
+            showStatusToast('JSON 反映', `${last.name} を JSON 欄に入れました（上級者向け）。通常は空欄のまま ▶ 実行で十分です。`, 'info', 10000);
+            if (options.autoRun === true) await sendComfy();
           } catch (error) {
             setWorkflowStatus(`反映失敗: ${error.message}`);
             showStatusToast('インポート失敗', error.message, 'error', 20000);
           }
         } else if (last.kind === 'ui' || last.kind === 'api') {
-          setWorkflowStatus(`${added.length} 件追加 — Use Selected または Run Selected で実行`);
-          showStatusToast('インポート完了', `${last.name} をリストに追加しました。Run Selected で実行できます。`, 'ok', 8000);
+          setWorkflowStatus(`${added.length} 件追加 — 通常は JSON 不要。▶ 実行で自動 Qwen 編集`);
+          showStatusToast('インポート完了', `${last.name} をリストに保存しました。普段は JSON 欄は空のまま ▶ 実行してください。`, 'ok', 8000);
         }
         return added.length;
       }
@@ -4380,13 +5598,25 @@
         if (item.error) throw new Error(item.error);
         return item;
       }
-      async function useSelectedWorkflow() {
+      async function useSelectedWorkflow(options = {}) {
         try {
           const item = await selectedWorkflow();
+          const assess = await assessWorkflowJson(item.text);
+          if (!assess.usable && !options.force) {
+            $('comfyWorkflow').value = '';
+            scheduleSave();
+            setWorkflowStatus(`使用不可: ${assess.message}`);
+            showStatusToast('JSON 使用不可', `${assess.message} — JSON 欄は空のまま ▶ 実行してください。`, 'warn', 12000);
+            return item;
+          }
+          if (!assess.usable) {
+            $('comfyWorkflow').value = '';
+            scheduleSave();
+            throw new Error(assess.message);
+          }
           $('comfyWorkflow').value = item.text;
           clearComfyStatusError();
-          const check = validateWorkflowText(item.text);
-          $('comfyStatus').textContent = check.message;
+          $('comfyStatus').textContent = assess.message;
           setWorkflowStatus(`Imported ${workflowKindName(item.kind)} workflow into ComfyUI panel.`);
           scheduleSave();
           return item;
@@ -4465,7 +5695,7 @@
           }
           const kind = detectWorkflowKind(data);
           if (kind === 'api' || kind === 'ui') {
-            await addWorkflowFiles([file], { autoUse: true, autoRun: true });
+            await addWorkflowFiles([file], { autoUse: false, autoRun: false });
             return;
           }
           showStatusToast('不明な JSON', 'Eliora ボード形式でも ComfyUI ワークフロー（API/UI）でもありません。', 'error', 15000);
@@ -4616,7 +5846,7 @@
         const jsonFiles = files.filter((file) => /\.json$/i.test(file.name) || (file.type || '').includes('json'));
         const imageFiles = files.filter((file) => (file.type || '').startsWith('image/'));
         if (jsonFiles.length) {
-          await addWorkflowFiles(jsonFiles, { autoUse: jsonFiles.length === 1, autoRun: jsonFiles.length === 1 });
+          await addWorkflowFiles(jsonFiles, { autoUse: false, autoRun: false });
           return;
         }
         if (!imageFiles.length) return;
@@ -4667,7 +5897,7 @@
       $('pickWorkflowFolder').addEventListener('click', () => openFilePicker('workflowFolderInput'));
       $('workflowFilesInput').addEventListener('change', async () => {
         const files = [...$('workflowFilesInput').files];
-        await addWorkflowFiles(files, { autoUse: files.length === 1, autoRun: files.length === 1 });
+        await addWorkflowFiles(files, { autoUse: false, autoRun: false });
         $('workflowFilesInput').value = '';
       });
       $('workflowFolderInput').addEventListener('change', async () => {
@@ -4692,7 +5922,7 @@
           event.preventDefault();
           workflowPanel.style.outline = '';
           const files = [...event.dataTransfer.files];
-          await addWorkflowFiles(files, { autoUse: files.length === 1, autoRun: files.length === 1 });
+          await addWorkflowFiles(files, { autoUse: false, autoRun: false });
         });
       }
       $('workflowSearch').addEventListener('input', renderWorkflowList);
@@ -4711,6 +5941,7 @@
       $('sendComfy').addEventListener('click', sendComfy);
       $('sendComfyTop').addEventListener('click', sendComfy);
       $('checkComfy').addEventListener('click', async () => {
+        hideStatusToast();
         setComfyRunning(true);
         showStatusToast('結果確認', 'ComfyUI history を確認中…', 'working');
         const result = await checkComfy(true);
@@ -4732,13 +5963,28 @@
       let workflowValidateTimer = null;
       $('comfyWorkflow').addEventListener('input', () => {
         clearTimeout(workflowValidateTimer);
-        workflowValidateTimer = setTimeout(() => {
-          const check = validateWorkflowText($('comfyWorkflow').value);
-          if (!check.ok) setComfyStatusError(check.message);
-          else {
-            clearComfyStatusError();
-            if ($('comfyWorkflow').value.trim()) $('comfyStatus').textContent = check.message;
+        workflowValidateTimer = setTimeout(async () => {
+          const raw = $('comfyWorkflow').value;
+          const syncBlock = workflowJsonUnsafeSync(raw);
+          if (syncBlock) {
+            $('comfyWorkflow').value = '';
+            scheduleSave();
+            setComfyStatusError(syncBlock);
+            showStatusToast('JSON 解除', `${syncBlock} — 空欄のまま ▶ 実行してください。`, 'warn', 10000);
+            return;
           }
+          const assess = await assessWorkflowJson(raw);
+          if (!assess.ok) {
+            if (assess.mode === 'missing' || assess.mode === 'blocked' || assess.mode === 'invalid') {
+              $('comfyWorkflow').value = '';
+              scheduleSave();
+            }
+            setComfyStatusError(assess.message);
+            return;
+          }
+          clearComfyStatusError();
+          if (raw.trim()) $('comfyStatus').textContent = assess.message;
+          else $('comfyStatus').textContent = t('comfyStatusDefault');
         }, 400);
       });
       window.addEventListener('unhandledrejection', (event) => {
@@ -4755,6 +6001,8 @@
         updateComposer();
       });
       $('composerPrompt')?.addEventListener('input', () => {
+        const node = selectedNode ? nodeBy(selectedNode) : null;
+        if (node) updateComposerRunPreview(node);
         saveComposerPromptDraft();
       });
       $('toggleLog')?.addEventListener('click', () => {
@@ -4779,7 +6027,7 @@
         const file = $('workflowDropInput').files?.[0];
         $('workflowDropInput').value = '';
         if (!file) return;
-        await addWorkflowFiles([file], { autoUse: true, autoRun: true });
+        await addWorkflowFiles([file], { autoUse: false, autoRun: false });
         $('workflowPanelStatus').textContent = `インポート: ${file.name}`;
       });
       const workflowDropZone = $('workflowDropZone');
@@ -4798,7 +6046,7 @@
           event.preventDefault();
           workflowDropZone.classList.remove('drag-over');
           const files = [...event.dataTransfer.files].filter((f) => /\.json$/i.test(f.name));
-          if (files.length) await addWorkflowFiles(files, { autoUse: files.length === 1, autoRun: files.length === 1 });
+          if (files.length) await addWorkflowFiles(files, { autoUse: false, autoRun: false });
         });
       }
       stage.addEventListener('dblclick', (event) => {
@@ -4832,9 +6080,14 @@
       $('search').addEventListener('input', (event) => { searchTerm = event.target.value.trim(); render(); });
       ['llamaEndpoint', 'llamaModel', 'llamaKey', 'llamaSystem', 'cloudEndpoint', 'cloudModel', 'cloudKey', 'cloudSystem', 'comfyEndpoint', 'comfyNegative', 'comfyWorkflow', 'comfyWidth', 'comfyHeight'].forEach((id) => $(id).addEventListener('input', scheduleSave));
       $('comfyModelStack')?.addEventListener('change', () => syncModelStackPickers('comfyModelStack'));
-      $('composerModelStack')?.addEventListener('change', () => syncModelStackPickers('composerModelStack'));
-      $('comfyUnetCustom')?.addEventListener('change', scheduleSave);
-      $('comfyEndpoint').addEventListener('input', () => { modelInventoryCache = null; syncComfyLinks(); checkLocalServices(); });
+      $('comfyLocalUnet')?.addEventListener('change', () => syncLocalUnetPickers('comfyLocalUnet'));
+      $('composerLocalUnet')?.addEventListener('change', () => syncLocalUnetPickers('composerLocalUnet'));
+      $('comfyLocalUnetSearch')?.addEventListener('input', () => { refreshModelStackSelect().catch(() => {}); });
+      $('comfyLocalUnetImageOnly')?.addEventListener('change', () => { scheduleSave(); refreshModelStackSelect().catch(() => {}); });
+      ['comfyClipOverride', 'comfyVaeOverride', 'comfyWeightDtype'].forEach((id) => {
+        $(id)?.addEventListener('change', () => { scheduleSave(); refreshModelStackSelect().catch(() => {}); });
+      });
+      $('comfyEndpoint').addEventListener('input', () => { invalidateComfyCaches(); syncComfyLinks(); checkLocalServices(); });
       $('llamaEndpoint').addEventListener('input', () => { scheduleSave(); checkLocalServices(); });
       $('comfyAutoInject').addEventListener('change', scheduleSave);
       minimap.addEventListener('click', jumpMinimap);
@@ -4897,7 +6150,7 @@
       syncComfyLinks();
       $('activityLog')?.addEventListener('click', () => $('activityLog').classList.toggle('expanded'));
       if (!localStorage.getItem(onboardingKey)) showOnboarding();
-      checkLocalServices();
+      checkLocalServices().then(() => ensureDefaultBooguWorkflow()).catch(() => {});
       hydrateImagePreviews().then(() => {
         render();
         loadBuiltinWorkflows();

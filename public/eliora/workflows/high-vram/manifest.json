@@ -5,6 +5,26 @@
   "policy": "Adapted from author ComfyUI/Bilibili sources. Local execution only. Verify model paths on your machine.",
   "workflows": [
     {
+      "id": "boogu-edit-0709",
+      "file": "/eliora/workflows/boogu-edit-0709.json",
+      "line": "image-edit",
+      "credit": "Boogu · Eliora verified 2026-07-09",
+      "title": {
+        "en": "Boogu image edit (2 refs)",
+        "ja": "Boogu 画像編集（2枚参照）",
+        "zh": "Boogu 图像编辑（双图参考）"
+      },
+      "desc": {
+        "en": "Default Eliora workflow — TextEncodeBooguEdit, 2 LoadImage slots. User-tested JSON.",
+        "ja": "Eliora 既定ワークフロー — TextEncodeBooguEdit・画像2枚。ユーザー検証済み JSON。",
+        "zh": "Eliora 默认工作流 — 双图 Boogu 编辑。用户已验证。"
+      },
+      "minVramGb": 24,
+      "sourceFile": "boogu_edit_0709.json",
+      "changeCount": 0,
+      "default": true
+    },
+    {
       "id": "seedvr2-upscale",
       "file": "/eliora/workflows/high-vram/seedvr2-upscale-hivram.json",
       "line": "product-imaging",
