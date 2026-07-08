@@ -284,18 +284,20 @@
       .node.wire-target { box-shadow: 0 0 30px rgba(123,216,232,.22), 0 0 0 2px rgba(123,216,232,.34); }
       .connect-hint {
         position: absolute;
-        top: 12px;
+        bottom: 52px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 4;
-        border: 1px solid rgba(123,216,232,.42);
+        border: 1px solid rgba(123,216,232,.32);
         border-radius: 999px;
-        background: rgba(0,0,0,.78);
+        background: rgba(0,0,0,.72);
         color: var(--cyan);
-        padding: 8px 14px;
-        font-size: 12px;
-        font-weight: 800;
+        padding: 6px 12px;
+        font-size: 11px;
+        font-weight: 700;
         pointer-events: none;
+        max-width: 90%;
+        text-align: center;
       }
       .node-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
       .kind { color: var(--cyan); text-transform: uppercase; letter-spacing: .12em; font-size: 10px; font-weight: 900; }
@@ -479,29 +481,33 @@
       .connect-fix.hidden { display: none; }
       .activity-log {
         position: absolute;
-        top: 12px;
-        right: 12px;
-        z-index: 6;
-        width: min(360px, calc(100% - 24px));
-        max-height: 220px;
+        left: 12px;
+        bottom: 52px;
+        z-index: 4;
+        width: min(300px, calc(100% - 200px));
+        max-height: 72px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 8px;
+        background: rgba(0, 0, 0, .55);
+        pointer-events: auto;
+        cursor: pointer;
+        transition: max-height .15s ease;
+      }
+      .activity-log.expanded {
+        max-height: 180px;
         overflow: auto;
-        border: 1px solid rgba(123, 216, 232, .34);
-        border-radius: 10px;
-        background: rgba(0, 0, 0, .82);
-        backdrop-filter: blur(12px);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, .55);
-        pointer-events: none;
+        background: rgba(0, 0, 0, .78);
       }
       .activity-log h3 {
         margin: 0;
-        padding: 8px 11px;
-        border-bottom: 1px solid var(--line);
-        font-size: 10px;
-        letter-spacing: .12em;
+        padding: 5px 9px;
+        font-size: 9px;
+        letter-spacing: .1em;
         text-transform: uppercase;
-        color: var(--cyan);
+        color: var(--faint);
       }
-      .activity-lines { padding: 6px 8px 8px; display: grid; gap: 4px; }
+      .activity-lines { padding: 0 7px 6px; display: grid; gap: 3px; }
       .activity-line {
         font-size: 11px;
         line-height: 1.45;
@@ -643,9 +649,6 @@
               <div class="stat"><b id="nodeCount">0</b><span>cards</span></div>
               <div class="stat"><b id="edgeCount">0</b><span>links</span></div>
             </div>
-            <p id="linkNudge" class="link-nudge hidden" role="status">
-              線が0本です。<strong>右の●をドラッグ</strong>して左の●へドロップ（ComfyUI 方式）。うまくいかないときは下の <strong>Reset</strong> で初期ボードに戻せます。
-            </p>
           </section>
           <section class="panel panel-local" id="localAiPanel">
             <h2>Local AI · llama.cpp</h2>
@@ -655,9 +658,6 @@
               <button id="checkLocalServices" type="button" style="min-height:28px;padding:0 10px;font-size:10px">再確認</button>
               <button id="useComfyBridge" type="button" style="min-height:28px;padding:0 10px;font-size:10px" title="CORS 回避ブリッジ 8190">Bridge 8190</button>
             </div>
-            <p id="comfyConnectFix" class="connect-fix hidden" role="status">
-              ComfyUI は起動中でもブラウザがブロックすることがあります。<strong>① start-eliora-bridge.bat を起動</strong> → <strong>② Bridge 8190</strong> を押す。または <strong>open-local-canvas.bat</strong> でローカル HTML を開く。
-            </p>
             <p class="panel-sub">普段はここ。llama-server を 127.0.0.1:8080 で起動。上の <strong>Ask Local</strong> または Ctrl+Enter。</p>
             <div class="field"><label for="llamaEndpoint">Endpoint</label><input id="llamaEndpoint" value="http://127.0.0.1:8080/v1/chat/completions" /></div>
             <div class="row">
@@ -772,8 +772,8 @@
             <canvas class="minimap" id="minimap" width="168" height="112" aria-hidden="true"></canvas>
             <div class="drop-overlay hidden" id="dropOverlay" aria-hidden="true">Drop images to add cards</div>
             <div class="connect-hint hidden" id="connectHint" aria-live="polite"></div>
-            <div class="activity-log" id="activityLog" aria-live="polite">
-              <h3>Activity</h3>
+            <div class="activity-log" id="activityLog" aria-live="polite" title="クリックで展開">
+              <h3>Log</h3>
               <div class="activity-lines" id="activityLines"></div>
             </div>
           </div>
@@ -978,6 +978,29 @@
           if (edge.to === id) ids.add(edge.from);
         });
         return [...ids].map(nodeBy).filter(Boolean);
+      }
+      const promptBoilerplateRe = /^(subject|mood|lighting|camera|style|details|role|context|output|review|opening frame|motion|duration|source|write the fragment|primary card|connected materials):/i;
+      function stripPromptBoilerplate(text) {
+        return String(text || '').split('\n')
+          .map((line) => line.trim())
+          .filter((line) => line && !promptBoilerplateRe.test(line) && !/^\[\d+\]$/.test(line))
+          .join('\n')
+          .trim();
+      }
+      function promptTextForComfy() {
+        const source = workflowSource();
+        if (!source) return '';
+        const pool = [source, ...connectedTo(source.id)];
+        for (const node of pool) {
+          if (node.kind !== 'Prompt') continue;
+          const cleaned = stripPromptBoilerplate(node.text);
+          if (cleaned.length >= 2) return cleaned;
+        }
+        if (source.kind !== 'Image') {
+          const cleaned = stripPromptBoilerplate(source.text);
+          if (cleaned.length >= 2) return cleaned;
+        }
+        return '';
       }
       function cardText(node) {
         return [
@@ -1279,8 +1302,6 @@
         $('selectionLabel').textContent = selectedNode ? (nodeBy(selectedNode)?.title || 'Card') : selectedEdge ? 'Connection' : 'No selection';
         $('nodeCount').textContent = nodes.length;
         $('edgeCount').textContent = edges.length;
-        const linkNudge = $('linkNudge');
-        if (linkNudge) linkNudge.classList.toggle('hidden', !(nodes.length >= 2 && edges.length === 0));
         renderEdges();
         renderNodes();
         renderInspector();
@@ -1328,7 +1349,7 @@
           path.addEventListener('pointerdown', selectEdge);
           group.appendChild(hitPath);
           group.appendChild(path);
-          if (edge.label) {
+          if (edge.label && (selected || hovered)) {
             const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             text.setAttribute('x', (a.x + b.x) / 2);
             text.setAttribute('y', (a.y + b.y) / 2 - 8);
@@ -1695,12 +1716,8 @@
         $('imageFilesInput').click();
       }
       async function addImageFromUrl() {
-        const url = prompt('Image URL', './assets/images/miragea.png');
-        if (!url) return;
-        addNode('note');
-        const node = nodeBy(selectedNode);
-        Object.assign(node, { kind: 'Image', title: 'Image Reference', text: 'Visual source for Eliora or Miragea.', url: url.trim(), tags: ['Image', 'Reference'] });
-        render();
+        imageUploadMode = 'new';
+        $('imageFilesInput').click();
       }
       function createPromptNode(templateKey) {
         const source = selectedNode ? nodeBy(selectedNode) : null;
@@ -1957,8 +1974,10 @@
         const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         row.textContent = `${time} ${message}`;
         lines.prepend(row);
-        while (lines.children.length > 24) lines.removeChild(lines.lastChild);
+        while (lines.children.length > 12) lines.removeChild(lines.lastChild);
         $('savedAt').textContent = message.length > 42 ? message.slice(0, 42) + '…' : message;
+        const log = $('activityLog');
+        if (log && level === 'error') log.classList.add('expanded');
       }
       async function comfyRequest(path, options = {}) {
         const bases = [comfyPrimaryBase()];
@@ -2028,9 +2047,7 @@
         return filename;
       }
       function updateComfyConnectFix(comfyOk) {
-        const fix = $('comfyConnectFix');
-        if (!fix) return;
-        fix.classList.toggle('hidden', comfyOk);
+        if (!comfyOk) logActivity('ComfyUI 未接続 — Bridge 8190 または start-eliora-bridge.bat', 'warn');
       }
       function useComfyBridgeEndpoint() {
         $('comfyEndpoint').value = comfyBridgeBase;
@@ -2153,7 +2170,7 @@
       }
       function workflowReplacements(seed) {
         return {
-          prompt: selectedPromptText(),
+          prompt: promptTextForComfy(),
           negative: $('comfyNegative').value.trim(),
           seed,
           width: Math.max(256, Math.min(4096, parseInt($('comfyWidth').value, 10) || 1024)),
@@ -2165,31 +2182,32 @@
       }
       function injectCanvasContext(workflow, replacements) {
         if (!$('comfyAutoInject').checked) return workflow;
+        let positiveSet = false;
         Object.values(workflow).forEach((node) => {
-          if (!node || typeof node !== 'object' || !node.inputs) return;
-          const title = `${node.class_type || ''} ${node._meta?.title || ''}`.toLowerCase();
+          if (!node?.inputs) return;
           if (node.class_type === 'LoadImage' && replacements.image) {
             node.inputs.image = replacements.image;
+            return;
           }
-          Object.entries(node.inputs).forEach(([key, value]) => {
-            const k = key.toLowerCase();
-            if (typeof value === 'string') {
-              if (k.includes('negative') || title.includes('negative')) node.inputs[key] = replacements.negative;
-              else if (k === 'text' || k.includes('prompt') || k.includes('caption') || title.includes('positive prompt')) node.inputs[key] = replacements.prompt;
-              else if (replacements.image && (k === 'image' || k.includes('image'))) node.inputs[key] = replacements.image;
-              else if (replacements.video && k.includes('video')) node.inputs[key] = replacements.video;
-              else if (replacements.audio && k.includes('audio')) node.inputs[key] = replacements.audio;
-            } else if (typeof value === 'number') {
-              if (k.includes('seed')) node.inputs[key] = replacements.seed;
-              if (k === 'width') node.inputs[key] = replacements.width;
-              if (k === 'height') node.inputs[key] = replacements.height;
-            }
-          });
+          if (node.class_type !== 'CLIPTextEncode') return;
+          const title = `${node._meta?.title || ''}`.toLowerCase();
+          const isNegative = title.includes('negative');
+          if (isNegative) {
+            if (replacements.negative && typeof node.inputs.text === 'string') node.inputs.text = replacements.negative;
+            return;
+          }
+          if (!positiveSet && replacements.prompt && typeof node.inputs.text === 'string') {
+            node.inputs.text = replacements.prompt;
+            positiveSet = true;
+          }
         });
         return workflow;
       }
       async function prepareComfyWorkflow(workflow, seed) {
         const replacements = workflowReplacements(seed);
+        if ($('comfyWorkflow').value.trim() && !replacements.prompt) {
+          throw new Error('Prompt カードにあなたのプロンプトを書いてください（Subject/Mood テンプレートのままでは不可）。Image と線でつないで Run Selected。');
+        }
         try {
           const uploaded = await ensureComfyInputImage();
           if (uploaded) replacements.image = uploaded;
@@ -2197,6 +2215,8 @@
           logActivity(`画像準備エラー: ${error.message}`, 'error');
           throw error;
         }
+        if (replacements.prompt) logActivity(`使用プロンプト: ${replacements.prompt.slice(0, 80)}${replacements.prompt.length > 80 ? '…' : ''}`, 'info');
+        if (replacements.image) logActivity(`使用画像: ${replacements.image}`, 'info');
         return injectCanvasContext(deepReplace(workflow, replacements), replacements);
       }
       async function getObjectInfo() {
@@ -2267,7 +2287,7 @@
         const height = Math.max(256, Math.min(2048, parseInt($('comfyHeight').value, 10) || 1024));
         return {
           "1": { class_type: "CheckpointLoaderSimple", inputs: { ckpt_name: ckptName } },
-          "2": { class_type: "CLIPTextEncode", inputs: { text: selectedPromptText(), clip: ["1", 1] } },
+          "2": { class_type: "CLIPTextEncode", inputs: { text: promptTextForComfy(), clip: ["1", 1] } },
           "3": { class_type: "CLIPTextEncode", inputs: { text: $('comfyNegative').value.trim(), clip: ["1", 1] } },
           "4": { class_type: "EmptyLatentImage", inputs: { width, height, batch_size: 1 } },
           "5": {
@@ -2339,23 +2359,6 @@
           banner.textContent = 'リモート閲覧 — ボードはこのブラウザに保存。生成は自宅 PC の llama / ComfyUI。外出先のみ Cloud API を展開。';
         }
       }
-      function addComfyJobCard(source, promptId, state, detail = '') {
-        const node = {
-          id: uid(),
-          x: (source?.x || 0) + 40,
-          y: (source?.y || 0) - 120,
-          kind: 'Workflow',
-          title: `ComfyUI ${state}`,
-          text: `prompt_id: ${promptId || '—'}\n${detail}`.trim(),
-          tags: ['ComfyUI', 'Job'],
-          color: state === 'Error' ? 'rose' : state === 'Done' ? 'green' : 'amber',
-          url: promptId ? `${comfyUiUrl()}?queue` : '',
-        };
-        nodes.unshift(node);
-        if (source) edges.push({ id: uid(), from: source.id, to: node.id, label: 'comfy job' });
-        selectedNode = node.id;
-        render();
-      }
       async function sendComfy() {
         const source = selectedNode ? nodeBy(selectedNode) : nodes[0];
         if (!source) {
@@ -2383,7 +2386,6 @@
           lastComfySourceId = source.id;
           if (lastComfyPromptId) {
             logActivity(`ComfyUI キュー投入 OK: ${lastComfyPromptId}`, 'ok');
-            addComfyJobCard(source, lastComfyPromptId, 'Queued', 'ComfyUI で実行中。完了すると結果カードが追加されます。');
             $('comfyStatus').textContent = `Queued: ${lastComfyPromptId}`;
           } else {
             logActivity('prompt_id が返りませんでした — ComfyUI を確認', 'warn');
@@ -2394,7 +2396,6 @@
         } catch (error) {
           const message = error.message || String(error);
           logActivity(`Send Comfy 失敗: ${message}`, 'error');
-          addComfyJobCard(source, '', 'Error', message);
           updateComfyConnectFix(false);
           $('comfyStatus').textContent = message.startsWith('HTTP')
             ? `ComfyUI ワークフローエラー: ${message}`
@@ -2449,7 +2450,7 @@
           if (delayMs) await new Promise((resolve) => setTimeout(resolve, delayMs));
           const msg = `生成中… ${i + 1}/${times} — ${lastComfyPromptId}`;
           $('comfyStatus').textContent = msg;
-          logActivity(msg, 'info');
+          if (i === 0 || i === times - 1 || (i + 1) % 6 === 0) logActivity(msg, 'info');
           const found = await checkComfy(false);
           if (found) return;
         }
@@ -2496,8 +2497,6 @@
           addComfyResults(files);
           logActivity(`完了 — 結果カード ${files.length} 枚を Canvas に追加`, 'ok');
           $('comfyStatus').textContent = `Added ${files.length} ComfyUI result card(s).`;
-          const source = nodeBy(lastComfySourceId);
-          if (source) addComfyJobCard(source, donePromptId, 'Done', `${files.length} file(s) added to canvas`);
           lastComfyPromptId = '';
           save();
           return true;
@@ -3004,9 +3003,9 @@
       load();
       updateEnvBanner();
       syncComfyLinks();
+      $('activityLog')?.addEventListener('click', () => $('activityLog').classList.toggle('expanded'));
+      localStorage.setItem(onboardingKey, 'done');
       checkLocalServices();
-      logActivity('Eliora Infinite Canvas 準備完了', 'ok');
-      if (!localStorage.getItem(onboardingKey)) showOnboarding();
       hydrateImagePreviews().then(() => {
         render();
         loadBuiltinWorkflows();
