@@ -2,11 +2,16 @@ name: Agent status sync
 
 on:
   schedule:
-    - cron: '0 6 * * 1'
+    # Daily auto campaign watch + status export (UTC 06:00)
+    - cron: '0 6 * * *'
+    # Keep Monday extra pass
+    - cron: '0 12 * * 1'
   workflow_dispatch:
   push:
     paths:
       - 'agents/**'
+      - 'scripts/campaign-watch.mjs'
+      - 'scripts/export-agent-status.mjs'
 
 permissions:
   contents: write
@@ -27,21 +32,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Export agent status
-        run: npm run agents:export
+      - name: Auto campaign watch + export + validate
+        run: npm run agents:sync
 
-      - name: Validate agent status
-        run: npm run agents:validate
-
-      - name: Commit status.json if changed
+      - name: Commit agent data if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/eliora/atelier/data/agents/status.json
+          git add public/eliora/atelier/data/agents/status.json agents/contests.yaml agents/campaign-action-queue.json
           if git diff --staged --quiet; then
-            echo "No changes to status.json"
+            echo "No agent data changes"
           else
-            git commit -m "chore(agents): sync status $(date -u +%Y-%m-%dT%H:%MZ)"
+            git commit -m "chore(agents): auto campaign watch $(date -u +%Y-%m-%dT%H:%MZ)"
             git pull --rebase origin main
             git push origin main
           fi

@@ -1,0 +1,139 @@
+{
+  "generatedAt": "2026-07-09T18:42:14.493Z",
+  "policy": {
+    "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
+    "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
+    "zh": "自动监视发现与打分；报名需人工确认；奖金实名领取为手动。"
+  },
+  "recommended": [
+    {
+      "title": "NandaHack",
+      "url": "https://nandahack.devpost.com/",
+      "submitUrl": "https://nandahack.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 18004,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "Build with DataHub: The Agent Hackathon",
+      "url": "https://datahub.devpost.com/",
+      "submitUrl": "https://datahub.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 20500,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "Backblaze Generative Media Hackathon: Build with Genblaze on B2",
+      "url": "https://backblaze-generative-media.devpost.com/",
+      "submitUrl": "https://backblaze-generative-media.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 10000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "Kaya AI India Hackathon 2026",
+      "url": "https://kaya-ai-iit-hackathon-2026.devpost.com/",
+      "submitUrl": "https://kaya-ai-iit-hackathon-2026.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 350000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "CockroachDB × AWS Hackathon - Build with Agentic Memory",
+      "url": "https://cockroachdb-ai.devpost.com/",
+      "submitUrl": "https://cockroachdb-ai.devpost.com/challenges/start_a_submission",
+      "joinScore": 103,
+      "prizeHint": 8750,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "Reddit’s Games with a Hook Hackathon",
+      "url": "https://redditgameswithahook.devpost.com/",
+      "submitUrl": "https://redditgameswithahook.devpost.com/challenges/start_a_submission",
+      "joinScore": 103,
+      "prizeHint": 40000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "YouCam API Skin AI & Apparel VTO Hackathon ",
+      "url": "https://youcam-api.devpost.com/",
+      "submitUrl": "https://youcam-api.devpost.com/challenges/start_a_submission",
+      "joinScore": 98,
+      "prizeHint": 6000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "Arm Create: AI Optimization Challenge",
+      "url": "https://arm-ai-optimization-challenge.devpost.com/",
+      "submitUrl": "https://arm-ai-optimization-challenge.devpost.com/challenges/start_a_submission",
+      "joinScore": 98,
+      "prizeHint": 8000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    }
+  ],
+  "note": "Do not auto-submit to third-party contests without user approval (accounts + prize rules)."
+}

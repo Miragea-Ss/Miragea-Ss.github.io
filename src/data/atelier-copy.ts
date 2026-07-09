@@ -551,8 +551,8 @@ export const atelierHubCopy: Record<AtelierLang, AtelierHubCopy> = {
       { href: '/eliora/index.html', label: 'Eliora Service Map', variant: 'secondary' },
     ],
     footer: [
-      { title: 'Data source', body: 'data/agents/status.json · weekly GH Action' },
-      { title: 'Feed', body: 'Manual curation — real URLs only' },
+      { title: 'Data source', body: 'status.json · daily auto campaign-watch' },
+      { title: 'Feed', body: 'Devpost auto + verified URLs · join queue' },
       { title: 'Author', body: '@Miragea_S' },
     ],
   },
@@ -588,9 +588,9 @@ export const atelierHubCopy: Record<AtelierLang, AtelierHubCopy> = {
       { href: '/eliora/index.html', label: 'Elioraサービス', variant: 'secondary' },
     ],
     footer: [
-      { title: 'データ', body: 'data/agents/status.json' },
-      { title: '販売', body: 'BOOTH · Zenn · 企業PoC' },
-      { title: '指標', body: '再現性 · 制御 · 量産 · API化' },
+      { title: 'データ', body: 'status.json · 毎日自動監視' },
+      { title: 'フィード', body: 'Devpost自動 + 参加推奨キュー' },
+      { title: '指標', body: '賞金・フィット・提出期限' },
     ],
   },
 

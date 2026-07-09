@@ -43,22 +43,41 @@ function buildCampaignWatcher(data) {
   const contests = data.contests ?? [];
   const now = new Date();
   const active = contests.filter((item) => isContestActive(item, now));
+  const autoCount = contests.filter((item) => item.auto || item.type === 'devpost-auto').length;
+  const recommend = contests.filter(
+    (item) =>
+      (item.joinScore || 0) >= 70 &&
+      (item.prizeHint || 0) >= 1000 &&
+      isContestActive(item, now),
+  );
 
   const events = [...contests]
-    .sort((a, b) => new Date(b.at) - new Date(a.at))
+    .sort((a, b) => (b.joinScore || 0) - (a.joinScore || 0) || new Date(b.at) - new Date(a.at))
     .slice(0, 10)
-    .map((item) => pickEvent(item, now));
+    .map((item) => {
+      const ev = pickEvent(item, now);
+      if ((item.joinScore || 0) >= 70 && (item.prizeHint || 0) >= 1000) {
+        ev.title = `★ JOIN? (${item.joinScore}) ${item.title}`;
+      }
+      return ev;
+    });
 
   const count = active.length;
+  const rec = recommend.length;
+  const mode = autoCount > 0 ? 'auto-watch' : 'manual';
   return {
     status: count > 0 ? 'active' : 'idle',
-    lastRun: latestIso(contests.map((item) => item.at)),
+    lastRun: data.meta?.lastWatch || latestIso(contests.map((item) => item.at)),
     summary: {
-      en: `${count} creative contest${count === 1 ? '' : 's'} curated this week (manual feed)`,
-      ja: `今週${count}件の創作コンテストを手動キュレーション`,
-      zh: `本周整理 ${count} 个可跟进的创作赛事（手动キュレーション）`,
+      en: `${count} open · ${rec} join-worthy · ${mode}`,
+      ja: `募集中${count}件 · 参加推奨${rec}件 · ${mode === 'auto-watch' ? '自動監視' : '手動'}`,
+      zh: `开放${count} · 建议参加${rec} · ${mode === 'auto-watch' ? '自动监视' : '手动'}`,
     },
-    metrics: { contestsFlagged: count },
+    metrics: {
+      contestsFlagged: count,
+      joinRecommended: rec,
+      autoTracked: autoCount,
+    },
     events,
   };
 }

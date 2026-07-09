@@ -7,10 +7,13 @@
     "build": "npm run agents:validate && astro build",
     "agents:add": "node scripts/agent-add.mjs",
     "workflows:adapt": "node scripts/adapt-workflow-hivram.mjs",
+    "offline:export": "node scripts/export-offline-hand-edit.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "agents:export": "node scripts/export-agent-status.mjs",
-    "agents:validate": "node scripts/validate-agent-status.mjs"
+    "agents:validate": "node scripts/validate-agent-status.mjs",
+    "agents:watch": "node scripts/campaign-watch.mjs",
+    "agents:sync": "node scripts/campaign-watch.mjs && node scripts/export-agent-status.mjs && node scripts/validate-agent-status.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",

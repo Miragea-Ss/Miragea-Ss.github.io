@@ -1,35 +1,570 @@
-# campaign-watcher — verified public sources only (no fabricated contest names)
-# Each entry MUST link to an official page. See agents/README.md.
+# campaign-watcher — auto + manual verified
+# lastWatch: 2026-07-09T18:42:14.487Z
 contests:
-  - at: "2026-07-07T06:00:00Z"
-    type: community-challenge
-    title: Runway Daily Challenge
-    url: https://help.runwayml.com/hc/en-us/articles/4402586286355-Runway-by-the-community
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: NandaHack
+    url: https://nandahack.devpost.com/
     ongoing: true
     period:
-      en: "Daily · Discord & Reddit"
-      ja: "毎日 · Discord & Reddit"
-      zh: "每日 · Discord & Reddit"
-    sourceNote: "Runway Help Center — community Daily Challenge"
-
-  - at: "2026-07-01T12:00:00Z"
-    type: festival-event
-    title: "AIF 2026 Tokyo — Runway AI Festival"
-    url: https://luma.com/aif-tokyo
-    startsAt: "2026-07-30T09:30:00+09:00"
-    deadline: "2026-07-30T13:30:00+09:00"
-    period:
-      en: "Jul 30, 2026 · 18:30–22:30 JST · TOKYO NODE HALL"
-      ja: "2026年7月30日 · 18:30–22:30 JST · TOKYO NODE HALL"
-      zh: "2026年7月30日 · 18:30–22:30 JST · TOKYO NODE HALL"
-    sourceNote: "Luma event page by Runway — festival screening, not film submission"
-
-  - at: "2026-07-04T18:00:00Z"
-    type: miragea
-    title: Follow Miragea_S on X for live contest signals
-    url: https://x.com/Miragea_S/
+      en: Jul 06 - 10, 2026
+      ja: Jul 06 - 10, 2026
+      zh: Jul 06 - 10, 2026
+    sourceNote: Devpost auto · prize~18004 · score 110 · MIT Media Lab x HCLTech
+    auto: true
+    joinScore: 110
+    prizeHint: 18004
+    submitUrl: https://nandahack.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: "Build with DataHub: The Agent Hackathon"
+    url: https://datahub.devpost.com/
     ongoing: true
     period:
-      en: "Ongoing · manual curation"
-      ja: "継続 · 手動キュレーション"
-      zh: "持续 · 人工整理"
+      en: Jul 06 - Aug 10, 2026
+      ja: Jul 06 - Aug 10, 2026
+      zh: Jul 06 - Aug 10, 2026
+    sourceNote: Devpost auto · prize~20500 · score 110 · DataHub
+    auto: true
+    joinScore: 110
+    prizeHint: 20500
+    submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: "Backblaze Generative Media Hackathon: Build with Genblaze on B2"
+    url: https://backblaze-generative-media.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 22 - Aug 03, 2026
+      ja: Jun 22 - Aug 03, 2026
+      zh: Jun 22 - Aug 03, 2026
+    sourceNote: Devpost auto · prize~10000 · score 110 · Backblaze
+    auto: true
+    joinScore: 110
+    prizeHint: 10000
+    submitUrl: https://backblaze-generative-media.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Kaya AI India Hackathon 2026
+    url: https://kaya-ai-iit-hackathon-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 10 - Jul 10, 2026
+      ja: Jun 10 - Jul 10, 2026
+      zh: Jun 10 - Jul 10, 2026
+    sourceNote: Devpost auto · prize~350000 · score 110 · Kaya
+    auto: true
+    joinScore: 110
+    prizeHint: 350000
+    submitUrl: https://kaya-ai-iit-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: CockroachDB × AWS Hackathon - Build with Agentic Memory
+    url: https://cockroachdb-ai.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 30 - Aug 18, 2026
+      ja: Jun 30 - Aug 18, 2026
+      zh: Jun 30 - Aug 18, 2026
+    sourceNote: Devpost auto · prize~8750 · score 103 · Cockroach Labs
+    auto: true
+    joinScore: 103
+    prizeHint: 8750
+    submitUrl: https://cockroachdb-ai.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Reddit’s Games with a Hook Hackathon
+    url: https://redditgameswithahook.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 17 - Jul 15, 2026
+      ja: Jun 17 - Jul 15, 2026
+      zh: Jun 17 - Jul 15, 2026
+    sourceNote: Devpost auto · prize~40000 · score 103 · reddit
+    auto: true
+    joinScore: 103
+    prizeHint: 40000
+    submitUrl: https://redditgameswithahook.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: "YouCam API Skin AI & Apparel VTO Hackathon "
+    url: https://youcam-api.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 06 - Aug 17, 2026
+      ja: Jul 06 - Aug 17, 2026
+      zh: Jul 06 - Aug 17, 2026
+    sourceNote: Devpost auto · prize~6000 · score 98 · Perfect Corp
+    auto: true
+    joinScore: 98
+    prizeHint: 6000
+    submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: "Arm Create: AI Optimization Challenge"
+    url: https://arm-ai-optimization-challenge.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 04 - Aug 14, 2026
+      ja: Jun 04 - Aug 14, 2026
+      zh: Jun 04 - Aug 14, 2026
+    sourceNote: Devpost auto · prize~8000 · score 98 · arm
+    auto: true
+    joinScore: 98
+    prizeHint: 8000
+    submitUrl: https://arm-ai-optimization-challenge.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: VoltHacks
+    url: https://volthacks.devpost.com/
+    ongoing: true
+    period:
+      en: May 22 - Sep 05, 2026
+      ja: May 22 - Sep 05, 2026
+      zh: May 22 - Sep 05, 2026
+    sourceNote: Devpost auto · prize~2905 · score 98 · Dialogate
+    auto: true
+    joinScore: 98
+    prizeHint: 2905
+    submitUrl: https://volthacks.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: The Rice University Urban Sustainability Hackathon
+    url: https://rice-urban-sustainability.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 23 - Sep 18, 2026
+      ja: Jun 23 - Sep 18, 2026
+      zh: Jun 23 - Sep 18, 2026
+    sourceNote: Devpost auto · prize~17500 · score 98 · Rice University
+    auto: true
+    joinScore: 98
+    prizeHint: 17500
+    submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Africa Deep Tech Challenge 2026
+    url: https://adtc-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 17 - Aug 25, 2026
+      ja: Jun 17 - Aug 25, 2026
+      zh: Jun 17 - Aug 25, 2026
+    sourceNote: Devpost auto · prize~16500 · score 92 · Africa Deep Tech Foundation
+    auto: true
+    joinScore: 92
+    prizeHint: 16500
+    submitUrl: https://adtc-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Build with Gemini XPRIZE
+    url: https://xprize.devpost.com/
+    ongoing: true
+    period:
+      en: May 19 - Aug 17, 2026
+      ja: May 19 - Aug 17, 2026
+      zh: May 19 - Aug 17, 2026
+    sourceNote: Devpost auto · prize~2000000 · score 92 · XPRIZE
+    auto: true
+    joinScore: 92
+    prizeHint: 2000000
+    submitUrl: https://xprize.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: India High School Exoplanet Data Challenge
+    url: https://celesta-exoplanet-challenge.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 15 - Jul 31, 2026
+      ja: Jun 15 - Jul 31, 2026
+      zh: Jun 15 - Jul 31, 2026
+    sourceNote: Devpost auto · prize~10300 · score 92 · Celesta
+    auto: true
+    joinScore: 92
+    prizeHint: 10300
+    submitUrl: https://celesta-exoplanet-challenge.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Brainwave 2026
+    url: https://brainwaves.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 12 - Aug 09, 2026
+      ja: Jun 12 - Aug 09, 2026
+      zh: Jun 12 - Aug 09, 2026
+    sourceNote: Devpost auto · prize~1000 · score 86 · ACT House
+    auto: true
+    joinScore: 86
+    prizeHint: 1000
+    submitUrl: https://brainwaves.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Pinch Me! I Want 50K
+    url: https://pinch-me-i-want-50k.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 23 - Jul 22, 2026
+      ja: Jun 23 - Jul 22, 2026
+      zh: Jun 23 - Jul 22, 2026
+    sourceNote: Devpost auto · prize~50000 · score 84 · Pinch Payments
+    auto: true
+    joinScore: 84
+    prizeHint: 50000
+    submitUrl: https://pinch-me-i-want-50k.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: "Global AI Hackathon Series with Qwen Cloud "
+    url: https://qwencloud-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: May 26 - Jul 20, 2026
+      ja: May 26 - Jul 20, 2026
+      zh: May 26 - Jul 20, 2026
+    sourceNote: Devpost auto · prize~45000 · score 80 · Alibaba Cloud
+    auto: true
+    joinScore: 80
+    prizeHint: 45000
+    submitUrl: https://qwencloud-hackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: ML Empowerment Build Challenge 2.0
+    url: https://ml-empowerment-2.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 30 - Jul 31, 2026
+      ja: Jun 30 - Jul 31, 2026
+      zh: Jun 30 - Jul 31, 2026
+    sourceNote: Devpost auto · prize~1000 · score 80 · ML Empowerment Foundation
+    auto: true
+    joinScore: 80
+    prizeHint: 1000
+    submitUrl: https://ml-empowerment-2.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: "Kuki Designed group "
+    url: https://kuki-designed-group.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 01 - 31, 2026
+      ja: Jul 01 - 31, 2026
+      zh: Jul 01 - 31, 2026
+    sourceNote: Devpost auto · prize~1300 · score 78 · Kuki Designed group
+    auto: true
+    joinScore: 78
+    prizeHint: 1300
+    submitUrl: https://kuki-designed-group.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: SmartAIthon 2026
+    url: https://smartaithon.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 24 - Jul 15, 2026
+      ja: Jun 24 - Jul 15, 2026
+      zh: Jun 24 - Jul 15, 2026
+    sourceNote: Devpost auto · prize~10000 · score 76 · IEEE KCE Student Branch CIS Chapter
+    auto: true
+    joinScore: 76
+    prizeHint: 10000
+    submitUrl: https://smartaithon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Hack The Limit
+    url: https://hack-the-limit-1.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 18 - Jul 30, 2026
+      ja: Jun 18 - Jul 30, 2026
+      zh: Jun 18 - Jul 30, 2026
+    sourceNote: Devpost auto · prize~350 · score 74 · HackTheLimit
+    auto: true
+    joinScore: 74
+    prizeHint: 350
+    submitUrl: https://hack-the-limit-1.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Build Beyond Hackathon
+    url: https://build-beyond-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 18 - Aug 16, 2026
+      ja: Jun 18 - Aug 16, 2026
+      zh: Jun 18 - Aug 16, 2026
+    sourceNote: Devpost auto · prize~500 · score 74 · BuildBeyond
+    auto: true
+    joinScore: 74
+    prizeHint: 500
+    submitUrl: https://build-beyond-hackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Win4AISafety - Open Research Summer Challenge
+    url: https://win4aisafety-sain-utrecht.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 06 - Aug 17, 2026
+      ja: Jul 06 - Aug 17, 2026
+      zh: Jul 06 - Aug 17, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · SAIN Utrecht
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://win4aisafety-sain-utrecht.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: LUMA Hackathon (September 20th - 28th)
+    url: https://luma-hackathon-fall.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 26 - Sep 28, 2026
+      ja: Jun 26 - Sep 28, 2026
+      zh: Jun 26 - Sep 28, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · LUMA
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://luma-hackathon-fall.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: BuunieX Hackathon
+    url: https://buuniex-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 22 - Jul 22, 2026
+      ja: Jun 22 - Jul 22, 2026
+      zh: Jun 22 - Jul 22, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · TechieBunnies team
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://buuniex-hackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: AI YES :International Youth AI Competition
+    url: https://ai-yes-competition-30441.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 17 - Sep 01, 2026
+      ja: Jun 17 - Sep 01, 2026
+      zh: Jun 17 - Sep 01, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · International AI Youth Education Society
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://ai-yes-competition-30441.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: LUMA Hackathon (July 3rd - 10th)
+    url: https://luma-hackathon-500.devpost.com/
+    ongoing: true
+    period:
+      en: Apr 11 - Jul 10, 2026
+      ja: Apr 11 - Jul 10, 2026
+      zh: Apr 11 - Jul 10, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · LUMA
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://luma-hackathon-500.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Hoobit Hacks 2026
+    url: https://hoobit-hacks-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Mar 30 - Jul 18, 2026
+      ja: Mar 30 - Jul 18, 2026
+      zh: Mar 30 - Jul 18, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · Hoobit
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://hoobit-hacks-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Agentic AI Innovation Challenge 2026
+    url: https://agentic-ai-innovation-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 30 - Jul 15, 2026
+      ja: Jun 30 - Jul 15, 2026
+      zh: Jun 30 - Jul 15, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · Innovation Hacks
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://agentic-ai-innovation-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Brainwave 2026 – X402 Blockchain Track
+    url: https://brainwave-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 03 - 31, 2026
+      ja: Jul 03 - 31, 2026
+      zh: Jul 03 - 31, 2026
+    sourceNote: Devpost auto · prize~100000 · score 68 · ACTS EDC
+    auto: true
+    joinScore: 68
+    prizeHint: 100000
+    submitUrl: https://brainwave-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: "IGAD Hackathon 2026: Smarter Early Warning, Stronger Communities"
+    url: https://igad-husika-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 22 - Jul 31, 2026
+      ja: Jun 22 - Jul 31, 2026
+      zh: Jun 22 - Jul 31, 2026
+    sourceNote: Devpost auto · prize~10000 · score 68 · BuildBeyond
+    auto: true
+    joinScore: 68
+    prizeHint: 10000
+    submitUrl: https://igad-husika-hackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Open Atlas - AI for Social Good Hackathon 2026
+    url: https://oa-ai-for-social-good.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 20 - Aug 20, 2026
+      ja: Jun 20 - Aug 20, 2026
+      zh: Jun 20 - Aug 20, 2026
+    sourceNote: Devpost auto · prize~10000 · score 68 · Open Atlas
+    auto: true
+    joinScore: 68
+    prizeHint: 10000
+    submitUrl: https://oa-ai-for-social-good.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: 3D Websites Hackathon
+    url: https://3d-websites-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 22 - Jul 31, 2026
+      ja: Jun 22 - Jul 31, 2026
+      zh: Jun 22 - Jul 31, 2026
+    sourceNote: Devpost auto · prize~55 · score 66 · high school
+    auto: true
+    joinScore: 66
+    prizeHint: 55
+    submitUrl: https://3d-websites-hackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Next Byte Hacks V3
+    url: https://next-byte-hacks-v3.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 15 - Jul 15, 2026
+      ja: Jun 15 - Jul 15, 2026
+      zh: Jun 15 - Jul 15, 2026
+    sourceNote: Devpost auto · prize~100 · score 66 · Next Bytes
+    auto: true
+    joinScore: 66
+    prizeHint: 100
+    submitUrl: https://next-byte-hacks-v3.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: QuantumHacks
+    url: https://quantumhacks.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 21 - Aug 20, 2026
+      ja: Jun 21 - Aug 20, 2026
+      zh: Jun 21 - Aug 20, 2026
+    sourceNote: Devpost auto · prize~1000 · score 64 · Quantumhacks
+    auto: true
+    joinScore: 64
+    prizeHint: 1000
+    submitUrl: https://quantumhacks.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: NeuralSprint
+    url: https://neuralsprint.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 18 - Aug 24, 2026
+      ja: Jun 18 - Aug 24, 2026
+      zh: Jun 18 - Aug 24, 2026
+    sourceNote: Devpost auto · prize~150 · score 60 · NeuralSprint
+    auto: true
+    joinScore: 60
+    prizeHint: 150
+    submitUrl: https://neuralsprint.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: DevSoc Starlight 2026
+    url: https://devsoc-starlight-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Apr 28 - Jul 10, 2026
+      ja: Apr 28 - Jul 10, 2026
+      zh: Apr 28 - Jul 10, 2026
+    sourceNote: Devpost auto · prize~1050 · score 60 · DevSoc
+    auto: true
+    joinScore: 60
+    prizeHint: 1050
+    submitUrl: https://devsoc-starlight-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:42:14.474Z
+    type: devpost-auto
+    title: "InnovatorsX: Startup Sprint"
+    url: https://innovatorsx.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 05 - Jul 10, 2026
+      ja: Jun 05 - Jul 10, 2026
+      zh: Jun 05 - Jul 10, 2026
+    sourceNote: Devpost auto · prize~0 · score 58 · InnovatorsX
+    auto: true
+    joinScore: 58
+    prizeHint: 0
+    submitUrl: https://innovatorsx.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Aethera Hacks
+    url: https://aethera-hacks.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 05 - 18, 2026
+      ja: Jul 05 - 18, 2026
+      zh: Jul 05 - 18, 2026
+    sourceNote: Devpost auto · prize~0 · score 58 · aethera.affiliate
+    auto: true
+    joinScore: 58
+    prizeHint: 0
+    submitUrl: https://aethera-hacks.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Lumora Hacks
+    url: https://lumora-hacks-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 25 - Jul 10, 2026
+      ja: Jun 25 - Jul 10, 2026
+      zh: Jun 25 - Jul 10, 2026
+    sourceNote: Devpost auto · prize~0 · score 58 · Students
+    auto: true
+    joinScore: 58
+    prizeHint: 0
+    submitUrl: https://lumora-hacks-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: DTI Hackathon 2026
+    url: https://dti-hackathon-2026-30476.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 18 - Jul 31, 2026
+      ja: Jun 18 - Jul 31, 2026
+      zh: Jun 18 - Jul 31, 2026
+    sourceNote: Devpost auto · prize~0 · score 58 · Cloud Counselage
+    auto: true
+    joinScore: 58
+    prizeHint: 0
+    submitUrl: https://dti-hackathon-2026-30476.devpost.com/challenges/start_a_submission
+meta:
+  lastWatch: 2026-07-09T18:42:14.487Z
+  source: devpost-auto+manual
+  added: 13
+  updated: 40
+  scanned: 59
+  kept: 40
