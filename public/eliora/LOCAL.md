@@ -3,11 +3,21 @@
 **Live:** https://miragea-ss.github.io/eliora/infinite-canvas.html  
 **Local files:** this folder (`public/eliora/`)
 
-## Japanese users
+## Who this is for
 
-- Browser language `ja` → UI defaults to **JA** automatically.
-- Toggle **EN / JA** in the top bar anytime (saved in this browser).
-- Toolbar, panels, onboarding, errors, and templates are localized for Japanese.
+| Audience | Support |
+|----------|---------|
+| **English speakers** | Full EN UI (default when browser is not `ja`) |
+| **Japanese speakers** | Full JA UI (auto when browser is `ja`) |
+| **Anonymity-first (JP or EN)** | **Local mode needs no account / no real-name signup** — llama.cpp + ComfyUI on your PC |
+| **Away from GPU** | Optional **BYOK** cloud (your key, your endpoint). Eliora does **not** proxy. No China real-name platforms |
+
+Board, images, and API keys stay in **this browser** (localStorage + IndexedDB).
+
+## Language
+
+- Browser `ja` → **JA** UI by default; otherwise **EN**.
+- Toggle **EN / JA** in the top bar anytime (saved on this device).
 
 ## Quick start (ComfyUI on this PC)
 
