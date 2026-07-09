@@ -12,6 +12,7 @@ EX_Her / Miragea — HSP perception, art × words, AI × cosmos × fantasy, musi
 - /[lang]/ex/[slug]/ — EX routes built from public X fragments
 - /eliora/infinite-canvas.html — Miragea · Eliora web canvas (board + image upload in-browser; llama.cpp/ComfyUI on local PC)
 - /eliora/operator-canvas.html — Local operator variant for llama.cpp + ComfyUI
+- /eliora/media-vault/ — Eliora Media Vault (Backblaze Gen Media Hackathon): local gen → Genblaze provenance → B2
 - /zh/geekspell/ — GeekSpell Studio (极客魔咒工作室): ZH AI literacy series under Cosmic Atelier; Bilibili space 1321407655
 - /zh/geekspell/ep01-codex-language/ — EP01: Codex prompt language (EN specs + ZH aesthetic)
 - /zh/geekspell/ep02-grok45/ — EP02: Grok 4.5 strengths + five prompt habits

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eliora Media Vault — Local Gen → B2 with Genblaze</title>
+  <meta name="description" content="Local-first AI media vault: Genblaze provenance + Backblaze B2. Built for Backblaze Generative Media Hackathon. Miragea · Eliora." />
+  <meta property="og:title" content="Eliora Media Vault" />
+  <meta property="og:description" content="Local gen → Genblaze verified provenance → Backblaze B2 durable vault." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #07090f;
+      --panel: #0e121c;
+      --line: #1c2436;
+      --text: #e8eefc;
+      --muted: #8b97b0;
+      --cyan: #5ef0d0;
+      --magenta: #ff4d9a;
+      --blue: #6aa8ff;
+      --ok: #3dd68c;
+      --warn: #ffc14d;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      background:
+        radial-gradient(900px 500px at 10% -10%, rgba(94, 240, 208, 0.12), transparent 55%),
+        radial-gradient(800px 480px at 100% 0%, rgba(255, 77, 154, 0.10), transparent 50%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code, .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+    .badge {
+      display: inline-flex; gap: .4rem; align-items: center;
+      font-size: .72rem; letter-spacing: .05em; text-transform: uppercase;
+      color: var(--cyan); border: 1px solid rgba(94,240,208,.35);
+      background: rgba(94,240,208,.08); padding: .35rem .7rem; border-radius: 999px;
+      font-weight: 600;
+    }
+    h1 {
+      font-size: clamp(1.7rem, 4.2vw, 2.55rem);
+      line-height: 1.12; margin: .7rem 0 .45rem; font-weight: 700;
+    }
+    .lead { color: var(--muted); max-width: 46rem; margin: 0; font-size: 1.02rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: .65rem; margin: 1.35rem 0 1.75rem; }
+    .btn {
+      display: inline-flex; align-items: center; gap: .4rem;
+      border-radius: 10px; padding: .68rem 1.05rem; font-weight: 600; font-size: .92rem;
+      border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--cyan); color: #04120f; }
+    .btn-ghost { background: transparent; color: var(--text); border-color: var(--line); }
+    .btn-ghost:hover { border-color: var(--cyan); text-decoration: none; }
+    .btn-primary:hover { text-decoration: none; filter: brightness(1.05); }
+    .grid {
+      display: grid; gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin: 1.25rem 0 1.75rem;
+    }
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,.03), transparent 40%), var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.1rem 1.15rem;
+    }
+    .card h3 { margin: 0 0 .45rem; font-size: 1rem; color: var(--cyan); }
+    .card p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .flow {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: .84rem;
+      background: #0a0d15;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 1rem 1.1rem;
+      overflow-x: auto;
+      color: #b8c7e6;
+      white-space: pre;
+      margin: 0 0 1.75rem;
+    }
+    h2 { font-size: 1.2rem; margin: 0 0 .75rem; }
+    .video-wrap {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: #000;
+      margin-bottom: 1.75rem;
+    }
+    video { width: 100%; display: block; max-height: 520px; background: #000; }
+    .video-fallback {
+      padding: 1rem 1.1rem; color: var(--muted); font-size: .9rem;
+      border-top: 1px solid var(--line); background: var(--panel);
+    }
+    textarea {
+      width: 100%; min-height: 200px; resize: vertical;
+      background: #0a0d15; color: #c5d4f0; border: 1px solid var(--line);
+      border-radius: 12px; padding: .9rem 1rem;
+      font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .78rem;
+    }
+    .status { margin-top: .75rem; font-size: .9rem; color: var(--muted); }
+    .status strong { color: var(--ok); }
+    .pill {
+      display: inline-block; padding: .15rem .5rem; border-radius: 6px;
+      background: rgba(255,77,154,.12); color: var(--magenta); font-size: .8rem; font-weight: 600;
+    }
+    .ok-pill {
+      display: inline-block; padding: .15rem .5rem; border-radius: 6px;
+      background: rgba(61,214,140,.12); color: var(--ok); font-size: .8rem; font-weight: 600;
+    }
+    footer {
+      margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--line);
+      color: var(--muted); font-size: .85rem;
+      display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; justify-content: space-between;
+    }
+    .checklist { margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: .92rem; }
+    .checklist li { margin: .35rem 0; }
+    .checklist .done { color: var(--ok); }
+    .two-col {
+      display: grid; gap: 1rem;
+      grid-template-columns: 1.2fr .8fr;
+    }
+    @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <span class="badge">Backblaze Gen Media Hackathon · Genblaze + B2</span>
+    <h1>Eliora Media Vault</h1>
+    <p class="lead">
+      Local-first AI media vault for creators: generate on your machine (or BYOK),
+      attach <strong style="color:var(--text)">Genblaze</strong> hash-verified provenance,
+      store durably on <strong style="color:var(--text)">Backblaze B2</strong>.
+      Miragea · Eliora — no forced real-name platforms.
+    </p>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="#demo">Watch demo</a>
+      <a class="btn btn-ghost" href="https://miragea-ss.github.io/eliora/infinite-canvas.html">Infinite Canvas</a>
+      <a class="btn btn-ghost" href="https://github.com/backblaze-labs/genblaze" target="_blank" rel="noopener">Genblaze SDK ↗</a>
+      <a class="btn btn-ghost" href="https://backblaze-generative-media.devpost.com/" target="_blank" rel="noopener">Hackathon ↗</a>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>1 · Local Gen</h3>
+        <p>ComfyUI / local GPU / offline path. Your machine first; cloud is optional BYOK.</p>
+      </div>
+      <div class="card">
+        <h3>2 · Genblaze</h3>
+        <p>Every run gets a SHA-256 verified provenance manifest — provider, model, prompt, params.</p>
+      </div>
+      <div class="card">
+        <h3>3 · Backblaze B2</h3>
+        <p>Assets + manifests + index in durable object storage. Reuse without re-running jobs.</p>
+      </div>
+    </div>
+
+    <pre class="flow">Local Gen / ComfyUI / BYOK
+        │
+        ▼
+ Genblaze  Manifest.verify()  =  True
+        │
+        ▼
+ Backblaze B2   assets/  ·  manifests/  ·  index/
+        │
+        ▼
+ Eliora Infinite Canvas · Vault browser</pre>
+
+    <section id="demo">
+      <h2>Demo video <span class="ok-pill">for judges</span></h2>
+      <div class="video-wrap">
+        <video controls playsinline preload="metadata" poster="">
+          <source src="./demo.mp4" type="video/mp4" />
+          Your browser does not support video.
+        </video>
+        <div class="video-fallback">
+          If the video does not load on this host yet, open the repo
+          <span class="mono">demo/eliora-media-vault-demo.mp4</span>
+          or re-run <span class="mono">python scripts/make_demo_video.py</span>.
+        </div>
+      </div>
+    </section>
+
+    <div class="two-col">
+      <section>
+        <h2>Live CLI proof (local run)</h2>
+        <textarea id="proof" readonly spellcheck="false"></textarea>
+        <p class="status">Integrity: <strong>Manifest.verify() = True</strong> · genblaze-core 0.3.x</p>
+      </section>
+      <section class="card" style="align-self:start">
+        <h3>Submission checklist</h3>
+        <ul class="checklist">
+          <li class="done">✓ Genblaze SDK (real Manifest / RunBuilder)</li>
+          <li class="done">✓ B2 path via genblaze-s3</li>
+          <li class="done">✓ Setup README + local demo</li>
+          <li class="done">✓ Short EN demo video</li>
+          <li>○ Public GitHub repo (push next)</li>
+          <li>○ B2 live upload with your App Key</li>
+          <li>○ Final Devpost Submit</li>
+        </ul>
+        <p style="margin:1rem 0 0;color:var(--muted);font-size:.88rem">
+          Devpost status: <span class="pill">DRAFT</span> — submit after B2 proof + repo URL.
+        </p>
+      </section>
+    </div>
+
+    <section style="margin-top:1.75rem">
+      <h2>Run it yourself</h2>
+      <pre class="flow">pip install -r requirements.txt
+python scripts/run_vault.py --prompt "your idea"
+# with B2 keys in .env:
+python scripts/run_vault.py --b2
+python scripts/make_demo_video.py</pre>
+    </section>
+
+    <footer>
+      <div>Miragea · Eliora · Media Vault MVP</div>
+      <div>Built for Backblaze Generative Media Hackathon 2026</div>
+    </footer>
+  </div>
+  <script>
+    const proof = {
+      project: "Eliora Media Vault",
+      pipeline: "local-gen → genblaze-manifest → b2-vault",
+      provider: "local",
+      model: "eliora-placeholder-v1",
+      modality: "image",
+      prompt: "Miragea Eliora vault: coastal city at golden hour, local-first",
+      seed: 42,
+      verified: true,
+      sample_run: {
+        run_id: "038071d2-ad87-4b7d-af0f-955dec392018",
+        canonical_hash: "742916656db4b24a2a6d96094581ff006d56bb9807f5245eb8bfcc1fd93d9648",
+        note: "Reproduced with genblaze-core Manifest.from_run + asset sha256"
+      },
+      storage: {
+        bucket: "miragea-genmedia-0710",
+        layout: "eliora-vault/assets | manifests | index",
+        backend: "genblaze_s3.S3StorageBackend.for_backblaze"
+      },
+      principles: [
+        "local-first",
+        "optional BYOK",
+        "no forced real-name cloud",
+        "Genblaze Manifest.verify()"
+      ]
+    };
+    document.getElementById("proof").value = JSON.stringify(proof, null, 2);
+  </script>
+</body>
+</html>
