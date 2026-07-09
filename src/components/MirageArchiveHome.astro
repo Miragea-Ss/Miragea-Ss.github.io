@@ -46,6 +46,10 @@ const copy = {
     routeArchive: 'Archive',
     routeStudio: 'Eliora Studio',
     routeAtelier: 'Atelier',
+    geekSpellKicker: 'GeekSpell',
+    geekSpellTitle: 'GeekSpell Studio',
+    geekSpellCopy: 'Spells for the AI age — ZH-first AI literacy (see /zh/geekspell/).',
+    geekSpellOpen: 'Open studio',
     badgeVisual: 'Visual',
     badgeWords: 'Words',
     badgeHsp: 'HSP',
@@ -93,6 +97,10 @@ const copy = {
     routeArchive: 'アーカイブ',
     routeStudio: 'Elioraスタジオ',
     routeAtelier: 'アトリエ',
+    geekSpellKicker: 'GeekSpell',
+    geekSpellTitle: '极客魔咒スタジオ',
+    geekSpellCopy: 'AI時代の呪文（Prompt）を、再現できる形で教える（ZH 主）。',
+    geekSpellOpen: 'スタジオを開く',
     badgeVisual: '視覚',
     badgeWords: '言葉',
     badgeHsp: 'HSP',
@@ -140,6 +148,10 @@ const copy = {
     routeArchive: '档案',
     routeStudio: 'Eliora 工作室',
     routeAtelier: '工坊',
+    geekSpellKicker: '科普 · GeekSpell',
+    geekSpellTitle: '极客魔咒工作室',
+    geekSpellCopy: '把 Prompt 写成中文创作者能复现的咒语。B站 AI 科普系列 · EP01 Codex · EP02 Grok 4.5。',
+    geekSpellOpen: '打开工作室',
     badgeVisual: '视觉',
     badgeWords: '文字',
     badgeHsp: 'HSP',
@@ -294,6 +306,38 @@ const copy = {
           <p class="mb-5 leading-8 text-stone-400">{copy.layer3Copy}</p>
           <a class="font-bold text-amber-100" href={`/eliora/atelier/${lang}/`}>{copy.enterAtelier} →</a>
         </article>
+        {
+          lang === 'zh' && (
+            <article class="rounded-lg border border-violet-300/25 bg-black/55 p-6 md:col-span-3 md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <span class="mb-4 block text-xs uppercase tracking-[0.16em] text-violet-200">
+                  {copy.geekSpellKicker}
+                </span>
+                <h3 class="mb-3 text-2xl">{copy.geekSpellTitle}</h3>
+                <p class="mb-5 leading-8 text-stone-400">{copy.geekSpellCopy}</p>
+                <a class="font-bold text-violet-100" href="/zh/geekspell/">
+                  {copy.geekSpellOpen} →
+                </a>
+              </div>
+              <div class="mt-6 flex flex-col justify-center gap-3 border-t border-white/10 pt-6 md:mt-0 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/zh/geekspell/ep01-codex-language/">
+                  EP01 · Codex 语言咒语 →
+                </a>
+                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/zh/geekspell/ep02-grok45/">
+                  EP02 · 榨干 Grok 4.5 →
+                </a>
+                <a
+                  class="text-sm text-stone-400 transition hover:text-amber-100"
+                  href="https://space.bilibili.com/1321407655"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  B站 · 极客魔咒工作室 ↗
+                </a>
+              </div>
+            </article>
+          )
+        }
       </div>
     </div>
   </section>

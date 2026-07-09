@@ -1,0 +1,194 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+
+/** 若已有 BV 号，填入后自动嵌入播放器；留空则显示空间入口 */
+const EP01_BVID = '';
+const SPACE = 'https://space.bilibili.com/1321407655';
+const playerSrc = EP01_BVID
+  ? `//player.bilibili.com/player.html?bvid=${EP01_BVID}&page=1&high_quality=1&danmaku=0`
+  : '';
+---
+
+<Layout title="EP01 · Codex 该用哪种语言？| 极客魔咒" lang="zh">
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/zh/">档案</a> · <a href="/zh/geekspell/">极客魔咒</a> · EP01
+      </p>
+      <p class="gs-eyebrow">极客魔咒科普 EP01</p>
+      <h1>Codex 写代码，该用中文还是英文？</h1>
+      <p class="gs-lead">
+        英语写技术规格，中文写审美与底线。本期用动画拆清：弱指令 vs 强指令，以及可复制的 Prompt 结构。
+      </p>
+
+      {
+        playerSrc ? (
+          <div class="gs-player">
+            <iframe
+              src={playerSrc}
+              scrolling="no"
+              border="0"
+              frameborder="no"
+              framespacing="0"
+              allowfullscreen="true"
+              title="极客魔咒 EP01 B站播放"
+            />
+          </div>
+        ) : (
+          <div class="gs-player-fallback">
+            <p>在 B站观看完整版动画（约 2–3 分钟）</p>
+            <a class="gs-btn" href={SPACE} target="_blank" rel="noopener">
+              打开 极客魔咒工作室 空间 →
+            </a>
+            <p class="gs-note">
+              站点维护：在本页源码将 <code>EP01_BVID</code> 设为实际上传 BV 号即可嵌入播放器。
+            </p>
+          </div>
+        )
+      }
+
+      <section class="gs-body">
+        <h2>本集要点</h2>
+        <ul>
+          <li>编程世界的「母语」接近英语：文档、报错、API 名。</li>
+          <li>纯写代码：英语规格更稳；只写「高级一点」容易掉进通用模板。</li>
+          <li>最强组合：EN 技术规格 + ZH 审美禁止项。</li>
+          <li>固定结构：Role · Task · Do not · Design language · Acceptance。</li>
+        </ul>
+
+        <h2>简介（可作 B站 说明参考）</h2>
+        <pre class="gs-desc">极客魔咒科普 EP01｜用 Codex 写代码，该用中文还是英文？
+
+英语写 Goal / Layout / Constraints。
+中文写你的品牌感与禁止项。
+不是玄学，是可复现的咒语。
+
+系列：极客魔咒工作室 · GeekSpell Studio
+#Codex #AI编程 #Prompt #极客魔咒</pre>
+
+        <p class="gs-links">
+          <a href="/zh/geekspell/">← 工作室首页</a>
+          ·
+          <a href="/zh/geekspell/ep02-grok45/">下一集 EP02 →</a>
+          ·
+          <a href={SPACE} target="_blank" rel="noopener">B站空间</a>
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style is:global>
+  .gs-ep-page {
+    min-height: 100vh;
+    color: #e8ecf8;
+    background: linear-gradient(180deg, #1a1a3e 0%, #0a0a0f 50%, #050508 100%);
+    font-family: system-ui, 'Noto Sans SC', sans-serif;
+  }
+  .gs-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5.5rem 1.5rem 4rem;
+  }
+  .gs-crumb {
+    font-size: 0.8rem;
+    color: rgba(200, 208, 224, 0.55);
+    margin-bottom: 1rem;
+  }
+  .gs-crumb a {
+    color: #c9a962;
+    text-decoration: none;
+  }
+  .gs-eyebrow {
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    color: #5b9cff;
+    margin-bottom: 0.75rem;
+  }
+  .gs-ep-page h1 {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .gs-lead {
+    color: rgba(200, 208, 224, 0.7);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 40rem;
+  }
+  .gs-player {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 169, 98, 0.25);
+    background: #000;
+  }
+  .gs-player iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .gs-player-fallback {
+    border-radius: 12px;
+    border: 1px solid rgba(201, 169, 98, 0.25);
+    background: rgba(0, 0, 0, 0.45);
+    padding: 2rem;
+    text-align: center;
+  }
+  .gs-btn {
+    display: inline-flex;
+    margin-top: 1rem;
+    min-height: 2.75rem;
+    padding: 0 1.25rem;
+    align-items: center;
+    border-radius: 8px;
+    background: #f5f5f4;
+    color: #0a0a0f;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .gs-note {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: rgba(200, 208, 224, 0.45);
+  }
+  .gs-note code {
+    color: #c9a962;
+  }
+  .gs-body {
+    margin-top: 2.5rem;
+  }
+  .gs-body h2 {
+    font-size: 1.25rem;
+    margin: 1.75rem 0 0.75rem;
+    color: #c9a962;
+  }
+  .gs-body ul {
+    padding-left: 1.25rem;
+    line-height: 1.85;
+    color: rgba(200, 208, 224, 0.75);
+  }
+  .gs-desc {
+    margin-top: 0.75rem;
+    padding: 1rem 1.15rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    color: #c8d0e0;
+  }
+  .gs-links {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+  }
+  .gs-links a {
+    color: #fecdd3;
+    text-decoration: none;
+  }
+</style>

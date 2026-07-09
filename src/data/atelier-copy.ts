@@ -441,6 +441,11 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
           title: '幻想角色 · 宇宙文明',
           description: '世界观看板 + 角色一致性生成演示。',
         },
+        {
+          href: '/zh/geekspell/',
+          title: '极客魔咒 · AI 科普',
+          description: 'Codex / Grok / Prompt 约束与复现 — B站系列 · GeekSpell Studio。',
+        },
       ],
       channels: ['Bilibili', '小红书', '视频号', 'Gumroad', 'RunningHub', 'LiblibAI'],
     },
