@@ -1045,29 +1045,29 @@
       <header class="bar">
         <a class="brand" href="./index.html">
           <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--soft" aria-label="Eliora logo"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/eliora-logo-transparent.png" alt="Eliora logo" /></span>
-          <span><strong>Eliora Infinite Canvas</strong><span data-i18n="brandSub">Local-first · llama.cpp + ComfyUI</span></span>
+          <span><strong data-i18n="brandTitle">Eliora Infinite Canvas</strong><span data-i18n="brandSub">Local-first · llama.cpp + ComfyUI</span></span>
         </a>
-        <div class="tools" aria-label="Canvas tools">
-          <button class="tool-primary-local" id="askLlamaTop" data-i18n-title="askLlamaTopTitle" title="Send selection to llama.cpp">Ask Local</button>
-          <button class="tool-primary-local" id="sendComfyTop" data-i18n-title="sendComfyTopTitle" title="Send selection to ComfyUI">Send Comfy</button>
-          <button class="primary" id="addNote" title="Add note">Add</button>
-          <button id="imagePrompt" title="Create image prompt card">Image Prompt</button>
-          <button id="videoPrompt" title="Create video prompt card">Video Prompt</button>
-          <button id="composeContext" title="Combine connected cards into one instruction">Combine</button>
-          <button id="addImage" title="Upload image file (drag-drop or paste also works)">Image</button>
-          <button id="connect" title="Connect cards: click source, then target (or use card ports)">Connect</button>
-          <button id="duplicate" title="Duplicate">Duplicate</button>
-          <button id="delete" data-i18n-title="deleteTitle" title="Delete selection">Delete</button>
-          <button id="fit" title="Fit view">Fit</button>
-          <button id="zoomOut" class="icon" title="Zoom out">-</button>
-          <button id="zoomIn" class="icon" title="Zoom in">+</button>
-          <button id="exportJson" title="Export JSON">Export</button>
-          <button id="importJson" title="Import JSON">Import</button>
-          <a class="tool-link" id="openComfyTop" href="http://127.0.0.1:8188/" target="_blank" rel="noreferrer" title="Open ComfyUI">ComfyUI</a>
-          <a class="tool-link" href="/eliora/index.html" title="Back to Eliora">Eliora</a>
-          <a class="tool-link" href="/" title="Back to Miragea">Miragea</a>
+        <div class="tools" data-i18n-aria="toolsAria" aria-label="Canvas tools">
+          <button class="tool-primary-local" id="askLlamaTop" data-i18n="askLocalBtn" data-i18n-title="askLlamaTopTitle" title="Send selection to llama.cpp">Ask Local</button>
+          <button class="tool-primary-local" id="sendComfyTop" data-i18n="sendComfyTopBtn" data-i18n-title="sendComfyTopTitle" title="Send selection to ComfyUI">Send Comfy</button>
+          <button class="primary" id="addNote" data-i18n="addNoteBtn" data-i18n-title="addNoteTitle" title="Add note">Add</button>
+          <button id="imagePrompt" data-i18n="imagePromptBtn" data-i18n-title="imagePromptTitle" title="Create image prompt card">Image Prompt</button>
+          <button id="videoPrompt" data-i18n="videoPromptBtn" data-i18n-title="videoPromptTitle" title="Create video prompt card">Video Prompt</button>
+          <button id="composeContext" data-i18n="combineBtn" data-i18n-title="combineTitle" title="Combine connected cards">Combine</button>
+          <button id="addImage" data-i18n="imageBtn" data-i18n-title="imageTitle" title="Upload image">Image</button>
+          <button id="connect" data-i18n="connectBtn" data-i18n-title="connectTitle" title="Connect cards">Connect</button>
+          <button id="duplicate" data-i18n="duplicateBtn" data-i18n-title="duplicateTitle" title="Duplicate">Duplicate</button>
+          <button id="delete" data-i18n="deleteBtn" data-i18n-title="deleteTitle" title="Delete selection">Delete</button>
+          <button id="fit" data-i18n="fitBtn" data-i18n-title="fitTitle" title="Fit view">Fit</button>
+          <button id="zoomOut" class="icon" data-i18n-title="zoomOutTitle" title="Zoom out">-</button>
+          <button id="zoomIn" class="icon" data-i18n-title="zoomInTitle" title="Zoom in">+</button>
+          <button id="exportJson" data-i18n="exportBtn" data-i18n-title="exportTitle" title="Export JSON">Export</button>
+          <button id="importJson" data-i18n="importBtn" data-i18n-title="importTitle" title="Import JSON">Import</button>
+          <a class="tool-link" id="openComfyTop" href="http://127.0.0.1:8188/" target="_blank" rel="noreferrer" data-i18n="openComfy" data-i18n-title="openComfyTitle" title="Open ComfyUI">ComfyUI</a>
+          <a class="tool-link" href="/eliora/index.html" data-i18n="backEliora" data-i18n-title="backElioraTitle" title="Back to Eliora">Eliora</a>
+          <a class="tool-link" href="/" data-i18n="backMiragea" data-i18n-title="backMirageaTitle" title="Back to Miragea">Miragea</a>
         </div>
-        <div class="lang-switch" role="group" aria-label="Language">
+        <div class="lang-switch" role="group" data-i18n-aria="langAria" aria-label="Language">
           <button id="langEn" type="button" data-lang="en">EN</button>
           <button id="langJa" type="button" data-lang="ja">JA</button>
         </div>
@@ -1229,23 +1229,23 @@
           <section class="panel">
             <h2 data-i18n="panelFile">File</h2>
             <div class="tools" style="justify-content:flex-start">
-              <button id="exportMd">Markdown</button>
-              <button id="reset">Reset</button>
+              <button id="exportMd" data-i18n="markdownBtn" data-i18n-title="exportMdTitle">Markdown</button>
+              <button id="reset" data-i18n="resetBtn" data-i18n-title="resetTitle">Reset</button>
             </div>
           </section>
         </aside>
 
         <main class="stage-wrap">
-          <div class="stage" id="stage" tabindex="0" aria-label="Infinite Canvas workspace">
+          <div class="stage" id="stage" tabindex="0" data-i18n-aria="stageAria" aria-label="Infinite Canvas workspace">
             <div class="world" id="world">
               <svg class="edges" id="edges" aria-hidden="true"></svg>
               <div id="linkControls" class="link-controls" aria-hidden="true"></div>
               <div id="nodes"></div>
               <svg class="edges wire-overlay" id="wireOverlay" aria-hidden="true"></svg>
-              <div id="composer" class="composer" aria-label="Run panel">
+              <div id="composer" class="composer" data-i18n-aria="runPanelAria" aria-label="Run panel">
                 <div class="composer-card">
                   <div class="composer-head">
-                    <select id="composerEngine" aria-label="Engine">
+                    <select id="composerEngine" data-i18n-aria="engineAria" aria-label="Engine">
                       <option value="comfy">ComfyUI · ローカル GPU</option>
                       <option value="llama">llama.cpp · ローカル</option>
                       <option value="cloud">Cloud API · BYOK</option>
@@ -1257,7 +1257,7 @@
                   <div id="composerThumbs" class="composer-thumbs"></div>
                   <div id="composerPreview" class="composer-preview"></div>
                   <div class="composer-tools">
-                    <select id="composerTemplate" aria-label="Prompt template">
+                    <select id="composerTemplate" data-i18n-aria="templateAria" aria-label="Prompt template">
                       <option value="" data-i18n="templatePick">Templates</option>
                     </select>
                     <select id="composerBatch" aria-label="Batch count">
@@ -1429,18 +1429,18 @@
           templatePick: 'Templates',
           composerPromptPh: 'Prompt — auto-filled from connected cards',
           composerRun: '▶ Run', composerSelectCard: 'Select a Prompt or Image card',
-          composerRunComfy: '▶ Run ComfyUI', composerRunLlama: '▶ Ask Local', composerRunCloud: '▶ Cloud API',
+          composerRunComfy: '▶ Run ComfyUI', composerRunLlama: '▶ ローカル質問', composerRunCloud: '▶ クラウドAPI',
           batchRun: 'Batch run', batchQueued: 'Queued batch jobs',
           bannerLocal: 'Local-first — Ask Local / Run Comfy. llama :8080 · ComfyUI Bridge :8190.',
           bannerRemote: 'Remote view — board saved in this browser. Run generation on your home PC.',
           bannerCloud: 'Cloud assist — BYOK only. Keys stay on this device. Eliora does not proxy.',
           bannerFile: 'Opened via file:// — use start-eliora-work.bat for ComfyUI connection.',
-          engineComfy: 'ComfyUI · Local GPU', engineLlama: 'llama.cpp · Local', engineCloud: 'Cloud API · BYOK',
+          engineComfy: 'ComfyUI · Local GPU', engineLlama: 'llama.cpp · Local', engineCloud: 'クラウドAPI · 自分のキー',
           privacyCloud: 'OpenRouter, OpenAI-compatible, or any BYOK endpoint. No China-specific services.',
           createImage: 'Image', createImageSub: 'Upload / drop',
           createPrompt: 'Prompt', createPromptSub: 'AI instruction card',
           createNote: 'Note', createNoteSub: 'Text & tasks',
-          createWorkflow: 'Workflow', createWorkflowSub: 'Pipeline',
+          createWorkflow: 'ワークフロー', createWorkflowSub: 'Pipeline',
           panelPalette: 'Palette', panelBoard: 'Board',
           panelLocalLlama: 'Local AI · llama.cpp', panelLocalComfy: 'Local Image · ComfyUI',
           panelAiMode: 'AI Mode', panelWorkflowImport: 'Workflow Import', panelFile: 'File',
@@ -1449,7 +1449,7 @@
           recheck: 'Recheck', bridge8190: 'Bridge 8190', bridge8190Title: 'CORS bridge on port 8190',
           localLlamaSub: 'Default path. Start llama-server on 127.0.0.1:8080. Use Ask Local or Ctrl+Enter.',
           localComfySub: 'GPU images & video. Start ComfyUI on 127.0.0.1:8188. Use Send Comfy or Ctrl+Shift+Enter.',
-          askLlamaBtn: 'Ask llama.cpp', sendComfyBtn: 'Send ComfyUI', checkResult: 'Check Result', openComfy: 'Open ComfyUI',
+          askLlamaBtn: 'llama に質問', sendComfyBtn: 'ComfyUI に送信', checkResult: 'Check Result', openComfy: 'Open ComfyUI',
           injectContext: 'Inject canvas context',
           comfyConnectFix: 'Cannot reach ComfyUI. Start ComfyUI or try Bridge 8190 below.',
           comfyConnectFixBtn: 'Use Bridge 8190',
@@ -1457,13 +1457,13 @@
           aiModeSub: 'Local by default. Switch to cloud only when away from home.',
           modeLocal: 'Local', modeLocalSub: 'llama + ComfyUI (default)',
           modeCloud: 'Cloud', modeCloudSub: 'BYOK · assist only',
-          importJsonBtn: 'Import JSON', folderBtn: 'Folder',
+          importJsonBtn: 'JSON 取込', folderBtn: 'Folder',
           workflowStatsDefault: 'Add ComfyUI workflow JSON via Import JSON. Use Selected copies to ComfyUI panel.',
-          useSelected: 'Use Selected', runSelected: 'Run Selected',
-          cloudApiSummary: 'Cloud API · BYOK',
+          useSelected: '選択を使う', runSelected: '選択を実行',
+          cloudApiSummary: 'クラウドAPI · 自分のキー',
           cloudApiSub: 'Eliora does not proxy. Keys stay on this device. Skip if local is enough.',
           presetOpenRouter: 'OpenRouter preset',
-          askCloudBtn: 'Ask Cloud API',
+          askCloudBtn: 'クラウドに質問',
           workflowPanelTitle: 'Workflow', workflowPanelHint: 'Drop or pick JSON. One file auto-runs ComfyUI.',
           workflowDrop: 'Drop JSON / click to pick', exportSelection: 'Export selection as JSON',
           workflowPanelStatus: 'Connect cards with wires, then run from the composer below.',
@@ -1509,6 +1509,49 @@
           resultMetaHeader: 'ComfyUI generation',
           askLlamaTopTitle: 'Send selection to llama.cpp (Ctrl+Enter)',
           sendComfyTopTitle: 'Send selection to ComfyUI (Ctrl+Shift+Enter)',
+
+          askLocalBtn: 'Ask Local',
+          sendComfyTopBtn: 'Send Comfy',
+          addNoteBtn: 'Add',
+          imagePromptBtn: 'Image Prompt',
+          videoPromptBtn: 'Video Prompt',
+          combineBtn: 'Combine',
+          imageBtn: 'Image',
+          connectBtn: 'Connect',
+          duplicateBtn: 'Duplicate',
+          deleteBtn: 'Delete',
+          fitBtn: 'Fit',
+          exportBtn: 'Export',
+          importBtn: 'Import',
+          markdownBtn: 'Markdown',
+          resetBtn: 'Reset',
+          backEliora: 'Eliora',
+          backMiragea: 'Miragea',
+          brandTitle: 'Eliora Infinite Canvas',
+          toolsAria: 'Canvas tools',
+          langAria: 'Language',
+          assetCountLabel: '{n} items',
+          addNoteTitle: 'Add note card',
+          imagePromptTitle: 'Create image prompt card',
+          videoPromptTitle: 'Create video prompt card',
+          combineTitle: 'Combine connected cards into one instruction',
+          imageTitle: 'Upload image (file, drag-drop, or paste)',
+          connectTitle: 'Connect cards: source then target (or use ports)',
+          duplicateTitle: 'Duplicate selection',
+          fitTitle: 'Fit view',
+          zoomOutTitle: 'Zoom out',
+          zoomInTitle: 'Zoom in',
+          exportTitle: 'Export JSON',
+          importTitle: 'Import JSON',
+          openComfyTitle: 'Open ComfyUI',
+          backElioraTitle: 'Back to Eliora',
+          backMirageaTitle: 'Back to Miragea',
+          exportMdTitle: 'Export as Markdown',
+          resetTitle: 'Reset local canvas',
+          stageAria: 'Infinite canvas workspace',
+          runPanelAria: 'Run panel',
+          engineAria: 'Engine',
+          templateAria: 'Prompt template',
           deleteTitle: 'Delete selected card or wire',
 
         },
@@ -1522,41 +1565,41 @@
           templatePick: 'テンプレート',
           composerPromptPh: 'プロンプト — 接続カードから自動入力',
           composerRun: '▶ 実行', composerSelectCard: 'Prompt / Image カードを選択',
-          composerRunComfy: '▶ ComfyUI 実行', composerRunLlama: '▶ Ask Local', composerRunCloud: '▶ Cloud API',
+          composerRunComfy: '▶ ComfyUI 実行', composerRunLlama: '▶ ローカル質問', composerRunCloud: '▶ クラウドAPI',
           batchRun: 'バッチ実行', batchQueued: 'バッチをキューに投入',
-          bannerLocal: 'ローカル優先 — Ask Local / Send Comfy。llama :8080 · Bridge :8190。',
+          bannerLocal: 'ローカル優先 — 「ローカル質問」/「Comfy送信」。llama :8080 · Bridge :8190。',
           bannerRemote: 'リモート閲覧 — ボードはこのブラウザに保存。生成は自宅 PC で。',
           bannerCloud: 'クラウド補助 — BYOK のみ。キーは端末内。Eliora は仲介しません。',
           bannerFile: 'file:// で開いています — start-eliora-work.bat で開き直してください。',
-          engineComfy: 'ComfyUI · ローカル GPU', engineLlama: 'llama.cpp · ローカル', engineCloud: 'Cloud API · BYOK',
+          engineComfy: 'ComfyUI · ローカル GPU', engineLlama: 'llama.cpp · ローカル', engineCloud: 'クラウドAPI · 自分のキー',
           privacyCloud: 'OpenRouter 等の BYOK のみ。中国向けサービスは案内しません。',
           createImage: '画像', createImageSub: 'アップロード / ドロップ',
           createPrompt: 'プロンプト', createPromptSub: 'AI 指示カード',
           createNote: 'メモ', createNoteSub: 'テキスト・タスク',
-          createWorkflow: 'Workflow', createWorkflowSub: 'パイプライン',
+          createWorkflow: 'ワークフロー', createWorkflowSub: 'パイプライン',
           panelPalette: 'パレット', panelBoard: 'ボード',
           panelLocalLlama: 'ローカル AI · llama.cpp', panelLocalComfy: 'ローカル画像 · ComfyUI',
           panelAiMode: 'AI モード', panelWorkflowImport: 'ワークフロー取込', panelFile: 'ファイル',
           inspectorTitle: 'インスペクタ', emptyInspector: 'カードまたは接続を選択してください。',
           statCards: 'カード', statLinks: 'リンク',
           recheck: '再確認', bridge8190: 'Bridge 8190', bridge8190Title: 'CORS 回避ブリッジ 8190',
-          localLlamaSub: '普段はここ。llama-server を 127.0.0.1:8080 で起動。Ask Local または Ctrl+Enter。',
-          localComfySub: 'GPU 画像・動画はここ。ComfyUI を 127.0.0.1:8188 で起動。Send Comfy または Ctrl+Shift+Enter。',
-          askLlamaBtn: 'Ask llama.cpp', sendComfyBtn: 'Send ComfyUI', checkResult: '結果確認', openComfy: 'ComfyUI を開く',
+          localLlamaSub: '普段はここ。llama-server を 127.0.0.1:8080 で起動。「ローカル質問」または Ctrl+Enter。',
+          localComfySub: 'GPU 画像・動画はここ。ComfyUI を 127.0.0.1:8188 で起動。「Comfy送信」または Ctrl+Shift+Enter。',
+          askLlamaBtn: 'llama に質問', sendComfyBtn: 'ComfyUI に送信', checkResult: '結果確認', openComfy: 'ComfyUI を開く',
           injectContext: 'キャンバス文脈を注入',
           comfyConnectFix: 'ComfyUI に接続できません。ComfyUI を起動するか、下の Bridge 8190 を試してください。',
           comfyConnectFixBtn: 'Bridge 8190 を使う',
-          comfyStatusDefault: 'Boogu 画像編集 JSON 読込済み — 画像を線でつないで ▶ 実行。',
+          comfyStatusDefault: '画像編集用ワークフロー読込済み — 画像を線でつないで ▶ 実行。',
           aiModeSub: '基本はローカル。外出先だけクラウドに切替。',
           modeLocal: 'ローカル', modeLocalSub: 'llama + ComfyUI（既定）',
           modeCloud: 'クラウド', modeCloudSub: 'BYOK・補助用',
-          importJsonBtn: 'Import JSON', folderBtn: 'フォルダ',
-          workflowStatsDefault: 'ComfyUI ワークフロー JSON を Import JSON で追加。Use Selected で ComfyUI 欄へ反映。',
-          useSelected: 'Use Selected', runSelected: 'Run Selected',
-          cloudApiSummary: 'Cloud API · BYOK',
+          importJsonBtn: 'JSON 取込', folderBtn: 'フォルダ',
+          workflowStatsDefault: 'ComfyUI ワークフロー JSON を「JSON 取込」で追加。「選択を使う」で ComfyUI 欄へ反映。',
+          useSelected: '選択を使う', runSelected: '選択を実行',
+          cloudApiSummary: 'クラウドAPI · 自分のキー',
           cloudApiSub: 'Eliora は仲介しません。キーは端末内のみ。普段はローカルで十分なら開かなくて OK。',
           presetOpenRouter: 'OpenRouter プリセット',
-          askCloudBtn: 'Ask Cloud API',
+          askCloudBtn: 'クラウドに質問',
           workflowPanelTitle: 'ワークフロー', workflowPanelHint: 'JSON をドロップするか選択。1ファイルなら自動で ComfyUI 実行を試みます。',
           workflowDrop: 'JSON をドロップ / クリックして選択', exportSelection: '選択を JSON 出力',
           workflowPanelStatus: 'カードを線でつないでから、選択カード下の実行パネルで ▶ 実行。',
@@ -1602,6 +1645,49 @@
           resultMetaHeader: 'ComfyUI 生成',
           askLlamaTopTitle: '選択カードを llama.cpp に送る（Ctrl+Enter）',
           sendComfyTopTitle: '選択カードを ComfyUI に送る（Ctrl+Shift+Enter）',
+
+          askLocalBtn: 'ローカル質問',
+          sendComfyTopBtn: 'Comfy送信',
+          addNoteBtn: '追加',
+          imagePromptBtn: '画像プロンプト',
+          videoPromptBtn: '動画プロンプト',
+          combineBtn: '結合',
+          imageBtn: '画像',
+          connectBtn: '接続',
+          duplicateBtn: '複製',
+          deleteBtn: '削除',
+          fitBtn: '全体',
+          exportBtn: '書出',
+          importBtn: '読込',
+          markdownBtn: 'Markdown',
+          resetBtn: 'リセット',
+          backEliora: 'Eliora',
+          backMiragea: 'Miragea',
+          brandTitle: 'Eliora 無限キャンバス',
+          toolsAria: 'キャンバス操作',
+          langAria: '言語',
+          assetCountLabel: '{n} 件',
+          addNoteTitle: 'メモカードを追加',
+          imagePromptTitle: '画像プロンプトカードを作成',
+          videoPromptTitle: '動画プロンプトカードを作成',
+          combineTitle: '接続されたカードを1つの指示にまとめる',
+          imageTitle: '画像を追加（ファイル・ドラッグ＆ドロップ・貼り付け）',
+          connectTitle: 'カードを接続：元→先をクリック（またはポート）',
+          duplicateTitle: '選択を複製',
+          fitTitle: '全体を表示',
+          zoomOutTitle: '縮小',
+          zoomInTitle: '拡大',
+          exportTitle: 'JSON を書き出し',
+          importTitle: 'JSON を読み込み',
+          openComfyTitle: 'ComfyUI を開く',
+          backElioraTitle: 'Eliora に戻る',
+          backMirageaTitle: 'Miragea に戻る',
+          exportMdTitle: 'Markdown で書き出し',
+          resetTitle: 'ローカルキャンバスをリセット',
+          stageAria: '無限キャンバス作業面',
+          runPanelAria: '実行パネル',
+          engineAria: 'エンジン',
+          templateAria: 'プロンプトテンプレート',
           deleteTitle: '選択したカードまたは線を削除',
 
         },
@@ -1613,11 +1699,11 @@
           { title: 'Images & auto-save', body: 'Add image cards via Image button, drag-drop, or paste. The board auto-saves in this browser and persists after reload.' },
           { title: 'Local first', body: 'Daily use: Ask Local (Ctrl+Enter) and Send Comfy (Ctrl+Shift+Enter). Start llama.cpp :8080 and ComfyUI :8188. Use Cloud API only when away.' },
         ],
-        ja: [
-          { title: 'カードを置く', body: '左の Palette か上の Add でメモ・プロンプト・Workflow カードを追加できます。ドラッグで自由に動かせます。' },
-          { title: '線でつなぐ', body: '右の●をドラッグして線を引き、左の●へドロップ（ノードグラフ方式）。間違えた線は線の上の × または Delete。' },
-          { title: '画像と自動保存', body: 'Image ボタン・ドラッグ＆ドロップ・貼り付けで画像カードを追加できます。ボードはこのブラウザに自動保存され、リロード後も残ります。' },
-          { title: 'ローカルが主役', body: '普段は Ask Local（Ctrl+Enter）と Send Comfy（Ctrl+Shift+Enter）。llama.cpp :8080、ComfyUI :8188 を起動して使います。外出先だけ Cloud API（折りたたみ）に切替。' },
+                ja: [
+          { title: 'カードを置く', body: '左の「パレット」または上の「追加」でメモ・プロンプト・ワークフローカードを置けます。ドラッグで自由に動かせます。' },
+          { title: '線でつなぐ', body: '右の●をドラッグして左の●へドロップ（ノードグラフ方式）。間違えた線は線上の × か「削除」キー。' },
+          { title: '画像と自動保存', body: '「画像」ボタン・ドラッグ＆ドロップ・貼り付けで画像カードを追加。ボードはこのブラウザに自動保存され、再読み込み後も残ります。' },
+          { title: 'ローカルが主役', body: '普段は「ローカル質問」（Ctrl+Enter）と「Comfy送信」（Ctrl+Shift+Enter）。llama.cpp :8080 と ComfyUI :8188 を起動。外出先だけクラウドAPI（折りたたみ）に切替。' },
         ],
       };
       function onboardingSteps() { return ONBOARDING_STEPS[uiLang] || ONBOARDING_STEPS.en; }
@@ -1655,6 +1741,7 @@
         refreshModelStackSelect().catch(() => {});
       }
       function applyI18n() {
+        document.documentElement.lang = uiLang === 'ja' ? 'ja' : 'en';
         document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
         document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
           const key = el.dataset.i18nPlaceholder;
@@ -1663,6 +1750,10 @@
         document.querySelectorAll('[data-i18n-title]').forEach((el) => {
           const key = el.dataset.i18nTitle;
           if (key) el.title = t(key);
+        });
+        document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+          const key = el.dataset.i18nAria;
+          if (key) el.setAttribute('aria-label', t(key));
         });
         const modeLocalBtn = $('modeLocal');
         const modeCloudBtn = $('modeCloud');
@@ -1695,6 +1786,9 @@
           if (b) b.textContent = t(keys[0]);
           if (s) s.textContent = t(keys[1]);
         });
+        // Keep product names readable; re-apply titles after bulk text
+        if ($('openComfyTop')) $('openComfyTop').textContent = t('openComfy');
+        if ($('openComfyPanel')) $('openComfyPanel').textContent = t('openComfy');
       }
       function populateComposerTemplates() {
         const sel = $('composerTemplate');
@@ -1726,7 +1820,7 @@
           if (status) { status.classList.add('asset-empty'); status.textContent = t('assetEmpty'); }
           return;
         }
-        if (status) status.textContent = `${assetManifest.length} item(s)`;
+        if (status) status.textContent = t('assetCountLabel').replace('{n}', String(assetManifest.length));
         const items = await Promise.all(assetManifest.map(async (asset) => {
           const blob = await getImageBlob(asset.imageId);
           const url = blob ? URL.createObjectURL(blob) : '';

@@ -3,6 +3,12 @@
 **Live:** https://miragea-ss.github.io/eliora/infinite-canvas.html  
 **Local files:** this folder (`public/eliora/`)
 
+## Japanese users
+
+- Browser language `ja` → UI defaults to **JA** automatically.
+- Toggle **EN / JA** in the top bar anytime (saved in this browser).
+- Toolbar, panels, onboarding, errors, and templates are localized for Japanese.
+
 ## Quick start (ComfyUI on this PC)
 
 1. Start **ComfyUI** on `http://127.0.0.1:8188`
