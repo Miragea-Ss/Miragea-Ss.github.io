@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-09T18:42:14.487Z
+# lastWatch: 2026-07-09T18:42:53.588Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -505,6 +505,20 @@ contests:
     joinScore: 60
     prizeHint: 1050
     submitUrl: https://devsoc-starlight-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:42:53.553Z
+    type: devpost-auto
+    title: Slack Agent Builder Challenge
+    url: https://slackhack.devpost.com/
+    ongoing: true
+    period:
+      en: May 20 - Jul 13, 2026
+      ja: May 20 - Jul 13, 2026
+      zh: May 20 - Jul 13, 2026
+    sourceNote: Devpost auto · prize~42000 · score 58 · Salesforce
+    auto: true
+    joinScore: 58
+    prizeHint: 42000
+    submitUrl: https://slackhack.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:42:14.474Z
     type: devpost-auto
     title: "InnovatorsX: Startup Sprint"
@@ -547,22 +561,8 @@ contests:
     joinScore: 58
     prizeHint: 0
     submitUrl: https://lumora-hacks-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: DTI Hackathon 2026
-    url: https://dti-hackathon-2026-30476.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 18 - Jul 31, 2026
-      ja: Jun 18 - Jul 31, 2026
-      zh: Jun 18 - Jul 31, 2026
-    sourceNote: Devpost auto · prize~0 · score 58 · Cloud Counselage
-    auto: true
-    joinScore: 58
-    prizeHint: 0
-    submitUrl: https://dti-hackathon-2026-30476.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-09T18:42:14.487Z
+  lastWatch: 2026-07-09T18:42:53.588Z
   source: devpost-auto+manual
   added: 13
   updated: 40
