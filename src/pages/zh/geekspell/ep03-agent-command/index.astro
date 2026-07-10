@@ -1,0 +1,401 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+
+/** 投稿后填入 BV 号即可嵌入 */
+const EP03_BVID = '';
+const SPACE = 'https://space.bilibili.com/1321407655';
+const playerSrc = EP03_BVID
+  ? `//player.bilibili.com/player.html?bvid=${EP03_BVID}&page=1&high_quality=1&danmaku=0`
+  : '';
+---
+
+<Layout
+  title="AI Agent正在接管工作：不会被淘汰的人具备什么能力？| 极客魔咒 EP03"
+  lang="zh"
+  description="真正的核心不是如何打败AI，而是如何把自己的意图转化为AI能够执行的指令。极客魔咒 EP03 科普长文。"
+>
+  <main class="gs-article-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/zh/">档案</a> · <a href="/zh/geekspell/">极客魔咒</a> · EP03
+      </p>
+      <p class="gs-eyebrow">极客魔咒科普 EP03 · 长文 + 动画</p>
+      <h1>AI Agent正在接管工作：焦虑时代里，真正不会被淘汰的人具备什么能力？</h1>
+      <p class="gs-lead">
+        这个主题面向普通职场人、创作者与技术初学者。真正的核心不是「如何打败AI」，而是「如何把自己的意图，转化为AI能够执行的指令」。
+      </p>
+
+      {
+        playerSrc ? (
+          <div class="gs-player">
+            <iframe
+              src={playerSrc}
+              scrolling="no"
+              border="0"
+              frameborder="no"
+              framespacing="0"
+              allowfullscreen="true"
+              title="极客魔咒 EP03 B站播放"
+            />
+          </div>
+        ) : (
+          <div class="gs-player-fallback">
+            <p>配套科普动画约 12 分钟（长文全文口播）· B站「极客魔咒」更新</p>
+            <a class="gs-btn" href={SPACE} target="_blank" rel="noopener">
+              打开 极客魔咒工作室 空间 →
+            </a>
+            <p class="gs-note">
+              上传后把本页 <code>EP03_BVID</code> 改成 BV 号即可嵌入。
+            </p>
+          </div>
+        )
+      }
+
+      <article class="gs-prose">
+        <p>很多人担心，AI会不会抢走自己的工作。</p>
+        <p>这个担忧并非毫无根据。</p>
+        <p>
+          过去的AI主要负责回答问题、生成文字、制作图片；而今天的AI
+          Agent已经开始执行任务。它能够读取文件、分析数据、调用软件、编写代码、处理邮件、安排日程，甚至连续完成一整套工作流程。
+        </p>
+        <p>过去，人类使用工具。</p>
+        <p>现在，工具开始理解目标、拆解任务并主动行动。</p>
+        <p>这意味着，我们正在从「使用软件的时代」，进入「管理智能体的时代」。</p>
+        <p>面对这种变化，许多人会本能地问：</p>
+        <p class="gs-quote">「我应该学习什么，才不会被淘汰？」</p>
+        <p>答案可能不是某一个软件，也不是某一门编程语言。</p>
+        <p>
+          真正重要的能力，是学会如何与AI和AI
+          Agent沟通，如何准确表达目标，如何下达可以执行的命令，以及如何判断AI的结果是否正确。
+        </p>
+
+        <h2>一、AI Agent与普通AI有什么不同？</h2>
+        <p>普通AI更像一个知识丰富的顾问。你提出问题，它给出答案。</p>
+        <p>AI Agent则更像一个能够操作工具的数字员工。它不仅能够回答「应该怎么做」，还能够进一步执行：</p>
+        <ul>
+          <li>搜索资料 · 整理文件 · 编写程序 · 分析表格</li>
+          <li>发送邮件 · 制作报告 · 调用其他AI · 自动完成重复工作</li>
+        </ul>
+        <pre class="gs-code">普通AI：
+问题 → 回答
+
+AI Agent：
+目标 → 分析 → 拆解任务 → 调用工具 → 执行 → 检查结果</pre>
+        <p>
+          因此，当AI从「回答者」变成「执行者」以后，人类与AI沟通的方式也必须改变。过去我们可以随意提问；未来我们必须学会下达清晰、完整、可验证的任务指令。
+        </p>
+
+        <h2>二、为什么很多人觉得AI不好用？</h2>
+        <p>很多人会输入类似这样的命令：</p>
+        <ul>
+          <li>「帮我做一个高级的网站。」</li>
+          <li>「帮我写一篇有深度的文章。」</li>
+          <li>「帮我分析一下这个项目。」</li>
+          <li>「帮我把工作自动化。」</li>
+        </ul>
+        <p>
+          这些命令对人类似乎能懂，对AI却仍然过于模糊：什么是「高级」？网站面对谁？分析看成本、技术还是市场？自动化的起点和终点是什么？
+        </p>
+        <p>
+          当指令缺少背景、目标和限制条件时，AI只能自行猜测。而一旦开始猜测，结果就会变得普通、偏离，甚至错误。很多时候并不是AI能力不足，而是人类没有把任务描述清楚。
+        </p>
+
+        <h2>三、未来最重要的能力：把模糊想法转化为明确指令</h2>
+        <p>与AI沟通，不只是写一句提示词。它更像一种新的管理能力。</p>
+        <p>一个高质量的AI指令，通常需要包含六个部分：</p>
+        <div class="gs-table-wrap">
+          <table>
+            <thead>
+              <tr><th>组成部分</th><th>需要说明的内容</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>背景</td><td>当前发生了什么</td></tr>
+              <tr><td>目标</td><td>最终要完成什么</td></tr>
+              <tr><td>对象</td><td>成果是给谁使用</td></tr>
+              <tr><td>约束</td><td>不能做什么，有哪些限制</td></tr>
+              <tr><td>输出</td><td>最终以什么格式交付</td></tr>
+              <tr><td>验收</td><td>什么结果才算完成</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>例如，不要只说：「帮我写一篇AI文章。」</p>
+        <p>
+          可以改为：「请为25至45岁的职场人写一篇1500字左右的中文科普文章。主题是AI
+          Agent如何改变工作方式。文章不要制造恐慌，要重点解释普通人为什么需要学习任务拆解、指令表达和结果验证。结构包括开场、概念解释、三个核心能力、一个实际案例和结论。语言清晰，不使用过多技术术语。」
+        </p>
+        <p>后一个指令更有效，不是因为它更长，而是因为它减少了歧义。</p>
+
+        <h2>四、与AI沟通的本质，不是说话，而是建模</h2>
+        <p>
+          很多人以为提示词工程就是研究某些神秘关键词。其实并不是。真正有效的提示词，本质上是在建立一个任务模型——把脑中的想法，转换成AI可以理解的结构：
+        </p>
+        <pre class="gs-code">模糊想法
+   ↓ 明确目标
+   ↓ 拆分任务
+   ↓ 补充背景
+   ↓ 规定边界
+   ↓ 指定输出
+   ↓ 检查结果</pre>
+        <p>
+          这也是为什么未来真正有竞争力的人，不一定是最会背知识的人，而是最善于定义问题的人。AI可以帮助你寻找答案，但前提是你知道自己在解决什么问题。
+        </p>
+
+        <h2>五、不会被AI淘汰的人，通常具备三种能力</h2>
+        <h3>1. 定义问题的能力</h3>
+        <p>
+          很多工作失败，并不是因为没有答案，而是从一开始就提出了错误的问题。AI可以快速生成内容，但只有人类能够决定应该解决哪一个问题。
+        </p>
+        <h3>2. 拆解任务的能力</h3>
+        <p>复杂任务不能只用一句话交给AI。例如「建立一个品牌网站」可以拆成：</p>
+        <pre class="gs-code">确定品牌定位 → 分析目标用户 → 设计信息架构
+→ 编写页面文案 → 制定视觉系统 → 编写代码
+→ 测试性能 → 检查移动端 → 部署上线</pre>
+        <p>任务拆得越清楚，AI Agent执行得越稳定。这与管理一个真实团队没有本质区别。</p>
+        <h3>3. 验证结果的能力</h3>
+        <p>AI能够生成答案，但不能保证答案永远正确。因此工作流应当是：</p>
+        <pre class="gs-code">人类定义目标 → AI执行 → 人类检查
+→ AI修正 → 再次验证 → 正式交付</pre>
+        <p>懂得验证AI，比单纯会使用AI更加重要。</p>
+
+        <h2>六、一个简单案例：同样使用AI，结果为什么完全不同？</h2>
+        <p>假设两个人都想让AI Agent制作一份市场分析报告。</p>
+        <p class="gs-quote">弱：「分析一下新能源汽车市场。」</p>
+        <p>
+          强：「请分析2025年至2026年日本新能源汽车市场，重点关注乘用车、充电基础设施和消费者购买障碍。使用政府、行业协会和主要汽车企业公开数据。输出包括市场规模、增长因素、主要竞争者、风险、三种未来情景，并将无法确认的数据明确标注。最终生成一份适合管理层阅读的2000字报告和一张对比表。」
+        </p>
+        <p>同一个AI，结果完全不同。差别不在AI，而在于任务定义能力。</p>
+
+        <h2>七、不要只学习提示词，要学习「AI工作流」</h2>
+        <p>提示词只是入口。真正重要的是建立完整的工作流程：</p>
+        <div class="gs-table-wrap">
+          <table>
+            <thead>
+              <tr><th>阶段</th><th>人类的责任</th><th>AI的责任</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>目标设定</td><td>决定为什么做</td><td>提供方案</td></tr>
+              <tr><td>任务拆解</td><td>确认步骤</td><td>补充子任务</td></tr>
+              <tr><td>信息收集</td><td>判断来源可信度</td><td>搜索与整理</td></tr>
+              <tr><td>内容生产</td><td>提供方向与标准</td><td>生成初稿</td></tr>
+              <tr><td>质量检查</td><td>判断是否正确</td><td>自检与修改</td></tr>
+              <tr><td>最终决策</td><td>承担责任</td><td>提供辅助</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          AI越强，人类越不能放弃判断。最终决定「什么值得做」「什么是正确的」「什么可以被接受」的，仍然是人类。
+        </p>
+
+        <h2>八、焦虑并不能阻止变化，训练表达能力可以</h2>
+        <p>
+          过去需要数年学习的技能，如今可能被AI在几分钟内完成。但这并不意味着人类已经失去价值——人的价值正在从「亲自完成每一个步骤」，转向选择目标、设计系统、分配任务、判断质量、承担责任、创造新方向。
+        </p>
+        <p>
+          未来，一个人可能更像一个AI团队的管理者：提出目标，多个Agent分别负责研究、设计、编程、测试和发布。人与人之间的差距，将取决于谁能够更准确地组织智能。
+        </p>
+
+        <h2>结语：未来真正稀缺的，不是答案，而是清晰的意图</h2>
+        <p>
+          AI能够生成越来越多的答案，却无法替你决定你真正想要什么。它可以执行命令，却不能自动理解你尚未想清楚的目标。
+        </p>
+        <pre class="gs-code">把想法说清楚
+把目标定义准确
+把复杂任务拆开
+把执行标准写明
+把错误结果识别出来</pre>
+        <p>未来不会简单地分成「会使用AI的人」和「不会使用AI的人」。更准确地说：</p>
+        <ul>
+          <li>一类人只能向AI提出模糊要求，接受随机结果。</li>
+          <li>另一类人能够定义目标、组织Agent、控制流程并验证成果。</li>
+        </ul>
+        <p>
+          AI不会自动淘汰所有人。但能够清晰思考、准确表达并管理AI的人，会逐渐取代那些只会重复执行的人。
+        </p>
+        <p class="gs-tagline">极客魔咒——与 AI 同行的魔法与咒语。</p>
+      </article>
+
+      <p class="gs-links">
+        <a href="/zh/geekspell/">← 工作室首页</a>
+        ·
+        <a href="/zh/geekspell/ep02-grok45/">上一集 EP02</a>
+        ·
+        <a href="/zh/geekspell/ep01-codex-language/">EP01</a>
+        ·
+        <a href={SPACE} target="_blank" rel="noopener">B站空间</a>
+      </p>
+    </div>
+  </main>
+</Layout>
+
+<style is:global>
+  .gs-article-page {
+    min-height: 100vh;
+    color: #e8ecf8;
+    background: linear-gradient(180deg, #1a1a3e 0%, #0a0a0f 50%, #050508 100%);
+    font-family: system-ui, 'Noto Sans SC', 'PingFang SC', sans-serif;
+  }
+  .gs-wrap {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 5.5rem 1.5rem 4rem;
+  }
+  .gs-crumb {
+    font-size: 0.8rem;
+    color: rgba(200, 208, 224, 0.55);
+    margin-bottom: 1rem;
+  }
+  .gs-crumb a {
+    color: #c9a962;
+    text-decoration: none;
+  }
+  .gs-eyebrow {
+    font-family: ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    color: #5b9cff;
+    margin-bottom: 0.75rem;
+  }
+  .gs-article-page h1 {
+    font-size: clamp(1.55rem, 4.2vw, 2.15rem);
+    line-height: 1.35;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  .gs-lead {
+    color: rgba(200, 208, 224, 0.78);
+    line-height: 1.85;
+    margin-bottom: 1.75rem;
+    font-size: 1.05rem;
+  }
+  .gs-player {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 169, 98, 0.25);
+    background: #000;
+    margin-bottom: 2rem;
+  }
+  .gs-player iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .gs-player-fallback {
+    border-radius: 12px;
+    border: 1px solid rgba(201, 169, 98, 0.25);
+    background: rgba(0, 0, 0, 0.45);
+    padding: 1.75rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .gs-btn {
+    display: inline-flex;
+    margin-top: 1rem;
+    min-height: 2.75rem;
+    padding: 0 1.25rem;
+    align-items: center;
+    border-radius: 8px;
+    background: #f5f5f4;
+    color: #0a0a0f;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .gs-note {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: rgba(200, 208, 224, 0.45);
+  }
+  .gs-note code {
+    color: #c9a962;
+  }
+  .gs-prose p {
+    line-height: 1.9;
+    color: rgba(220, 226, 240, 0.88);
+    margin: 0 0 1.05rem;
+    font-size: 1.02rem;
+  }
+  .gs-prose h2 {
+    font-size: 1.28rem;
+    margin: 2.25rem 0 1rem;
+    color: #c9a962;
+    font-weight: 650;
+    line-height: 1.4;
+  }
+  .gs-prose h3 {
+    font-size: 1.08rem;
+    margin: 1.5rem 0 0.65rem;
+    color: #a5c8ff;
+    font-weight: 600;
+  }
+  .gs-prose ul {
+    padding-left: 1.25rem;
+    line-height: 1.9;
+    color: rgba(200, 208, 224, 0.82);
+    margin: 0 0 1.15rem;
+  }
+  .gs-prose li {
+    margin-bottom: 0.35rem;
+  }
+  .gs-quote {
+    border-left: 3px solid rgba(139, 92, 246, 0.65);
+    padding: 0.35rem 0 0.35rem 1rem;
+    color: #fecdd3 !important;
+    font-style: italic;
+  }
+  .gs-code {
+    margin: 1rem 0 1.35rem;
+    padding: 1rem 1.15rem;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    color: #b8c8e8;
+    font-family: ui-monospace, 'IBM Plex Mono', monospace;
+    overflow-x: auto;
+  }
+  .gs-table-wrap {
+    overflow-x: auto;
+    margin: 1rem 0 1.35rem;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .gs-prose table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  .gs-prose th,
+  .gs-prose td {
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .gs-prose th {
+    color: #c9a962;
+    background: rgba(0, 0, 0, 0.35);
+    font-weight: 600;
+  }
+  .gs-prose td {
+    color: rgba(200, 208, 224, 0.85);
+  }
+  .gs-tagline {
+    margin-top: 2rem !important;
+    color: #c9a962 !important;
+    font-weight: 600;
+  }
+  .gs-links {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 0.9rem;
+  }
+  .gs-links a {
+    color: #fecdd3;
+    text-decoration: none;
+  }
+</style>
