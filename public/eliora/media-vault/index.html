@@ -204,7 +204,8 @@
           <li class="done">✓ B2 path via genblaze-s3</li>
           <li class="done">✓ Setup README + local demo</li>
           <li class="done">✓ Short EN demo video</li>
-          <li>○ Public GitHub repo (push next)</li>
+          <li class="done">✓ ComfyUI local gen path (verified)</li>
+          <li>○ Public GitHub repo URL on Devpost</li>
           <li>○ B2 live upload with your App Key</li>
           <li>○ Final Devpost Submit</li>
         </ul>
@@ -231,17 +232,17 @@ python scripts/make_demo_video.py</pre>
   <script>
     const proof = {
       project: "Eliora Media Vault",
-      pipeline: "local-gen → genblaze-manifest → b2-vault",
-      provider: "local",
-      model: "eliora-placeholder-v1",
+      pipeline: "comfyui-local → genblaze-manifest → b2-vault",
+      provider: "comfyui-local",
+      model: "SDXL (CheckpointLoaderSimple · live local ComfyUI)",
       modality: "image",
-      prompt: "Miragea Eliora vault: coastal city at golden hour, local-first",
-      seed: 42,
+      prompt: "Eliora media vault demo frame, cinematic coastal city at dusk",
+      seed: 71,
       verified: true,
       sample_run: {
-        run_id: "038071d2-ad87-4b7d-af0f-955dec392018",
-        canonical_hash: "742916656db4b24a2a6d96094581ff006d56bb9807f5245eb8bfcc1fd93d9648",
-        note: "Reproduced with genblaze-core Manifest.from_run + asset sha256"
+        run_id: "1cc1cd90-9273-4ce4-b949-48b5059118ec",
+        canonical_hash: "4e6097a00d80f62571ade0786557bf9288460ae9af5347b580e3905a154fec1d",
+        note: "ComfyUI HTTP /prompt + Manifest.verify()=True · see sample_manifest.json"
       },
       storage: {
         bucket: "miragea-genmedia-0710",
@@ -249,7 +250,7 @@ python scripts/make_demo_video.py</pre>
         backend: "genblaze_s3.S3StorageBackend.for_backblaze"
       },
       principles: [
-        "local-first",
+        "local-first ComfyUI",
         "optional BYOK",
         "no forced real-name cloud",
         "Genblaze Manifest.verify()"
