@@ -48,7 +48,7 @@ const copy = {
     routeAtelier: 'Atelier',
     geekSpellKicker: 'GeekSpell',
     geekSpellTitle: 'GeekSpell Studio',
-    geekSpellCopy: 'Spells for the AI age — ZH-first AI literacy (see /zh/geekspell/).',
+    geekSpellCopy: 'Spells for the AI age — Grok 4.5 intro on YouTube (EN), plus JA / ZH tracks.',
     geekSpellOpen: 'Open studio',
     badgeVisual: 'Visual',
     badgeWords: 'Words',
@@ -63,6 +63,22 @@ const copy = {
     elioraCopy: 'AI workflow studio — ComfyUI automation, visual planning, digital products, and enterprise consulting.',
     openEx: 'Open route',
     openWork: 'Open on X',
+    liveTitle: 'Enter the living systems',
+    liveCopy: 'Not just an archive — open the tools that make Miragea feel alive. Canvas, vault, and spells you can use today.',
+    liveCanvasKicker: 'Command surface',
+    liveCanvasTitle: 'Infinite Canvas',
+    liveCanvasCopy: 'Local-first board for ideas, images, and AI pipelines. Bring your own keys — no forced cloud identity.',
+    liveCanvasCta: 'Open Canvas',
+    liveVaultKicker: 'Genblaze · B2',
+    liveVaultTitle: 'Media Vault',
+    liveVaultCopy: 'Local gen → verified provenance → durable Backblaze B2. The creator vault for generative media.',
+    liveVaultCta: 'Open Vault',
+    liveSpellKicker: 'GeekSpell',
+    liveSpellTitle: 'Spells for the AI age',
+    liveSpellCopy: 'Prompt literacy you can reproduce. EP02 Grok 4.5 live on YouTube (EN). JA and ZH tracks too.',
+    liveSpellCta: 'Open GeekSpell',
+    heroCanvas: 'Infinite Canvas',
+    heroVault: 'Media Vault',
   },
   ja: {
     eyebrow: 'EX_Her · 知覚アーカイブ / 芸術 × 言葉 × 神経系',
@@ -98,8 +114,8 @@ const copy = {
     routeStudio: 'Elioraスタジオ',
     routeAtelier: 'アトリエ',
     geekSpellKicker: 'GeekSpell',
-    geekSpellTitle: '极客魔咒スタジオ',
-    geekSpellCopy: 'AI時代の呪文（Prompt）を、再現できる形で教える（ZH 主）。',
+    geekSpellTitle: 'ギークスペル',
+    geekSpellCopy: 'AI時代の呪文を、再現できる形で。EP02 Grok 4.5 入門は YouTube 日本語で公開中。',
     geekSpellOpen: 'スタジオを開く',
     badgeVisual: '視覚',
     badgeWords: '言葉',
@@ -114,6 +130,22 @@ const copy = {
     elioraCopy: 'AIワークフロースタジオ — ComfyUI自動化、視覚プランニング、デジタル商品、企業向けコンサルティング。',
     openEx: 'ルートを開く',
     openWork: 'Xで開く',
+    liveTitle: '生きているシステムへ',
+    liveCopy: 'アーカイブだけではない。今すぐ触れるキャンバス・保管庫・呪文——来た瞬間に驚くための入口。',
+    liveCanvasKicker: '指揮面',
+    liveCanvasTitle: 'Infinite Canvas',
+    liveCanvasCopy: 'ローカル優先のボード。メモ・画像・AIパイプライン。実名強制なし、BYOK 可。',
+    liveCanvasCta: 'キャンバスを開く',
+    liveVaultKicker: 'Genblaze · B2',
+    liveVaultTitle: 'Media Vault',
+    liveVaultCopy: 'ローカル生成 → 証明付きマニフェスト → Backblaze B2 の耐久保管。作り手の保管庫。',
+    liveVaultCta: '保管庫を開く',
+    liveSpellKicker: 'GeekSpell',
+    liveSpellTitle: 'AI時代の呪文',
+    liveSpellCopy: '再現できるプロンプトを教える。EP02 Grok 4.5 入門は YouTube 日本語で公開中。',
+    liveSpellCta: 'ギークスペルを開く',
+    heroCanvas: 'Infinite Canvas',
+    heroVault: 'Media Vault',
   },
   zh: {
     eyebrow: 'EX_Her · 感知档案 / 艺术 × 文字 × 神经系统',
@@ -165,6 +197,22 @@ const copy = {
     elioraCopy: 'AI 工作流工作室 — ComfyUI 自动化、视觉规划、数字商品与企业咨询。',
     openEx: '打开路线',
     openWork: '在 X 打开',
+    liveTitle: '进入会呼吸的系统',
+    liveCopy: '不只是档案——画布、保管库、咒语都可立刻打开。来到这里，就该被惊艳。',
+    liveCanvasKicker: '指挥面',
+    liveCanvasTitle: 'Infinite Canvas',
+    liveCanvasCopy: '本地优先的无限画布：想法、图像、AI 管线。可选自带密钥，不强制实名云。',
+    liveCanvasCta: '打开画布',
+    liveVaultKicker: 'Genblaze · B2',
+    liveVaultTitle: 'Media Vault',
+    liveVaultCopy: '本地生成 → 可验证出处 → Backblaze B2 耐久保管。创作者的媒体金库。',
+    liveVaultCta: '打开金库',
+    liveSpellKicker: '极客魔咒',
+    liveSpellTitle: 'AI 时代的咒语',
+    liveSpellCopy: '可复现的 Prompt 素养。EP01 Codex · EP02 Grok 4.5。',
+    liveSpellCta: '打开工作室',
+    heroCanvas: 'Infinite Canvas',
+    heroVault: 'Media Vault',
   },
 }[lang];
 ---
@@ -182,6 +230,8 @@ const copy = {
         <p class="mt-7 max-w-3xl text-lg leading-8 text-stone-400 md:text-xl">{copy.heroLead}</p>
         <p class="mt-5 max-w-3xl leading-8 text-stone-300">{copy.heroNote}</p>
         <div class="mt-9 flex flex-wrap gap-3">
+          <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-cyan-200/90 px-5 font-bold text-black transition hover:bg-cyan-100" href="/eliora/infinite-canvas.html">{copy.heroCanvas}</a>
+          <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-orange-300/90 px-5 font-bold text-black transition hover:bg-orange-200" href="/eliora/media-vault/">{copy.heroVault}</a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-stone-100 px-5 font-bold text-black transition hover:bg-rose-200" href={`/eliora/atelier/${lang}/contact/`}>{copy.enterpriseContact}</a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-amber-200/30 px-5 font-bold text-amber-100 transition hover:border-amber-200/60" href="/eliora/index.html">{copy.enterEliora}</a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 px-5 font-bold text-stone-100 transition hover:border-white/35" href={`/eliora/atelier/${lang}/`}>{copy.enterAtelier}</a>
@@ -225,6 +275,58 @@ const copy = {
         <p class="mt-4 leading-8 text-stone-400">{copy.enterpriseLead}</p>
       </div>
       <a class="inline-flex min-h-12 shrink-0 items-center justify-center rounded-lg bg-amber-100 px-6 font-bold text-black transition hover:bg-amber-200" href={`/eliora/atelier/${lang}/contact/`}>{copy.enterpriseContact}</a>
+    </div>
+  </section>
+
+  <!-- Wow gate: living systems visitors can open immediately -->
+  <section class="relative overflow-hidden px-6 py-20 md:px-12">
+    <div class="pointer-events-none absolute inset-0 opacity-70 [background:radial-gradient(700px_320px_at_10%_0%,rgba(94,240,208,.12),transparent_55%),radial-gradient(600px_280px_at_90%_20%,rgba(255,140,60,.10),transparent_50%),radial-gradient(500px_260px_at_50%_100%,rgba(255,77,154,.08),transparent_55%)]"></div>
+    <div class="relative mx-auto max-w-7xl">
+      <div class="mb-10 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+        <h2 class="text-4xl font-light tracking-normal md:text-6xl">{copy.liveTitle}</h2>
+        <p class="max-w-xl leading-8 text-stone-400">{copy.liveCopy}</p>
+      </div>
+      <div class="grid gap-4 lg:grid-cols-3">
+        <a
+          href="/eliora/infinite-canvas.html"
+          class="group relative overflow-hidden rounded-2xl border border-cyan-200/25 bg-gradient-to-br from-cyan-950/40 via-black/60 to-black p-7 transition duration-500 hover:-translate-y-1 hover:border-cyan-200/55 hover:shadow-[0_0_40px_rgba(94,240,208,.15)]"
+        >
+          <span class="mb-4 block text-xs uppercase tracking-[0.18em] text-cyan-200">{copy.liveCanvasKicker}</span>
+          <h3 class="mb-3 text-3xl font-light text-stone-50">{copy.liveCanvasTitle}</h3>
+          <p class="mb-8 min-h-[4.5rem] leading-7 text-stone-400">{copy.liveCanvasCopy}</p>
+          <span class="inline-flex items-center gap-2 font-bold text-cyan-100 group-hover:text-cyan-50">
+            {copy.liveCanvasCta}
+            <span class="transition group-hover:translate-x-1">→</span>
+          </span>
+          <div class="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-cyan-400/10 blur-2xl transition group-hover:bg-cyan-300/20"></div>
+        </a>
+        <a
+          href="/eliora/media-vault/"
+          class="group relative overflow-hidden rounded-2xl border border-orange-300/30 bg-gradient-to-br from-orange-950/45 via-black/60 to-black p-7 transition duration-500 hover:-translate-y-1 hover:border-orange-200/60 hover:shadow-[0_0_40px_rgba(255,140,60,.16)]"
+        >
+          <span class="mb-4 block text-xs uppercase tracking-[0.18em] text-orange-200">{copy.liveVaultKicker}</span>
+          <h3 class="mb-3 text-3xl font-light text-stone-50">{copy.liveVaultTitle}</h3>
+          <p class="mb-8 min-h-[4.5rem] leading-7 text-stone-400">{copy.liveVaultCopy}</p>
+          <span class="inline-flex items-center gap-2 font-bold text-orange-100 group-hover:text-orange-50">
+            {copy.liveVaultCta}
+            <span class="transition group-hover:translate-x-1">→</span>
+          </span>
+          <div class="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-orange-400/10 blur-2xl transition group-hover:bg-orange-300/20"></div>
+        </a>
+        <a
+          href={lang === 'ja' ? '/ja/geekspell/' : lang === 'zh' ? '/zh/geekspell/' : '/en/geekspell/'}
+          class="group relative overflow-hidden rounded-2xl border border-violet-300/30 bg-gradient-to-br from-violet-950/45 via-black/60 to-black p-7 transition duration-500 hover:-translate-y-1 hover:border-violet-200/55 hover:shadow-[0_0_40px_rgba(167,139,250,.16)]"
+        >
+          <span class="mb-4 block text-xs uppercase tracking-[0.18em] text-violet-200">{copy.liveSpellKicker}</span>
+          <h3 class="mb-3 text-3xl font-light text-stone-50">{copy.liveSpellTitle}</h3>
+          <p class="mb-8 min-h-[4.5rem] leading-7 text-stone-400">{copy.liveSpellCopy}</p>
+          <span class="inline-flex items-center gap-2 font-bold text-violet-100 group-hover:text-violet-50">
+            {copy.liveSpellCta}
+            <span class="transition group-hover:translate-x-1">→</span>
+          </span>
+          <div class="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-violet-400/10 blur-2xl transition group-hover:bg-violet-300/20"></div>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -306,20 +408,23 @@ const copy = {
           <p class="mb-5 leading-8 text-stone-400">{copy.layer3Copy}</p>
           <a class="font-bold text-amber-100" href={`/eliora/atelier/${lang}/`}>{copy.enterAtelier} →</a>
         </article>
-        {
-          lang === 'zh' && (
-            <article class="rounded-lg border border-violet-300/25 bg-black/55 p-6 md:col-span-3 md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <span class="mb-4 block text-xs uppercase tracking-[0.16em] text-violet-200">
-                  {copy.geekSpellKicker}
-                </span>
-                <h3 class="mb-3 text-2xl">{copy.geekSpellTitle}</h3>
-                <p class="mb-5 leading-8 text-stone-400">{copy.geekSpellCopy}</p>
-                <a class="font-bold text-violet-100" href="/zh/geekspell/">
-                  {copy.geekSpellOpen} →
-                </a>
-              </div>
-              <div class="mt-6 flex flex-col justify-center gap-3 border-t border-white/10 pt-6 md:mt-0 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+        <article class="rounded-lg border border-violet-300/25 bg-black/55 p-6 md:col-span-3 md:grid md:grid-cols-2 md:gap-8">
+          <div>
+            <span class="mb-4 block text-xs uppercase tracking-[0.16em] text-violet-200">
+              {copy.geekSpellKicker}
+            </span>
+            <h3 class="mb-3 text-2xl">{copy.geekSpellTitle}</h3>
+            <p class="mb-5 leading-8 text-stone-400">{copy.geekSpellCopy}</p>
+            <a
+              class="font-bold text-violet-100"
+              href={lang === 'ja' ? '/ja/geekspell/' : lang === 'zh' ? '/zh/geekspell/' : '/en/geekspell/'}
+            >
+              {copy.geekSpellOpen} →
+            </a>
+          </div>
+          <div class="mt-6 flex flex-col justify-center gap-3 border-t border-white/10 pt-6 md:mt-0 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+            {lang === 'zh' && (
+              <>
                 <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/zh/geekspell/ep01-codex-language/">
                   EP01 · Codex 语言咒语 →
                 </a>
@@ -334,10 +439,39 @@ const copy = {
                 >
                   B站 · 极客魔咒工作室 ↗
                 </a>
-              </div>
-            </article>
-          )
-        }
+                <a class="text-sm text-stone-400 transition hover:text-amber-100" href="/en/geekspell/ep02-grok45/">
+                  English EP02 (YouTube) →
+                </a>
+              </>
+            )}
+            {lang === 'ja' && (
+              <>
+                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/ja/geekspell/ep02-grok45/">
+                  EP02 · Grok 4.5 入門（YouTube）→
+                </a>
+                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/en/geekspell/ep02-grok45/">
+                  English EP02 →
+                </a>
+                <a class="text-sm text-stone-400 transition hover:text-amber-100" href="/zh/geekspell/">
+                  中文 极客魔咒 →
+                </a>
+              </>
+            )}
+            {lang === 'en' && (
+              <>
+                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/en/geekspell/ep02-grok45/">
+                  EP02 · Grok 4.5 (YouTube) →
+                </a>
+                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/ja/geekspell/ep02-grok45/">
+                  Japanese EP02 →
+                </a>
+                <a class="text-sm text-stone-400 transition hover:text-amber-100" href="/zh/geekspell/">
+                  Chinese GeekSpell →
+                </a>
+              </>
+            )}
+          </div>
+        </article>
       </div>
     </div>
   </section>

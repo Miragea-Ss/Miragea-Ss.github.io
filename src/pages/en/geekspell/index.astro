@@ -1,0 +1,125 @@
+---
+import Layout from '../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+const YT_EP02 = 'https://youtu.be/jnGfZdlX6aI';
+const YT_JA = 'https://youtu.be/JXhmRa7r6u8';
+---
+
+<Layout title="GeekSpell Studio · Spells for the AI age | Miragea" lang="en">
+  <GeekSpellBaseStyles />
+  <main class="gs-page">
+    <div class="gs-stars" aria-hidden="true"></div>
+    <div class="gs-wrap">
+      <header class="gs-topbar">
+        <span>EX_Her · Cosmic Atelier · literacy line</span>
+        <nav>
+          <a href="/en/">← Miragea Archive</a>
+          ·
+          <a href="/eliora/atelier/en/">Cosmic Atelier</a>
+          ·
+          <a href="/zh/geekspell/">中文</a>
+          ·
+          <a href="/ja/geekspell/">日本語</a>
+        </nav>
+      </header>
+
+      <section class="gs-hero">
+        <div>
+          <p class="gs-eyebrow">GSP / GeekSpell · E/X-04 Example × Execution</p>
+          <h1>Geek<em>Spell</em> Studio</h1>
+          <p class="gs-sub-en">Spells for the AI age</p>
+          <p class="gs-lead">
+            Prompt literacy for builders who ship — not vibes, not fluff. Constraints, structure, and
+            reproducible openers. Same Miragea signal universe; English track on YouTube.
+          </p>
+          <p class="gs-tag">Say the spell correctly before you run the model.</p>
+          <div class="gs-cta">
+            <a class="gs-btn gs-btn-primary" href={YT_EP02} target="_blank" rel="noopener">YouTube · EP02 EN</a>
+            <a class="gs-btn gs-btn-ghost" href="/en/geekspell/ep02-grok45/">EP02 · Grok 4.5</a>
+            <a class="gs-btn gs-btn-ghost" href={YT_JA} target="_blank" rel="noopener">JA version ↗</a>
+          </div>
+        </div>
+        <aside class="gs-panel" aria-label="Example spell">
+          <div class="gs-panel-label">⌁ SPELL_BLOCK · ship_pattern</div>
+          <pre class="gs-spell"><span class="cm"># Senior engineer opener</span>
+<span class="kw">ROLE</span>: senior engineer
+<span class="kw">GOAL</span>: clear done-state
+<span class="kw">SCOPE</span>: only necessary files
+<span class="kw">CONSTRAINTS</span>: stack · style · length · language
+<span class="kw">CONTEXT</span>: errors · tree · links
+<span class="kw">VERIFY</span>: plan → change → accept criteria</pre>
+        </aside>
+      </section>
+
+      <section>
+        <div class="gs-section-head">
+          <h2>Three spell laws</h2>
+          <p>Cool because verifiable. Sharp because it still belongs to Miragea’s signal cosmos.</p>
+        </div>
+        <div class="gs-grid3">
+          <article class="gs-card">
+            <div class="gs-kicker">◈ 01 · Bound</div>
+            <h3>Constraints are magic</h3>
+            <p>Longer is not better. Format, edges, acceptance — keep the model on rails.</p>
+          </article>
+          <article class="gs-card">
+            <div class="gs-kicker">◇ 02 · Split</div>
+            <h3>Language by job</h3>
+            <p>EN for specs and APIs. Local language for taste and intent when needed.</p>
+          </article>
+          <article class="gs-card">
+            <div class="gs-kicker">⬡ 03 · Proof</div>
+            <h3>Reproducible or it doesn’t count</h3>
+            <p>Each episode ships templates you can copy — Example route: see, learn, ship.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="gs-ep-list" aria-label="Series">
+        <div class="gs-section-head" style="margin-bottom:0">
+          <h2>Episodes</h2>
+          <p>YouTube · English track live</p>
+        </div>
+        <article class="gs-ep">
+          <span class="gs-ep-num">EP02</span>
+          <div>
+            <h4>Grok 4.5 — the useful cut</h4>
+            <p>What it is · 4 strengths · 5 habits · copy-ready opener</p>
+          </div>
+          <a href="/en/geekspell/ep02-grok45/">Watch episode →</a>
+        </article>
+        <article class="gs-ep">
+          <span class="gs-ep-num">EP01</span>
+          <div>
+            <h4>Codex language (ZH track)</h4>
+            <p>EN specs + ZH aesthetic — available on the Chinese series / Bilibili</p>
+          </div>
+          <a href="/zh/geekspell/ep01-codex-language/">Open ZH EP01 →</a>
+        </article>
+      </section>
+
+      <section class="gs-lineage">
+        <h3>Miragea lineage</h3>
+        <p class="gs-lineage-copy">
+          GeekSpell is not a detached influencer brand — it is the execution-layer literacy outlet of the
+          perception archive. Origin Miragea, system Eliora, playback on YouTube / Bilibili.
+        </p>
+        <div class="gs-flow">
+          <span>Miragea Archive</span>
+          <span class="arrow">→</span>
+          <span>EX Example / Execution</span>
+          <span class="arrow">→</span>
+          <span>Cosmic Atelier EN</span>
+          <span class="arrow">→</span>
+          <span>YouTube · GeekSpell</span>
+        </div>
+      </section>
+
+      <footer class="gs-foot">
+        GeekSpell Studio · Spells for the AI age ·
+        <a href={YT_EP02} target="_blank" rel="noopener">youtu.be/jnGfZdlX6aI</a>
+      </footer>
+    </div>
+  </main>
+</Layout>

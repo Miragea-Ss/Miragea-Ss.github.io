@@ -1,0 +1,125 @@
+---
+import Layout from '../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+const YT_EP02 = 'https://youtu.be/JXhmRa7r6u8';
+const YT_EN = 'https://youtu.be/jnGfZdlX6aI';
+---
+
+<Layout title="ギークスペル · GeekSpell Studio | Miragea" lang="ja">
+  <GeekSpellBaseStyles />
+  <main class="gs-page">
+    <div class="gs-stars" aria-hidden="true"></div>
+    <div class="gs-wrap">
+      <header class="gs-topbar">
+        <span>EX_Her · 宇宙AIアトリエ · リテラシー線</span>
+        <nav>
+          <a href="/ja/">← Miragea アーカイブ</a>
+          ·
+          <a href="/eliora/atelier/ja/">宇宙AIアトリエ</a>
+          ·
+          <a href="/en/geekspell/">English</a>
+          ·
+          <a href="/zh/geekspell/">中文</a>
+        </nav>
+      </header>
+
+      <section class="gs-hero">
+        <div>
+          <p class="gs-eyebrow">GSP / ギークスペル · E/X-04 Example × Execution</p>
+          <h1>ギーク<em>スペル</em></h1>
+          <p class="gs-sub-en">GeekSpell Studio — AIと歩く、魔法と呪文</p>
+          <p class="gs-lead">
+            納品できるプロンプトを、聞きやすい日本語で。雑談ではなく、制約・構造・再現できる始め方。
+            Miragea と同じ信号宇宙から、YouTube 日本語トラックで届ける。
+          </p>
+          <p class="gs-tag">動かす前に、呪文を正しく。</p>
+          <div class="gs-cta">
+            <a class="gs-btn gs-btn-primary" href={YT_EP02} target="_blank" rel="noopener">YouTube · EP02 日本語</a>
+            <a class="gs-btn gs-btn-ghost" href="/ja/geekspell/ep02-grok45/">EP02 · Grok 4.5</a>
+            <a class="gs-btn gs-btn-ghost" href={YT_EN} target="_blank" rel="noopener">EN version ↗</a>
+          </div>
+        </div>
+        <aside class="gs-panel" aria-label="呪文の例">
+          <div class="gs-panel-label">⌁ SPELL_BLOCK · ship_pattern</div>
+          <pre class="gs-spell"><span class="cm"># 効率のいい始め方</span>
+<span class="kw">役割</span>: シニアエンジニア
+<span class="kw">目標</span>: 完成形をはっきり
+<span class="kw">範囲</span>: 必要なファイルだけ
+<span class="kw">条件</span>: 技術・スタイル・長さ・言語
+<span class="kw">文脈</span>: エラー原文・構成・リンク
+<span class="kw">検証</span>: 案 → 変更 → 受け入れ基準</pre>
+        </aside>
+      </section>
+
+      <section>
+        <div class="gs-section-head">
+          <h2>三つの咒文法</h2>
+          <p>検証できるから強い。Miragea の信号宇宙に属しているから美しく見える。</p>
+        </div>
+        <div class="gs-grid3">
+          <article class="gs-card">
+            <div class="gs-kicker">◈ 01 · 制</div>
+            <h3>制約が魔法</h3>
+            <p>長いほど良いわけではない。出力形式・境界・受け入れ基準で軌道に乗せる。</p>
+          </article>
+          <article class="gs-card">
+            <div class="gs-kicker">◇ 02 · 分</div>
+            <h3>言語の役割分担</h3>
+            <p>技術仕様は英語、美意識と意図は日本語——必要に応じて切り替える。</p>
+          </article>
+          <article class="gs-card">
+            <div class="gs-kicker">⬡ 03 · 証</div>
+            <h3>再現できて初めて成立</h3>
+            <p>各話にコピーできるテンプレ。Example 路線：見えて、学べて、作れる。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="gs-ep-list" aria-label="シリーズ">
+        <div class="gs-section-head" style="margin-bottom:0">
+          <h2>シリーズ</h2>
+          <p>YouTube · 日本語トラック公開中</p>
+        </div>
+        <article class="gs-ep">
+          <span class="gs-ep-num">EP02</span>
+          <div>
+            <h4>Grok 4.5 入門：仕事を頼むための基本</h4>
+            <p>何ができる · 4つの強み · 5つの習慣 · コピペ冒頭</p>
+          </div>
+          <a href="/ja/geekspell/ep02-grok45/">本集を見る →</a>
+        </article>
+        <article class="gs-ep">
+          <span class="gs-ep-num">EP01</span>
+          <div>
+            <h4>Codex 言語（中文トラック）</h4>
+            <p>EN 仕様 + ZH 美意識 — 中文シリーズ / B站で公開</p>
+          </div>
+          <a href="/zh/geekspell/ep01-codex-language/">中文 EP01 →</a>
+        </article>
+      </section>
+
+      <section class="gs-lineage">
+        <h3>Miragea の血統</h3>
+        <p class="gs-lineage-copy">
+          ギークスペルは独立したインフルエンサーブランドではない。知覚アーカイブの実行層・リテラシー出口。
+          源泉は Miragea、システムは Eliora、再生は YouTube / B站。
+        </p>
+        <div class="gs-flow">
+          <span>Miragea アーカイブ</span>
+          <span class="arrow">→</span>
+          <span>EX Example / Execution</span>
+          <span class="arrow">→</span>
+          <span>宇宙AIアトリエ JA</span>
+          <span class="arrow">→</span>
+          <span>YouTube · ギークスペル</span>
+        </div>
+      </section>
+
+      <footer class="gs-foot">
+        ギークスペル · GeekSpell Studio · AIと歩く、魔法と呪文 ·
+        <a href={YT_EP02} target="_blank" rel="noopener">youtu.be/JXhmRa7r6u8</a>
+      </footer>
+    </div>
+  </main>
+</Layout>

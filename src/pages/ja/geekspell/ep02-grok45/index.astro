@@ -1,0 +1,66 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** YouTube video id — Japanese EP02 */
+const YT_ID = 'JXhmRa7r6u8';
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_EN = 'https://youtu.be/jnGfZdlX6aI';
+---
+
+<Layout title="EP02 · Grok 4.5 入門 | ギークスペル" lang="ja">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/ja/">アーカイブ</a> · <a href="/ja/geekspell/">ギークスペル</a> · EP02
+      </p>
+      <p class="gs-eyebrow">ギークスペル リテラシー EP02 · 日本語</p>
+      <h1>Grok 4.5 入門：AIエージェントに仕事を頼むための基本</h1>
+      <p class="gs-lead">
+        どんな相手か、何が得意か、どう頼めば本気を出せるか。四つの強み、五つの習慣、すぐ使える冒頭テンプレ。
+      </p>
+
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="ギークスペル EP02 Grok 4.5 — 日本語"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        />
+      </div>
+      <a class="gs-yt-link" href={YT_WATCH} target="_blank" rel="noopener">YouTube で開く ↗</a>
+
+      <section class="gs-body">
+        <h2>本集の要点</h2>
+        <ul>
+          <li>現場に落ちる力 — プロジェクト構造に入り、読み、直し、制約に責任を持つ。</li>
+          <li>明確な構造 — 手順・要点・コピーできる案。</li>
+          <li>ツール連携 — 検索から納品まで一本の流れ。</li>
+          <li>ブランドと美意識 — 世界観と禁止事項に合わせる。</li>
+          <li>五つの習慣 — 目標・範囲・条件・文脈・段階確認。</li>
+        </ul>
+
+        <h2>他言語</h2>
+        <pre class="gs-desc">日本語（このページ）: {YT_WATCH}
+English: {YT_EN}
+中文ハブ: https://miragea-ss.github.io/zh/geekspell/
+
+#Grok #Grok45 #xAI #プロンプト #ギークスペル</pre>
+
+        <p class="gs-links">
+          <a href="/ja/geekspell/">← スタジオホーム</a>
+          ·
+          <a href="/en/geekspell/ep02-grok45/">English EP02</a>
+          ·
+          <a href="/zh/geekspell/ep02-grok45/">中文 EP02</a>
+          ·
+          <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>
