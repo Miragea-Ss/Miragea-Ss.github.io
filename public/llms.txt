@@ -18,8 +18,10 @@ EX_Her / Miragea — HSP perception, art × words, AI × cosmos × fantasy, musi
 - /zh/geekspell/ep01-codex-language/ — EP01: Codex prompt language (EN specs + ZH aesthetic)
 - /zh/geekspell/ep02-grok45/ — EP02: Grok 4.5 strengths + five prompt habits (B站)
 - /en/geekspell/ — GeekSpell Studio English hub
+- /en/geekspell/ep01-codex-language/ — EP01 EN not published (topic is ZH/JA-facing; local assets only)
 - /en/geekspell/ep02-grok45/ — EP02 EN YouTube embed https://youtu.be/jnGfZdlX6aI
 - /ja/geekspell/ — ギークスペル 日本語ハブ
+- /ja/geekspell/ep01-codex-language/ — EP01 JA YouTube embed https://youtu.be/lx_gV5auoIg
 - /ja/geekspell/ep02-grok45/ — EP02 JA YouTube embed https://youtu.be/JXhmRa7r6u8
 
 ## Tri-regional note

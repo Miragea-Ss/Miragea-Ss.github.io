@@ -1,0 +1,69 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** YouTube video id — Japanese EP01 (公開済) */
+const YT_ID = 'lx_gV5auoIg';
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_EP02 = 'https://youtu.be/JXhmRa7r6u8';
+const BILI = 'https://www.bilibili.com/video/BV1psMj6zEv7/';
+---
+
+<Layout title="EP01 · Codex の言語選択 | ギークスペル" lang="ja">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/ja/">アーカイブ</a> · <a href="/ja/geekspell/">ギークスペル</a> · EP01
+      </p>
+      <p class="gs-eyebrow">ギークスペル リテラシー EP01 · 日本語</p>
+      <h1>Codex にコードを頼むとき、どの言語が効く？</h1>
+      <p class="gs-lead">
+        実装は英語が安定、美意識は母語で補う——毎回使える固定テンプレまで。
+      </p>
+
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="ギークスペル EP01 Codex 言語 — 日本語"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        />
+      </div>
+      <a class="gs-yt-link" href={YT_WATCH} target="_blank" rel="noopener">YouTube で開く ↗</a>
+
+      <section class="gs-body">
+        <h2>本集の要点</h2>
+        <ul>
+          <li>Codex の実装タスクは英語がいちばん安定しやすい。</li>
+          <li>中国語圏の調査は中国語モデル＋中国語でOK。</li>
+          <li>最強は英語仕様＋母語の美意識・禁止事項。</li>
+          <li>弱い指示 vs 強い指示、Role / Task / Do not / Acceptance。</li>
+        </ul>
+
+        <h2>他言語・関連</h2>
+        <pre class="gs-desc">日本語（このページ）: {YT_WATCH}
+EP02 日本語: {YT_EP02}
+中文（B站）: {BILI}
+中文ハブ: https://miragea-ss.github.io/zh/geekspell/
+
+#Codex #プロンプト #AIプログラミング #ギークスペル</pre>
+
+        <p class="gs-links">
+          <a href="/ja/geekspell/">← スタジオホーム</a>
+          ·
+          <a href="/ja/geekspell/ep02-grok45/">EP02 Grok 4.5 →</a>
+          ·
+          <a href="/en/geekspell/ep01-codex-language/">English EP01</a>
+          ·
+          <a href="/zh/geekspell/ep01-codex-language/">中文 EP01</a>
+          ·
+          <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>

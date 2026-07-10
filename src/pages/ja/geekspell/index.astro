@@ -2,8 +2,9 @@
 import Layout from '../../../site-layouts/Layout.astro';
 import GeekSpellBaseStyles from '../../../components/geekspell/GeekSpellBaseStyles.astro';
 
+const YT_EP01 = 'https://youtu.be/lx_gV5auoIg';
 const YT_EP02 = 'https://youtu.be/JXhmRa7r6u8';
-const YT_EN = 'https://youtu.be/jnGfZdlX6aI';
+const YT_EN_EP02 = 'https://youtu.be/jnGfZdlX6aI';
 ---
 
 <Layout title="ギークスペル · GeekSpell Studio | Miragea" lang="ja">
@@ -35,9 +36,10 @@ const YT_EN = 'https://youtu.be/jnGfZdlX6aI';
           </p>
           <p class="gs-tag">動かす前に、呪文を正しく。</p>
           <div class="gs-cta">
-            <a class="gs-btn gs-btn-primary" href={YT_EP02} target="_blank" rel="noopener">YouTube · EP02 日本語</a>
+            <a class="gs-btn gs-btn-primary" href={YT_EP01} target="_blank" rel="noopener">YouTube · EP01 日本語</a>
+            <a class="gs-btn gs-btn-ghost" href="/ja/geekspell/ep01-codex-language/">EP01 · Codex 言語</a>
             <a class="gs-btn gs-btn-ghost" href="/ja/geekspell/ep02-grok45/">EP02 · Grok 4.5</a>
-            <a class="gs-btn gs-btn-ghost" href={YT_EN} target="_blank" rel="noopener">EN version ↗</a>
+            <a class="gs-btn gs-btn-ghost" href={YT_EN_EP02} target="_blank" rel="noopener">EN EP02 ↗</a>
           </div>
         </div>
         <aside class="gs-panel" aria-label="呪文の例">
@@ -82,20 +84,20 @@ const YT_EN = 'https://youtu.be/jnGfZdlX6aI';
           <p>YouTube · 日本語トラック公開中</p>
         </div>
         <article class="gs-ep">
+          <span class="gs-ep-num">EP01</span>
+          <div>
+            <h4>Codex、どの言語で頼むのが効く？</h4>
+            <p>実装は英語 · 美意識は母語 · 固定テンプレ · YouTube 公開済</p>
+          </div>
+          <a href="/ja/geekspell/ep01-codex-language/">本集を見る →</a>
+        </article>
+        <article class="gs-ep">
           <span class="gs-ep-num">EP02</span>
           <div>
             <h4>Grok 4.5 入門：仕事を頼むための基本</h4>
-            <p>何ができる · 4つの強み · 5つの習慣 · コピペ冒頭</p>
+            <p>何ができる · 4つの強み · 5つの習慣 · コピペ冒頭 · YouTube 公開済</p>
           </div>
           <a href="/ja/geekspell/ep02-grok45/">本集を見る →</a>
-        </article>
-        <article class="gs-ep">
-          <span class="gs-ep-num">EP01</span>
-          <div>
-            <h4>Codex 言語（中文トラック）</h4>
-            <p>EN 仕様 + ZH 美意識 — 中文シリーズ / B站で公開</p>
-          </div>
-          <a href="/zh/geekspell/ep01-codex-language/">中文 EP01 →</a>
         </article>
       </section>
 
@@ -118,7 +120,9 @@ const YT_EN = 'https://youtu.be/jnGfZdlX6aI';
 
       <footer class="gs-foot">
         ギークスペル · GeekSpell Studio · AIと歩く、魔法と呪文 ·
-        <a href={YT_EP02} target="_blank" rel="noopener">youtu.be/JXhmRa7r6u8</a>
+        <a href={YT_EP01} target="_blank" rel="noopener">EP01</a>
+        ·
+        <a href={YT_EP02} target="_blank" rel="noopener">EP02</a>
       </footer>
     </div>
   </main>
