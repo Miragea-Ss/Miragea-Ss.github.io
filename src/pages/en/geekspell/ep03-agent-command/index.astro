@@ -1,0 +1,64 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** YouTube — English EP03 live */
+const YT_ID = 'nDQf0em9yUk';
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_JA = 'https://youtu.be/ezmy029b_2c';
+---
+
+<Layout title="EP03 · When AI agents take work | GeekSpell" lang="en">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/en/">Archive</a> · <a href="/en/geekspell/">GeekSpell</a> · EP03
+      </p>
+      <p class="gs-eyebrow">GeekSpell literacy EP03 · English · live</p>
+      <h1>When AI agents take work, what ability won’t be replaced?</h1>
+      <p class="gs-lead">
+        Not how to defeat AI — how to turn intent into executable instructions. Full essay as spoken animation.
+      </p>
+
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="GeekSpell EP03 — English"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        />
+      </div>
+      <a class="gs-yt-link" href={YT_WATCH} target="_blank" rel="noopener">Open on YouTube ↗</a>
+
+      <section class="gs-body">
+        <h2>What you’ll learn</h2>
+        <ul>
+          <li>Ordinary AI vs agents — answers → execution</li>
+          <li>Why AI feels useless — vague commands force guessing</li>
+          <li>Six elements of a strong instruction</li>
+          <li>Three abilities: define problems · break tasks · verify</li>
+          <li>Same agent, weak vs strong prompts — and full AI workflows</li>
+        </ul>
+        <h2>Also watch</h2>
+        <pre class="gs-desc">English (this page): {YT_WATCH}
+Japanese: {YT_JA}
+Chinese hub: https://miragea-ss.github.io/zh/geekspell/ep03-agent-command/
+
+#AIAgent #PromptEngineering #GeekSpell</pre>
+        <p class="gs-links">
+          <a href="/en/geekspell/">← Studio home</a>
+          ·
+          <a href="/ja/geekspell/ep03-agent-command/">Japanese EP03</a>
+          ·
+          <a href="/zh/geekspell/ep03-agent-command/">Chinese EP03</a>
+          ·
+          <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>

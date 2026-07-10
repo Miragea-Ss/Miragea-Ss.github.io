@@ -1,0 +1,64 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** YouTube — 日本語 EP03 公開済 */
+const YT_ID = 'ezmy029b_2c';
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_EN = 'https://youtu.be/nDQf0em9yUk';
+---
+
+<Layout title="EP03 · AIエージェント時代の能力 | ギークスペル" lang="ja">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/ja/">アーカイブ</a> · <a href="/ja/geekspell/">ギークスペル</a> · EP03
+      </p>
+      <p class="gs-eyebrow">ギークスペル リテラシー EP03 · 日本語 · 公開済</p>
+      <h1>AIエージェント時代、淘汰されない人の能力とは？</h1>
+      <p class="gs-lead">
+        AIを倒す話ではない。意図を、実行可能な命令に変える話。長文をそのまま口播したフル版。
+      </p>
+
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="ギークスペル EP03 — 日本語"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        />
+      </div>
+      <a class="gs-yt-link" href={YT_WATCH} target="_blank" rel="noopener">YouTube で開く ↗</a>
+
+      <section class="gs-body">
+        <h2>本集の要点</h2>
+        <ul>
+          <li>普通のAIとAgent：回答 → 実行</li>
+          <li>使えないと感じる理由——曖昧な命令</li>
+          <li>強い指示の六要素</li>
+          <li>三つの力：問題定義 · タスク分解 · 結果検証</li>
+          <li>弱/強プロンプトとAIワークフロー</li>
+        </ul>
+        <h2>他言語</h2>
+        <pre class="gs-desc">日本語（このページ）: {YT_WATCH}
+English: {YT_EN}
+中文ハブ: https://miragea-ss.github.io/zh/geekspell/ep03-agent-command/
+
+#AIエージェント #プロンプト #ギークスペル</pre>
+        <p class="gs-links">
+          <a href="/ja/geekspell/">← スタジオホーム</a>
+          ·
+          <a href="/en/geekspell/ep03-agent-command/">English EP03</a>
+          ·
+          <a href="/zh/geekspell/ep03-agent-command/">中文 EP03</a>
+          ·
+          <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>
