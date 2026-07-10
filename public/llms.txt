@@ -17,7 +17,7 @@ EX_Her / Miragea — HSP perception, art × words, AI × cosmos × fantasy, musi
 - /zh/geekspell/ — GeekSpell Studio (极客魔咒工作室): ZH AI literacy series; Bilibili space 1321407655
 - /zh/geekspell/ep01-codex-language/ — EP01: Codex prompt language (EN specs + ZH aesthetic)
 - /zh/geekspell/ep02-grok45/ — EP02: Grok 4.5 strengths + five prompt habits (B站)
-- /zh/geekspell/ep03-agent-command/ — EP03 longform: intent→executable commands; AI Agent era literacy
+- /zh/geekspell/ep03-agent-command/ — EP03 longform: intent→executable commands; EN https://youtu.be/nDQf0em9yUk JA https://youtu.be/ezmy029b_2c
 - /en/geekspell/ — GeekSpell Studio English hub
 - /en/geekspell/ep01-codex-language/ — EP01 EN not published (topic is ZH/JA-facing; local assets only)
 - /en/geekspell/ep02-grok45/ — EP02 EN YouTube embed https://youtu.be/jnGfZdlX6aI

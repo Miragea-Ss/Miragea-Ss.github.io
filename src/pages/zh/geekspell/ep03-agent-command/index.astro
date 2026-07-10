@@ -1,9 +1,11 @@
 ---
 import Layout from '../../../../site-layouts/Layout.astro';
 
-/** 投稿后填入 BV 号即可嵌入 */
+/** 投稿后填入 BV 号即可嵌入 B站；EN/JA 已公开 YouTube */
 const EP03_BVID = '';
 const SPACE = 'https://space.bilibili.com/1321407655';
+const YT_EN = 'https://youtu.be/nDQf0em9yUk';
+const YT_JA = 'https://youtu.be/ezmy029b_2c';
 const playerSrc = EP03_BVID
   ? `//player.bilibili.com/player.html?bvid=${EP03_BVID}&page=1&high_quality=1&danmaku=0`
   : '';
@@ -50,6 +52,16 @@ const playerSrc = EP03_BVID
           </div>
         )
       }
+
+      <p class="gs-links" style="margin-top: 1rem">
+        <a href={YT_EN} target="_blank" rel="noopener">English YouTube ↗</a>
+        ·
+        <a href={YT_JA} target="_blank" rel="noopener">日本語 YouTube ↗</a>
+        ·
+        <a href="/en/geekspell/ep03-agent-command/">EN page</a>
+        ·
+        <a href="/ja/geekspell/ep03-agent-command/">JA page</a>
+      </p>
 
       <article class="gs-prose">
         <p>很多人担心，AI会不会抢走自己的工作。</p>
