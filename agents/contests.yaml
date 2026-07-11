@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-10T09:18:21.516Z
+# lastWatch: 2026-07-11T07:39:48.572Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -197,6 +197,48 @@ contests:
     joinScore: 92
     prizeHint: 10300
     submitUrl: https://celesta-exoplanet-challenge.devpost.com/challenges/start_a_submission
+  - at: 2026-07-11T07:39:48.543Z
+    type: devpost-auto
+    title: "AI for Social Good: Hack with MLH & DigitalOcean"
+    url: https://ai-for-social-good-mlh.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 10 - 11, 2026
+      ja: Jul 10 - 11, 2026
+      zh: Jul 10 - 11, 2026
+    sourceNote: Devpost auto · prize~5250 · score 90 · Major League Hacking
+    auto: true
+    joinScore: 90
+    prizeHint: 5250
+    submitUrl: https://ai-for-social-good-mlh.devpost.com/challenges/start_a_submission
+  - at: 2026-07-11T07:39:48.543Z
+    type: devpost-auto
+    title: United Hacks V7
+    url: https://unitedhacksv7.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 10 - 12, 2026
+      ja: Jul 10 - 12, 2026
+      zh: Jul 10 - 12, 2026
+    sourceNote: Devpost auto · prize~1050 · score 86 · Hack United
+    auto: true
+    joinScore: 86
+    prizeHint: 1050
+    submitUrl: https://unitedhacksv7.devpost.com/challenges/start_a_submission
+  - at: 2026-07-11T07:39:48.543Z
+    type: devpost-auto
+    title: Hack the Arts
+    url: https://hackthearts.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 01 - Aug 01, 2026
+      ja: Jul 01 - Aug 01, 2026
+      zh: Jul 01 - Aug 01, 2026
+    sourceNote: Devpost auto · prize~1000 · score 86 · Hack the Arts
+    auto: true
+    joinScore: 86
+    prizeHint: 1000
+    submitUrl: https://hackthearts.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: Brainwave 2026
@@ -295,6 +337,20 @@ contests:
     joinScore: 74
     prizeHint: 500
     submitUrl: https://build-beyond-hackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-11T07:39:48.543Z
+    type: devpost-auto
+    title: TechCommons Hacks
+    url: https://techcommons-hacks.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 11 - 13, 2026
+      ja: Jul 11 - 13, 2026
+      zh: Jul 11 - 13, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · TechCommons
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://techcommons-hacks.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: Win4AISafety - Open Research Summer Challenge
@@ -477,6 +533,20 @@ contests:
     joinScore: 64
     prizeHint: 1000
     submitUrl: https://quantumhacks.devpost.com/challenges/start_a_submission
+  - at: 2026-07-11T07:39:48.543Z
+    type: devpost-auto
+    title: Enterprise Agents Hackathon
+    url: https://emergence.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 11, 2026
+      ja: Jul 11, 2026
+      zh: Jul 11, 2026
+    sourceNote: Devpost auto · prize~0 · score 62 · Emergence
+    auto: true
+    joinScore: 62
+    prizeHint: 0
+    submitUrl: https://emergence.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: NeuralSprint
@@ -491,80 +561,10 @@ contests:
     joinScore: 60
     prizeHint: 150
     submitUrl: https://neuralsprint.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: DevSoc Starlight 2026
-    url: https://devsoc-starlight-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Apr 28 - Jul 12, 2026
-      ja: Apr 28 - Jul 12, 2026
-      zh: Apr 28 - Jul 12, 2026
-    sourceNote: Devpost auto · prize~1050 · score 60 · DevSoc
-    auto: true
-    joinScore: 60
-    prizeHint: 1050
-    submitUrl: https://devsoc-starlight-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-10T09:18:21.480Z
-    type: devpost-auto
-    title: DTI Hackathon 2026
-    url: https://dti-hackathon-2026-30476.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 18 - Jul 31, 2026
-      ja: Jun 18 - Jul 31, 2026
-      zh: Jun 18 - Jul 31, 2026
-    sourceNote: Devpost auto · prize~0 · score 58 · Cloud Counselage
-    auto: true
-    joinScore: 58
-    prizeHint: 0
-    submitUrl: https://dti-hackathon-2026-30476.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:42:53.553Z
-    type: devpost-auto
-    title: Slack Agent Builder Challenge
-    url: https://slackhack.devpost.com/
-    ongoing: true
-    period:
-      en: May 20 - Jul 13, 2026
-      ja: May 20 - Jul 13, 2026
-      zh: May 20 - Jul 13, 2026
-    sourceNote: Devpost auto · prize~42000 · score 58 · Salesforce
-    auto: true
-    joinScore: 58
-    prizeHint: 42000
-    submitUrl: https://slackhack.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:42:14.474Z
-    type: devpost-auto
-    title: "InnovatorsX: Startup Sprint"
-    url: https://innovatorsx.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 05 - Jul 10, 2026
-      ja: Jun 05 - Jul 10, 2026
-      zh: Jun 05 - Jul 10, 2026
-    sourceNote: Devpost auto · prize~0 · score 58 · InnovatorsX
-    auto: true
-    joinScore: 58
-    prizeHint: 0
-    submitUrl: https://innovatorsx.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: Aethera Hacks
-    url: https://aethera-hacks.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 05 - 18, 2026
-      ja: Jul 05 - 18, 2026
-      zh: Jul 05 - 18, 2026
-    sourceNote: Devpost auto · prize~0 · score 58 · aethera.affiliate
-    auto: true
-    joinScore: 58
-    prizeHint: 0
-    submitUrl: https://aethera-hacks.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-10T09:18:21.516Z
+  lastWatch: 2026-07-11T07:39:48.572Z
   source: devpost-auto+manual
-  added: 13
-  updated: 39
-  scanned: 58
+  added: 20
+  updated: 35
+  scanned: 60
   kept: 40
