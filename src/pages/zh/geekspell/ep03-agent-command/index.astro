@@ -1,9 +1,10 @@
 ---
 import Layout from '../../../../site-layouts/Layout.astro';
 
-/** 投稿后填入 BV 号即可嵌入 B站；EN/JA 已公开 YouTube */
-const EP03_BVID = '';
+/** B站 EP03 已上线 · EN/JA 已公开 YouTube */
+const EP03_BVID = 'BV1TCNW6fEaP';
 const SPACE = 'https://space.bilibili.com/1321407655';
+const BILI = `https://www.bilibili.com/video/${EP03_BVID}/`;
 const YT_EN = 'https://youtu.be/nDQf0em9yUk';
 const YT_JA = 'https://youtu.be/ezmy029b_2c';
 const playerSrc = EP03_BVID
@@ -54,6 +55,8 @@ const playerSrc = EP03_BVID
       }
 
       <p class="gs-links" style="margin-top: 1rem">
+        <a href={BILI} target="_blank" rel="noopener">B站原片 ↗</a>
+        ·
         <a href={YT_EN} target="_blank" rel="noopener">English YouTube ↗</a>
         ·
         <a href={YT_JA} target="_blank" rel="noopener">日本語 YouTube ↗</a>
