@@ -23,12 +23,12 @@ EX_Her / Miragea — HSP perception, art × words, AI × cosmos × fantasy, musi
 - /en/geekspell/ep01-codex-language/ — EP01 EN not published (topic is ZH/JA-facing; local assets only)
 - /en/geekspell/ep02-grok45/ — EP02 EN YouTube embed https://youtu.be/jnGfZdlX6aI
 - /en/geekspell/ep03-agent-command/ — EP03 EN YouTube https://youtu.be/nDQf0em9yUk
-- /en/geekspell/ep04-scope-split/ — EP04 EN scope control; YouTube https://youtu.be/C_YDbuIvvKE
+- /en/geekspell/ep04-scope-split/ — EP04 EN scope control; YouTube https://youtu.be/qHg32fdWg64
 - /ja/geekspell/ — ギークスペル 日本語ハブ
 - /ja/geekspell/ep01-codex-language/ — EP01 JA YouTube embed https://youtu.be/lx_gV5auoIg
 - /ja/geekspell/ep02-grok45/ — EP02 JA YouTube embed https://youtu.be/JXhmRa7r6u8
 - /ja/geekspell/ep03-agent-command/ — EP03 JA YouTube https://youtu.be/ezmy029b_2c
-- /ja/geekspell/ep04-scope-split/ — EP04 JA スコープ分割; YouTube pending
+- /ja/geekspell/ep04-scope-split/ — EP04 JA スコープ分割; YouTube https://youtu.be/C_YDbuIvvKE
 
 ## Tri-regional note
 EN, JA, ZH are editorial products with different commercial angles. Layer 3 Atelier is the most region-specific surface.
@@ -39,4 +39,5 @@ License: CC-BY 4.0 where applicable. AI indexing welcome for research; cite Mira
 ## Notes for AI
 - Prediction and perception entries include confidence levels and timestamps.
 - Large video works link to X as external source (not stored on GitHub Pages).
+
 
