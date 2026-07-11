@@ -1,0 +1,84 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+
+/** B站已上线 */
+const EP04_BVID = 'BV1nJNA6RE6d';
+const SPACE = 'https://space.bilibili.com/1321407655';
+const BILI = EP04_BVID ? `https://www.bilibili.com/video/${EP04_BVID}/` : SPACE;
+const playerSrc = EP04_BVID
+  ? `//player.bilibili.com/player.html?bvid=${EP04_BVID}&page=1&high_quality=1&danmaku=0`
+  : '';
+---
+
+<Layout
+  title="别再说「全部帮我做完」｜把大任务拆给 Agent｜极客魔咒 EP04"
+  lang="zh"
+  description="Agent 越强，越不能一句话丢一座山。一块任务 = 一个目标 + 一个交付 + 一条验收。"
+>
+  <main class="gs-article-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/zh/">档案</a> · <a href="/zh/geekspell/">极客魔咒</a> · EP04
+      </p>
+      <p class="gs-eyebrow">极客魔咒科普 EP04 · 范围切割</p>
+      <h1>别再说「全部帮我做完」——把大任务拆给 Agent</h1>
+      <p class="gs-lead">
+        一发全丢有三个坑：范围无限、没有顺序、没有验收。正确切法：一块 = 目标 + 交付物 + 验收。
+      </p>
+
+      {
+        playerSrc ? (
+          <div class="gs-player">
+            <iframe
+              src={playerSrc}
+              scrolling="no"
+              border="0"
+              frameborder="no"
+              framespacing="0"
+              allowfullscreen="true"
+              title="极客魔咒 EP04 B站播放"
+            />
+          </div>
+        ) : (
+          <div class="gs-player-fallback">
+            <p>本集动画已备好（短编 · Yunxi）。B站上传后填入 EP04_BVID 即可嵌入。</p>
+            <a class="gs-btn" href={SPACE} target="_blank" rel="noopener">打开 极客魔咒工作室 空间 →</a>
+          </div>
+        )
+      }
+
+      <p class="gs-links" style="margin-top: 1rem">
+        <a href={BILI} target="_blank" rel="noopener">B站原片 ↗</a>
+        ·
+        <a href="/zh/geekspell/ep03-agent-command/">← EP03 意图→命令</a>
+        ·
+        <a href="/en/geekspell/ep04-scope-split/">EN</a>
+        ·
+        <a href="/ja/geekspell/ep04-scope-split/">JA</a>
+        ·
+        <a href="/zh/geekspell/">工作室首页</a>
+      </p>
+
+      <article class="gs-prose">
+        <p>Agent 越强，越不能一句话丢一座山。</p>
+        <p>弱命令把品牌、文案、代码、SEO、部署捆成一句；强切法是五块：定位与禁止 → 信息架构 → 首页文案 → 样式 → 测试清单。</p>
+        <p>模板：本块目标、输入、可改路径、禁止路径、交付、验收。Agent 像同事，不是许愿池。</p>
+        <p>分解不是偷懒，是控制。你负责切山，Agent 负责搬石。</p>
+      </article>
+    </div>
+  </main>
+</Layout>
+
+<style is:global>
+  .gs-article-page { --gs-bg: #07080f; --gs-fg: #f5f0ff; --gs-muted: #a8a0b8; --gs-accent: #00e6ff; --gs-hot: #ff2890; }
+  .gs-article-page { background: var(--gs-bg); color: var(--gs-fg); min-height: 100vh; padding: 2rem 1rem 4rem; }
+  .gs-wrap { max-width: 48rem; margin: 0 auto; }
+  .gs-crumb a, .gs-links a { color: var(--gs-accent); }
+  .gs-eyebrow { color: var(--gs-hot); letter-spacing: 0.08em; font-size: 0.85rem; }
+  .gs-lead { color: var(--gs-muted); font-size: 1.1rem; line-height: 1.7; }
+  .gs-player { position: relative; padding-top: 56.25%; margin: 1.5rem 0; background: #000; border-radius: 12px; overflow: hidden; }
+  .gs-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .gs-player-fallback { border: 1px solid #2a2a40; border-radius: 12px; padding: 1.25rem; margin: 1.5rem 0; }
+  .gs-btn { display: inline-block; margin-top: 0.75rem; padding: 0.55rem 1rem; background: var(--gs-hot); color: #fff; border-radius: 8px; text-decoration: none; }
+  .gs-prose p { line-height: 1.85; color: #e8e4f5; margin: 0.85rem 0; }
+</style>

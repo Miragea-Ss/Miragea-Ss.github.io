@@ -1,0 +1,61 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+const YT_ID = '';
+const YT_EMBED = YT_ID ? `https://www.youtube.com/embed/${YT_ID}` : '';
+const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
+const LOCAL = 'G:/grok/geekspell-ep04-scope-split-2026-07-11/youtube-ready/GeekSpell-EP04-Scope-Split-JA.mp4';
+---
+
+<Layout title="EP04 · 「全部やって」をやめる | ギークスペル" lang="ja">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb"><a href="/ja/">アーカイブ</a> · <a href="/ja/geekspell/">ギークスペル</a> · EP04</p>
+      <p class="gs-eyebrow">ギークスペル EP04 · 日本語 · ローカル準備済</p>
+      <h1>「全部やって」をやめる — Agent へのスコープ分割</h1>
+      <p class="gs-lead">一塊＝一つの目標＋一つの成果物＋一つの受け入れ。分解は手抜きではなく制御です。</p>
+      {
+        YT_EMBED ? (
+          <div class="gs-player">
+            <iframe
+              src={YT_EMBED}
+              title="ギークスペル EP04 JA"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div class="gs-player-fallback">
+            <p>本編ファイルはワークステーションに準備済み（声は暫定 edge）。YouTube ID は公開後に記入。</p>
+            <p class="gs-note"><code>{LOCAL}</code></p>
+          </div>
+        )
+      }
+      <p class="gs-links">
+        <a href="/ja/geekspell/ep03-agent-command/">← EP03</a>
+        ·
+        <a href="/zh/geekspell/ep04-scope-split/">中文 EP04</a>
+        ·
+        <a href="https://www.bilibili.com/video/BV1nJNA6RE6d/" target="_blank" rel="noopener">B站</a>
+        ·
+        <a href="/en/geekspell/ep04-scope-split/">English EP04</a>
+        {YT_WATCH ? (
+          <span>
+            {' '}· <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+          </span>
+        ) : null}
+      </p>
+      <section class="gs-body">
+        <h2>本集の要点</h2>
+        <ul>
+          <li>一発全投げが壊れる理由</li>
+          <li>三つの落とし穴：範囲・順序・完了条件</li>
+          <li>Agent が実行できる塊のテンプレ</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</Layout>

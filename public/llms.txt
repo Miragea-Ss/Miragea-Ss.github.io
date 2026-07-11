@@ -18,14 +18,17 @@ EX_Her / Miragea — HSP perception, art × words, AI × cosmos × fantasy, musi
 - /zh/geekspell/ep01-codex-language/ — EP01: Codex prompt language (EN specs + ZH aesthetic)
 - /zh/geekspell/ep02-grok45/ — EP02: Grok 4.5 strengths + five prompt habits (B站)
 - /zh/geekspell/ep03-agent-command/ — EP03 longform: intent→executable commands; Bilibili https://www.bilibili.com/video/BV1TCNW6fEaP/ · EN https://youtu.be/nDQf0em9yUk · JA https://youtu.be/ezmy029b_2c
+- /zh/geekspell/ep04-scope-split/ — EP04 scope split: stop “do everything”; Bilibili https://www.bilibili.com/video/BV1nJNA6RE6d/
 - /en/geekspell/ — GeekSpell Studio English hub
 - /en/geekspell/ep01-codex-language/ — EP01 EN not published (topic is ZH/JA-facing; local assets only)
 - /en/geekspell/ep02-grok45/ — EP02 EN YouTube embed https://youtu.be/jnGfZdlX6aI
 - /en/geekspell/ep03-agent-command/ — EP03 EN YouTube https://youtu.be/nDQf0em9yUk
+- /en/geekspell/ep04-scope-split/ — EP04 EN scope control; YouTube pending
 - /ja/geekspell/ — ギークスペル 日本語ハブ
 - /ja/geekspell/ep01-codex-language/ — EP01 JA YouTube embed https://youtu.be/lx_gV5auoIg
 - /ja/geekspell/ep02-grok45/ — EP02 JA YouTube embed https://youtu.be/JXhmRa7r6u8
 - /ja/geekspell/ep03-agent-command/ — EP03 JA YouTube https://youtu.be/ezmy029b_2c
+- /ja/geekspell/ep04-scope-split/ — EP04 JA スコープ分割; YouTube pending
 
 ## Tri-regional note
 EN, JA, ZH are editorial products with different commercial angles. Layer 3 Atelier is the most region-specific surface.

@@ -1,0 +1,62 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** YouTube ID after publish */
+const YT_ID = '';
+const YT_EMBED = YT_ID ? `https://www.youtube.com/embed/${YT_ID}` : '';
+const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
+const LOCAL = 'G:/grok/geekspell-ep04-scope-split-2026-07-11/youtube-ready/GeekSpell-EP04-Scope-Split-EN.mp4';
+---
+
+<Layout title="EP04 · Stop saying do everything | GeekSpell" lang="en">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb"><a href="/en/">Archive</a> · <a href="/en/geekspell/">GeekSpell</a> · EP04</p>
+      <p class="gs-eyebrow">GeekSpell literacy EP04 · English · local ready</p>
+      <h1>Stop saying “do everything” — scope control for AI agents</h1>
+      <p class="gs-lead">One chunk = one goal + one deliverable + one acceptance check. Decomposition is control, not laziness.</p>
+      {
+        YT_EMBED ? (
+          <div class="gs-player">
+            <iframe
+              src={YT_EMBED}
+              title="GeekSpell EP04 EN"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div class="gs-player-fallback">
+            <p>Master file ready on workstation (edge interim voice). YouTube ID pending publish.</p>
+            <p class="gs-note"><code>{LOCAL}</code></p>
+          </div>
+        )
+      }
+      <p class="gs-links">
+        <a href="/en/geekspell/ep03-agent-command/">← EP03</a>
+        ·
+        <a href="/zh/geekspell/ep04-scope-split/">中文 EP04</a>
+        ·
+        <a href="https://www.bilibili.com/video/BV1nJNA6RE6d/" target="_blank" rel="noopener">Bilibili ZH</a>
+        ·
+        <a href="/ja/geekspell/ep04-scope-split/">日本語 EP04</a>
+        {YT_WATCH ? (
+          <span>
+            {' '}· <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+          </span>
+        ) : null}
+      </p>
+      <section class="gs-body">
+        <h2>What you’ll learn</h2>
+        <ul>
+          <li>Why one-shot “do everything” collapses</li>
+          <li>Three traps: infinite scope · no order · no done</li>
+          <li>Chunk template agents can actually execute</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+</Layout>
