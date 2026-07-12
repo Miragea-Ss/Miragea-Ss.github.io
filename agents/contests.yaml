@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-11T07:39:48.572Z
+# lastWatch: 2026-07-12T07:59:15.365Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -49,9 +49,9 @@ contests:
     url: https://kaya-ai-iit-hackathon-2026.devpost.com/
     ongoing: true
     period:
-      en: Jun 10 - Jul 10, 2026
-      ja: Jun 10 - Jul 10, 2026
-      zh: Jun 10 - Jul 10, 2026
+      en: Jun 10 - Jul 13, 2026
+      ja: Jun 10 - Jul 13, 2026
+      zh: Jun 10 - Jul 13, 2026
     sourceNote: Devpost auto · prize~350000 · score 110 · Kaya
     auto: true
     joinScore: 110
@@ -337,6 +337,34 @@ contests:
     joinScore: 74
     prizeHint: 500
     submitUrl: https://build-beyond-hackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-12T07:59:15.332Z
+    type: devpost-auto
+    title: Daybot Commerce Hackathon
+    url: https://daybot.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 11 - 12, 2026
+      ja: Jul 11 - 12, 2026
+      zh: Jul 11 - 12, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · Daybot
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://daybot.devpost.com/challenges/start_a_submission
+  - at: 2026-07-12T07:59:15.332Z
+    type: devpost-auto
+    title: vsHacks 2026
+    url: https://vshacks-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 11 - 12, 2026
+      ja: Jul 11 - 12, 2026
+      zh: Jul 11 - 12, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · vsHacks
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://vshacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-11T07:39:48.543Z
     type: devpost-auto
     title: TechCommons Hacks
@@ -533,38 +561,10 @@ contests:
     joinScore: 64
     prizeHint: 1000
     submitUrl: https://quantumhacks.devpost.com/challenges/start_a_submission
-  - at: 2026-07-11T07:39:48.543Z
-    type: devpost-auto
-    title: Enterprise Agents Hackathon
-    url: https://emergence.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 11, 2026
-      ja: Jul 11, 2026
-      zh: Jul 11, 2026
-    sourceNote: Devpost auto · prize~0 · score 62 · Emergence
-    auto: true
-    joinScore: 62
-    prizeHint: 0
-    submitUrl: https://emergence.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: NeuralSprint
-    url: https://neuralsprint.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 18 - Aug 24, 2026
-      ja: Jun 18 - Aug 24, 2026
-      zh: Jun 18 - Aug 24, 2026
-    sourceNote: Devpost auto · prize~150 · score 60 · NeuralSprint
-    auto: true
-    joinScore: 60
-    prizeHint: 150
-    submitUrl: https://neuralsprint.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-11T07:39:48.572Z
+  lastWatch: 2026-07-12T07:59:15.365Z
   source: devpost-auto+manual
-  added: 20
-  updated: 35
-  scanned: 60
+  added: 19
+  updated: 33
+  scanned: 59
   kept: 40

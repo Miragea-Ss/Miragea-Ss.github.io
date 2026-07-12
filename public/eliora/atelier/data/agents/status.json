@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-11T07:39:48.633Z",
+  "generatedAt": "2026-07-12T07:59:15.448Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-11T07:39:48.572Z",
+      "lastRun": "2026-07-12T07:59:15.365Z",
       "summary": {
         "en": "40 open · 22 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨22件 · 自動監視",
@@ -58,9 +58,9 @@
           "url": "https://kaya-ai-iit-hackathon-2026.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Jun 10 - Jul 10, 2026",
-            "ja": "Jun 10 - Jul 10, 2026",
-            "zh": "Jun 10 - Jul 10, 2026"
+            "en": "Jun 10 - Jul 13, 2026",
+            "ja": "Jun 10 - Jul 13, 2026",
+            "zh": "Jun 10 - Jul 13, 2026"
           }
         },
         {
