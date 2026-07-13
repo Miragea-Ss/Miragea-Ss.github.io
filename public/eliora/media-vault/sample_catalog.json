@@ -1,0 +1,27 @@
+{
+  "schema": "eliora-vault-catalog/1.0",
+  "generated_at": "2026-07-14T00:00:00Z",
+  "count": 1,
+  "verified_count": 1,
+  "items": [
+    {
+      "id": "1cc1cd90-9273-4ce4-b949-48b5059118ec",
+      "name": "Eliora coastal city / ComfyUI proof",
+      "asset_url": "./sample_asset.png",
+      "manifest_url": "./sample_manifest.json",
+      "provider": "comfyui-local",
+      "model": "SDXL local checkpoint",
+      "prompt": "Eliora media vault demo frame, cinematic coastal city at dusk, durable AI vault, cyberpunk glass, high detail",
+      "seed": 71,
+      "width": 1024,
+      "height": 576,
+      "size_bytes": 718678,
+      "sha256": "a2674f5cbf543ee287bb5c737c1ffa61f6c913cb358f1687d8425b329c01aeff",
+      "verified": true,
+      "run_status": "completed",
+      "step_status": "succeeded",
+      "created_at": "2026-07-10T21:11:07.304111Z",
+      "canonical_hash": "4e6097a00d80f62571ade0786557bf9288460ae9af5347b580e3905a154fec1d"
+    }
+  ]
+}
