@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-12T07:59:15.378Z",
+  "generatedAt": "2026-07-13T08:47:57.613Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -87,6 +87,22 @@
       "status": "recommended"
     },
     {
+      "title": "VoltHacks",
+      "url": "https://volthacks.devpost.com/",
+      "submitUrl": "https://volthacks.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 32585,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
       "title": "CockroachDB × AWS Hackathon - Build with Agentic Memory",
       "url": "https://cockroachdb-ai.devpost.com/",
       "submitUrl": "https://cockroachdb-ai.devpost.com/challenges/start_a_submission",
@@ -108,22 +124,6 @@
       "submitUrl": "https://redditgameswithahook.devpost.com/challenges/start_a_submission",
       "joinScore": 103,
       "prizeHint": 40000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "YouCam API Skin AI & Apparel VTO Hackathon ",
-      "url": "https://youcam-api.devpost.com/",
-      "submitUrl": "https://youcam-api.devpost.com/challenges/start_a_submission",
-      "joinScore": 98,
-      "prizeHint": 6000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

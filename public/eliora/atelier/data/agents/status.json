@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-07-12T07:59:15.448Z",
+  "generatedAt": "2026-07-13T08:47:57.681Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-12T07:59:15.365Z",
+      "lastRun": "2026-07-13T08:47:57.599Z",
       "summary": {
         "en": "40 open · 22 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨22件 · 自動監視",
@@ -78,6 +78,18 @@
         {
           "at": "2026-07-09T18:41:49.379Z",
           "type": "devpost-auto",
+          "title": "★ JOIN? (110) VoltHacks",
+          "url": "https://volthacks.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "May 22 - Sep 05, 2026",
+            "ja": "May 22 - Sep 05, 2026",
+            "zh": "May 22 - Sep 05, 2026"
+          }
+        },
+        {
+          "at": "2026-07-09T18:41:49.379Z",
+          "type": "devpost-auto",
           "title": "★ JOIN? (103) CockroachDB × AWS Hackathon - Build with Agentic Memory",
           "url": "https://cockroachdb-ai.devpost.com/",
           "ongoing": true,
@@ -121,18 +133,6 @@
             "en": "Jun 04 - Aug 14, 2026",
             "ja": "Jun 04 - Aug 14, 2026",
             "zh": "Jun 04 - Aug 14, 2026"
-          }
-        },
-        {
-          "at": "2026-07-09T18:41:49.379Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (98) VoltHacks",
-          "url": "https://volthacks.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "May 22 - Sep 05, 2026",
-            "ja": "May 22 - Sep 05, 2026",
-            "zh": "May 22 - Sep 05, 2026"
           }
         }
       ]

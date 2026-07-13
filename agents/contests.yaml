@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-12T07:59:15.365Z
+# lastWatch: 2026-07-13T08:47:57.599Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -73,6 +73,20 @@ contests:
     submitUrl: https://pinch-me-i-want-50k.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
+    title: VoltHacks
+    url: https://volthacks.devpost.com/
+    ongoing: true
+    period:
+      en: May 22 - Sep 05, 2026
+      ja: May 22 - Sep 05, 2026
+      zh: May 22 - Sep 05, 2026
+    sourceNote: Devpost auto · prize~32585 · score 110 · Dialogate
+    auto: true
+    joinScore: 110
+    prizeHint: 32585
+    submitUrl: https://volthacks.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
     title: CockroachDB × AWS Hackathon - Build with Agentic Memory
     url: https://cockroachdb-ai.devpost.com/
     ongoing: true
@@ -127,20 +141,6 @@ contests:
     joinScore: 98
     prizeHint: 8000
     submitUrl: https://arm-ai-optimization-challenge.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: VoltHacks
-    url: https://volthacks.devpost.com/
-    ongoing: true
-    period:
-      en: May 22 - Sep 05, 2026
-      ja: May 22 - Sep 05, 2026
-      zh: May 22 - Sep 05, 2026
-    sourceNote: Devpost auto · prize~2905 · score 98 · Dialogate
-    auto: true
-    joinScore: 98
-    prizeHint: 2905
-    submitUrl: https://volthacks.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: The Rice University Urban Sustainability Hackathon
@@ -371,9 +371,9 @@ contests:
     url: https://techcommons-hacks.devpost.com/
     ongoing: true
     period:
-      en: Jul 11 - 13, 2026
-      ja: Jul 11 - 13, 2026
-      zh: Jul 11 - 13, 2026
+      en: Jul 11 - 16, 2026
+      ja: Jul 11 - 16, 2026
+      zh: Jul 11 - 16, 2026
     sourceNote: Devpost auto · prize~0 · score 70 · TechCommons
     auto: true
     joinScore: 70
@@ -562,9 +562,9 @@ contests:
     prizeHint: 1000
     submitUrl: https://quantumhacks.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-12T07:59:15.365Z
+  lastWatch: 2026-07-13T08:47:57.599Z
   source: devpost-auto+manual
-  added: 19
-  updated: 33
-  scanned: 59
+  added: 16
+  updated: 34
+  scanned: 56
   kept: 40
