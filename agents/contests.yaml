@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-13T08:47:57.599Z
+# lastWatch: 2026-07-13T14:27:28.903Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -281,6 +281,20 @@ contests:
     joinScore: 80
     prizeHint: 1000
     submitUrl: https://ml-empowerment-2.devpost.com/challenges/start_a_submission
+  - at: 2026-07-13T14:27:28.872Z
+    type: devpost-auto
+    title: AceSAT Education AI-Agent
+    url: https://acesat-ai-agent.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 12 - Aug 15, 2026
+      ja: Jun 12 - Aug 15, 2026
+      zh: Jun 12 - Aug 15, 2026
+    sourceNote: Devpost auto · prize~100 · score 78 · AceSAT
+    auto: true
+    joinScore: 78
+    prizeHint: 100
+    submitUrl: https://acesat-ai-agent.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: "Kuki Designed group "
@@ -547,24 +561,10 @@ contests:
     joinScore: 66
     prizeHint: 100
     submitUrl: https://next-byte-hacks-v3.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: QuantumHacks
-    url: https://quantumhacks.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 21 - Aug 20, 2026
-      ja: Jun 21 - Aug 20, 2026
-      zh: Jun 21 - Aug 20, 2026
-    sourceNote: Devpost auto · prize~1000 · score 64 · Quantumhacks
-    auto: true
-    joinScore: 64
-    prizeHint: 1000
-    submitUrl: https://quantumhacks.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-13T08:47:57.599Z
+  lastWatch: 2026-07-13T14:27:28.903Z
   source: devpost-auto+manual
-  added: 16
+  added: 15
   updated: 34
-  scanned: 56
+  scanned: 54
   kept: 40
