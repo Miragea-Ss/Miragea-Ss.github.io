@@ -1,20 +1,32 @@
 {
-  "generatedAt": "2026-07-13T14:27:28.981Z",
+  "generatedAt": "2026-07-14T07:46:44.945Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-13T14:27:28.903Z",
+      "lastRun": "2026-07-14T07:46:44.866Z",
       "summary": {
-        "en": "40 open · 22 join-worthy · auto-watch",
-        "ja": "募集中40件 · 参加推奨22件 · 自動監視",
-        "zh": "开放40 · 建议参加22 · 自动监视"
+        "en": "40 open · 23 join-worthy · auto-watch",
+        "ja": "募集中40件 · 参加推奨23件 · 自動監視",
+        "zh": "开放40 · 建议参加23 · 自动监视"
       },
       "metrics": {
         "contestsFlagged": 40,
-        "joinRecommended": 22,
+        "joinRecommended": 23,
         "autoTracked": 40
       },
       "events": [
+        {
+          "at": "2026-07-14T07:46:44.834Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (115) OpenAI Build Week",
+          "url": "https://openai.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Jul 13 - 21, 2026",
+            "ja": "Jul 13 - 21, 2026",
+            "zh": "Jul 13 - 21, 2026"
+          }
+        },
         {
           "at": "2026-07-09T18:41:49.379Z",
           "type": "devpost-auto",
@@ -90,18 +102,6 @@
         {
           "at": "2026-07-09T18:41:49.379Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (103) CockroachDB × AWS Hackathon - Build with Agentic Memory",
-          "url": "https://cockroachdb-ai.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Jun 30 - Aug 18, 2026",
-            "ja": "Jun 30 - Aug 18, 2026",
-            "zh": "Jun 30 - Aug 18, 2026"
-          }
-        },
-        {
-          "at": "2026-07-09T18:41:49.379Z",
-          "type": "devpost-auto",
           "title": "★ JOIN? (103) Reddit’s Games with a Hook Hackathon",
           "url": "https://redditgameswithahook.devpost.com/",
           "ongoing": true,
@@ -114,7 +114,7 @@
         {
           "at": "2026-07-09T18:41:49.379Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (98) YouCam API Skin AI & Apparel VTO Hackathon ",
+          "title": "★ JOIN? (103) YouCam API Skin AI & Apparel VTO Hackathon ",
           "url": "https://youcam-api.devpost.com/",
           "ongoing": true,
           "period": {
@@ -126,13 +126,13 @@
         {
           "at": "2026-07-09T18:41:49.379Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (98) Arm Create: AI Optimization Challenge",
-          "url": "https://arm-ai-optimization-challenge.devpost.com/",
+          "title": "★ JOIN? (98) CockroachDB × AWS Hackathon - Build with Agentic Memory",
+          "url": "https://cockroachdb-ai.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Jun 04 - Aug 14, 2026",
-            "ja": "Jun 04 - Aug 14, 2026",
-            "zh": "Jun 04 - Aug 14, 2026"
+            "en": "Jun 30 - Aug 18, 2026",
+            "ja": "Jun 30 - Aug 18, 2026",
+            "zh": "Jun 30 - Aug 18, 2026"
           }
         }
       ]
