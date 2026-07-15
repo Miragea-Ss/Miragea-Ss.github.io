@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-14T07:46:44.866Z
+# lastWatch: 2026-07-15T07:50:06.305Z
 contests:
   - at: 2026-07-14T07:46:44.834Z
     type: devpost-auto
@@ -127,6 +127,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-07-11T07:39:48.543Z
+    type: devpost-auto
+    title: TechCommons Hacks
+    url: https://techcommons-hacks.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 11 - 20, 2026
+      ja: Jul 11 - 20, 2026
+      zh: Jul 11 - 20, 2026
+    sourceNote: Devpost auto · prize~1550 · score 98 · TechCommons
+    auto: true
+    joinScore: 98
+    prizeHint: 1550
+    submitUrl: https://techcommons-hacks.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: CockroachDB × AWS Hackathon - Build with Agentic Memory
@@ -393,20 +407,6 @@ contests:
     joinScore: 70
     prizeHint: 0
     submitUrl: https://vshacks-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-11T07:39:48.543Z
-    type: devpost-auto
-    title: TechCommons Hacks
-    url: https://techcommons-hacks.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 11 - 19, 2026
-      ja: Jul 11 - 19, 2026
-      zh: Jul 11 - 19, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · TechCommons
-    auto: true
-    joinScore: 70
-    prizeHint: 0
-    submitUrl: https://techcommons-hacks.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: Win4AISafety - Open Research Summer Challenge
@@ -562,9 +562,9 @@ contests:
     prizeHint: 55
     submitUrl: https://3d-websites-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-14T07:46:44.866Z
+  lastWatch: 2026-07-15T07:50:06.305Z
   source: devpost-auto+manual
-  added: 17
+  added: 16
   updated: 32
   scanned: 54
   kept: 40
