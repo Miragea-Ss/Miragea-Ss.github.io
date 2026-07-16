@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-15T07:50:06.305Z
+# lastWatch: 2026-07-16T07:55:21.119Z
 contests:
   - at: 2026-07-14T07:46:44.834Z
     type: devpost-auto
@@ -127,6 +127,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-07-16T07:55:21.086Z
+    type: devpost-auto
+    title: "INNOVIK 6.0 : International Hackathon 2026 "
+    url: https://innovik-6-0-hackathon-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 15 - Aug 15, 2026
+      ja: Jul 15 - Aug 15, 2026
+      zh: Jul 15 - Aug 15, 2026
+    sourceNote: Devpost auto · prize~200000 · score 102 · shekunj
+    auto: true
+    joinScore: 102
+    prizeHint: 200000
+    submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-11T07:39:48.543Z
     type: devpost-auto
     title: TechCommons Hacks
@@ -343,14 +357,28 @@ contests:
     url: https://smartaithon.devpost.com/
     ongoing: true
     period:
-      en: Jun 24 - Jul 15, 2026
-      ja: Jun 24 - Jul 15, 2026
-      zh: Jun 24 - Jul 15, 2026
+      en: Jun 24 - Jul 20, 2026
+      ja: Jun 24 - Jul 20, 2026
+      zh: Jun 24 - Jul 20, 2026
     sourceNote: Devpost auto · prize~10000 · score 76 · IEEE KCE Student Branch CIS Chapter
     auto: true
     joinScore: 76
     prizeHint: 10000
     submitUrl: https://smartaithon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-16T07:55:21.086Z
+    type: devpost-auto
+    title: "Zero to Query: LingoQL Hackathon"
+    url: https://ztq.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 08 - 29, 2026
+      ja: Jul 08 - 29, 2026
+      zh: Jul 08 - 29, 2026
+    sourceNote: Devpost auto · prize~500 · score 74 · LingoQL
+    auto: true
+    joinScore: 74
+    prizeHint: 500
+    submitUrl: https://ztq.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: Hack The Limit
@@ -533,38 +561,10 @@ contests:
     joinScore: 68
     prizeHint: 10000
     submitUrl: https://igad-husika-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: Open Atlas - AI for Social Good Hackathon 2026
-    url: https://oa-ai-for-social-good.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 20 - Aug 20, 2026
-      ja: Jun 20 - Aug 20, 2026
-      zh: Jun 20 - Aug 20, 2026
-    sourceNote: Devpost auto · prize~10000 · score 68 · Open Atlas
-    auto: true
-    joinScore: 68
-    prizeHint: 10000
-    submitUrl: https://oa-ai-for-social-good.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: 3D Websites Hackathon
-    url: https://3d-websites-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 22 - Jul 31, 2026
-      ja: Jun 22 - Jul 31, 2026
-      zh: Jun 22 - Jul 31, 2026
-    sourceNote: Devpost auto · prize~55 · score 66 · high school
-    auto: true
-    joinScore: 66
-    prizeHint: 55
-    submitUrl: https://3d-websites-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-15T07:50:06.305Z
+  lastWatch: 2026-07-16T07:55:21.119Z
   source: devpost-auto+manual
-  added: 16
-  updated: 32
-  scanned: 54
+  added: 20
+  updated: 30
+  scanned: 55
   kept: 40

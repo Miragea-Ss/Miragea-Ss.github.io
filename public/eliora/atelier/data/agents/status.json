@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-15T07:50:06.386Z",
+  "generatedAt": "2026-07-16T07:55:21.199Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-15T07:50:06.305Z",
+      "lastRun": "2026-07-16T07:55:21.119Z",
       "summary": {
-        "en": "40 open · 24 join-worthy · auto-watch",
-        "ja": "募集中40件 · 参加推奨24件 · 自動監視",
-        "zh": "开放40 · 建议参加24 · 自动监视"
+        "en": "40 open · 25 join-worthy · auto-watch",
+        "ja": "募集中40件 · 参加推奨25件 · 自動監視",
+        "zh": "开放40 · 建议参加25 · 自动监视"
       },
       "metrics": {
         "contestsFlagged": 40,
-        "joinRecommended": 24,
+        "joinRecommended": 25,
         "autoTracked": 40
       },
       "events": [
@@ -124,15 +124,15 @@
           }
         },
         {
-          "at": "2026-07-11T07:39:48.543Z",
+          "at": "2026-07-16T07:55:21.086Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (98) TechCommons Hacks",
-          "url": "https://techcommons-hacks.devpost.com/",
+          "title": "★ JOIN? (102) INNOVIK 6.0 : International Hackathon 2026 ",
+          "url": "https://innovik-6-0-hackathon-2026.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Jul 11 - 20, 2026",
-            "ja": "Jul 11 - 20, 2026",
-            "zh": "Jul 11 - 20, 2026"
+            "en": "Jul 15 - Aug 15, 2026",
+            "ja": "Jul 15 - Aug 15, 2026",
+            "zh": "Jul 15 - Aug 15, 2026"
           }
         }
       ]
