@@ -1,0 +1,9 @@
+{
+  "verified": true,
+  "run_id": "1d8bc92b-aed8-4a52-b7b0-11fe520a2181",
+  "asset_sha256": "a2674f5cbf543ee287bb5c737c1ffa61f6c913cb358f1687d8425b329c01aeff",
+  "manifest_hash": "42efa7954ccb657418e0dea97bf9978cadca22694b448ab178753cd8ceab9b02",
+  "manifest_uri": "https://s3.us-east-005.backblazeb2.com/-miragea-genmedia-0710/eliora-vault/runs/2026-07-17/1d8bc92b-aed8-4a52-b7b0-11fe520a2181/manifest.json",
+  "asset_url": "https://s3.us-east-005.backblazeb2.com/-miragea-genmedia-0710/eliora-vault/runs/2026-07-17/1d8bc92b-aed8-4a52-b7b0-11fe520a2181/assets/85bc4768-6acb-4c2e-bd54-a0d040f9f1bd.png",
+  "exported_at": "2026-07-17T12:25:42.249443+00:00"
+}

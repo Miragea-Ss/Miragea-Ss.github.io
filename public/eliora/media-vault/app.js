@@ -105,4 +105,21 @@ async function init() {
   }
 }
 
+async function loadB2Proof() {
+  const status = $("#b2-proof-status");
+  if (!status) return;
+  try {
+    const response = await fetch("./b2-proof.json", { cache: "no-store" });
+    if (!response.ok) return;
+    const proof = await response.json();
+    if (proof.verified && proof.manifest_uri) {
+      status.className = "ok";
+      status.textContent = `Verified · ${shortHash(proof.manifest_hash)}`;
+    }
+  } catch (_) {
+    // A missing proof file is an honest pending state, not a page failure.
+  }
+}
+
 init();
+loadB2Proof();

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "eliora-media-vault"
+version = "0.1.0"
+description = "Local-first generative media provenance and Backblaze B2 vault built with Genblaze."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+  "genblaze-core>=0.3.4,<0.4",
+  "genblaze-s3>=0.3.4,<0.4",
+  "Pillow>=10,<13",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+eliora-vault = "eliora_media_vault.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/eliora_media_vault"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

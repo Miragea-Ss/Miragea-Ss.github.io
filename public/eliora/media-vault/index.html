@@ -19,8 +19,9 @@
     <nav aria-label="Primary navigation">
       <a href="#vault">Vault</a>
       <a href="#pipeline">Pipeline</a>
+      <a href="#proof">Proof</a>
       <a href="#demo">Demo</a>
-      <a href="https://miragea-ss.github.io/" target="_blank" rel="noopener">Miragea</a>
+      <a href="https://github.com/Miragea-Ss/Miragea-Ss.github.io/tree/main/projects/eliora-media-vault" target="_blank" rel="noopener">Source</a>
     </nav>
   </header>
 
@@ -30,6 +31,10 @@
         <p class="eyebrow">Backblaze Generative Media Hackathon 2026</p>
         <h1>Generate locally. Prove every asset. Preserve it on B2.</h1>
         <p class="lede">A working media vault for creators who need reproducible AI output, tamper-evident provenance, and durable object storage without surrendering the local production workflow.</p>
+        <div class="hero-actions">
+          <a class="primary-action" href="#vault">Verify the live asset</a>
+          <a class="secondary-action" href="./sample_manifest.json" target="_blank" rel="noopener">Inspect Genblaze manifest</a>
+        </div>
       </div>
       <dl class="metrics" aria-label="Project metrics">
         <div><dt id="asset-count">1</dt><dd>vault assets</dd></div>
@@ -87,9 +92,50 @@
       <div class="section-head"><p class="eyebrow">Submission field</p><h2>Providers and models</h2></div>
       <ol class="pipeline-steps">
         <li><span>GEN</span><div><strong>comfyui-local</strong><p>SDXL / local ComfyUI checkpoint (primary path on GPU hardware).</p></div></li>
-        <li><span>OFF</span><div><strong>local · eliora-placeholder-v1</strong><p>Pillow offline path — judge-reproducible without a GPU.</p></div></li>
-        <li><span>SDK</span><div><strong>Genblaze + Backblaze B2</strong><p>genblaze-core Manifest/RunBuilder · genblaze-s3 S3StorageBackend.for_backblaze · bucket miragea-genmedia-0710.</p></div></li>
+        <li><span>OFF</span><div><strong>comfyui-local · existing-file-ingest</strong><p>Genblaze fallback path — judge-reproducible without a GPU or cloud account.</p></div></li>
+        <li><span>SDK</span><div><strong>Genblaze + Backblaze B2</strong><p>genblaze-core Pipeline + ObjectStorageSink · genblaze-s3 S3StorageBackend.for_backblaze · bucket -miragea-genmedia-0710.</p></div></li>
       </ol>
+    </section>
+
+    <section class="proof" id="proof">
+      <div class="section-head"><p class="eyebrow">Judge-verifiable evidence</p><h2>Proof, not platform claims</h2></div>
+      <div class="proof-grid">
+        <article>
+          <span class="proof-number">01</span>
+          <h3>Recompute the bytes</h3>
+          <p>The Verify button fetches the selected asset, recomputes SHA-256 in the browser, and compares it with the hash stored in the Genblaze manifest.</p>
+          <a href="#vault">Run browser verification →</a>
+        </article>
+        <article>
+          <span class="proof-number">02</span>
+          <h3>Inspect provenance</h3>
+          <p>Provider, model, prompt, seed, run status, asset hash, and canonical manifest hash remain inspectable instead of disappearing inside a generation UI.</p>
+          <a href="./sample_manifest.json" target="_blank" rel="noopener">Open manifest JSON →</a>
+        </article>
+        <article>
+          <span class="proof-number">03</span>
+          <h3>Reproduce the pipeline</h3>
+          <p>The repository includes a real Genblaze Pipeline, a ComfyUI API path, existing-file fallback, B2 storage through genblaze-s3, and offline tests.</p>
+          <a href="https://github.com/Miragea-Ss/Miragea-Ss.github.io/tree/main/projects/eliora-media-vault" target="_blank" rel="noopener">Read setup and source →</a>
+        </article>
+      </div>
+      <div class="runtime-proof" aria-live="polite">
+        <div><span>LOCAL PROOF</span><strong id="local-proof-status">SHA-256 verified</strong></div>
+        <div><span>GENBLAZE</span><strong>Canonical manifest recorded</strong></div>
+        <div><span>BACKBLAZE B2</span><strong id="b2-proof-status">Final credentialed smoke proof pending</strong></div>
+      </div>
+    </section>
+
+    <section class="reliability" id="reliability">
+      <div class="section-head"><p class="eyebrow">Production readiness</p><h2>Built to survive real creator workflows</h2></div>
+      <div class="reliability-grid">
+        <div><strong>Local-first</strong><p>Keep ComfyUI and large checkpoints on the creator workstation. Upload durable outputs and provenance, not the whole production environment.</p></div>
+        <div><strong>Failure-aware</strong><p>The ComfyUI API path can fall back to existing-file ingestion, preserving useful work when the generation service is unavailable.</p></div>
+        <div><strong>Credential-safe</strong><p>B2 keys remain in the local CLI/backend. The browser receives only judge-safe catalog fields and durable asset references.</p></div>
+        <div><strong>Rebuildable</strong><p>Offline tests produce and verify a real Genblaze manifest without requiring a GPU, provider credits, or a cloud account.</p></div>
+      </div>
+      <pre class="command-proof"><code>eliora-vault run --asset generated.png --prompt "..." --b2
+pytest -q</code></pre>
     </section>
 
     <section class="demo" id="demo">
@@ -104,7 +150,7 @@
     </section>
   </main>
 
-  <footer><span>Miragea / Eliora</span><span>Built for the Backblaze Generative Media Hackathon</span></footer>
+  <footer><span>Miragea / Eliora</span><span>Built for the Backblaze Generative Media Hackathon · <a href="https://miragea-ss.github.io/" target="_blank" rel="noopener">Miragea</a></span></footer>
   <script src="./app.js" defer></script>
 </body>
 </html>

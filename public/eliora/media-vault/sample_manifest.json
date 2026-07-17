@@ -1,1 +1,80 @@
-{"canonical_hash":"4e6097a00d80f62571ade0786557bf9288460ae9af5347b580e3905a154fec1d","encryption_scheme":null,"manifest_uri":null,"run":{"completed_at":"2026-07-10T21:11:07.304111Z","created_at":"2026-07-10T21:11:07.304111Z","idempotency_key":null,"metadata":{},"name":"eliora-media-vault","parent_run_id":null,"project_id":null,"run_id":"1cc1cd90-9273-4ce4-b949-48b5059118ec","started_at":null,"status":"completed","steps":[{"assets":[{"asset_id":"a1729d51-60a9-45d6-abdd-c34733222a8b","audio":null,"duration":null,"height":null,"media_type":"image/png","metadata":{},"sha256":"a2674f5cbf543ee287bb5c737c1ffa61f6c913cb358f1687d8425b329c01aeff","size_bytes":null,"tracks":null,"url":"./sample_asset.png","video":null,"width":null}],"completed_at":null,"cost_usd":null,"error":null,"error_code":null,"inputs":[],"metadata":{"brand":"Miragea · Eliora","project":"Eliora Media Vault"},"modality":"image","model":"Best\\青禾SDXL-幻想引擎_V2.0-暗房影真.safetensors","model_hash":null,"model_version":null,"negative_prompt":null,"params":{"comfy_prompt_id":"0fb74c2c-6d1f-4606-afa1-335e521d4084","comfy_url":"http://127.0.0.1:8188","height":576,"mode":"comfyui-local","pipeline":"local-gen → genblaze-manifest → b2-vault","width":1024},"prompt":"Eliora media vault demo frame, cinematic coastal city at dusk, durable AI vault, cyberpunk glass, high detail","prompt_visibility":"public","provider":"comfyui-local","provider_payload":{},"retries":0,"run_id":"1cc1cd90-9273-4ce4-b949-48b5059118ec","seed":71,"started_at":null,"status":"succeeded","step_id":"98131b42-6434-4a9c-b90f-69fcc6470d35","step_index":0,"step_type":"generate"}],"tenant_id":null},"schema_version":"1.5","signature":null,"transfer_failures":[]}
+{
+  "schema_version": "1.5",
+  "run": {
+    "run_id": "1d8bc92b-aed8-4a52-b7b0-11fe520a2181",
+    "tenant_id": null,
+    "project_id": null,
+    "name": "eliora-media-vault",
+    "status": "completed",
+    "steps": [
+      {
+        "step_id": "3b256163-b0a1-47b9-be67-9e0bd852c3e4",
+        "run_id": "1d8bc92b-aed8-4a52-b7b0-11fe520a2181",
+        "provider": "comfyui-local",
+        "model": "existing-file-ingest",
+        "step_type": "generate",
+        "model_version": null,
+        "model_hash": null,
+        "modality": "image",
+        "prompt": "Eliora media vault demo frame, cinematic coastal city at dusk, durable AI vault, cyberpunk glass, high detail",
+        "negative_prompt": null,
+        "prompt_visibility": "public",
+        "seed": 71,
+        "params": {
+          "metadata": {
+            "product": "Eliora Media Vault",
+            "checkpoint": "Best\\青禾SDXL-幻想引擎_V2.0-暗房影真.safetensors"
+          },
+          "source_path": "F:\\Astro\\miragea-space\\public\\eliora\\media-vault\\sample_asset.png",
+          "workflow_path": null,
+          "prompt_node": null,
+          "comfy_url": "http://127.0.0.1:8188",
+          "output_dir": "C:\\Users\\wolf6\\AppData\\Local\\Temp\\eliora-media-vault\\generated"
+        },
+        "status": "succeeded",
+        "inputs": [],
+        "assets": [
+          {
+            "asset_id": "85bc4768-6acb-4c2e-bd54-a0d040f9f1bd",
+            "url": "https://s3.us-east-005.backblazeb2.com/-miragea-genmedia-0710/eliora-vault/runs/2026-07-17/1d8bc92b-aed8-4a52-b7b0-11fe520a2181/assets/85bc4768-6acb-4c2e-bd54-a0d040f9f1bd.png",
+            "media_type": "image/png",
+            "sha256": "a2674f5cbf543ee287bb5c737c1ffa61f6c913cb358f1687d8425b329c01aeff",
+            "size_bytes": 718678,
+            "width": 1024,
+            "height": 576,
+            "duration": null,
+            "video": null,
+            "audio": null,
+            "tracks": null,
+            "metadata": {
+              "source": "local-workstation",
+              "original_name": "sample_asset.png"
+            }
+          }
+        ],
+        "provider_payload": {},
+        "retries": 0,
+        "cost_usd": null,
+        "error": null,
+        "error_code": null,
+        "started_at": "2026-07-17T12:18:38.654405Z",
+        "completed_at": "2026-07-17T12:18:38.689406Z",
+        "step_index": 0,
+        "metadata": {
+          "upstream_id": "sync"
+        }
+      }
+    ],
+    "parent_run_id": null,
+    "idempotency_key": null,
+    "created_at": "2026-07-17T12:18:38.689406Z",
+    "started_at": "2026-07-17T12:18:38.653406Z",
+    "completed_at": "2026-07-17T12:18:38.689406Z",
+    "metadata": {}
+  },
+  "canonical_hash": "42efa7954ccb657418e0dea97bf9978cadca22694b448ab178753cd8ceab9b02",
+  "manifest_uri": "https://s3.us-east-005.backblazeb2.com/-miragea-genmedia-0710/eliora-vault/runs/2026-07-17/1d8bc92b-aed8-4a52-b7b0-11fe520a2181/manifest.json",
+  "encryption_scheme": null,
+  "signature": null,
+  "transfer_failures": []
+}
