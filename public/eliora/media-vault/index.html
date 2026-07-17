@@ -83,6 +83,15 @@
   proof/b2-smoke-proof.json</code></pre>
     </section>
 
+    <section class="pipeline" id="providers">
+      <div class="section-head"><p class="eyebrow">Submission field</p><h2>Providers and models</h2></div>
+      <ol class="pipeline-steps">
+        <li><span>GEN</span><div><strong>comfyui-local</strong><p>SDXL / local ComfyUI checkpoint (primary path on GPU hardware).</p></div></li>
+        <li><span>OFF</span><div><strong>local · eliora-placeholder-v1</strong><p>Pillow offline path — judge-reproducible without a GPU.</p></div></li>
+        <li><span>SDK</span><div><strong>Genblaze + Backblaze B2</strong><p>genblaze-core Manifest/RunBuilder · genblaze-s3 S3StorageBackend.for_backblaze · bucket miragea-genmedia-0710.</p></div></li>
+      </ol>
+    </section>
+
     <section class="demo" id="demo">
       <div class="section-head"><p class="eyebrow">Three-minute judge path</p><h2>See the production flow</h2></div>
       <video controls playsinline preload="metadata"><source src="./demo.mp4" type="video/mp4" /></video>
@@ -90,7 +99,7 @@
         <div><b>00:00</b><span>Problem and local-first value</span></div>
         <div><b>00:45</b><span>ComfyUI to Genblaze manifest</span></div>
         <div><b>01:35</b><span>Hash verification and B2 layout</span></div>
-        <div><b>02:20</b><span>Vault retrieval and reuse</span></div>
+        <div><b>02:20</b><span>Vault retrieval, CLI, CTA</span></div>
       </div>
     </section>
   </main>
