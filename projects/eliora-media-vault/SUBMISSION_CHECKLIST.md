@@ -20,16 +20,16 @@ Official deadline: 2026-08-03 17:00 EDT / 2026-08-04 06:00 JST
 
 ## Public delivery
 
-- [x] Source changes committed and pushed with user approval (`590415e`).
+- [x] Source changes committed and pushed with user approval (`67b5dbf`).
 - [x] GitHub Pages deployment completed.
 - [x] Working app returns HTTP 200.
 - [x] Public source link resolves.
 - [x] New encrypted B2 bucket contains three final verified records locally exported for publication.
 - [x] Two final Krea 2 records use `comfyui-api`; the foundation uses honest existing-file ingestion.
 - [x] Public provenance projections redact local workstation paths.
-- [ ] New-bucket catalog and proof package committed and pushed with user approval.
-- [ ] Deployed catalog contains three new-bucket records.
-- [ ] Deployed B2 proof reports `verified: true` and references `eliora-media-vault-20260717`.
+- [x] New-bucket catalog and proof package committed and pushed with user approval.
+- [x] Deployed catalog contains three new-bucket records.
+- [x] Deployed B2 proof reports `verified: true` and references `eliora-media-vault-20260717`.
 - [x] Final video returns HTTP 200 and its public byte size matches the local file.
 - [ ] User performs one final logged-out visual check on desktop and mobile after deployment.
 
@@ -39,7 +39,7 @@ Official deadline: 2026-08-03 17:00 EDT / 2026-08-04 06:00 JST
 - [x] Duration is approximately three minutes (03:05.458).
 - [x] English female narration uses the approved Eliora name.
 - [x] Shows the real problem, working app, catalog, ComfyUI, provenance, Genblaze/B2 layers, recovery, delivery, URL, and QR code.
-- [x] No detected long freeze, black-frame event, or long silence.
+- [x] No decode error or long silence. Automated analysis found one intentional 1.47-second black transition and short designed holds, including the final card.
 - [x] Full decode succeeds.
 - [x] Public playback URL is available.
 
@@ -51,7 +51,9 @@ Official deadline: 2026-08-03 17:00 EDT / 2026-08-04 06:00 JST
 - [ ] Paste the final project description from `DEVPOST_SUBMISSION.md`.
 - [ ] List providers and models exactly as documented.
 - [ ] Enter the final demo video URL.
-- [ ] Add 3–5 strong screenshots and their prepared captions.
+- [ ] Upload the approved MP4 to YouTube, Vimeo, or Youku; confirm Devpost can embed it. The direct MP4 remains the public backup.
+- [x] Prepare three strong gallery images under 5 MB.
+- [ ] Add the three prepared screenshots and captions.
 - [ ] Preview the entry while logged out.
 - [ ] Accept the contest agreements personally.
 - [ ] Click final Submit by 2026-07-30 JST.

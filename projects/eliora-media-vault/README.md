@@ -12,6 +12,10 @@ ComfyUI or existing asset
 
 The public experience is designed for creators who generate on their own GPU but still need reliable search, provenance, recovery, and storage.
 
+## Submitted release scope
+
+The submitted working release is image-first. It proves the production core: local ComfyUI or existing-file ingestion, a real Genblaze run, SHA-256 provenance, a canonical manifest, private encrypted B2 storage, and a searchable public catalog with browser-side verification. Multimodal generation, thumbnails, semantic indexes, team review, and automated retry/evaluation are documented next-stage extensions rather than claims about the current release.
+
 ## What is real
 
 - The pipeline uses `genblaze-core` rather than a hand-written JSON imitation.
@@ -117,3 +121,7 @@ The public catalog uses same-origin display copies because the encrypted product
 ## Submission status
 
 The implementation, three B2-backed records, public app, source, and final 1080p demo are complete. See `DEVPOST_SUBMISSION.md` for paste-ready Devpost copy and `SUBMISSION_CHECKLIST.md` for the remaining user-controlled submission steps.
+
+## License
+
+The Eliora Media Vault project is released under the MIT License. See `LICENSE`.

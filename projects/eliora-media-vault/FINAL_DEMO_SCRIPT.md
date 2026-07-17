@@ -1,48 +1,43 @@
-# Final Demo Script — target 2:45 to 2:55
+# Final Demo Record — accepted 03:05.458 master
 
-Do not record this final version until the B2 proof is live and the public build is updated.
+The approved master is `Elora-v-1080p30-upload.mp4` in the local release workspace. Do not re-record or replace it without the creative director's approval.
 
-## 00:00–00:18 — Problem
+## Accepted technical profile
 
-Show scattered generated files, then the Media Vault hero.
+- 1920x1080, 30 fps, H.264 High, yuv420p.
+- Stereo AAC, 48 kHz.
+- Duration: 03:05.458.
+- Size: 84,123,421 bytes.
+- SHA-256: `6EC8D98A3E132769A789E3797DB17B6D711E96F06ACC14FA3101775AC5A843E2`.
+- English female narration consistently names **Eliora Media Vault**.
+- Full decode succeeds. One designed 1.47-second black transition and intentional still holds are present; no long silence was detected.
 
-Narration: “Local AI creators can generate extraordinary media, but the output quickly loses its history. Which prompt, model, seed, and run created the final file—and can anyone verify it later?”
+## Narrative map
 
-## 00:18–00:42 — Product value
+### 00:00–00:50 — Problem and production failure
 
-Show the public catalog and provenance inspector.
+Generated media is easy to create but difficult to identify, search, reproduce, verify, and deliver once prompts, versions, and provider history are scattered.
 
-Narration: “Eliora Media Vault keeps the local production workflow while turning each approved asset into a searchable, verifiable record.”
+### 00:50–01:20 — Product value and system architecture
 
-## 00:42–01:12 — Real pipeline
+Eliora Media Vault connects local production, provenance recording, validation, and durable object storage.
 
-Show the repository source: `Pipeline`, `ComfyUILocalProvider`, and B2 sink. Keep code readable.
+### 01:20–01:50 — Local workflow and Genblaze provenance
 
-Narration: “A real Genblaze Pipeline runs a ComfyUI API workflow or ingests an existing output. It records the provider, checkpoint, prompt, seed, dimensions, size, status, and SHA-256.”
+The catalog and inspector show provider, model, prompt, seed, dimensions, run state, SHA-256, and canonical manifest identity.
 
-## 01:12–01:38 — Reliability
+### 01:50–02:25 — Backblaze B2 as durable creative memory
 
-Show the test for ComfyUI outage fallback and the three passing tests.
+Genblaze orchestrates the run and `genblaze-s3` persists the image asset and canonical provenance manifest in Backblaze B2.
 
-Narration: “If ComfyUI is unavailable, the pipeline can preserve useful work through existing-file fallback. Offline tests prove that the manifest remains valid without a GPU or cloud account.”
+### 02:25–02:55 — Recovery, delivery, and production readiness
 
-## 01:38–02:05 — B2 orchestration
+The narrative explains how preserved generation history supports targeted recovery, reuse, and accountable delivery.
 
-Show the successful CLI run, durable asset URL, manifest URI, and B2 proof status on the public site.
+### 02:55–03:05 — Final statement, working URL, and QR code
 
-Narration: “Genblaze-s3 stores the asset and canonical manifest on Backblaze B2. Credentials stay in the local execution layer; the browser receives only durable references and judge-safe metadata.”
+The end card remains on screen long enough to read the URL and scan the QR code.
 
-## 02:05–02:30 — Independent verification
+## Claim boundary
 
-Click “Verify selected asset.” Show the green result and open the manifest JSON.
-
-Narration: “The judge can recompute SHA-256 directly in the browser and compare the asset bytes with the Genblaze provenance record.”
-
-## 02:30–02:50 — Utility and close
-
-Show the reliability section and creator use cases.
-
-Narration: “This is durable media memory for local-first creators: generate locally, prove every asset, and preserve it on B2.”
-
-End card: working app URL, GitHub source, Genblaze + Backblaze B2.
-
+The video communicates both the working image-first release and the broader Media Vault product architecture. The public app and Devpost copy identify additional modalities, thumbnails, semantic indexes, and team delivery automation as next-stage scope.

@@ -15,7 +15,7 @@ Generate locally. Prove every asset. Preserve it on Backblaze B2.
 - Working app: https://miragea-ss.github.io/eliora/media-vault/
 - Public source: https://github.com/Miragea-Ss/Miragea-Ss.github.io/tree/main/projects/eliora-media-vault
 - Demo video: https://miragea-ss.github.io/eliora/media-vault/demo.mp4?v=20260718-final
-- Judge-safe B2 proof: https://miragea-ss.github.io/eliora/media-vault/b2-proof.json
+- Public credential-safe B2 proof: https://miragea-ss.github.io/eliora/media-vault/b2-proof.json
 - Public catalog: https://miragea-ss.github.io/eliora/media-vault/sample_catalog.json
 
 ## Inspiration
@@ -31,7 +31,7 @@ Eliora Media Vault keeps local generation local while turning every approved out
 3. Records provider, model, prompt, seed, dimensions, byte size, run state, and SHA-256 in a canonical provenance manifest.
 4. Stores the asset and manifest on Backblaze B2 through `genblaze-s3`.
 5. Exports a credential-safe catalog for the public Media Vault.
-6. Lets a judge recompute each asset SHA-256 in the browser and compare it with the Genblaze record.
+6. Lets any visitor recompute each asset SHA-256 in the browser and compare it with the Genblaze record.
 7. Preserves the exact prompt, model, seed, source, and run history needed to recover only a failed production step.
 
 ## How we built it
@@ -73,12 +73,12 @@ The main challenge was connecting a local, GPU-heavy creator workflow to a publi
 
 ## Accomplishments
 
-- Three real, completed, B2-backed media records with public judge-safe manifests.
+- Three real, completed, B2-backed media records with credential-safe public provenance projections.
 - Real ComfyUI API execution plus an honest existing-asset fallback.
 - Genblaze canonical manifests and browser-side asset verification.
 - B2-only proof export that prevents misleading public claims.
-- A reproducible no-key path for judges and a credentialed path for operators.
-- A focused judge experience explaining utility, architecture, evidence, recovery, and delivery.
+- A reproducible no-key path for reviewers and a credentialed path for operators.
+- A focused public product experience explaining utility, architecture, evidence, recovery, and delivery.
 
 ## What we learned
 
@@ -91,6 +91,10 @@ For generative media, the durable product is not only the final image or video. 
 - Automatic thumbnails and semantic search indexes.
 - Team review queues and role-based access.
 - C2PA signing for additional authenticity and trust workflows.
+
+## Current release boundary
+
+The working release submitted here is intentionally image-first. It stores each generated image and its canonical Genblaze manifest in the private encrypted B2 vault, then publishes a credential-safe catalog mirror for browser verification. The demo also presents the broader Media Vault architecture; thumbnails, semantic search indexes, additional media modalities, and team workflow objects remain the next production phase rather than hidden claims about this release.
 
 ## Suggested Devpost gallery captions
 

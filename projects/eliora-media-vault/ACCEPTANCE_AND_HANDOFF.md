@@ -8,9 +8,9 @@ Official deadline: 2026-08-03 17:00 EDT / 2026-08-04 06:00 JST
 
 ## Auditor decision
 
-**GO FOR FINAL LOCAL REVIEW — PUBLICATION APPROVAL REQUIRED**
+**GO WITH KNOWN LIMITS — YOUTUBE HOSTING AND FINAL DEVPOST ACTION REQUIRED**
 
-The working application, real Genblaze implementation, three records in the new encrypted B2 bucket, final 1080p demo, and credential-safe public projections are complete locally. Publication, final public verification, Devpost agreement acceptance, and Submit remain under the creative director's control.
+The working application, real Genblaze implementation, three records in the new encrypted B2 bucket, final 1080p demo, and credential-safe public projections are published and re-verified. The remaining eligibility dependency is a Devpost-compatible YouTube, Vimeo, or Youku video URL. Account access, agreement acceptance, and final Submit remain under the creative director's control.
 
 ## Accepted evidence
 
@@ -27,17 +27,17 @@ The working application, real Genblaze implementation, three records in the new 
 - [x] Astro production build completes (70 pages).
 - [x] Browser-side SHA-256 verification matches the stored asset hashes.
 - [x] Final demo is 1920×1080, 30 fps, H.264/AAC, 03:05.458, and fully decodes.
-- [x] No long freeze, black-frame event, or long silence was detected in the final demo.
+- [x] Full decode and silence checks pass. One intentional 1.47-second black transition and designed still holds were detected; the final card is intentionally held for readability.
 - [x] Existing public app, source, and final video resolve.
-- [ ] New-bucket catalog and proof JSON require approved push and public re-verification.
-- [x] Release commit `590415e5361e5a46508efa3befe9a5f6589965bc` was pushed with user approval.
+- [x] New-bucket catalog and proof JSON were published and publicly re-verified.
+- [x] Release commit `67b5dbf` was pushed with user approval.
 
 ## Source locations
 
-- Working source: `F:\Astro\miragea-space\projects\eliora-media-vault`
-- Public page source: `F:\Astro\miragea-space\public\eliora\media-vault`
-- Safe continuation workspace: `H:\Codex\New＿start\eliora-media-vault-winning-submission-2026-07-17`
-- Final upload video: `H:\Codex\New＿start\Elora-v-1080p30-upload.mp4`
+- Working source: `projects/eliora-media-vault`
+- Public page source: `public/eliora/media-vault`
+- Safe continuation workspace: dated local workspace outside the repository
+- Final upload video: `Elora-v-1080p30-upload.mp4` in the local release workspace
 - Live app: https://miragea-ss.github.io/eliora/media-vault/
 - Direct video: https://miragea-ss.github.io/eliora/media-vault/demo.mp4?v=20260718-final
 - Public source: https://github.com/Miragea-Ss/Miragea-Ss.github.io/tree/main/projects/eliora-media-vault
@@ -69,15 +69,15 @@ The B2 bucket is private by design. Public assets are same-origin display copies
 
 ## Remaining user-controlled actions
 
-1. Review the local desktop and mobile build.
-2. Approve the Eliora-only commit and push.
-3. Re-verify the deployed app, JSON records, asset hashes, source, and video while logged out.
+1. Upload `Elora-v-1080p30-upload.mp4` to YouTube as Public or Unlisted with embedding allowed.
+2. Confirm the YouTube share URL plays inside the Devpost preview.
+3. Perform one final logged-out desktop/mobile review.
 4. Open the Devpost project editor while logged in.
-5. Paste the fields from `DEVPOST_SUBMISSION.md`.
-6. Add 3–5 screenshots using the prepared gallery captions.
-7. Personally accept the contest agreements and click Submit.
+5. Paste the fields from `DEVPOST_SUBMISSION.md` and `DEVPOST_UPLOAD_PACKAGE.md`.
+6. Add the three prepared gallery images and captions.
+7. Personally accept the contest agreements and click Submit by 2026-07-30 JST.
 8. Save the confirmation page or email.
 
 ## Protected work
 
-The unrelated untracked file `F:\Astro\miragea-space\agents\campaign-identity.md` remains untouched and must not be staged with this project.
+Unrelated agent work remains untouched and must not be staged with this project.
