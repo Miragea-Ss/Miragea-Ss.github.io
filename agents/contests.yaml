@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-16T07:55:21.119Z
+# lastWatch: 2026-07-17T07:51:52.012Z
 contests:
   - at: 2026-07-14T07:46:44.834Z
     type: devpost-auto
@@ -150,10 +150,10 @@ contests:
       en: Jul 11 - 20, 2026
       ja: Jul 11 - 20, 2026
       zh: Jul 11 - 20, 2026
-    sourceNote: Devpost auto · prize~1550 · score 98 · TechCommons
+    sourceNote: Devpost auto · prize~2800 · score 98 · TechCommons
     auto: true
     joinScore: 98
-    prizeHint: 1550
+    prizeHint: 2800
     submitUrl: https://techcommons-hacks.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -239,6 +239,20 @@ contests:
     joinScore: 92
     prizeHint: 10300
     submitUrl: https://celesta-exoplanet-challenge.devpost.com/challenges/start_a_submission
+  - at: 2026-07-17T07:51:51.987Z
+    type: devpost-auto
+    title: "OrionHackathon "
+    url: https://orionhackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 17 - Aug 05, 2026
+      ja: Jul 17 - Aug 05, 2026
+      zh: Jul 17 - Aug 05, 2026
+    sourceNote: Devpost auto · prize~1000 · score 90 · contact@orionglobalhackathon.com
+    auto: true
+    joinScore: 90
+    prizeHint: 1000
+    submitUrl: https://orionhackathon.devpost.com/challenges/start_a_submission
   - at: 2026-07-11T07:39:48.543Z
     type: devpost-auto
     title: "AI for Social Good: Hack with MLH & DigitalOcean"
@@ -253,6 +267,20 @@ contests:
     joinScore: 90
     prizeHint: 5250
     submitUrl: https://ai-for-social-good-mlh.devpost.com/challenges/start_a_submission
+  - at: 2026-07-17T07:51:51.987Z
+    type: devpost-auto
+    title: The Blueprint Hackathon  (For All Ages, July 17th-31st)
+    url: https://the-blueprint-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 17 - 31, 2026
+      ja: Jul 17 - 31, 2026
+      zh: Jul 17 - 31, 2026
+    sourceNote: Devpost auto · prize~8176 · score 86 · Blueprint Hackathon
+    auto: true
+    joinScore: 86
+    prizeHint: 8176
+    submitUrl: https://the-blueprint-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-07-11T07:39:48.543Z
     type: devpost-auto
     title: United Hacks V7
@@ -407,6 +435,20 @@ contests:
     joinScore: 74
     prizeHint: 500
     submitUrl: https://build-beyond-hackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-17T07:51:51.987Z
+    type: devpost-auto
+    title: Agentic Scale
+    url: https://agentic-scale.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 16 - 18, 2026
+      ja: Jul 16 - 18, 2026
+      zh: Jul 16 - 18, 2026
+    sourceNote: Devpost auto · prize~1000 · score 72 · TAWS
+    auto: true
+    joinScore: 72
+    prizeHint: 1000
+    submitUrl: https://agentic-scale.devpost.com/challenges/start_a_submission
   - at: 2026-07-12T07:59:15.332Z
     type: devpost-auto
     title: Daybot Commerce Hackathon
@@ -519,52 +561,10 @@ contests:
     joinScore: 70
     prizeHint: 0
     submitUrl: https://hoobit-hacks-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: Agentic AI Innovation Challenge 2026
-    url: https://agentic-ai-innovation-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 30 - Jul 15, 2026
-      ja: Jun 30 - Jul 15, 2026
-      zh: Jun 30 - Jul 15, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · Innovation Hacks
-    auto: true
-    joinScore: 70
-    prizeHint: 0
-    submitUrl: https://agentic-ai-innovation-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: Brainwave 2026 – X402 Blockchain Track
-    url: https://brainwave-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 03 - 31, 2026
-      ja: Jul 03 - 31, 2026
-      zh: Jul 03 - 31, 2026
-    sourceNote: Devpost auto · prize~100000 · score 68 · ACTS EDC
-    auto: true
-    joinScore: 68
-    prizeHint: 100000
-    submitUrl: https://brainwave-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: "IGAD Hackathon 2026: Smarter Early Warning, Stronger Communities"
-    url: https://igad-husika-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 22 - Jul 31, 2026
-      ja: Jun 22 - Jul 31, 2026
-      zh: Jun 22 - Jul 31, 2026
-    sourceNote: Devpost auto · prize~10000 · score 68 · BuildBeyond
-    auto: true
-    joinScore: 68
-    prizeHint: 10000
-    submitUrl: https://igad-husika-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-16T07:55:21.119Z
+  lastWatch: 2026-07-17T07:51:52.012Z
   source: devpost-auto+manual
-  added: 20
-  updated: 30
-  scanned: 55
+  added: 22
+  updated: 29
+  scanned: 56
   kept: 40
