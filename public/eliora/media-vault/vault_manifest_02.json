@@ -1,15 +1,15 @@
 {
   "schema_version": "1.5",
   "run": {
-    "run_id": "c68d9b39-8994-44d3-88b2-addebde63795",
+    "run_id": "9bdcab2b-994e-48a4-b464-705365c12953",
     "tenant_id": null,
     "project_id": null,
     "name": "eliora-media-vault",
     "status": "completed",
     "steps": [
       {
-        "step_id": "92e68fd1-dee3-4227-8ead-64ae962ada78",
-        "run_id": "c68d9b39-8994-44d3-88b2-addebde63795",
+        "step_id": "9e37a83f-3a64-4e11-90a7-95a066d5558d",
+        "run_id": "9bdcab2b-994e-48a4-b464-705365c12953",
         "provider": "comfyui-local",
         "model": "comfyui-api",
         "step_type": "generate",
@@ -25,21 +25,18 @@
             "product": "Eliora Media Vault",
             "checkpoint": "Krea2/krea2_turbo_bf16.safetensors"
           },
-          "source_path": null,
-          "workflow_path": "H:\\Codex\\New＿start\\eliora-media-vault-winning-submission-2026-07-17\\workflows\\eliora-krea2-provenance-chamber-api.json",
           "prompt_node": "4",
-          "comfy_url": "http://127.0.0.1:8188",
-          "output_dir": "C:\\Users\\wolf6\\AppData\\Local\\Temp\\eliora-media-vault\\generated"
+          "workflow_ref": "eliora-krea2-provenance-chamber-api.json"
         },
         "status": "succeeded",
         "inputs": [],
         "assets": [
           {
-            "asset_id": "8b7007a4-a0a7-43f5-8cbe-54b0bc020ec3",
-            "url": "https://s3.us-east-005.backblazeb2.com/-miragea-genmedia-0710/eliora-vault/runs/2026-07-17/c68d9b39-8994-44d3-88b2-addebde63795/assets/8b7007a4-a0a7-43f5-8cbe-54b0bc020ec3.png",
+            "asset_id": "ee692c35-6f10-427a-9ae2-2e54dc1450e3",
+            "url": "https://s3.us-east-005.backblazeb2.com/eliora-media-vault-20260717/eliora-vault/runs/2026-07-17/9bdcab2b-994e-48a4-b464-705365c12953/assets/ee692c35-6f10-427a-9ae2-2e54dc1450e3.png",
             "media_type": "image/png",
-            "sha256": "5319f01390d182dd649a2a3b82f8cce189666fc9698b4974cdd9c83474c6ef3c",
-            "size_bytes": 640698,
+            "sha256": "cc58f79d7289d186dd4f1a72b42fb55768d0f302e93f35148cce8a7b9b3dd021",
+            "size_bytes": 642382,
             "width": 1024,
             "height": 576,
             "duration": null,
@@ -57,8 +54,8 @@
         "cost_usd": null,
         "error": null,
         "error_code": null,
-        "started_at": "2026-07-17T12:41:46.448962Z",
-        "completed_at": "2026-07-17T12:41:46.804486Z",
+        "started_at": "2026-07-17T18:14:09.737648Z",
+        "completed_at": "2026-07-17T18:14:18.014591Z",
         "step_index": 0,
         "metadata": {
           "upstream_id": "sync"
@@ -67,14 +64,19 @@
     ],
     "parent_run_id": null,
     "idempotency_key": null,
-    "created_at": "2026-07-17T12:41:46.804486Z",
-    "started_at": "2026-07-17T12:41:46.448962Z",
-    "completed_at": "2026-07-17T12:41:46.804486Z",
+    "created_at": "2026-07-17T18:14:18.014591Z",
+    "started_at": "2026-07-17T18:14:09.737648Z",
+    "completed_at": "2026-07-17T18:14:18.014591Z",
     "metadata": {}
   },
-  "canonical_hash": "b5defeb53beb74007d4c3208ba5ac185703b93569cad7461469143f6378307ed",
-  "manifest_uri": "https://s3.us-east-005.backblazeb2.com/-miragea-genmedia-0710/eliora-vault/runs/2026-07-17/c68d9b39-8994-44d3-88b2-addebde63795/manifest.json",
+  "canonical_hash": "d8212ef4ad8951277093e3d563d16a10f8da359a2cd6b78f264ddd60ecd9d300",
+  "manifest_uri": "https://s3.us-east-005.backblazeb2.com/eliora-media-vault-20260717/eliora-vault/runs/2026-07-17/9bdcab2b-994e-48a4-b464-705365c12953/manifest.json",
   "encryption_scheme": null,
   "signature": null,
-  "transfer_failures": []
+  "transfer_failures": [],
+  "public_projection": {
+    "redacted": true,
+    "source_manifest_uri": "https://s3.us-east-005.backblazeb2.com/eliora-media-vault-20260717/eliora-vault/runs/2026-07-17/9bdcab2b-994e-48a4-b464-705365c12953/manifest.json",
+    "source_canonical_hash": "d8212ef4ad8951277093e3d563d16a10f8da359a2cd6b78f264ddd60ecd9d300"
+  }
 }

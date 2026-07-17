@@ -92,7 +92,7 @@ def test_local_env_loader_does_not_override_process_environment(
 ) -> None:
     env_file = tmp_path / ".env"
     env_file.write_text(
-        "B2_BUCKET=-miragea-genmedia-0710\nB2_REGION=us-east-005\n",
+        "B2_BUCKET=test-vault-bucket\nB2_REGION=us-east-005\n",
         encoding="utf-8",
     )
     monkeypatch.setenv("B2_BUCKET", "already-set")
@@ -127,7 +127,23 @@ def test_site_export_keeps_public_mirror_and_b2_proof(tmp_path: Path) -> None:
     asset_hash = hashlib.sha256(asset_bytes).hexdigest()
     (site_dir / "sample_asset.png").write_bytes(asset_bytes)
     (run_dir / "manifest.json").write_text(
-        json.dumps({"manifest_uri": "https://s3.example/manifest.json"}),
+        json.dumps(
+            {
+                "manifest_uri": "https://s3.example/manifest.json",
+                "run": {
+                    "steps": [
+                        {
+                            "params": {
+                                "workflow_path": r"H:\\private\\winning-submission\\workflow.json",
+                                "source_path": r"F:\\private\\asset.png",
+                                "output_dir": r"C:\\private\\generated",
+                                "comfy_url": "http://127.0.0.1:8188",
+                            }
+                        }
+                    ]
+                },
+            }
+        ),
         encoding="utf-8",
     )
     (run_dir / "catalog-item.json").write_text(
@@ -155,6 +171,15 @@ def test_site_export_keeps_public_mirror_and_b2_proof(tmp_path: Path) -> None:
     assert catalog["items"][0]["b2_manifest_url"] == "https://s3.example/manifest.json"
     assert proof["asset_url"] == "https://s3.example/asset.png"
     assert (site_dir / "sample_manifest.json").is_file()
+    public_manifest = json.loads((site_dir / "sample_manifest.json").read_text(encoding="utf-8"))
+    params = public_manifest["run"]["steps"][0]["params"]
+    assert params["workflow_ref"] == "workflow.json"
+    assert params["source_ref"] == "asset.png"
+    assert "workflow_path" not in params
+    assert "source_path" not in params
+    assert "output_dir" not in params
+    assert "comfy_url" not in params
+    assert public_manifest["public_projection"]["redacted"] is True
 
 
 def test_site_export_mirrors_every_verified_run(tmp_path: Path) -> None:

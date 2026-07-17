@@ -48,7 +48,7 @@ function renderList() {
     button.className = `asset-card${state.selected?.id === item.id ? " active" : ""}`;
     button.innerHTML = `<img src="${escapeHtml(item.asset_url)}" alt="Generated media asset" />
       <span class="card-body"><strong>${escapeHtml(displayName(item))}</strong><p>${escapeHtml(item.prompt)}</p>
-      <span class="tags"><span class="tag">${escapeHtml(item.provider)}</span><span class="tag">${item.verified ? "verified" : "unverified"}</span></span></span>`;
+      <span class="tags"><span class="tag">${escapeHtml(item.provider)}</span></span></span>`;
     button.addEventListener("click", () => selectItem(item));
     list.appendChild(button);
   });
@@ -57,8 +57,6 @@ function renderList() {
 function selectItem(item) {
   state.selected = item;
   $("#inspector-title").textContent = displayName(item);
-  const b2Asset = item.b2_asset_url || item.asset_url;
-  const b2Manifest = item.b2_manifest_url || item.manifest_url;
   $("#inspector-content").innerHTML = `<img class="preview" src="${escapeHtml(item.asset_url)}" alt="Selected generated asset" />
     <dl class="facts">
       <dt>Provider</dt><dd>${escapeHtml(item.provider)}</dd>
@@ -68,10 +66,11 @@ function selectItem(item) {
       <dt>Resolution</dt><dd>${item.width} x ${item.height}</dd>
       <dt>Size</dt><dd>${formatBytes(item.size_bytes)}</dd>
       <dt>Seed</dt><dd>${item.seed}</dd>
+      <dt>Storage</dt><dd>${item.storage === "backblaze-b2" ? "Backblaze B2 · private" : escapeHtml(item.storage || "not recorded")}</dd>
       <dt>Asset SHA-256</dt><dd class="hash" title="${escapeHtml(item.sha256)}">${escapeHtml(shortHash(item.sha256))}</dd>
       <dt>Manifest hash</dt><dd class="hash" title="${escapeHtml(item.canonical_hash)}">${escapeHtml(shortHash(item.canonical_hash))}</dd>
     </dl>
-    <p class="object-links"><a href="${escapeHtml(b2Asset)}" target="_blank" rel="noopener">B2 asset object</a><a href="${escapeHtml(b2Manifest)}" target="_blank" rel="noopener">B2 manifest object</a></p>`;
+    <p class="object-links"><a href="${escapeHtml(item.asset_url)}" target="_blank" rel="noopener">Open public asset copy</a><a href="${escapeHtml(item.manifest_url)}" target="_blank" rel="noopener">Inspect public provenance</a></p>`;
   $("#verify-result").className = "verify-result";
   $("#verify-result").textContent = "Ready for browser-side SHA-256 verification.";
   renderList();
@@ -87,7 +86,7 @@ async function verifySelected() {
       fetch(state.selected.asset_url, { cache: "no-store" }),
       fetch(state.selected.manifest_url, { cache: "no-store" })
     ]);
-    if (!assetResponse.ok || !manifestResponse.ok) throw new Error("sample files are unavailable");
+    if (!assetResponse.ok || !manifestResponse.ok) throw new Error("vault record is unavailable");
     const [bytes, manifest] = await Promise.all([assetResponse.arrayBuffer(), manifestResponse.json()]);
     const digest = [...new Uint8Array(await crypto.subtle.digest("SHA-256", bytes))]
       .map((value) => value.toString(16).padStart(2, "0")).join("");
@@ -97,6 +96,11 @@ async function verifySelected() {
     output.textContent = matched
       ? `Verified. Browser SHA-256 matches the Genblaze asset hash: ${shortHash(digest)}`
       : `Verification failed. Expected ${shortHash(expected)}, received ${shortHash(digest)}.`;
+    const localStatus = $("#local-proof-status");
+    if (localStatus) {
+      localStatus.className = matched ? "ok" : "bad";
+      localStatus.textContent = matched ? "SHA-256 match" : "Hash mismatch";
+    }
   } catch (error) {
     output.className = "verify-result bad";
     output.textContent = `Verification could not run: ${error.message}. Serve this folder over HTTP rather than file://.`;
@@ -110,6 +114,9 @@ async function init() {
     state.catalog = await response.json();
     $("#asset-count").textContent = state.catalog.count;
     $("#verified-count").textContent = state.catalog.verified_count;
+    $("#b2-count").textContent = state.catalog.items.filter((item) =>
+      item.storage === "backblaze-b2" && item.b2_asset_url && item.b2_manifest_url
+    ).length;
     const providers = [...new Set(state.catalog.items.map((item) => item.provider))];
     providers.forEach((provider) => $("#provider").add(new Option(provider, provider)));
     ["#search", "#provider", "#verified-only"].forEach((selector) => {
@@ -118,7 +125,10 @@ async function init() {
     $("#verify-all").addEventListener("click", verifySelected);
     selectItem(state.catalog.items[0]);
   } catch (error) {
-    $("#asset-list").innerHTML = `<p class="verify-result bad">${error.message}</p>`;
+    const message = location.protocol === "file:"
+      ? "Interactive records require HTTP. Open this page through its website or local preview URL."
+      : "Vault records are temporarily unavailable. Please try again.";
+    $("#asset-list").innerHTML = `<p class="verify-result bad">${message}</p>`;
   }
 }
 
@@ -127,14 +137,16 @@ async function loadB2Proof() {
   if (!status) return;
   try {
     const response = await fetch("./b2-proof.json", { cache: "no-store" });
-    if (!response.ok) return;
+    if (!response.ok) throw new Error("proof record unavailable");
     const proof = await response.json();
     if (proof.verified && proof.manifest_uri) {
       status.className = "ok";
       status.textContent = `Verified · ${shortHash(proof.manifest_hash)}`;
     }
   } catch (_) {
-    // A missing proof file is an honest pending state, not a page failure.
+    status.textContent = location.protocol === "file:"
+      ? "Available through HTTP"
+      : "Proof record temporarily unavailable";
   }
 }
 

@@ -10,6 +10,32 @@ from pathlib import Path
 from typing import Any
 
 
+def _public_manifest_projection(source: Path, item: dict[str, Any]) -> dict[str, Any]:
+    manifest = json.loads(source.read_text(encoding="utf-8"))
+    run = manifest.get("run")
+    if isinstance(run, dict):
+        for step in run.get("steps", []):
+            if not isinstance(step, dict):
+                continue
+            params = step.get("params")
+            if not isinstance(params, dict):
+                continue
+            workflow_path = params.pop("workflow_path", None)
+            source_path = params.pop("source_path", None)
+            params.pop("output_dir", None)
+            params.pop("comfy_url", None)
+            if workflow_path:
+                params["workflow_ref"] = Path(str(workflow_path)).name
+            if source_path:
+                params["source_ref"] = Path(str(source_path)).name
+    manifest["public_projection"] = {
+        "redacted": True,
+        "source_manifest_uri": item["manifest_url"],
+        "source_canonical_hash": item["canonical_hash"],
+    }
+    return manifest
+
+
 def export_site(run_dirs: list[Path], site_dir: Path) -> tuple[Path, Path]:
     if not run_dirs:
         raise ValueError("At least one run directory is required")
@@ -46,7 +72,11 @@ def export_site(run_dirs: list[Path], site_dir: Path) -> tuple[Path, Path]:
             public_item["manifest_url"] = f"./{manifest_name}"
             source_manifest = run_dir / "manifest.json"
             if source_manifest.is_file():
-                shutil.copy2(source_manifest, site_dir / manifest_name)
+                public_manifest = _public_manifest_projection(source_manifest, item)
+                (site_dir / manifest_name).write_text(
+                    json.dumps(public_manifest, indent=2, ensure_ascii=False),
+                    encoding="utf-8",
+                )
         public_items.append(public_item)
 
     catalog_path = site_dir / "sample_catalog.json"

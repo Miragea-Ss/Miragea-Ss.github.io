@@ -7,7 +7,7 @@ ComfyUI or existing asset
   -> Genblaze Pipeline
   -> SHA-256 provenance manifest
   -> Backblaze B2 asset + manifest
-  -> searchable judge-facing catalog
+  -> searchable public catalog
 ```
 
 The public experience is designed for creators who generate on their own GPU but still need reliable search, provenance, recovery, and storage.
@@ -18,7 +18,7 @@ The public experience is designed for creators who generate on their own GPU but
 - B2 storage uses `genblaze-s3` and `S3StorageBackend.for_backblaze`.
 - Browser verification recomputes the asset SHA-256 and compares it with the Genblaze manifest.
 - No B2 or provider secret is placed in browser code.
-- The offline path is judge-reproducible without a GPU or cloud account.
+- The offline path is reproducible without a GPU or cloud account.
 
 ## Quickstart: no API keys
 
@@ -54,7 +54,7 @@ eliora-vault run --asset path\to\generated.png --prompt "A coastal city at dusk"
 
 The B2 path uses a Genblaze `ObjectStorageSink` with hierarchical run storage. The sink uploads the asset and canonical manifest, rewrites the asset URL to its durable B2 URL, and records the manifest URI. It does not silently change bucket lifecycle rules.
 
-After at least one verified B2 run, export only judge-safe fields to the static site:
+After at least one verified B2 run, export credential-safe fields to the static site:
 
 ```powershell
 eliora-vault export-site `
@@ -62,7 +62,7 @@ eliora-vault export-site `
   --site-dir path\to\public\eliora\media-vault
 ```
 
-The exporter rejects local-only runs, preventing the public UI from claiming a B2 proof that does not exist.
+The exporter rejects local-only runs, preventing the public UI from claiming a B2 proof that does not exist. It also creates a public provenance projection that removes workstation paths while retaining the original canonical hash and B2 manifest URI.
 
 ## Run a ComfyUI API workflow
 
@@ -84,8 +84,10 @@ eliora-vault run --workflow workflow-api.json --asset fallback.png --prompt "...
 
 ## Providers and models
 
-- Primary generation: local ComfyUI workflow and the checkpoint recorded by the operator.
-- Offline fallback: existing-file ingestion through the same Genblaze pipeline.
+- Primary generation provider: local ComfyUI API (`comfyui-local`).
+- Primary proof model: `Krea2/krea2_turbo_bf16.safetensors` for the Provenance Chamber and Recovery Beacon records.
+- Foundation proof asset: legacy local SDXL output, ingested through the same Genblaze provenance pipeline.
+- Offline fallback: `existing-file-ingest` records an approved existing asset without claiming a new generation.
 - Orchestration and provenance: `genblaze-core` 0.3.4+ (latest PyPI release; verified against current upstream source).
 - Durable storage: `genblaze-s3` 0.3.4+ on Backblaze B2.
 
@@ -103,12 +105,15 @@ tests/
   test_pipeline.py
 ```
 
-## Submission operations
+## Public evidence
 
-Before the 2026-07-30 safety deadline:
+- Working app: https://miragea-ss.github.io/eliora/media-vault/
+- Demo video: https://miragea-ss.github.io/eliora/media-vault/demo.mp4?v=20260718-final
+- Three-record catalog: https://miragea-ss.github.io/eliora/media-vault/sample_catalog.json
+- Credential-safe B2 proof: https://miragea-ss.github.io/eliora/media-vault/b2-proof.json
 
-1. Run at least three representative assets through the pipeline.
-2. Run one live B2 upload and retain the manifest URI as proof.
-3. Replace the static sample catalog with generated catalog items.
-4. Record the final demo from the verified public build.
-5. Verify the public URL, repository setup, video playback, and Devpost fields while logged out.
+The public catalog uses same-origin display copies because the encrypted production B2 bucket is intentionally private. Every record retains its B2 asset URI, B2 manifest URI, run ID, canonical manifest hash, and asset SHA-256. Browser verification recomputes the displayed asset hash; no B2 credential or local workstation path is exposed.
+
+## Submission status
+
+The implementation, three B2-backed records, public app, source, and final 1080p demo are complete. See `DEVPOST_SUBMISSION.md` for paste-ready Devpost copy and `SUBMISSION_CHECKLIST.md` for the remaining user-controlled submission steps.

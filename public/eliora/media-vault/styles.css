@@ -76,6 +76,7 @@ button:hover { filter: brightness(1.08); }
 .facts { margin: 18px 0 0; display: grid; grid-template-columns: 105px 1fr; gap: 9px; font-size: 12px; }
 .facts dt { color: var(--muted); }.facts dd { margin: 0; overflow-wrap: anywhere; }
 .object-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; }
+.object-map-links { margin-top: 14px; }
 .object-links a { padding: 9px 11px; border: 1px solid var(--line); color: var(--cyan); font-size: 11px; text-decoration: none; }
 .object-links a:hover { border-color: var(--cyan); }
 .hash { font-family: ui-monospace, Consolas, monospace; font-size: 10px; }
@@ -109,10 +110,10 @@ button:hover { filter: brightness(1.08); }
 .reliability-grid div:nth-last-child(-n+2) { border-bottom: 0; }
 .command-proof { margin: 0; padding: 22px; overflow: auto; color: var(--green); background: #05070a; border: 1px solid var(--line); font: 13px/1.7 ui-monospace, Consolas, monospace; }
 .demo video { width: 100%; margin-top: 28px; background: #000; border: 1px solid var(--line); display: block; }
-.judge-path { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-top: 0; }
-.judge-path div { padding: 16px; border-right: 1px solid var(--line); display: grid; gap: 5px; }
-.judge-path div:last-child { border: 0; }.judge-path b { color: var(--gold); font-family: ui-monospace, Consolas, monospace; }.judge-path span { color: var(--muted); font-size: 12px; }
+.walkthrough-chapters { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-top: 0; }
+.walkthrough-chapters div { padding: 16px; border-right: 1px solid var(--line); display: grid; gap: 5px; }
+.walkthrough-chapters div:last-child { border: 0; }.walkthrough-chapters b { color: var(--gold); font-family: ui-monospace, Consolas, monospace; }.walkthrough-chapters span { color: var(--muted); font-size: 12px; }
 footer { padding: 24px clamp(18px, 5vw, 84px); display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 12px; }
 @media (max-width: 1050px) { .workspace { grid-template-columns: 190px 1fr; }.inspector { grid-column: 1 / -1; border-left: 0; border-top: 1px solid var(--line); }.inspector-content { display: grid; grid-template-columns: minmax(240px, 1fr) 1fr; gap: 20px; }.facts { margin-top: 0; } }
-@media (max-width: 760px) { .topbar { position: static; align-items: flex-start; }.topbar nav { display: none; }.intro { grid-template-columns: 1fr; min-height: auto; padding-top: 48px; gap: 36px; }.workspace { grid-template-columns: 1fr; }.filters { border-right: 0; border-bottom: 1px solid var(--line); }.inspector { grid-column: auto; }.inspector-content { display: block; }.pipeline-steps, .proof-grid, .runtime-proof, .reliability-grid, .judge-path { grid-template-columns: 1fr; }.pipeline-steps li, .proof-grid article, .runtime-proof div, .reliability-grid div, .judge-path div { border-right: 0; border-bottom: 1px solid var(--line); }.reliability-grid div:last-child, .proof-grid article:last-child, .runtime-proof div:last-child { border-bottom: 0; }.metrics { grid-template-columns: 1fr 1fr 1fr; }.region-head { align-items: flex-start; flex-direction: column; } }
+@media (max-width: 760px) { .topbar { position: static; align-items: flex-start; }.topbar nav { display: none; }.intro { grid-template-columns: 1fr; min-height: auto; padding-top: 48px; gap: 36px; }.workspace { grid-template-columns: 1fr; }.filters { border-right: 0; border-bottom: 1px solid var(--line); }.inspector { grid-column: auto; }.inspector-content { display: block; }.pipeline-steps, .proof-grid, .runtime-proof, .reliability-grid, .walkthrough-chapters { grid-template-columns: 1fr; }.pipeline-steps li, .proof-grid article, .runtime-proof div, .reliability-grid div, .walkthrough-chapters div { border-right: 0; border-bottom: 1px solid var(--line); }.reliability-grid div:last-child, .proof-grid article:last-child, .runtime-proof div:last-child { border-bottom: 0; }.metrics { grid-template-columns: 1fr 1fr 1fr; }.region-head { align-items: flex-start; flex-direction: column; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

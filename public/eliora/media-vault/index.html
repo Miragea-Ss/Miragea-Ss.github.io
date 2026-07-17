@@ -12,7 +12,7 @@
     <a class="brand" href="./" aria-label="Eliora Media Vault home">
       <span class="mark" aria-hidden="true">
         <span class="moon-glow"></span>
-        <img src="/assets/brand/eliora-logo-transparent.png" alt="" />
+        <img src="../../assets/brand/eliora-logo-transparent.png" alt="" />
       </span>
       <span><strong>Eliora Media Vault</strong><small>Local Gen / Genblaze / Backblaze B2</small></span>
     </a>
@@ -28,24 +28,24 @@
   <main id="top">
     <section class="intro">
       <div>
-        <p class="eyebrow">Backblaze Generative Media Hackathon 2026</p>
+        <p class="eyebrow">Built with Genblaze on Backblaze B2</p>
         <h1>Generate locally. Prove every asset. Preserve it on B2.</h1>
         <p class="lede">A working media vault for creators who need reproducible AI output, tamper-evident provenance, and durable object storage without surrendering the local production workflow.</p>
         <div class="hero-actions">
-          <a class="primary-action" href="#vault">Verify the live asset</a>
-          <a class="secondary-action" href="./sample_manifest.json" target="_blank" rel="noopener">Inspect Genblaze manifest</a>
+          <a class="primary-action" href="#vault">Explore the media vault</a>
+          <a class="secondary-action" href="./sample_manifest.json" target="_blank" rel="noopener">Inspect provenance record</a>
         </div>
       </div>
       <dl class="metrics" aria-label="Project metrics">
-        <div><dt id="asset-count">1</dt><dd>vault assets</dd></div>
-        <div><dt id="verified-count">1</dt><dd>hash verified</dd></div>
-        <div><dt>3</dt><dd>storage layers</dd></div>
+        <div><dt id="asset-count">—</dt><dd>vault assets</dd></div>
+        <div><dt id="verified-count">—</dt><dd>hash verified</dd></div>
+        <div><dt id="b2-count">—</dt><dd>B2-backed runs</dd></div>
       </dl>
     </section>
 
     <section class="workspace" id="vault" aria-labelledby="vault-title">
       <aside class="filters">
-        <div class="section-label"><span>Vault index</span><span class="live-dot">live sample</span></div>
+        <div class="section-label"><span>Vault index</span><span class="live-dot">live vault</span></div>
         <label for="search">Search assets</label>
         <input id="search" type="search" placeholder="Prompt, model, provider" />
         <label for="provider">Provider</label>
@@ -60,7 +60,7 @@
 
       <div class="asset-region">
         <div class="region-head">
-          <div><p class="eyebrow">Interactive evidence</p><h2 id="vault-title">Asset catalog</h2></div>
+          <div><p class="eyebrow">Media records</p><h2 id="vault-title">Asset catalog</h2></div>
           <button id="verify-all" type="button">Verify selected asset</button>
         </div>
         <div id="asset-list" class="asset-list" aria-live="polite"></div>
@@ -75,30 +75,34 @@
     </section>
 
     <section class="pipeline" id="pipeline">
-      <div class="section-head"><p class="eyebrow">Meaningful orchestration</p><h2>One asset, three accountable layers</h2></div>
+      <div class="section-head"><p class="eyebrow">Production pipeline</p><h2>One asset, three accountable layers</h2></div>
       <ol class="pipeline-steps">
         <li><span>01</span><div><strong>Local generation</strong><p>ComfyUI runs on the creator's GPU. Existing files can also be ingested without regeneration.</p></div></li>
         <li><span>02</span><div><strong>Genblaze provenance</strong><p>Provider, model, prompt, seed, dimensions, size, SHA-256, and completed run state become a verifiable manifest.</p></div></li>
-        <li><span>03</span><div><strong>Backblaze B2 vault</strong><p>Asset, manifest, and index objects are stored separately for retrieval, verification, and reuse.</p></div></li>
+        <li><span>03</span><div><strong>Backblaze B2 vault</strong><p>Each asset and its canonical manifest are stored together under a durable run ID for retrieval, verification, and reuse.</p></div></li>
       </ol>
       <pre class="object-map"><code>eliora-vault/
-  assets/&lt;asset&gt;.png
-  manifests/&lt;asset&gt;.manifest.json
-  index/&lt;asset&gt;.json
-  proof/b2-smoke-proof.json</code></pre>
+  runs/YYYY-MM-DD/&lt;run-id&gt;/
+    assets/&lt;asset-id&gt;.png
+    manifest.json</code></pre>
+      <p class="object-links object-map-links">
+        <a href="./sample_manifest.json" target="_blank" rel="noopener">Open public provenance JSON</a>
+        <a href="./b2-proof.json" target="_blank" rel="noopener">Open B2 proof JSON</a>
+        <a href="./sample_catalog.json" target="_blank" rel="noopener">Open public catalog JSON</a>
+      </p>
     </section>
 
     <section class="pipeline" id="providers">
-      <div class="section-head"><p class="eyebrow">Submission field</p><h2>Providers and models</h2></div>
+      <div class="section-head"><p class="eyebrow">Integrated production stack</p><h2>Providers and models</h2></div>
       <ol class="pipeline-steps">
         <li><span>GEN</span><div><strong>ComfyUI · Krea 2 Turbo</strong><p>Modern local text-to-image workflow on GPU hardware, with prompt, model, seed, dimensions, and output hash captured per run.</p></div></li>
-        <li><span>OFF</span><div><strong>comfyui-local · existing-file-ingest</strong><p>Genblaze fallback path — judge-reproducible without a GPU or cloud account.</p></div></li>
-        <li><span>SDK</span><div><strong>Genblaze + Backblaze B2</strong><p>genblaze-core Pipeline + ObjectStorageSink · genblaze-s3 S3StorageBackend.for_backblaze · bucket -miragea-genmedia-0710.</p></div></li>
+        <li><span>OFF</span><div><strong>comfyui-local · existing-file-ingest</strong><p>A portable fallback that preserves approved work when the generation service is unavailable.</p></div></li>
+        <li><span>SDK</span><div><strong>Genblaze + Backblaze B2</strong><p>genblaze-core Pipeline + ObjectStorageSink · genblaze-s3 S3StorageBackend.for_backblaze · private encrypted vault.</p></div></li>
       </ol>
     </section>
 
     <section class="proof" id="proof">
-      <div class="section-head"><p class="eyebrow">Judge-verifiable evidence</p><h2>Proof, not platform claims</h2></div>
+      <div class="section-head"><p class="eyebrow">Verifiable provenance</p><h2>Integrity you can inspect</h2></div>
       <div class="proof-grid">
         <article>
           <span class="proof-number">01</span>
@@ -110,7 +114,7 @@
           <span class="proof-number">02</span>
           <h3>Inspect provenance</h3>
           <p>Provider, model, prompt, seed, run status, asset hash, and canonical manifest hash remain inspectable instead of disappearing inside a generation UI.</p>
-          <a href="./sample_manifest.json" target="_blank" rel="noopener">Open manifest JSON →</a>
+          <a href="./sample_manifest.json" target="_blank" rel="noopener">Open public provenance JSON →</a>
         </article>
         <article>
           <span class="proof-number">03</span>
@@ -120,9 +124,9 @@
         </article>
       </div>
       <div class="runtime-proof" aria-live="polite">
-        <div><span>LOCAL PROOF</span><strong id="local-proof-status">SHA-256 verified</strong></div>
+        <div><span>LOCAL PROOF</span><strong id="local-proof-status">Ready to verify</strong></div>
         <div><span>GENBLAZE</span><strong>Canonical manifest recorded</strong></div>
-        <div><span>BACKBLAZE B2</span><strong id="b2-proof-status">Final credentialed smoke proof pending</strong></div>
+        <div><span>BACKBLAZE B2</span><strong id="b2-proof-status">Loading verified record</strong></div>
       </div>
     </section>
 
@@ -131,7 +135,7 @@
       <div class="reliability-grid">
         <div><strong>Local-first</strong><p>Keep ComfyUI and large checkpoints on the creator workstation. Upload durable outputs and provenance, not the whole production environment.</p></div>
         <div><strong>Failure-aware</strong><p>The ComfyUI API path can fall back to existing-file ingestion, preserving useful work when the generation service is unavailable.</p></div>
-        <div><strong>Credential-safe</strong><p>B2 keys remain in the local CLI/backend. The browser receives only judge-safe catalog fields and durable asset references.</p></div>
+        <div><strong>Credential-safe</strong><p>B2 keys remain in the local CLI/backend. The browser receives only public catalog fields and durable asset references.</p></div>
         <div><strong>Rebuildable</strong><p>Offline tests produce and verify a real Genblaze manifest without requiring a GPU, provider credits, or a cloud account.</p></div>
       </div>
       <pre class="command-proof"><code>eliora-vault run --asset generated.png --prompt "..." --b2
@@ -139,9 +143,9 @@ pytest -q</code></pre>
     </section>
 
     <section class="demo" id="demo">
-      <div class="section-head"><p class="eyebrow">Three-minute judge path</p><h2>See the production flow</h2></div>
+      <div class="section-head"><p class="eyebrow">Product walkthrough</p><h2>See the production flow</h2></div>
       <video controls playsinline preload="metadata"><source src="./demo.mp4?v=20260718-final" type="video/mp4" /></video>
-      <div class="judge-path">
+      <div class="walkthrough-chapters">
         <div><b>00:00</b><span>Problem and local-first value</span></div>
         <div><b>00:45</b><span>ComfyUI to Genblaze manifest</span></div>
         <div><b>01:35</b><span>Hash verification and B2 layout</span></div>
@@ -150,7 +154,7 @@ pytest -q</code></pre>
     </section>
   </main>
 
-  <footer><span>Miragea / Eliora</span><span>Built for the Backblaze Generative Media Hackathon · <a href="https://miragea-ss.github.io/" target="_blank" rel="noopener">Miragea</a></span></footer>
+  <footer><span>Miragea / Eliora</span><span>Verifiable provenance for generative media · <a href="https://miragea-ss.github.io/" target="_blank" rel="noopener">Miragea</a></span></footer>
   <script src="./app.js" defer></script>
 </body>
 </html>
