@@ -25,18 +25,28 @@ def export_site(run_dirs: list[Path], site_dir: Path) -> tuple[Path, Path]:
     now = datetime.now(UTC).isoformat()
     site_dir.mkdir(parents=True, exist_ok=True)
     public_items: list[dict[str, Any]] = []
-    for index, item in enumerate(items):
+    for index, (run_dir, item) in enumerate(zip(run_dirs, items, strict=True)):
         public_item = dict(item)
-        if index == 0:
-            public_mirror = site_dir / "sample_asset.png"
-            if public_mirror.is_file():
-                mirror_hash = hashlib.sha256(public_mirror.read_bytes()).hexdigest()
-                if mirror_hash != item["sha256"]:
-                    raise ValueError("Public sample mirror does not match the verified B2 asset")
-                public_item["b2_asset_url"] = item["asset_url"]
-                public_item["b2_manifest_url"] = item["manifest_url"]
-                public_item["asset_url"] = "./sample_asset.png"
-                public_item["manifest_url"] = "./sample_manifest.json"
+        asset_name = "sample_asset.png" if index == 0 else f"vault_asset_{index + 1:02d}.png"
+        manifest_name = "sample_manifest.json" if index == 0 else f"vault_manifest_{index + 1:02d}.json"
+        public_mirror = site_dir / asset_name
+        source_mirror = run_dir / "asset.png"
+        if source_mirror.is_file():
+            source_hash = hashlib.sha256(source_mirror.read_bytes()).hexdigest()
+            if source_hash != item["sha256"]:
+                raise ValueError(f"Run asset mirror does not match verified B2 asset: {run_dir}")
+            shutil.copy2(source_mirror, public_mirror)
+        if public_mirror.is_file():
+            mirror_hash = hashlib.sha256(public_mirror.read_bytes()).hexdigest()
+            if mirror_hash != item["sha256"]:
+                raise ValueError(f"Public mirror does not match verified B2 asset: {public_mirror}")
+            public_item["b2_asset_url"] = item["asset_url"]
+            public_item["b2_manifest_url"] = item["manifest_url"]
+            public_item["asset_url"] = f"./{asset_name}"
+            public_item["manifest_url"] = f"./{manifest_name}"
+            source_manifest = run_dir / "manifest.json"
+            if source_manifest.is_file():
+                shutil.copy2(source_manifest, site_dir / manifest_name)
         public_items.append(public_item)
 
     catalog_path = site_dir / "sample_catalog.json"
@@ -55,9 +65,6 @@ def export_site(run_dirs: list[Path], site_dir: Path) -> tuple[Path, Path]:
         encoding="utf-8",
     )
     proof_item = items[0]
-    source_manifest = run_dirs[0] / "manifest.json"
-    if source_manifest.is_file():
-        shutil.copy2(source_manifest, site_dir / "sample_manifest.json")
     proof_path = site_dir / "b2-proof.json"
     proof_path.write_text(
         json.dumps(

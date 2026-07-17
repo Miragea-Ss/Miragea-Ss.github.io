@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.5",
+  "run": {
+    "run_id": "e3378bb0-0645-41ee-9653-353b590fc95e",
+    "tenant_id": null,
+    "project_id": null,
+    "name": "eliora-media-vault",
+    "status": "completed",
+    "steps": [
+      {
+        "step_id": "d834d0d4-4751-4f0e-8a1c-715d46d0a739",
+        "run_id": "e3378bb0-0645-41ee-9653-353b590fc95e",
+        "provider": "comfyui-local",
+        "model": "comfyui-api",
+        "step_type": "generate",
+        "model_version": null,
+        "model_hash": null,
+        "modality": "image",
+        "prompt": "Cinematic wide key art in the same premium visual world as a generative media vault, a monumental archive recovery beacon rising from a black ocean at blue hour, damaged media fragments returning as luminous glass panels and reassembling into pristine images above the water, one small human archivist on a platform for scale, cyan verification light, subtle rose and warm gold highlights, elegant futuristic engineering, believable cloud infrastructure symbolism, atmospheric mist, precise reflections, dramatic yet hopeful, clear focal hierarchy, negative space for product UI, no readable text, no logos, no watermark, 16:9",
+        "negative_prompt": null,
+        "prompt_visibility": "public",
+        "seed": 4172602,
+        "params": {
+          "metadata": {
+            "product": "Eliora Media Vault",
+            "checkpoint": "Krea2/krea2_turbo_bf16.safetensors"
+          },
+          "source_path": null,
+          "workflow_path": "H:\\Codex\\New＿start\\eliora-media-vault-winning-submission-2026-07-17\\workflows\\eliora-krea2-recovery-beacon-api.json",
+          "prompt_node": "4",
+          "comfy_url": "http://127.0.0.1:8188",
+          "output_dir": "C:\\Users\\wolf6\\AppData\\Local\\Temp\\eliora-media-vault\\generated"
+        },
+        "status": "succeeded",
+        "inputs": [],
+        "assets": [
+          {
+            "asset_id": "10b8437d-9c99-408d-8fc8-6774e19859e7",
+            "url": "https://s3.us-east-005.backblazeb2.com/-miragea-genmedia-0710/eliora-vault/runs/2026-07-17/e3378bb0-0645-41ee-9653-353b590fc95e/assets/10b8437d-9c99-408d-8fc8-6774e19859e7.png",
+            "media_type": "image/png",
+            "sha256": "ce2aeb6da3920c1466b341f14201c87b8727c0652531a93017f40f8126925d52",
+            "size_bytes": 599631,
+            "width": 1024,
+            "height": 576,
+            "duration": null,
+            "video": null,
+            "audio": null,
+            "tracks": null,
+            "metadata": {
+              "source": "local-workstation",
+              "original_name": "eliora_krea2_recovery_beacon_00001_.png"
+            }
+          }
+        ],
+        "provider_payload": {},
+        "retries": 0,
+        "cost_usd": null,
+        "error": null,
+        "error_code": null,
+        "started_at": "2026-07-17T12:41:59.178804Z",
+        "completed_at": "2026-07-17T12:41:59.517804Z",
+        "step_index": 0,
+        "metadata": {
+          "upstream_id": "sync"
+        }
+      }
+    ],
+    "parent_run_id": null,
+    "idempotency_key": null,
+    "created_at": "2026-07-17T12:41:59.517804Z",
+    "started_at": "2026-07-17T12:41:59.177804Z",
+    "completed_at": "2026-07-17T12:41:59.517804Z",
+    "metadata": {}
+  },
+  "canonical_hash": "81dc5f89fd728ab964fa77d2835aa034a3e6f51e10ac1f0d48dc112b3964158f",
+  "manifest_uri": "https://s3.us-east-005.backblazeb2.com/-miragea-genmedia-0710/eliora-vault/runs/2026-07-17/e3378bb0-0645-41ee-9653-353b590fc95e/manifest.json",
+  "encryption_scheme": null,
+  "signature": null,
+  "transfer_failures": []
+}

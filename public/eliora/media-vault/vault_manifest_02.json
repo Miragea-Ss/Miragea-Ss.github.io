@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.5",
+  "run": {
+    "run_id": "c68d9b39-8994-44d3-88b2-addebde63795",
+    "tenant_id": null,
+    "project_id": null,
+    "name": "eliora-media-vault",
+    "status": "completed",
+    "steps": [
+      {
+        "step_id": "92e68fd1-dee3-4227-8ead-64ae962ada78",
+        "run_id": "c68d9b39-8994-44d3-88b2-addebde63795",
+        "provider": "comfyui-local",
+        "model": "comfyui-api",
+        "step_type": "generate",
+        "model_version": null,
+        "model_hash": null,
+        "modality": "image",
+        "prompt": "Cinematic editorial key art for an AI generative media provenance vault, a solitary female digital archivist in a vast dark coastal data chamber, translucent floating frames showing an image evolving through generation, verification and permanent cloud storage, luminous cyan lineage threads connecting each frame to a central crystal archive, restrained rose and warm gold accents, premium production design, believable technology, volumetric light, deep atmospheric perspective, elegant asymmetric composition with clear negative space on the left for interface overlay, highly detailed, sophisticated, trustworthy, no readable text, no logos, no watermark, 16:9",
+        "negative_prompt": null,
+        "prompt_visibility": "public",
+        "seed": 4172601,
+        "params": {
+          "metadata": {
+            "product": "Eliora Media Vault",
+            "checkpoint": "Krea2/krea2_turbo_bf16.safetensors"
+          },
+          "source_path": null,
+          "workflow_path": "H:\\Codex\\New＿start\\eliora-media-vault-winning-submission-2026-07-17\\workflows\\eliora-krea2-provenance-chamber-api.json",
+          "prompt_node": "4",
+          "comfy_url": "http://127.0.0.1:8188",
+          "output_dir": "C:\\Users\\wolf6\\AppData\\Local\\Temp\\eliora-media-vault\\generated"
+        },
+        "status": "succeeded",
+        "inputs": [],
+        "assets": [
+          {
+            "asset_id": "8b7007a4-a0a7-43f5-8cbe-54b0bc020ec3",
+            "url": "https://s3.us-east-005.backblazeb2.com/-miragea-genmedia-0710/eliora-vault/runs/2026-07-17/c68d9b39-8994-44d3-88b2-addebde63795/assets/8b7007a4-a0a7-43f5-8cbe-54b0bc020ec3.png",
+            "media_type": "image/png",
+            "sha256": "5319f01390d182dd649a2a3b82f8cce189666fc9698b4974cdd9c83474c6ef3c",
+            "size_bytes": 640698,
+            "width": 1024,
+            "height": 576,
+            "duration": null,
+            "video": null,
+            "audio": null,
+            "tracks": null,
+            "metadata": {
+              "source": "local-workstation",
+              "original_name": "eliora_krea2_provenance_chamber_00001_.png"
+            }
+          }
+        ],
+        "provider_payload": {},
+        "retries": 0,
+        "cost_usd": null,
+        "error": null,
+        "error_code": null,
+        "started_at": "2026-07-17T12:41:46.448962Z",
+        "completed_at": "2026-07-17T12:41:46.804486Z",
+        "step_index": 0,
+        "metadata": {
+          "upstream_id": "sync"
+        }
+      }
+    ],
+    "parent_run_id": null,
+    "idempotency_key": null,
+    "created_at": "2026-07-17T12:41:46.804486Z",
+    "started_at": "2026-07-17T12:41:46.448962Z",
+    "completed_at": "2026-07-17T12:41:46.804486Z",
+    "metadata": {}
+  },
+  "canonical_hash": "b5defeb53beb74007d4c3208ba5ac185703b93569cad7461469143f6378307ed",
+  "manifest_uri": "https://s3.us-east-005.backblazeb2.com/-miragea-genmedia-0710/eliora-vault/runs/2026-07-17/c68d9b39-8994-44d3-88b2-addebde63795/manifest.json",
+  "encryption_scheme": null,
+  "signature": null,
+  "transfer_failures": []
+}

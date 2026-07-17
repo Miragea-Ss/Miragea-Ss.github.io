@@ -9,12 +9,25 @@ function shortHash(value) {
   return value ? `${value.slice(0, 12)}...${value.slice(-10)}` : "not recorded";
 }
 
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function displayName(item) {
+  return item.display_name || item.name;
+}
+
 function filteredItems() {
   const query = $("#search").value.trim().toLowerCase();
   const provider = $("#provider").value;
   const verifiedOnly = $("#verified-only").checked;
   return state.catalog.items.filter((item) => {
-    const haystack = `${item.name} ${item.prompt} ${item.model} ${item.provider}`.toLowerCase();
+    const haystack = `${displayName(item)} ${item.name} ${item.prompt} ${item.model} ${item.provider}`.toLowerCase();
     return (!query || haystack.includes(query)) &&
       (provider === "all" || item.provider === provider) &&
       (!verifiedOnly || item.verified);
@@ -33,9 +46,9 @@ function renderList() {
     const button = document.createElement("button");
     button.type = "button";
     button.className = `asset-card${state.selected?.id === item.id ? " active" : ""}`;
-    button.innerHTML = `<img src="${item.asset_url}" alt="Generated media asset" />
-      <span class="card-body"><strong>${item.name}</strong><p>${item.prompt}</p>
-      <span class="tags"><span class="tag">${item.provider}</span><span class="tag">${item.verified ? "verified" : "unverified"}</span></span></span>`;
+    button.innerHTML = `<img src="${escapeHtml(item.asset_url)}" alt="Generated media asset" />
+      <span class="card-body"><strong>${escapeHtml(displayName(item))}</strong><p>${escapeHtml(item.prompt)}</p>
+      <span class="tags"><span class="tag">${escapeHtml(item.provider)}</span><span class="tag">${item.verified ? "verified" : "unverified"}</span></span></span>`;
     button.addEventListener("click", () => selectItem(item));
     list.appendChild(button);
   });
@@ -43,18 +56,22 @@ function renderList() {
 
 function selectItem(item) {
   state.selected = item;
-  $("#inspector-title").textContent = item.name;
-  $("#inspector-content").innerHTML = `<img class="preview" src="${item.asset_url}" alt="Selected generated asset" />
+  $("#inspector-title").textContent = displayName(item);
+  const b2Asset = item.b2_asset_url || item.asset_url;
+  const b2Manifest = item.b2_manifest_url || item.manifest_url;
+  $("#inspector-content").innerHTML = `<img class="preview" src="${escapeHtml(item.asset_url)}" alt="Selected generated asset" />
     <dl class="facts">
-      <dt>Provider</dt><dd>${item.provider}</dd>
-      <dt>Model</dt><dd>${item.model}</dd>
-      <dt>Run</dt><dd>${item.run_status} / ${item.step_status}</dd>
+      <dt>Provider</dt><dd>${escapeHtml(item.provider)}</dd>
+      <dt>Model</dt><dd>${escapeHtml(item.model)}</dd>
+      <dt>Run</dt><dd>${escapeHtml(item.run_status)} / ${escapeHtml(item.step_status)}</dd>
+      <dt>Run ID</dt><dd class="hash" title="${escapeHtml(item.run_id)}">${escapeHtml(shortHash(item.run_id))}</dd>
       <dt>Resolution</dt><dd>${item.width} x ${item.height}</dd>
       <dt>Size</dt><dd>${formatBytes(item.size_bytes)}</dd>
       <dt>Seed</dt><dd>${item.seed}</dd>
-      <dt>Asset SHA-256</dt><dd class="hash" title="${item.sha256}">${shortHash(item.sha256)}</dd>
-      <dt>Manifest hash</dt><dd class="hash" title="${item.canonical_hash}">${shortHash(item.canonical_hash)}</dd>
-    </dl>`;
+      <dt>Asset SHA-256</dt><dd class="hash" title="${escapeHtml(item.sha256)}">${escapeHtml(shortHash(item.sha256))}</dd>
+      <dt>Manifest hash</dt><dd class="hash" title="${escapeHtml(item.canonical_hash)}">${escapeHtml(shortHash(item.canonical_hash))}</dd>
+    </dl>
+    <p class="object-links"><a href="${escapeHtml(b2Asset)}" target="_blank" rel="noopener">B2 asset object</a><a href="${escapeHtml(b2Manifest)}" target="_blank" rel="noopener">B2 manifest object</a></p>`;
   $("#verify-result").className = "verify-result";
   $("#verify-result").textContent = "Ready for browser-side SHA-256 verification.";
   renderList();

@@ -155,3 +155,44 @@ def test_site_export_keeps_public_mirror_and_b2_proof(tmp_path: Path) -> None:
     assert catalog["items"][0]["b2_manifest_url"] == "https://s3.example/manifest.json"
     assert proof["asset_url"] == "https://s3.example/asset.png"
     assert (site_dir / "sample_manifest.json").is_file()
+
+
+def test_site_export_mirrors_every_verified_run(tmp_path: Path) -> None:
+    site_dir = tmp_path / "site"
+    site_dir.mkdir()
+    run_dirs = []
+    for number in (1, 2):
+        run_dir = tmp_path / f"run-{number}"
+        run_dir.mkdir()
+        asset_bytes = f"verified-image-{number}".encode()
+        asset_hash = hashlib.sha256(asset_bytes).hexdigest()
+        (run_dir / "asset.png").write_bytes(asset_bytes)
+        (run_dir / "manifest.json").write_text(
+            json.dumps({"run": {"steps": [{"assets": [{"sha256": asset_hash}]}]}}),
+            encoding="utf-8",
+        )
+        (run_dir / "catalog-item.json").write_text(
+            json.dumps(
+                {
+                    "storage": "backblaze-b2",
+                    "verified": True,
+                    "manifest_url": f"https://s3.example/run-{number}/manifest.json",
+                    "asset_url": f"https://s3.example/run-{number}/asset.png",
+                    "sha256": asset_hash,
+                    "canonical_hash": f"manifest-hash-{number}",
+                    "run_id": f"run-{number}",
+                }
+            ),
+            encoding="utf-8",
+        )
+        run_dirs.append(run_dir)
+
+    catalog_path, _ = export_site(run_dirs, site_dir)
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+
+    assert catalog["count"] == 2
+    assert catalog["items"][0]["asset_url"] == "./sample_asset.png"
+    assert catalog["items"][1]["asset_url"] == "./vault_asset_02.png"
+    assert catalog["items"][1]["manifest_url"] == "./vault_manifest_02.json"
+    assert (site_dir / "vault_asset_02.png").read_bytes() == b"verified-image-2"
+    assert (site_dir / "vault_manifest_02.json").is_file()

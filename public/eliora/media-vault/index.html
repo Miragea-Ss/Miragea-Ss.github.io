@@ -91,7 +91,7 @@
     <section class="pipeline" id="providers">
       <div class="section-head"><p class="eyebrow">Submission field</p><h2>Providers and models</h2></div>
       <ol class="pipeline-steps">
-        <li><span>GEN</span><div><strong>comfyui-local</strong><p>SDXL / local ComfyUI checkpoint (primary path on GPU hardware).</p></div></li>
+        <li><span>GEN</span><div><strong>ComfyUI · Krea 2 Turbo</strong><p>Modern local text-to-image workflow on GPU hardware, with prompt, model, seed, dimensions, and output hash captured per run.</p></div></li>
         <li><span>OFF</span><div><strong>comfyui-local · existing-file-ingest</strong><p>Genblaze fallback path — judge-reproducible without a GPU or cloud account.</p></div></li>
         <li><span>SDK</span><div><strong>Genblaze + Backblaze B2</strong><p>genblaze-core Pipeline + ObjectStorageSink · genblaze-s3 S3StorageBackend.for_backblaze · bucket -miragea-genmedia-0710.</p></div></li>
       </ol>
@@ -140,7 +140,7 @@ pytest -q</code></pre>
 
     <section class="demo" id="demo">
       <div class="section-head"><p class="eyebrow">Three-minute judge path</p><h2>See the production flow</h2></div>
-      <video controls playsinline preload="metadata"><source src="./demo.mp4?v=20260717" type="video/mp4" /></video>
+      <video controls playsinline preload="metadata"><source src="./demo.mp4?v=20260718-final" type="video/mp4" /></video>
       <div class="judge-path">
         <div><b>00:00</b><span>Problem and local-first value</span></div>
         <div><b>00:45</b><span>ComfyUI to Genblaze manifest</span></div>

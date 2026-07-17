@@ -75,6 +75,9 @@ button:hover { filter: brightness(1.08); }
 .preview { width: 100%; aspect-ratio: 16/9; object-fit: cover; border: 1px solid var(--line); }
 .facts { margin: 18px 0 0; display: grid; grid-template-columns: 105px 1fr; gap: 9px; font-size: 12px; }
 .facts dt { color: var(--muted); }.facts dd { margin: 0; overflow-wrap: anywhere; }
+.object-links { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 0; }
+.object-links a { padding: 9px 11px; border: 1px solid var(--line); color: var(--cyan); font-size: 11px; text-decoration: none; }
+.object-links a:hover { border-color: var(--cyan); }
 .hash { font-family: ui-monospace, Consolas, monospace; font-size: 10px; }
 .verify-result { display: block; margin-top: 20px; padding: 12px; border: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.5; }
 .verify-result.ok { border-color: var(--green); color: var(--green); }
