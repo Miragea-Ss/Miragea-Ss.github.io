@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-17T07:51:52.077Z",
+  "generatedAt": "2026-07-18T07:26:45.906Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-17T07:51:52.012Z",
+      "lastRun": "2026-07-18T07:26:45.846Z",
       "summary": {
-        "en": "40 open · 28 join-worthy · auto-watch",
-        "ja": "募集中40件 · 参加推奨28件 · 自動監視",
-        "zh": "开放40 · 建议参加28 · 自动监视"
+        "en": "40 open · 30 join-worthy · auto-watch",
+        "ja": "募集中40件 · 参加推奨30件 · 自動監視",
+        "zh": "开放40 · 建议参加30 · 自动监视"
       },
       "metrics": {
         "contestsFlagged": 40,
-        "joinRecommended": 28,
+        "joinRecommended": 30,
         "autoTracked": 40
       },
       "events": [

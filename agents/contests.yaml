@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-17T07:51:52.012Z
+# lastWatch: 2026-07-18T07:26:45.846Z
 contests:
   - at: 2026-07-14T07:46:44.834Z
     type: devpost-auto
@@ -141,6 +141,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-07-18T07:26:45.820Z
+    type: devpost-auto
+    title: Prometheus July AI Challenge
+    url: https://prometheus-july-ai-challenge.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 17 - 30, 2026
+      ja: Jul 17 - 30, 2026
+      zh: Jul 17 - 30, 2026
+    sourceNote: Devpost auto · prize~1500 · score 98 · Prometheus
+    auto: true
+    joinScore: 98
+    prizeHint: 1500
+    submitUrl: https://prometheus-july-ai-challenge.devpost.com/challenges/start_a_submission
   - at: 2026-07-11T07:39:48.543Z
     type: devpost-auto
     title: TechCommons Hacks
@@ -197,6 +211,20 @@ contests:
     joinScore: 98
     prizeHint: 17500
     submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
+  - at: 2026-07-18T07:26:45.820Z
+    type: devpost-auto
+    title: Code Carnage
+    url: https://code-carnage.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 18 - Aug 18, 2026
+      ja: Jul 18 - Aug 18, 2026
+      zh: Jul 18 - Aug 18, 2026
+    sourceNote: Devpost auto · prize~10000 · score 92 · HackFinity
+    auto: true
+    joinScore: 92
+    prizeHint: 10000
+    submitUrl: https://code-carnage.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: Africa Deep Tech Challenge 2026
@@ -449,6 +477,20 @@ contests:
     joinScore: 72
     prizeHint: 1000
     submitUrl: https://agentic-scale.devpost.com/challenges/start_a_submission
+  - at: 2026-07-18T07:26:45.820Z
+    type: devpost-auto
+    title: "Evorozen Apex: NextGen AI Buildathon"
+    url: https://evorozen-apex.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 17 - Sep 20, 2026
+      ja: Jul 17 - Sep 20, 2026
+      zh: Jul 17 - Sep 20, 2026
+    sourceNote: "Devpost auto · prize~0 · score 70 · Evorozen "
+    auto: true
+    joinScore: 70
+    prizeHint: 0
+    submitUrl: https://evorozen-apex.devpost.com/challenges/start_a_submission
   - at: 2026-07-12T07:59:15.332Z
     type: devpost-auto
     title: Daybot Commerce Hackathon
@@ -519,52 +561,10 @@ contests:
     joinScore: 70
     prizeHint: 0
     submitUrl: https://buuniex-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: AI YES :International Youth AI Competition
-    url: https://ai-yes-competition-30441.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 17 - Sep 01, 2026
-      ja: Jun 17 - Sep 01, 2026
-      zh: Jun 17 - Sep 01, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · International AI Youth Education Society
-    auto: true
-    joinScore: 70
-    prizeHint: 0
-    submitUrl: https://ai-yes-competition-30441.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: LUMA Hackathon (July 3rd - 10th)
-    url: https://luma-hackathon-500.devpost.com/
-    ongoing: true
-    period:
-      en: Apr 11 - Jul 10, 2026
-      ja: Apr 11 - Jul 10, 2026
-      zh: Apr 11 - Jul 10, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · LUMA
-    auto: true
-    joinScore: 70
-    prizeHint: 0
-    submitUrl: https://luma-hackathon-500.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: Hoobit Hacks 2026
-    url: https://hoobit-hacks-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Mar 30 - Jul 18, 2026
-      ja: Mar 30 - Jul 18, 2026
-      zh: Mar 30 - Jul 18, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · Hoobit
-    auto: true
-    joinScore: 70
-    prizeHint: 0
-    submitUrl: https://hoobit-hacks-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-17T07:51:52.012Z
+  lastWatch: 2026-07-18T07:26:45.846Z
   source: devpost-auto+manual
-  added: 22
+  added: 26
   updated: 29
-  scanned: 56
+  scanned: 60
   kept: 40
