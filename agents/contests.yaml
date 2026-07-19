@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-18T07:26:45.846Z
+# lastWatch: 2026-07-19T07:58:25.811Z
 contests:
   - at: 2026-07-14T07:46:44.834Z
     type: devpost-auto
@@ -127,6 +127,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-07-19T07:58:25.788Z
+    type: devpost-auto
+    title: Worlds in Action Hack [02-LA]
+    url: https://worlds-in-action-hack-02-la.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 18 - 19, 2026
+      ja: Jul 18 - 19, 2026
+      zh: Jul 18 - 19, 2026
+    sourceNote: Devpost auto · prize~12750 · score 102 · SensAI Hack
+    auto: true
+    joinScore: 102
+    prizeHint: 12750
+    submitUrl: https://worlds-in-action-hack-02-la.devpost.com/challenges/start_a_submission
   - at: 2026-07-16T07:55:21.086Z
     type: devpost-auto
     title: "INNOVIK 6.0 : International Hackathon 2026 "
@@ -339,20 +353,6 @@ contests:
     submitUrl: https://hackthearts.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
-    title: Brainwave 2026
-    url: https://brainwaves.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 12 - Aug 09, 2026
-      ja: Jun 12 - Aug 09, 2026
-      zh: Jun 12 - Aug 09, 2026
-    sourceNote: Devpost auto · prize~1000 · score 86 · ACT House
-    auto: true
-    joinScore: 86
-    prizeHint: 1000
-    submitUrl: https://brainwaves.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
     title: "Global AI Hackathon Series with Qwen Cloud "
     url: https://qwencloud-hackathon.devpost.com/
     ongoing: true
@@ -379,6 +379,34 @@ contests:
     joinScore: 80
     prizeHint: 1000
     submitUrl: https://ml-empowerment-2.devpost.com/challenges/start_a_submission
+  - at: 2026-07-19T07:58:25.788Z
+    type: devpost-auto
+    title: "Hack Away Hunger: Food Insecurity Challenge"
+    url: https://hack-away-hunger.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 18 - Oct 08, 2026
+      ja: Jul 18 - Oct 08, 2026
+      zh: Jul 18 - Oct 08, 2026
+    sourceNote: Devpost auto · prize~5000 · score 78 · dsmhack
+    auto: true
+    joinScore: 78
+    prizeHint: 5000
+    submitUrl: https://hack-away-hunger.devpost.com/challenges/start_a_submission
+  - at: 2026-07-19T07:58:25.788Z
+    type: devpost-auto
+    title: Hack with AI
+    url: https://hack-with-ai-by-code-crate.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 19, 2026
+      ja: Jul 19, 2026
+      zh: Jul 19, 2026
+    sourceNote: Devpost auto · prize~5000 · score 78 · Code crate
+    auto: true
+    joinScore: 78
+    prizeHint: 5000
+    submitUrl: https://hack-with-ai-by-code-crate.devpost.com/challenges/start_a_submission
   - at: 2026-07-13T14:27:28.872Z
     type: devpost-auto
     title: AceSAT Education AI-Agent
@@ -435,6 +463,20 @@ contests:
     joinScore: 74
     prizeHint: 500
     submitUrl: https://ztq.devpost.com/challenges/start_a_submission
+  - at: 2026-07-09T18:41:49.379Z
+    type: devpost-auto
+    title: Brainwave 2026
+    url: https://brainwaves.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 12 - Aug 09, 2026
+      ja: Jun 12 - Aug 09, 2026
+      zh: Jun 12 - Aug 09, 2026
+    sourceNote: Devpost auto · prize~550 · score 74 · ACT House
+    auto: true
+    joinScore: 74
+    prizeHint: 550
+    submitUrl: https://brainwaves.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: Hack The Limit
@@ -519,52 +561,10 @@ contests:
     joinScore: 70
     prizeHint: 0
     submitUrl: https://vshacks-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: Win4AISafety - Open Research Summer Challenge
-    url: https://win4aisafety-sain-utrecht.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 06 - Aug 17, 2026
-      ja: Jul 06 - Aug 17, 2026
-      zh: Jul 06 - Aug 17, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · SAIN Utrecht
-    auto: true
-    joinScore: 70
-    prizeHint: 0
-    submitUrl: https://win4aisafety-sain-utrecht.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: LUMA Hackathon (September 20th - 28th)
-    url: https://luma-hackathon-fall.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 26 - Sep 28, 2026
-      ja: Jun 26 - Sep 28, 2026
-      zh: Jun 26 - Sep 28, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · LUMA
-    auto: true
-    joinScore: 70
-    prizeHint: 0
-    submitUrl: https://luma-hackathon-fall.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: BuunieX Hackathon
-    url: https://buuniex-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 22 - Jul 22, 2026
-      ja: Jun 22 - Jul 22, 2026
-      zh: Jun 22 - Jul 22, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · TechieBunnies team
-    auto: true
-    joinScore: 70
-    prizeHint: 0
-    submitUrl: https://buuniex-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-18T07:26:45.846Z
+  lastWatch: 2026-07-19T07:58:25.811Z
   source: devpost-auto+manual
-  added: 26
-  updated: 29
-  scanned: 60
+  added: 24
+  updated: 30
+  scanned: 59
   kept: 40

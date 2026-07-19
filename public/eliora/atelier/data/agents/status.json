@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-18T07:26:45.906Z",
+  "generatedAt": "2026-07-19T07:58:25.869Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-18T07:26:45.846Z",
+      "lastRun": "2026-07-19T07:58:25.811Z",
       "summary": {
-        "en": "40 open · 30 join-worthy · auto-watch",
-        "ja": "募集中40件 · 参加推奨30件 · 自動監視",
-        "zh": "开放40 · 建议参加30 · 自动监视"
+        "en": "40 open · 32 join-worthy · auto-watch",
+        "ja": "募集中40件 · 参加推奨32件 · 自動監視",
+        "zh": "开放40 · 建议参加32 · 自动监视"
       },
       "metrics": {
         "contestsFlagged": 40,
-        "joinRecommended": 30,
+        "joinRecommended": 32,
         "autoTracked": 40
       },
       "events": [
@@ -124,15 +124,15 @@
           }
         },
         {
-          "at": "2026-07-16T07:55:21.086Z",
+          "at": "2026-07-19T07:58:25.788Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (102) INNOVIK 6.0 : International Hackathon 2026 ",
-          "url": "https://innovik-6-0-hackathon-2026.devpost.com/",
+          "title": "★ JOIN? (102) Worlds in Action Hack [02-LA]",
+          "url": "https://worlds-in-action-hack-02-la.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Jul 15 - Aug 15, 2026",
-            "ja": "Jul 15 - Aug 15, 2026",
-            "zh": "Jul 15 - Aug 15, 2026"
+            "en": "Jul 18 - 19, 2026",
+            "ja": "Jul 18 - 19, 2026",
+            "zh": "Jul 18 - 19, 2026"
           }
         }
       ]
