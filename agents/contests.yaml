@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-20T08:39:54.638Z
+# lastWatch: 2026-07-20T13:59:36.998Z
 contests:
   - at: 2026-07-14T07:46:44.834Z
     type: devpost-auto
@@ -323,6 +323,20 @@ contests:
     joinScore: 90
     prizeHint: 5250
     submitUrl: https://ai-for-social-good-mlh.devpost.com/challenges/start_a_submission
+  - at: 2026-07-20T13:59:36.960Z
+    type: devpost-auto
+    title: "Build with Paritok: The Token-Efficiency Hackathon"
+    url: https://build-with-paritok.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 20 - Aug 05, 2026
+      ja: Jul 20 - Aug 05, 2026
+      zh: Jul 20 - Aug 05, 2026
+    sourceNote: Devpost auto · prize~630 · score 86 · Paritok
+    auto: true
+    joinScore: 86
+    prizeHint: 630
+    submitUrl: https://build-with-paritok.devpost.com/challenges/start_a_submission
   - at: 2026-07-17T07:51:51.987Z
     type: devpost-auto
     title: The Blueprint Hackathon  (For All Ages, July 17th-31st)
@@ -533,38 +547,24 @@ contests:
     joinScore: 72
     prizeHint: 1000
     submitUrl: https://agentic-scale.devpost.com/challenges/start_a_submission
-  - at: 2026-07-20T08:39:54.613Z
+  - at: 2026-07-20T13:59:36.960Z
     type: devpost-auto
-    title: Win4AISafety - Open Research Summer Challenge
-    url: https://win4aisafety-sain-utrecht.devpost.com/
+    title: "Evorozen Apex: NextGen AI Buildathon"
+    url: https://evorozen-apex.devpost.com/
     ongoing: true
     period:
-      en: Jul 06 - Aug 17, 2026
-      ja: Jul 06 - Aug 17, 2026
-      zh: Jul 06 - Aug 17, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · SAIN Utrecht
+      en: Jul 17 - Sep 20, 2026
+      ja: Jul 17 - Sep 20, 2026
+      zh: Jul 17 - Sep 20, 2026
+    sourceNote: "Devpost auto · prize~0 · score 70 · Evorozen "
     auto: true
     joinScore: 70
     prizeHint: 0
-    submitUrl: https://win4aisafety-sain-utrecht.devpost.com/challenges/start_a_submission
-  - at: 2026-07-20T08:39:54.613Z
-    type: devpost-auto
-    title: LUMA Hackathon (September 20th - 28th)
-    url: https://luma-hackathon-fall.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 26 - Sep 28, 2026
-      ja: Jun 26 - Sep 28, 2026
-      zh: Jun 26 - Sep 28, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · LUMA
-    auto: true
-    joinScore: 70
-    prizeHint: 0
-    submitUrl: https://luma-hackathon-fall.devpost.com/challenges/start_a_submission
+    submitUrl: https://evorozen-apex.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-20T08:39:54.638Z
+  lastWatch: 2026-07-20T13:59:36.998Z
   source: devpost-auto+manual
-  added: 25
-  updated: 29
-  scanned: 59
+  added: 24
+  updated: 30
+  scanned: 58
   kept: 40
