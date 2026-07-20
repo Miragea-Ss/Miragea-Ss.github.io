@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-19T07:58:25.819Z",
+  "generatedAt": "2026-07-20T08:39:54.647Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -12,6 +12,22 @@
       "submitUrl": "https://openai.devpost.com/challenges/start_a_submission",
       "joinScore": 115,
       "prizeHint": 100000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "Google x IITG AI Hackathon",
+      "url": "https://google-ai-workshop-hackathon.devpost.com/",
+      "submitUrl": "https://google-ai-workshop-hackathon.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 40500,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -108,22 +124,6 @@
       "submitUrl": "https://volthacks.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 32585,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "Reddit’s Games with a Hook Hackathon",
-      "url": "https://redditgameswithahook.devpost.com/",
-      "submitUrl": "https://redditgameswithahook.devpost.com/challenges/start_a_submission",
-      "joinScore": 103,
-      "prizeHint": 40000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

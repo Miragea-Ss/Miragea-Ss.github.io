@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-19T07:58:25.869Z",
+  "generatedAt": "2026-07-20T08:39:54.705Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-19T07:58:25.811Z",
+      "lastRun": "2026-07-20T08:39:54.638Z",
       "summary": {
-        "en": "40 open · 32 join-worthy · auto-watch",
-        "ja": "募集中40件 · 参加推奨32件 · 自動監視",
-        "zh": "开放40 · 建议参加32 · 自动监视"
+        "en": "40 open · 33 join-worthy · auto-watch",
+        "ja": "募集中40件 · 参加推奨33件 · 自動監視",
+        "zh": "开放40 · 建议参加33 · 自动监视"
       },
       "metrics": {
         "contestsFlagged": 40,
-        "joinRecommended": 32,
+        "joinRecommended": 33,
         "autoTracked": 40
       },
       "events": [
@@ -25,6 +25,18 @@
             "en": "Jul 13 - 21, 2026",
             "ja": "Jul 13 - 21, 2026",
             "zh": "Jul 13 - 21, 2026"
+          }
+        },
+        {
+          "at": "2026-07-20T08:39:54.613Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Google x IITG AI Hackathon",
+          "url": "https://google-ai-workshop-hackathon.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Jun 24 - Jul 20, 2026",
+            "ja": "Jun 24 - Jul 20, 2026",
+            "zh": "Jun 24 - Jul 20, 2026"
           }
         },
         {
@@ -121,18 +133,6 @@
             "en": "Jul 06 - Aug 17, 2026",
             "ja": "Jul 06 - Aug 17, 2026",
             "zh": "Jul 06 - Aug 17, 2026"
-          }
-        },
-        {
-          "at": "2026-07-19T07:58:25.788Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (102) Worlds in Action Hack [02-LA]",
-          "url": "https://worlds-in-action-hack-02-la.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Jul 18 - 19, 2026",
-            "ja": "Jul 18 - 19, 2026",
-            "zh": "Jul 18 - 19, 2026"
           }
         }
       ]

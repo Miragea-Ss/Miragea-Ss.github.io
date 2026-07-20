@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-19T07:58:25.811Z
+# lastWatch: 2026-07-20T08:39:54.638Z
 contests:
   - at: 2026-07-14T07:46:44.834Z
     type: devpost-auto
@@ -15,6 +15,20 @@ contests:
     joinScore: 115
     prizeHint: 100000
     submitUrl: https://openai.devpost.com/challenges/start_a_submission
+  - at: 2026-07-20T08:39:54.613Z
+    type: devpost-auto
+    title: Google x IITG AI Hackathon
+    url: https://google-ai-workshop-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 24 - Jul 20, 2026
+      ja: Jun 24 - Jul 20, 2026
+      zh: Jun 24 - Jul 20, 2026
+    sourceNote: Devpost auto · prize~40500 · score 110 · google build with ai
+    auto: true
+    joinScore: 110
+    prizeHint: 40500
+    submitUrl: https://google-ai-workshop-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: NandaHack
@@ -519,52 +533,38 @@ contests:
     joinScore: 72
     prizeHint: 1000
     submitUrl: https://agentic-scale.devpost.com/challenges/start_a_submission
-  - at: 2026-07-18T07:26:45.820Z
+  - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
-    title: "Evorozen Apex: NextGen AI Buildathon"
-    url: https://evorozen-apex.devpost.com/
+    title: Win4AISafety - Open Research Summer Challenge
+    url: https://win4aisafety-sain-utrecht.devpost.com/
     ongoing: true
     period:
-      en: Jul 17 - Sep 20, 2026
-      ja: Jul 17 - Sep 20, 2026
-      zh: Jul 17 - Sep 20, 2026
-    sourceNote: "Devpost auto · prize~0 · score 70 · Evorozen "
+      en: Jul 06 - Aug 17, 2026
+      ja: Jul 06 - Aug 17, 2026
+      zh: Jul 06 - Aug 17, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · SAIN Utrecht
     auto: true
     joinScore: 70
     prizeHint: 0
-    submitUrl: https://evorozen-apex.devpost.com/challenges/start_a_submission
-  - at: 2026-07-12T07:59:15.332Z
+    submitUrl: https://win4aisafety-sain-utrecht.devpost.com/challenges/start_a_submission
+  - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
-    title: Daybot Commerce Hackathon
-    url: https://daybot.devpost.com/
+    title: LUMA Hackathon (September 20th - 28th)
+    url: https://luma-hackathon-fall.devpost.com/
     ongoing: true
     period:
-      en: Jul 11 - 12, 2026
-      ja: Jul 11 - 12, 2026
-      zh: Jul 11 - 12, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · Daybot
+      en: Jun 26 - Sep 28, 2026
+      ja: Jun 26 - Sep 28, 2026
+      zh: Jun 26 - Sep 28, 2026
+    sourceNote: Devpost auto · prize~0 · score 70 · LUMA
     auto: true
     joinScore: 70
     prizeHint: 0
-    submitUrl: https://daybot.devpost.com/challenges/start_a_submission
-  - at: 2026-07-12T07:59:15.332Z
-    type: devpost-auto
-    title: vsHacks 2026
-    url: https://vshacks-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 11 - 12, 2026
-      ja: Jul 11 - 12, 2026
-      zh: Jul 11 - 12, 2026
-    sourceNote: Devpost auto · prize~0 · score 70 · vsHacks
-    auto: true
-    joinScore: 70
-    prizeHint: 0
-    submitUrl: https://vshacks-2026.devpost.com/challenges/start_a_submission
+    submitUrl: https://luma-hackathon-fall.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-19T07:58:25.811Z
+  lastWatch: 2026-07-20T08:39:54.638Z
   source: devpost-auto+manual
-  added: 24
-  updated: 30
+  added: 25
+  updated: 29
   scanned: 59
   kept: 40
