@@ -2,12 +2,10 @@
 import Layout from '../../../../site-layouts/Layout.astro';
 import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
 
-/** Bilibili BV id after publish — leave empty until live */
-const BILI_BV = '';
-const BILI_EMBED = BILI_BV ? `//player.bilibili.com/player.html?bvid=${BILI_BV}&high_quality=1` : '';
-const BILI_WATCH = BILI_BV ? `https://www.bilibili.com/video/${BILI_BV}/` : '';
-const LOCAL =
-  'H:/Codex/geekspell-ep06-agent-team-2026-07-14/bilibili-ready/GeekSpell-EP06-Agent-Team-ZH.mp4';
+/** Bilibili — live */
+const BILI_BV = 'BV1zWNU6UEeq';
+const BILI_EMBED = `//player.bilibili.com/player.html?bvid=${BILI_BV}&page=1&high_quality=1&danmaku=0`;
+const BILI_WATCH = `https://www.bilibili.com/video/${BILI_BV}/`;
 ---
 
 <Layout title="EP06 · 一个人如何管理一支 Agent 团队 | 极客魔咒" lang="zh">
@@ -17,32 +15,23 @@ const LOCAL =
       <p class="gs-crumb">
         <a href="/zh/">档案</a> · <a href="/zh/geekspell/">极客魔咒</a> · EP06
       </p>
-      <p class="gs-eyebrow">极客魔咒 科普 EP06 · 中文 · Agent 团队</p>
+      <p class="gs-eyebrow">极客魔咒 科普 EP06 · 中文 · 已上线 B 站</p>
       <h1>一个人如何管理一支 Agent 团队</h1>
       <p class="gs-lead">
         别再只养一个全能助手。复杂任务需要分工、边界、检查点与失败恢复——你管理的是工作系统，不是聊天窗口。
       </p>
-      {
-        BILI_EMBED ? (
-          <div class="gs-player">
-            <iframe
-              src={BILI_EMBED}
-              title="极客魔咒 EP06"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-            />
-          </div>
-        ) : (
-          <div class="gs-player-fallback">
-            <p>成片已就绪（约 2 分 20 秒）。B 站稿件发布后在此嵌入播放器。</p>
-            <p class="gs-note">
-              本地成片：<code>{LOCAL}</code>
-            </p>
-            <p class="gs-note">投稿文案见仓库配套 bilibili-ready / Grok 工作区 ref。</p>
-          </div>
-        )
-      }
+      <div class="gs-player">
+        <iframe
+          src={BILI_EMBED}
+          scrolling="no"
+          border="0"
+          frameborder="no"
+          framespacing="0"
+          allowfullscreen="true"
+          title="极客魔咒 EP06 B站播放"
+          loading="lazy"
+        />
+      </div>
       <p class="gs-links">
         <a href="/zh/geekspell/ep04-scope-split/">← EP04 范围切割</a>
         ·

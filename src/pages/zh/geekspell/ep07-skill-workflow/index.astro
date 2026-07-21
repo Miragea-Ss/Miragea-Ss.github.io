@@ -1,0 +1,84 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** Bilibili BV after publish */
+const BILI_BV = '';
+const BILI_EMBED = BILI_BV
+  ? `//player.bilibili.com/player.html?bvid=${BILI_BV}&page=1&high_quality=1&danmaku=0`
+  : '';
+const BILI_WATCH = BILI_BV ? `https://www.bilibili.com/video/${BILI_BV}/` : '';
+---
+
+<Layout title="EP07 · Agent、Skill、Workflow 到底差在哪？| 极客魔咒" lang="zh">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/zh/">档案</a> · <a href="/zh/geekspell/">极客魔咒</a> · EP07
+      </p>
+      <p class="gs-eyebrow">极客魔咒 科普 EP07 · 中文 · Skill 与 Workflow</p>
+      <h1>Agent、Skill、Workflow 到底差在哪？</h1>
+      <p class="gs-lead">
+        只会“叫 Agent”不够。工人、工具、流水线分清，AI 才用得又稳又省力——Step by step 高效用 Agent 的下一层。
+      </p>
+      {
+        BILI_EMBED ? (
+          <div class="gs-player">
+            <iframe
+              src={BILI_EMBED}
+              scrolling="no"
+              border="0"
+              frameborder="no"
+              framespacing="0"
+              allowfullscreen="true"
+              title="极客魔咒 EP07"
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div class="gs-player-fallback">
+            <p>脚本与投稿文案已就绪。成片渲染与 B 站发布后，在此嵌入播放器。</p>
+            <p class="gs-note">
+              工作区：<code>H:/Grok/geekspell-ep07-skill-workflow-2026-07-22/</code>
+            </p>
+          </div>
+        )
+      }
+      <p class="gs-links">
+        <a href="/zh/geekspell/ep06-agent-team/">← EP06 Agent 团队</a>
+        ·
+        <a href="/en/geekspell/ep07-skill-workflow/">English EP07</a>
+        ·
+        <a href="/ja/geekspell/ep07-skill-workflow/">日本語 EP07</a>
+        {BILI_WATCH ? (
+          <span>
+            {' '}
+            · <a href={BILI_WATCH} target="_blank" rel="noopener">Bilibili</a>
+          </span>
+        ) : null}
+      </p>
+      <section class="gs-body">
+        <h2>你将学到（Step by step）</h2>
+        <ul>
+          <li>
+            <strong>Agent</strong> = 工人：在目标与权限下行动
+          </li>
+          <li>
+            <strong>Skill</strong> = 工具：可复用能力，写清输入 → 输出与失败行为
+          </li>
+          <li>
+            <strong>Workflow</strong> = 流水线：Skill 的顺序、交接与验收
+          </li>
+          <li>先 Skill 卡，再 Workflow，再交给合适 Agent</li>
+          <li>可复制五栏模板：任务 · Skill 列表 · 顺序 · 角色 · 人类验收点</li>
+        </ul>
+        <h2>系列位置</h2>
+        <p>
+          EP03 指令 → EP04 范围 → EP06 团队 → <strong>EP07 工具与流水线</strong> → EP08
+          一页纸闭环（下集）。
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>

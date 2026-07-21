@@ -1,0 +1,79 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+const YT_ID = '';
+const YT_EMBED = YT_ID ? `https://www.youtube.com/embed/${YT_ID}` : '';
+const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
+---
+
+<Layout title="EP07 · Agent vs Skill vs Workflow | GeekSpell" lang="en">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/en/">Archive</a> · <a href="/en/geekspell/">GeekSpell</a> · EP07
+      </p>
+      <p class="gs-eyebrow">GeekSpell literacy EP07 · English · Skill &amp; Workflow</p>
+      <h1>Agent vs Skill vs Workflow</h1>
+      <p class="gs-lead">
+        Calling an agent is not enough. Separate worker, tool, and pipeline — that is how agents
+        become efficient and controllable.
+      </p>
+      {
+        YT_EMBED ? (
+          <div class="gs-player">
+            <iframe
+              src={YT_EMBED}
+              title="GeekSpell EP07 EN"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div class="gs-player-fallback">
+            <p>Script draft is ready. EN voice + YouTube embed after the cut ships.</p>
+            <p class="gs-note">
+              Workspace: <code>H:/Grok/geekspell-ep07-skill-workflow-2026-07-22/</code>
+            </p>
+          </div>
+        )
+      }
+      <p class="gs-links">
+        <a href="/en/geekspell/ep06-agent-team/">← EP06 Agent team</a>
+        ·
+        <a href="/zh/geekspell/ep07-skill-workflow/">中文 EP07</a>
+        ·
+        <a href="/ja/geekspell/ep07-skill-workflow/">日本語 EP07</a>
+        {YT_WATCH ? (
+          <span>
+            {' '}
+            · <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+          </span>
+        ) : null}
+      </p>
+      <section class="gs-body">
+        <h2>What you will learn (step by step)</h2>
+        <ul>
+          <li>
+            <strong>Agent</strong> = worker under goals and permissions
+          </li>
+          <li>
+            <strong>Skill</strong> = reusable tool with clear input → output
+          </li>
+          <li>
+            <strong>Workflow</strong> = ordered pipeline of skills with handoffs
+          </li>
+          <li>Define skills first, then workflow, then assign agents</li>
+          <li>Copy the five-field template before you open a long chat</li>
+        </ul>
+        <h2>Series path</h2>
+        <p>
+          EP03 command → EP04 scope → EP06 team → <strong>EP07 tools &amp; pipelines</strong> →
+          EP08 one-page closed loop.
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>
