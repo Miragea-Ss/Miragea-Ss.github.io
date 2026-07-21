@@ -1,0 +1,79 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** YouTube ID after EN publish */
+const YT_ID = '';
+const YT_EMBED = YT_ID ? `https://www.youtube.com/embed/${YT_ID}` : '';
+const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
+const LOCAL =
+  'H:/Codex/geekspell-ep06-agent-team-2026-07-14/bilibili-ready/GeekSpell-EP06-Agent-Team-ZH.mp4';
+---
+
+<Layout title="EP06 · How one person runs an agent team | GeekSpell" lang="en">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/en/">Archive</a> · <a href="/en/geekspell/">GeekSpell</a> · EP06
+      </p>
+      <p class="gs-eyebrow">GeekSpell literacy EP06 · English · Agent team</p>
+      <h1>How one person runs an agent team</h1>
+      <p class="gs-lead">
+        Stop treating one agent as an all-purpose employee. Complex work needs roles, boundaries,
+        checkpoints, and recovery — a work system, not a chat box.
+      </p>
+      {
+        YT_EMBED ? (
+          <div class="gs-player">
+            <iframe
+              src={YT_EMBED}
+              title="GeekSpell EP06 EN"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div class="gs-player-fallback">
+            <p>
+              ZH master is ready (~2m20s). English voice + YouTube embed will land after the EN
+              cut. Until then, follow the ZH lesson structure below.
+            </p>
+            <p class="gs-note">
+              Master pointer: <code>{LOCAL}</code>
+            </p>
+          </div>
+        )
+      }
+      <p class="gs-links">
+        <a href="/en/geekspell/ep04-scope-split/">← EP04 Scope split</a>
+        ·
+        <a href="/zh/geekspell/ep06-agent-team/">中文 EP06</a>
+        ·
+        <a href="/ja/geekspell/ep06-agent-team/">日本語 EP06</a>
+        {YT_WATCH ? (
+          <span>
+            {' '}
+            · <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+          </span>
+        ) : null}
+      </p>
+      <section class="gs-body">
+        <h2>What you will learn (step by step)</h2>
+        <ul>
+          <li>Why one agent collapses on multi-skill work</li>
+          <li>Seven roles: Manager, Research, Design, Coding, Testing, Documentation, Auditor</li>
+          <li>You set goals and boundaries; the Manager orchestrates</li>
+          <li>Real supervision: permissions, logs, checkpoints, rollback, sandbox, budget, data walls, acceptance</li>
+          <li>You run a verifiable work system — not a chatbot</li>
+        </ul>
+        <h2>Series path</h2>
+        <p>
+          EP03 = how to command. EP04 = how to split scope. EP06 = how to run a team. EP05
+          (acceptance loop) can be filled later as a bridge episode.
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>

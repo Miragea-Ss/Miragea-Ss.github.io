@@ -1,0 +1,77 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** YouTube ID after JA publish */
+const YT_ID = '';
+const YT_EMBED = YT_ID ? `https://www.youtube.com/embed/${YT_ID}` : '';
+const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
+const LOCAL =
+  'H:/Codex/geekspell-ep06-agent-team-2026-07-14/bilibili-ready/GeekSpell-EP06-Agent-Team-ZH.mp4';
+---
+
+<Layout title="EP06 · 一人が Agent チームを管理する | ギークスペル" lang="ja">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/ja/">アーカイブ</a> · <a href="/ja/geekspell/">ギークスペル</a> · EP06
+      </p>
+      <p class="gs-eyebrow">ギークスペル リテラシー EP06 · 日本語 · Agent チーム</p>
+      <h1>一人が Agent チームを管理する</h1>
+      <p class="gs-lead">
+        一つの Agent に全部載せない。複雑仕事は分業・境界・検査点・失敗回復——チャットではなく、仕事のシステムを回す。
+      </p>
+      {
+        YT_EMBED ? (
+          <div class="gs-player">
+            <iframe
+              src={YT_EMBED}
+              title="ギークスペル EP06 JA"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div class="gs-player-fallback">
+            <p>
+              中国語マスター映像は完成済み（約2分20秒）。日本語ボイスと YouTube
+              埋め込みは JA カット後に更新します。
+            </p>
+            <p class="gs-note">
+              マスター: <code>{LOCAL}</code>
+            </p>
+          </div>
+        )
+      }
+      <p class="gs-links">
+        <a href="/ja/geekspell/ep04-scope-split/">← EP04 範囲切割</a>
+        ·
+        <a href="/zh/geekspell/ep06-agent-team/">中文 EP06</a>
+        ·
+        <a href="/en/geekspell/ep06-agent-team/">English EP06</a>
+        {YT_WATCH ? (
+          <span>
+            {' '}
+            · <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+          </span>
+        ) : null}
+      </p>
+      <section class="gs-body">
+        <h2>学ぶこと（Step by step）</h2>
+        <ul>
+          <li>単体 Agent が複雑仕事で崩れる理由</li>
+          <li>七つの役割：Manager / Research / Design / Coding / Testing / Docs / Auditor</li>
+          <li>人間は目標と境界だけ決める</li>
+          <li>本当の監督：権限・ログ・チェックポイント・ロールバック・サンドボックス・予算・データ境界・验收</li>
+          <li>管理対象はチャットボットではなく、検証可能な仕事システム</li>
+        </ul>
+        <h2>シリーズの位置</h2>
+        <p>
+          EP03＝指令、EP04＝範囲、EP06＝チーム運営。EP05（验收ループ）は後から橋渡し回として追加可能。
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>

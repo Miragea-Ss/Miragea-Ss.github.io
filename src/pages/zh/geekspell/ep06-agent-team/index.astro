@@ -1,0 +1,76 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** Bilibili BV id after publish — leave empty until live */
+const BILI_BV = '';
+const BILI_EMBED = BILI_BV ? `//player.bilibili.com/player.html?bvid=${BILI_BV}&high_quality=1` : '';
+const BILI_WATCH = BILI_BV ? `https://www.bilibili.com/video/${BILI_BV}/` : '';
+const LOCAL =
+  'H:/Codex/geekspell-ep06-agent-team-2026-07-14/bilibili-ready/GeekSpell-EP06-Agent-Team-ZH.mp4';
+---
+
+<Layout title="EP06 · 一个人如何管理一支 Agent 团队 | 极客魔咒" lang="zh">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/zh/">档案</a> · <a href="/zh/geekspell/">极客魔咒</a> · EP06
+      </p>
+      <p class="gs-eyebrow">极客魔咒 科普 EP06 · 中文 · Agent 团队</p>
+      <h1>一个人如何管理一支 Agent 团队</h1>
+      <p class="gs-lead">
+        别再只养一个全能助手。复杂任务需要分工、边界、检查点与失败恢复——你管理的是工作系统，不是聊天窗口。
+      </p>
+      {
+        BILI_EMBED ? (
+          <div class="gs-player">
+            <iframe
+              src={BILI_EMBED}
+              title="极客魔咒 EP06"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <div class="gs-player-fallback">
+            <p>成片已就绪（约 2 分 20 秒）。B 站稿件发布后在此嵌入播放器。</p>
+            <p class="gs-note">
+              本地成片：<code>{LOCAL}</code>
+            </p>
+            <p class="gs-note">投稿文案见仓库配套 bilibili-ready / Grok 工作区 ref。</p>
+          </div>
+        )
+      }
+      <p class="gs-links">
+        <a href="/zh/geekspell/ep04-scope-split/">← EP04 范围切割</a>
+        ·
+        <a href="/en/geekspell/ep06-agent-team/">English EP06</a>
+        ·
+        <a href="/ja/geekspell/ep06-agent-team/">日本語 EP06</a>
+        {BILI_WATCH ? (
+          <span>
+            {' '}
+            · <a href={BILI_WATCH} target="_blank" rel="noopener">Bilibili</a>
+          </span>
+        ) : null}
+      </p>
+      <section class="gs-body">
+        <h2>你将学到（Step by step）</h2>
+        <ul>
+          <li>单 Agent 为什么扛不住复杂任务</li>
+          <li>七种专业分工：Manager → Research → Design → Coding → Testing → Docs → Auditor</li>
+          <li>人类负责人只定目标与边界</li>
+          <li>真正的监督：权限、日志、检查点、回滚、沙盒、预算、数据边界、验收标准</li>
+          <li>你管的是可验证、可追踪、可恢复的工作系统</li>
+        </ul>
+        <h2>系列位置</h2>
+        <p>
+          EP03 讲「如何下指令」，EP04 讲「如何切范围」。EP06 讲「如何带一支 Agent 团队」。EP05
+          验收回环可后续补档。
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>
