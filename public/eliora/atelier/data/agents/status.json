@@ -1,30 +1,42 @@
 {
-  "generatedAt": "2026-07-20T13:59:37.081Z",
+  "generatedAt": "2026-07-21T08:07:43.415Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-20T13:59:36.998Z",
+      "lastRun": "2026-07-21T08:07:43.328Z",
       "summary": {
-        "en": "40 open · 33 join-worthy · auto-watch",
-        "ja": "募集中40件 · 参加推奨33件 · 自動監視",
-        "zh": "开放40 · 建议参加33 · 自动监视"
+        "en": "40 open · 34 join-worthy · auto-watch",
+        "ja": "募集中40件 · 参加推奨34件 · 自動監視",
+        "zh": "开放40 · 建议参加34 · 自动监视"
       },
       "metrics": {
         "contestsFlagged": 40,
-        "joinRecommended": 33,
+        "joinRecommended": 34,
         "autoTracked": 40
       },
       "events": [
         {
-          "at": "2026-07-14T07:46:44.834Z",
+          "at": "2026-07-09T18:41:49.379Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) OpenAI Build Week",
-          "url": "https://openai.devpost.com/",
+          "title": "★ JOIN? (115) Build with DataHub: The Agent Hackathon",
+          "url": "https://datahub.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Jul 13 - 21, 2026",
-            "ja": "Jul 13 - 21, 2026",
-            "zh": "Jul 13 - 21, 2026"
+            "en": "Jul 06 - Aug 10, 2026",
+            "ja": "Jul 06 - Aug 10, 2026",
+            "zh": "Jul 06 - Aug 10, 2026"
+          }
+        },
+        {
+          "at": "2026-07-09T18:41:49.379Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (115) Backblaze Generative Media Hackathon: Build with Genblaze on B2",
+          "url": "https://backblaze-generative-media.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Jun 22 - Aug 03, 2026",
+            "ja": "Jun 22 - Aug 03, 2026",
+            "zh": "Jun 22 - Aug 03, 2026"
           }
         },
         {
@@ -40,6 +52,18 @@
           }
         },
         {
+          "at": "2026-07-14T07:46:44.834Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) OpenAI Build Week",
+          "url": "https://openai.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Jul 13 - 21, 2026",
+            "ja": "Jul 13 - 21, 2026",
+            "zh": "Jul 13 - 21, 2026"
+          }
+        },
+        {
           "at": "2026-07-09T18:41:49.379Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) NandaHack",
@@ -49,30 +73,6 @@
             "en": "Jul 06 - 10, 2026",
             "ja": "Jul 06 - 10, 2026",
             "zh": "Jul 06 - 10, 2026"
-          }
-        },
-        {
-          "at": "2026-07-09T18:41:49.379Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Build with DataHub: The Agent Hackathon",
-          "url": "https://datahub.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Jul 06 - Aug 10, 2026",
-            "ja": "Jul 06 - Aug 10, 2026",
-            "zh": "Jul 06 - Aug 10, 2026"
-          }
-        },
-        {
-          "at": "2026-07-09T18:41:49.379Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Backblaze Generative Media Hackathon: Build with Genblaze on B2",
-          "url": "https://backblaze-generative-media.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Jun 22 - Aug 03, 2026",
-            "ja": "Jun 22 - Aug 03, 2026",
-            "zh": "Jun 22 - Aug 03, 2026"
           }
         },
         {
@@ -126,13 +126,13 @@
         {
           "at": "2026-07-09T18:41:49.379Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (103) YouCam API Skin AI & Apparel VTO Hackathon ",
-          "url": "https://youcam-api.devpost.com/",
+          "title": "★ JOIN? (103) CockroachDB × AWS Hackathon - Build with Agentic Memory",
+          "url": "https://cockroachdb-ai.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Jul 06 - Aug 17, 2026",
-            "ja": "Jul 06 - Aug 17, 2026",
-            "zh": "Jul 06 - Aug 17, 2026"
+            "en": "Jun 30 - Aug 18, 2026",
+            "ja": "Jun 30 - Aug 18, 2026",
+            "zh": "Jun 30 - Aug 18, 2026"
           }
         }
       ]
