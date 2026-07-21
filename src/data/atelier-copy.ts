@@ -143,6 +143,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
     brandSubtitle: 'Cosmic AI Atelier',
     nav: [
       { href: '#works', label: 'Works' },
+      { href: '#bts', label: 'Literacy' },
       { href: '#studio', label: 'Studio' },
       { href: '/eliora/atelier/en/atelier/', label: 'Atelier Ops' },
       { href: '#series', label: 'Series' },
@@ -196,6 +197,32 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
           description: 'Eight perception routes built from public X fragments.',
         },
       ],
+    },
+    bts: {
+      id: 'bts',
+      label: 'Creator literacy · Behind the scenes',
+      title: 'How we work in public',
+      cards: [
+        {
+          title: '3D + AI controllable workflows',
+          description: 'Process videos and node-level walkthroughs for serious builders.',
+        },
+        {
+          title: 'AI tech news, translated into craft',
+          description: 'Overseas signals → English explainers, posts, and reusable prompts.',
+        },
+        {
+          title: 'Fantasy characters · cosmic civilization',
+          description: 'Worldboard thinking plus character-consistent generation demos.',
+        },
+        {
+          href: '/en/geekspell/',
+          title: 'GeekSpell · AI literacy series',
+          description:
+            'Codex / Grok / prompt constraints & reproducibility — YouTube · GeekSpell Studio.',
+        },
+      ],
+      channels: ['YouTube', 'X', 'Substack', 'Gumroad', 'Product Hunt'],
     },
     studio: {
       id: 'studio',
@@ -252,6 +279,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         { href: 'https://x.com/Miragea_S/', label: 'X' },
         { href: '/eliora/atelier/en/atelier/', label: 'Agent hub' },
         { href: '/eliora/atelier/en/contact/', label: 'Project inquiry' },
+        { href: '/en/geekspell/', label: 'GeekSpell Studio' },
       ],
     },
   },
@@ -265,6 +293,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
     brandSubtitle: 'Cosmic AI Atelier',
     nav: [
       { href: '#works', label: '作品' },
+      { href: '#bts', label: 'ギークスペル' },
       { href: '#studio', label: 'スタジオ' },
       { href: '/eliora/atelier/ja/atelier/', label: 'アトリエ運用' },
       { href: '#learn', label: '講座' },
@@ -316,6 +345,31 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
           description: '知覚アーカイブ — 8つのルート。',
         },
       ],
+    },
+    bts: {
+      id: 'bts',
+      label: '制作解説 · リテラシー',
+      title: '公開で見せる制作と学習',
+      cards: [
+        {
+          title: '3D + AI 可控ワークフロー',
+          description: '制作過程とノード解説をセットで残す。',
+        },
+        {
+          title: 'AI 技術ニュースの実装翻訳',
+          description: '海外トレンド → 日本語解説・投稿・再利用可能なプロンプト。',
+        },
+        {
+          title: '幻想キャラ · 宇宙文明',
+          description: '世界観ボードとキャラ一貫性のデモ。',
+        },
+        {
+          href: '/ja/geekspell/',
+          title: 'ギークスペル · AI 科普シリーズ',
+          description: 'Codex / Grok / 制約と再現 — YouTube · GeekSpell Studio。',
+        },
+      ],
+      channels: ['YouTube', 'note', 'Zenn', 'BOOTH', 'FANBOX'],
     },
     studio: {
       id: 'studio',
@@ -382,6 +436,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         { href: '/ja/', label: 'Miragea Archive' },
         { href: '/eliora/atelier/ja/atelier/', label: 'Agentハブ' },
         { href: '/eliora/atelier/ja/contact/', label: 'お仕事のご相談' },
+        { href: '/ja/geekspell/', label: 'ギークスペル' },
       ],
     },
   },
@@ -514,6 +569,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         { href: '/zh/', label: 'Miragea Archive' },
         { href: '/eliora/atelier/zh/atelier/', label: 'Agent 中心' },
         { href: '/eliora/atelier/zh/contact/', label: '项目咨询' },
+        { href: '/zh/geekspell/', label: '极客魔咒工作室' },
       ],
     },
   },
