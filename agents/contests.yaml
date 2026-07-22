@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-21T08:07:43.328Z
+# lastWatch: 2026-07-22T08:08:17.396Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -295,6 +295,20 @@ contests:
     joinScore: 92
     prizeHint: 10300
     submitUrl: https://celesta-exoplanet-challenge.devpost.com/challenges/start_a_submission
+  - at: 2026-07-22T08:08:17.363Z
+    type: devpost-auto
+    title: GenZ Can Hack 2026
+    url: https://genz-can-hack-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Apr 01 - Aug 22, 2026
+      ja: Apr 01 - Aug 22, 2026
+      zh: Apr 01 - Aug 22, 2026
+    sourceNote: Devpost auto · prize~1000 · score 90 · Kids for Kids Toronto Coding Club
+    auto: true
+    joinScore: 90
+    prizeHint: 1000
+    submitUrl: https://genz-can-hack-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-17T07:51:51.987Z
     type: devpost-auto
     title: "OrionHackathon "
@@ -379,15 +393,43 @@ contests:
     joinScore: 86
     prizeHint: 1000
     submitUrl: https://hackthearts.devpost.com/challenges/start_a_submission
+  - at: 2026-07-22T08:08:17.363Z
+    type: devpost-auto
+    title: Rampamble
+    url: https://rampamble.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 22 - Aug 20, 2026
+      ja: Jul 22 - Aug 20, 2026
+      zh: Jul 22 - Aug 20, 2026
+    sourceNote: Devpost auto · prize~50000 · score 84 · kit
+    auto: true
+    joinScore: 84
+    prizeHint: 50000
+    submitUrl: https://rampamble.devpost.com/challenges/start_a_submission
+  - at: 2026-07-22T08:08:17.363Z
+    type: devpost-auto
+    title: COMPSPHERE 11
+    url: https://compsphere-11.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 21 - 23, 2026
+      ja: Jul 21 - 23, 2026
+      zh: Jul 21 - 23, 2026
+    sourceNote: Devpost auto · prize~5580 · score 80 · Student Organization
+    auto: true
+    joinScore: 80
+    prizeHint: 5580
+    submitUrl: https://compsphere-11.devpost.com/challenges/start_a_submission
   - at: 2026-07-21T08:07:43.285Z
     type: devpost-auto
     title: Galuxium Nexus V2
     url: https://galuxium-nexus-v2-29411.devpost.com/
     ongoing: true
     period:
-      en: Jul 15 - Aug 01, 2026
-      ja: Jul 15 - Aug 01, 2026
-      zh: Jul 15 - Aug 01, 2026
+      en: Jul 15 - Aug 31, 2026
+      ja: Jul 15 - Aug 31, 2026
+      zh: Jul 15 - Aug 31, 2026
     sourceNote: Devpost auto · prize~2600 · score 80 · Galuxium
     auto: true
     joinScore: 80
@@ -519,52 +561,10 @@ contests:
     joinScore: 74
     prizeHint: 550
     submitUrl: https://brainwaves.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: Hack The Limit
-    url: https://hack-the-limit-1.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 18 - Aug 30, 2026
-      ja: Jun 18 - Aug 30, 2026
-      zh: Jun 18 - Aug 30, 2026
-    sourceNote: Devpost auto · prize~350 · score 74 · HackTheLimit
-    auto: true
-    joinScore: 74
-    prizeHint: 350
-    submitUrl: https://hack-the-limit-1.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: Build Beyond Hackathon
-    url: https://build-beyond-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 18 - Aug 16, 2026
-      ja: Jun 18 - Aug 16, 2026
-      zh: Jun 18 - Aug 16, 2026
-    sourceNote: Devpost auto · prize~500 · score 74 · BuildBeyond
-    auto: true
-    joinScore: 74
-    prizeHint: 500
-    submitUrl: https://build-beyond-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-17T07:51:51.987Z
-    type: devpost-auto
-    title: Agentic Scale
-    url: https://agentic-scale.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 16 - 18, 2026
-      ja: Jul 16 - 18, 2026
-      zh: Jul 16 - 18, 2026
-    sourceNote: Devpost auto · prize~1000 · score 72 · TAWS
-    auto: true
-    joinScore: 72
-    prizeHint: 1000
-    submitUrl: https://agentic-scale.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-21T08:07:43.328Z
+  lastWatch: 2026-07-22T08:08:17.396Z
   source: devpost-auto+manual
-  added: 24
-  updated: 28
-  scanned: 57
+  added: 28
+  updated: 26
+  scanned: 58
   kept: 40
