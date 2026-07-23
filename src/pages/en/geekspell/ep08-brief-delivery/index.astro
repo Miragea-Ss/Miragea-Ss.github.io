@@ -1,0 +1,56 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+const YT_ID = 'S4m23evHRTM';
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
+---
+
+<Layout title="EP08 · One-Page Loop: Brief to Delivery | GeekSpell" lang="en">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/en/">Archive</a> · <a href="/en/geekspell/">GeekSpell</a> · EP08
+      </p>
+      <p class="gs-eyebrow">GeekSpell literacy EP08 · English · Brief → Delivery</p>
+      <h1>One-page closed loop: brief to delivery</h1>
+      <p class="gs-lead">
+        Keep the promise from EP07: compress the full loop from brief to delivery into one page —
+        a contract, not decoration.
+      </p>
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="GeekSpell EP08 EN"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        />
+      </div>
+      <p class="gs-links">
+        <a href="/en/geekspell/ep07-skill-workflow/">← EP07 Skill &amp; Workflow</a>
+        ·
+        <a href="/ja/geekspell/ep08-brief-delivery/">日本語 EP08</a>
+        ·
+        <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+      </p>
+      <section class="gs-body">
+        <h2>What you will learn</h2>
+        <ul>
+          <li>Anti-pattern: one-line brief + twenty chat rounds + “looks about right”</li>
+          <li>Principle: fill the one-page loop before you talk to an agent</li>
+          <li>Six boxes: goal · scope · inputs · steps · done criteria · who accepts / delivery</li>
+          <li>Step 1 brief · Step 2 pipeline with exits · Step 3 green / yellow / red</li>
+          <li>Example: product launch note on one page</li>
+        </ul>
+        <h2>Series path</h2>
+        <p>
+          EP07 tools &amp; pipelines → <strong>EP08 one-page loop</strong> → EP09 permissions &amp;
+          sandbox.
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>

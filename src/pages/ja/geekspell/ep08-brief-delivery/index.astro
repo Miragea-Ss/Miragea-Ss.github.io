@@ -1,0 +1,54 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+const YT_ID = 'NFG9GJRcrCw';
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
+---
+
+<Layout title="EP08 · 一枚の閉ループ：Briefから納品 | ギークスペル" lang="ja">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/ja/">アーカイブ</a> · <a href="/ja/geekspell/">ギークスペル</a> · EP08
+      </p>
+      <p class="gs-eyebrow">ギークスペル リテラシー EP08 · 日本語 · Brief → 納品</p>
+      <h1>一枚の閉ループ：brief から納品まで</h1>
+      <p class="gs-lead">
+        EP07 の約束どおり。Agent に渡す前に、一枚の閉ループを埋める——紙は飾りではなく契約です。
+      </p>
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="ギークスペル EP08 JA"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        />
+      </div>
+      <p class="gs-links">
+        <a href="/ja/geekspell/ep07-skill-workflow/">← EP07 Skill / Workflow</a>
+        ·
+        <a href="/en/geekspell/ep08-brief-delivery/">English EP08</a>
+        ·
+        <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+      </p>
+      <section class="gs-body">
+        <h2>学ぶこと</h2>
+        <ul>
+          <li>よくある失敗：一文 brief + 二十往復 +「だいたいOK」</li>
+          <li>原則：チャットの前に一枚を埋める</li>
+          <li>六欄：目標 · 範囲 · 入力 · 手順 · 完了条件 · 誰が検収・何を納品</li>
+          <li>Step1 brief · Step2 流水線 · Step3 緑/黄/赤</li>
+          <li>例：製品リリース説明を一枚で埋める</li>
+        </ul>
+        <h2>シリーズの位置</h2>
+        <p>
+          EP07 Skill / Workflow → <strong>EP08 一枚閉ループ</strong> → EP09 権限とサンドボックス。
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>
