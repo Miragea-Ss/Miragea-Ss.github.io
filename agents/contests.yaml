@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-22T08:08:17.396Z
+# lastWatch: 2026-07-23T08:11:18.556Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -409,7 +409,7 @@ contests:
     submitUrl: https://rampamble.devpost.com/challenges/start_a_submission
   - at: 2026-07-22T08:08:17.363Z
     type: devpost-auto
-    title: COMPSPHERE 11
+    title: COMPSPHERE 11 (for testing), open soon in august
     url: https://compsphere-11.devpost.com/
     ongoing: true
     period:
@@ -533,38 +533,38 @@ contests:
     joinScore: 76
     prizeHint: 10000
     submitUrl: https://smartaithon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-16T07:55:21.086Z
+  - at: 2026-07-23T08:11:18.506Z
     type: devpost-auto
-    title: "Zero to Query: LingoQL Hackathon"
-    url: https://ztq.devpost.com/
+    title: Build Beyond Hackathon
+    url: https://build-beyond-hackathon.devpost.com/
     ongoing: true
     period:
-      en: Jul 08 - 29, 2026
-      ja: Jul 08 - 29, 2026
-      zh: Jul 08 - 29, 2026
-    sourceNote: Devpost auto · prize~500 · score 74 · LingoQL
+      en: Jun 18 - Aug 16, 2026
+      ja: Jun 18 - Aug 16, 2026
+      zh: Jun 18 - Aug 16, 2026
+    sourceNote: Devpost auto · prize~500 · score 74 · BuildBeyond
     auto: true
     joinScore: 74
     prizeHint: 500
-    submitUrl: https://ztq.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
+    submitUrl: https://build-beyond-hackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-23T08:11:18.506Z
     type: devpost-auto
-    title: Brainwave 2026
-    url: https://brainwaves.devpost.com/
+    title: Hack The Limit
+    url: https://hack-the-limit-1.devpost.com/
     ongoing: true
     period:
-      en: Jun 12 - Aug 09, 2026
-      ja: Jun 12 - Aug 09, 2026
-      zh: Jun 12 - Aug 09, 2026
-    sourceNote: Devpost auto · prize~550 · score 74 · ACT House
+      en: Jun 18 - Aug 30, 2026
+      ja: Jun 18 - Aug 30, 2026
+      zh: Jun 18 - Aug 30, 2026
+    sourceNote: Devpost auto · prize~350 · score 74 · HackTheLimit
     auto: true
     joinScore: 74
-    prizeHint: 550
-    submitUrl: https://brainwaves.devpost.com/challenges/start_a_submission
+    prizeHint: 350
+    submitUrl: https://hack-the-limit-1.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-22T08:08:17.396Z
+  lastWatch: 2026-07-23T08:11:18.556Z
   source: devpost-auto+manual
-  added: 28
+  added: 26
   updated: 26
-  scanned: 58
+  scanned: 57
   kept: 40
