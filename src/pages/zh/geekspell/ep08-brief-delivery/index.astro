@@ -1,0 +1,66 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** Bilibili — live EP08 */
+const BILI_BV = 'BV1b1gm6VERp';
+const BILI_EMBED = `//player.bilibili.com/player.html?bvid=${BILI_BV}&page=1&high_quality=1&danmaku=0`;
+const BILI_WATCH = `https://www.bilibili.com/video/${BILI_BV}/`;
+const YT_EN = 'https://youtu.be/S4m23evHRTM';
+const YT_JA = 'https://youtu.be/NFG9GJRcrCw';
+---
+
+<Layout title="EP08 · 从 Brief 到交付：一页纸闭环 | 极客魔咒" lang="zh">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/zh/">档案</a> · <a href="/zh/geekspell/">极客魔咒</a> · EP08
+      </p>
+      <p class="gs-eyebrow">极客魔咒 科普 EP08 · 中文 · 已上线 B 站</p>
+      <h1>从 Brief 到交付：一页纸闭环</h1>
+      <p class="gs-lead">
+        别再「差不多就行」。把从 brief 到交付的完整闭环压成一页纸——页纸是合同，不是装饰。
+      </p>
+      <div class="gs-player">
+        <iframe
+          src={BILI_EMBED}
+          scrolling="no"
+          border="0"
+          frameborder="no"
+          framespacing="0"
+          allowfullscreen="true"
+          title="极客魔咒 EP08 B站播放"
+          loading="lazy"
+        />
+      </div>
+      <p class="gs-links">
+        <a href="/zh/geekspell/ep07-skill-workflow/">← EP07 Skill 与 Workflow</a>
+        ·
+        <a href="/en/geekspell/ep08-brief-delivery/">English EP08</a>
+        ·
+        <a href="/ja/geekspell/ep08-brief-delivery/">日本語 EP08</a>
+        ·
+        <a href={BILI_WATCH} target="_blank" rel="noopener">Bilibili</a>
+        ·
+        <a href={YT_EN} target="_blank" rel="noopener">YouTube EN</a>
+        ·
+        <a href={YT_JA} target="_blank" rel="noopener">YouTube JA</a>
+      </p>
+      <section class="gs-body">
+        <h2>你将学到（Step by step）</h2>
+        <ul>
+          <li>常见失败：一句话 brief + 二十轮对话 +「差不多就行」</li>
+          <li>原则：交给 Agent 前，先写满一页闭环</li>
+          <li>六栏：目标 · 范围 · 输入 · 步骤 · 完成标准 · 谁验收 / 交付</li>
+          <li>Step1 写 brief · Step2 流水线出口 · Step3 绿 / 黄 / 红签字</li>
+          <li>实操：产品发布说明如何填进一页纸</li>
+        </ul>
+        <h2>系列位置</h2>
+        <p>
+          EP07 工具与流水线 → <strong>EP08 一页纸闭环</strong> → EP09 权限与沙盒。
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>
