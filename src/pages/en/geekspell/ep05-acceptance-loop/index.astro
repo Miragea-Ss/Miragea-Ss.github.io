@@ -1,0 +1,59 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+const YT_ID = 'rMjxLyl2-B8';
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
+---
+
+<Layout title="EP05 · The Acceptance Loop | GeekSpell" lang="en">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/en/">Archive</a> · <a href="/en/geekspell/">GeekSpell</a> · EP05
+      </p>
+      <p class="gs-eyebrow">GeekSpell literacy EP05 · English · Acceptance</p>
+      <h1>The Acceptance Loop</h1>
+      <p class="gs-lead">
+        Before bigger teams and skills, close the loop of acceptance — or every agent run ends in
+        “looks fine.”
+      </p>
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="GeekSpell EP05 EN"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        />
+      </div>
+      <p class="gs-links">
+        <a href="/en/geekspell/ep04-scope-split/">← EP04 Scope split</a>
+        ·
+        <a href="/en/geekspell/ep06-agent-team/">EP06 Agent team →</a>
+        ·
+        <a href="/ja/geekspell/ep05-acceptance-loop/">日本語 EP05</a>
+        ·
+        <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+      </p>
+      <section class="gs-body">
+        <h2>What you will learn (step by step)</h2>
+        <ul>
+          <li>Why shipping without a definition of done fails</li>
+          <li>The loop: define done → run → check → fix / roll back → accept</li>
+          <li>Step 1: checklist before you prompt</li>
+          <li>Step 2: green / yellow / red scoring</li>
+          <li>Step 3: the human owns the final acceptance gate</li>
+          <li>A five-field template you can copy today</li>
+        </ul>
+        <h2>Series path</h2>
+        <p>
+          EP04 scope → <strong>EP05 acceptance</strong> → EP06 agent team → EP07 skill &amp; workflow
+          → EP08 one-page loop.
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>

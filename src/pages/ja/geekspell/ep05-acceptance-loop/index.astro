@@ -1,0 +1,57 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+const YT_ID = 'Qs7FKD8RUf4';
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
+---
+
+<Layout title="EP05 · 検収の閉ループ | ギークスペル" lang="ja">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/ja/">アーカイブ</a> · <a href="/ja/geekspell/">ギークスペル</a> · EP05
+      </p>
+      <p class="gs-eyebrow">ギークスペル リテラシー EP05 · 日本語 · 検収</p>
+      <h1>検収の閉ループ</h1>
+      <p class="gs-lead">
+        大きなチームや Skill の前に、検収の閉ループが必要です。ないと毎回「なんとなく良さそう」で終わります。
+      </p>
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="ギークスペル EP05 JA"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        />
+      </div>
+      <p class="gs-links">
+        <a href="/ja/geekspell/ep04-scope-split/">← EP04 スコープ分割</a>
+        ·
+        <a href="/ja/geekspell/ep06-agent-team/">EP06 Agent チーム →</a>
+        ·
+        <a href="/en/geekspell/ep05-acceptance-loop/">English EP05</a>
+        ·
+        <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+      </p>
+      <section class="gs-body">
+        <h2>学ぶこと（Step by step）</h2>
+        <ul>
+          <li>完了定義なしで納品すると何が壊れるか</li>
+          <li>ループ：完了を定義 → 作業 → 検査 → 直す/戻す → 検収</li>
+          <li>Step 1：プロンプト前のチェックリスト</li>
+          <li>Step 2：緑 / 黄 / 赤 の採点</li>
+          <li>Step 3：最終ゲートは人間が持つ</li>
+          <li>今日から使える五欄テンプレ</li>
+        </ul>
+        <h2>シリーズの位置</h2>
+        <p>
+          EP04 範囲 → <strong>EP05 検収</strong> → EP06 チーム → EP07 Skill / Workflow → EP08 一枚閉ループ。
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>

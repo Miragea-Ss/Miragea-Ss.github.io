@@ -2,9 +2,9 @@
 import Layout from '../../../../site-layouts/Layout.astro';
 import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
 
-const YT_ID = '';
-const YT_EMBED = YT_ID ? `https://www.youtube.com/embed/${YT_ID}` : '';
-const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
+const YT_ID = 'neylQ_ykdLI';
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
 ---
 
 <Layout title="EP07 · Agent・Skill・Workflow の違い | ギークスペル" lang="ja">
@@ -19,38 +19,23 @@ const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
       <p class="gs-lead">
         「Agent を呼ぶ」だけでは足りない。作業者・道具・流水線を分けて、初めて効率よく、安全に使える。
       </p>
-      {
-        YT_EMBED ? (
-          <div class="gs-player">
-            <iframe
-              src={YT_EMBED}
-              title="ギークスペル EP07 JA"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-            />
-          </div>
-        ) : (
-          <div class="gs-player-fallback">
-            <p>脚本ドラフト準備済み。日本語ボイスと YouTube 埋め込みはカット後に更新。</p>
-            <p class="gs-note">
-              作業場: <code>H:/Grok/geekspell-ep07-skill-workflow-2026-07-22/</code>
-            </p>
-          </div>
-        )
-      }
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="ギークスペル EP07 JA"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        />
+      </div>
       <p class="gs-links">
         <a href="/ja/geekspell/ep06-agent-team/">← EP06 Agent チーム</a>
         ·
         <a href="/zh/geekspell/ep07-skill-workflow/">中文 EP07</a>
         ·
         <a href="/en/geekspell/ep07-skill-workflow/">English EP07</a>
-        {YT_WATCH ? (
-          <span>
-            {' '}
-            · <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
-          </span>
-        ) : null}
+        ·
+        <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
       </p>
       <section class="gs-body">
         <h2>学ぶこと（Step by step）</h2>
@@ -62,7 +47,7 @@ const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
             <strong>Skill</strong> = 入力→出力が明確な再利用ツール
           </li>
           <li>
-            <strong>Workflow</strong> = Skill を並べた流水線と验收
+            <strong>Workflow</strong> = Skill を並べた流水線と検収
           </li>
           <li>先に Skill、次に Workflow、最後に Agent へ渡す</li>
           <li>五欄テンプレを埋めてから会話を始める</li>

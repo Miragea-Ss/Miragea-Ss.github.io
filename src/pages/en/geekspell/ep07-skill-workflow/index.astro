@@ -2,9 +2,9 @@
 import Layout from '../../../../site-layouts/Layout.astro';
 import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
 
-const YT_ID = '';
-const YT_EMBED = YT_ID ? `https://www.youtube.com/embed/${YT_ID}` : '';
-const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
+const YT_ID = 'z7IKhvnVems';
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
 ---
 
 <Layout title="EP07 · Agent vs Skill vs Workflow | GeekSpell" lang="en">
@@ -20,38 +20,23 @@ const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
         Calling an agent is not enough. Separate worker, tool, and pipeline — that is how agents
         become efficient and controllable.
       </p>
-      {
-        YT_EMBED ? (
-          <div class="gs-player">
-            <iframe
-              src={YT_EMBED}
-              title="GeekSpell EP07 EN"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-              loading="lazy"
-            />
-          </div>
-        ) : (
-          <div class="gs-player-fallback">
-            <p>Script draft is ready. EN voice + YouTube embed after the cut ships.</p>
-            <p class="gs-note">
-              Workspace: <code>H:/Grok/geekspell-ep07-skill-workflow-2026-07-22/</code>
-            </p>
-          </div>
-        )
-      }
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="GeekSpell EP07 EN"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        />
+      </div>
       <p class="gs-links">
         <a href="/en/geekspell/ep06-agent-team/">← EP06 Agent team</a>
         ·
         <a href="/zh/geekspell/ep07-skill-workflow/">中文 EP07</a>
         ·
         <a href="/ja/geekspell/ep07-skill-workflow/">日本語 EP07</a>
-        {YT_WATCH ? (
-          <span>
-            {' '}
-            · <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
-          </span>
-        ) : null}
+        ·
+        <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
       </p>
       <section class="gs-body">
         <h2>What you will learn (step by step)</h2>
@@ -70,8 +55,8 @@ const YT_WATCH = YT_ID ? `https://youtu.be/${YT_ID}` : '';
         </ul>
         <h2>Series path</h2>
         <p>
-          EP03 command → EP04 scope → EP06 team → <strong>EP07 tools &amp; pipelines</strong> →
-          EP08 one-page closed loop.
+          EP05 acceptance → EP06 team → <strong>EP07 tools &amp; pipelines</strong> → EP08 one-page
+          closed loop.
         </p>
       </section>
     </div>
