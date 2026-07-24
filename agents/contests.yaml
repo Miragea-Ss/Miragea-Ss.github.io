@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-23T08:11:18.556Z
+# lastWatch: 2026-07-24T08:07:03.560Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -141,6 +141,20 @@ contests:
     joinScore: 103
     prizeHint: 8750
     submitUrl: https://cockroachdb-ai.devpost.com/challenges/start_a_submission
+  - at: 2026-07-24T08:07:03.516Z
+    type: devpost-auto
+    title: The Great Agent Hackathon
+    url: https://the-great-agent-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 23 - Aug 25, 2026
+      ja: Jul 23 - Aug 25, 2026
+      zh: Jul 23 - Aug 25, 2026
+    sourceNote: Devpost auto · prize~100000 · score 102 · Women In Product India
+    auto: true
+    joinScore: 102
+    prizeHint: 100000
+    submitUrl: https://the-great-agent-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-07-19T07:58:25.788Z
     type: devpost-auto
     title: Worlds in Action Hack [02-LA]
@@ -253,6 +267,20 @@ contests:
     joinScore: 97
     prizeHint: 2000000
     submitUrl: https://xprize.devpost.com/challenges/start_a_submission
+  - at: 2026-07-24T08:07:03.516Z
+    type: devpost-auto
+    title: "CALL-E: Your Code Is Calling"
+    url: https://call-e.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 23 - Sep 14, 2026
+      ja: Jul 23 - Sep 14, 2026
+      zh: Jul 23 - Sep 14, 2026
+    sourceNote: Devpost auto · prize~10000 · score 92 · CALL-E
+    auto: true
+    joinScore: 92
+    prizeHint: 10000
+    submitUrl: https://call-e.devpost.com/challenges/start_a_submission
   - at: 2026-07-18T07:26:45.820Z
     type: devpost-auto
     title: Code Carnage
@@ -533,38 +561,10 @@ contests:
     joinScore: 76
     prizeHint: 10000
     submitUrl: https://smartaithon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-23T08:11:18.506Z
-    type: devpost-auto
-    title: Build Beyond Hackathon
-    url: https://build-beyond-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 18 - Aug 16, 2026
-      ja: Jun 18 - Aug 16, 2026
-      zh: Jun 18 - Aug 16, 2026
-    sourceNote: Devpost auto · prize~500 · score 74 · BuildBeyond
-    auto: true
-    joinScore: 74
-    prizeHint: 500
-    submitUrl: https://build-beyond-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-23T08:11:18.506Z
-    type: devpost-auto
-    title: Hack The Limit
-    url: https://hack-the-limit-1.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 18 - Aug 30, 2026
-      ja: Jun 18 - Aug 30, 2026
-      zh: Jun 18 - Aug 30, 2026
-    sourceNote: Devpost auto · prize~350 · score 74 · HackTheLimit
-    auto: true
-    joinScore: 74
-    prizeHint: 350
-    submitUrl: https://hack-the-limit-1.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-23T08:11:18.556Z
+  lastWatch: 2026-07-24T08:07:03.560Z
   source: devpost-auto+manual
-  added: 26
-  updated: 26
-  scanned: 57
+  added: 28
+  updated: 24
+  scanned: 56
   kept: 40
