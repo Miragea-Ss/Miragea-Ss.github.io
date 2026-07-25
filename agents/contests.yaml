@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-24T08:07:03.560Z
+# lastWatch: 2026-07-25T07:50:00.561Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -183,6 +183,34 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-07-25T07:50:00.535Z
+    type: devpost-auto
+    title: The Email Game
+    url: https://the-email-game.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 24 - Aug 01, 2026
+      ja: Jul 24 - Aug 01, 2026
+      zh: Jul 24 - Aug 01, 2026
+    sourceNote: Devpost auto · prize~1700 · score 98 · WithAI Research
+    auto: true
+    joinScore: 98
+    prizeHint: 1700
+    submitUrl: https://the-email-game.devpost.com/challenges/start_a_submission
+  - at: 2026-07-25T07:50:00.535Z
+    type: devpost-auto
+    title: DevsUnite Hiring Hackathon
+    url: https://devsunite-hiring-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 24 - 25, 2026
+      ja: Jul 24 - 25, 2026
+      zh: Jul 24 - 25, 2026
+    sourceNote: Devpost auto · prize~3000 · score 98 · DevsUnite
+    auto: true
+    joinScore: 98
+    prizeHint: 3000
+    submitUrl: https://devsunite-hiring-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-07-18T07:26:45.820Z
     type: devpost-auto
     title: Prometheus July AI Challenge
@@ -491,6 +519,20 @@ contests:
     joinScore: 80
     prizeHint: 1000
     submitUrl: https://ml-empowerment-2.devpost.com/challenges/start_a_submission
+  - at: 2026-07-25T07:50:00.535Z
+    type: devpost-auto
+    title: "GatewayGS & The AEI Initiative:  AI 4 Earth Hackathon"
+    url: https://gatewaygs-ai-4-earth-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 25 - Aug 15, 2026
+      ja: Jul 25 - Aug 15, 2026
+      zh: Jul 25 - Aug 15, 2026
+    sourceNote: Devpost auto · prize~25 · score 78 · GatewayGS
+    auto: true
+    joinScore: 78
+    prizeHint: 25
+    submitUrl: https://gatewaygs-ai-4-earth-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-07-19T07:58:25.788Z
     type: devpost-auto
     title: "Hack Away Hunger: Food Insecurity Challenge"
@@ -519,52 +561,10 @@ contests:
     joinScore: 78
     prizeHint: 5000
     submitUrl: https://hack-with-ai-by-code-crate.devpost.com/challenges/start_a_submission
-  - at: 2026-07-13T14:27:28.872Z
-    type: devpost-auto
-    title: AceSAT Education AI-Agent
-    url: https://acesat-ai-agent.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 12 - Aug 15, 2026
-      ja: Jun 12 - Aug 15, 2026
-      zh: Jun 12 - Aug 15, 2026
-    sourceNote: Devpost auto · prize~100 · score 78 · AceSAT
-    auto: true
-    joinScore: 78
-    prizeHint: 100
-    submitUrl: https://acesat-ai-agent.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: "Kuki Designed group "
-    url: https://kuki-designed-group.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 01 - 31, 2026
-      ja: Jul 01 - 31, 2026
-      zh: Jul 01 - 31, 2026
-    sourceNote: Devpost auto · prize~1300 · score 78 · Kuki Designed group
-    auto: true
-    joinScore: 78
-    prizeHint: 1300
-    submitUrl: https://kuki-designed-group.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: SmartAIthon 2026
-    url: https://smartaithon.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 24 - Jul 20, 2026
-      ja: Jun 24 - Jul 20, 2026
-      zh: Jun 24 - Jul 20, 2026
-    sourceNote: Devpost auto · prize~10000 · score 76 · IEEE KCE Student Branch CIS Chapter
-    auto: true
-    joinScore: 76
-    prizeHint: 10000
-    submitUrl: https://smartaithon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-24T08:07:03.560Z
+  lastWatch: 2026-07-25T07:50:00.561Z
   source: devpost-auto+manual
-  added: 28
-  updated: 24
-  scanned: 56
+  added: 30
+  updated: 22
+  scanned: 58
   kept: 40
