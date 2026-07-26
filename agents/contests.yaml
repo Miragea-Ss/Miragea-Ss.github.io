@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-25T07:50:00.561Z
+# lastWatch: 2026-07-26T08:07:43.342Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -519,6 +519,34 @@ contests:
     joinScore: 80
     prizeHint: 1000
     submitUrl: https://ml-empowerment-2.devpost.com/challenges/start_a_submission
+  - at: 2026-07-26T08:07:43.308Z
+    type: devpost-auto
+    title: "Canal Startup Sprint Hackathon "
+    url: https://canal-startup-sprint-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 26 - Aug 14, 2026
+      ja: Jul 26 - Aug 14, 2026
+      zh: Jul 26 - Aug 14, 2026
+    sourceNote: Devpost auto · prize~800 · score 78 · Microsoft Student Club - SCU
+    auto: true
+    joinScore: 78
+    prizeHint: 800
+    submitUrl: https://canal-startup-sprint-hackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-26T08:07:43.308Z
+    type: devpost-auto
+    title: "Kuki Designed group "
+    url: https://kuki-designed-group.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 01 - 31, 2026
+      ja: Jul 01 - 31, 2026
+      zh: Jul 01 - 31, 2026
+    sourceNote: Devpost auto · prize~1300 · score 78 · Kuki Designed group
+    auto: true
+    joinScore: 78
+    prizeHint: 1300
+    submitUrl: https://kuki-designed-group.devpost.com/challenges/start_a_submission
   - at: 2026-07-25T07:50:00.535Z
     type: devpost-auto
     title: "GatewayGS & The AEI Initiative:  AI 4 Earth Hackathon"
@@ -533,38 +561,10 @@ contests:
     joinScore: 78
     prizeHint: 25
     submitUrl: https://gatewaygs-ai-4-earth-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-19T07:58:25.788Z
-    type: devpost-auto
-    title: "Hack Away Hunger: Food Insecurity Challenge"
-    url: https://hack-away-hunger.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 18 - Oct 08, 2026
-      ja: Jul 18 - Oct 08, 2026
-      zh: Jul 18 - Oct 08, 2026
-    sourceNote: Devpost auto · prize~5000 · score 78 · dsmhack
-    auto: true
-    joinScore: 78
-    prizeHint: 5000
-    submitUrl: https://hack-away-hunger.devpost.com/challenges/start_a_submission
-  - at: 2026-07-19T07:58:25.788Z
-    type: devpost-auto
-    title: Hack with AI
-    url: https://hack-with-ai-by-code-crate.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 19, 2026
-      ja: Jul 19, 2026
-      zh: Jul 19, 2026
-    sourceNote: Devpost auto · prize~5000 · score 78 · Code crate
-    auto: true
-    joinScore: 78
-    prizeHint: 5000
-    submitUrl: https://hack-with-ai-by-code-crate.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-25T07:50:00.561Z
+  lastWatch: 2026-07-26T08:07:43.342Z
   source: devpost-auto+manual
-  added: 30
-  updated: 22
-  scanned: 58
+  added: 28
+  updated: 24
+  scanned: 57
   kept: 40
