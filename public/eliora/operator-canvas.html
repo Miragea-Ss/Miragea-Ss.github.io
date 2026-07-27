@@ -302,7 +302,22 @@
       .node h3 { margin: 5px 0 0; font-size: 20px; line-height: 1.18; letter-spacing: 0; }
       .dot { width: 11px; height: 11px; flex: 0 0 auto; border-radius: 50%; margin-top: 5px; background: #050505; box-shadow: 0 0 20px 10px rgba(242,121,154,.58); }
       .node p { margin: 0; color: var(--muted); line-height: 1.58; white-space: pre-wrap; }
-      .node img.preview, .node video.preview { width: 100%; max-height: 188px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); margin-bottom: 12px; display: block; background: #000; }
+      /* contain + taller: portrait gens must show full frame including head — cover was cropping faces */
+      .node img.preview, .node video.preview {
+        width: 100%;
+        max-height: 320px;
+        object-fit: contain;
+        object-position: center top;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        margin-bottom: 12px;
+        display: block;
+        background: #000;
+      }
+      .node[data-kind="Image"] img.preview,
+      .node[data-kind="Image"] video.preview {
+        max-height: 420px;
+      }
       .node a.node-url { display: inline-flex; margin-top: 12px; color: #f6d594; font-size: 13px; word-break: break-all; }
       .node-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
       .node-tags span { border: 1px solid rgba(255,255,255,.1); border-radius: 6px; color: var(--faint); padding: 4px 6px; font-size: 11px; }
