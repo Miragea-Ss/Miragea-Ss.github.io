@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-26T08:07:43.342Z
+# lastWatch: 2026-07-27T09:30:05.284Z
 contests:
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -449,6 +449,20 @@ contests:
     joinScore: 86
     prizeHint: 1000
     submitUrl: https://hackthearts.devpost.com/challenges/start_a_submission
+  - at: 2026-07-27T09:30:05.248Z
+    type: devpost-auto
+    title: NTU CCTF × SNZ InnovateX 2026
+    url: https://ntu-cctf-snz-innovatex-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 27 - Aug 14, 2026
+      ja: Jul 27 - Aug 14, 2026
+      zh: Jul 27 - Aug 14, 2026
+    sourceNote: Devpost auto · prize~20000 · score 84 · nanyang technological university
+    auto: true
+    joinScore: 84
+    prizeHint: 20000
+    submitUrl: https://ntu-cctf-snz-innovatex-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-22T08:08:17.363Z
     type: devpost-auto
     title: Rampamble
@@ -519,52 +533,38 @@ contests:
     joinScore: 80
     prizeHint: 1000
     submitUrl: https://ml-empowerment-2.devpost.com/challenges/start_a_submission
-  - at: 2026-07-26T08:07:43.308Z
+  - at: 2026-07-27T09:30:05.248Z
     type: devpost-auto
-    title: "Canal Startup Sprint Hackathon "
-    url: https://canal-startup-sprint-hackathon.devpost.com/
+    title: "Hack Away Hunger: Food Insecurity Challenge"
+    url: https://hack-away-hunger.devpost.com/
     ongoing: true
     period:
-      en: Jul 26 - Aug 14, 2026
-      ja: Jul 26 - Aug 14, 2026
-      zh: Jul 26 - Aug 14, 2026
-    sourceNote: Devpost auto · prize~800 · score 78 · Microsoft Student Club - SCU
+      en: Jul 18 - Oct 08, 2026
+      ja: Jul 18 - Oct 08, 2026
+      zh: Jul 18 - Oct 08, 2026
+    sourceNote: Devpost auto · prize~5000 · score 78 · dsmhack
     auto: true
     joinScore: 78
-    prizeHint: 800
-    submitUrl: https://canal-startup-sprint-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-26T08:07:43.308Z
+    prizeHint: 5000
+    submitUrl: https://hack-away-hunger.devpost.com/challenges/start_a_submission
+  - at: 2026-07-27T09:30:05.248Z
     type: devpost-auto
-    title: "Kuki Designed group "
-    url: https://kuki-designed-group.devpost.com/
+    title: AceSAT Education AI-Agent
+    url: https://acesat-ai-agent.devpost.com/
     ongoing: true
     period:
-      en: Jul 01 - 31, 2026
-      ja: Jul 01 - 31, 2026
-      zh: Jul 01 - 31, 2026
-    sourceNote: Devpost auto · prize~1300 · score 78 · Kuki Designed group
+      en: Jun 12 - Aug 15, 2026
+      ja: Jun 12 - Aug 15, 2026
+      zh: Jun 12 - Aug 15, 2026
+    sourceNote: Devpost auto · prize~100 · score 78 · AceSAT
     auto: true
     joinScore: 78
-    prizeHint: 1300
-    submitUrl: https://kuki-designed-group.devpost.com/challenges/start_a_submission
-  - at: 2026-07-25T07:50:00.535Z
-    type: devpost-auto
-    title: "GatewayGS & The AEI Initiative:  AI 4 Earth Hackathon"
-    url: https://gatewaygs-ai-4-earth-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 25 - Aug 15, 2026
-      ja: Jul 25 - Aug 15, 2026
-      zh: Jul 25 - Aug 15, 2026
-    sourceNote: Devpost auto · prize~25 · score 78 · GatewayGS
-    auto: true
-    joinScore: 78
-    prizeHint: 25
-    submitUrl: https://gatewaygs-ai-4-earth-hackathon.devpost.com/challenges/start_a_submission
+    prizeHint: 100
+    submitUrl: https://acesat-ai-agent.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-26T08:07:43.342Z
+  lastWatch: 2026-07-27T09:30:05.284Z
   source: devpost-auto+manual
-  added: 28
-  updated: 24
-  scanned: 57
+  added: 30
+  updated: 25
+  scanned: 58
   kept: 40
