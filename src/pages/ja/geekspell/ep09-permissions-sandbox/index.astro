@@ -1,0 +1,62 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+const YT_ID = 'tlN_uW7Duls';
+const YT_EMBED = `https://www.youtube.com/embed/${YT_ID}`;
+const YT_WATCH = `https://youtu.be/${YT_ID}`;
+const BILI = 'https://www.bilibili.com/video/BV1gh3P6ZErW/';
+const YT_EN = 'https://youtu.be/yQW4TAupqcM';
+---
+
+<Layout title="EP09 · 権限とサンドボックス | ギークスペル" lang="ja">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/ja/">アーカイブ</a> · <a href="/ja/geekspell/">ギークスペル</a> · EP09
+      </p>
+      <p class="gs-eyebrow">ギークスペル リテラシー EP09 · 日本語 · 権限とサンドボックス</p>
+      <h1>権限とサンドボックス：Agent に触らせる前に</h1>
+      <p class="gs-lead">
+        パスを渡す前に境界を書く。境界のない Agent は、root 権限のインターンです。
+      </p>
+      <div class="gs-player">
+        <iframe
+          src={YT_EMBED}
+          title="ギークスペル EP09 JA"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+        />
+      </div>
+      <p class="gs-links">
+        <a href="/ja/geekspell/ep08-brief-delivery/">← EP08 一枚閉ループ</a>
+        ·
+        <a href="/zh/geekspell/ep09-permissions-sandbox/">中文 EP09</a>
+        ·
+        <a href="/en/geekspell/ep09-permissions-sandbox/">English EP09</a>
+        ·
+        <a href={YT_WATCH} target="_blank" rel="noopener">YouTube</a>
+        ·
+        <a href={BILI} target="_blank" rel="noopener">Bilibili ZH</a>
+        ·
+        <a href={YT_EN} target="_blank" rel="noopener">YouTube EN</a>
+      </p>
+      <section class="gs-body">
+        <h2>学ぶこと</h2>
+        <ul>
+          <li>よくある失敗：「このフォルダ、いい感じに」——ホワイトリストなし · バックアップなし · dry-run なし</li>
+          <li>原則：境界を書いてからパス</li>
+          <li>三色：緑=読取 · 黄=サンドボックスのみ書込 · 赤=既定禁止</li>
+          <li>権限カード五欄を埋めてから作業開始</li>
+          <li>まず sandbox へ複製 · dry-run · 緑/黄/赤 · 検収はあなた</li>
+        </ul>
+        <h2>シリーズの位置</h2>
+        <p>
+          EP08 一枚閉ループ → <strong>EP09 権限とサンドボックス</strong> → EP10 予算とコスト。
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>

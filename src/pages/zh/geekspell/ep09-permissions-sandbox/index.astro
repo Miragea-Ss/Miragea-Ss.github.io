@@ -1,0 +1,66 @@
+---
+import Layout from '../../../../site-layouts/Layout.astro';
+import GeekSpellBaseStyles from '../../../../components/geekspell/GeekSpellBaseStyles.astro';
+
+/** Bilibili — live EP09 */
+const BILI_BV = 'BV1gh3P6ZErW';
+const BILI_EMBED = `//player.bilibili.com/player.html?bvid=${BILI_BV}&page=1&high_quality=1&danmaku=0`;
+const BILI_WATCH = `https://www.bilibili.com/video/${BILI_BV}/`;
+const YT_EN = 'https://youtu.be/yQW4TAupqcM';
+const YT_JA = 'https://youtu.be/tlN_uW7Duls';
+---
+
+<Layout title="EP09 · 权限与沙盒：敢动文件前必须有什么 | 极客魔咒" lang="zh">
+  <GeekSpellBaseStyles />
+  <main class="gs-ep-page">
+    <div class="gs-wrap">
+      <p class="gs-crumb">
+        <a href="/zh/">档案</a> · <a href="/zh/geekspell/">极客魔咒</a> · EP09
+      </p>
+      <p class="gs-eyebrow">极客魔咒 科普 EP09 · 中文 · 已上线 B 站</p>
+      <h1>权限与沙盒：敢让 Agent 动文件前必须有什么</h1>
+      <p class="gs-lead">
+        先写边界，再给路径。没边界的 Agent，是会删库的实习生。
+      </p>
+      <div class="gs-player">
+        <iframe
+          src={BILI_EMBED}
+          scrolling="no"
+          border="0"
+          frameborder="no"
+          framespacing="0"
+          allowfullscreen="true"
+          title="极客魔咒 EP09 B站播放"
+          loading="lazy"
+        />
+      </div>
+      <p class="gs-links">
+        <a href="/zh/geekspell/ep08-brief-delivery/">← EP08 一页纸闭环</a>
+        ·
+        <a href="/en/geekspell/ep09-permissions-sandbox/">English EP09</a>
+        ·
+        <a href="/ja/geekspell/ep09-permissions-sandbox/">日本語 EP09</a>
+        ·
+        <a href={BILI_WATCH} target="_blank" rel="noopener">Bilibili</a>
+        ·
+        <a href={YT_EN} target="_blank" rel="noopener">YouTube EN</a>
+        ·
+        <a href={YT_JA} target="_blank" rel="noopener">YouTube JA</a>
+      </p>
+      <section class="gs-body">
+        <h2>你将学到（Step by step）</h2>
+        <ul>
+          <li>常见失败：「这个文件夹你看着办」——无白名单 · 无备份 · 无 dry-run</li>
+          <li>原则：先写边界，再给路径</li>
+          <li>三色：绿只读 · 黄仅沙盒可写 · 红默认禁止</li>
+          <li>权限卡五栏：根目录 · 允许 · 禁止 · 备份 · 谁验收</li>
+          <li>先复制到沙盒 · dry-run 后绿/黄/红 · 验收人是你</li>
+        </ul>
+        <h2>系列位置</h2>
+        <p>
+          EP08 一页纸闭环 → <strong>EP09 权限与沙盒</strong> → EP10 预算与成本。
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>
