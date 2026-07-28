@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-27T14:26:34.410Z",
+  "generatedAt": "2026-07-28T08:13:56.028Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -7,26 +7,10 @@
   },
   "recommended": [
     {
-      "title": "Build with DataHub: The Agent Hackathon",
-      "url": "https://datahub.devpost.com/",
-      "submitUrl": "https://datahub.devpost.com/challenges/start_a_submission",
-      "joinScore": 115,
-      "prizeHint": 20500,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "Backblaze Generative Media Hackathon: Build with Genblaze on B2",
-      "url": "https://backblaze-generative-media.devpost.com/",
-      "submitUrl": "https://backblaze-generative-media.devpost.com/challenges/start_a_submission",
-      "joinScore": 115,
+      "title": "Agentic Cinema: The Blockbuster Hackathon",
+      "url": "https://agentic-cinema.devpost.com/",
+      "submitUrl": "https://agentic-cinema.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
       "prizeHint": 10000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
@@ -60,6 +44,38 @@
       "submitUrl": "https://openai.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 100000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "Build with DataHub: The Agent Hackathon",
+      "url": "https://datahub.devpost.com/",
+      "submitUrl": "https://datahub.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 20500,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "Backblaze Generative Media Hackathon: Build with Genblaze on B2",
+      "url": "https://backblaze-generative-media.devpost.com/",
+      "submitUrl": "https://backblaze-generative-media.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 10000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -108,22 +124,6 @@
       "submitUrl": "https://pinch-me-i-want-50k.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 50000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "VoltHacks",
-      "url": "https://volthacks.devpost.com/",
-      "submitUrl": "https://volthacks.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 32585,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

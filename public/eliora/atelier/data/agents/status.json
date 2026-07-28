@@ -1,42 +1,30 @@
 {
-  "generatedAt": "2026-07-27T14:26:34.475Z",
+  "generatedAt": "2026-07-28T08:13:56.094Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-07-27T14:26:34.396Z",
+      "lastRun": "2026-07-28T08:13:56.017Z",
       "summary": {
-        "en": "40 open · 37 join-worthy · auto-watch",
-        "ja": "募集中40件 · 参加推奨37件 · 自動監視",
-        "zh": "开放40 · 建议参加37 · 自动监视"
+        "en": "40 open · 39 join-worthy · auto-watch",
+        "ja": "募集中40件 · 参加推奨39件 · 自動監視",
+        "zh": "开放40 · 建议参加39 · 自动监视"
       },
       "metrics": {
         "contestsFlagged": 40,
-        "joinRecommended": 37,
+        "joinRecommended": 39,
         "autoTracked": 40
       },
       "events": [
         {
-          "at": "2026-07-09T18:41:49.379Z",
+          "at": "2026-07-28T08:13:55.985Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) Build with DataHub: The Agent Hackathon",
-          "url": "https://datahub.devpost.com/",
+          "title": "★ JOIN? (110) Agentic Cinema: The Blockbuster Hackathon",
+          "url": "https://agentic-cinema.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Jul 06 - Aug 10, 2026",
-            "ja": "Jul 06 - Aug 10, 2026",
-            "zh": "Jul 06 - Aug 10, 2026"
-          }
-        },
-        {
-          "at": "2026-07-09T18:41:49.379Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (115) Backblaze Generative Media Hackathon: Build with Genblaze on B2",
-          "url": "https://backblaze-generative-media.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Jun 22 - Aug 03, 2026",
-            "ja": "Jun 22 - Aug 03, 2026",
-            "zh": "Jun 22 - Aug 03, 2026"
+            "en": "Jul 27 - Sep 07, 2026",
+            "ja": "Jul 27 - Sep 07, 2026",
+            "zh": "Jul 27 - Sep 07, 2026"
           }
         },
         {
@@ -61,6 +49,30 @@
             "en": "Jul 13 - 21, 2026",
             "ja": "Jul 13 - 21, 2026",
             "zh": "Jul 13 - 21, 2026"
+          }
+        },
+        {
+          "at": "2026-07-09T18:41:49.379Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Build with DataHub: The Agent Hackathon",
+          "url": "https://datahub.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Jul 06 - Aug 10, 2026",
+            "ja": "Jul 06 - Aug 10, 2026",
+            "zh": "Jul 06 - Aug 10, 2026"
+          }
+        },
+        {
+          "at": "2026-07-09T18:41:49.379Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Backblaze Generative Media Hackathon: Build with Genblaze on B2",
+          "url": "https://backblaze-generative-media.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Jun 22 - Aug 03, 2026",
+            "ja": "Jun 22 - Aug 03, 2026",
+            "zh": "Jun 22 - Aug 03, 2026"
           }
         },
         {
@@ -121,18 +133,6 @@
             "en": "Jun 17 - Jul 15, 2026",
             "ja": "Jun 17 - Jul 15, 2026",
             "zh": "Jun 17 - Jul 15, 2026"
-          }
-        },
-        {
-          "at": "2026-07-09T18:41:49.379Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (103) CockroachDB × AWS Hackathon - Build with Agentic Memory",
-          "url": "https://cockroachdb-ai.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Jun 30 - Aug 18, 2026",
-            "ja": "Jun 30 - Aug 18, 2026",
-            "zh": "Jun 30 - Aug 18, 2026"
           }
         }
       ]
