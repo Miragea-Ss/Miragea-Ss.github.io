@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-29T08:19:40.108Z",
+  "generatedAt": "2026-07-30T08:07:23.278Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -11,7 +11,7 @@
       "url": "https://agentic-cinema.devpost.com/",
       "submitUrl": "https://agentic-cinema.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 15000,
+      "prizeHint": 75000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

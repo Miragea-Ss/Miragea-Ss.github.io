@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-29T08:19:40.095Z
+# lastWatch: 2026-07-30T08:07:23.263Z
 contests:
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -10,10 +10,10 @@ contests:
       en: Jul 27 - Sep 07, 2026
       ja: Jul 27 - Sep 07, 2026
       zh: Jul 27 - Sep 07, 2026
-    sourceNote: Devpost auto · prize~15000 · score 110 · Google
+    sourceNote: Devpost auto · prize~75000 · score 110 · Google
     auto: true
     joinScore: 110
-    prizeHint: 15000
+    prizeHint: 75000
     submitUrl: https://agentic-cinema.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 1000
     submitUrl: https://ml-empowerment-2.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-29T08:19:40.095Z
+  lastWatch: 2026-07-30T08:07:23.263Z
   source: devpost-auto+manual
-  added: 29
+  added: 27
   updated: 24
-  scanned: 58
+  scanned: 56
   kept: 40
