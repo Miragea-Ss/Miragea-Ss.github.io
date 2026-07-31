@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-30T08:07:23.263Z
+# lastWatch: 2026-07-31T08:33:34.936Z
 contests:
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -122,10 +122,10 @@ contests:
       en: May 22 - Sep 05, 2026
       ja: May 22 - Sep 05, 2026
       zh: May 22 - Sep 05, 2026
-    sourceNote: Devpost auto · prize~32585 · score 110 · Dialogate
+    sourceNote: Devpost auto · prize~32785 · score 110 · Dialogate
     auto: true
     joinScore: 110
-    prizeHint: 32585
+    prizeHint: 32785
     submitUrl: https://volthacks.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -169,6 +169,20 @@ contests:
     joinScore: 103
     prizeHint: 8000
     submitUrl: https://arm-ai-optimization-challenge.devpost.com/challenges/start_a_submission
+  - at: 2026-07-31T08:33:34.899Z
+    type: devpost-auto
+    title: Vidhyarthi Sewa EduHack Karnataka 2026
+    url: https://vidhyarthi-sewa-eduhack.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 31 - Aug 20, 2026
+      ja: Jul 31 - Aug 20, 2026
+      zh: Jul 31 - Aug 20, 2026
+    sourceNote: Devpost auto · prize~50000 · score 102 · Primus B School
+    auto: true
+    joinScore: 102
+    prizeHint: 50000
+    submitUrl: https://vidhyarthi-sewa-eduhack.devpost.com/challenges/start_a_submission
   - at: 2026-07-27T09:30:05.248Z
     type: devpost-auto
     title: NTU InnovateX Hackathon 2026
@@ -379,6 +393,20 @@ contests:
     joinScore: 92
     prizeHint: 10300
     submitUrl: https://celesta-exoplanet-challenge.devpost.com/challenges/start_a_submission
+  - at: 2026-07-31T08:33:34.899Z
+    type: devpost-auto
+    title: The Atlassian X Mistral X AISoc Hack
+    url: https://aisoc-atlassian-mistral.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 30 - 31, 2026
+      ja: Jul 30 - 31, 2026
+      zh: Jul 30 - 31, 2026
+    sourceNote: Devpost auto · prize~1200 · score 90 · UNSW AISOC
+    auto: true
+    joinScore: 90
+    prizeHint: 1200
+    submitUrl: https://aisoc-atlassian-mistral.devpost.com/challenges/start_a_submission
   - at: 2026-07-22T08:08:17.363Z
     type: devpost-auto
     title: GenZ Can Hack 2026
@@ -477,6 +505,20 @@ contests:
     joinScore: 86
     prizeHint: 1000
     submitUrl: https://hackthearts.devpost.com/challenges/start_a_submission
+  - at: 2026-07-31T08:33:34.899Z
+    type: devpost-auto
+    title: Nexora
+    url: https://nexora.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 30 - Aug 16, 2026
+      ja: Jul 30 - Aug 16, 2026
+      zh: Jul 30 - Aug 16, 2026
+    sourceNote: Devpost auto · prize~30000 · score 84 · hackhere
+    auto: true
+    joinScore: 84
+    prizeHint: 30000
+    submitUrl: https://nexora.devpost.com/challenges/start_a_submission
   - at: 2026-07-22T08:08:17.363Z
     type: devpost-auto
     title: Rampamble
@@ -519,52 +561,10 @@ contests:
     joinScore: 80
     prizeHint: 5580
     submitUrl: https://compsphere-11.devpost.com/challenges/start_a_submission
-  - at: 2026-07-21T08:07:43.285Z
-    type: devpost-auto
-    title: Galuxium Nexus V2
-    url: https://galuxium-nexus-v2-29411.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 15 - Aug 31, 2026
-      ja: Jul 15 - Aug 31, 2026
-      zh: Jul 15 - Aug 31, 2026
-    sourceNote: Devpost auto · prize~2600 · score 80 · Galuxium
-    auto: true
-    joinScore: 80
-    prizeHint: 2600
-    submitUrl: https://galuxium-nexus-v2-29411.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: "Global AI Hackathon Series with Qwen Cloud "
-    url: https://qwencloud-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: May 26 - Jul 20, 2026
-      ja: May 26 - Jul 20, 2026
-      zh: May 26 - Jul 20, 2026
-    sourceNote: Devpost auto · prize~45000 · score 80 · Alibaba Cloud
-    auto: true
-    joinScore: 80
-    prizeHint: 45000
-    submitUrl: https://qwencloud-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: ML Empowerment Build Challenge 2.0
-    url: https://ml-empowerment-2.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 30 - Aug 15, 2026
-      ja: Jun 30 - Aug 15, 2026
-      zh: Jun 30 - Aug 15, 2026
-    sourceNote: Devpost auto · prize~1000 · score 80 · ML Empowerment Foundation
-    auto: true
-    joinScore: 80
-    prizeHint: 1000
-    submitUrl: https://ml-empowerment-2.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-30T08:07:23.263Z
+  lastWatch: 2026-07-31T08:33:34.936Z
   source: devpost-auto+manual
-  added: 27
-  updated: 24
-  scanned: 56
+  added: 30
+  updated: 23
+  scanned: 58
   kept: 40
