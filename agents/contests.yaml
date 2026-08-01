@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-07-31T08:33:34.936Z
+# lastWatch: 2026-08-01T08:03:00.252Z
 contests:
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -239,6 +239,34 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-08-01T08:03:00.216Z
+    type: devpost-auto
+    title: Hacksocial 2026
+    url: https://hacksocial2026.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 01 - 31, 2026
+      ja: Aug 01 - 31, 2026
+      zh: Aug 01 - 31, 2026
+    sourceNote: Devpost auto · prize~2500 · score 98 · Hacksocial
+    auto: true
+    joinScore: 98
+    prizeHint: 2500
+    submitUrl: https://hacksocial2026.devpost.com/challenges/start_a_submission
+  - at: 2026-08-01T08:03:00.216Z
+    type: devpost-auto
+    title: IncludAI - The Neurodiversity Hackathon, in Partnership with Stanford NNEA
+    url: https://includai-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 01 - 09, 2026
+      ja: Aug 01 - 09, 2026
+      zh: Aug 01 - 09, 2026
+    sourceNote: Devpost auto · prize~3000 · score 98 · IncludEDU, partner w Stanford NNEA
+    auto: true
+    joinScore: 98
+    prizeHint: 3000
+    submitUrl: https://includai-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-25T07:50:00.535Z
     type: devpost-auto
     title: The Email Game
@@ -449,6 +477,20 @@ contests:
     joinScore: 90
     prizeHint: 5250
     submitUrl: https://ai-for-social-good-mlh.devpost.com/challenges/start_a_submission
+  - at: 2026-08-01T08:03:00.216Z
+    type: devpost-auto
+    title: STEMist Hacks IV
+    url: https://stemist-hacks-iv.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 31 - Aug 02, 2026
+      ja: Jul 31 - Aug 02, 2026
+      zh: Jul 31 - Aug 02, 2026
+    sourceNote: Devpost auto · prize~2550 · score 86 · STEMist Education
+    auto: true
+    joinScore: 86
+    prizeHint: 2550
+    submitUrl: https://stemist-hacks-iv.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T13:59:36.960Z
     type: devpost-auto
     title: "Build with Paritok: The Token-Efficiency Hackathon"
@@ -505,66 +547,24 @@ contests:
     joinScore: 86
     prizeHint: 1000
     submitUrl: https://hackthearts.devpost.com/challenges/start_a_submission
-  - at: 2026-07-31T08:33:34.899Z
+  - at: 2026-08-01T08:03:00.216Z
     type: devpost-auto
-    title: Nexora
-    url: https://nexora.devpost.com/
+    title: RevenueCat Shipaton 2026
+    url: https://revenuecat-shipaton-2026.devpost.com/
     ongoing: true
     period:
-      en: Jul 30 - Aug 16, 2026
-      ja: Jul 30 - Aug 16, 2026
-      zh: Jul 30 - Aug 16, 2026
-    sourceNote: Devpost auto · prize~30000 · score 84 · hackhere
+      en: Jul 31 - Oct 01, 2026
+      ja: Jul 31 - Oct 01, 2026
+      zh: Jul 31 - Oct 01, 2026
+    sourceNote: Devpost auto · prize~685000 · score 85 · RevenueCat
     auto: true
-    joinScore: 84
-    prizeHint: 30000
-    submitUrl: https://nexora.devpost.com/challenges/start_a_submission
-  - at: 2026-07-22T08:08:17.363Z
-    type: devpost-auto
-    title: Rampamble
-    url: https://rampamble.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 22 - Aug 20, 2026
-      ja: Jul 22 - Aug 20, 2026
-      zh: Jul 22 - Aug 20, 2026
-    sourceNote: Devpost auto · prize~50000 · score 84 · kit
-    auto: true
-    joinScore: 84
-    prizeHint: 50000
-    submitUrl: https://rampamble.devpost.com/challenges/start_a_submission
-  - at: 2026-07-28T08:13:55.985Z
-    type: devpost-auto
-    title: "Caspian Buildathon: Build agents that can reach anyone"
-    url: https://caspian.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 28 - Aug 12, 2026
-      ja: Jul 28 - Aug 12, 2026
-      zh: Jul 28 - Aug 12, 2026
-    sourceNote: Devpost auto · prize~1700 · score 80 · BITS Pilani
-    auto: true
-    joinScore: 80
-    prizeHint: 1700
-    submitUrl: https://caspian.devpost.com/challenges/start_a_submission
-  - at: 2026-07-22T08:08:17.363Z
-    type: devpost-auto
-    title: COMPSPHERE 11 (for testing), open soon in august
-    url: https://compsphere-11.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 21 - 23, 2026
-      ja: Jul 21 - 23, 2026
-      zh: Jul 21 - 23, 2026
-    sourceNote: Devpost auto · prize~5580 · score 80 · Student Organization
-    auto: true
-    joinScore: 80
-    prizeHint: 5580
-    submitUrl: https://compsphere-11.devpost.com/challenges/start_a_submission
+    joinScore: 85
+    prizeHint: 685000
+    submitUrl: https://revenuecat-shipaton-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-07-31T08:33:34.936Z
+  lastWatch: 2026-08-01T08:03:00.252Z
   source: devpost-auto+manual
-  added: 30
-  updated: 23
-  scanned: 58
+  added: 34
+  updated: 21
+  scanned: 57
   kept: 40
