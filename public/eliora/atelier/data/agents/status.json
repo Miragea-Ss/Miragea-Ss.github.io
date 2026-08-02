@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-01T08:03:00.354Z",
+  "generatedAt": "2026-08-02T08:04:47.166Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-08-01T08:03:00.252Z",
+      "lastRun": "2026-08-02T08:04:47.087Z",
       "summary": {
         "en": "40 open · 39 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨39件 · 自動監視",
@@ -15,6 +15,18 @@
         "autoTracked": 40
       },
       "events": [
+        {
+          "at": "2026-08-02T08:04:47.056Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Reverie Hacks 2026",
+          "url": "https://reverie-hacks-2026.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Aug 02 - 17, 2026",
+            "ja": "Aug 02 - 17, 2026",
+            "zh": "Aug 02 - 17, 2026"
+          }
+        },
         {
           "at": "2026-07-28T08:13:55.985Z",
           "type": "devpost-auto",
@@ -121,18 +133,6 @@
             "en": "May 22 - Sep 05, 2026",
             "ja": "May 22 - Sep 05, 2026",
             "zh": "May 22 - Sep 05, 2026"
-          }
-        },
-        {
-          "at": "2026-07-09T18:41:49.379Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (103) Reddit’s Games with a Hook Hackathon",
-          "url": "https://redditgameswithahook.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Jun 17 - Jul 15, 2026",
-            "ja": "Jun 17 - Jul 15, 2026",
-            "zh": "Jun 17 - Jul 15, 2026"
           }
         }
       ]

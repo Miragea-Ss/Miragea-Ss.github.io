@@ -1,6 +1,20 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-01T08:03:00.252Z
+# lastWatch: 2026-08-02T08:04:47.087Z
 contests:
+  - at: 2026-08-02T08:04:47.056Z
+    type: devpost-auto
+    title: Reverie Hacks 2026
+    url: https://reverie-hacks-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 02 - 17, 2026
+      ja: Aug 02 - 17, 2026
+      zh: Aug 02 - 17, 2026
+    sourceNote: Devpost auto · prize~166770 · score 110 · ReverieHacks
+    auto: true
+    joinScore: 110
+    prizeHint: 166770
+    submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
     title: "Agentic Cinema: The Blockbuster Hackathon"
@@ -421,6 +435,20 @@ contests:
     joinScore: 92
     prizeHint: 10300
     submitUrl: https://celesta-exoplanet-challenge.devpost.com/challenges/start_a_submission
+  - at: 2026-08-02T08:04:47.056Z
+    type: devpost-auto
+    title: Hack Days in Bansal
+    url: https://hack-days-in-bansal.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 02, 2026
+      ja: Aug 02, 2026
+      zh: Aug 02, 2026
+    sourceNote: Devpost auto · prize~1000 · score 90 · Major League Hacking
+    auto: true
+    joinScore: 90
+    prizeHint: 1000
+    submitUrl: https://hack-days-in-bansal.devpost.com/challenges/start_a_submission
   - at: 2026-07-31T08:33:34.899Z
     type: devpost-auto
     title: The Atlassian X Mistral X AISoc Hack
@@ -533,38 +561,10 @@ contests:
     joinScore: 86
     prizeHint: 1050
     submitUrl: https://unitedhacksv7.devpost.com/challenges/start_a_submission
-  - at: 2026-07-11T07:39:48.543Z
-    type: devpost-auto
-    title: Hack the Arts
-    url: https://hackthearts.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 01 - Aug 01, 2026
-      ja: Jul 01 - Aug 01, 2026
-      zh: Jul 01 - Aug 01, 2026
-    sourceNote: Devpost auto · prize~1000 · score 86 · Hack the Arts
-    auto: true
-    joinScore: 86
-    prizeHint: 1000
-    submitUrl: https://hackthearts.devpost.com/challenges/start_a_submission
-  - at: 2026-08-01T08:03:00.216Z
-    type: devpost-auto
-    title: RevenueCat Shipaton 2026
-    url: https://revenuecat-shipaton-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 31 - Oct 01, 2026
-      ja: Jul 31 - Oct 01, 2026
-      zh: Jul 31 - Oct 01, 2026
-    sourceNote: Devpost auto · prize~685000 · score 85 · RevenueCat
-    auto: true
-    joinScore: 85
-    prizeHint: 685000
-    submitUrl: https://revenuecat-shipaton-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-01T08:03:00.252Z
+  lastWatch: 2026-08-02T08:04:47.087Z
   source: devpost-auto+manual
-  added: 34
+  added: 36
   updated: 21
   scanned: 57
   kept: 40
