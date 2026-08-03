@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-03T09:23:18.666Z
+# lastWatch: 2026-08-03T14:31:54.592Z
 contests:
   - at: 2026-08-02T08:04:47.056Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 8176
     submitUrl: https://the-blueprint-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-03T09:23:18.666Z
+  lastWatch: 2026-08-03T14:31:54.592Z
   source: devpost-auto+manual
-  added: 33
-  updated: 20
+  added: 31
+  updated: 22
   scanned: 54
   kept: 40
