@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-02T08:04:47.087Z
+# lastWatch: 2026-08-03T09:23:18.666Z
 contests:
   - at: 2026-08-02T08:04:47.056Z
     type: devpost-auto
@@ -10,10 +10,10 @@ contests:
       en: Aug 02 - 17, 2026
       ja: Aug 02 - 17, 2026
       zh: Aug 02 - 17, 2026
-    sourceNote: Devpost auto · prize~166770 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~189020 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 166770
+    prizeHint: 189020
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -262,10 +262,10 @@ contests:
       en: Aug 01 - 31, 2026
       ja: Aug 01 - 31, 2026
       zh: Aug 01 - 31, 2026
-    sourceNote: Devpost auto · prize~2500 · score 98 · Hacksocial
+    sourceNote: Devpost auto · prize~3979 · score 98 · Hacksocial
     auto: true
     joinScore: 98
-    prizeHint: 2500
+    prizeHint: 3979
     submitUrl: https://hacksocial2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-01T08:03:00.216Z
     type: devpost-auto
@@ -379,6 +379,20 @@ contests:
     joinScore: 97
     prizeHint: 10000
     submitUrl: https://call-e.devpost.com/challenges/start_a_submission
+  - at: 2026-08-03T09:23:18.630Z
+    type: devpost-auto
+    title: "Caspian Buildathon: Build agents that can reach anyone"
+    url: https://caspian.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 28 - Aug 12, 2026
+      ja: Jul 28 - Aug 12, 2026
+      zh: Jul 28 - Aug 12, 2026
+    sourceNote: Devpost auto · prize~6252000 · score 92 · BITS Pilani
+    auto: true
+    joinScore: 92
+    prizeHint: 6252000
+    submitUrl: https://caspian.devpost.com/challenges/start_a_submission
   - at: 2026-07-18T07:26:45.820Z
     type: devpost-auto
     title: Code Carnage
@@ -547,24 +561,10 @@ contests:
     joinScore: 86
     prizeHint: 8176
     submitUrl: https://the-blueprint-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-11T07:39:48.543Z
-    type: devpost-auto
-    title: United Hacks V7
-    url: https://unitedhacksv7.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 10 - 12, 2026
-      ja: Jul 10 - 12, 2026
-      zh: Jul 10 - 12, 2026
-    sourceNote: Devpost auto · prize~1050 · score 86 · Hack United
-    auto: true
-    joinScore: 86
-    prizeHint: 1050
-    submitUrl: https://unitedhacksv7.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-02T08:04:47.087Z
+  lastWatch: 2026-08-03T09:23:18.666Z
   source: devpost-auto+manual
-  added: 36
-  updated: 21
-  scanned: 57
+  added: 33
+  updated: 20
+  scanned: 54
   kept: 40
