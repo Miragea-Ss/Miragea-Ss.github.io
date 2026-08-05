@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-08-04T08:19:41.164Z",
+  "generatedAt": "2026-08-05T08:15:57.356Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-08-04T08:19:41.101Z",
+      "lastRun": "2026-08-05T08:15:57.269Z",
       "summary": {
-        "en": "40 open · 39 join-worthy · auto-watch",
-        "ja": "募集中40件 · 参加推奨39件 · 自動監視",
-        "zh": "开放40 · 建议参加39 · 自动监视"
+        "en": "40 open · 40 join-worthy · auto-watch",
+        "ja": "募集中40件 · 参加推奨40件 · 自動監視",
+        "zh": "开放40 · 建议参加40 · 自动监视"
       },
       "metrics": {
         "contestsFlagged": 40,
-        "joinRecommended": 39,
+        "joinRecommended": 40,
         "autoTracked": 40
       },
       "events": [
@@ -37,6 +37,18 @@
             "en": "Jul 06 - Aug 10, 2026",
             "ja": "Jul 06 - Aug 10, 2026",
             "zh": "Jul 06 - Aug 10, 2026"
+          }
+        },
+        {
+          "at": "2026-08-05T08:15:57.248Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) All Things Agentic Hackathon",
+          "url": "https://allthingsagentichackathon.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Aug 04 - 31, 2026",
+            "ja": "Aug 04 - 31, 2026",
+            "zh": "Aug 04 - 31, 2026"
           }
         },
         {
@@ -121,18 +133,6 @@
             "en": "Jun 23 - Jul 22, 2026",
             "ja": "Jun 23 - Jul 22, 2026",
             "zh": "Jun 23 - Jul 22, 2026"
-          }
-        },
-        {
-          "at": "2026-07-09T18:41:49.379Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) VoltHacks",
-          "url": "https://volthacks.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "May 22 - Sep 05, 2026",
-            "ja": "May 22 - Sep 05, 2026",
-            "zh": "May 22 - Sep 05, 2026"
           }
         }
       ]

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-04T08:19:41.110Z",
+  "generatedAt": "2026-08-05T08:15:57.310Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -39,11 +39,27 @@
       "status": "recommended"
     },
     {
+      "title": "All Things Agentic Hackathon",
+      "url": "https://allthingsagentichackathon.devpost.com/",
+      "submitUrl": "https://allthingsagentichackathon.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 180000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
       "title": "Reverie Hacks 2026",
       "url": "https://reverie-hacks-2026.devpost.com/",
       "submitUrl": "https://reverie-hacks-2026.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 222448,
+      "prizeHint": 249748,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -108,22 +124,6 @@
       "submitUrl": "https://nandahack.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 18004,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "Kaya AI India Hackathon 2026",
-      "url": "https://kaya-ai-iit-hackathon-2026.devpost.com/",
-      "submitUrl": "https://kaya-ai-iit-hackathon-2026.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 350000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

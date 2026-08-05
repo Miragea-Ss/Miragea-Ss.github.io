@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-04T08:19:41.101Z
+# lastWatch: 2026-08-05T08:15:57.269Z
 contests:
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -29,6 +29,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-08-05T08:15:57.248Z
+    type: devpost-auto
+    title: All Things Agentic Hackathon
+    url: https://allthingsagentichackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 04 - 31, 2026
+      ja: Aug 04 - 31, 2026
+      zh: Aug 04 - 31, 2026
+    sourceNote: Devpost auto · prize~180000 · score 110 · Google
+    auto: true
+    joinScore: 110
+    prizeHint: 180000
+    submitUrl: https://allthingsagentichackathon.devpost.com/challenges/start_a_submission
   - at: 2026-08-02T08:04:47.056Z
     type: devpost-auto
     title: Reverie Hacks 2026
@@ -38,10 +52,10 @@ contests:
       en: Aug 02 - 17, 2026
       ja: Aug 02 - 17, 2026
       zh: Aug 02 - 17, 2026
-    sourceNote: Devpost auto · prize~222448 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~249748 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 222448
+    prizeHint: 249748
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
@@ -399,9 +413,9 @@ contests:
     url: https://caspian.devpost.com/
     ongoing: true
     period:
-      en: Jul 28 - Aug 12, 2026
-      ja: Jul 28 - Aug 12, 2026
-      zh: Jul 28 - Aug 12, 2026
+      en: Jul 28 - Aug 16, 2026
+      ja: Jul 28 - Aug 16, 2026
+      zh: Jul 28 - Aug 16, 2026
     sourceNote: Devpost auto · prize~14500 · score 92 · BITS Pilani
     auto: true
     joinScore: 92
@@ -547,24 +561,10 @@ contests:
     joinScore: 86
     prizeHint: 2550
     submitUrl: https://stemist-hacks-iv.devpost.com/challenges/start_a_submission
-  - at: 2026-07-20T13:59:36.960Z
-    type: devpost-auto
-    title: "Build with Paritok: The Token-Efficiency Hackathon"
-    url: https://build-with-paritok.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 20 - Aug 05, 2026
-      ja: Jul 20 - Aug 05, 2026
-      zh: Jul 20 - Aug 05, 2026
-    sourceNote: Devpost auto · prize~630 · score 86 · Paritok
-    auto: true
-    joinScore: 86
-    prizeHint: 630
-    submitUrl: https://build-with-paritok.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-04T08:19:41.101Z
+  lastWatch: 2026-08-05T08:15:57.269Z
   source: devpost-auto+manual
-  added: 35
+  added: 36
   updated: 20
   scanned: 57
   kept: 40
