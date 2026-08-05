@@ -66,7 +66,7 @@
       }
       textarea { min-height: 94px; resize: vertical; line-height: 1.55; }
       input:focus, textarea:focus, select:focus { border-color: rgba(123,216,232,.62); box-shadow: 0 0 0 3px rgba(123,216,232,.12); }
-      .app { height: 100%; display: grid; grid-template-rows: auto 1fr; }
+      .app { height: 100%; display: grid; grid-template-rows: auto auto 1fr; }
       .bar {
         z-index: 5;
         display: grid;
@@ -77,6 +77,30 @@
         border-bottom: 1px solid var(--line);
         background: rgba(0,0,0,.76);
         backdrop-filter: blur(18px);
+      }
+      body[data-layout-mode="canvas-first"] header.bar > .tools > :is(
+        #videoPrompt, #composeContext, #duplicate, #delete, #zoomOut, #zoomIn,
+        #exportJson, #importJson, #undoBtn, #redoBtn, #alignLeftBtn, #alignTopBtn,
+        #snapshotBtn, #addVideo, #openComfyTop,
+        a[href="/eliora/index.html"], a[href="/"]
+      ) { display: none; }
+      body[data-layout-mode="canvas-first"] header.bar > .tools {
+        gap: 6px;
+        flex-wrap: nowrap;
+      }
+      body[data-layout-mode="canvas-first"] header.bar > .tools > * {
+        min-height: 34px;
+        padding-inline: 10px;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+      @media (min-width: 1280px) {
+        body[data-layout-mode="canvas-first"] .bar {
+          grid-template-columns: minmax(220px, 260px) minmax(560px, 1fr) minmax(190px, auto) minmax(180px, 240px);
+          padding-block: 8px;
+        }
+        body[data-layout-mode="canvas-first"] .brand .brand-moon-orb { width: 46px; height: 46px; }
+        body[data-layout-mode="canvas-first"] .bar > #search { grid-column: 4; grid-row: 1; }
       }
       .brand { display: flex; align-items: center; gap: 10px; min-width: 0; }
       .brand .brand-moon-orb { width: 56px; height: 56px; padding: 0; --brand-logo-scale: 1; --brand-glow-inset: -16%; --brand-glow-opacity: 1; }
@@ -383,6 +407,39 @@
       }
       .help-list span { color: var(--muted); }
       .help-actions { display: flex; justify-content: flex-end; gap: 8px; }
+      .cmd-palette {
+        position: fixed; inset: 0; z-index: 90;
+        background: rgba(0,0,0,.55); backdrop-filter: blur(5px);
+        display: grid; place-items: start center; padding: 12vh 16px 16px;
+      }
+      .cmd-palette.hidden { display: none; }
+      .cmd-palette-card {
+        width: min(520px, 100%); border: 1px solid var(--line2); border-radius: 14px;
+        background: rgba(10,10,12,.97); box-shadow: 0 28px 90px rgba(0,0,0,.6);
+        overflow: hidden;
+      }
+      .cmd-palette-card input {
+        width: 100%; border: 0; border-bottom: 1px solid var(--line);
+        background: transparent; color: var(--text); font-size: 15px; font-weight: 600;
+        padding: 14px 16px; outline: none;
+      }
+      .cmd-palette-list {
+        max-height: min(48vh, 360px); overflow: auto; margin: 0; padding: 6px; list-style: none;
+      }
+      .cmd-palette-list li {
+        display: flex; align-items: center; justify-content: space-between; gap: 10px;
+        padding: 10px 12px; border-radius: 10px; cursor: pointer; font-size: 13px;
+      }
+      .cmd-palette-list li:hover,
+      .cmd-palette-list li.active { background: rgba(123,216,232,.12); }
+      .cmd-palette-list li .cmd-label { font-weight: 700; }
+      .cmd-palette-list li .cmd-hint { color: var(--faint); font-size: 11px; white-space: nowrap; }
+      .cmd-palette-foot {
+        border-top: 1px solid var(--line); padding: 8px 14px; color: var(--faint); font-size: 11px;
+      }
+      .node.search-hit {
+        box-shadow: 0 0 0 2px rgba(242,121,154,.75), 0 18px 50px rgba(0,0,0,.35);
+      }
       .node.selected-multi {
         box-shadow: 0 0 0 2px rgba(123,216,232,.55), 0 18px 50px rgba(0,0,0,.35);
       }
@@ -536,6 +593,38 @@
         line-height: 1.55;
         font-weight: 650;
       }
+      .agent-action-box {
+        margin: 12px 0;
+        padding: 11px;
+        border: 1px solid rgba(123, 216, 232, .3);
+        border-radius: 9px;
+        background: rgba(123, 216, 232, .055);
+      }
+      .agent-action-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+      .agent-action-head strong { color: var(--cyan); font-size: 12px; }
+      .agent-action-head select { width: auto; min-width: 112px; min-height: 32px; padding: 5px 8px; }
+      .agent-inbox { display: grid; gap: 7px; margin-top: 9px; }
+      .agent-inbox:empty { display: none; }
+      .agent-inbox:not(:empty) {
+        position: fixed;
+        z-index: 120;
+        top: 92px;
+        left: 50%;
+        width: min(440px, calc(100vw - 24px));
+        max-height: min(55vh, 520px);
+        overflow: auto;
+        transform: translateX(-50%);
+        padding: 10px;
+        border: 1px solid rgba(123, 216, 232, .5);
+        border-radius: 12px;
+        background: rgba(7, 13, 18, .97);
+        box-shadow: 0 24px 80px rgba(0,0,0,.65);
+      }
+      .agent-proposal { padding: 9px; border: 1px solid var(--line); border-radius: 8px; background: rgba(0,0,0,.24); }
+      .agent-proposal b { display: block; margin-bottom: 4px; font-size: 12px; }
+      .agent-proposal small { color: var(--muted); line-height: 1.45; }
+      .agent-proposal .tools { margin-top: 7px; justify-content: flex-start; }
+      .agent-proposal button { min-height: 30px; padding: 0 9px; font-size: 10px; }
       .panel-sub {
         margin: -4px 0 12px;
         color: var(--faint);
@@ -1484,8 +1573,16 @@
         .palette { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       }
       @media (max-width: 760px) {
-        .bar { grid-template-columns: 1fr; align-items: stretch; }
-        .tools { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+        .bar { grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px; padding: 8px 10px; }
+        .bar > .brand { grid-column: 1; grid-row: 1; }
+        .bar > .brand .brand-moon-orb { width: 42px; height: 42px; }
+        .bar > .brand strong { font-size: 14px; }
+        .bar > .brand span span { font-size: 10px; }
+        .bar > .bar-meta { grid-column: 2; grid-row: 1; }
+        .bar > .bar-meta .trust-pill { display: none; }
+        .bar > .tools { grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 2px; }
+        .bar > #search { grid-column: 1 / -1; grid-row: 3; min-height: 36px; padding-block: 7px; }
+        .env-banner { padding-block: 6px; min-height: 0; font-size: 10px; }
         .node, .node[data-kind="Image"] { width: 248px; }
         .minimap { display: none; }
       }
@@ -1520,13 +1617,14 @@
           <button id="alignTopBtn" type="button" data-i18n="alignTopBtn" data-i18n-title="alignTopTitle" title="Align selected top">Align T</button>
           <button id="snapshotBtn" type="button" data-i18n="snapshotBtn" data-i18n-title="snapshotTitle" title="Save local board snapshot">Snapshot</button>
           <button id="addVideo" type="button" data-i18n="videoBtn" data-i18n-title="videoTitle" title="Upload video">Video</button>
+          <button id="cmdPaletteBtn" type="button" data-i18n="cmdPaletteBtn" data-i18n-title="cmdPaletteTitle" title="Command palette (Ctrl+K)">⌘K</button>
           <button id="openHelp" type="button" data-i18n="helpBtn" data-i18n-title="helpTitle" title="Shortcuts &amp; help (?)">Help</button>
           <a class="tool-link" id="openComfyTop" href="http://127.0.0.1:8188/" target="_blank" rel="noreferrer" data-i18n="openComfy" data-i18n-title="openComfyTitle" title="Open ComfyUI">ComfyUI</a>
           <a class="tool-link" href="/eliora/media-vault/" data-i18n="openVault" data-i18n-title="openVaultTitle" title="Open Media Vault">Vault</a>
           <a class="tool-link" href="/eliora/index.html" data-i18n="backEliora" data-i18n-title="backElioraTitle" title="Back to Eliora">Eliora</a>
           <a class="tool-link" href="/" data-i18n="backMiragea" data-i18n-title="backMirageaTitle" title="Back to Miragea">Miragea</a>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;min-width:0">
+        <div class="bar-meta" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;min-width:0">
           <span class="trust-pill" id="trustPill" data-i18n="trustPill">No real-name · Local · BYOK · EN/JA</span>
           <div class="lang-switch" role="group" data-i18n-aria="langAria" aria-label="Language">
             <button id="langEn" type="button" data-lang="en">EN</button>
@@ -1708,22 +1806,47 @@
               <button id="runWorkflow" class="primary" data-i18n="runSelected">Run Selected</button>
             </div>
           </section>
+          <section class="panel panel-local" id="localAgentPanel">
+            <div class="agent-action-box" style="margin:0">
+              <div class="agent-action-head">
+                <strong>Local Agent Action · MCP</strong>
+                <select id="localAgentMode" aria-label="Local Agent permission">
+                  <option value="off">Off</option>
+                  <option value="review">Review required</option>
+                </select>
+              </div>
+              <p class="panel-sub" style="margin:0 0 8px">Localhost only · token protected · tab isolated · every write is reviewed and undoable. No account or identity verification.</p>
+              <div class="tools" style="justify-content:flex-start; flex-wrap:wrap">
+                <button id="connectLocalAgent" type="button">Connect local MCP</button>
+                <button id="copyLocalAgentConfig" type="button">Copy connection</button>
+              </div>
+              <p id="localAgentStatus" class="ai-status">Bridge not connected.</p>
+              <div id="localAgentInbox" class="agent-inbox" aria-live="polite"></div>
+            </div>
+          </section>
           <details class="cloud-details" id="cloudApiWrap">
-            <summary data-i18n="cloudApiSummary">Cloud API · BYOK</summary>
+            <summary data-i18n="cloudApiSummary">Connection Hub · optional endpoints</summary>
             <div class="panel-inner" id="cloudApiPanel">
               <p class="panel-sub" data-i18n="cloudApiSub">Eliora does not proxy. Keys stay on this device.</p>
-              <p class="privacy-note" data-i18n="privacyCloud">International BYOK only (OpenRouter, OpenAI, Groq, Together, Fireworks, xAI, Gemini API, custom OpenAI-compatible). No 即梦 / 火山 / China real-name platforms. Keys stay on this device.</p>
+              <p class="privacy-note" data-i18n="privacyCloud">Local/self-hosted first. Eliora requires no account or identity verification. International BYOK is optional; external provider rules may vary. No China real-name platforms. Keys stay on this device.</p>
               <div class="field">
                 <label for="cloudProvider" data-i18n="cloudProviderLabel">Provider preset</label>
                 <select id="cloudProvider">
-                  <option value="openrouter">OpenRouter</option>
-                  <option value="openai">OpenAI</option>
-                  <option value="groq">Groq</option>
-                  <option value="together">Together</option>
-                  <option value="fireworks">Fireworks</option>
-                  <option value="xai">xAI · Grok</option>
-                  <option value="gemini">Google Gemini (OpenAI-compat)</option>
-                  <option value="custom" data-i18n="cloudProviderCustom">Custom OpenAI-compatible</option>
+                  <optgroup label="Local / self-hosted · no account">
+                    <option value="localai">LocalAI · localhost</option>
+                    <option value="lmstudio">LM Studio · localhost</option>
+                    <option value="vllm">vLLM · localhost</option>
+                    <option value="custom" data-i18n="cloudProviderCustom">Custom OpenAI-compatible</option>
+                  </optgroup>
+                  <optgroup label="International BYOK · optional account">
+                    <option value="openrouter">OpenRouter</option>
+                    <option value="openai">OpenAI</option>
+                    <option value="groq">Groq</option>
+                    <option value="together">Together</option>
+                    <option value="fireworks">Fireworks</option>
+                    <option value="xai">xAI · Grok</option>
+                    <option value="gemini">Google Gemini (OpenAI-compat)</option>
+                  </optgroup>
                 </select>
               </div>
               <div class="tools" style="justify-content:flex-start; margin-bottom:12px; flex-wrap:wrap">
@@ -1737,6 +1860,21 @@
               </div>
               <div class="field"><label for="cloudSystem">System</label><textarea id="cloudSystem">You are Eliora, a concise AI collaborator. Turn the selected card into useful next steps.</textarea></div>
               <button id="askCloud" class="primary" data-i18n="askCloudBtn">Ask Cloud API</button>
+              <hr style="border:none;border-top:1px solid var(--line);margin:14px 0" />
+              <p class="panel-sub" data-i18n="agentConnectSub">Agent discovery · open protocols. Connection test only; it does not send a task or run a tool.</p>
+              <div class="row">
+                <div class="field"><label for="agentProtocol" data-i18n="agentProtocolLabel">Agent protocol</label>
+                  <select id="agentProtocol">
+                    <option value="a2a">A2A · Agent Card</option>
+                    <option value="mcp">MCP · Streamable HTTP</option>
+                    <option value="openai">OpenAI-compatible agent</option>
+                  </select>
+                </div>
+                <div class="field"><label for="agentKey" data-i18n="agentKeyLabel">Optional key</label><input id="agentKey" type="password" autocomplete="off" placeholder="Optional Bearer token" /></div>
+              </div>
+              <div class="field"><label for="agentEndpoint" data-i18n="agentEndpointLabel">Agent endpoint / service root</label><input id="agentEndpoint" placeholder="http://127.0.0.1:9000 or https://agent.example" /></div>
+              <button id="testAgentConnection" type="button" data-i18n="testAgentConnection">Test connection only</button>
+              <p id="agentStatus" class="ai-status" data-i18n="agentStatusIdle">No agent task will be sent during this test.</p>
               <hr style="border:none;border-top:1px solid var(--line);margin:14px 0" />
               <p class="panel-sub" data-i18n="cloudImageSub">Cloud image — international OpenAI-compatible. Away from home GPU without 即梦/火山.</p>
               <div class="field"><label for="cloudImageEndpoint" data-i18n="cloudImageEndpoint">Image endpoint</label><input id="cloudImageEndpoint" placeholder="https://openrouter.ai/api/v1/images/generations or …/v1/images/generations" /></div>
@@ -2026,7 +2164,7 @@
       </div>
     </div>
 
-    <input id="fileInput" class="hidden" type="file" accept=".json,application/json,text/json" />
+    <input id="fileInput" class="hidden" type="file" accept=".json,.canvas,application/json,text/json" />
     <input id="imageFilesInput" class="hidden" type="file" accept="image/*,video/*" multiple />
     <input id="videoFilesInput" class="hidden" type="file" accept="video/*" multiple />
     <input id="workflowFolderInput" class="hidden" type="file" accept=".json,application/json,text/json" webkitdirectory directory multiple />
@@ -2068,6 +2206,14 @@
       </div>
     </div>
 
+    <div id="cmdPalette" class="cmd-palette hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Command palette">
+      <div class="cmd-palette-card">
+        <input id="cmdPaletteInput" type="search" autocomplete="off" data-i18n-placeholder="cmdPalettePlaceholder" placeholder="Type a command…" />
+        <ul class="cmd-palette-list" id="cmdPaletteList" role="listbox"></ul>
+        <div class="cmd-palette-foot" data-i18n="cmdPaletteFoot">↑↓ navigate · Enter run · Esc close · Ctrl+K open</div>
+      </div>
+    </div>
+
     <script>
       const $ = (id) => document.getElementById(id);
       const uiLangKey = 'eliora-canvas-lang-v1';
@@ -2105,7 +2251,7 @@
           bannerCloud: 'Cloud assist — optional BYOK. Local needs no account. Keys stay in this browser.',
           bannerFile: 'Opened via file:// — use START-ELIORA-CANVAS.bat for Comfy connection.',
           engineComfy: 'ComfyUI · Local GPU', engineLlama: 'llama.cpp · Local', engineCloud: 'Cloud API · BYOK',
-          privacyCloud: 'Your key + your endpoint (BYOK). Board and keys stay on this device. Eliora never proxies. Prefer local llama/ComfyUI for zero account and no real-name signup. We do not integrate China real-name platforms.',
+          privacyCloud: 'Local/self-hosted first. Eliora requires no account or identity verification. International BYOK is optional; external provider rules may vary. No China real-name platforms. Keys stay on this device.',
           createImage: 'Image', createImageSub: 'Upload / drop',
           createPrompt: 'Prompt', createPromptSub: 'AI instruction card',
           createNote: 'Note', createNoteSub: 'Text & tasks',
@@ -2200,8 +2346,8 @@
           importJsonBtn: 'Import JSON', folderBtn: 'Folder',
           workflowStatsDefault: 'Add ComfyUI workflow JSON via Import JSON. Use Selected copies to ComfyUI panel.',
           useSelected: 'Use Selected', runSelected: 'Run Selected',
-          cloudApiSummary: 'Cloud API · BYOK',
-          cloudApiSub: 'Eliora does not proxy. Keys stay on this device. Skip if local is enough.',
+          cloudApiSummary: 'Connection Hub · optional endpoints',
+          cloudApiSub: 'Local/self-hosted endpoints work without an Eliora account. Remote BYOK is optional; keys stay on this device.',
           presetOpenRouter: 'OpenRouter',
           applyCloudProvider: 'Apply preset',
           cloudProviderLabel: 'Provider preset',
@@ -2214,16 +2360,24 @@
           cloudImageSize: 'Size',
           askCloudImageBtn: 'Cloud Image',
           fillImageEndpoint: 'Auto image URL',
-          cloudNeedKey: 'Enter your API key (BYOK). Key stays on this device only.',
+          cloudNeedKey: 'This remote endpoint requires your API key (BYOK). Local endpoints can leave it empty.',
           cloudNeedEndpoint: 'Enter a chat endpoint.',
           cloudConnecting: 'Connecting to cloud API…',
           cloudChatOk: 'Cloud chat reply added as a card.',
           cloudImageOk: 'Cloud image added to canvas.',
           cloudImageFail: 'Cloud image failed',
           cloudPresetOk: 'Preset applied. Paste your API key only.',
+          localPresetOk: 'Local endpoint applied. No account or API key is required by Eliora.',
           cloudImageUrlFilled: 'Image endpoint filled from chat base URL.',
           cloudNoPrompt: 'Write a prompt on the selected card or in the composer.',
           askCloudBtn: 'Ask Cloud API',
+          agentConnectSub: 'Agent discovery · open protocols. Connection test only; it does not send a task or run a tool.',
+          agentProtocolLabel: 'Agent protocol', agentKeyLabel: 'Optional key',
+          agentEndpointLabel: 'Agent endpoint / service root', testAgentConnection: 'Test connection only',
+          agentStatusIdle: 'No agent task will be sent during this test.',
+          agentNeedEndpoint: 'Enter an agent endpoint.', agentTesting: 'Testing connection without sending work…',
+          agentConnected: 'Connected', agentConnectFailed: 'Connection failed',
+          agentCorsHint: 'Check endpoint, CORS, authentication, and whether the local server is running.',
           workflowPanelTitle: 'Workflow', workflowPanelHint: 'Drop or pick JSON. One file auto-runs ComfyUI.',
           workflowDrop: 'Drop JSON / click to pick', exportSelection: 'Export selection as JSON',
           workflowPanelStatus: 'Connect cards with wires, then run from the composer below.',
@@ -2323,6 +2477,49 @@
           helpKbdUndo: 'Undo board change',
           helpKbdRedo: 'Redo board change',
           helpKbdSelectAll: 'Select all cards',
+          helpKbdFind: 'Focus search / next match',
+          helpKbdCmd: 'Command palette',
+          helpKbdPlan: 'Plan steps on board from selection',
+          cmdPaletteBtn: '⌘K',
+          cmdPaletteTitle: 'Command palette (Ctrl+K)',
+          cmdPalettePlaceholder: 'Type a command or search…',
+          cmdPaletteFoot: '↑↓ navigate · Enter run · Esc close · Ctrl+K open',
+          cmdFind: 'Find cards',
+          cmdFit: 'Fit all cards',
+          cmdAddNote: 'Add note',
+          cmdAddPrompt: 'Add image prompt',
+          cmdConnect: 'Connect mode',
+          cmdUndo: 'Undo',
+          cmdRedo: 'Redo',
+          cmdExport: 'Export board JSON',
+          cmdImport: 'Import JSON / .canvas',
+          cmdExportJsonCanvas: 'Export open JSON Canvas (.canvas)',
+          cmdExportSvg: 'Export board as SVG',
+          cmdExportPng: 'Export board as PNG',
+          cmdHelp: 'Open help',
+          cmdPlan: 'Plan steps on board',
+          cmdAskLocal: 'Ask Local (llama)',
+          cmdSendComfy: 'Send Comfy',
+          cmdSnapshot: 'Save snapshot',
+          planPrompt: 'Brief for step plan (one idea → numbered cards on board):',
+          planEmpty: 'Enter a short brief to place steps on the board.',
+          planDone: 'Placed {n} plan steps on the board',
+          planLocal: 'Planning with local llama…',
+          planLocalOk: 'Local llama plan placed ({n} steps)',
+          planLocalFail: 'Local llama offline — used offline plan',
+          findNoMatch: 'No cards match search',
+          findMatch: 'Match {i}/{n}',
+          snapGridOn: 'Grid snap ON',
+          snapGridOff: 'Grid snap OFF',
+          cmdSnapGrid: 'Toggle grid snap',
+          cmdCopy: 'Copy selection',
+          cmdPaste: 'Paste cards',
+          cmdDistribute: 'Distribute selected horizontally',
+          copyOk: 'Copied {n} cards',
+          pasteOk: 'Pasted {n} cards',
+          pasteEmpty: 'Clipboard empty — copy cards first (Ctrl+C)',
+          distNeed: 'Select 2+ cards to distribute',
+          distOk: 'Distributed {n} cards',
           undoBtn: 'Undo',
           redoBtn: 'Redo',
           undoTitle: 'Undo (Ctrl+Z)',
@@ -2437,7 +2634,7 @@
           bannerCloud: 'クラウドは任意の補助（BYOK）。ローカルはアカウント不要。キーはこのブラウザ内のみ。',
           bannerFile: 'file:// で開いています — START-ELIORA-CANVAS.bat で開き直してください。',
           engineComfy: 'ComfyUI · ローカル GPU', engineLlama: 'llama.cpp · ローカル', engineCloud: 'クラウドAPI · 自分のキー',
-          privacyCloud: 'キーとエンドポイントはあなた自身（BYOK）。ボードとキーはこの端末のみ。Eliora は仲介しません。実名登録なし・匿名利用はローカル（llama / ComfyUI）を推奨。中国向け実名制サービスは組み込みません。',
+          privacyCloud: 'ローカル／セルフホスト優先。Elioraの登録・実名確認は不要です。国際BYOKは任意で、外部サービス側の規則は変わる場合があります。中国の実名制サービスは組み込みません。キーはこの端末だけに保存します。',
           createImage: '画像', createImageSub: 'アップロード / ドロップ',
           createPrompt: 'プロンプト', createPromptSub: 'AI 指示カード',
           createNote: 'メモ', createNoteSub: 'テキスト・タスク',
@@ -2532,8 +2729,8 @@
           importJsonBtn: 'JSON 取込', folderBtn: 'フォルダ',
           workflowStatsDefault: 'ComfyUI ワークフロー JSON を「JSON 取込」で追加。「選択を使う」で ComfyUI 欄へ反映。',
           useSelected: '選択を使う', runSelected: '選択を実行',
-          cloudApiSummary: 'クラウドAPI · 自分のキー',
-          cloudApiSub: 'Eliora は仲介しません。キーは端末内のみ。普段はローカルで十分なら開かなくて OK。',
+          cloudApiSummary: '接続ハブ · 任意のendpoint',
+          cloudApiSub: 'ローカル／セルフホストはEliora登録なしで利用できます。外部BYOKは任意で、キーはこの端末だけに保存します。',
           presetOpenRouter: 'OpenRouter',
           applyCloudProvider: 'プリセット適用',
           cloudProviderLabel: 'プロバイダプリセット',
@@ -2546,16 +2743,24 @@
           cloudImageSize: 'サイズ',
           askCloudImageBtn: 'クラウド画像',
           fillImageEndpoint: '画像URL自動',
-          cloudNeedKey: 'API キーを入力してください（BYOK）。キーはこの端末のみ。',
+          cloudNeedKey: 'この外部endpointには自分のAPIキー（BYOK）が必要です。ローカルendpointなら空欄で使えます。',
           cloudNeedEndpoint: 'チャット endpoint を入力してください。',
           cloudConnecting: 'クラウド API に接続中…',
           cloudChatOk: 'クラウドの応答をカードに追加しました。',
           cloudImageOk: 'クラウド画像をキャンバスに追加しました。',
           cloudImageFail: 'クラウド画像に失敗',
           cloudPresetOk: 'プリセットを適用しました。API キーだけ入力してください。',
+          localPresetOk: 'ローカルendpointを設定しました。Elioraの登録やAPIキーは不要です。',
           cloudImageUrlFilled: 'チャット URL から画像 endpoint を埋めました。',
           cloudNoPrompt: '選択カードまたは実行パネルにプロンプトを書いてください。',
           askCloudBtn: 'クラウドに質問',
+          agentConnectSub: 'Agent探索 · 公開プロトコル。接続確認だけを行い、タスク送信やツール実行はしません。',
+          agentProtocolLabel: 'Agentプロトコル', agentKeyLabel: '任意のキー',
+          agentEndpointLabel: 'Agent endpoint / service root', testAgentConnection: '接続だけ確認',
+          agentStatusIdle: 'この確認ではAgentへ仕事を送りません。',
+          agentNeedEndpoint: 'Agent endpointを入力してください。', agentTesting: '仕事を送らず接続確認中…',
+          agentConnected: '接続OK', agentConnectFailed: '接続失敗',
+          agentCorsHint: 'endpoint、CORS、認証、ローカルserverの起動を確認してください。',
           workflowPanelTitle: 'ワークフロー', workflowPanelHint: 'JSON をドロップするか選択。1ファイルなら自動で ComfyUI 実行を試みます。',
           workflowDrop: 'JSON をドロップ / クリックして選択', exportSelection: '選択を JSON 出力',
           workflowPanelStatus: 'カードを線でつないでから、選択カード下の実行パネルで ▶ 実行。',
@@ -2655,6 +2860,49 @@
           helpKbdUndo: 'ボード変更を元に戻す',
           helpKbdRedo: 'やり直し',
           helpKbdSelectAll: '全カード選択',
+          helpKbdFind: '検索フォーカス / 次の一致',
+          helpKbdCmd: 'コマンドパレット',
+          helpKbdPlan: '選択文からボードに手順を置く',
+          cmdPaletteBtn: '⌘K',
+          cmdPaletteTitle: 'コマンドパレット（Ctrl+K）',
+          cmdPalettePlaceholder: 'コマンドを入力…',
+          cmdPaletteFoot: '↑↓ 移動 · Enter 実行 · Esc 閉じる · Ctrl+K 開く',
+          cmdFind: 'カードを検索',
+          cmdFit: '全体表示',
+          cmdAddNote: 'メモを追加',
+          cmdAddPrompt: '画像プロンプトを追加',
+          cmdConnect: '接続モード',
+          cmdUndo: '元に戻す',
+          cmdRedo: 'やり直し',
+          cmdExport: 'ボード JSON 書き出し',
+          cmdImport: 'JSON / .canvas 読み込み',
+          cmdExportJsonCanvas: 'オープン標準 JSON Canvas (.canvas)',
+          cmdExportSvg: 'ボードを SVG 書き出し',
+          cmdExportPng: 'ボードを PNG 書き出し',
+          cmdHelp: 'ヘルプを開く',
+          cmdPlan: 'ボードに手順を置く',
+          cmdAskLocal: 'ローカル質問',
+          cmdSendComfy: 'Comfy 送信',
+          cmdSnapshot: 'スナップショット保存',
+          planPrompt: '手順プラン用のブリーフ（1アイデア → 番号付きカード）:',
+          planEmpty: 'ボードに置く手順のブリーフを入力してください。',
+          planDone: '{n} 個の手順カードを置きました',
+          planLocal: 'ローカル llama で計画中…',
+          planLocalOk: 'ローカル llama 計画を配置（{n} 手順）',
+          planLocalFail: 'llama オフライン — オフライン計画を使用',
+          findNoMatch: '一致するカードがありません',
+          findMatch: '一致 {i}/{n}',
+          snapGridOn: 'グリッド吸着 ON',
+          snapGridOff: 'グリッド吸着 OFF',
+          cmdSnapGrid: 'グリッド吸着の切替',
+          cmdCopy: '選択をコピー',
+          cmdPaste: 'カードを貼り付け',
+          cmdDistribute: '選択を横に等間隔',
+          copyOk: '{n} 枚コピーしました',
+          pasteOk: '{n} 枚貼り付けました',
+          pasteEmpty: 'クリップボード空 — 先に Ctrl+C',
+          distNeed: '2枚以上選んでください',
+          distOk: '{n} 枚を等間隔配置',
           undoBtn: '戻す',
           redoBtn: 'やり直し',
           undoTitle: '元に戻す（Ctrl+Z）',
@@ -2992,6 +3240,9 @@
       const settingsKey = 'eliora-llamacpp-settings-v1';
       const comfySettingsKey = 'eliora-comfyui-settings-v1';
       const cloudSettingsKey = 'eliora-cloud-api-settings-v1';
+      const agentSettingsKey = 'eliora-agent-connection-settings-v1';
+      const localAgentModeKey = 'eliora-local-agent-mode-v1';
+      const localAgentClientKey = 'eliora-local-agent-client-v1';
       const aiModeKey = 'eliora-ai-mode-v1';
       const imageDbName = 'eliora-canvas-images-v1';
       const imageUrlPrefix = 'eliora-img://';
@@ -3028,6 +3279,11 @@
       let dragNode = null;
       let spaceHeld = false;
       const DRAG_THRESHOLD_PX = 5;
+      const GRID_SIZE = 24;
+      const gridSnapKey = 'eliora-canvas-grid-snap-v1';
+      let gridSnapOn = localStorage.getItem(gridSnapKey) === '1';
+      let cardClipboard = null; // in-memory copy of selected subgraph
+      const boardBackupKey = 'eliora-canvas-board-backups-v1';
 
       /* ── Beat-hero interaction engine (Eliora original) ── */
       let edgesRaf = 0;
@@ -3290,6 +3546,7 @@
         layout.classList.remove('canvas-first', 'rail-open', 'inspector-open', 'both-open');
         const mode = layoutMode || 'canvas-first';
         layout.classList.add(mode === 'both' ? 'both-open' : mode === 'rail' ? 'rail-open' : mode === 'inspector' ? 'inspector-open' : 'canvas-first');
+        document.body.dataset.layoutMode = mode;
         localStorage.setItem(layoutModeKey, layoutMode);
         const focusBtn = $('canvasFocusBtn');
         if (focusBtn) focusBtn.classList.toggle('active', layoutMode === 'canvas-first');
@@ -3504,6 +3761,20 @@
       const composerPromptDrafts = new Map();
       let createMenuPoint = null;
       let pendingCreatePoint = null;
+      let localAgentToken = '';
+      let localAgentLastActionId = 0;
+      let localAgentPollTimer = null;
+      let localAgentPublishTimer = null;
+      let localAgentPending = [];
+      const localAgentClientId = (() => {
+        try {
+          const existing = sessionStorage.getItem(localAgentClientKey);
+          if (existing) return existing;
+          const created = uid();
+          sessionStorage.setItem(localAgentClientKey, created);
+          return created;
+        } catch (_) { return uid(); }
+      })();
       const composerEngineKey = 'eliora-composer-engine-v1';
       function uid() {
         return crypto && crypto.randomUUID ? crypto.randomUUID() : 'id-' + Math.random().toString(36).slice(2);
@@ -4576,6 +4847,11 @@
           { kbd: 'Ctrl+Z', label: t('helpKbdUndo') },
           { kbd: 'Ctrl+Y', label: t('helpKbdRedo') },
           { kbd: 'Ctrl+A', label: t('helpKbdSelectAll') },
+          { kbd: 'Ctrl+F', label: t('helpKbdFind') },
+          { kbd: 'Ctrl+K', label: t('helpKbdCmd') },
+          { kbd: 'Ctrl+P', label: t('helpKbdPlan') },
+          { kbd: 'Ctrl+C / V', label: t('cmdCopy') + ' / ' + t('cmdPaste') },
+          { kbd: 'Shift+G', label: t('cmdSnapGrid') },
           { kbd: 'Shift+Click', label: t('multiSelected').replace('{n}', 'N') },
           { kbd: 'Delete', label: t('helpKbdDel') },
           { kbd: 'Esc', label: t('helpKbdEsc') },
@@ -4604,6 +4880,357 @@
         backdrop.classList.add('hidden');
         backdrop.setAttribute('aria-hidden', 'true');
       }
+      let cmdPaletteIndex = 0;
+      let searchMatchIndex = -1;
+      function matchingSearchNodes() {
+        const term = (searchTerm || '').toLowerCase().trim();
+        if (!term) return [];
+        return nodes.filter((node) => {
+          const hay = `${node.title} ${node.kind} ${node.text} ${tags(node.tags).join(' ')}`.toLowerCase();
+          return hay.includes(term);
+        });
+      }
+      function focusCameraOnNode(node) {
+        if (!node || !stage) return;
+        const w = node.kind === 'Image' ? 332 : 292;
+        const h = 190;
+        camera.z = clamp(camera.z || 1, 0.45, 1.6);
+        camera.x = stage.clientWidth / 2 - (node.x + w / 2) * camera.z;
+        camera.y = stage.clientHeight / 2 - (node.y + h / 2) * camera.z;
+        applyCamera();
+        drawMinimap();
+      }
+      function cycleSearchMatch(dir = 1) {
+        const hits = matchingSearchNodes();
+        if (!hits.length) {
+          if (searchTerm) showStatusToast('Find', t('findNoMatch'), 'warn', 4000);
+          return;
+        }
+        searchMatchIndex = (searchMatchIndex + dir + hits.length * 10) % hits.length;
+        const node = hits[searchMatchIndex];
+        selectOnly(node.id);
+        focusCameraOnNode(node);
+        render();
+        const msg = t('findMatch').replace('{i}', String(searchMatchIndex + 1)).replace('{n}', String(hits.length));
+        if ($('savedAt')) $('savedAt').textContent = msg;
+      }
+      function focusCanvasSearch() {
+        const input = $('search');
+        if (!input) return;
+        input.focus();
+        input.select?.();
+      }
+      function snapCoord(v) {
+        if (!gridSnapOn) return Math.round(v);
+        return Math.round(v / GRID_SIZE) * GRID_SIZE;
+      }
+      function toggleGridSnap() {
+        gridSnapOn = !gridSnapOn;
+        localStorage.setItem(gridSnapKey, gridSnapOn ? '1' : '0');
+        const msg = gridSnapOn ? t('snapGridOn') : t('snapGridOff');
+        if ($('modeLabel')) $('modeLabel').textContent = msg;
+        showStatusToast('Grid', msg, 'ok', 2500);
+      }
+      function heuristicPlanSteps(brief) {
+        const lines = brief
+          .split(/\r?\n|。|\.(?:\s|$)|;|；|→|=>/)
+          .map((s) => s.replace(/^[\s\-\*\d\.\)\(]+/, '').trim())
+          .filter((s) => s.length >= 3);
+        let steps = lines.slice(0, 8);
+        if (steps.length < 2) {
+          const base = brief.slice(0, 180);
+          steps = [
+            `Brief: ${base}`,
+            'Gather references / materials',
+            'Draft generation prompt',
+            'Run local Comfy / llama',
+            'Review result · re-run if needed',
+          ];
+        }
+        return steps;
+      }
+      function parsePlanStepsFromText(text) {
+        if (!text) return [];
+        return text
+          .split(/\r?\n/)
+          .map((s) => s.replace(/^\s*(?:[-*]|\d+[.)、．])\s*/, '').trim())
+          .filter((s) => s.length >= 2 && !/^(here|steps?|plan|手順)/i.test(s))
+          .slice(0, 10);
+      }
+      function placePlanSteps(steps, sourceLabel) {
+        if (!steps?.length) return;
+        pushHistory();
+        const origin = screenToWorld(stage.clientWidth * 0.28, stage.clientHeight * 0.35);
+        const created = [];
+        steps.forEach((step, i) => {
+          const node = {
+            id: uid(),
+            x: snapCoord(origin.x + i * 320),
+            y: snapCoord(origin.y + (i % 2) * 40),
+            kind: i === 0 ? 'Note' : (i === steps.length - 1 ? 'Prompt' : 'Note'),
+            title: `${i + 1}. ${step.slice(0, 48)}${step.length > 48 ? '…' : ''}`,
+            text: step,
+            color: i === 0 ? 'cyan' : (i === steps.length - 1 ? 'amber' : 'rose'),
+            tags: ['Plan', `Step${i + 1}`, sourceLabel || 'offline'].filter(Boolean),
+            url: '',
+          };
+          nodes.unshift(node);
+          created.push(node);
+        });
+        for (let i = 0; i < created.length - 1; i++) {
+          edges.push({ id: uid(), from: created[i].id, to: created[i + 1].id, label: 'plan' });
+        }
+        setSelection(created.map((n) => n.id), created[0].id);
+        render();
+        scheduleSave();
+        fitView();
+        return created.length;
+      }
+      async function tryLocalLlamaPlanSteps(brief) {
+        const endpoint = ($('llamaEndpoint')?.value || 'http://127.0.0.1:8080/v1/chat/completions').trim();
+        const model = ($('llamaModel')?.value || 'local-model').trim();
+        const key = ($('llamaKey')?.value || '').trim();
+        const system = 'You are a local production planner for an infinite canvas. Reply ONLY with 4-8 numbered steps, one per line, short actionable English or Japanese matching the brief language. No intro.';
+        const headers = { 'Content-Type': 'application/json' };
+        if (key) headers.Authorization = `Bearer ${key}`;
+        const ctrl = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 12000);
+        try {
+          const res = await fetch(endpoint, {
+            method: 'POST',
+            headers,
+            signal: ctrl.signal,
+            body: JSON.stringify({
+              model,
+              temperature: 0.3,
+              max_tokens: 400,
+              messages: [
+                { role: 'system', content: system },
+                { role: 'user', content: `Break into canvas steps:\n${brief.slice(0, 1200)}` },
+              ],
+            }),
+          });
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          const text = data?.choices?.[0]?.message?.content || data?.content || '';
+          const steps = parsePlanStepsFromText(text);
+          if (steps.length >= 2) return steps;
+          throw new Error('short plan');
+        } finally {
+          clearTimeout(timer);
+        }
+      }
+      async function planStepsOnBoard(briefRaw) {
+        let brief = (briefRaw || '').trim();
+        if (!brief) {
+          const sel = selectedNode ? nodeBy(selectedNode) : null;
+          if (sel) brief = `${sel.title || ''}\n${sel.text || ''}`.trim();
+        }
+        if (!brief) {
+          brief = window.prompt(t('planPrompt'), '') || '';
+        }
+        brief = brief.trim();
+        if (!brief) {
+          showStatusToast('Plan', t('planEmpty'), 'warn', 5000);
+          return;
+        }
+        showStatusToast('Plan', t('planLocal'), 'ok', 4000);
+        let steps = null;
+        let source = 'offline';
+        try {
+          steps = await tryLocalLlamaPlanSteps(brief);
+          source = 'llama-local';
+        } catch (_) {
+          steps = heuristicPlanSteps(brief);
+          source = 'offline';
+          showStatusToast('Plan', t('planLocalFail'), 'warn', 3500);
+        }
+        const n = placePlanSteps(steps, source);
+        if (n) {
+          const msg = source === 'llama-local'
+            ? t('planLocalOk').replace('{n}', String(n))
+            : t('planDone').replace('{n}', String(n));
+          showStatusToast('Plan', msg, 'ok', 5000);
+        }
+      }
+      function copySelectedCards() {
+        const list = selectedNodeList();
+        if (!list.length) return;
+        const idSet = new Set(list.map((n) => n.id));
+        cardClipboard = {
+          type: 'eliora-cards-v1',
+          nodes: list.map((n) => JSON.parse(JSON.stringify(n))),
+          edges: edges.filter((e) => idSet.has(e.from) && idSet.has(e.to)).map((e) => ({ ...e })),
+        };
+        try {
+          navigator.clipboard?.writeText?.(JSON.stringify(cardClipboard));
+        } catch (_) { /* ignore */ }
+        showStatusToast('Copy', t('copyOk').replace('{n}', String(list.length)), 'ok', 2500);
+      }
+      function pasteCards() {
+        const pack = cardClipboard;
+        if (!pack?.nodes?.length) {
+          showStatusToast('Paste', t('pasteEmpty'), 'warn', 4000);
+          return;
+        }
+        pushHistory();
+        const idMap = {};
+        const offset = 40;
+        const created = [];
+        pack.nodes.forEach((raw) => {
+          const n = JSON.parse(JSON.stringify(raw));
+          const oldId = n.id;
+          n.id = uid();
+          idMap[oldId] = n.id;
+          n.x = snapCoord((n.x || 0) + offset);
+          n.y = snapCoord((n.y || 0) + offset);
+          nodes.unshift(n);
+          created.push(n);
+        });
+        (pack.edges || []).forEach((e) => {
+          const from = idMap[e.from];
+          const to = idMap[e.to];
+          if (from && to) edges.push({ id: uid(), from, to, label: e.label || '' });
+        });
+        setSelection(created.map((n) => n.id), created[0]?.id || null);
+        render();
+        scheduleSave();
+        showStatusToast('Paste', t('pasteOk').replace('{n}', String(created.length)), 'ok', 2500);
+      }
+      function distributeSelectedHorizontal() {
+        const list = selectedNodeList().slice().sort((a, b) => a.x - b.x);
+        if (list.length < 2) {
+          showStatusToast('Align', t('distNeed'), 'warn', 3500);
+          return;
+        }
+        pushHistory();
+        const minX = list[0].x;
+        const maxX = list[list.length - 1].x;
+        const span = Math.max(maxX - minX, (list.length - 1) * 300);
+        list.forEach((n, i) => {
+          n.x = snapCoord(minX + (span * i) / (list.length - 1));
+        });
+        render();
+        scheduleSave();
+        showStatusToast('Align', t('distOk').replace('{n}', String(list.length)), 'ok', 2500);
+      }
+      function pushBoardBackup() {
+        try {
+          const snap = {
+            at: Date.now(),
+            boardId: activeBoardId,
+            nodes, edges, camera,
+          };
+          const arr = JSON.parse(localStorage.getItem(boardBackupKey) || '[]');
+          arr.unshift(snap);
+          while (arr.length > 8) arr.pop();
+          localStorage.setItem(boardBackupKey, JSON.stringify(arr));
+        } catch (_) { /* quota */ }
+      }
+      function commandPaletteItems() {
+        return [
+          { id: 'find', label: t('cmdFind'), hint: 'Ctrl+F', run: () => { hideCommandPalette(); focusCanvasSearch(); } },
+          { id: 'plan', label: t('cmdPlan'), hint: 'Ctrl+P', run: () => { hideCommandPalette(); planStepsOnBoard(); } },
+          { id: 'copy', label: t('cmdCopy'), hint: 'Ctrl+C', run: () => { hideCommandPalette(); copySelectedCards(); } },
+          { id: 'paste', label: t('cmdPaste'), hint: 'Ctrl+V', run: () => { hideCommandPalette(); pasteCards(); } },
+          { id: 'grid', label: t('cmdSnapGrid'), hint: 'Shift+G', run: () => { hideCommandPalette(); toggleGridSnap(); } },
+          { id: 'dist', label: t('cmdDistribute'), hint: 'Dist', run: () => { hideCommandPalette(); distributeSelectedHorizontal(); } },
+          { id: 'fit', label: t('cmdFit'), hint: 'Fit', run: () => { hideCommandPalette(); fitView(); } },
+          { id: 'note', label: t('cmdAddNote'), hint: 'Add', run: () => { hideCommandPalette(); addNode('note'); } },
+          { id: 'prompt', label: t('cmdAddPrompt'), hint: 'Prompt', run: () => { hideCommandPalette(); createPromptNode('imagePrompt'); } },
+          { id: 'connect', label: t('cmdConnect'), hint: 'C', run: () => { hideCommandPalette(); $('connect')?.click(); } },
+          { id: 'ask', label: t('cmdAskLocal'), hint: 'Ctrl+Enter', run: () => { hideCommandPalette(); askLlama(); } },
+          { id: 'comfy', label: t('cmdSendComfy'), hint: 'Ctrl+Shift+Enter', run: () => { hideCommandPalette(); sendComfy(); } },
+          { id: 'undo', label: t('cmdUndo'), hint: 'Ctrl+Z', run: () => { hideCommandPalette(); undoBoard(); } },
+          { id: 'redo', label: t('cmdRedo'), hint: 'Ctrl+Y', run: () => { hideCommandPalette(); redoBoard(); } },
+          { id: 'export', label: t('cmdExport'), hint: 'Export', run: () => { hideCommandPalette(); $('exportJson')?.click(); } },
+          { id: 'jsoncanvas', label: t('cmdExportJsonCanvas'), hint: '.canvas', run: () => { hideCommandPalette(); exportJsonCanvas(); } },
+          { id: 'svg', label: t('cmdExportSvg'), hint: 'SVG', run: () => { hideCommandPalette(); exportBoardSvg(); } },
+          { id: 'png', label: t('cmdExportPng'), hint: 'PNG', run: () => { hideCommandPalette(); exportBoardPng(); } },
+          { id: 'import', label: t('cmdImport'), hint: 'Import', run: () => { hideCommandPalette(); $('importJson')?.click(); } },
+          { id: 'snap', label: t('cmdSnapshot'), hint: 'Snap', run: () => { hideCommandPalette(); $('snapshotBtn')?.click(); } },
+          { id: 'help', label: t('cmdHelp'), hint: '?', run: () => { hideCommandPalette(); showHelp(); } },
+        ];
+      }
+      function filteredCommands() {
+        const q = ($('cmdPaletteInput')?.value || '').trim().toLowerCase();
+        const all = commandPaletteItems();
+        if (!q) return all;
+        return all.filter((c) => `${c.label} ${c.hint} ${c.id}`.toLowerCase().includes(q));
+      }
+      function renderCommandPalette() {
+        const list = $('cmdPaletteList');
+        if (!list) return;
+        const items = filteredCommands();
+        if (!items.length) {
+          list.innerHTML = `<li class="active"><span class="cmd-label">${esc(t('findNoMatch'))}</span></li>`;
+          return;
+        }
+        cmdPaletteIndex = Math.max(0, Math.min(cmdPaletteIndex, items.length - 1));
+        list.innerHTML = items.map((c, i) => (
+          `<li role="option" data-cmd-i="${i}" class="${i === cmdPaletteIndex ? 'active' : ''}">`
+          + `<span class="cmd-label">${esc(c.label)}</span>`
+          + `<span class="cmd-hint">${esc(c.hint || '')}</span></li>`
+        )).join('');
+        list.querySelectorAll('li[data-cmd-i]').forEach((li) => {
+          li.addEventListener('mouseenter', () => {
+            cmdPaletteIndex = Number(li.dataset.cmdI) || 0;
+            renderCommandPalette();
+          });
+          li.addEventListener('click', () => {
+            const item = filteredCommands()[Number(li.dataset.cmdI)];
+            item?.run?.();
+          });
+        });
+      }
+      function showCommandPalette() {
+        hideHelp();
+        const el = $('cmdPalette');
+        if (!el) return;
+        el.classList.remove('hidden');
+        el.setAttribute('aria-hidden', 'false');
+        cmdPaletteIndex = 0;
+        if ($('cmdPaletteInput')) $('cmdPaletteInput').value = '';
+        renderCommandPalette();
+        setTimeout(() => $('cmdPaletteInput')?.focus(), 0);
+      }
+      function hideCommandPalette() {
+        const el = $('cmdPalette');
+        if (!el) return;
+        el.classList.add('hidden');
+        el.setAttribute('aria-hidden', 'true');
+      }
+      function isCommandPaletteOpen() {
+        return $('cmdPalette') && !$('cmdPalette').classList.contains('hidden');
+      }
+      function bindCommandPalette() {
+        $('cmdPaletteBtn')?.addEventListener('click', showCommandPalette);
+        $('cmdPalette')?.addEventListener('click', (e) => {
+          if (e.target === $('cmdPalette')) hideCommandPalette();
+        });
+        $('cmdPaletteInput')?.addEventListener('input', () => {
+          cmdPaletteIndex = 0;
+          renderCommandPalette();
+        });
+        $('cmdPaletteInput')?.addEventListener('keydown', (event) => {
+          const items = filteredCommands();
+          if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            cmdPaletteIndex = Math.min(items.length - 1, cmdPaletteIndex + 1);
+            renderCommandPalette();
+          } else if (event.key === 'ArrowUp') {
+            event.preventDefault();
+            cmdPaletteIndex = Math.max(0, cmdPaletteIndex - 1);
+            renderCommandPalette();
+          } else if (event.key === 'Enter') {
+            event.preventDefault();
+            items[cmdPaletteIndex]?.run?.();
+          } else if (event.key === 'Escape') {
+            event.preventDefault();
+            hideCommandPalette();
+          }
+        });
+      }
       function bindHelp() {
         $('openHelp')?.addEventListener('click', showHelp);
         $('helpClose')?.addEventListener('click', hideHelp);
@@ -4618,6 +5245,7 @@
         document.querySelectorAll('[data-starter]').forEach((btn) => {
           btn.addEventListener('click', () => applyStarter(btn.dataset.starter));
         });
+        bindCommandPalette();
       }
       function load() {
         try {
@@ -4663,6 +5291,10 @@
           if (cloud.imageEndpoint && $('cloudImageEndpoint')) $('cloudImageEndpoint').value = cloud.imageEndpoint;
           if (cloud.imageModel && $('cloudImageModel')) $('cloudImageModel').value = cloud.imageModel;
           if (cloud.imageSize && $('cloudImageSize')) $('cloudImageSize').value = cloud.imageSize;
+          const agentConnection = JSON.parse(localStorage.getItem(agentSettingsKey) || '{}');
+          if (agentConnection.protocol && $('agentProtocol')) $('agentProtocol').value = agentConnection.protocol;
+          if (agentConnection.endpoint && $('agentEndpoint')) $('agentEndpoint').value = agentConnection.endpoint;
+          if (agentConnection.key && $('agentKey')) $('agentKey').value = agentConnection.key;
           const savedMode = localStorage.getItem(aiModeKey);
           if (isLocalHost()) aiMode = 'local';
           else if (savedMode === 'local' || savedMode === 'cloud') aiMode = savedMode;
@@ -4730,8 +5362,18 @@
           imageModel: $('cloudImageModel')?.value || '',
           imageSize: $('cloudImageSize')?.value || '1024x1024',
         }));
+        localStorage.setItem(agentSettingsKey, JSON.stringify({
+          protocol: $('agentProtocol')?.value || 'a2a',
+          endpoint: $('agentEndpoint')?.value || '',
+          key: $('agentKey')?.value || '',
+        }));
         localStorage.setItem(aiModeKey, aiMode);
         setSaveStatus('saved');
+        // Rotating local backups every ~30s (local world-class durability)
+        if (!window.__elioraLastBackupAt || Date.now() - window.__elioraLastBackupAt > 30000) {
+          window.__elioraLastBackupAt = Date.now();
+          try { pushBoardBackup(); } catch (_) { /* defined later / quota */ }
+        }
       }
       function scheduleSave() {
         setSaveStatus('saving');
@@ -5063,11 +5705,13 @@
           const color = colors[node.color] || colors.rose;
           const hay = `${node.title} ${node.kind} ${node.text} ${tags(node.tags).join(' ')}`.toLowerCase();
           const selected = isNodeSelected(node.id);
+          const isSearchHit = term && hay.includes(term) && selected && searchMatchIndex >= 0;
           const el = document.createElement('article');
           el.className = 'node'
             + (selected ? ' selected' : '')
             + (selected && selectedIds.size > 1 ? ' selected-multi' : '')
             + (term && !hay.includes(term) ? ' dimmed' : '')
+            + (isSearchHit ? ' search-hit' : '')
             + (connectSource === node.id ? ' connect-source' : '')
             + (mode === 'connect' && connectSource && connectSource !== node.id ? ' connect-target' : '');
           el.style.left = `${node.x}px`;
@@ -5417,13 +6061,13 @@
             dragNode.origins.forEach((o) => {
               const n = nodeBy(o.id);
               if (!n) return;
-              n.x = o.x + ox;
-              n.y = o.y + oy;
+              n.x = snapCoord(o.x + ox);
+              n.y = snapCoord(o.y + oy);
               movedIds.push(n.id);
             });
           } else {
-            node.x = nx;
-            node.y = ny;
+            node.x = snapCoord(nx);
+            node.y = snapCoord(ny);
             movedIds.push(node.id);
           }
           // Hot path: patch positions; coalesce edges/minimap to 1/frame (hero pattern)
@@ -5463,6 +6107,14 @@
         if (event && dragNode && dragNode.pointerId != null && event.pointerId !== dragNode.pointerId) return;
         if (event && dragCanvas && dragCanvas.pointerId != null && event.pointerId !== dragCanvas.pointerId) return;
         if (dragNode?.moved) {
+          if (gridSnapOn) {
+            selectedNodeList().forEach((n) => {
+              n.x = snapCoord(n.x);
+              n.y = snapCoord(n.y);
+            });
+            patchNodePositions(selectedNodeList().map((n) => n.id));
+            scheduleEdgesRender();
+          }
           nodeLayer.querySelectorAll('.node.dragging').forEach((el) => el.classList.remove('dragging'));
           scheduleSave();
           updateHudChrome();
@@ -5720,6 +6372,27 @@
       }
 
       const CLOUD_PRESETS = {
+        localai: {
+          chatEndpoint: 'http://127.0.0.1:8080/v1/chat/completions',
+          chatModel: 'local-model',
+          imageEndpoint: 'http://127.0.0.1:8080/v1/images/generations',
+          imageModel: '',
+          local: true,
+        },
+        lmstudio: {
+          chatEndpoint: 'http://127.0.0.1:1234/v1/chat/completions',
+          chatModel: 'local-model',
+          imageEndpoint: '',
+          imageModel: '',
+          local: true,
+        },
+        vllm: {
+          chatEndpoint: 'http://127.0.0.1:8000/v1/chat/completions',
+          chatModel: 'local-model',
+          imageEndpoint: '',
+          imageModel: '',
+          local: true,
+        },
         openrouter: {
           chatEndpoint: 'https://openrouter.ai/api/v1/chat/completions',
           chatModel: 'openai/gpt-4o-mini',
@@ -5778,6 +6451,14 @@
         }
         return headers;
       }
+      function endpointIsLocal(value) {
+        try {
+          const host = new URL(String(value || '').trim()).hostname;
+          return host === '127.0.0.1' || host === 'localhost' || host === '::1';
+        } catch (_) {
+          return false;
+        }
+      }
       function deriveImageEndpointFromChat(chatUrl) {
         const u = String(chatUrl || '').trim();
         if (!u) return '';
@@ -5801,9 +6482,9 @@
         if (forceModels || !$('cloudImageModel').value.trim()) {
           if (preset.imageModel) $('cloudImageModel').value = preset.imageModel;
         }
-        setAiMode('cloud');
+        setAiMode(preset.local ? 'local' : 'cloud');
         if ($('cloudApiWrap')) $('cloudApiWrap').open = true;
-        if ($('cloudStatus')) $('cloudStatus').textContent = t('cloudPresetOk');
+        if ($('cloudStatus')) $('cloudStatus').textContent = preset.local ? t('localPresetOk') : t('cloudPresetOk');
         scheduleSave();
       }
       function fillCloudImageEndpoint() {
@@ -5971,13 +6652,14 @@
       }
       async function askCloud() {
         const key = $('cloudKey').value.trim();
-        if (!key) {
+        const endpoint = $('cloudEndpoint').value.trim();
+        if (!key && !endpointIsLocal(endpoint)) {
           $('cloudStatus').textContent = t('cloudNeedKey');
           return;
         }
         try {
           const result = await callChatApi({
-            endpoint: $('cloudEndpoint').value.trim(),
+            endpoint,
             key,
             model: $('cloudModel').value.trim(),
             system: $('cloudSystem').value,
@@ -5992,7 +6674,9 @@
       }
       async function askCloudImage() {
         const key = $('cloudKey').value.trim();
-        if (!key) {
+        const chatEndpoint = $('cloudEndpoint')?.value.trim() || '';
+        const imageEndpoint = $('cloudImageEndpoint')?.value.trim() || '';
+        if (!key && !endpointIsLocal(chatEndpoint) && !endpointIsLocal(imageEndpoint)) {
           $('cloudStatus').textContent = t('cloudNeedKey');
           return;
         }
@@ -8659,7 +9343,10 @@
             throw new Error(formatNodeErrors(data.node_errors));
           }
           if (!response.ok) {
-            throw new Error(humanizeComfyError(`HTTP ${response.status}: ${rawText.slice(0, 900)}`));
+            // Keep the raw ComfyUI validation payload until the catch block.
+            // Auto-recovery needs node_errors / missing_node / value_not_in_list
+            // markers; humanizing here used to erase them before retry detection.
+            throw new Error(`HTTP ${response.status}: ${rawText.slice(0, 900)}`);
           }
           lastComfyPromptId = data.prompt_id || '';
           lastComfySourceId = source.id;
@@ -8679,7 +9366,13 @@
           if (!_autoRetry && !isOfficialBooguWorkflowText($('comfyWorkflow').value) && ($('comfyWorkflow').value.trim() || workflowJsonLooksExternal(rawMsg))) {
             const retryable = /ないノード|node_errors|not in list|missing_node|ttp_|seedvr|invalid image|value_not_in_list|0枚|editprompt/i.test(`${rawMsg} ${$('comfyWorkflow').value}`);
             if (retryable) {
-              await loadDefaultBooguWorkflow();
+              const switched = await loadDefaultBooguWorkflow();
+              if (!switched) {
+                // file:// cannot reliably fetch the bundled workflow. Clear the
+                // stale graph so the automatic local workflow can still run.
+                clearActiveComfyJson();
+                logActivity('既定 Workflow を読めないため、古い JSON を解除して自動生成へ切替', 'info');
+              }
               return sendComfy({ queueOnly, skipRunningGuard: true, _autoRetry: true });
             }
           }
@@ -8989,6 +9682,293 @@
       }
       function isCanvasExport(data) {
         return data && Array.isArray(data.nodes) && Array.isArray(data.edges);
+      }
+      function connectionHeaders(key = '', extra = {}) {
+        const headers = { ...extra };
+        if (key) headers.Authorization = `Bearer ${key}`;
+        return headers;
+      }
+      function a2aAgentCardUrl(input) {
+        const raw = String(input || '').trim();
+        if (!raw) return '';
+        if (/agent-card\.json(?:[?#].*)?$/i.test(raw)) return raw;
+        const url = new URL(raw);
+        url.pathname = '/.well-known/agent-card.json';
+        url.search = '';
+        url.hash = '';
+        return url.toString();
+      }
+      function openAiModelsUrl(input) {
+        const raw = String(input || '').trim();
+        if (!raw) return '';
+        if (/\/models\/?$/i.test(raw)) return raw;
+        if (/\/chat\/completions\/?$/i.test(raw)) return raw.replace(/\/chat\/completions\/?$/i, '/models');
+        if (/\/v1\/?$/i.test(raw)) return raw.replace(/\/?$/, '') + '/models';
+        return raw.replace(/\/?$/, '') + '/v1/models';
+      }
+      async function testAgentConnection() {
+        const protocol = $('agentProtocol')?.value || 'a2a';
+        const endpoint = $('agentEndpoint')?.value?.trim() || '';
+        const key = $('agentKey')?.value || '';
+        const status = $('agentStatus');
+        if (!endpoint) {
+          if (status) status.textContent = t('agentNeedEndpoint');
+          return;
+        }
+        if (status) status.textContent = t('agentTesting');
+        scheduleSave();
+        try {
+          if (protocol === 'a2a') {
+            const cardUrl = a2aAgentCardUrl(endpoint);
+            const response = await fetch(cardUrl, { headers: connectionHeaders(key, { Accept: 'application/json' }) });
+            if (!response.ok) throw new Error(`A2A Agent Card HTTP ${response.status}`);
+            const card = await response.json();
+            const name = card.name || card.displayName || 'A2A agent';
+            const skills = Array.isArray(card.skills) ? card.skills.length : 0;
+            const interfaces = Array.isArray(card.supportedInterfaces) ? card.supportedInterfaces.length : (card.url ? 1 : 0);
+            if (status) status.textContent = `${t('agentConnected')}: ${name} · ${skills} skills · ${interfaces} interface(s)`;
+            return;
+          }
+          if (protocol === 'openai') {
+            const modelsUrl = openAiModelsUrl(endpoint);
+            const response = await fetch(modelsUrl, { headers: connectionHeaders(key, { Accept: 'application/json' }) });
+            if (!response.ok) throw new Error(`OpenAI-compatible /models HTTP ${response.status}`);
+            const data = await response.json();
+            const models = Array.isArray(data.data) ? data.data.length : (Array.isArray(data.models) ? data.models.length : 0);
+            if (status) status.textContent = `${t('agentConnected')}: OpenAI-compatible · ${models} model(s)`;
+            return;
+          }
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: connectionHeaders(key, {
+              'Content-Type': 'application/json',
+              Accept: 'application/json, text/event-stream',
+            }),
+            body: JSON.stringify({
+              jsonrpc: '2.0',
+              id: `eliora-${Date.now()}`,
+              method: 'initialize',
+              params: {
+                protocolVersion: '2025-06-18',
+                capabilities: {},
+                clientInfo: { name: 'Eliora Infinite Canvas', version: '1.0' },
+              },
+            }),
+          });
+          const body = await response.text().catch(() => '');
+          if (!response.ok) throw new Error(`MCP HTTP ${response.status}${body ? ': ' + body.slice(0, 180) : ''}`);
+          if (status) status.textContent = `${t('agentConnected')}: MCP Streamable HTTP · handshake only`;
+        } catch (error) {
+          if (status) status.textContent = `${t('agentConnectFailed')}: ${error.message}. ${t('agentCorsHint')}`;
+        }
+      }
+      function localAgentHeaders() {
+        return localAgentToken ? { Authorization: `Bearer ${localAgentToken}`, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
+      }
+      function localAgentSnapshot() {
+        return {
+          boardId: typeof activeBoardId === 'string' ? activeBoardId : 'main',
+          nodes: nodes.map((node) => ({
+            id: String(node.id), x: Number(node.x) || 0, y: Number(node.y) || 0,
+            kind: String(node.kind || 'Note'), title: String(node.title || '').slice(0, 300),
+            text: String(node.text || '').slice(0, 12000), tags: tags(node.tags).slice(0, 30),
+            color: String(node.color || 'rose'), url: String(node.url || '').slice(0, 1200),
+          })),
+          edges: edges.map((edge) => ({ id: String(edge.id), from: String(edge.from), to: String(edge.to), label: String(edge.label || '').slice(0, 200) })),
+          selectedNodeIds: selectedNodeList().map((node) => node.id),
+          viewport: { x: camera.x, y: camera.y, z: camera.z },
+        };
+      }
+      async function publishLocalAgentState() {
+        if (!localAgentToken || $('localAgentMode')?.value !== 'review' || document.hidden) return;
+        const response = await fetch(`${comfyBridgeBase}/eliora/canvas/state`, {
+          method: 'POST', headers: localAgentHeaders(),
+          body: JSON.stringify({ clientId: localAgentClientId, title: document.title, url: location.href, snapshot: localAgentSnapshot() }),
+        });
+        if (!response.ok) throw new Error(`state HTTP ${response.status}`);
+      }
+      function describeAgentOps(ops) {
+        const counts = {};
+        (Array.isArray(ops) ? ops : []).forEach((op) => { if (op?.type) counts[op.type] = (counts[op.type] || 0) + 1; });
+        return Object.entries(counts).map(([name, count]) => `${name} ×${count}`).join(' · ');
+      }
+      function renderLocalAgentInbox() {
+        const inbox = $('localAgentInbox');
+        if (!inbox) return;
+        if (inbox.parentElement !== document.body) document.body.appendChild(inbox);
+        inbox.innerHTML = localAgentPending.filter((item) => item.status === 'pending').map((item) => `
+          <div class="agent-proposal" data-agent-action="${Number(item.id)}">
+            <b>${esc(item.summary || 'Agent canvas changes')}</b>
+            <small>${esc(describeAgentOps(item.ops))}</small>
+            <div class="tools"><button class="primary" data-agent-approve="${Number(item.id)}">Approve</button><button data-agent-reject="${Number(item.id)}">Reject</button></div>
+          </div>`).join('');
+      }
+      function finiteAgentNumber(value, fallback, min = -1000000, max = 1000000) {
+        const number = Number(value);
+        return Number.isFinite(number) ? clamp(number, min, max) : fallback;
+      }
+      function applyLocalAgentOps(ops) {
+        let changed = false;
+        (Array.isArray(ops) ? ops : []).forEach((op) => {
+          if (!op || typeof op !== 'object') return;
+          if (op.type === 'add_node') {
+            const allowedKinds = new Set(kinds);
+            const kind = allowedKinds.has(op.kind) ? op.kind : 'Note';
+            const point = placePointNearSelection();
+            const id = String(op.id || uid()).slice(0, 160);
+            if (nodeBy(id)) return;
+            nodes.unshift({
+              id, kind, x: finiteAgentNumber(op.x ?? op.position?.x, point.x), y: finiteAgentNumber(op.y ?? op.position?.y, point.y),
+              title: String(op.title || `Agent ${kind}`).slice(0, 300), text: String(op.text || '').slice(0, 12000),
+              tags: tags(op.tags || ['Agent']).slice(0, 30), color: colors[op.color] ? op.color : 'cyan', url: '',
+            });
+            changed = true;
+          } else if (op.type === 'update_node') {
+            const node = nodeBy(String(op.id || ''));
+            if (!node) return;
+            const patch = op.patch && typeof op.patch === 'object' ? op.patch : op;
+            if ('title' in patch) node.title = String(patch.title || '').slice(0, 300);
+            if ('text' in patch) node.text = String(patch.text || '').slice(0, 12000);
+            if ('x' in patch) node.x = finiteAgentNumber(patch.x, node.x);
+            if ('y' in patch) node.y = finiteAgentNumber(patch.y, node.y);
+            if ('tags' in patch) node.tags = tags(patch.tags).slice(0, 30);
+            if ('color' in patch && colors[patch.color]) node.color = patch.color;
+            changed = true;
+          } else if (op.type === 'delete_node') {
+            const ids = new Set((op.ids || (op.id ? [op.id] : [])).map(String));
+            if (!ids.size) return;
+            nodes = nodes.filter((node) => !ids.has(String(node.id)));
+            edges = edges.filter((edge) => !ids.has(String(edge.from)) && !ids.has(String(edge.to)));
+            selectedIds = new Set([...selectedIds].filter((id) => !ids.has(String(id))));
+            if (selectedNode && ids.has(String(selectedNode))) selectedNode = null;
+            changed = true;
+          } else if (op.type === 'connect_nodes') {
+            const from = String(op.fromNodeId || op.from || '');
+            const to = String(op.toNodeId || op.to || '');
+            if (!from || !to || from === to || !nodeBy(from) || !nodeBy(to)) return;
+            if (!edges.some((edge) => edge.from === from && edge.to === to)) {
+              edges.push({ id: String(op.id || uid()).slice(0, 160), from, to, label: String(op.label || 'agent').slice(0, 200) });
+              changed = true;
+            }
+          } else if (op.type === 'delete_connections') {
+            const ids = new Set((op.ids || (op.id ? [op.id] : [])).map(String));
+            if (op.all === true) { edges = []; changed = true; }
+            else if (ids.size) { edges = edges.filter((edge) => !ids.has(String(edge.id))); changed = true; }
+          } else if (op.type === 'select_nodes') {
+            const ids = (op.ids || []).map(String).filter((id) => nodeBy(id));
+            setSelection(ids, ids[0]);
+          } else if (op.type === 'set_viewport' && op.viewport) {
+            camera = {
+              x: finiteAgentNumber(op.viewport.x, camera.x), y: finiteAgentNumber(op.viewport.y, camera.y),
+              z: finiteAgentNumber(op.viewport.z ?? op.viewport.zoom, camera.z, .18, 3.8),
+            };
+            changed = true;
+          }
+        });
+        return changed;
+      }
+      async function acknowledgeLocalAgentAction(item, status, message = '') {
+        try {
+          await fetch(`${comfyBridgeBase}/eliora/canvas/actions/${item.id}/ack`, {
+            method: 'POST', headers: localAgentHeaders(), body: JSON.stringify({ status, message }),
+          });
+        } catch (_) { /* local audit acknowledgement is best effort */ }
+      }
+      async function approveLocalAgentAction(id) {
+        const item = localAgentPending.find((entry) => String(entry.id) === String(id) && entry.status === 'pending');
+        if (!item) return;
+        pushHistory();
+        try {
+          applyLocalAgentOps(item.ops);
+          item.status = 'applied';
+          render();
+          scheduleSave();
+          logActivity(`Agent approved: ${item.summary}`, 'ok');
+          await acknowledgeLocalAgentAction(item, 'applied');
+          await publishLocalAgentState();
+          const status = $('localAgentStatus');
+          if (status) status.textContent = 'Applied · saved locally · Ctrl+Z to undo.';
+        } catch (error) {
+          item.status = 'error';
+          await acknowledgeLocalAgentAction(item, 'error', error.message || String(error));
+        }
+        renderLocalAgentInbox();
+      }
+      async function rejectLocalAgentAction(id) {
+        const item = localAgentPending.find((entry) => String(entry.id) === String(id) && entry.status === 'pending');
+        if (!item) return;
+        item.status = 'rejected';
+        logActivity(`Agent rejected: ${item.summary}`, 'warn');
+        await acknowledgeLocalAgentAction(item, 'rejected');
+        renderLocalAgentInbox();
+      }
+      async function pollLocalAgentActions() {
+        if (!localAgentToken || $('localAgentMode')?.value !== 'review' || document.hidden) return;
+        const response = await fetch(`${comfyBridgeBase}/eliora/canvas/actions?clientId=${encodeURIComponent(localAgentClientId)}&after=${localAgentLastActionId}`, { headers: localAgentHeaders() });
+        if (!response.ok) throw new Error(`actions HTTP ${response.status}`);
+        const data = await response.json();
+        const incoming = Array.isArray(data.actions) ? data.actions : [];
+        if (incoming.length) {
+          incoming.forEach((item) => {
+            localAgentLastActionId = Math.max(localAgentLastActionId, Number(item.id) || 0);
+            if (!localAgentPending.some((known) => known.id === item.id)) localAgentPending.push(item);
+          });
+          localAgentPending = localAgentPending.slice(-50);
+          renderLocalAgentInbox();
+          const status = $('localAgentStatus');
+          if (status) status.textContent = `${incoming.length} proposal(s) waiting for your review.`;
+        }
+      }
+      function stopLocalAgent() {
+        clearInterval(localAgentPollTimer);
+        clearInterval(localAgentPublishTimer);
+        localAgentPollTimer = null;
+        localAgentPublishTimer = null;
+        const status = $('localAgentStatus');
+        if (status) status.textContent = 'Local Agent Action is off.';
+      }
+      async function connectLocalAgent() {
+        const status = $('localAgentStatus');
+        if ($('localAgentMode')?.value !== 'review') {
+          stopLocalAgent();
+          return false;
+        }
+        if (status) status.textContent = 'Connecting to localhost bridge…';
+        try {
+          const response = await fetch(`${comfyBridgeBase}/eliora/bootstrap`, { headers: { Accept: 'application/json' } });
+          if (!response.ok) throw new Error(`bootstrap HTTP ${response.status}`);
+          const data = await response.json();
+          localAgentToken = String(data.token || '');
+          if (!localAgentToken) throw new Error('bridge token missing');
+          await publishLocalAgentState();
+          clearInterval(localAgentPollTimer);
+          clearInterval(localAgentPublishTimer);
+          localAgentPollTimer = setInterval(() => pollLocalAgentActions().catch(() => {}), 1200);
+          localAgentPublishTimer = setInterval(() => publishLocalAgentState().catch(() => {}), 3000);
+          if (status) status.textContent = `Connected · review required · tab ${localAgentClientId.slice(0, 8)} · MCP :8190/mcp`;
+          return true;
+        } catch (error) {
+          localAgentToken = '';
+          if (status) status.textContent = `Bridge unavailable: ${error.message}. Start with START-ELIORA-CANVAS.bat.`;
+          return false;
+        }
+      }
+      async function copyLocalAgentConfig() {
+        if (!localAgentToken && !(await connectLocalAgent())) return;
+        const config = JSON.stringify({
+          name: 'eliora-local-canvas', url: `${comfyBridgeBase}/mcp`,
+          headers: { Authorization: `Bearer ${localAgentToken}` }, clientId: localAgentClientId,
+          permission: 'review-required', identityVerification: false,
+        }, null, 2);
+        await navigator.clipboard.writeText(config);
+        const status = $('localAgentStatus');
+        if (status) status.textContent = 'MCP connection copied. Keep the token on this device.';
+      }
+      function isJsonCanvas(data) {
+        if (!data || !Array.isArray(data.nodes) || !Array.isArray(data.edges)) return false;
+        const typedNode = data.nodes.some((node) => ['text', 'file', 'link', 'group'].includes(node?.type));
+        const standardEdge = !data.edges.length || data.edges.every((edge) => edge && 'fromNode' in edge && 'toNode' in edge);
+        return typedNode && standardEdge;
       }
 
 
@@ -9651,16 +10631,156 @@
       function download(name, content, type) {
         const blob = new Blob([content], { type });
         const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
+        const objectUrl = URL.createObjectURL(blob);
+        a.href = objectUrl;
         a.download = name;
         document.body.appendChild(a);
         a.click();
         a.remove();
-        URL.revokeObjectURL(a.href);
+        setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
       }
       async function exportJson() {
         const exportNodes = await embedImageUrls(nodes);
         download('eliora-canvas.json', JSON.stringify({ version: 3, exportedAt: new Date().toISOString(), camera, nodes: exportNodes, edges }, null, 2), 'application/json');
+      }
+      function boardFileStem() {
+        return (boardTitle(activeBoardId) || 'eliora-canvas')
+          .normalize('NFKC')
+          .replace(/[^\p{L}\p{N}_-]+/gu, '-')
+          .replace(/^-+|-+$/g, '')
+          .slice(0, 64) || 'eliora-canvas';
+      }
+      function jsonCanvasColor(color) {
+        return ({ rose: '1', amber: '3', green: '4', cyan: '5', purple: '6' })[color] || undefined;
+      }
+      function elioraColor(color) {
+        return ({ '1': 'rose', '2': 'amber', '3': 'amber', '4': 'green', '5': 'cyan', '6': 'purple' })[String(color || '')] || 'cyan';
+      }
+      async function jsonCanvasPayload() {
+        const exportNodes = await embedImageUrls(nodes);
+        const payloadNodes = exportNodes.map((node) => {
+          const width = node.kind === 'Image' || node.kind === 'Video' ? 332 : 292;
+          const height = node.kind === 'Image' || node.kind === 'Video' ? 250 : 190;
+          const common = {
+            id: String(node.id), x: Math.round(node.x || 0), y: Math.round(node.y || 0), width, height,
+            color: jsonCanvasColor(node.color),
+            eliora: { version: 1, kind: node.kind || 'Note', title: node.title || '', tags: tags(node.tags), color: node.color || 'cyan' },
+          };
+          if (node.kind === 'Group') return { ...common, type: 'group', label: node.title || 'Group' };
+          if (node.url) return { ...common, type: 'link', url: node.url };
+          const tagLine = tags(node.tags).map((tag) => `#${tag}`).join(' ');
+          return { ...common, type: 'text', text: [`# ${node.title || node.kind || 'Card'}`, '', node.text || '', '', tagLine].join('\n').trim() };
+        });
+        const payloadEdges = edges.map((edge) => ({
+          id: String(edge.id), fromNode: String(edge.from), fromSide: 'right', toNode: String(edge.to), toSide: 'left',
+          ...(edge.label ? { label: edge.label } : {}),
+        }));
+        return { nodes: payloadNodes, edges: payloadEdges, metadata: { generator: 'Eliora Infinite Canvas', version: 1, exportedAt: new Date().toISOString() } };
+      }
+      async function exportJsonCanvas() {
+        const payload = await jsonCanvasPayload();
+        download(`${boardFileStem()}.canvas`, JSON.stringify(payload, null, 2), 'application/json');
+        showStatusToast('JSON Canvas', uiLang === 'ja' ? 'オープン標準 .canvas を書き出しました' : 'Open .canvas file exported', 'ok', 3500);
+      }
+      function xmlEscape(value) {
+        return String(value ?? '').replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' })[char]);
+      }
+      function wrappedExportLines(value, maxChars = 38, maxLines = 5) {
+        const words = String(value || '').replace(/\s+/g, ' ').trim().split(' ').filter(Boolean);
+        const lines = [];
+        let line = '';
+        words.forEach((word) => {
+          const next = line ? `${line} ${word}` : word;
+          if (next.length > maxChars && line) { lines.push(line); line = word; }
+          else line = next;
+        });
+        if (line) lines.push(line);
+        const clipped = lines.slice(0, maxLines);
+        if (lines.length > maxLines && clipped.length) clipped[clipped.length - 1] = clipped[clipped.length - 1].slice(0, maxChars - 1) + '…';
+        return clipped;
+      }
+      async function buildBoardSvg() {
+        const exportNodes = await embedImageUrls(nodes);
+        const margin = 72;
+        const dims = new Map(exportNodes.map((node) => [node.id, {
+          width: node.kind === 'Image' || node.kind === 'Video' ? 332 : 292,
+          height: node.kind === 'Image' || node.kind === 'Video' ? 250 : 190,
+        }]));
+        const minX = exportNodes.length ? Math.min(...exportNodes.map((node) => node.x || 0)) : 0;
+        const minY = exportNodes.length ? Math.min(...exportNodes.map((node) => node.y || 0)) : 0;
+        const maxX = exportNodes.length ? Math.max(...exportNodes.map((node) => (node.x || 0) + dims.get(node.id).width)) : 900;
+        const maxY = exportNodes.length ? Math.max(...exportNodes.map((node) => (node.y || 0) + dims.get(node.id).height)) : 560;
+        const width = Math.max(900, Math.ceil(maxX - minX + margin * 2));
+        const height = Math.max(560, Math.ceil(maxY - minY + margin * 2));
+        const ox = margin - minX;
+        const oy = margin - minY;
+        const palette = { rose: '#f2799a', amber: '#f1bd6f', green: '#9ed79d', cyan: '#7bd8e8', purple: '#b59bf2' };
+        const byId = new Map(exportNodes.map((node) => [node.id, node]));
+        const edgeSvg = edges.map((edge) => {
+          const from = byId.get(edge.from); const to = byId.get(edge.to);
+          if (!from || !to) return '';
+          const fd = dims.get(from.id); const td = dims.get(to.id);
+          const x1 = (from.x || 0) + fd.width + ox; const y1 = (from.y || 0) + fd.height / 2 + oy;
+          const x2 = (to.x || 0) + ox; const y2 = (to.y || 0) + td.height / 2 + oy;
+          const bend = Math.max(70, Math.abs(x2 - x1) * .45);
+          return `<path d="M ${x1} ${y1} C ${x1 + bend} ${y1}, ${x2 - bend} ${y2}, ${x2} ${y2}" fill="none" stroke="#65727a" stroke-width="2" marker-end="url(#arrow)"/>`
+            + (edge.label ? `<text x="${(x1 + x2) / 2}" y="${(y1 + y2) / 2 - 8}" fill="#a8b1b8" font-size="12" text-anchor="middle">${xmlEscape(edge.label)}</text>` : '');
+        }).join('');
+        const nodeSvg = exportNodes.map((node) => {
+          const d = dims.get(node.id); const x = (node.x || 0) + ox; const y = (node.y || 0) + oy;
+          const accent = palette[node.color] || palette.cyan;
+          const title = xmlEscape(String(node.title || node.kind || 'Card').slice(0, 42));
+          const textLines = wrappedExportLines(node.text, 40, node.kind === 'Image' ? 2 : 5);
+          const textStart = node.kind === 'Image' ? y + 190 : y + 74;
+          const body = textLines.map((line, index) => `<tspan x="${x + 20}" y="${textStart + index * 20}">${xmlEscape(line)}</tspan>`).join('');
+          const media = node.kind === 'Image' && /^data:image\//.test(node.url || '')
+            ? `<image href="${xmlEscape(node.url)}" x="${x + 16}" y="${y + 56}" width="${d.width - 32}" height="118" preserveAspectRatio="xMidYMid slice"/>`
+            : '';
+          return `<g><rect x="${x}" y="${y}" width="${d.width}" height="${d.height}" rx="18" fill="#111519" stroke="${accent}" stroke-opacity=".7"/>`
+            + `<rect x="${x}" y="${y}" width="6" height="${d.height}" rx="3" fill="${accent}"/>`
+            + `<text x="${x + 20}" y="${y + 30}" fill="${accent}" font-size="11" font-weight="700" letter-spacing="1.2">${xmlEscape(node.kind || 'CARD').toUpperCase()}</text>`
+            + `<text x="${x + 20}" y="${y + 51}" fill="#f4f1ea" font-size="17" font-weight="700">${title}</text>${media}`
+            + `<text fill="#c1c7ca" font-size="13" font-family="Inter,Segoe UI,sans-serif">${body}</text></g>`;
+        }).join('');
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`
+          + `<defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M 32 0 L 0 0 0 32" fill="none" stroke="#263038" stroke-width="1" opacity=".55"/></pattern>`
+          + `<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#65727a"/></marker></defs>`
+          + `<rect width="100%" height="100%" fill="#07090b"/><rect width="100%" height="100%" fill="url(#grid)"/>`
+          + `<text x="${margin}" y="36" fill="#7bd8e8" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="700">ELIORA · ${xmlEscape(boardTitle(activeBoardId))}</text>`
+          + `${edgeSvg}${nodeSvg}</svg>`;
+        return { svg, width, height };
+      }
+      async function exportBoardSvg() {
+        const result = await buildBoardSvg();
+        download(`${boardFileStem()}.svg`, result.svg, 'image/svg+xml');
+        showStatusToast('SVG', uiLang === 'ja' ? '共有用 SVG を書き出しました' : 'Share-ready SVG exported', 'ok', 3500);
+      }
+      async function exportBoardPng() {
+        const result = await buildBoardSvg();
+        const maxDimension = 4096;
+        const scale = Math.min(2, maxDimension / Math.max(result.width, result.height));
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.max(1, Math.round(result.width * scale));
+        canvas.height = Math.max(1, Math.round(result.height * scale));
+        const ctx = canvas.getContext('2d');
+        const blob = new Blob([result.svg], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(blob);
+        try {
+          await new Promise((resolve, reject) => {
+            const image = new Image();
+            image.onload = () => { ctx.drawImage(image, 0, 0, canvas.width, canvas.height); resolve(); };
+            image.onerror = () => reject(new Error('SVG render failed'));
+            image.src = url;
+          });
+          const png = await new Promise((resolve, reject) => canvas.toBlob((value) => value ? resolve(value) : reject(new Error('PNG encode failed')), 'image/png', .94));
+          const anchor = document.createElement('a');
+          anchor.href = URL.createObjectURL(png); anchor.download = `${boardFileStem()}.png`;
+          document.body.appendChild(anchor); anchor.click(); anchor.remove();
+          setTimeout(() => URL.revokeObjectURL(anchor.href), 0);
+          showStatusToast('PNG', uiLang === 'ja' ? '共有用 PNG を書き出しました' : 'Share-ready PNG exported', 'ok', 3500);
+        } finally {
+          URL.revokeObjectURL(url);
+        }
       }
       function exportMarkdown() {
         const out = ['# Eliora Infinite Canvas', '', `Exported: ${new Date().toISOString()}`, ''];
@@ -9686,6 +10806,33 @@
         save();
         $('savedAt').textContent = `Imported ${file.name}`;
       }
+      async function importJsonCanvasData(data, fileName) {
+        pushBoardBackup();
+        pushHistory();
+        const imported = data.nodes.map((item) => {
+          const ext = item.eliora || {};
+          const rawText = item.text || '';
+          const firstLine = rawText.split(/\r?\n/).find((line) => line.trim()) || '';
+          const title = ext.title || item.label || firstLine.replace(/^#\s*/, '').slice(0, 72) || item.type || 'Card';
+          const kind = ext.kind || (item.type === 'group' ? 'Group' : item.type === 'link' || item.type === 'file' ? 'Image' : 'Note');
+          const body = item.type === 'text' ? rawText.replace(/^#\s+[^\n]+\n?/, '').trim() : '';
+          return {
+            id: String(item.id || uid()), x: Number(item.x) || 0, y: Number(item.y) || 0,
+            kind, title, text: body, color: ext.color || elioraColor(item.color), tags: tags(ext.tags || ['JSONCanvas']),
+            url: item.url || item.file || '',
+          };
+        });
+        const ids = new Set(imported.map((node) => node.id));
+        nodes = await importStoredImages(imported);
+        edges = data.edges.filter((edge) => ids.has(String(edge.fromNode)) && ids.has(String(edge.toNode))).map((edge) => ({
+          id: String(edge.id || uid()), from: String(edge.fromNode), to: String(edge.toNode), label: edge.label || '',
+        }));
+        camera = { x: 0, y: 0, z: 1 };
+        selectedNode = null; selectedEdge = null; selectedIds.clear();
+        await hydrateImagePreviews();
+        render(); save(); setTimeout(fitView, 40);
+        $('savedAt').textContent = `Imported ${fileName}`;
+      }
       async function importJson(file) {
         try {
           const text = await file.text();
@@ -9694,6 +10841,11 @@
             data = JSON.parse(text);
           } catch (error) {
             showStatusToast('JSON エラー', `形式が正しくありません: ${error.message}`, 'error', 15000);
+            return;
+          }
+          if (isJsonCanvas(data)) {
+            await importJsonCanvasData(data, file.name);
+            showStatusToast('JSON Canvas', `${file.name} ${uiLang === 'ja' ? 'を読み込みました' : 'imported'}`, 'ok', 6000);
             return;
           }
           if (isCanvasExport(data)) {
@@ -10024,6 +11176,28 @@
       $('applyCloudProvider')?.addEventListener('click', () => {
         applyCloudPreset($('cloudProvider')?.value || 'openrouter', { forceModels: true });
       });
+      $('testAgentConnection')?.addEventListener('click', testAgentConnection);
+      $('connectLocalAgent')?.addEventListener('click', connectLocalAgent);
+      $('copyLocalAgentConfig')?.addEventListener('click', () => copyLocalAgentConfig().catch(() => {}));
+      $('localAgentInbox')?.addEventListener('click', (event) => {
+        const approve = event.target.closest('[data-agent-approve]');
+        const reject = event.target.closest('[data-agent-reject]');
+        if (approve) {
+          const status = $('localAgentStatus');
+          if (status) status.textContent = 'Applying approved Agent proposal…';
+          approveLocalAgentAction(approve.getAttribute('data-agent-approve')).catch((error) => {
+            if (status) status.textContent = `Agent apply failed: ${error.message || error}`;
+          });
+        } else if (reject) {
+          rejectLocalAgentAction(reject.getAttribute('data-agent-reject')).catch(() => {});
+        }
+      });
+      $('localAgentMode')?.addEventListener('change', () => {
+        const mode = $('localAgentMode').value === 'review' ? 'review' : 'off';
+        localStorage.setItem(localAgentModeKey, mode);
+        if (mode === 'review') connectLocalAgent();
+        else stopLocalAgent();
+      });
       $('cloudProvider')?.addEventListener('change', () => {
         const id = $('cloudProvider').value;
         if (id !== 'custom') applyCloudPreset(id, { forceModels: false });
@@ -10196,7 +11370,8 @@
         scheduleSave();
       });
       $('search').addEventListener('input', (event) => { searchTerm = event.target.value.trim(); render(); });
-      ['llamaEndpoint', 'llamaModel', 'llamaKey', 'llamaSystem', 'cloudEndpoint', 'cloudModel', 'cloudKey', 'cloudSystem', 'comfyEndpoint', 'comfyNegative', 'comfyWorkflow', 'comfyWidth', 'comfyHeight'].forEach((id) => $(id).addEventListener('input', scheduleSave));
+      ['llamaEndpoint', 'llamaModel', 'llamaKey', 'llamaSystem', 'cloudEndpoint', 'cloudModel', 'cloudKey', 'cloudSystem', 'agentEndpoint', 'agentKey', 'comfyEndpoint', 'comfyNegative', 'comfyWorkflow', 'comfyWidth', 'comfyHeight'].forEach((id) => $(id)?.addEventListener('input', scheduleSave));
+      $('agentProtocol')?.addEventListener('change', scheduleSave);
       $('comfyModelStack')?.addEventListener('change', () => syncModelStackPickers('comfyModelStack'));
       $('comfyLocalUnet')?.addEventListener('change', () => syncLocalUnetPickers('comfyLocalUnet'));
       $('composerLocalUnet')?.addEventListener('change', () => syncLocalUnetPickers('composerLocalUnet'));
@@ -10210,7 +11385,41 @@
       $('comfyAutoInject').addEventListener('change', scheduleSave);
       minimap.addEventListener('click', jumpMinimap);
       window.addEventListener('keydown', (event) => {
-        if (event.target.matches('input, textarea, [contenteditable="true"]')) return;
+        const typing = event.target.matches('input, textarea, [contenteditable="true"]');
+        const inSearch = event.target && event.target.id === 'search';
+        // Global palette / find even while typing in most fields (not contenteditable body)
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+          event.preventDefault();
+          if (isCommandPaletteOpen()) hideCommandPalette();
+          else showCommandPalette();
+          return;
+        }
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'f') {
+          event.preventDefault();
+          if (inSearch && searchTerm) cycleSearchMatch(1);
+          else focusCanvasSearch();
+          return;
+        }
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'p' && !event.shiftKey) {
+          if (!typing || inSearch) {
+            event.preventDefault();
+            planStepsOnBoard();
+            return;
+          }
+        }
+        if (inSearch && event.key === 'Enter') {
+          event.preventDefault();
+          cycleSearchMatch(event.shiftKey ? -1 : 1);
+          return;
+        }
+        if (isCommandPaletteOpen()) {
+          if (event.key === 'Escape') {
+            event.preventDefault();
+            hideCommandPalette();
+          }
+          return;
+        }
+        if (typing) return;
         if (event.key === 'Delete' || event.key === 'Backspace') deleteSelected();
         if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'Enter') {
           event.preventDefault();
@@ -10221,6 +11430,18 @@
           else askLlama();
         }
         if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'd') { event.preventDefault(); duplicateSelected(); }
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'c') {
+          event.preventDefault();
+          copySelectedCards();
+        }
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'v') {
+          event.preventDefault();
+          pasteCards();
+        }
+        if (event.shiftKey && event.key.toLowerCase() === 'g' && !event.ctrlKey && !event.metaKey) {
+          event.preventDefault();
+          toggleGridSnap();
+        }
         if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's') { event.preventDefault(); save(); }
         if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z' && !event.shiftKey) {
           event.preventDefault();
@@ -10255,6 +11476,7 @@
         }
         if (event.key === 'Escape') {
           hideHelp();
+          hideCommandPalette();
           closeLightbox();
           hideCreateMenu();
           closeLogModal();
@@ -10267,6 +11489,7 @@
           render();
         }
       });
+      $('search')?.addEventListener('input', () => { searchMatchIndex = -1; });
       window.addEventListener('resize', drawMinimap);
       bindInspector();
       $('langEn')?.addEventListener('click', () => setUiLang('en'));
@@ -10300,6 +11523,8 @@
       bindOnboarding();
       bindHelp();
       load();
+      if ($('localAgentMode')) $('localAgentMode').value = localStorage.getItem(localAgentModeKey) === 'off' ? 'off' : 'review';
+      setTimeout(() => { if ($('localAgentMode')?.value === 'review') connectLocalAgent(); }, 900);
       syncComfyLinks();
       $('activityLog')?.addEventListener('click', () => $('activityLog').classList.toggle('expanded'));
 
@@ -10534,6 +11759,50 @@
         if (typeof runFromComposer === 'function') return runFromComposer();
         return sendComfy();
       };
+      window.__elioraExportProbe = async () => {
+        const jsonCanvas = await jsonCanvasPayload();
+        const svg = await buildBoardSvg();
+        return {
+          jsonNodes: jsonCanvas.nodes.length,
+          jsonEdges: jsonCanvas.edges.length,
+          jsonTypes: [...new Set(jsonCanvas.nodes.map((node) => node.type))],
+          svgWidth: svg.width,
+          svgHeight: svg.height,
+          svgValid: svg.svg.startsWith('<svg') && svg.svg.endsWith('</svg>'),
+          svgCards: (svg.svg.match(/<g><rect/g) || []).length,
+        };
+      };
+      window.__elioraJsonCanvasRoundTrip = async () => {
+        const before = snapshotBoard();
+        const payload = await jsonCanvasPayload();
+        await importJsonCanvasData(payload, 'roundtrip.canvas');
+        const result = { nodes: nodes.length, edges: edges.length, valid: nodes.length === payload.nodes.length && edges.length === payload.edges.length };
+        restoreSnapshot(before);
+        save();
+        return result;
+      };
+      window.__elioraAgentConnectionProbe = async (protocol, endpoint, key = '') => {
+        if ($('agentProtocol')) $('agentProtocol').value = protocol;
+        if ($('agentEndpoint')) $('agentEndpoint').value = endpoint;
+        if ($('agentKey')) $('agentKey').value = key;
+        await testAgentConnection();
+        return $('agentStatus')?.textContent || '';
+      };
+      window.__elioraLocalAgentProbe = () => ({
+        clientId: localAgentClientId,
+        connected: !!localAgentToken,
+        mode: $('localAgentMode')?.value || 'off',
+        pending: localAgentPending.filter((item) => item.status === 'pending').length,
+        snapshot: localAgentSnapshot(),
+      });
+      window.__elioraApplyAgentOpsProbe = (ops) => {
+        const before = snapshotBoard();
+        pushHistory();
+        const changed = applyLocalAgentOps(ops);
+        render();
+        scheduleSave();
+        return { changed, before, after: snapshotBoard() };
+      };
       window.__elioraSkipOnboard = () => {
         try {
           localStorage.setItem(typeof onboardingKey !== 'undefined' ? onboardingKey : 'eliora-onboard-v2', '1');
@@ -10628,7 +11897,7 @@
         if (document.hidden) return;
         checkLocalServices().catch(() => {});
       }, 20000);
-      window.addEventListener('beforeunload', save);
+      window.addEventListener('beforeunload', () => { stopLocalAgent(); save(); });
     </script>
   </body>
 </html>

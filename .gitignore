@@ -5,6 +5,7 @@ dist/
 
 # dependencies
 node_modules/
+public/eliora/eliora-agent-connection.json
 
 # logs
 npm-debug.log*
