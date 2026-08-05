@@ -26,7 +26,12 @@ const subject = contactFormSubject(lang);
 const homeCopy = atelierHomeCopy[lang];
 const homePath = `/eliora/atelier/${lang}/`;
 const nav = [
-  ...homeCopy.nav.filter((item) => !item.href.includes('/contact/')),
+  ...homeCopy.nav
+    .filter((item) => !item.href.includes('/contact/'))
+    .map((item) => ({
+      ...item,
+      href: item.href.startsWith('#') ? `${homePath}${item.href}` : item.href,
+    })),
   { href: atelierContactPath(lang), label: lang === 'ja' ? 'お問い合わせ' : lang === 'zh' ? '联系' : 'Contact' },
 ];
 ---

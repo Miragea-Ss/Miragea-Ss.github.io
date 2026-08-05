@@ -8,6 +8,9 @@ interface Props {
 }
 
 const { post, lang = 'ja', class: className = '' } = Astro.props;
+const thoughtHref = post.slug.includes('/')
+  ? `/thoughts/${post.slug}/`
+  : `/${lang}/thoughts/${post.slug}/`;
 
 const isRose = post.data.confidence > 80;
 const glowColor = isRose ? 'shadow-rose-900/60' : 'shadow-cyan-900/40';
@@ -17,7 +20,7 @@ const blur = (post.data.confidence * 0.2).toFixed(1);
 const spread = (post.data.confidence * 0.15).toFixed(1);
 ---
 
-<a href={`/${lang}/thoughts/${post.slug}/`} class={`block group ${className}`}>
+<a href={thoughtHref} class={`block group ${className}`}>
   <article
     class={`relative p-8 rounded-2xl border backdrop-blur-sm bg-black/50 transition-all duration-700 group-hover:scale-[1.02] shadow-2xl ${glowColor} ${borderColor}`}
   >
