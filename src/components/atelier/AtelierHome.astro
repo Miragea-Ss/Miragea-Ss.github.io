@@ -83,15 +83,23 @@ const hub = `/eliora/atelier/${lang}/atelier/`;
           <div class="section-label">{copy.bts.label}</div>
           <h2 class="section-title">{copy.bts.title}</h2>
           <div class="works-grid">
-            {copy.bts.cards.map((card) => (
-              <article class="work-card">
-                <div class="work-thumb" />
-                <div class="work-body">
-                  <h3>{card.title}</h3>
-                  <p>{card.description}</p>
-                </div>
-              </article>
-            ))}
+            {copy.bts.cards.map((card) => {
+              const Tag = card.href ? 'a' : 'article';
+              return (
+                <Tag
+                  class="work-card"
+                  href={card.href}
+                  target={card.external ? '_blank' : undefined}
+                  rel={card.external ? 'noopener' : undefined}
+                >
+                  <div class="work-thumb" />
+                  <div class="work-body">
+                    <h3>{card.title}</h3>
+                    <p>{card.description}</p>
+                  </div>
+                </Tag>
+              );
+            })}
           </div>
           <div class="channel-strip">
             {copy.bts.channels.map((ch) => (

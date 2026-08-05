@@ -474,6 +474,11 @@ section.block { padding: 44px 0; }
   transform: translateY(-3px);
 }
 
+a.work-card:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 3px;
+}
+
 .work-thumb {
   aspect-ratio: 16/9;
   background: linear-gradient(145deg, var(--indigo), var(--obsidian));
