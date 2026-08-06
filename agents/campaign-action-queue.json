@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-05T08:15:57.310Z",
+  "generatedAt": "2026-08-06T08:14:26.831Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -59,7 +59,7 @@
       "url": "https://reverie-hacks-2026.devpost.com/",
       "submitUrl": "https://reverie-hacks-2026.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 249748,
+      "prizeHint": 263398,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
