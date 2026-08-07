@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-06T08:14:26.818Z
+# lastWatch: 2026-08-07T06:59:48.874Z
 contests:
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -52,10 +52,10 @@ contests:
       en: Aug 02 - 17, 2026
       ja: Aug 02 - 17, 2026
       zh: Aug 02 - 17, 2026
-    sourceNote: Devpost auto · prize~263398 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~297648 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 263398
+    prizeHint: 297648
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
@@ -562,7 +562,7 @@ contests:
     prizeHint: 2550
     submitUrl: https://stemist-hacks-iv.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-06T08:14:26.818Z
+  lastWatch: 2026-08-07T06:59:48.874Z
   source: devpost-auto+manual
   added: 37
   updated: 20
