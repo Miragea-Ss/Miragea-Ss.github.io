@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-07T06:59:48.874Z
+# lastWatch: 2026-08-08T06:33:48.473Z
 contests:
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -52,10 +52,10 @@ contests:
       en: Aug 02 - 17, 2026
       ja: Aug 02 - 17, 2026
       zh: Aug 02 - 17, 2026
-    sourceNote: Devpost auto · prize~297648 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~356298 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 297648
+    prizeHint: 356298
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
@@ -253,6 +253,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-08-08T06:33:48.436Z
+    type: devpost-auto
+    title: Hack the Habitat
+    url: https://hack-the-habitat-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 07 - 31, 2026
+      ja: Aug 07 - 31, 2026
+      zh: Aug 07 - 31, 2026
+    sourceNote: Devpost auto · prize~1000 · score 98 · Hack the Habitat
+    auto: true
+    joinScore: 98
+    prizeHint: 1000
+    submitUrl: https://hack-the-habitat-2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-04T08:19:41.074Z
     type: devpost-auto
     title: YouTube Automation Hackathon
@@ -547,24 +561,10 @@ contests:
     joinScore: 90
     prizeHint: 5250
     submitUrl: https://ai-for-social-good-mlh.devpost.com/challenges/start_a_submission
-  - at: 2026-08-01T08:03:00.216Z
-    type: devpost-auto
-    title: STEMist Hacks IV
-    url: https://stemist-hacks-iv.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 31 - Aug 02, 2026
-      ja: Jul 31 - Aug 02, 2026
-      zh: Jul 31 - Aug 02, 2026
-    sourceNote: Devpost auto · prize~2550 · score 86 · STEMist Education
-    auto: true
-    joinScore: 86
-    prizeHint: 2550
-    submitUrl: https://stemist-hacks-iv.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-07T06:59:48.874Z
+  lastWatch: 2026-08-08T06:33:48.473Z
   source: devpost-auto+manual
-  added: 37
-  updated: 20
-  scanned: 58
+  added: 39
+  updated: 19
+  scanned: 60
   kept: 40
