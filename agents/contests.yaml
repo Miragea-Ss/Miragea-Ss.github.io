@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-08T06:33:48.473Z
+# lastWatch: 2026-08-09T06:37:41.899Z
 contests:
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -52,10 +52,10 @@ contests:
       en: Aug 02 - 17, 2026
       ja: Aug 02 - 17, 2026
       zh: Aug 02 - 17, 2026
-    sourceNote: Devpost auto · prize~356298 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~388598 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 356298
+    prizeHint: 388598
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 5250
     submitUrl: https://ai-for-social-good-mlh.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-08T06:33:48.473Z
+  lastWatch: 2026-08-09T06:37:41.899Z
   source: devpost-auto+manual
-  added: 39
-  updated: 19
-  scanned: 60
+  added: 40
+  updated: 20
+  scanned: 61
   kept: 40
