@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-10T12:59:50.768Z",
+  "generatedAt": "2026-08-11T06:46:50.199Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -7,11 +7,27 @@
   },
   "recommended": [
     {
-      "title": "Agentic Cinema: The Blockbuster Hackathon",
-      "url": "https://agentic-cinema.devpost.com/",
-      "submitUrl": "https://agentic-cinema.devpost.com/challenges/start_a_submission",
+      "title": "Agents for Humans Hackathon",
+      "url": "https://agentsforhumans.devpost.com/",
+      "submitUrl": "https://agentsforhumans.devpost.com/challenges/start_a_submission",
       "joinScore": 115,
-      "prizeHint": 75000,
+      "prizeHint": 40000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "All Things Agentic Hackathon",
+      "url": "https://allthingsagentichackathon.devpost.com/",
+      "submitUrl": "https://allthingsagentichackathon.devpost.com/challenges/start_a_submission",
+      "joinScore": 115,
+      "prizeHint": 180000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -39,11 +55,11 @@
       "status": "recommended"
     },
     {
-      "title": "All Things Agentic Hackathon",
-      "url": "https://allthingsagentichackathon.devpost.com/",
-      "submitUrl": "https://allthingsagentichackathon.devpost.com/challenges/start_a_submission",
+      "title": "Reverie Hacks 2026",
+      "url": "https://reverie-hacks-2026.devpost.com/",
+      "submitUrl": "https://reverie-hacks-2026.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 180000,
+      "prizeHint": 469348,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -55,11 +71,11 @@
       "status": "recommended"
     },
     {
-      "title": "Reverie Hacks 2026",
-      "url": "https://reverie-hacks-2026.devpost.com/",
-      "submitUrl": "https://reverie-hacks-2026.devpost.com/challenges/start_a_submission",
+      "title": "Agentic Cinema: The Blockbuster Hackathon",
+      "url": "https://agentic-cinema.devpost.com/",
+      "submitUrl": "https://agentic-cinema.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 437048,
+      "prizeHint": 75000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -108,22 +124,6 @@
       "submitUrl": "https://backblaze-generative-media.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 10000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "NandaHack",
-      "url": "https://nandahack.devpost.com/",
-      "submitUrl": "https://nandahack.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 18004,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

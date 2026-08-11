@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-10T12:59:50.839Z",
+  "generatedAt": "2026-08-11T06:46:50.269Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-08-10T12:59:50.756Z",
+      "lastRun": "2026-08-11T06:46:50.187Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -16,15 +16,27 @@
       },
       "events": [
         {
-          "at": "2026-07-28T08:13:55.985Z",
+          "at": "2026-08-11T06:46:50.154Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) Agentic Cinema: The Blockbuster Hackathon",
-          "url": "https://agentic-cinema.devpost.com/",
+          "title": "★ JOIN? (115) Agents for Humans Hackathon",
+          "url": "https://agentsforhumans.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Jul 27 - Sep 07, 2026",
-            "ja": "Jul 27 - Sep 07, 2026",
-            "zh": "Jul 27 - Sep 07, 2026"
+            "en": "Aug 10 - Sep 14, 2026",
+            "ja": "Aug 10 - Sep 14, 2026",
+            "zh": "Aug 10 - Sep 14, 2026"
+          }
+        },
+        {
+          "at": "2026-08-05T08:15:57.248Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (115) All Things Agentic Hackathon",
+          "url": "https://allthingsagentichackathon.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Aug 04 - 31, 2026",
+            "ja": "Aug 04 - 31, 2026",
+            "zh": "Aug 04 - 31, 2026"
           }
         },
         {
@@ -40,18 +52,6 @@
           }
         },
         {
-          "at": "2026-08-05T08:15:57.248Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) All Things Agentic Hackathon",
-          "url": "https://allthingsagentichackathon.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Aug 04 - 31, 2026",
-            "ja": "Aug 04 - 31, 2026",
-            "zh": "Aug 04 - 31, 2026"
-          }
-        },
-        {
           "at": "2026-08-02T08:04:47.056Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) Reverie Hacks 2026",
@@ -61,6 +61,18 @@
             "en": "Aug 02 - 17, 2026",
             "ja": "Aug 02 - 17, 2026",
             "zh": "Aug 02 - 17, 2026"
+          }
+        },
+        {
+          "at": "2026-07-28T08:13:55.985Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Agentic Cinema: The Blockbuster Hackathon",
+          "url": "https://agentic-cinema.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Jul 27 - Sep 07, 2026",
+            "ja": "Jul 27 - Sep 07, 2026",
+            "zh": "Jul 27 - Sep 07, 2026"
           }
         },
         {
@@ -121,18 +133,6 @@
             "en": "Jun 10 - Jul 13, 2026",
             "ja": "Jun 10 - Jul 13, 2026",
             "zh": "Jun 10 - Jul 13, 2026"
-          }
-        },
-        {
-          "at": "2026-07-09T18:41:49.379Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Pinch Me! I Want 50K: A Nationwide Australian Payments & Fintech Hackathon",
-          "url": "https://pinch-me-i-want-50k.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Jun 23 - Jul 22, 2026",
-            "ja": "Jun 23 - Jul 22, 2026",
-            "zh": "Jun 23 - Jul 22, 2026"
           }
         }
       ]
