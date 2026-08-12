@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-11T06:46:50.187Z
+# lastWatch: 2026-08-12T07:07:20.743Z
 contests:
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
@@ -49,13 +49,13 @@ contests:
     url: https://reverie-hacks-2026.devpost.com/
     ongoing: true
     period:
-      en: Aug 02 - 17, 2026
-      ja: Aug 02 - 17, 2026
-      zh: Aug 02 - 17, 2026
-    sourceNote: Devpost auto · prize~469348 · score 110 · ReverieHacks
+      en: Aug 02 - 24, 2026
+      ja: Aug 02 - 24, 2026
+      zh: Aug 02 - 24, 2026
+    sourceNote: Devpost auto · prize~891300 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 469348
+    prizeHint: 891300
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -533,6 +533,20 @@ contests:
     joinScore: 92
     prizeHint: 10300
     submitUrl: https://celesta-exoplanet-challenge.devpost.com/challenges/start_a_submission
+  - at: 2026-08-12T07:07:20.709Z
+    type: devpost-auto
+    title: GenZ Can Hack 2026
+    url: https://genz-can-hack-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Apr 01 - Aug 22, 2026
+      ja: Apr 01 - Aug 22, 2026
+      zh: Apr 01 - Aug 22, 2026
+    sourceNote: Devpost auto · prize~1000 · score 90 · Kids for Kids Toronto Coding Club
+    auto: true
+    joinScore: 90
+    prizeHint: 1000
+    submitUrl: https://genz-can-hack-2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-02T08:04:47.056Z
     type: devpost-auto
     title: Hack Days in Bansal
@@ -547,24 +561,10 @@ contests:
     joinScore: 90
     prizeHint: 1000
     submitUrl: https://hack-days-in-bansal.devpost.com/challenges/start_a_submission
-  - at: 2026-07-31T08:33:34.899Z
-    type: devpost-auto
-    title: The Atlassian X Mistral X AISoc Hack
-    url: https://aisoc-atlassian-mistral.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 30 - 31, 2026
-      ja: Jul 30 - 31, 2026
-      zh: Jul 30 - 31, 2026
-    sourceNote: Devpost auto · prize~1200 · score 90 · UNSW AISOC
-    auto: true
-    joinScore: 90
-    prizeHint: 1200
-    submitUrl: https://aisoc-atlassian-mistral.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-11T06:46:50.187Z
+  lastWatch: 2026-08-12T07:07:20.743Z
   source: devpost-auto+manual
-  added: 40
-  updated: 18
+  added: 39
+  updated: 20
   scanned: 59
   kept: 40
