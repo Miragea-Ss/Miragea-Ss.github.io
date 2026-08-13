@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-12T07:07:20.743Z
+# lastWatch: 2026-08-13T07:11:25.463Z
 contests:
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
@@ -52,10 +52,10 @@ contests:
       en: Aug 02 - 24, 2026
       ja: Aug 02 - 24, 2026
       zh: Aug 02 - 24, 2026
-    sourceNote: Devpost auto · prize~891300 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~920550 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 891300
+    prizeHint: 920550
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -63,9 +63,9 @@ contests:
     url: https://agentic-cinema.devpost.com/
     ongoing: true
     period:
-      en: Jul 27 - Sep 07, 2026
-      ja: Jul 27 - Sep 07, 2026
-      zh: Jul 27 - Sep 07, 2026
+      en: Jul 27 - Sep 09, 2026
+      ja: Jul 27 - Sep 09, 2026
+      zh: Jul 27 - Sep 09, 2026
     sourceNote: Devpost auto · prize~75000 · score 110 · Google
     auto: true
     joinScore: 110
@@ -562,9 +562,9 @@ contests:
     prizeHint: 1000
     submitUrl: https://hack-days-in-bansal.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-12T07:07:20.743Z
+  lastWatch: 2026-08-13T07:11:25.463Z
   source: devpost-auto+manual
-  added: 39
-  updated: 20
+  added: 37
+  updated: 21
   scanned: 59
   kept: 40

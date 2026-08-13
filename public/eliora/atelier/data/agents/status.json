@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-12T07:07:20.825Z",
+  "generatedAt": "2026-08-13T07:11:25.538Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-08-12T07:07:20.743Z",
+      "lastRun": "2026-08-13T07:11:25.463Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -70,9 +70,9 @@
           "url": "https://agentic-cinema.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Jul 27 - Sep 07, 2026",
-            "ja": "Jul 27 - Sep 07, 2026",
-            "zh": "Jul 27 - Sep 07, 2026"
+            "en": "Jul 27 - Sep 09, 2026",
+            "ja": "Jul 27 - Sep 09, 2026",
+            "zh": "Jul 27 - Sep 09, 2026"
           }
         },
         {
