@@ -74,5 +74,3 @@ The pull that brings
 <br>![your nightly crave](/images/sky.jpg)<br><br>
 
 <audio controls src="/music/The Fusion　Vol.01.wav" class="w-full mt-4"></audio><br><br>
-
-<video controls src="/videos/The Fusion　Vol.01.mp4" class="w-full mt-4"></video><br>

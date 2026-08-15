@@ -8,7 +8,11 @@ const pages = [
   '/eliora/media-vault/',
   '/eliora/media-vault/en/',
   '/eliora/media-vault/ja/',
-  '/eliora/media-vault/zh/'
+  '/eliora/media-vault/zh/',
+  '/en/thoughts/first-intuition/',
+  '/en/thoughts/2025-01-01-new-year/',
+  '/thoughts/first-intuition/',
+  '/thoughts/2025-01-01-new-year/'
 ];
 const failures = [];
 
@@ -67,6 +71,27 @@ for (const [locale, expected] of Object.entries(localeExpectations)) {
     if (!html.includes(marker)) failures.push(`${locale}: missing metadata marker ${marker}`);
   }
   if (/<iframe[^>]+\ssrc=/i.test(html)) failures.push(`${locale}: video iframe must not load before a click`);
+}
+
+const localizedThoughtMediaPages = [
+  '/ja/thoughts/first-intuition/',
+  '/zh/thoughts/first-intuition/',
+  '/ja/thoughts/2025-01-01-new-year/',
+  '/zh/thoughts/2025-01-01-new-year/'
+];
+
+for (const page of localizedThoughtMediaPages) {
+  const html = await readFile(toDistPath(page), 'utf8');
+  const expectedLang = page.startsWith('/ja/') ? 'ja' : 'zh';
+  if (!html.includes(`<html lang="${expectedLang}">`)) {
+    failures.push(`${page}: expected html lang ${expectedLang}`);
+  }
+  if (/<(?:audio|video)\b/i.test(html)) {
+    failures.push(`${page}: English-only audio/video must not be embedded in a localized route`);
+  }
+  if (!html.includes(`/en/thoughts/`)) {
+    failures.push(`${page}: missing link to the English original`);
+  }
 }
 
 if (failures.length) {
