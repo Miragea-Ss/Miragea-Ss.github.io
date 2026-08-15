@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-14T07:08:29.547Z
+# lastWatch: 2026-08-15T06:19:53.994Z
 contests:
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
@@ -52,10 +52,10 @@ contests:
       en: Aug 02 - 24, 2026
       ja: Aug 02 - 24, 2026
       zh: Aug 02 - 24, 2026
-    sourceNote: Devpost auto · prize~950700 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~979950 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 950700
+    prizeHint: 979950
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -281,6 +281,34 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-08-15T06:19:53.941Z
+    type: devpost-auto
+    title: "Impact Forge: Summer 2026 Hackathon"
+    url: https://impactforge26.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 14 - 16, 2026
+      ja: Aug 14 - 16, 2026
+      zh: Aug 14 - 16, 2026
+    sourceNote: Devpost auto · prize~6600 · score 98 · ImpactForge
+    auto: true
+    joinScore: 98
+    prizeHint: 6600
+    submitUrl: https://impactforge26.devpost.com/challenges/start_a_submission
+  - at: 2026-08-15T06:19:53.941Z
+    type: devpost-auto
+    title: CS Girlies Annual Hackathon - Technology For Wellness
+    url: https://cs-girlies-wellness-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 14 - 16, 2026
+      ja: Aug 14 - 16, 2026
+      zh: Aug 14 - 16, 2026
+    sourceNote: Devpost auto · prize~5000 · score 98 · Computer Science Girlies
+    auto: true
+    joinScore: 98
+    prizeHint: 5000
+    submitUrl: https://cs-girlies-wellness-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-08-08T06:33:48.436Z
     type: devpost-auto
     title: Hack the Habitat
@@ -533,38 +561,10 @@ contests:
     joinScore: 92
     prizeHint: 10300
     submitUrl: https://celesta-exoplanet-challenge.devpost.com/challenges/start_a_submission
-  - at: 2026-08-12T07:07:20.709Z
-    type: devpost-auto
-    title: GenZ Can Hack 2026
-    url: https://genz-can-hack-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Apr 01 - Aug 22, 2026
-      ja: Apr 01 - Aug 22, 2026
-      zh: Apr 01 - Aug 22, 2026
-    sourceNote: Devpost auto · prize~1000 · score 90 · Kids for Kids Toronto Coding Club
-    auto: true
-    joinScore: 90
-    prizeHint: 1000
-    submitUrl: https://genz-can-hack-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-08-02T08:04:47.056Z
-    type: devpost-auto
-    title: Hack Days in Bansal
-    url: https://hack-days-in-bansal.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 02, 2026
-      ja: Aug 02, 2026
-      zh: Aug 02, 2026
-    sourceNote: Devpost auto · prize~1000 · score 90 · Major League Hacking
-    auto: true
-    joinScore: 90
-    prizeHint: 1000
-    submitUrl: https://hack-days-in-bansal.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-14T07:08:29.547Z
+  lastWatch: 2026-08-15T06:19:53.994Z
   source: devpost-auto+manual
-  added: 39
-  updated: 21
-  scanned: 61
+  added: 42
+  updated: 18
+  scanned: 62
   kept: 40
