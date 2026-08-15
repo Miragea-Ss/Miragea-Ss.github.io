@@ -24,7 +24,7 @@ const checks = [
   ['video iframe waits for an explicit play action', html.includes('id="video-player"') && !/<iframe[^>]+\ssrc=/i.test(html) && app.includes("placeholder.addEventListener('click'")],
   ['language buttons use stable localized routes', ['/eliora/media-vault/en/', '/eliora/media-vault/ja/', '/eliora/media-vault/zh/'].every((route) => app.includes(route))],
   ['accessibility copy covers all three languages', ['skipLink', 'heroImageAlt', 'videoListLabel', 'videoFrameTitle'].every((key) => (app.match(new RegExp(`${key}:`, 'g')) || []).length === 3)],
-  ['product film is click-to-load', html.includes('id="proof-video"') && html.includes('id="proof-video-source" data-src="./eliora-product-film-45s.mp4"') && app.includes("proofVideoStart.addEventListener('click'")],
+  ['expired contest film is absent from the current page', !html.includes('eliora-product-film-45s.mp4') && !html.includes('id="proof-video"') && !app.includes('proofVideoStart')],
   ['engineering evidence uses recorded verification values', ['1,922', '184 → 13', '>100<', '2026-08-15'].every((value) => html.includes(value))],
 ];
 

@@ -17,7 +17,6 @@
 ## Deliverables
 
 - A concise creator-plus-engineer positioning statement in EN, JA, and ZH.
-- A lightweight, click-to-play excerpt from the existing Eliora product film.
 - A proof section backed only by recorded local verification evidence.
 - Working routes into Infinite Canvas and its five-step guide.
 
@@ -31,10 +30,11 @@
 ## Acceptance Criteria
 
 1. The hero explains who Miragea is, what she makes, and where the work leads without requiring a scroll.
-2. The product excerpt does not load until the visitor chooses to play and does not block the initial page.
+2. No expired competition-submission video appears on the current site-introduction page.
 3. Every displayed engineering claim traces to the 2026-08-15 Infinite Canvas verification record.
 4. Desktop and smartphone layouts remain distinct, readable, and free of horizontal overflow.
 5. EN, JA, and ZH routes, links, build, structured metadata, and regression tests pass.
+6. Any future site-introduction video must use language-matched narration: EN on EN, Japanese on JA, and Chinese on ZH.
 
 ## Approval Boundary
 
@@ -55,5 +55,6 @@
 | Time | Decision/correction | Effect on plan |
 |---|---|---|
 | 2026-08-15 | Do not redesign the accepted Miragea atmosphere | Improve hierarchy and evidence inside the established system |
-| 2026-08-15 | Use existing owned product-film material | Avoid fabricated demonstrations or unrelated stock visuals |
+| 2026-08-15 | Remove the prior Devpost submission film from the current site introduction | Keep the original archival source untouched; do not reuse competition media as current site explanation |
+| 2026-08-15 | Future narration must match the page language | EN voice for EN, Japanese voice for JA, Chinese voice for ZH |
 | 2026-08-15 | Engineering claims require recorded evidence | Use the Infinite Canvas handoff measurements verbatim and date them |

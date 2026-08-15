@@ -22,8 +22,8 @@ const copy = {
     canvasPolicy: 'Elioraの主要機能に中国の実名認証は不要です。OpenRouterなどの国際BYOKは任意で接続できます。', canvasTrustLabel: 'Infinite Canvasの利用条件',
     canvasTrustBrowser: '今すぐ開始・Elioraアカウント不要', canvasTrustLocal: 'ローカルComfyUI・自由なWorkflow JSON', canvasTrustAgent: 'OpenRouter・承認制Agent',
     openCanvasNow: '登録なしでキャンバスを開く ↗', openCanvasGuide: '最初の5手順を見る', siteGeekspell: 'AIエージェントを安全に使いこなすための多言語映像シリーズ。',
-    proofKicker: 'SEE THE WORKING SYSTEM', proofTitle: '世界観だけでなく、動く仕組みまで。', proofIntro: '45秒のEliora製品映像と、実機で確認したInfinite Canvasの技術証拠です。数値は2026年8月15日のローカル検証記録に基づきます。',
-    productDemoAria: 'Eliora Media Vault 45秒製品映像', proofEvidenceAria: 'Infinite Canvasの検証証拠', proofPlay: '45秒の製品映像を再生', proofFilmLabel: '45 SEC · PRODUCT FILM', proofFilmTitle: '散らばる創作物を、追跡可能な制作資産へ。', proofFilmBody: '既存のEliora Media Vault映像から切り出した短縮版です。制作、来歴、検証、保存を一つの流れとして示します。',
+    proofKicker: 'SEE THE WORKING SYSTEM', proofTitle: '世界観だけでなく、検証できる仕組みまで。', proofIntro: 'Infinite Canvasを実機で確認した技術証拠です。数値は2026年8月15日のローカル検証記録に基づき、実際のキャンバスと操作ガイドへ直接進めます。',
+    proofEvidenceAria: 'Infinite Canvasの検証証拠',
     evidenceKicker: 'VERIFIED LOCALLY · 2026-08-15', proofMetricNodesLabel: '実機ComfyUIノード検出', proofMetricCardsLabel: 'ストレス試験：全カード → 近傍描画', proofMetricAgentLabel: 'レビュー1件あたりのAgent操作上限', proofMetricJsonValue: '無損失', proofMetricJsonLabel: '多言語・将来フィールドを含むWorkflow JSON保持',
     proofEvidenceNote: '確認済み：登録不要、ローカルComfyUI、OpenRouter等の任意BYOK、承認制Agent、危険な一括削除の拒否。', proofCanvasAction: 'Infinite Canvasを試す ↗', proofGuideAction: '5手順ガイドを開く',
     atelierName: '宇宙工房', siteAtelier: '日本・英語圏・中国語圏ごとに編集された制作と仕事の入口。', siteGithub: '公開コード、サイト、AI制作システムの技術的な記録。', openSite: 'サイトを開く ↗',
@@ -56,8 +56,8 @@ const copy = {
     canvasPolicy: 'Eliora core features require no Chinese real-name verification. International BYOK services such as OpenRouter are optional.', canvasTrustLabel: 'Infinite Canvas access and connection options',
     canvasTrustBrowser: 'Start now · no Eliora account', canvasTrustLocal: 'Local ComfyUI · any workflow JSON', canvasTrustAgent: 'OpenRouter · review-gated Agent',
     openCanvasNow: 'Open canvas — no sign-up ↗', openCanvasGuide: 'See the five-step guide', siteGeekspell: 'A multilingual video series for using AI agents with clarity and control.',
-    proofKicker: 'SEE THE WORKING SYSTEM', proofTitle: 'Not only a world to see. A system that works.', proofIntro: 'A 45-second Eliora product film and measured Infinite Canvas evidence from the local verification record dated August 15, 2026.',
-    productDemoAria: 'Eliora Media Vault 45-second product film', proofEvidenceAria: 'Infinite Canvas verification evidence', proofPlay: 'Play the 45-second product film', proofFilmLabel: '45 SEC · PRODUCT FILM', proofFilmTitle: 'Turn scattered creative files into accountable production assets.', proofFilmBody: 'A concise excerpt from the existing Eliora Media Vault film, showing creation, provenance, validation, and durable storage as one production flow.',
+    proofKicker: 'SEE THE WORKING SYSTEM', proofTitle: 'Not only a world to see. A system you can verify.', proofIntro: 'Measured Infinite Canvas evidence from the local verification record dated August 15, 2026, with direct routes into the working canvas and its operating guide.',
+    proofEvidenceAria: 'Infinite Canvas verification evidence',
     evidenceKicker: 'VERIFIED LOCALLY · 2026-08-15', proofMetricNodesLabel: 'live ComfyUI nodes detected', proofMetricCardsLabel: 'stress test: total cards → nearby DOM', proofMetricAgentLabel: 'Agent operations per reviewed proposal', proofMetricJsonValue: 'Lossless', proofMetricJsonLabel: 'workflow JSON with multilingual and future fields',
     proofEvidenceNote: 'Verified: no sign-up, local ComfyUI, optional international BYOK including OpenRouter, review-gated Agent writes, and rejection of destructive delete-all operations.', proofCanvasAction: 'Try Infinite Canvas ↗', proofGuideAction: 'Open the five-step guide',
     atelierName: 'Cosmic Atelier', siteAtelier: 'Region-specific entrances to creative work and collaboration in EN, JP, and ZH.', siteGithub: 'Public code and technical records for the sites and AI production systems.', openSite: 'Open site ↗',
@@ -90,8 +90,8 @@ const copy = {
     canvasPolicy: 'Eliora 核心功能不需要中国实名认证。OpenRouter 等国际 BYOK 服务均为可选连接。', canvasTrustLabel: 'Infinite Canvas 使用与连接条件',
     canvasTrustBrowser: '立即开始・无需 Eliora 账号', canvasTrustLocal: '本地 ComfyUI・自由导入 Workflow JSON', canvasTrustAgent: 'OpenRouter・人工审核 Agent',
     openCanvasNow: '无需注册，打开画布 ↗', openCanvasGuide: '查看五步入门', siteGeekspell: '帮助你清晰、安全地使用 AI Agent 的多语言影像系列。',
-    proofKicker: 'SEE THE WORKING SYSTEM', proofTitle: '不只是可观看的世界，也是能够运行的系统。', proofIntro: '45 秒 Eliora 产品影像，以及来自 2026 年 8 月 15 日本地验证记录的 Infinite Canvas 实测证据。',
-    productDemoAria: 'Eliora Media Vault 45 秒产品影像', proofEvidenceAria: 'Infinite Canvas 验证证据', proofPlay: '播放45秒产品影像', proofFilmLabel: '45 SEC · PRODUCT FILM', proofFilmTitle: '把散落的创作文件变成可追踪的制作资产。', proofFilmBody: '从现有 Eliora Media Vault 影片中提炼的短版，展示创作、来源记录、验证和长期保存如何成为同一条制作流程。',
+    proofKicker: 'SEE THE WORKING SYSTEM', proofTitle: '不只是可观看的世界，也是可以验证的系统。', proofIntro: '这里展示来自 2026 年 8 月 15 日本地验证记录的 Infinite Canvas 实测证据，并可直接进入实际画布与操作指南。',
+    proofEvidenceAria: 'Infinite Canvas 验证证据',
     evidenceKicker: 'VERIFIED LOCALLY · 2026-08-15', proofMetricNodesLabel: '实机检测到的 ComfyUI 节点', proofMetricCardsLabel: '压力测试：全部卡片 → 邻近 DOM', proofMetricAgentLabel: '每个审核提案的 Agent 操作上限', proofMetricJsonValue: '无损', proofMetricJsonLabel: '保留多语言与未来字段的 Workflow JSON',
     proofEvidenceNote: '已验证：无需注册、本地 ComfyUI、OpenRouter 等可选国际 BYOK、需要审核的 Agent 写入，以及拒绝危险的全部删除操作。', proofCanvasAction: '试用 Infinite Canvas ↗', proofGuideAction: '打开五步指南',
     atelierName: '宇宙工房', siteAtelier: '针对英语、日本与中文市场分别编辑的创作与合作入口。', siteGithub: '网站、公开代码与 AI 制作系统的技术记录。', openSite: '打开网站 ↗',
@@ -134,9 +134,6 @@ const videoTitle = document.querySelector('#video-title');
 const videoDescription = document.querySelector('#video-description');
 const videoExternal = document.querySelector('#video-external');
 const videoList = document.querySelector('#video-list');
-const proofVideo = document.querySelector('#proof-video');
-const proofVideoSource = document.querySelector('#proof-video-source');
-const proofVideoStart = document.querySelector('#proof-video-start');
 const mediaVaultRoutes = {
   en: '/eliora/media-vault/en/',
   ja: '/eliora/media-vault/ja/',
@@ -228,16 +225,6 @@ function setLanguage(language) {
 }
 
 placeholder.addEventListener('click', () => setVideo(currentVideo));
-
-proofVideoStart.addEventListener('click', () => {
-  if (!proofVideoSource.src) {
-    proofVideoSource.src = proofVideoSource.dataset.src;
-    proofVideo.load();
-  }
-  proofVideoStart.hidden = true;
-  proofVideo.controls = true;
-  proofVideo.play().catch(() => {});
-});
 
 languageButtons.forEach((button) => button.addEventListener('click', () => {
   const language = button.dataset.language;

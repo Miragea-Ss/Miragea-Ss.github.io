@@ -42,8 +42,6 @@ for (const [locale, metadata] of Object.entries(locales)) {
     .replace('href="../../favicon.svg"', 'href="../../../favicon.svg"')
     .replaceAll('href="./styles.css', 'href="../styles.css')
     .replaceAll('src="./app.js', 'src="../app.js')
-    .replaceAll('poster="./', 'poster="../')
-    .replaceAll('data-src="./', 'data-src="../')
     .replaceAll('src="../../assets/', 'src="../../../assets/')
     .replaceAll('src="../../eliora/assets/', 'src="../../../eliora/assets/')
     .replace('<script type="application/ld+json">', `<script>window.__MEDIA_VAULT_LANG__ = "${locale}";</script>\n  <script type="application/ld+json">`)
