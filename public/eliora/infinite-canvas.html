@@ -396,13 +396,59 @@
         display: grid; place-items: center; padding: 20px;
       }
       .help-card {
-        width: min(440px, 100%); max-height: min(86vh, 640px); overflow: auto;
+        width: min(1080px, 100%); max-height: min(90vh, 820px); overflow: auto;
         border: 1px solid var(--line2); border-radius: 14px;
         background: rgba(10,10,12,.96); padding: 20px 22px 18px;
         box-shadow: 0 28px 90px rgba(0,0,0,.55);
       }
       .help-card h2 { margin: 0 0 6px; font-size: 18px; }
       .help-card .help-sub { margin: 0 0 14px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+      .help-tabs {
+        position: sticky; top: -20px; z-index: 2; display: flex; gap: 7px; margin: 0 -4px 16px;
+        padding: 12px 4px 10px; background: linear-gradient(180deg, rgba(10,10,12,.99) 75%, rgba(10,10,12,0));
+      }
+      .help-tabs button { min-height: 36px; padding: 0 13px; font-size: 12px; }
+      .help-tabs button.active { border-color: rgba(123,216,232,.5); color: #dffaff; background: rgba(123,216,232,.12); }
+      .guide-pane { display: grid; gap: 18px; }
+      .guide-pane > * { min-width: 0; }
+      .guide-lead {
+        border-left: 2px solid var(--cyan); padding: 2px 0 2px 14px;
+        color: #e9e7e2; font-size: 14px; line-height: 1.65; max-width: 82ch;
+      }
+      .guide-steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+      .guide-step { min-width: 0; padding: 15px 14px; border-right: 1px solid var(--line); background: rgba(255,255,255,.018); }
+      .guide-step:last-child { border-right: 0; }
+      .guide-step .n { display: block; margin-bottom: 7px; color: var(--gold); font: 700 10px/1 ui-monospace, monospace; letter-spacing: .15em; }
+      .guide-step b { display: block; margin-bottom: 6px; font-size: 13px; color: #f3f0e9; }
+      .guide-step p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+      .guide-callout { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; padding: 12px 14px; border: 1px solid rgba(245,184,100,.3); border-radius: 10px; background: rgba(245,184,100,.055); color: var(--muted); font-size: 12px; line-height: 1.55; }
+      .guide-callout b { color: var(--gold); white-space: nowrap; }
+      .guide-sections { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 24px; }
+      .guide-section { border-top: 1px solid var(--line); padding-top: 13px; }
+      .guide-section h3, .comparison-block h3 { margin: 0 0 7px; font-size: 14px; color: #f2eee7; }
+      .guide-section p, .comparison-note { margin: 0 0 8px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+      .guide-section ol, .guide-section ul { margin: 0; padding-left: 18px; color: #c7c2b9; font-size: 12px; line-height: 1.65; }
+      .guide-section code { color: var(--cyan); font: 600 11px/1.4 ui-monospace, monospace; }
+      .comparison-map { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+      .comparison-lane { padding: 14px; border-right: 1px solid var(--line); }
+      .comparison-lane:last-child { border-right: 0; }
+      .comparison-lane b { display: block; margin-bottom: 8px; color: var(--gold); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+      .comparison-lane span { display: inline-flex; margin: 0 5px 5px 0; padding: 5px 7px; border: 1px solid var(--line2); border-radius: 6px; color: #ddd8cf; font-size: 11px; }
+      .comparison-lane span.ours { border-color: rgba(123,216,232,.52); color: #dffaff; background: rgba(123,216,232,.1); }
+      .comparison-scroll { width: 100%; max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+      .comparison-table { width: 100%; min-width: 980px; border-collapse: collapse; font-size: 11px; }
+      .comparison-table th, .comparison-table td { padding: 10px 9px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; line-height: 1.45; }
+      .comparison-table th:last-child, .comparison-table td:last-child { border-right: 0; }
+      .comparison-table tr:last-child td { border-bottom: 0; }
+      .comparison-table th { position: sticky; top: 0; background: #121216; color: var(--faint); font-size: 10px; letter-spacing: .04em; }
+      .comparison-table td:first-child { min-width: 150px; font-weight: 800; color: #eeeae2; }
+      .comparison-table tr.ours td { background: rgba(123,216,232,.055); }
+      .comparison-table a { color: var(--cyan); text-decoration: none; }
+      .comparison-table a:hover, .guide-sources a:hover { text-decoration: underline; }
+      .grade-best { color: #bfecc2; } .grade-good { color: #dffaff; } .grade-partial { color: #f6d594; } .grade-none { color: #77747b; }
+      .guide-legend, .guide-sources { color: var(--faint); font-size: 11px; line-height: 1.6; }
+      .guide-sources { display: flex; flex-wrap: wrap; gap: 6px 12px; }
+      .guide-sources a { color: #bbb7ae; text-decoration: none; }
       .help-list { display: grid; gap: 8px; margin: 0 0 16px; padding: 0; list-style: none; }
       .help-list li {
         display: grid; grid-template-columns: minmax(110px, auto) 1fr; gap: 10px;
@@ -416,6 +462,15 @@
       }
       .help-list span { color: var(--muted); }
       .help-actions { display: flex; justify-content: flex-end; gap: 8px; }
+      @media (max-width: 760px) {
+        .help-backdrop { padding: 0; place-items: stretch; }
+        .help-card { width: 100%; max-height: 100vh; border-radius: 0; padding: 16px 14px 14px; }
+        .help-tabs { top: -16px; margin-inline: -2px; overflow-x: auto; }
+        .guide-steps, .guide-sections, .comparison-map { grid-template-columns: 1fr; }
+        .guide-step, .comparison-lane { border-right: 0; border-bottom: 1px solid var(--line); }
+        .guide-step:last-child, .comparison-lane:last-child { border-bottom: 0; }
+        .help-actions { position: sticky; bottom: -14px; padding: 10px 0 0; background: rgba(10,10,12,.98); }
+      }
       .cmd-palette {
         position: fixed; inset: 0; z-index: 90;
         background: rgba(0,0,0,.55); backdrop-filter: blur(5px);
@@ -2227,7 +2282,12 @@
       <div class="help-card" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
         <h2 id="helpTitle" data-i18n="helpHeading">Work Canvas help</h2>
         <p class="help-sub" data-i18n="helpSub">Place cards, wire them, then run Local AI or ComfyUI. Board auto-saves in this browser.</p>
-        <ul class="help-list" id="helpList"></ul>
+        <div class="help-tabs" role="tablist" aria-label="Guide sections">
+          <button type="button" class="active" data-help-tab="start" role="tab" aria-selected="true">Start here</button>
+          <button type="button" data-help-tab="operate" role="tab" aria-selected="false">How to use</button>
+          <button type="button" data-help-tab="compare" role="tab" aria-selected="false">Compare</button>
+        </div>
+        <div id="helpContent"></div>
         <div class="help-actions">
           <button id="helpReplayOnboard" type="button" data-i18n="helpReplay">Replay tour</button>
           <button id="helpClose" class="primary" type="button" data-i18n="helpClose">Close</button>
@@ -2490,10 +2550,10 @@
           downloadLocalKitTitle: 'Download the one-click local kit',
           openVault: 'Vault',
           openVaultTitle: 'Open Eliora Media Vault',
-          helpBtn: 'Help',
-          helpTitle: 'Shortcuts & help (?)',
-          helpHeading: 'Work Canvas help',
-          helpSub: 'Place cards, wire them, then run Local AI or ComfyUI. Board auto-saves in this browser.',
+          helpBtn: 'Guide',
+          helpTitle: 'Guide, shortcuts & comparison (?)',
+          helpHeading: 'Eliora Infinite Canvas guide',
+          helpSub: 'Start here, learn every core workflow, and see how Eliora differs from other open infinite-canvas projects.',
           helpClose: 'Close',
           helpReplay: 'Replay tour',
           helpKbdAsk: 'Ask Local / Run selection',
@@ -2875,10 +2935,10 @@
           downloadLocalKitTitle: 'ワンクリック・ローカルKitをダウンロード',
           openVault: 'Vault',
           openVaultTitle: 'Eliora Media Vault を開く',
-          helpBtn: 'ヘルプ',
-          helpTitle: 'ショートカットと使い方（?）',
-          helpHeading: 'ワークキャンバスの使い方',
-          helpSub: 'カードを置き、線でつなぎ、ローカル AI か ComfyUI を実行。ボードはこのブラウザに自動保存されます。',
+          helpBtn: '使い方',
+          helpTitle: '使い方・ショートカット・比較（?）',
+          helpHeading: 'Eliora Infinite Canvas 操作ガイド',
+          helpSub: '初回手順、全主要操作、ほかの公開Infinite Canvasとの違いを、ここだけで確認できます。',
           helpClose: '閉じる',
           helpReplay: 'ツアーを再表示',
           helpKbdAsk: 'ローカル質問 / 選択を実行',
@@ -4949,12 +5009,148 @@
           { kbd: 'Cloud', label: t('helpKbdCloud') },
         ];
       }
+      const HELP_GUIDE = {
+        en: {
+          tabs: { start: 'Start here', operate: 'How to use', compare: 'Compare' },
+          lead: 'Eliora is a local-first visual production desk. Put source, prompt, workflow, and result cards on one spatial board; connect them; then run local llama.cpp, local ComfyUI, or an optional international BYOK API.',
+          calloutTitle: 'First success',
+          callout: 'For local generation, opening ComfyUI alone is not enough. Start ComfyUI, then run START-ELIORA-CANVAS.bat. When GPU and Path turn green, import a workflow JSON and run it.',
+          steps: [
+            ['01', 'Choose the route', 'Public page for planning; Local Kit for ComfyUI, llama.cpp, and Agent execution.'],
+            ['02', 'Place cards', 'Use Add, the left Palette, Quick add, or drop images and videos onto the board.'],
+            ['03', 'Connect context', 'Drag the right output dot to the left input dot. Wires define prompt and reference context.'],
+            ['04', 'Choose an engine', 'Run with local ComfyUI, Ask Local with llama.cpp, or open Cloud for optional international BYOK.'],
+            ['05', 'Review & keep', 'Inspect results, save useful media to Assets, export, or undo. Your board auto-saves locally.'],
+          ],
+          sections: [
+            { title: '1. Navigate and build the board', intro: 'The canvas is the product surface—there is no separate “edit mode”.', items: ['Drag empty space to pan; use the wheel or trackpad to zoom.', 'Drag a card by its handle. Shift-click adds cards to the selection.', 'Double-click editable card text, or select a card and use the Inspector.', 'Use right ● → left ● to connect cards. Select a wire to label or remove it.', 'Use Boards for separate projects; Search and Fit recover large layouts.'] },
+            { title: '2. Run any current ComfyUI workflow', intro: 'Eliora preserves multilingual prompts, custom-node fields, and unknown future DEV fields.', items: ['Start ComfyUI, then START-ELIORA-CANVAS.bat; press Recheck if Path is red.', 'Press Import JSON or drop a ComfyUI API/UI workflow JSON onto the canvas.', 'Check the Active Comfy graph chip and detected capability chips (Image, Video, Audio, Mask, 3D, DEV/Custom).', 'Select or connect Prompt/Image cards. The Run panel assembles the usable prompt and references.', 'Press Run. Eliora validates the graph and reports missing nodes or models without rewriting the source JSON.'] },
+            { title: '3. Local AI and international BYOK', intro: 'Local is the default. Cloud is optional and uses keys stored in this browser.', items: ['Start a llama.cpp server and use Ask Local or Ctrl+Enter for private local text work.', 'Open Cloud only when needed; choose OpenRouter or another international OpenAI-compatible provider.', 'Enter your own endpoint/model/key. Eliora has no account and does not receive the key.', 'External providers have their own terms; the core Eliora route requires no Chinese real-name service.'] },
+            { title: '4. Let an Agent operate safely', intro: 'The local Bridge exposes MCP tools, but no client can write directly to the board.', items: ['Start the Local Kit and keep Local Agent Action on Review required.', 'Compose is the default: add/update/connect/select/viewport, but no delete.', 'Full allows explicit deletion proposals; delete-all is never accepted.', 'Copy connection, give it to a trusted local Agent, then inspect every proposal preview.', 'Approve applies an undoable local change; Reject leaves the board unchanged. Both are audited locally.'] },
+            { title: '5. Keep and exchange your work', intro: 'Data ownership is part of the workflow, not an afterthought.', items: ['Assets stores reusable image/video references on this device.', 'Snapshot creates a local recovery point; Restore snap returns to it.', 'Export board JSON for Eliora backup, or JSON Canvas (.canvas) for an open spatial document.', 'SVG/PNG exports create shareable views; Markdown exports a readable linear summary.', 'Browser storage is device-specific—export important boards before clearing browser data.'] },
+            { title: '6. Fast troubleshooting', intro: 'Use the visible state pills before changing endpoints or JSON.', items: ['Path red: run START-ELIORA-CANVAS.bat after ComfyUI; do not open the HTML with file://.', 'GPU red: confirm ComfyUI is listening on 127.0.0.1:8188, then Recheck.', 'Missing node/model: read capability chips and the Log, install the workflow’s custom nodes/models, then rerun.', 'Agent unavailable: the local Bridge on 127.0.0.1:8190 is not running; restart the Local Kit.', 'Cloud failure: verify the selected international provider endpoint, model, key, and provider quota.'] },
+          ],
+          shortcutsTitle: 'Keyboard and direct-manipulation reference',
+          compareLead: 'This is a purpose map, not a universal winner table. A specialist painting engine, an open file format, and an AI production desk solve different problems.',
+          lanes: [
+            ['AI production workspaces', ['Eliora', 'basketikun', 'hero8152']],
+            ['Painting / image expansion', ['Milton', 'SD Infinity']],
+            ['Format / rendering foundations', ['JSON Canvas', 'Canvas Tutorial']],
+          ],
+          matrixTitle: 'Capability matrix',
+          matrixNote: '◎ defining strength · ○ supported · △ partial or adjacent · — not the project’s primary capability. Based on official repository documentation checked 2026-08-15.',
+          headers: ['Project', 'Primary purpose', 'Local / no required account', 'ComfyUI + workflow JSON', 'International BYOK', 'Agent operation', 'Open canvas exchange', 'Large-canvas strength'],
+          conclusionTitle: 'Honest conclusion',
+          conclusion: 'For the declared target—local ComfyUI production, unrestricted workflow JSON, optional international APIs, and review-gated Agent control—Eliora has the most complete combination in this set. It does not replace Milton for focused freehand painting, Stable Diffusion Infinity for classic outpainting, JSON Canvas as the neutral format specification, or the tutorial as a deep WebGL/WebGPU engineering reference.',
+          sourcesTitle: 'Official sources',
+        },
+        ja: {
+          tabs: { start: '最初の5手順', operate: '詳しい使い方', compare: '比較図' },
+          lead: 'Elioraはローカル優先の視覚制作デスクです。素材・プロンプト・Workflow・結果を同じ空間に置き、線で関係を作り、ローカルllama.cpp、ローカルComfyUI、または任意の国際BYOK APIで実行します。',
+          calloutTitle: '最初の成功条件',
+          callout: 'ローカル生成ではComfyUIを開くだけでは足りません。ComfyUI起動後にSTART-ELIORA-CANVAS.batを実行してください。GPUとPathが緑になったら、Workflow JSONを読み込み実行できます。',
+          steps: [
+            ['01', '稼働経路を選ぶ', '公開ページは整理・計画用。ComfyUI、llama.cpp、Agent実行はローカルKitを使います。'],
+            ['02', 'カードを置く', '追加、左Palette、Quick add、または画像・動画のドロップでカードを作ります。'],
+            ['03', '文脈をつなぐ', '右の出力●から左の入力●へドラッグ。線がプロンプトと参照画像の関係になります。'],
+            ['04', '実行先を選ぶ', 'ローカルComfyUI、llama.cppのAsk Local、任意の国際BYOK Cloudから選びます。'],
+            ['05', '確認して残す', '結果を確認し、Assets保存、書き出し、またはUndo。ボードは端末内に自動保存されます。'],
+          ],
+          sections: [
+            { title: '1. キャンバスを移動・構築する', intro: 'キャンバスそのものが制作画面です。別の編集モードはありません。', items: ['空白をドラッグして移動、ホイールまたはトラックパッドで拡大縮小。', 'カードのハンドルをドラッグ。Shift+クリックで複数選択。', '編集可能な文字をダブルクリック、またはカード選択後にInspectorで編集。', '右●から左●へ接続。線を選べばラベル編集や削除ができます。', 'Boardsで案件を分け、SearchとFitで大規模配置を回収します。'] },
+            { title: '2. 現行ComfyUI Workflowを自由に使う', intro: '多言語プロンプト、custom node、未知の将来DEVフィールドを保持します。', items: ['ComfyUI起動後にSTART-ELIORA-CANVAS.bat。Pathが赤なら再確認。', 'Import JSON、またはComfyUIのAPI/UI JSONをキャンバスへドロップ。', 'Active Comfy graphと能力チップ（画像・動画・音声・Mask・3D・DEV/Custom）を確認。', 'Prompt/Imageカードを選択または接続。実行パネルが指示と参照をまとめます。', 'Runを押すとGraphを検証。元JSONを書き換えず、不足node/modelをLogで示します。'] },
+            { title: '3. ローカルAIと国際BYOK', intro: '初期値はローカル。Cloudは任意で、鍵はこのブラウザ内に保存されます。', items: ['llama.cpp serverを起動し、Ask LocalまたはCtrl+Enterでローカル文章処理。', '必要時だけCloudを開き、OpenRouterなど国際OpenAI互換Providerを選択。', '自分のendpoint/model/keyを入力。Elioraアカウントはなく、鍵をElioraへ送信しません。', '外部Providerには各社の規約がありますが、Eliora中核経路に中国実名認証は不要です。'] },
+            { title: '4. Agentに安全に操作させる', intro: 'Local BridgeはMCPを提供しますが、Clientはボードへ直接書き込めません。', items: ['ローカルKitを起動し、Local Agent ActionをReview requiredのまま使用。', '初期Composeは追加・更新・接続・選択・画面移動のみ。削除は禁止。', 'Fullは明示IDの削除提案が可能ですが、全削除は常に拒否。', 'Copy connectionを信頼できるローカルAgentへ渡し、提案Previewを毎回確認。', 'ApproveはUndo可能な変更、Rejectは変更なし。両方を端末内で監査記録します。'] },
+            { title: '5. 保存・交換・書き出し', intro: 'データ所有を制作フローの一部として扱います。', items: ['Assetsは画像・動画の参照素材をこの端末に保存。', 'Snapshotで復旧点を作り、Restore snapで戻せます。', 'Eliora backupはboard JSON、公開空間文書はJSON Canvas（.canvas）。', 'SVG/PNGは共有用画像、Markdownは読みやすい線形要約。', 'ブラウザ保存は端末別です。閲覧データ削除前に重要ボードを書き出してください。'] },
+            { title: '6. 迷った時の最短確認', intro: 'endpointやJSONを触る前に、画面の状態表示を見ます。', items: ['Path赤: ComfyUI起動後にSTART-ELIORA-CANVAS.bat。file://では開かない。', 'GPU赤: ComfyUIが127.0.0.1:8188で稼働しているか確認後、再確認。', 'node/model不足: 能力チップとLogを読み、必要custom node/modelを追加して再実行。', 'Agent未接続: 127.0.0.1:8190のLocal Bridge停止。ローカルKitを再起動。', 'Cloud失敗: 国際Providerのendpoint、model、key、利用枠を確認。'] },
+          ],
+          shortcutsTitle: 'キーボード・直接操作一覧',
+          compareLead: 'これは総合順位ではなく「目的の地図」です。手描きエンジン、公開ファイル形式、AI制作デスクは、解決する問題が異なります。',
+          lanes: [
+            ['AI制作ワークスペース', ['Eliora', 'basketikun', 'hero8152']],
+            ['描画・画像拡張', ['Milton', 'SD Infinity']],
+            ['形式・描画基盤', ['JSON Canvas', 'Canvas Tutorial']],
+          ],
+          matrixTitle: '機能比較表',
+          matrixNote: '◎ 主力 · ○ 対応 · △ 部分対応または隣接機能 · — 主目的ではない。2026-08-15に確認した各公式Repository資料を基準にしています。',
+          headers: ['Project', '主な目的', 'ローカル／必須Accountなし', 'ComfyUI＋Workflow JSON', '国際BYOK', 'Agent操作', '公開Canvas交換', '大規模Canvasの強み'],
+          conclusionTitle: '正直な結論',
+          conclusion: '今回の目標である「ローカルComfyUI制作・自由なWorkflow JSON・任意の国際API・承認制Agent操作」の組み合わせでは、Elioraがこの比較対象中で最も一体化しています。一方、手描き専用ならMilton、従来型outpaintingならStable Diffusion Infinity、中立的な形式仕様ならJSON Canvas、WebGL/WebGPUの深い実装教材ならTutorialが専門的に優れています。',
+          sourcesTitle: '公式資料',
+        },
+      };
+      const COMPARISON_ROWS = [
+        { name: 'Eliora Infinite Canvas', href: 'https://miragea-ss.github.io/eliora/infinite-canvas.html', ours: true,
+          en: ['AI production desk', '◎ Local-first', '◎ Live JSON + detection', '◎ OpenRouter + compatible', '◎ MCP, review gated', '◎ JSON Canvas', '○ Viewport virtualization'],
+          ja: ['AI制作デスク', '◎ ローカル優先', '◎ Live JSON＋能力検出', '◎ OpenRouter等', '◎ MCP・承認制', '◎ JSON Canvas', '○ Viewport仮想化'] },
+        { name: 'basketikun/infinite-canvas', href: 'https://github.com/basketikun/infinite-canvas',
+          en: ['AI image workspace', '○ Browser / Docker', '△ Custom API scripts', '◎ OpenAI-compatible', '◎ Local Canvas Agent', '△ Project import / export', '○ Memoized node rendering'],
+          ja: ['AI画像ワークスペース', '○ Browser／Docker', '△ Custom API script', '◎ OpenAI互換', '◎ Local Canvas Agent', '△ Project入出力', '○ Node描画最適化'] },
+        { name: 'hero8152/Infinite-Canvas', href: 'https://github.com/hero8152/Infinite-Canvas',
+          en: ['Multi-provider AI canvas', '○ Local service', '◎ LAN ComfyUI + JSON', '○ OpenAI / Gemini plus CN routes', '— Not documented as core', '△ Project import / export', '○ Smart + node canvases'],
+          ja: ['多Provider AI Canvas', '○ Local service', '◎ LAN ComfyUI＋JSON', '○ 国際API＋中国系経路', '— 主機能の記載なし', '△ Project入出力', '○ Smart＋Node Canvas'] },
+        { name: 'serge-rgb/milton', href: 'https://github.com/serge-rgb/milton',
+          en: ['Infinite-detail painting', '◎ Native desktop', '—', '—', '—', '△ Own .mlt format', '◎ Native vector-like paint'],
+          ja: ['無限精細な手描き', '◎ Native desktop', '—', '—', '—', '△ 独自.mlt形式', '◎ Native描画'] },
+        { name: 'stablediffusion-infinity', href: 'https://github.com/lkwq007/stablediffusion-infinity',
+          en: ['Stable Diffusion outpaint', '△ Local app; web assets noted', '— Stable Diffusion stack', '—', '—', '—', '△ README notes RAM/browser limits'],
+          ja: ['Stable Diffusion outpaint', '△ Local app・Web asset注意', '— SD専用構成', '—', '—', '—', '△ RAM／Browser制約記載'] },
+        { name: 'obsidianmd/jsoncanvas', href: 'https://github.com/obsidianmd/jsoncanvas',
+          en: ['Open canvas file format', '◎ No service required', '—', '—', '— Format, not an Agent', '◎ Defining strength', '— Not a renderer'],
+          ja: ['公開Canvas形式仕様', '◎ Service不要', '—', '—', '— Agentではない', '◎ 主力', '— Rendererではない'] },
+        { name: 'infinite-canvas-tutorial', href: 'https://github.com/xiaoiver/infinite-canvas-tutorial',
+          en: ['Rendering-engine tutorial', '○ Local development', '—', '△ AI integration lessons', '△ Agent-adjacent lessons', '○ SVG / clipboard formats', '◎ WebGL/WebGPU, ECS, tiles'],
+          ja: ['描画Engine教材', '○ Local開発', '—', '△ AI統合Lesson', '△ Agent隣接Lesson', '○ SVG／Clipboard', '◎ WebGL/WebGPU・ECS・Tile'] },
+      ];
+      let helpTab = 'start';
+      function comparisonGradeClass(value) {
+        if (value.startsWith('◎')) return 'grade-best';
+        if (value.startsWith('○')) return 'grade-good';
+        if (value.startsWith('△')) return 'grade-partial';
+        return 'grade-none';
+      }
+      function renderGuideStart(data) {
+        return `<div class="guide-pane">
+          <p class="guide-lead">${esc(data.lead)}</p>
+          <div class="guide-steps">${data.steps.map((step) => `<div class="guide-step"><span class="n">${esc(step[0])}</span><b>${esc(step[1])}</b><p>${esc(step[2])}</p></div>`).join('')}</div>
+          <div class="guide-callout"><b>${esc(data.calloutTitle)}</b><span>${esc(data.callout)}</span></div>
+        </div>`;
+      }
+      function renderGuideOperate(data) {
+        const shortcuts = helpShortcutRows().map((row) => `<li><kbd>${esc(row.kbd)}</kbd><span>${esc(row.label)}</span></li>`).join('');
+        return `<div class="guide-pane"><div class="guide-sections">
+          ${data.sections.map((section) => `<section class="guide-section"><h3>${esc(section.title)}</h3><p>${esc(section.intro)}</p><ol>${section.items.map((item) => `<li>${esc(item)}</li>`).join('')}</ol></section>`).join('')}
+          <section class="guide-section" style="grid-column:1/-1"><h3>${esc(data.shortcutsTitle)}</h3><ul class="help-list" id="helpList">${shortcuts}</ul></section>
+        </div></div>`;
+      }
+      function renderGuideCompare(data) {
+        const locale = uiLang === 'ja' ? 'ja' : 'en';
+        const rows = COMPARISON_ROWS.map((row) => {
+          const cells = row[locale];
+          return `<tr class="${row.ours ? 'ours' : ''}"><td><a href="${row.href}" target="_blank" rel="noopener noreferrer">${esc(row.name)} ↗</a></td>${cells.map((cell, index) => `<td class="${index ? comparisonGradeClass(cell) : ''}">${esc(cell)}</td>`).join('')}</tr>`;
+        }).join('');
+        const sourceLinks = COMPARISON_ROWS.filter((row) => !row.ours).map((row) => `<a href="${row.href}" target="_blank" rel="noopener noreferrer">${esc(row.name)} ↗</a>`).join('');
+        return `<div class="guide-pane comparison-block">
+          <p class="guide-lead">${esc(data.compareLead)}</p>
+          <div class="comparison-map">${data.lanes.map((lane) => `<div class="comparison-lane"><b>${esc(lane[0])}</b>${lane[1].map((name) => `<span class="${name === 'Eliora' ? 'ours' : ''}">${esc(name)}</span>`).join('')}</div>`).join('')}</div>
+          <div><h3>${esc(data.matrixTitle)}</h3><p class="comparison-note">${esc(data.matrixNote)}</p>
+            <div class="comparison-scroll"><table class="comparison-table"><thead><tr>${data.headers.map((header) => `<th scope="col">${esc(header)}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>
+          </div>
+          <div class="guide-callout"><b>${esc(data.conclusionTitle)}</b><span>${esc(data.conclusion)}</span></div>
+          <div><h3>${esc(data.sourcesTitle)}</h3><div class="guide-sources">${sourceLinks}</div></div>
+        </div>`;
+      }
       function renderHelpList() {
-        const list = $('helpList');
-        if (!list) return;
-        list.innerHTML = helpShortcutRows().map((row) => (
-          `<li><kbd>${esc(row.kbd)}</kbd><span>${esc(row.label)}</span></li>`
-        )).join('');
+        const content = $('helpContent');
+        if (!content) return;
+        const data = HELP_GUIDE[uiLang] || HELP_GUIDE.en;
+        document.querySelectorAll('[data-help-tab]').forEach((button) => {
+          const active = button.dataset.helpTab === helpTab;
+          button.textContent = data.tabs[button.dataset.helpTab] || button.dataset.helpTab;
+          button.classList.toggle('active', active);
+          button.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        content.innerHTML = helpTab === 'operate' ? renderGuideOperate(data) : helpTab === 'compare' ? renderGuideCompare(data) : renderGuideStart(data);
       }
       function showHelp() {
         renderHelpList();
@@ -5323,6 +5519,14 @@
       function bindHelp() {
         $('openHelp')?.addEventListener('click', showHelp);
         $('helpClose')?.addEventListener('click', hideHelp);
+        document.querySelectorAll('[data-help-tab]').forEach((button) => {
+          button.addEventListener('click', () => {
+            helpTab = button.dataset.helpTab || 'start';
+            renderHelpList();
+            const card = button.closest('.help-card');
+            if (card) card.scrollTop = 0;
+          });
+        });
         $('helpBackdrop')?.addEventListener('click', (e) => {
           if (e.target === $('helpBackdrop')) hideHelp();
         });
