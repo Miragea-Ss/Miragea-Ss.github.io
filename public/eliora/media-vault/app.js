@@ -3,8 +3,10 @@ const copy = {
     pageTitle: 'Miragea — 映像でたどる作品・サイト・AI制作',
     description: 'Miragea / EX_Her の映像作品、言葉、AI制作、GeekSpell、Elioraの実用システムを映像でたどる案内ページ。',
     brandLine: '映像・言葉・AI制作の航路', navCollection: '収蔵内容', navSites: 'サイト', navWatch: '映像', mobileNavLabel: 'スマートフォンナビゲーション',
+    skipLink: '本文へ移動', brandAria: 'Mirageaホーム', primaryNavLabel: '主要ナビゲーション', languageLabel: '言語', signalsLabel: 'アーカイブ概要',
+    heroVisualLabel: 'Mirageaビジュアルアーカイブ', heroImageAlt: 'Mirageaの光に満ちた幻想世界を表すビジュアル', identityLabel: 'MirageaとEliora', videoListLabel: '映像プレイリスト', videoFrameTitle: 'GeekSpell映像プレイヤー',
     heroKicker: 'MIRAGEA / EX_HER · VIDEO PORTRAIT', heroTitle: '世界を感じ、映像にし、動く仕組みへ。',
-    heroBody: 'ここはMirageaの作品と活動を、映像からたどる入口です。幻想、宇宙、HSPの知覚、音楽映像、AI制作の研究、そして制作を支えるElioraの実用システムを集めています。',
+    heroBody: 'Mirageaは、映画的な世界をつくるAI映像作家であり、その制作を再現可能にするワークフロー設計者です。作品を見て、制作方法を学び、その背後で動くローカル優先のElioraシステムを使えます。',
     heroWatch: '映像から見る', heroArchive: 'Miragea Archiveへ', signalLanguages: '言語の入口', signalSeries: 'GeekSpell公開回', signalLayers: '創作と実装の層',
     visualLabel: 'ARCHIVE SIGNAL', visualTitle: '知覚から制作へ', collectionKicker: 'WHAT THIS PLACE HOLDS', collectionTitle: 'このサイトが集めているもの',
     collectionIntro: '単なる作品一覧ではありません。感じたこと、考えたこと、つくった映像、再現できる制作方法を、ひとつの記憶として残しています。',
@@ -20,9 +22,13 @@ const copy = {
     canvasPolicy: 'Elioraの主要機能に中国の実名認証は不要です。OpenRouterなどの国際BYOKは任意で接続できます。', canvasTrustLabel: 'Infinite Canvasの利用条件',
     canvasTrustBrowser: '今すぐ開始・Elioraアカウント不要', canvasTrustLocal: 'ローカルComfyUI・自由なWorkflow JSON', canvasTrustAgent: 'OpenRouter・承認制Agent',
     openCanvasNow: '登録なしでキャンバスを開く ↗', openCanvasGuide: '最初の5手順を見る', siteGeekspell: 'AIエージェントを安全に使いこなすための多言語映像シリーズ。',
+    proofKicker: 'SEE THE WORKING SYSTEM', proofTitle: '世界観だけでなく、動く仕組みまで。', proofIntro: '45秒のEliora製品映像と、実機で確認したInfinite Canvasの技術証拠です。数値は2026年8月15日のローカル検証記録に基づきます。',
+    productDemoAria: 'Eliora Media Vault 45秒製品映像', proofEvidenceAria: 'Infinite Canvasの検証証拠', proofPlay: '45秒の製品映像を再生', proofFilmLabel: '45 SEC · PRODUCT FILM', proofFilmTitle: '散らばる創作物を、追跡可能な制作資産へ。', proofFilmBody: '既存のEliora Media Vault映像から切り出した短縮版です。制作、来歴、検証、保存を一つの流れとして示します。',
+    evidenceKicker: 'VERIFIED LOCALLY · 2026-08-15', proofMetricNodesLabel: '実機ComfyUIノード検出', proofMetricCardsLabel: 'ストレス試験：全カード → 近傍描画', proofMetricAgentLabel: 'レビュー1件あたりのAgent操作上限', proofMetricJsonValue: '無損失', proofMetricJsonLabel: '多言語・将来フィールドを含むWorkflow JSON保持',
+    proofEvidenceNote: '確認済み：登録不要、ローカルComfyUI、OpenRouter等の任意BYOK、承認制Agent、危険な一括削除の拒否。', proofCanvasAction: 'Infinite Canvasを試す ↗', proofGuideAction: '5手順ガイドを開く',
     atelierName: '宇宙工房', siteAtelier: '日本・英語圏・中国語圏ごとに編集された制作と仕事の入口。', siteGithub: '公開コード、サイト、AI制作システムの技術的な記録。', openSite: 'サイトを開く ↗',
     watchKicker: 'WATCH THE WORK', watchTitle: '映像から、私の仕事を知る', watchIntro: 'GeekSpellは、私がAIエージェントと制作するときに使う考え方を、短い映像で共有するシリーズです。',
-    chooseVideo: '下の映像を選んで再生', nowPlaying: 'NOW PLAYING', openPlatform: '配信サイトで見る',
+    chooseVideo: '選択中の映像を再生', nowPlaying: 'NOW PLAYING', openPlatform: '配信サイトで見る',
     platformNote: 'このページと主要サイトはBilibiliへのログインや中国の実名認証を必要としません。Bilibiliは中国語作品を見るための任意の外部チャンネルです。',
     closingKicker: 'FROM SIGNAL TO SYSTEM', closingTitle: '未来はただ生成されるものではない。統治され、築かれ、守られなければならない。', closingAction: '制作システムを見る',
     footerLine: 'Art × words × nervous system × working AI systems'
@@ -31,8 +37,10 @@ const copy = {
     pageTitle: 'Miragea — A video portrait of the archive and the work',
     description: 'Enter the films, words, AI production research, GeekSpell series, and working Eliora systems of Miragea / EX_Her.',
     brandLine: 'Film · words · working AI systems', navCollection: 'Collection', navSites: 'Sites', navWatch: 'Watch', mobileNavLabel: 'Smartphone navigation',
+    skipLink: 'Skip to content', brandAria: 'Miragea home', primaryNavLabel: 'Primary navigation', languageLabel: 'Language', signalsLabel: 'Archive summary',
+    heroVisualLabel: 'Miragea visual archive', heroImageAlt: "A visual portrait of Miragea's luminous fantasy world", identityLabel: 'Miragea and Eliora', videoListLabel: 'Video playlist', videoFrameTitle: 'GeekSpell video player',
     heroKicker: 'MIRAGEA / EX_HER · VIDEO PORTRAIT', heroTitle: 'Perceive the world. Film it. Build what makes it move.',
-    heroBody: 'This is a video-led entrance to the work of Miragea: fantasy and cosmos, HSP perception, music-films, AI production research, and the practical Eliora systems that carry the work into repeatable production.',
+    heroBody: 'Miragea is an AI filmmaker and workflow architect. Explore cinematic worlds, learn the production method, then use the local-first Eliora systems that make the work repeatable.',
     heroWatch: 'Watch the work', heroArchive: 'Enter Miragea Archive', signalLanguages: 'language routes', signalSeries: 'GeekSpell episodes', signalLayers: 'creative & system layers',
     visualLabel: 'ARCHIVE SIGNAL', visualTitle: 'From perception to production', collectionKicker: 'WHAT THIS PLACE HOLDS', collectionTitle: 'What this archive gathers',
     collectionIntro: 'This is more than a portfolio. It preserves what was felt, what was questioned, what became film, and the methods that make creation reproducible.',
@@ -48,9 +56,13 @@ const copy = {
     canvasPolicy: 'Eliora core features require no Chinese real-name verification. International BYOK services such as OpenRouter are optional.', canvasTrustLabel: 'Infinite Canvas access and connection options',
     canvasTrustBrowser: 'Start now · no Eliora account', canvasTrustLocal: 'Local ComfyUI · any workflow JSON', canvasTrustAgent: 'OpenRouter · review-gated Agent',
     openCanvasNow: 'Open canvas — no sign-up ↗', openCanvasGuide: 'See the five-step guide', siteGeekspell: 'A multilingual video series for using AI agents with clarity and control.',
+    proofKicker: 'SEE THE WORKING SYSTEM', proofTitle: 'Not only a world to see. A system that works.', proofIntro: 'A 45-second Eliora product film and measured Infinite Canvas evidence from the local verification record dated August 15, 2026.',
+    productDemoAria: 'Eliora Media Vault 45-second product film', proofEvidenceAria: 'Infinite Canvas verification evidence', proofPlay: 'Play the 45-second product film', proofFilmLabel: '45 SEC · PRODUCT FILM', proofFilmTitle: 'Turn scattered creative files into accountable production assets.', proofFilmBody: 'A concise excerpt from the existing Eliora Media Vault film, showing creation, provenance, validation, and durable storage as one production flow.',
+    evidenceKicker: 'VERIFIED LOCALLY · 2026-08-15', proofMetricNodesLabel: 'live ComfyUI nodes detected', proofMetricCardsLabel: 'stress test: total cards → nearby DOM', proofMetricAgentLabel: 'Agent operations per reviewed proposal', proofMetricJsonValue: 'Lossless', proofMetricJsonLabel: 'workflow JSON with multilingual and future fields',
+    proofEvidenceNote: 'Verified: no sign-up, local ComfyUI, optional international BYOK including OpenRouter, review-gated Agent writes, and rejection of destructive delete-all operations.', proofCanvasAction: 'Try Infinite Canvas ↗', proofGuideAction: 'Open the five-step guide',
     atelierName: 'Cosmic Atelier', siteAtelier: 'Region-specific entrances to creative work and collaboration in EN, JP, and ZH.', siteGithub: 'Public code and technical records for the sites and AI production systems.', openSite: 'Open site ↗',
     watchKicker: 'WATCH THE WORK', watchTitle: 'Meet my work through video', watchIntro: 'GeekSpell shares the thinking I use when working with AI agents—turned into short, practical films.',
-    chooseVideo: 'Choose a video below', nowPlaying: 'NOW PLAYING', openPlatform: 'Watch on the platform',
+    chooseVideo: 'Play the selected video', nowPlaying: 'NOW PLAYING', openPlatform: 'Watch on the platform',
     platformNote: 'This page and its core routes do not require Bilibili login or Chinese real-name verification. Bilibili is an optional external channel for Chinese-language releases.',
     closingKicker: 'FROM SIGNAL TO SYSTEM', closingTitle: 'The future will not be generated. It will be governed, built, and fought for.', closingAction: 'See the working systems',
     footerLine: 'Art × words × nervous system × working AI systems'
@@ -59,8 +71,10 @@ const copy = {
     pageTitle: 'Miragea — 用影像走进作品、网站与 AI 创作',
     description: '通过影像了解 Miragea / EX_Her 的作品、文字、AI 创作研究、极客魔咒系列与 Eliora 实用系统。',
     brandLine: '影像 · 文字 · AI 创作航线', navCollection: '收藏内容', navSites: '网站', navWatch: '影像', mobileNavLabel: '手机导航',
+    skipLink: '跳到主要内容', brandAria: 'Miragea 主页', primaryNavLabel: '主要导航', languageLabel: '语言', signalsLabel: '档案概要',
+    heroVisualLabel: 'Miragea 视觉档案', heroImageAlt: '展现 Miragea 光辉幻想世界的视觉肖像', identityLabel: 'Miragea 与 Eliora', videoListLabel: '影像播放列表', videoFrameTitle: '极客魔咒影像播放器',
     heroKicker: 'MIRAGEA / EX_HER · VIDEO PORTRAIT', heroTitle: '感知世界，将它拍成影像，再把创作变成能运行的系统。',
-    heroBody: '这里是通过影像进入 Miragea 作品与活动的入口：幻想、宇宙、HSP 感知、音乐影像、AI 创作研究，以及支撑这些创作的 Eliora 实用系统。',
+    heroBody: 'Miragea 是 AI 影像创作者，也是工作流架构师。你可以观看电影感世界、了解制作方法，再使用让创作可复现的本地优先 Eliora 系统。',
     heroWatch: '从影像开始', heroArchive: '进入 Miragea 档案', signalLanguages: '语言入口', signalSeries: '极客魔咒公开集', signalLayers: '创作与系统两层',
     visualLabel: 'ARCHIVE SIGNAL', visualTitle: '从感知到制作', collectionKicker: 'WHAT THIS PLACE HOLDS', collectionTitle: '这个网站收藏什么',
     collectionIntro: '这不只是一份作品目录。感受到的、思考过的、制作出的影像，以及可以复现的创作方法，都被保存为同一份记忆。',
@@ -76,9 +90,13 @@ const copy = {
     canvasPolicy: 'Eliora 核心功能不需要中国实名认证。OpenRouter 等国际 BYOK 服务均为可选连接。', canvasTrustLabel: 'Infinite Canvas 使用与连接条件',
     canvasTrustBrowser: '立即开始・无需 Eliora 账号', canvasTrustLocal: '本地 ComfyUI・自由导入 Workflow JSON', canvasTrustAgent: 'OpenRouter・人工审核 Agent',
     openCanvasNow: '无需注册，打开画布 ↗', openCanvasGuide: '查看五步入门', siteGeekspell: '帮助你清晰、安全地使用 AI Agent 的多语言影像系列。',
+    proofKicker: 'SEE THE WORKING SYSTEM', proofTitle: '不只是可观看的世界，也是能够运行的系统。', proofIntro: '45 秒 Eliora 产品影像，以及来自 2026 年 8 月 15 日本地验证记录的 Infinite Canvas 实测证据。',
+    productDemoAria: 'Eliora Media Vault 45 秒产品影像', proofEvidenceAria: 'Infinite Canvas 验证证据', proofPlay: '播放45秒产品影像', proofFilmLabel: '45 SEC · PRODUCT FILM', proofFilmTitle: '把散落的创作文件变成可追踪的制作资产。', proofFilmBody: '从现有 Eliora Media Vault 影片中提炼的短版，展示创作、来源记录、验证和长期保存如何成为同一条制作流程。',
+    evidenceKicker: 'VERIFIED LOCALLY · 2026-08-15', proofMetricNodesLabel: '实机检测到的 ComfyUI 节点', proofMetricCardsLabel: '压力测试：全部卡片 → 邻近 DOM', proofMetricAgentLabel: '每个审核提案的 Agent 操作上限', proofMetricJsonValue: '无损', proofMetricJsonLabel: '保留多语言与未来字段的 Workflow JSON',
+    proofEvidenceNote: '已验证：无需注册、本地 ComfyUI、OpenRouter 等可选国际 BYOK、需要审核的 Agent 写入，以及拒绝危险的全部删除操作。', proofCanvasAction: '试用 Infinite Canvas ↗', proofGuideAction: '打开五步指南',
     atelierName: '宇宙工房', siteAtelier: '针对英语、日本与中文市场分别编辑的创作与合作入口。', siteGithub: '网站、公开代码与 AI 制作系统的技术记录。', openSite: '打开网站 ↗',
     watchKicker: 'WATCH THE WORK', watchTitle: '通过影像了解我的工作', watchIntro: '极客魔咒把我与 AI Agent 协作时使用的思考方法，制作成简洁实用的影像。',
-    chooseVideo: '从下方选择影像', nowPlaying: 'NOW PLAYING', openPlatform: '前往播放平台',
+    chooseVideo: '播放当前选择的影像', nowPlaying: 'NOW PLAYING', openPlatform: '前往播放平台',
     platformNote: '本页面及主要网站不依赖 Bilibili 登录或中国实名认证。Bilibili 只是观看中文作品的可选外部频道。',
     closingKicker: 'FROM SIGNAL TO SYSTEM', closingTitle: '未来不会只是被生成。它必须被治理、被建设，也必须被守护。', closingAction: '查看制作系统',
     footerLine: '艺术 × 文字 × 神经系统 × 可运行的 AI 系统'
@@ -116,15 +134,29 @@ const videoTitle = document.querySelector('#video-title');
 const videoDescription = document.querySelector('#video-description');
 const videoExternal = document.querySelector('#video-external');
 const videoList = document.querySelector('#video-list');
-let currentLanguage = 'ja';
+const proofVideo = document.querySelector('#proof-video');
+const proofVideoSource = document.querySelector('#proof-video-source');
+const proofVideoStart = document.querySelector('#proof-video-start');
+const mediaVaultRoutes = {
+  en: '/eliora/media-vault/en/',
+  ja: '/eliora/media-vault/ja/',
+  zh: '/eliora/media-vault/zh/'
+};
+let currentLanguage = 'en';
 let currentVideo = 0;
 
-function setVideo(index) {
+function selectVideo(index, { load = false } = {}) {
   const item = videos[currentLanguage][index];
   currentVideo = index;
-  player.src = item.embed;
-  player.title = item.title;
-  placeholder.hidden = true;
+  if (load) {
+    player.src = item.embed;
+    player.title = item.title;
+    placeholder.hidden = true;
+  } else {
+    player.removeAttribute('src');
+    player.title = copy[currentLanguage].videoFrameTitle;
+    placeholder.hidden = false;
+  }
   videoTitle.textContent = item.title;
   videoDescription.textContent = item.description;
   videoExternal.href = item.url;
@@ -132,6 +164,10 @@ function setVideo(index) {
     card.classList.toggle('active', cardIndex === index);
     card.setAttribute('aria-pressed', String(cardIndex === index));
   });
+}
+
+function setVideo(index) {
+  selectVideo(index, { load: true });
 }
 
 function renderVideos() {
@@ -144,7 +180,7 @@ function renderVideos() {
     button.addEventListener('click', () => setVideo(index));
     videoList.append(button);
   });
-  setVideo(0);
+  selectVideo(0);
 }
 
 function setLanguage(language) {
@@ -169,31 +205,56 @@ function setLanguage(language) {
     const value = copy[language][element.dataset.copyAria];
     if (value) element.setAttribute('aria-label', value);
   });
+  document.querySelectorAll('[data-copy-alt]').forEach((element) => {
+    const value = copy[language][element.dataset.copyAlt];
+    if (value) element.setAttribute('alt', value);
+  });
+  document.querySelectorAll('[data-copy-title]').forEach((element) => {
+    const value = copy[language][element.dataset.copyTitle];
+    if (value) element.setAttribute('title', value);
+  });
   document.querySelectorAll('[data-route]').forEach((link) => {
     link.href = routeMap[language][link.dataset.route];
   });
   const canvasLanguage = language === 'ja' ? 'ja' : 'en';
   document.querySelectorAll('[data-canvas-link]').forEach((link) => {
     const guide = link.dataset.canvasLink === 'guide' ? '&guide=start' : '';
-    link.href = `../infinite-canvas.html?lang=${canvasLanguage}${guide}`;
+    link.href = `/eliora/infinite-canvas.html?lang=${canvasLanguage}${guide}`;
   });
   languageButtons.forEach((button) => {
     button.setAttribute('aria-pressed', String(button.dataset.language === language));
   });
   renderVideos();
-  const url = new URL(window.location.href);
-  url.searchParams.set('lang', language);
-  history.replaceState({}, '', url);
 }
 
-languageButtons.forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.language)));
+placeholder.addEventListener('click', () => setVideo(currentVideo));
 
+proofVideoStart.addEventListener('click', () => {
+  if (!proofVideoSource.src) {
+    proofVideoSource.src = proofVideoSource.dataset.src;
+    proofVideo.load();
+  }
+  proofVideoStart.hidden = true;
+  proofVideo.controls = true;
+  proofVideo.play().catch(() => {});
+});
+
+languageButtons.forEach((button) => button.addEventListener('click', () => {
+  const language = button.dataset.language;
+  if (copy[language] && window.location.pathname !== mediaVaultRoutes[language]) {
+    window.location.assign(mediaVaultRoutes[language]);
+  }
+}));
+
+const declaredLanguage = window.__MEDIA_VAULT_LANG__;
+const pathLanguage = window.location.pathname.match(/\/media-vault\/(en|ja|zh)\/?$/)?.[1];
 const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
-const savedLanguage = localStorage.getItem('miragea-media-lang');
-const initialLanguage = copy[requestedLanguage]
-  ? requestedLanguage
-  : copy[savedLanguage]
-    ? savedLanguage
-    : 'en';
+const initialLanguage = copy[declaredLanguage]
+  ? declaredLanguage
+  : copy[pathLanguage]
+    ? pathLanguage
+    : copy[requestedLanguage]
+      ? requestedLanguage
+      : 'en';
 
 setLanguage(initialLanguage);

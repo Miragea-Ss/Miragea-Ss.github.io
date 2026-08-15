@@ -29,6 +29,9 @@ jobs:
       - name: Validate agent status JSON
         run: npm run agents:validate
 
+      - name: Run UI contract checks
+        run: npm run test:canvas-contract && npm run test:media-vault-responsive
+
       - name: Check contact inbox configuration
         env:
           SECRET_CONTACT_INBOX: ${{ secrets.CONTACT_INBOX }}
@@ -74,6 +77,9 @@ jobs:
             echo "Contact: vars.FORM_SUBMIT_TOKEN also set (used only after inbox activation)"
           fi
           npm run build
+
+      - name: Verify built internal links
+        run: npm run test:site-links
 
       - name: Verify contact form is wired
         run: |

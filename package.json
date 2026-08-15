@@ -4,7 +4,9 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/generate-media-vault-locales.mjs",
     "build": "npm run agents:validate && astro build",
+    "media-vault:locales": "node scripts/generate-media-vault-locales.mjs",
     "agents:add": "node scripts/agent-add.mjs",
     "workflows:adapt": "node scripts/adapt-workflow-hivram.mjs",
     "offline:export": "node scripts/export-offline-hand-edit.mjs",
@@ -14,6 +16,7 @@
     "agents:validate": "node scripts/validate-agent-status.mjs",
     "test:canvas-contract": "node scripts/test-infinite-canvas-contract.mjs",
     "test:media-vault-responsive": "node scripts/test-media-vault-responsive-contract.mjs",
+    "test:site-links": "node scripts/test-built-site-links.mjs",
     "agents:watch": "node scripts/campaign-watch.mjs",
     "agents:sync": "node scripts/campaign-watch.mjs && node scripts/export-agent-status.mjs && node scripts/validate-agent-status.mjs"
   },

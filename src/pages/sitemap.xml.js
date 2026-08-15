@@ -4,6 +4,7 @@ const routes = [
   '/en/', '/ja/', '/zh/',
   '/en/geekspell/', '/ja/geekspell/', '/zh/geekspell/',
   '/eliora/', '/eliora/index.html', '/eliora/infinite-canvas.html', '/eliora/media-vault/',
+  '/eliora/media-vault/en/', '/eliora/media-vault/ja/', '/eliora/media-vault/zh/',
   '/eliora/atelier/en/', '/eliora/atelier/ja/', '/eliora/atelier/zh/',
   '/eliora/atelier/en/atelier/', '/eliora/atelier/ja/atelier/', '/eliora/atelier/zh/atelier/',
   '/eliora/atelier/en/contact/', '/eliora/atelier/ja/contact/', '/eliora/atelier/zh/contact/',

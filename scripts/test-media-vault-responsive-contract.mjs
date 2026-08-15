@@ -21,6 +21,11 @@ const checks = [
   ['smartphone sticky header keeps horizontal clipping local', smartphoneBlock.includes('html, body { overflow-x: clip; }')],
   ['smartphone anchors clear the taller header', smartphoneBlock.includes('scroll-margin-top: 124px;')],
   ['all three languages include a smartphone navigation label', ['スマートフォンナビゲーション', 'Smartphone navigation', '手机导航'].every((label) => app.includes(label))],
+  ['video iframe waits for an explicit play action', html.includes('id="video-player"') && !/<iframe[^>]+\ssrc=/i.test(html) && app.includes("placeholder.addEventListener('click'")],
+  ['language buttons use stable localized routes', ['/eliora/media-vault/en/', '/eliora/media-vault/ja/', '/eliora/media-vault/zh/'].every((route) => app.includes(route))],
+  ['accessibility copy covers all three languages', ['skipLink', 'heroImageAlt', 'videoListLabel', 'videoFrameTitle'].every((key) => (app.match(new RegExp(`${key}:`, 'g')) || []).length === 3)],
+  ['product film is click-to-load', html.includes('id="proof-video"') && html.includes('id="proof-video-source" data-src="./eliora-product-film-45s.mp4"') && app.includes("proofVideoStart.addEventListener('click'")],
+  ['engineering evidence uses recorded verification values', ['1,922', '184 → 13', '>100<', '2026-08-15'].every((value) => html.includes(value))],
 ];
 
 const failed = checks.filter(([, ok]) => !ok);
