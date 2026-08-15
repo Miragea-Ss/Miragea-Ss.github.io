@@ -26,6 +26,9 @@ const checks = [
   ['accessibility copy covers all three languages', ['skipLink', 'heroImageAlt', 'videoListLabel', 'videoFrameTitle'].every((key) => (app.match(new RegExp(`${key}:`, 'g')) || []).length === 3)],
   ['expired contest film is absent from the current page', !html.includes('eliora-product-film-45s.mp4') && !html.includes('id="proof-video"') && !app.includes('proofVideoStart')],
   ['engineering evidence uses recorded verification values', ['1,922', '184 → 13', '>100<', '2026-08-15'].every((value) => html.includes(value))],
+  ['technical evidence is collapsed by default', html.includes('<details class="proof-details">') && !html.includes('<details class="proof-details" open>')],
+  ['visitor-first proof copy covers all three languages', ['登録なしで始める', 'Start without an account', '无需注册即可开始'].every((value) => app.includes(value))],
+  ['technical disclosure labels cover all three languages', ['技術検証の詳細を見る', 'View technical verification', '查看技术验证详情'].every((value) => app.includes(value))],
 ];
 
 const failed = checks.filter(([, ok]) => !ok);
