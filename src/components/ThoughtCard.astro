@@ -7,9 +7,9 @@ interface Props {
 }
 
 const { post, lang = 'en' } = Astro.props;
-const thoughtHref = post.slug.includes('/')
-  ? `/thoughts/${post.slug}`
-  : `/${lang}/thoughts/${post.slug}`;
+const thoughtHref = post.id.includes('/')
+  ? `/thoughts/${post.id}`
+  : `/${lang}/thoughts/${post.id}`;
 
 // === アートロジック ===
 const glowColor = post.data.confidence > 80 ? 'shadow-rose-900/60' : 'shadow-cyan-900/40';

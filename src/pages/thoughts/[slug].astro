@@ -1,19 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '../../site-layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection('thoughts');
   return blogEntries
-    .filter((entry) => !entry.slug.includes('/'))
+    .filter((entry) => !entry.id.includes('/'))
     .map((entry) => ({
-      params: { slug: entry.slug },
+      params: { slug: entry.id },
       props: { entry },
     }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <Layout title={entry.data.title}>
@@ -24,7 +24,7 @@ const { Content } = await entry.render();
           src={entry.data.cover}
           alt={entry.data.title}
           class="w-full h-96 object-cover rounded-2xl shadow-2xl mb-12"
-          transition:name={`cover-${entry.slug}`}
+          transition:name={`cover-${entry.id}`}
         />
       )}
 

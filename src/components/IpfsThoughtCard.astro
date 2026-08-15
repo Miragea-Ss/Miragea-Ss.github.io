@@ -8,9 +8,9 @@ interface Props {
 }
 
 const { post, lang = 'ja', class: className = '' } = Astro.props;
-const thoughtHref = post.slug.includes('/')
-  ? `/thoughts/${post.slug}/`
-  : `/${lang}/thoughts/${post.slug}/`;
+const thoughtHref = post.id.includes('/')
+  ? `/thoughts/${post.id}/`
+  : `/${lang}/thoughts/${post.id}/`;
 
 const isRose = post.data.confidence > 80;
 const glowColor = isRose ? 'shadow-rose-900/60' : 'shadow-cyan-900/40';

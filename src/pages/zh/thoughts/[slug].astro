@@ -1,21 +1,21 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import Layout from '../../../site-layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('thoughts');
   return entries
-    .filter((entry) => !entry.slug.includes('/'))
+    .filter((entry) => !entry.id.includes('/'))
     .map((entry) => ({
-      params: { slug: entry.slug },
+      params: { slug: entry.id },
       props: { entry },
     }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 const hasEnglishOnlyMedia = /<(?:audio|video)\b/i.test(entry.body);
-const englishOriginalHref = `/en/thoughts/${entry.slug}/`;
+const englishOriginalHref = `/en/thoughts/${entry.id}/`;
 ---
 
 <Layout

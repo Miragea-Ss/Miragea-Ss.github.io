@@ -17,6 +17,7 @@
     "test:canvas-contract": "node scripts/test-infinite-canvas-contract.mjs",
     "test:media-vault-responsive": "node scripts/test-media-vault-responsive-contract.mjs",
     "test:site-links": "node scripts/test-built-site-links.mjs",
+    "test:content-routing": "node scripts/test-content-routing-contract.mjs",
     "agents:watch": "node scripts/campaign-watch.mjs",
     "agents:sync": "node scripts/campaign-watch.mjs && node scripts/export-agent-status.mjs && node scripts/validate-agent-status.mjs"
   },
