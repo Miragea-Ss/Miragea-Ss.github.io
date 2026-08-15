@@ -1,171 +1,202 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eliora Media Vault</title>
-  <meta name="description" content="A local-first generative media vault with Genblaze provenance and Backblaze B2 orchestration." />
-  <link rel="stylesheet" href="./styles.css?v=phase-a-20260722" />
+  <meta name="theme-color" content="#07080b" />
+  <title>Miragea — 映像でたどる作品・サイト・AI制作</title>
+  <meta name="description" content="Miragea / EX_Her の映像作品、言葉、AI制作、GeekSpell、Elioraの実用システムを映像でたどる案内ページ。" />
+  <link rel="icon" href="../../favicon.svg" />
+  <link rel="stylesheet" href="./styles.css?v=portrait-20260815" />
 </head>
 <body>
+  <a class="skip-link" href="#main">本文へ</a>
+
   <header class="topbar">
-    <a class="brand" href="./" aria-label="Eliora Media Vault home">
+    <a class="brand" href="/ja/" data-route="archive" aria-label="Miragea home">
       <span class="mark" aria-hidden="true">
         <span class="moon-glow"></span>
-        <img src="../../assets/brand/eliora-logo-transparent.png" alt="" />
+        <img src="../../assets/brand/miragea-logo-transparent.png" alt="" />
       </span>
-      <span><strong>Eliora Media Vault</strong><small>Local Gen / Genblaze / Backblaze B2</small></span>
+      <span class="brand-copy">
+        <strong>Miragea</strong>
+        <small data-copy="brandLine">映像・言葉・AI制作の航路</small>
+      </span>
     </a>
+
     <nav aria-label="Primary navigation">
-      <a href="#vault">Vault</a>
-      <a href="#pipeline">Pipeline</a>
-      <a href="#proof">Proof</a>
-      <a href="#demo">Demo</a>
-      <a href="https://github.com/Miragea-Ss/Miragea-Ss.github.io/tree/main/projects/eliora-media-vault" target="_blank" rel="noopener">Source</a>
+      <a href="#collection" data-copy="navCollection">収蔵内容</a>
+      <a href="#sites" data-copy="navSites">サイト</a>
+      <a href="#watch" data-copy="navWatch">映像</a>
     </nav>
+
+    <div class="language-switcher" role="group" aria-label="Language">
+      <button type="button" data-language="en">EN</button>
+      <button type="button" data-language="ja" aria-pressed="true">JP</button>
+      <button type="button" data-language="zh">ZH</button>
+    </div>
   </header>
 
-  <main id="top">
-    <section class="intro">
-      <div>
-        <p class="eyebrow">Built with Genblaze on Backblaze B2</p>
-        <h1>Generate locally. Prove every asset. Preserve it on B2.</h1>
-        <p class="lede">A working media vault for creators who need reproducible AI output, tamper-evident provenance, and durable object storage without surrendering the local production workflow.</p>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow" data-copy="heroKicker">MIRAGEA / EX_HER · VIDEO PORTRAIT</p>
+        <h1 id="hero-title" data-copy="heroTitle">世界を感じ、映像にし、動く仕組みへ。</h1>
+        <p class="lede" data-copy="heroBody">ここはMirageaの作品と活動を、映像からたどる入口です。幻想、宇宙、HSPの知覚、音楽映像、AI制作の研究、そして制作を支えるElioraの実用システムを集めています。</p>
         <div class="hero-actions">
-          <a class="primary-action" href="#vault">Explore the media vault</a>
-          <a class="secondary-action" id="jump-verify" href="#vault">Verify selected (scroll)</a>
-          <a class="secondary-action" href="./b2-proof.json" target="_blank" rel="noopener">Open B2 proof JSON</a>
+          <a class="action primary" href="#watch" data-copy="heroWatch">映像から見る</a>
+          <a class="action secondary" href="/ja/" data-route="archive" data-copy="heroArchive">Miragea Archiveへ</a>
         </div>
-        <ol class="judge-path">
-          <li>Open the pre-selected <strong>Provenance Chamber</strong> (live ComfyUI API · “Judge start” tag).</li>
-          <li>Click <strong>Verify selected</strong> — browser SHA-256 must match Genblaze. Optional: <strong>Verify all 3</strong>.</li>
-          <li>Read the <strong>B2 layout path + URIs</strong> (private bucket; public hash is the integrity check). Use Copy if needed.</li>
-        </ol>
+        <dl class="signals" aria-label="Archive summary">
+          <div><dt>03</dt><dd data-copy="signalLanguages">言語の入口</dd></div>
+          <div><dt>09</dt><dd data-copy="signalSeries">GeekSpell公開回</dd></div>
+          <div><dt>02</dt><dd data-copy="signalLayers">創作と実装の層</dd></div>
+        </dl>
       </div>
-      <dl class="metrics" aria-label="Project metrics">
-        <div><dt id="asset-count">—</dt><dd>vault assets</dd></div>
-        <div><dt id="verified-count">—</dt><dd>hash verified</dd></div>
-        <div><dt id="b2-count">—</dt><dd>B2-backed runs</dd></div>
-      </dl>
+
+      <div class="hero-visual" aria-label="Miragea visual archive">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <img src="../../eliora/assets/images/miragea.png" alt="Mirageaの幻想世界を表すビジュアル" />
+        <p><span data-copy="visualLabel">ARCHIVE SIGNAL</span><strong data-copy="visualTitle">知覚から制作へ</strong></p>
+      </div>
     </section>
 
-    <section class="workspace" id="vault" aria-labelledby="vault-title">
-      <aside class="filters">
-        <div class="section-label"><span>Vault index</span><span class="live-dot">live vault</span></div>
-        <p class="filter-hint">Start with a <strong>ComfyUI API</strong> card (pink tag). Foundation is honest existing-file ingest for resilience.</p>
-        <label for="search">Search assets</label>
-        <input id="search" type="search" placeholder="Prompt, model, provider" />
-        <label for="provider">Provider</label>
-        <select id="provider"><option value="all">All providers</option></select>
-        <label class="check"><input id="verified-only" type="checkbox" checked /> Verified only</label>
-        <div class="legend">
-          <span><i class="cyan"></i>Local generation</span>
-          <span><i class="pink"></i>Genblaze manifest</span>
-          <span><i class="gold"></i>B2 object layout</span>
-        </div>
-      </aside>
+    <section class="manifesto" id="collection" aria-labelledby="collection-title">
+      <div class="section-heading">
+        <p class="eyebrow" data-copy="collectionKicker">WHAT THIS PLACE HOLDS</p>
+        <h2 id="collection-title" data-copy="collectionTitle">このサイトが集めているもの</h2>
+        <p data-copy="collectionIntro">単なる作品一覧ではありません。感じたこと、考えたこと、つくった映像、再現できる制作方法を、ひとつの記憶として残しています。</p>
+      </div>
+      <div class="collection-grid">
+        <article>
+          <span>01 / PERCEPTION</span>
+          <h3 data-copy="collectionOneTitle">知覚と言葉</h3>
+          <p data-copy="collectionOneBody">HSPとして受け取った感覚、観察、予測、断片的な言葉。作品が生まれる前の信号を記録します。</p>
+        </article>
+        <article>
+          <span>02 / FILM & WORLD</span>
+          <h3 data-copy="collectionTwoTitle">映像と世界観</h3>
+          <p data-copy="collectionTwoBody">幻想、宇宙、AI、文明、身体感覚をめぐる短編映像と音楽。Mirageaの世界を目でたどれます。</p>
+        </article>
+        <article>
+          <span>03 / MAKING</span>
+          <h3 data-copy="collectionThreeTitle">AI制作の方法</h3>
+          <p data-copy="collectionThreeBody">GeekSpellでは、AIエージェントへの指示、品質確認、権限管理など、実際に使える制作知識を映像で公開します。</p>
+        </article>
+        <article>
+          <span>04 / SYSTEMS</span>
+          <h3 data-copy="collectionFourTitle">動く制作システム</h3>
+          <p data-copy="collectionFourBody">Elioraでは、Infinite Canvas、ComfyUI、自動化、ローカルAIを、創作と仕事につながる道具として実装します。</p>
+        </article>
+      </div>
+    </section>
 
-      <div class="asset-region">
-        <div class="region-head">
-          <div><p class="eyebrow">Media records</p><h2 id="vault-title">Asset catalog</h2></div>
-          <div class="verify-actions">
-            <button id="verify-selected" type="button">Verify selected</button>
-            <button id="verify-all-btn" type="button" class="btn-secondary">Verify all 3</button>
+    <section class="identity" aria-label="Miragea and Eliora">
+      <article class="identity-panel miragea-panel">
+        <p class="eyebrow">MIRAGEA / EX_HER</p>
+        <h2 data-copy="mirageaTitle">感じた世界を残す、創作者の記憶層。</h2>
+        <p data-copy="mirageaBody">アート、映像、言葉、音楽、知覚、世界観。Mirageaは作品と、その作品が生まれる源を保存する恒久的なアーカイブです。</p>
+        <a href="/ja/" data-route="archive"><span data-copy="openMiragea">Mirageaを開く</span> →</a>
+      </article>
+      <article class="identity-panel eliora-panel">
+        <p class="eyebrow">ELIORA / WORKING SYSTEMS</p>
+        <h2 data-copy="elioraTitle">創作を、使える仕組みに変える実装層。</h2>
+        <p data-copy="elioraBody">AI制作、ComfyUI、ローカル推論、ワークフロー自動化、Infinite Canvas。Elioraは創造を再現可能なプロダクトへ変えます。</p>
+        <a href="../index.html"><span data-copy="openEliora">Elioraを開く</span> →</a>
+      </article>
+    </section>
+
+    <section class="sites" id="sites" aria-labelledby="sites-title">
+      <div class="section-heading">
+        <p class="eyebrow" data-copy="sitesKicker">PLACES I BUILD</p>
+        <h2 id="sites-title" data-copy="sitesTitle">作品と活動への6つの入口</h2>
+        <p data-copy="sitesIntro">見る、読む、学ぶ、つくる。目的に合う入口から、Mirageaの活動へ進めます。</p>
+      </div>
+      <div class="site-grid">
+        <a class="site-card cyan-card" href="/ja/" data-route="archive">
+          <span>ARCHIVE</span><strong>Miragea</strong>
+          <p data-copy="siteArchive">作品、知覚、言葉、EXシステムを保存する本体アーカイブ。</p>
+          <b data-copy="openSite">サイトを開く ↗</b>
+        </a>
+        <a class="site-card rose-card" href="../index.html">
+          <span>AI STUDIO</span><strong>Eliora</strong>
+          <p data-copy="siteEliora">AI制作、業務自動化、PoC、実用ワークフローのスタジオ。</p>
+          <b data-copy="openSite">サイトを開く ↗</b>
+        </a>
+        <a class="site-card gold-card" href="../infinite-canvas.html">
+          <span>LOCAL CREATION</span><strong>Infinite Canvas</strong>
+          <p data-copy="siteCanvas">画像、プロンプト、ローカルLLM、ComfyUIをつなぐ無限キャンバス。</p>
+          <b data-copy="openSite">サイトを開く ↗</b>
+        </a>
+        <a class="site-card violet-card" href="/ja/geekspell/" data-route="geekspell">
+          <span>VIDEO SERIES</span><strong>GeekSpell</strong>
+          <p data-copy="siteGeekspell">AIエージェントを安全に使いこなすための多言語映像シリーズ。</p>
+          <b data-copy="openSite">サイトを開く ↗</b>
+        </a>
+        <a class="site-card amber-card" href="../atelier/ja/" data-route="atelier">
+          <span>COSMIC ATELIER</span><strong data-copy="atelierName">宇宙工房</strong>
+          <p data-copy="siteAtelier">日本・英語圏・中国語圏ごとに編集された制作と仕事の入口。</p>
+          <b data-copy="openSite">サイトを開く ↗</b>
+        </a>
+        <a class="site-card neutral-card" href="https://github.com/Miragea-Ss">
+          <span>OPEN SOURCE</span><strong>GitHub</strong>
+          <p data-copy="siteGithub">公開コード、サイト、AI制作システムの技術的な記録。</p>
+          <b data-copy="openSite">サイトを開く ↗</b>
+        </a>
+      </div>
+    </section>
+
+    <section class="watch" id="watch" aria-labelledby="watch-title">
+      <div class="section-heading watch-heading">
+        <div>
+          <p class="eyebrow" data-copy="watchKicker">WATCH THE WORK</p>
+          <h2 id="watch-title" data-copy="watchTitle">映像から、私の仕事を知る</h2>
+        </div>
+        <p data-copy="watchIntro">GeekSpellは、私がAIエージェントと制作するときに使う考え方を、短い映像で共有するシリーズです。</p>
+      </div>
+
+      <div class="video-stage">
+        <div class="player-shell">
+          <iframe id="video-player" title="GeekSpell video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          <div class="player-placeholder" id="player-placeholder">
+            <span>▶</span>
+            <p data-copy="chooseVideo">下の映像を選んで再生</p>
           </div>
         </div>
-        <div id="asset-list" class="asset-list" aria-live="polite"></div>
-        <div id="batch-verify-result" class="batch-result" aria-live="polite"></div>
+        <div class="now-playing">
+          <p class="eyebrow" data-copy="nowPlaying">NOW PLAYING</p>
+          <h3 id="video-title">—</h3>
+          <p id="video-description">—</p>
+          <a id="video-external" href="#" target="_blank" rel="noopener"><span data-copy="openPlatform">配信サイトで見る</span> ↗</a>
+        </div>
       </div>
 
-      <aside class="inspector" aria-labelledby="inspector-title">
-        <p class="eyebrow">Provenance inspector</p>
-        <h2 id="inspector-title">Select an asset</h2>
-        <div id="inspector-content" class="inspector-content"></div>
-        <output id="verify-result" class="verify-result" aria-live="polite">Ready for browser-side SHA-256 verification.</output>
-      </aside>
-    </section>
+      <div class="video-list" id="video-list" aria-label="Video playlist"></div>
 
-    <section class="pipeline" id="pipeline">
-      <div class="section-head"><p class="eyebrow">Production pipeline</p><h2>One asset, three accountable layers</h2></div>
-      <ol class="pipeline-steps">
-        <li><span>01</span><div><strong>Local generation</strong><p>ComfyUI runs on the creator's GPU. Existing files can also be ingested without regeneration.</p></div></li>
-        <li><span>02</span><div><strong>Genblaze provenance</strong><p>Provider, model, prompt, seed, dimensions, size, SHA-256, and completed run state become a verifiable manifest.</p></div></li>
-        <li><span>03</span><div><strong>Backblaze B2 vault</strong><p>Each asset and its canonical manifest are stored together under a durable run ID for retrieval, verification, and reuse.</p></div></li>
-      </ol>
-      <pre class="object-map"><code>eliora-vault/
-  runs/YYYY-MM-DD/&lt;run-id&gt;/
-    assets/&lt;asset-id&gt;.png
-    manifest.json</code></pre>
-      <p class="object-links object-map-links">
-        <a href="./sample_manifest.json" target="_blank" rel="noopener">Open public provenance JSON</a>
-        <a href="./b2-proof.json" target="_blank" rel="noopener">Open B2 proof JSON</a>
-        <a href="./sample_catalog.json" target="_blank" rel="noopener">Open public catalog JSON</a>
-      </p>
-    </section>
-
-    <section class="pipeline" id="providers">
-      <div class="section-head"><p class="eyebrow">Integrated production stack</p><h2>Providers and models</h2></div>
-      <ol class="pipeline-steps">
-        <li><span>GEN</span><div><strong>ComfyUI · Krea 2 Turbo</strong><p>Modern local text-to-image workflow on GPU hardware, with prompt, model, seed, dimensions, and output hash captured per run.</p></div></li>
-        <li><span>OFF</span><div><strong>comfyui-local · existing-file-ingest</strong><p>A portable fallback that preserves approved work when the generation service is unavailable.</p></div></li>
-        <li><span>SDK</span><div><strong>Genblaze + Backblaze B2</strong><p>genblaze-core Pipeline + ObjectStorageSink · genblaze-s3 S3StorageBackend.for_backblaze · private encrypted vault.</p></div></li>
-      </ol>
-    </section>
-
-    <section class="proof" id="proof">
-      <div class="section-head"><p class="eyebrow">Verifiable provenance</p><h2>Integrity you can inspect</h2></div>
-      <div class="proof-grid">
-        <article>
-          <span class="proof-number">01</span>
-          <h3>Recompute the bytes</h3>
-          <p>The Verify button fetches the selected asset, recomputes SHA-256 in the browser, and compares it with the hash stored in the Genblaze manifest.</p>
-          <a href="#vault">Run browser verification →</a>
-        </article>
-        <article>
-          <span class="proof-number">02</span>
-          <h3>Inspect provenance</h3>
-          <p>Provider, model, prompt, seed, run status, asset hash, and canonical manifest hash remain inspectable instead of disappearing inside a generation UI.</p>
-          <a href="./sample_manifest.json" target="_blank" rel="noopener">Open public provenance JSON →</a>
-        </article>
-        <article>
-          <span class="proof-number">03</span>
-          <h3>Reproduce the pipeline</h3>
-          <p>The repository includes a real Genblaze Pipeline, a ComfyUI API path, existing-file fallback, B2 storage through genblaze-s3, and offline tests.</p>
-          <a href="https://github.com/Miragea-Ss/Miragea-Ss.github.io/tree/main/projects/eliora-media-vault" target="_blank" rel="noopener">Read setup and source →</a>
-        </article>
+      <div class="channel-links">
+        <a href="https://youtu.be/tlN_uW7Duls" target="_blank" rel="noopener">YouTube · GeekSpell <span>↗</span></a>
+        <a href="https://space.bilibili.com/1321407655" target="_blank" rel="noopener">Bilibili · 极客魔咒工作室 <span>↗</span></a>
+        <a href="https://x.com/Miragea_S/" target="_blank" rel="noopener">X · @Miragea_S <span>↗</span></a>
       </div>
-      <div class="runtime-proof" aria-live="polite">
-        <div><span>LOCAL PROOF</span><strong id="local-proof-status">Ready to verify</strong></div>
-        <div><span>GENBLAZE</span><strong>Canonical manifest recorded</strong></div>
-        <div><span>BACKBLAZE B2</span><strong id="b2-proof-status">Loading verified record</strong></div>
-      </div>
+      <p class="platform-note" data-copy="platformNote">このページと主要サイトはBilibiliへのログインや中国の実名認証を必要としません。Bilibiliは中国語作品を見るための任意の外部チャンネルです。</p>
     </section>
 
-    <section class="reliability" id="reliability">
-      <div class="section-head"><p class="eyebrow">Production readiness</p><h2>Built to survive real creator workflows</h2></div>
-      <div class="reliability-grid">
-        <div><strong>Local-first</strong><p>Keep ComfyUI and large checkpoints on the creator workstation. Upload durable outputs and provenance, not the whole production environment.</p></div>
-        <div><strong>Failure-aware</strong><p>The ComfyUI API path can fall back to existing-file ingestion, preserving useful work when the generation service is unavailable.</p></div>
-        <div><strong>Credential-safe</strong><p>B2 keys remain in the local CLI/backend. The browser receives only public catalog fields and durable asset references.</p></div>
-        <div><strong>Rebuildable</strong><p>Offline tests produce and verify a real Genblaze manifest without requiring a GPU, provider credits, or a cloud account.</p></div>
+    <section class="closing">
+      <img src="../../assets/brand/eliora-logo-transparent.png" alt="Eliora" />
+      <div>
+        <p class="eyebrow" data-copy="closingKicker">FROM SIGNAL TO SYSTEM</p>
+        <h2 data-copy="closingTitle">未来はただ生成されるものではない。統治され、築かれ、守られなければならない。</h2>
       </div>
-      <pre class="command-proof"><code>eliora-vault run --asset generated.png --prompt "..." --b2
-pytest -q</code></pre>
-    </section>
-
-    <section class="demo" id="demo">
-      <div class="section-head"><p class="eyebrow">Product walkthrough</p><h2>See the production flow</h2></div>
-      <video controls playsinline preload="metadata"><source src="./demo.mp4?v=20260718-final" type="video/mp4" /></video>
-      <div class="walkthrough-chapters">
-        <div><b>00:00</b><span>Problem and local-first value</span></div>
-        <div><b>00:45</b><span>ComfyUI to Genblaze manifest</span></div>
-        <div><b>01:35</b><span>Hash verification and B2 layout</span></div>
-        <div><b>02:20</b><span>Vault retrieval, CLI, CTA</span></div>
-      </div>
+      <a class="action secondary" href="../index.html" data-copy="closingAction">制作システムを見る</a>
     </section>
   </main>
 
-  <footer><span>Miragea / Eliora</span><span>Verifiable provenance for generative media · <a href="https://miragea-ss.github.io/" target="_blank" rel="noopener">Miragea</a></span></footer>
-  <script src="./app.js?v=phase-a-20260722" defer></script>
+  <footer>
+    <span>© Miragea / EX_Her · Eliora</span>
+    <span data-copy="footerLine">Art × words × nervous system × working AI systems</span>
+  </footer>
+
+  <script src="./app.js?v=portrait-20260815" defer></script>
 </body>
 </html>

@@ -1,347 +1,176 @@
-const state = {
-  catalog: null,
-  selected: null,
-  verifyById: Object.create(null)
+const copy = {
+  ja: {
+    pageTitle: 'Miragea — 映像でたどる作品・サイト・AI制作',
+    description: 'Miragea / EX_Her の映像作品、言葉、AI制作、GeekSpell、Elioraの実用システムを映像でたどる案内ページ。',
+    brandLine: '映像・言葉・AI制作の航路', navCollection: '収蔵内容', navSites: 'サイト', navWatch: '映像',
+    heroKicker: 'MIRAGEA / EX_HER · VIDEO PORTRAIT', heroTitle: '世界を感じ、映像にし、動く仕組みへ。',
+    heroBody: 'ここはMirageaの作品と活動を、映像からたどる入口です。幻想、宇宙、HSPの知覚、音楽映像、AI制作の研究、そして制作を支えるElioraの実用システムを集めています。',
+    heroWatch: '映像から見る', heroArchive: 'Miragea Archiveへ', signalLanguages: '言語の入口', signalSeries: 'GeekSpell公開回', signalLayers: '創作と実装の層',
+    visualLabel: 'ARCHIVE SIGNAL', visualTitle: '知覚から制作へ', collectionKicker: 'WHAT THIS PLACE HOLDS', collectionTitle: 'このサイトが集めているもの',
+    collectionIntro: '単なる作品一覧ではありません。感じたこと、考えたこと、つくった映像、再現できる制作方法を、ひとつの記憶として残しています。',
+    collectionOneTitle: '知覚と言葉', collectionOneBody: 'HSPとして受け取った感覚、観察、予測、断片的な言葉。作品が生まれる前の信号を記録します。',
+    collectionTwoTitle: '映像と世界観', collectionTwoBody: '幻想、宇宙、AI、文明、身体感覚をめぐる短編映像と音楽。Mirageaの世界を目でたどれます。',
+    collectionThreeTitle: 'AI制作の方法', collectionThreeBody: 'GeekSpellでは、AIエージェントへの指示、品質確認、権限管理など、実際に使える制作知識を映像で公開します。',
+    collectionFourTitle: '動く制作システム', collectionFourBody: 'Elioraでは、Infinite Canvas、ComfyUI、自動化、ローカルAIを、創作と仕事につながる道具として実装します。',
+    mirageaTitle: '感じた世界を残す、創作者の記憶層。', mirageaBody: 'アート、映像、言葉、音楽、知覚、世界観。Mirageaは作品と、その作品が生まれる源を保存する恒久的なアーカイブです。', openMiragea: 'Mirageaを開く',
+    elioraTitle: '創作を、使える仕組みに変える実装層。', elioraBody: 'AI制作、ComfyUI、ローカル推論、ワークフロー自動化、Infinite Canvas。Elioraは創造を再現可能なプロダクトへ変えます。', openEliora: 'Elioraを開く',
+    sitesKicker: 'PLACES I BUILD', sitesTitle: '作品と活動への6つの入口', sitesIntro: '見る、読む、学ぶ、つくる。目的に合う入口から、Mirageaの活動へ進めます。',
+    siteArchive: '作品、知覚、言葉、EXシステムを保存する本体アーカイブ。', siteEliora: 'AI制作、業務自動化、PoC、実用ワークフローのスタジオ。',
+    siteCanvas: '画像、プロンプト、ローカルLLM、ComfyUIをつなぐ無限キャンバス。', siteGeekspell: 'AIエージェントを安全に使いこなすための多言語映像シリーズ。',
+    atelierName: '宇宙工房', siteAtelier: '日本・英語圏・中国語圏ごとに編集された制作と仕事の入口。', siteGithub: '公開コード、サイト、AI制作システムの技術的な記録。', openSite: 'サイトを開く ↗',
+    watchKicker: 'WATCH THE WORK', watchTitle: '映像から、私の仕事を知る', watchIntro: 'GeekSpellは、私がAIエージェントと制作するときに使う考え方を、短い映像で共有するシリーズです。',
+    chooseVideo: '下の映像を選んで再生', nowPlaying: 'NOW PLAYING', openPlatform: '配信サイトで見る',
+    platformNote: 'このページと主要サイトはBilibiliへのログインや中国の実名認証を必要としません。Bilibiliは中国語作品を見るための任意の外部チャンネルです。',
+    closingKicker: 'FROM SIGNAL TO SYSTEM', closingTitle: '未来はただ生成されるものではない。統治され、築かれ、守られなければならない。', closingAction: '制作システムを見る',
+    footerLine: 'Art × words × nervous system × working AI systems'
+  },
+  en: {
+    pageTitle: 'Miragea — A video portrait of the archive and the work',
+    description: 'Enter the films, words, AI production research, GeekSpell series, and working Eliora systems of Miragea / EX_Her.',
+    brandLine: 'Film · words · working AI systems', navCollection: 'Collection', navSites: 'Sites', navWatch: 'Watch',
+    heroKicker: 'MIRAGEA / EX_HER · VIDEO PORTRAIT', heroTitle: 'Perceive the world. Film it. Build what makes it move.',
+    heroBody: 'This is a video-led entrance to the work of Miragea: fantasy and cosmos, HSP perception, music-films, AI production research, and the practical Eliora systems that carry the work into repeatable production.',
+    heroWatch: 'Watch the work', heroArchive: 'Enter Miragea Archive', signalLanguages: 'language routes', signalSeries: 'GeekSpell episodes', signalLayers: 'creative & system layers',
+    visualLabel: 'ARCHIVE SIGNAL', visualTitle: 'From perception to production', collectionKicker: 'WHAT THIS PLACE HOLDS', collectionTitle: 'What this archive gathers',
+    collectionIntro: 'This is more than a portfolio. It preserves what was felt, what was questioned, what became film, and the methods that make creation reproducible.',
+    collectionOneTitle: 'Perception & words', collectionOneBody: 'HSP perception, observations, forecasts, and fragments of language—the signals that arrive before a work has a name.',
+    collectionTwoTitle: 'Film & worlds', collectionTwoBody: 'Short films and music moving through fantasy, space, AI, civilization, and the felt experience of being alive.',
+    collectionThreeTitle: 'How AI work is made', collectionThreeBody: 'GeekSpell turns agent instructions, quality gates, permissions, and production judgment into practical video literacy.',
+    collectionFourTitle: 'Systems that work', collectionFourBody: 'Eliora builds Infinite Canvas, ComfyUI, automation, and local AI into tools for creative and commercial production.',
+    mirageaTitle: 'The memory layer of a creator who records what she perceives.', mirageaBody: 'Art, film, words, music, perception, and worldbuilding. Miragea preserves both the work and the source from which it emerged.', openMiragea: 'Open Miragea',
+    elioraTitle: 'The implementation layer that turns creation into a working system.', elioraBody: 'AI production, ComfyUI, local inference, workflow automation, and Infinite Canvas. Eliora makes creative processes repeatable.', openEliora: 'Open Eliora',
+    sitesKicker: 'PLACES I BUILD', sitesTitle: 'Six routes into the work', sitesIntro: 'Watch, read, learn, or build. Choose the route that matches what you came to find.',
+    siteArchive: 'The permanent archive for work, perception, words, and the EX system.', siteEliora: 'Studio for AI production, automation, PoCs, and practical workflows.',
+    siteCanvas: 'An infinite canvas connecting images, prompts, local LLMs, and ComfyUI.', siteGeekspell: 'A multilingual video series for using AI agents with clarity and control.',
+    atelierName: 'Cosmic Atelier', siteAtelier: 'Region-specific entrances to creative work and collaboration in EN, JP, and ZH.', siteGithub: 'Public code and technical records for the sites and AI production systems.', openSite: 'Open site ↗',
+    watchKicker: 'WATCH THE WORK', watchTitle: 'Meet my work through video', watchIntro: 'GeekSpell shares the thinking I use when working with AI agents—turned into short, practical films.',
+    chooseVideo: 'Choose a video below', nowPlaying: 'NOW PLAYING', openPlatform: 'Watch on the platform',
+    platformNote: 'This page and its core routes do not require Bilibili login or Chinese real-name verification. Bilibili is an optional external channel for Chinese-language releases.',
+    closingKicker: 'FROM SIGNAL TO SYSTEM', closingTitle: 'The future will not be generated. It will be governed, built, and fought for.', closingAction: 'See the working systems',
+    footerLine: 'Art × words × nervous system × working AI systems'
+  },
+  zh: {
+    pageTitle: 'Miragea — 用影像走进作品、网站与 AI 创作',
+    description: '通过影像了解 Miragea / EX_Her 的作品、文字、AI 创作研究、极客魔咒系列与 Eliora 实用系统。',
+    brandLine: '影像 · 文字 · AI 创作航线', navCollection: '收藏内容', navSites: '网站', navWatch: '影像',
+    heroKicker: 'MIRAGEA / EX_HER · VIDEO PORTRAIT', heroTitle: '感知世界，将它拍成影像，再把创作变成能运行的系统。',
+    heroBody: '这里是通过影像进入 Miragea 作品与活动的入口：幻想、宇宙、HSP 感知、音乐影像、AI 创作研究，以及支撑这些创作的 Eliora 实用系统。',
+    heroWatch: '从影像开始', heroArchive: '进入 Miragea 档案', signalLanguages: '语言入口', signalSeries: '极客魔咒公开集', signalLayers: '创作与系统两层',
+    visualLabel: 'ARCHIVE SIGNAL', visualTitle: '从感知到制作', collectionKicker: 'WHAT THIS PLACE HOLDS', collectionTitle: '这个网站收藏什么',
+    collectionIntro: '这不只是一份作品目录。感受到的、思考过的、制作出的影像，以及可以复现的创作方法，都被保存为同一份记忆。',
+    collectionOneTitle: '感知与文字', collectionOneBody: '作为 HSP 接收到的感受、观察、预测和文字碎片——记录作品被命名之前的信号。',
+    collectionTwoTitle: '影像与世界观', collectionTwoBody: '围绕幻想、宇宙、AI、文明与身体感受展开的短片和音乐影像。',
+    collectionThreeTitle: 'AI 创作方法', collectionThreeBody: '极客魔咒把 Agent 指令、质量确认、权限管理和制作判断变成可实际使用的影像知识。',
+    collectionFourTitle: '真正运行的系统', collectionFourBody: 'Eliora 把 Infinite Canvas、ComfyUI、自动化和本地 AI 做成连接创作与工作的工具。',
+    mirageaTitle: '保存所感世界的创作者记忆层。', mirageaBody: '艺术、影像、文字、音乐、感知与世界观。Miragea 保存作品，也保存作品诞生的源头。', openMiragea: '打开 Miragea',
+    elioraTitle: '把创作变成可用系统的实现层。', elioraBody: 'AI 制作、ComfyUI、本地推理、工作流自动化与 Infinite Canvas。Eliora 让创造可以复现。', openEliora: '打开 Eliora',
+    sitesKicker: 'PLACES I BUILD', sitesTitle: '进入作品与活动的六个入口', sitesIntro: '观看、阅读、学习或创作。请选择与你目的相符的入口。',
+    siteArchive: '保存作品、感知、文字与 EX 系统的永久档案。', siteEliora: 'AI 制作、业务自动化、PoC 与实用工作流工作室。',
+    siteCanvas: '连接图像、提示词、本地 LLM 与 ComfyUI 的无限画布。', siteGeekspell: '帮助你清晰、安全地使用 AI Agent 的多语言影像系列。',
+    atelierName: '宇宙工房', siteAtelier: '针对英语、日本与中文市场分别编辑的创作与合作入口。', siteGithub: '网站、公开代码与 AI 制作系统的技术记录。', openSite: '打开网站 ↗',
+    watchKicker: 'WATCH THE WORK', watchTitle: '通过影像了解我的工作', watchIntro: '极客魔咒把我与 AI Agent 协作时使用的思考方法，制作成简洁实用的影像。',
+    chooseVideo: '从下方选择影像', nowPlaying: 'NOW PLAYING', openPlatform: '前往播放平台',
+    platformNote: '本页面及主要网站不依赖 Bilibili 登录或中国实名认证。Bilibili 只是观看中文作品的可选外部频道。',
+    closingKicker: 'FROM SIGNAL TO SYSTEM', closingTitle: '未来不会只是被生成。它必须被治理、被建设，也必须被守护。', closingAction: '查看制作系统',
+    footerLine: '艺术 × 文字 × 神经系统 × 可运行的 AI 系统'
+  }
 };
-const $ = (selector) => document.querySelector(selector);
 
-function formatBytes(bytes) {
-  return bytes < 1024 * 1024 ? `${Math.round(bytes / 1024)} KB` : `${(bytes / 1024 / 1024).toFixed(1)} MB`;
-}
+const videos = {
+  ja: [
+    { episode: 'EP09', title: '権限とサンドボックス', description: 'AIエージェントに何を許し、何を人間の承認に残すか。安全な制作の境界を整理します。', platform: 'YouTube · JP', embed: 'https://www.youtube-nocookie.com/embed/tlN_uW7Duls', url: 'https://youtu.be/tlN_uW7Duls' },
+    { episode: 'EP08', title: 'Briefから納品まで', description: '曖昧な依頼を、検証できる成果物へ変換するための制作設計です。', platform: 'YouTube · JP', embed: 'https://www.youtube-nocookie.com/embed/NFG9GJRcrCw', url: 'https://youtu.be/NFG9GJRcrCw' },
+    { episode: 'EP06', title: 'AI Agent Team', description: '複数の専門Agentを、一つの目的と承認境界のもとで働かせる方法を紹介します。', platform: 'YouTube · JP', embed: 'https://www.youtube-nocookie.com/embed/AfOZBpSBuO4', url: 'https://youtu.be/AfOZBpSBuO4' }
+  ],
+  en: [
+    { episode: 'EP09', title: 'Permissions & Sandboxes', description: 'A practical boundary between what an AI agent may do and what must remain under human approval.', platform: 'YouTube · EN', embed: 'https://www.youtube-nocookie.com/embed/yQW4TAupqcM', url: 'https://youtu.be/yQW4TAupqcM' },
+    { episode: 'EP08', title: 'From Brief to Delivery', description: 'How an ambiguous request becomes a scoped, testable, and accountable deliverable.', platform: 'YouTube · EN', embed: 'https://www.youtube-nocookie.com/embed/S4m23evHRTM', url: 'https://youtu.be/S4m23evHRTM' },
+    { episode: 'EP06', title: 'The AI Agent Team', description: 'Coordinating specialist agents around one objective, one source of truth, and clear approval gates.', platform: 'YouTube · EN', embed: 'https://www.youtube-nocookie.com/embed/lrjdhYpkUxk', url: 'https://youtu.be/lrjdhYpkUxk' }
+  ],
+  zh: [
+    { episode: 'EP09', title: '权限与沙盒', description: '区分 AI Agent 可以执行的操作，以及必须保留给人的授权与确认。', platform: 'Bilibili · ZH', embed: 'https://player.bilibili.com/player.html?bvid=BV1gh3P6ZErW&page=1&high_quality=1&danmaku=0', url: 'https://www.bilibili.com/video/BV1gh3P6ZErW/' },
+    { episode: 'EP08', title: '从 Brief 到交付', description: '把模糊需求转换成有边界、可测试、可验收的成果。', platform: 'Bilibili · ZH', embed: 'https://player.bilibili.com/player.html?bvid=BV1b1gm6VERp&page=1&high_quality=1&danmaku=0', url: 'https://www.bilibili.com/video/BV1b1gm6VERp/' },
+    { episode: 'EP06', title: 'AI Agent Team', description: '让多个专业 Agent 围绕同一目标、同一事实源和明确授权边界协作。', platform: 'Bilibili · ZH', embed: 'https://player.bilibili.com/player.html?bvid=BV1zWNU6UEeq&page=1&high_quality=1&danmaku=0', url: 'https://www.bilibili.com/video/BV1zWNU6UEeq/' }
+  ]
+};
 
-function shortHash(value) {
-  return value ? `${value.slice(0, 12)}...${value.slice(-10)}` : "not recorded";
-}
+const routeMap = {
+  en: { archive: '/en/', geekspell: '/en/geekspell/', atelier: '/eliora/atelier/en/' },
+  ja: { archive: '/ja/', geekspell: '/ja/geekspell/', atelier: '/eliora/atelier/ja/' },
+  zh: { archive: '/zh/', geekspell: '/zh/geekspell/', atelier: '/eliora/atelier/zh/' }
+};
 
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
+const languageButtons = [...document.querySelectorAll('[data-language]')];
+const player = document.querySelector('#video-player');
+const placeholder = document.querySelector('#player-placeholder');
+const videoTitle = document.querySelector('#video-title');
+const videoDescription = document.querySelector('#video-description');
+const videoExternal = document.querySelector('#video-external');
+const videoList = document.querySelector('#video-list');
+let currentLanguage = 'ja';
+let currentVideo = 0;
 
-function displayName(item) {
-  return item.display_name || item.name;
-}
-
-function pipelineLabel(item) {
-  if (item.pipeline_model === "comfyui-api") return "ComfyUI API run";
-  if (item.pipeline_model === "existing-file-ingest") return "Existing-file ingest";
-  return item.pipeline_model || "pipeline";
-}
-
-/** Prefer a live ComfyUI generation so judges first see real generation + B2. */
-function pickDefaultItem(items) {
-  if (!items?.length) return null;
-  return (
-    items.find((item) => item.pipeline_model === "comfyui-api" && item.verified) ||
-    items.find((item) => item.verified && item.storage === "backblaze-b2") ||
-    items[0]
-  );
-}
-
-function rankForJudges(item) {
-  if (item.pipeline_model === "comfyui-api") return 0;
-  if (item.storage === "backblaze-b2" && item.verified) return 1;
-  return 2;
-}
-
-function filteredItems() {
-  const query = $("#search").value.trim().toLowerCase();
-  const provider = $("#provider").value;
-  const verifiedOnly = $("#verified-only").checked;
-  return state.catalog.items
-    .filter((item) => {
-      const haystack = `${displayName(item)} ${item.name} ${item.prompt} ${item.model} ${item.provider} ${item.pipeline_model || ""}`.toLowerCase();
-      return (!query || haystack.includes(query)) &&
-        (provider === "all" || item.provider === provider) &&
-        (!verifiedOnly || item.verified);
-    })
-    .slice()
-    .sort((a, b) => rankForJudges(a) - rankForJudges(b));
-}
-
-function b2ObjectPath(url) {
-  if (!url) return "";
-  try {
-    const path = new URL(url).pathname.replace(/^\/+/, "");
-    const parts = path.split("/");
-    // bucket/eliora-vault/runs/...
-    const idx = parts.findIndex((p) => p === "eliora-vault");
-    return idx >= 0 ? parts.slice(idx).join("/") : path;
-  } catch {
-    return "";
-  }
-}
-
-async function copyText(text, button) {
-  if (!text) return;
-  try {
-    await navigator.clipboard.writeText(text);
-    if (button) {
-      const prev = button.textContent;
-      button.textContent = "Copied";
-      setTimeout(() => { button.textContent = prev; }, 1200);
-    }
-  } catch {
-    if (button) button.textContent = "Copy failed";
-  }
-}
-
-function wireCopyButtons(root) {
-  root.querySelectorAll("[data-copy]").forEach((button) => {
-    button.addEventListener("click", () => copyText(button.getAttribute("data-copy"), button));
+function setVideo(index) {
+  const item = videos[currentLanguage][index];
+  currentVideo = index;
+  player.src = item.embed;
+  player.title = item.title;
+  placeholder.hidden = true;
+  videoTitle.textContent = item.title;
+  videoDescription.textContent = item.description;
+  videoExternal.href = item.url;
+  document.querySelectorAll('.video-card').forEach((card, cardIndex) => {
+    card.classList.toggle('active', cardIndex === index);
+    card.setAttribute('aria-pressed', String(cardIndex === index));
   });
 }
 
-function renderList() {
-  const list = $("#asset-list");
-  const items = filteredItems();
-  const defaultId = pickDefaultItem(state.catalog.items)?.id;
-  list.innerHTML = "";
-  if (!items.length) {
-    list.innerHTML = '<p class="verify-result">No assets match these filters.</p>';
-    return;
-  }
-  items.forEach((item) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = `asset-card${state.selected?.id === item.id ? " active" : ""}`;
-    const b2Tag = item.storage === "backblaze-b2" ? '<span class="tag gold">B2</span>' : "";
-    const pipeTag = `<span class="tag ${item.pipeline_model === "comfyui-api" ? "pink" : ""}">${escapeHtml(pipelineLabel(item))}</span>`;
-    const rec = item.id === defaultId && item.pipeline_model === "comfyui-api"
-      ? '<span class="tag rec">Judge start</span>'
-      : "";
-    const v = state.verifyById[item.id];
-    const verifyTag = v === true
-      ? '<span class="tag ok">SHA match</span>'
-      : v === false
-        ? '<span class="tag bad">Mismatch</span>'
-        : "";
-    button.innerHTML = `<img src="${escapeHtml(item.asset_url)}" alt="Generated media asset" />
-      <span class="card-body"><strong>${escapeHtml(displayName(item))}</strong><p>${escapeHtml(item.prompt)}</p>
-      <span class="tags"><span class="tag">${escapeHtml(item.provider)}</span>${pipeTag}${b2Tag}${rec}${verifyTag}</span></span>`;
-    button.addEventListener("click", () => selectItem(item));
-    list.appendChild(button);
+function renderVideos() {
+  videoList.replaceChildren();
+  videos[currentLanguage].forEach((item, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'video-card';
+    button.innerHTML = `<span>${item.episode} · ${item.platform}</span><strong>${item.title}</strong><small>▶ PLAY</small>`;
+    button.addEventListener('click', () => setVideo(index));
+    videoList.append(button);
   });
+  setVideo(0);
 }
 
-function b2Block(item) {
-  const asset = item.b2_asset_url || "";
-  const man = item.b2_manifest_url || item.manifest_uri || "";
-  if (!asset && !man) {
-    return `<p class="b2-note">No Backblaze B2 object URIs on this record.</p>`;
-  }
-  const layout = b2ObjectPath(asset) || b2ObjectPath(man);
-  return `<div class="b2-panel">
-    <p class="b2-note"><strong>Backblaze B2</strong> is the durable system of record (private encrypted bucket). Anonymous access returns 401 by design. Integrity is proven by browser SHA-256 on the public mirror; these URIs show the run-scoped object hierarchy.</p>
-    ${layout ? `<pre class="b2-layout" aria-label="B2 object path">${escapeHtml(layout)}</pre>` : ""}
-    <dl class="facts b2-facts">
-      <dt>B2 asset URI</dt>
-      <dd>
-        <span class="hash" title="${escapeHtml(asset)}">${asset ? escapeHtml(asset) : "not recorded"}</span>
-        ${asset ? `<button type="button" class="mini-btn" data-copy="${escapeHtml(asset)}">Copy</button>` : ""}
-      </dd>
-      <dt>B2 manifest URI</dt>
-      <dd>
-        <span class="hash" title="${escapeHtml(man)}">${man ? escapeHtml(man) : "not recorded"}</span>
-        ${man ? `<button type="button" class="mini-btn" data-copy="${escapeHtml(man)}">Copy</button>` : ""}
-      </dd>
-    </dl>
-  </div>`;
+function setLanguage(language) {
+  if (!copy[language]) return;
+  currentLanguage = language;
+  currentVideo = 0;
+  document.documentElement.lang = language === 'zh' ? 'zh-CN' : language;
+  document.title = copy[language].pageTitle;
+  document.querySelector('meta[name="description"]').content = copy[language].description;
+  document.querySelectorAll('[data-copy]').forEach((element) => {
+    const value = copy[language][element.dataset.copy];
+    if (value) element.textContent = value;
+  });
+  document.querySelectorAll('[data-route]').forEach((link) => {
+    link.href = routeMap[language][link.dataset.route];
+  });
+  languageButtons.forEach((button) => {
+    button.setAttribute('aria-pressed', String(button.dataset.language === language));
+  });
+  renderVideos();
+  const url = new URL(window.location.href);
+  url.searchParams.set('lang', language);
+  history.replaceState({}, '', url);
 }
 
-function selectItem(item) {
-  state.selected = item;
-  $("#inspector-title").textContent = displayName(item);
-  const roleNote = item.pipeline_model === "existing-file-ingest"
-    ? `<p class="role-note">Honest resilience path: existing approved file re-sealed through Genblaze + B2 (not a new generation).</p>`
-    : item.pipeline_model === "comfyui-api"
-      ? `<p class="role-note role-note-live">Live generation path: ComfyUI API → Genblaze Pipeline → B2 hierarchical storage.</p>`
-      : "";
-  $("#inspector-content").innerHTML = `<img class="preview" src="${escapeHtml(item.asset_url)}" alt="Selected generated asset" />
-    ${roleNote}
-    <dl class="facts">
-      <dt>Provider</dt><dd>${escapeHtml(item.provider)}</dd>
-      <dt>Pipeline</dt><dd>${escapeHtml(pipelineLabel(item))}</dd>
-      <dt>Model</dt><dd>${escapeHtml(item.model)}</dd>
-      <dt>Run</dt><dd>${escapeHtml(item.run_status)} / ${escapeHtml(item.step_status)}</dd>
-      <dt>Run ID</dt><dd class="hash" title="${escapeHtml(item.run_id)}">${escapeHtml(item.run_id || "—")}</dd>
-      <dt>Resolution</dt><dd>${item.width} x ${item.height}</dd>
-      <dt>Size</dt><dd>${formatBytes(item.size_bytes)}</dd>
-      <dt>Seed</dt><dd>${item.seed ?? "—"}</dd>
-      <dt>Storage</dt><dd>${item.storage === "backblaze-b2" ? "Backblaze B2 · private encrypted" : escapeHtml(item.storage || "not recorded")}</dd>
-      <dt>Asset SHA-256</dt>
-      <dd>
-        <span class="hash" title="${escapeHtml(item.sha256)}">${escapeHtml(item.sha256 || "—")}</span>
-        ${item.sha256 ? `<button type="button" class="mini-btn" data-copy="${escapeHtml(item.sha256)}">Copy</button>` : ""}
-      </dd>
-      <dt>Manifest hash</dt>
-      <dd>
-        <span class="hash" title="${escapeHtml(item.canonical_hash)}">${escapeHtml(item.canonical_hash || "—")}</span>
-        ${item.canonical_hash ? `<button type="button" class="mini-btn" data-copy="${escapeHtml(item.canonical_hash)}">Copy</button>` : ""}
-      </dd>
-    </dl>
-    ${b2Block(item)}
-    <p class="object-links">
-      <a href="${escapeHtml(item.asset_url)}" target="_blank" rel="noopener">Open public asset copy</a>
-      <a href="${escapeHtml(item.manifest_url)}" target="_blank" rel="noopener">Inspect public provenance</a>
-      <a href="./b2-proof.json" target="_blank" rel="noopener">Open B2 proof JSON</a>
-    </p>`;
-  wireCopyButtons($("#inspector-content"));
-  const prior = state.verifyById[item.id];
-  const output = $("#verify-result");
-  if (prior === true) {
-    output.className = "verify-result ok";
-    output.textContent = "Previously verified in this session. Browser SHA-256 matched Genblaze.";
-  } else if (prior === false) {
-    output.className = "verify-result bad";
-    output.textContent = "Previous check in this session reported a mismatch.";
-  } else {
-    output.className = "verify-result";
-    output.textContent = "Ready for browser-side SHA-256 verification. Click “Verify selected”.";
-  }
-  renderList();
-}
+languageButtons.forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.language)));
 
-async function sha256Hex(buffer) {
-  return [...new Uint8Array(await crypto.subtle.digest("SHA-256", buffer))]
-    .map((value) => value.toString(16).padStart(2, "0")).join("");
-}
+const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+const browserLanguage = navigator.language.toLowerCase();
+const initialLanguage = copy[requestedLanguage]
+  ? requestedLanguage
+  : browserLanguage.startsWith('zh')
+    ? 'zh'
+    : browserLanguage.startsWith('en')
+      ? 'en'
+      : 'ja';
 
-async function verifyItem(item) {
-  const [assetResponse, manifestResponse] = await Promise.all([
-    fetch(item.asset_url, { cache: "no-store" }),
-    fetch(item.manifest_url, { cache: "no-store" })
-  ]);
-  if (!assetResponse.ok || !manifestResponse.ok) throw new Error("vault record is unavailable");
-  const [bytes, manifest] = await Promise.all([assetResponse.arrayBuffer(), manifestResponse.json()]);
-  const digest = await sha256Hex(bytes);
-  const expected = manifest.run.steps[0].assets[0].sha256;
-  const matched = digest === expected;
-  state.verifyById[item.id] = matched;
-  return { matched, digest, expected };
-}
-
-async function verifySelected() {
-  if (!state.selected) return;
-  const output = $("#verify-result");
-  output.className = "verify-result";
-  output.textContent = "Reading asset bytes and recomputing SHA-256...";
-  try {
-    const { matched, digest, expected } = await verifyItem(state.selected);
-    output.className = `verify-result ${matched ? "ok" : "bad"}`;
-    output.textContent = matched
-      ? `Verified. Browser SHA-256 matches the Genblaze asset hash: ${shortHash(digest)}`
-      : `Verification failed. Expected ${shortHash(expected)}, received ${shortHash(digest)}.`;
-    const localStatus = $("#local-proof-status");
-    if (localStatus) {
-      localStatus.className = matched ? "ok" : "bad";
-      localStatus.textContent = matched ? "SHA-256 match" : "Hash mismatch";
-    }
-    renderList();
-  } catch (error) {
-    output.className = "verify-result bad";
-    output.textContent = `Verification could not run: ${error.message}. Serve this folder over HTTP rather than file://.`;
-  }
-}
-
-async function verifyAll() {
-  if (!state.catalog?.items?.length) return;
-  const output = $("#verify-result");
-  const batch = $("#batch-verify-result");
-  output.className = "verify-result";
-  output.textContent = "Verifying all catalog assets...";
-  if (batch) {
-    batch.className = "batch-result";
-    batch.textContent = "Running batch verification...";
-  }
-  let ok = 0;
-  let fail = 0;
-  const lines = [];
-  for (const item of state.catalog.items) {
-    try {
-      const { matched } = await verifyItem(item);
-      if (matched) {
-        ok += 1;
-        lines.push(`OK  ${displayName(item)}`);
-      } else {
-        fail += 1;
-        lines.push(`BAD ${displayName(item)}`);
-      }
-    } catch (error) {
-      fail += 1;
-      lines.push(`ERR ${displayName(item)} · ${error.message}`);
-    }
-  }
-  const summary = `Batch: ${ok} matched, ${fail} failed, ${state.catalog.items.length} total.`;
-  output.className = `verify-result ${fail === 0 ? "ok" : "bad"}`;
-  output.textContent = summary;
-  if (batch) {
-    batch.className = `batch-result ${fail === 0 ? "ok" : "bad"}`;
-    batch.innerHTML = `<strong>${escapeHtml(summary)}</strong><pre>${escapeHtml(lines.join("\n"))}</pre>`;
-  }
-  const localStatus = $("#local-proof-status");
-  if (localStatus && fail === 0) {
-    localStatus.className = "ok";
-    localStatus.textContent = `All ${ok} SHA-256 match`;
-  }
-  if (state.selected) selectItem(state.selected);
-  else renderList();
-}
-
-async function init() {
-  try {
-    const response = await fetch("./sample_catalog.json", { cache: "no-store" });
-    if (!response.ok) throw new Error("catalog unavailable");
-    state.catalog = await response.json();
-    $("#asset-count").textContent = state.catalog.count;
-    $("#verified-count").textContent = state.catalog.verified_count;
-    $("#b2-count").textContent = state.catalog.items.filter((item) =>
-      item.storage === "backblaze-b2" && item.b2_asset_url && item.b2_manifest_url
-    ).length;
-    const providers = [...new Set(state.catalog.items.map((item) => item.provider))];
-    providers.forEach((provider) => $("#provider").add(new Option(provider, provider)));
-    ["#search", "#provider", "#verified-only"].forEach((selector) => {
-      $(selector).addEventListener("input", renderList);
-    });
-    $("#verify-selected")?.addEventListener("click", verifySelected);
-    $("#verify-all-btn")?.addEventListener("click", verifyAll);
-    // Legacy id support
-    $("#verify-all")?.addEventListener("click", verifySelected);
-    $("#jump-verify")?.addEventListener("click", (event) => {
-      event.preventDefault();
-      document.getElementById("vault")?.scrollIntoView({ behavior: "smooth" });
-      setTimeout(() => verifySelected(), 350);
-    });
-    selectItem(pickDefaultItem(state.catalog.items));
-  } catch (error) {
-    const message = location.protocol === "file:"
-      ? "Interactive records require HTTP. Open this page through its local preview URL (see README)."
-      : "Vault records are temporarily unavailable. Please try again.";
-    $("#asset-list").innerHTML = `<p class="verify-result bad">${message}</p>`;
-  }
-}
-
-async function loadB2Proof() {
-  const status = $("#b2-proof-status");
-  if (!status) return;
-  try {
-    const response = await fetch("./b2-proof.json", { cache: "no-store" });
-    if (!response.ok) throw new Error("proof record unavailable");
-    const proof = await response.json();
-    if (proof.verified && proof.manifest_uri) {
-      status.className = "ok";
-      status.textContent = `Verified · ${shortHash(proof.manifest_hash)}`;
-    }
-  } catch (_) {
-    status.textContent = location.protocol === "file:"
-      ? "Available through HTTP"
-      : "Proof record temporarily unavailable";
-  }
-}
-
-init();
-loadB2Proof();
+setLanguage(initialLanguage);
