@@ -2229,7 +2229,7 @@
       const $ = (id) => document.getElementById(id);
       const uiLangKey = 'eliora-canvas-lang-v1';
       const assetManifestKey = 'eliora-asset-manifest-v1';
-      let uiLang = localStorage.getItem(uiLangKey) || ((navigator.language || 'en').toLowerCase().startsWith('ja') ? 'ja' : 'en');
+      let uiLang = localStorage.getItem(uiLangKey) || 'en';
       let assetManifest = [];
       const STR = {
         en: {

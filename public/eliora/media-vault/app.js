@@ -142,6 +142,7 @@ function setLanguage(language) {
   if (!copy[language]) return;
   currentLanguage = language;
   currentVideo = 0;
+  localStorage.setItem('miragea-media-lang', language);
   document.documentElement.lang = language === 'zh' ? 'zh-CN' : language;
   document.title = copy[language].pageTitle;
   document.querySelector('meta[name="description"]').content = copy[language].description;
@@ -170,13 +171,11 @@ function setLanguage(language) {
 languageButtons.forEach((button) => button.addEventListener('click', () => setLanguage(button.dataset.language)));
 
 const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
-const browserLanguage = navigator.language.toLowerCase();
+const savedLanguage = localStorage.getItem('miragea-media-lang');
 const initialLanguage = copy[requestedLanguage]
   ? requestedLanguage
-  : browserLanguage.startsWith('zh')
-    ? 'zh'
-    : browserLanguage.startsWith('en')
-      ? 'en'
-      : 'ja';
+  : copy[savedLanguage]
+    ? savedLanguage
+    : 'en';
 
 setLanguage(initialLanguage);
