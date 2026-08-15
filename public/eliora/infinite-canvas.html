@@ -90,7 +90,7 @@
       body[data-layout-mode="canvas-first"] header.bar > .tools > :is(
         #videoPrompt, #composeContext, #duplicate, #delete, #zoomOut, #zoomIn,
         #exportJson, #importJson, #undoBtn, #redoBtn, #alignLeftBtn, #alignTopBtn,
-        #snapshotBtn, #addVideo, #openComfyTop,
+        #snapshotBtn, #addVideo, #openComfyTop, #imagePrompt, #addImage, #connect, #fit,
         a[href="/eliora/index.html"], a[href="/"]
       ) { display: none; }
       body[data-layout-mode="canvas-first"] header.bar > .tools {
@@ -632,8 +632,28 @@
       .agent-proposal { padding: 9px; border: 1px solid var(--line); border-radius: 8px; background: rgba(0,0,0,.24); }
       .agent-proposal b { display: block; margin-bottom: 4px; font-size: 12px; }
       .agent-proposal small { color: var(--muted); line-height: 1.45; }
+      .agent-proposal.invalid { border-color: rgba(242,121,154,.52); }
+      .agent-proposal .agent-risk { color: var(--amber); font-weight: 850; }
+      .agent-proposal.invalid .agent-risk { color: #f0b0c0; }
+      .agent-preview { margin-top: 6px; display: grid; gap: 3px; }
+      .agent-preview span {
+        display: block; color: var(--faint); font-size: 10px; line-height: 1.35;
+        overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      }
       .agent-proposal .tools { margin-top: 7px; justify-content: flex-start; }
       .agent-proposal button { min-height: 30px; padding: 0 9px; font-size: 10px; }
+      .capability-strip {
+        display: flex; flex-wrap: wrap; gap: 5px; align-items: center;
+        margin: 0 0 10px; min-height: 25px;
+      }
+      .capability-chip {
+        display: inline-flex; align-items: center; min-height: 24px;
+        padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px;
+        color: var(--muted); background: rgba(255,255,255,.025);
+        font-size: 9px; font-weight: 850; letter-spacing: .03em;
+      }
+      .capability-chip.on { color: var(--cyan); border-color: rgba(123,216,232,.4); }
+      .capability-chip.dev { color: var(--amber); border-color: rgba(245,184,100,.4); }
       .panel-sub {
         margin: -4px 0 12px;
         color: var(--faint);
@@ -805,25 +825,13 @@
         padding: 0;
       }
       .activity-log {
-        position: absolute;
-        left: 12px;
-        bottom: 52px;
-        z-index: 4;
-        width: min(340px, calc(100% - 200px));
-        max-height: 110px;
-        overflow: hidden;
-        border: 1px solid rgba(255,255,255,.1);
-        border-radius: 8px;
-        background: rgba(0, 0, 0, .55);
-        pointer-events: auto;
-        cursor: pointer;
-        transition: max-height .15s ease;
+        /* Diagnostics live in the dedicated Log modal. The hidden element
+           remains as its data source without covering the canvas. */
+        display: none;
       }
       .activity-log.expanded,
       .activity-log.has-alert {
-        max-height: 220px;
-        overflow: auto;
-        background: rgba(0, 0, 0, .78);
+        display: none;
       }
       .activity-log.has-alert {
         border-color: rgba(242, 121, 154, .42);
@@ -1714,6 +1722,9 @@
           <section class="panel panel-local" id="localImagePanel">
             <h2 data-i18n="panelLocalComfy">Local Image · ComfyUI</h2>
             <p class="panel-sub" data-i18n="localComfySub">GPU images & video. Start ComfyUI, then START-ELIORA-CANVAS.bat. Run or Ctrl+Shift+Enter.</p>
+            <div class="capability-strip" id="comfyCapabilityStrip" aria-live="polite">
+              <span class="capability-chip">Capabilities · connect ComfyUI</span>
+            </div>
             <details class="cloud-details" id="comfyEndpointsDetails" style="margin:0 0 12px">
               <summary data-i18n="localEndpointsSummary">Advanced · endpoints (optional)</summary>
               <div class="panel-inner" style="padding-top:10px">
@@ -1824,6 +1835,13 @@
                 <select id="localAgentMode" aria-label="Local Agent permission">
                   <option value="off">Off</option>
                   <option value="review">Review required</option>
+                </select>
+              </div>
+              <div class="agent-action-head">
+                <span class="panel-sub" style="margin:0">Write scope</span>
+                <select id="localAgentScope" aria-label="Local Agent write scope">
+                  <option value="compose">Compose · no delete</option>
+                  <option value="full">Full · reviewed delete</option>
                 </select>
               </div>
               <p class="panel-sub" style="margin:0 0 8px">Localhost only · token protected · tab isolated · every write is reviewed and undoable. No account or identity verification.</p>
@@ -3259,6 +3277,8 @@
       const cloudSettingsKey = 'eliora-cloud-api-settings-v1';
       const agentSettingsKey = 'eliora-agent-connection-settings-v1';
       const localAgentModeKey = 'eliora-local-agent-mode-v1';
+      const localAgentScopeKey = 'eliora-local-agent-scope-v1';
+      const localAgentAuditKey = 'eliora-local-agent-audit-v1';
       const localAgentClientKey = 'eliora-local-agent-client-v1';
       const aiModeKey = 'eliora-ai-mode-v1';
       const imageDbName = 'eliora-canvas-images-v1';
@@ -3305,6 +3325,10 @@
       /* ── Beat-hero interaction engine (Eliora original) ── */
       let edgesRaf = 0;
       let minimapRaf = 0;
+      let virtualRenderRaf = 0;
+      let renderedNodeIds = new Set();
+      const VIRTUALIZE_AT = 180;
+      const VIRTUAL_PAD_PX = 720;
       let marqueeState = null;
       const boardsKey = 'eliora-canvas-boards-v1';
       const activeBoardKey = 'eliora-canvas-active-board-v1';
@@ -3554,6 +3578,54 @@
         minimapRaf = requestAnimationFrame(() => {
           minimapRaf = 0;
           drawMinimap();
+        });
+      }
+      function virtualizationActive() {
+        return nodes.length > VIRTUALIZE_AT && stage.clientWidth > 0 && stage.clientHeight > 0;
+      }
+      function computeRenderedNodeIds() {
+        if (!virtualizationActive()) return new Set(nodes.map((node) => String(node.id)));
+        const pad = VIRTUAL_PAD_PX / Math.max(.18, camera.z);
+        const left = (-camera.x) / camera.z - pad;
+        const top = (-camera.y) / camera.z - pad;
+        const right = (stage.clientWidth - camera.x) / camera.z + pad;
+        const bottom = (stage.clientHeight - camera.y) / camera.z + pad;
+        const keep = new Set();
+        for (const node of nodes) {
+          const width = nodeWidth(node);
+          const height = node.kind === 'Image' || node.kind === 'Video' ? 560 : 260;
+          if (node.x + width >= left && node.x <= right && node.y + height >= top && node.y <= bottom) keep.add(String(node.id));
+        }
+        selectedIds.forEach((id) => keep.add(String(id)));
+        if (selectedNode) keep.add(String(selectedNode));
+        if (connectSource) keep.add(String(connectSource));
+        if (dragNode?.id) keep.add(String(dragNode.id));
+        const context = new Set();
+        selectedIds.forEach((id) => context.add(String(id)));
+        if (selectedNode) context.add(String(selectedNode));
+        if (connectSource) context.add(String(connectSource));
+        if (dragNode?.id) context.add(String(dragNode.id));
+        for (const edge of edges) {
+          if (context.has(String(edge.from)) || context.has(String(edge.to))) {
+            keep.add(String(edge.from));
+            keep.add(String(edge.to));
+          }
+        }
+        if (searchTerm) {
+          const term = searchTerm.toLowerCase();
+          for (const node of nodes) {
+            const hay = `${node.title} ${node.kind} ${node.text} ${tags(node.tags).join(' ')}`.toLowerCase();
+            if (hay.includes(term)) keep.add(String(node.id));
+          }
+        }
+        return keep;
+      }
+      function scheduleVirtualizedRender() {
+        if (!virtualizationActive() || virtualRenderRaf) return;
+        virtualRenderRaf = requestAnimationFrame(() => {
+          virtualRenderRaf = 0;
+          renderNodes();
+          renderEdges();
         });
       }
 
@@ -5407,6 +5479,7 @@
         if (zl) zl.textContent = `${Math.round(camera.z * 100)}%`;
         updateSelectionHub();
         try { updateSelActionBar(); } catch (_) {}
+        scheduleVirtualizedRender();
       }
 
       function updateHudChrome() {
@@ -5469,14 +5542,14 @@
           updateStageChrome();
         } catch (_) { /* streets optional early boot */ }
         if (light) {
-          renderEdges();
+          if (!virtualizationActive()) renderEdges();
           drawMinimap();
           if (opts.save) scheduleSave();
           return;
         }
         updateComposer();
-        renderEdges();
         renderNodes();
+        renderEdges();
         renderInspector();
         drawMinimap();
         updateSelectionHub();
@@ -5495,6 +5568,7 @@
           const from = nodeBy(edge.from);
           const to = nodeBy(edge.to);
           if (!from || !to) continue;
+          if (virtualizationActive() && (!renderedNodeIds.has(String(edge.from)) || !renderedNodeIds.has(String(edge.to)))) continue;
           segments.push({
             edge,
             a: portPointFromDom(edge.from, 'out'),
@@ -5717,8 +5791,13 @@
       }
       function renderNodes() {
         nodeLayer.innerHTML = '';
+        renderedNodeIds = computeRenderedNodeIds();
+        nodeLayer.dataset.rendered = String(renderedNodeIds.size);
+        nodeLayer.dataset.total = String(nodes.length);
+        nodeLayer.dataset.virtualized = String(virtualizationActive());
         const term = searchTerm.toLowerCase();
         for (const node of nodes) {
+          if (!renderedNodeIds.has(String(node.id))) continue;
           const color = colors[node.color] || colors.rose;
           const hay = `${node.title} ${node.kind} ${node.text} ${tags(node.tags).join(' ')}`.toLowerCase();
           const selected = isNodeSelected(node.id);
@@ -6826,10 +6905,6 @@
         lines.prepend(row);
         while (lines.children.length > 16) lines.removeChild(lines.lastChild);
         $('savedAt').textContent = message.length > 42 ? message.slice(0, 42) + '…' : message;
-        const log = $('activityLog');
-        if (log && (level === 'error' || level === 'warn')) {
-          log.classList.add('expanded', 'has-alert');
-        }
         refreshLogModal();
       }
       function refreshLogModal() {
@@ -7760,6 +7835,7 @@
         } else {
           setServicePill('comfyServicePill', 'offline', 'ComfyUI');
           invalidateComfyCaches();
+          renderComfyCapabilities(null, false);
         }
         updateComfyConnectFix(comfyOk, bridgeOk);
         updateLocalHud(llamaOk, comfyOk, bridgeOk);
@@ -7768,8 +7844,9 @@
         if (!comfyOk) {
           window.__elioraHadPathOffline = true;
           const msg = bridgeOk ? (t('stackComfyDeadToast') || t('stackComfyDead')) : t('stackBridgeDown');
-          // Offline toast once per session — not every 20s poll
-          if (!window.__elioraPathOfflineToast) {
+          // A public-page visitor is expected to have localhost offline. Keep
+          // the compact Path indicator there; interrupt only in local mode.
+          if (isLocalHost() && !window.__elioraPathOfflineToast) {
             window.__elioraPathOfflineToast = true;
             showStatusToast?.(
               bridgeOk
@@ -7780,7 +7857,7 @@
               6000,
             );
           }
-          logActivity(msg, 'error');
+          logActivity(msg, isLocalHost() ? 'warn' : 'info');
           // Aggressive recheck while offline (hero feels "always connected")
           if (!window.__elioraFastRecheck) {
             window.__elioraFastRecheck = setInterval(() => {
@@ -7817,6 +7894,7 @@
         if (comfyOk && !comfyRunning && $('jobBar')?.classList.contains('warn')) hideJobStatus();
         if (comfyOk) {
           refreshModelStackSelect().catch(() => {});
+          detectComfyCapabilities(true).catch(() => renderComfyCapabilities(null, false));
           runComfySelfTest().catch(() => {});
         }
         return { llamaOk, comfyOk, bridgeOk };
@@ -7870,6 +7948,8 @@
         const values = Object.values(data);
         if (values.some((value) => value && typeof value === 'object' && value.class_type)) return data;
         if (data.prompt && typeof data.prompt === 'object') return apiRoot(data.prompt);
+        if (data.api && typeof data.api === 'object') return apiRoot(data.api);
+        if (data.graph && typeof data.graph === 'object') return apiRoot(data.graph);
         return null;
       }
       function isUiWorkflow(data) {
@@ -8023,6 +8103,52 @@
         const data = await response.json();
         if (Object.keys(data).length > 20) objectInfoCache = data;
         return data;
+      }
+      function classifyComfyCapabilities(info) {
+        const entries = Object.entries(info && typeof info === 'object' ? info : {});
+        const caps = { total: entries.length, image: 0, video: 0, audio: 0, mask: 0, model3d: 0, custom: 0, categories: new Set() };
+        const seen = { image: new Set(), video: new Set(), audio: new Set(), mask: new Set(), model3d: new Set(), custom: new Set() };
+        for (const [name, node] of entries) {
+          const category = String(node?.category || '').trim();
+          if (category) caps.categories.add(category.split('/')[0]);
+          const outputs = Array.isArray(node?.output) ? node.output.join(' ') : '';
+          const inputs = JSON.stringify(node?.input || {});
+          const hay = `${name} ${node?.display_name || ''} ${category} ${outputs} ${inputs}`.toLowerCase();
+          if (/image|latent|vae|clip|sampler|conditioning/.test(hay)) seen.image.add(name);
+          if (/video|frames?|vhs|wan\b|ltx|hunyuan/.test(hay)) seen.video.add(name);
+          if (/audio|sound|voice|speech|tts/.test(hay)) seen.audio.add(name);
+          if (/mask|inpaint|outpaint|controlnet|depth|pose/.test(hay)) seen.mask.add(name);
+          if (/mesh|pointcloud|voxel|3d|camera pose/.test(hay)) seen.model3d.add(name);
+          const moduleName = String(node?.python_module || '');
+          if (moduleName && !/^nodes(?:\.|$)|^comfy(?:\.|$)/i.test(moduleName)) seen.custom.add(name);
+        }
+        Object.keys(seen).forEach((key) => { caps[key] = seen[key].size; });
+        caps.categories = caps.categories.size;
+        caps.detectedAt = Date.now();
+        return caps;
+      }
+      function renderComfyCapabilities(caps, online = true) {
+        const strip = $('comfyCapabilityStrip');
+        if (!strip) return;
+        if (!online || !caps?.total) {
+          strip.innerHTML = `<span class="capability-chip">${esc(uiLang === 'ja' ? '能力検出 · ComfyUI接続待ち' : 'Capabilities · waiting for ComfyUI')}</span>`;
+          return;
+        }
+        const items = [
+          ['Nodes', caps.total, 'on'], ['Image', caps.image, 'on'], ['Video', caps.video, caps.video ? 'on' : ''],
+          ['Audio', caps.audio, caps.audio ? 'on' : ''], ['Mask/Control', caps.mask, caps.mask ? 'on' : ''],
+          ['3D', caps.model3d, caps.model3d ? 'on' : ''], ['DEV/Custom', caps.custom, 'dev'],
+        ];
+        strip.innerHTML = items.map(([label, count, cls]) => `<span class="capability-chip ${cls}">${esc(label)} · ${Number(count) || 0}</span>`).join('');
+        strip.title = uiLang === 'ja'
+          ? `ComfyUI実行環境から動的検出 · ${caps.categories}カテゴリ`
+          : `Detected live from ComfyUI · ${caps.categories} categories`;
+      }
+      async function detectComfyCapabilities(force = false) {
+        const info = await getObjectInfo(force);
+        const caps = classifyComfyCapabilities(info);
+        renderComfyCapabilities(caps, true);
+        return caps;
       }
       async function resolveQwenEncodeClass(needMulti) {
         const info = await getObjectInfo(true);
@@ -9782,6 +9908,80 @@
       function localAgentHeaders() {
         return localAgentToken ? { Authorization: `Bearer ${localAgentToken}`, 'Content-Type': 'application/json' } : { 'Content-Type': 'application/json' };
       }
+      const AGENT_POLICY_VERSION = '2026-08-15';
+      const AGENT_MAX_OPS = 100;
+      const AGENT_ALLOWED_OPS = new Set(['add_node', 'update_node', 'delete_node', 'connect_nodes', 'delete_connections', 'select_nodes', 'set_viewport']);
+      function localAgentScope() {
+        return $('localAgentScope')?.value === 'full' ? 'full' : 'compose';
+      }
+      function validateAgentOps(ops, scope = localAgentScope()) {
+        const errors = [];
+        const warnings = [];
+        if (!Array.isArray(ops) || !ops.length) errors.push('Proposal has no operations.');
+        if (Array.isArray(ops) && ops.length > AGENT_MAX_OPS) errors.push(`Too many operations (${ops.length}/${AGENT_MAX_OPS}).`);
+        const addedIds = new Set();
+        let textBudget = 0;
+        (Array.isArray(ops) ? ops.slice(0, AGENT_MAX_OPS + 1) : []).forEach((op, index) => {
+          if (!op || typeof op !== 'object') { errors.push(`#${index + 1}: operation must be an object.`); return; }
+          if (!AGENT_ALLOWED_OPS.has(op.type)) { errors.push(`#${index + 1}: unknown operation ${String(op.type || '(empty)')}.`); return; }
+          if (scope !== 'full' && (op.type === 'delete_node' || op.type === 'delete_connections')) {
+            errors.push(`#${index + 1}: delete requires Full reviewed scope.`);
+          }
+          if (op.type === 'delete_connections' && op.all === true) errors.push(`#${index + 1}: delete-all is never accepted; list edge IDs.`);
+          if (op.type === 'add_node') {
+            const payload = op.node && typeof op.node === 'object' ? { ...op, ...op.node } : op;
+            const id = String(payload.id || '');
+            if (id && (nodeBy(id) || addedIds.has(id))) errors.push(`#${index + 1}: duplicate node id ${id}.`);
+            if (id) addedIds.add(id);
+          }
+          if (op.type === 'update_node' && !nodeBy(String(op.id || '')) && !addedIds.has(String(op.id || ''))) {
+            errors.push(`#${index + 1}: update target does not exist.`);
+          }
+          if (op.type === 'delete_node') {
+            const ids = op.ids || (op.id ? [op.id] : []);
+            if (!Array.isArray(ids) || !ids.length) errors.push(`#${index + 1}: explicit node IDs required.`);
+            if (Array.isArray(ids) && ids.length > 50) errors.push(`#${index + 1}: delete batch exceeds 50 nodes.`);
+          }
+          if (op.type === 'connect_nodes') {
+            const from = String(op.fromNodeId || op.from || '');
+            const to = String(op.toNodeId || op.to || '');
+            const known = (id) => !!nodeBy(id) || addedIds.has(id);
+            if (!from || !to || from === to || !known(from) || !known(to)) errors.push(`#${index + 1}: valid distinct connection endpoints required.`);
+          }
+          const payload = op.node && typeof op.node === 'object' ? { ...op, ...op.node } : op;
+          textBudget += String(payload.title || op.patch?.title || '').length + String(payload.text || op.patch?.text || '').length;
+          const coords = [payload.x, payload.y, payload.position?.x, payload.position?.y, op.viewport?.x, op.viewport?.y, op.viewport?.z].filter((v) => v != null);
+          if (coords.some((v) => !Number.isFinite(Number(v)))) errors.push(`#${index + 1}: coordinates must be finite numbers.`);
+        });
+        if (textBudget > 200000) errors.push('Proposal text exceeds the 200 KB safety budget.');
+        if (Array.isArray(ops) && ops.some((op) => op?.type === 'set_viewport')) warnings.push('Viewport will move after approval.');
+        return { ok: errors.length === 0, errors, warnings, scope, count: Array.isArray(ops) ? ops.length : 0, policy: AGENT_POLICY_VERSION };
+      }
+      function agentOpPreview(ops) {
+        return (Array.isArray(ops) ? ops : []).slice(0, 4).map((op) => {
+          const target = op.node?.title || op.node?.id || op.title || op.patch?.title || op.id || op.fromNodeId || op.from || '';
+          return `${op.type || '?'}${target ? ` · ${String(target).slice(0, 54)}` : ''}`;
+        });
+      }
+      function setAgentReviewStatus(emptyMessage = '') {
+        const status = $('localAgentStatus');
+        if (!status) return;
+        const pending = localAgentPending.filter((item) => item.status === 'pending').length;
+        status.textContent = pending ? `${pending} proposal(s) waiting for your review.` : emptyMessage || `Connected · review required · tab ${localAgentClientId.slice(0, 8)} · MCP :8190/mcp`;
+      }
+      function recordAgentAudit(item, status, validation, message = '') {
+        try {
+          const previous = JSON.parse(localStorage.getItem(localAgentAuditKey) || '[]');
+          const list = Array.isArray(previous) ? previous : [];
+          list.unshift({
+            at: new Date().toISOString(), actionId: String(item?.id || ''), status,
+            summary: String(item?.summary || '').slice(0, 240), operations: Array.isArray(item?.ops) ? item.ops.length : 0,
+            scope: validation?.scope || localAgentScope(), policy: AGENT_POLICY_VERSION,
+            message: String(message || '').slice(0, 500),
+          });
+          localStorage.setItem(localAgentAuditKey, JSON.stringify(list.slice(0, 100)));
+        } catch (_) { /* local audit is best effort */ }
+      }
       function localAgentSnapshot() {
         return {
           boardId: typeof activeBoardId === 'string' ? activeBoardId : 'main',
@@ -9794,6 +9994,12 @@
           edges: edges.map((edge) => ({ id: String(edge.id), from: String(edge.from), to: String(edge.to), label: String(edge.label || '').slice(0, 200) })),
           selectedNodeIds: selectedNodeList().map((node) => node.id),
           viewport: { x: camera.x, y: camera.y, z: camera.z },
+          agentPolicy: {
+            version: AGENT_POLICY_VERSION, permission: 'review-required', scope: localAgentScope(),
+            maxOperations: AGENT_MAX_OPS, allowedOperations: [...AGENT_ALLOWED_OPS],
+            deleteAllAllowed: false, identityVerification: false,
+          },
+          rendering: { totalNodes: nodes.length, renderedNodes: renderedNodeIds.size, virtualized: virtualizationActive() },
         };
       }
       async function publishLocalAgentState() {
@@ -9813,12 +10019,22 @@
         const inbox = $('localAgentInbox');
         if (!inbox) return;
         if (inbox.parentElement !== document.body) document.body.appendChild(inbox);
-        inbox.innerHTML = localAgentPending.filter((item) => item.status === 'pending').map((item) => `
-          <div class="agent-proposal" data-agent-action="${Number(item.id)}">
+        inbox.innerHTML = localAgentPending.filter((item) => item.status === 'pending').map((item) => {
+          const validation = validateAgentOps(item.ops);
+          item.validation = validation;
+          const preview = agentOpPreview(item.ops);
+          const risk = validation.ok
+            ? (validation.scope === 'full' ? 'Full scope · review before write' : 'Compose scope · no delete')
+            : validation.errors.slice(0, 2).join(' · ');
+          return `
+          <div class="agent-proposal${validation.ok ? '' : ' invalid'}" data-agent-action="${esc(String(item.id))}">
             <b>${esc(item.summary || 'Agent canvas changes')}</b>
             <small>${esc(describeAgentOps(item.ops))}</small>
-            <div class="tools"><button class="primary" data-agent-approve="${Number(item.id)}">Approve</button><button data-agent-reject="${Number(item.id)}">Reject</button></div>
-          </div>`).join('');
+            <small class="agent-risk">${esc(risk)}</small>
+            <div class="agent-preview">${preview.map((line) => `<span>${esc(line)}</span>`).join('')}</div>
+            <div class="tools"><button class="primary" data-agent-approve="${esc(String(item.id))}"${validation.ok ? '' : ' disabled'}>Approve</button><button data-agent-reject="${esc(String(item.id))}">Reject</button></div>
+          </div>`;
+        }).join('');
       }
       function finiteAgentNumber(value, fallback, min = -1000000, max = 1000000) {
         const number = Number(value);
@@ -9829,15 +10045,17 @@
         (Array.isArray(ops) ? ops : []).forEach((op) => {
           if (!op || typeof op !== 'object') return;
           if (op.type === 'add_node') {
+            const payload = op.node && typeof op.node === 'object' ? { ...op, ...op.node } : op;
             const allowedKinds = new Set(kinds);
-            const kind = allowedKinds.has(op.kind) ? op.kind : 'Note';
+            const kind = allowedKinds.has(payload.kind) ? payload.kind : 'Note';
             const point = placePointNearSelection();
-            const id = String(op.id || uid()).slice(0, 160);
+            const id = String(payload.id || uid()).slice(0, 160);
             if (nodeBy(id)) return;
             nodes.unshift({
-              id, kind, x: finiteAgentNumber(op.x ?? op.position?.x, point.x), y: finiteAgentNumber(op.y ?? op.position?.y, point.y),
-              title: String(op.title || `Agent ${kind}`).slice(0, 300), text: String(op.text || '').slice(0, 12000),
-              tags: tags(op.tags || ['Agent']).slice(0, 30), color: colors[op.color] ? op.color : 'cyan', url: '',
+              id, kind, x: finiteAgentNumber(payload.x ?? payload.position?.x, point.x), y: finiteAgentNumber(payload.y ?? payload.position?.y, point.y),
+              title: String(payload.title || `Agent ${kind}`).slice(0, 300), text: String(payload.text || '').slice(0, 12000),
+              tags: tags(payload.tags || ['Agent']).slice(0, 30), color: colors[payload.color] ? payload.color : 'cyan',
+              url: String(payload.url || '').slice(0, 1200), imageId: String(payload.imageId || '').slice(0, 240),
             });
             changed = true;
           } else if (op.type === 'update_node') {
@@ -9869,8 +10087,8 @@
             }
           } else if (op.type === 'delete_connections') {
             const ids = new Set((op.ids || (op.id ? [op.id] : [])).map(String));
-            if (op.all === true) { edges = []; changed = true; }
-            else if (ids.size) { edges = edges.filter((edge) => !ids.has(String(edge.id))); changed = true; }
+            if (op.all === true) return;
+            if (ids.size) { edges = edges.filter((edge) => !ids.has(String(edge.id))); changed = true; }
           } else if (op.type === 'select_nodes') {
             const ids = (op.ids || []).map(String).filter((id) => nodeBy(id));
             setSelection(ids, ids[0]);
@@ -9894,6 +10112,16 @@
       async function approveLocalAgentAction(id) {
         const item = localAgentPending.find((entry) => String(entry.id) === String(id) && entry.status === 'pending');
         if (!item) return;
+        const validation = validateAgentOps(item.ops);
+        if (!validation.ok) {
+          item.status = 'error';
+          const message = validation.errors.join(' ');
+          recordAgentAudit(item, 'blocked', validation, message);
+          await acknowledgeLocalAgentAction(item, 'error', message);
+          renderLocalAgentInbox();
+          setAgentReviewStatus('Blocked unsafe proposal · no canvas changes.');
+          return;
+        }
         pushHistory();
         try {
           applyLocalAgentOps(item.ops);
@@ -9901,12 +10129,14 @@
           render();
           scheduleSave();
           logActivity(`Agent approved: ${item.summary}`, 'ok');
+          recordAgentAudit(item, 'applied', validation);
           await acknowledgeLocalAgentAction(item, 'applied');
           await publishLocalAgentState();
           const status = $('localAgentStatus');
           if (status) status.textContent = 'Applied · saved locally · Ctrl+Z to undo.';
         } catch (error) {
           item.status = 'error';
+          recordAgentAudit(item, 'error', validation, error.message || String(error));
           await acknowledgeLocalAgentAction(item, 'error', error.message || String(error));
         }
         renderLocalAgentInbox();
@@ -9916,8 +10146,10 @@
         if (!item) return;
         item.status = 'rejected';
         logActivity(`Agent rejected: ${item.summary}`, 'warn');
+        recordAgentAudit(item, 'rejected', validateAgentOps(item.ops));
         await acknowledgeLocalAgentAction(item, 'rejected');
         renderLocalAgentInbox();
+        setAgentReviewStatus('Rejected · no canvas changes.');
       }
       async function pollLocalAgentActions() {
         if (!localAgentToken || $('localAgentMode')?.value !== 'review' || document.hidden) return;
@@ -9932,8 +10164,7 @@
           });
           localAgentPending = localAgentPending.slice(-50);
           renderLocalAgentInbox();
-          const status = $('localAgentStatus');
-          if (status) status.textContent = `${incoming.length} proposal(s) waiting for your review.`;
+          setAgentReviewStatus();
         }
       }
       function stopLocalAgent() {
@@ -9975,7 +10206,8 @@
         const config = JSON.stringify({
           name: 'eliora-local-canvas', url: `${comfyBridgeBase}/mcp`,
           headers: { Authorization: `Bearer ${localAgentToken}` }, clientId: localAgentClientId,
-          permission: 'review-required', identityVerification: false,
+          permission: 'review-required', scope: localAgentScope(), policyVersion: AGENT_POLICY_VERSION,
+          maxOperations: AGENT_MAX_OPS, deleteAllAllowed: false, identityVerification: false,
         }, null, 2);
         await navigator.clipboard.writeText(config);
         const status = $('localAgentStatus');
@@ -10247,7 +10479,8 @@
         } catch (_) {}
         if (nameEl) nameEl.textContent = title || (uiLang === 'ja' ? '導入済みグラフ' : 'Active graph');
         if (metaEl) {
-          metaEl.textContent = `${street.label} · ${nodeCount} nodes · ${Math.round(raw.length / 1024)} KB`;
+          const preserved = uiLang === 'ja' ? 'DEV対応・構造保持' : 'DEV-ready · structure preserved';
+          metaEl.textContent = `${street.label} · ${nodeCount} nodes · ${Math.round(raw.length / 1024)} KB · ${preserved}`;
         }
       }
       function clearActiveComfyJson() {
@@ -10335,15 +10568,11 @@
         if (!assess.usable) throw new Error(assess.message || 'Not a Comfy workflow');
         activeStreetChoice = '';
         try { localStorage.removeItem(streetKey); } catch (_) { /* */ }
-        let cleaned = raw;
-        try {
-          // Drop baked CJK demo strings inside graphs; keep structure
-          const scrubbed = raw.replace(/[\u3400-\u9FFF\uF900-\uFAFF]+/g, '');
-          JSON.parse(scrubbed);
-          cleaned = scrubbed;
-        } catch (_) {
-          cleaned = raw;
-        }
+        // Passthrough-first: preserve the user's workflow byte-for-byte.
+        // CJK prompts, DEV node fields and custom-node metadata are valid
+        // workflow content. Identity policy is enforced by connector choices,
+        // never by deleting text from an imported graph.
+        const cleaned = raw;
         if ($('comfyWorkflow')) $('comfyWorkflow').value = cleaned;
         scheduleSave();
         if (!options.skipRecent) {
@@ -11215,6 +11444,11 @@
         if (mode === 'review') connectLocalAgent();
         else stopLocalAgent();
       });
+      $('localAgentScope')?.addEventListener('change', () => {
+        localStorage.setItem(localAgentScopeKey, localAgentScope());
+        renderLocalAgentInbox();
+        publishLocalAgentState().catch(() => {});
+      });
       $('cloudProvider')?.addEventListener('change', () => {
         const id = $('cloudProvider').value;
         if (id !== 'custom') applyCloudPreset(id, { forceModels: false });
@@ -11541,6 +11775,7 @@
       bindHelp();
       load();
       if ($('localAgentMode')) $('localAgentMode').value = localStorage.getItem(localAgentModeKey) === 'off' ? 'off' : 'review';
+      if ($('localAgentScope')) $('localAgentScope').value = localStorage.getItem(localAgentScopeKey) === 'full' ? 'full' : 'compose';
       setTimeout(() => { if ($('localAgentMode')?.value === 'review') connectLocalAgent(); }, 900);
       syncComfyLinks();
       $('activityLog')?.addEventListener('click', () => $('activityLog').classList.toggle('expanded'));
@@ -11809,17 +12044,19 @@
         clientId: localAgentClientId,
         connected: !!localAgentToken,
         mode: $('localAgentMode')?.value || 'off',
+        scope: localAgentScope(),
         pending: localAgentPending.filter((item) => item.status === 'pending').length,
         snapshot: localAgentSnapshot(),
       });
-      window.__elioraApplyAgentOpsProbe = (ops) => {
-        const before = snapshotBoard();
-        pushHistory();
-        const changed = applyLocalAgentOps(ops);
-        render();
-        scheduleSave();
-        return { changed, before, after: snapshotBoard() };
-      };
+      // Validation-only: automated probes must not bypass review-required writes.
+      window.__elioraApplyAgentOpsProbe = (ops) => ({ changed: false, validation: validateAgentOps(ops) });
+      window.__elioraAgentValidationProbe = (ops, scope = 'compose') => validateAgentOps(ops, scope === 'full' ? 'full' : 'compose');
+      window.__elioraCapabilityClassifierProbe = (info) => classifyComfyCapabilities(info);
+      window.__elioraVirtualizationProbe = () => ({
+        active: virtualizationActive(), threshold: VIRTUALIZE_AT,
+        total: nodes.length, rendered: renderedNodeIds.size,
+        selectedKept: selectedNode ? renderedNodeIds.has(String(selectedNode)) : true,
+      });
       window.__elioraSkipOnboard = () => {
         try {
           localStorage.setItem(typeof onboardingKey !== 'undefined' ? onboardingKey : 'eliora-onboard-v2', '1');

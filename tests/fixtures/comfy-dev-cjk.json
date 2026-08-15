@@ -1,0 +1,15 @@
+{
+  "prompt": {
+    "1": {
+      "class_type": "DevTextNode",
+      "inputs": {
+        "text": "月光の都市を描く／描绘月光之城",
+        "dev_option": "future-field"
+      },
+      "_meta": {
+        "title": "最新DEV・自定义节点"
+      }
+    }
+  },
+  "client_id": "eliora-preservation-test"
+}

@@ -22,6 +22,8 @@ HOST = "127.0.0.1"
 PORT = 8190
 MAX_BODY = 2 * 1024 * 1024
 MAX_ACTIONS = 200
+MAX_ACTION_OPS = 100
+AGENT_POLICY_VERSION = "2026-08-15"
 ALLOWED_ORIGINS = {
     "https://miragea-ss.github.io",
     "https://miragea-ss.github.io/",
@@ -131,7 +133,15 @@ class BridgeHandler(BaseHTTPRequestHandler):
             if not self._authorized(allow_browser_bootstrap=True):
                 self._send(403, {"error": "origin or token not allowed"})
                 return
-            self._send(200, {"ok": True, "token": TOKEN, "mcp": f"http://{HOST}:{PORT}/mcp", "reviewDefault": True})
+            self._send(200, {
+                "ok": True,
+                "token": TOKEN,
+                "mcp": f"http://{HOST}:{PORT}/mcp",
+                "reviewDefault": True,
+                "policyVersion": AGENT_POLICY_VERSION,
+                "maxOperations": MAX_ACTION_OPS,
+                "deleteAllAllowed": False,
+            })
             return
         if parsed.path == "/eliora/canvas/state":
             if not self._authorized():
@@ -267,13 +277,19 @@ def queue_action(body: dict) -> dict:
     ops = body.get("ops")
     if not client_id:
         raise ValueError("clientId required")
-    if not isinstance(ops, list) or not ops or len(ops) > 50:
-        raise ValueError("ops must contain 1-50 operations")
+    if not isinstance(ops, list) or not ops or len(ops) > MAX_ACTION_OPS:
+        raise ValueError(f"ops must contain 1-{MAX_ACTION_OPS} operations")
     allowed = {"add_node", "update_node", "delete_node", "connect_nodes", "delete_connections", "select_nodes", "set_viewport"}
     clean_ops = []
     for op in ops:
         if not isinstance(op, dict) or op.get("type") not in allowed:
             raise ValueError(f"unsupported operation: {op.get('type') if isinstance(op, dict) else 'invalid'}")
+        if op.get("type") == "delete_connections" and op.get("all") is True:
+            raise ValueError("delete-all is never accepted; list connection IDs")
+        if op.get("type") == "delete_node":
+            ids = op.get("ids") or ([op.get("id")] if op.get("id") else [])
+            if not isinstance(ids, list) or not ids or len(ids) > 50:
+                raise ValueError("delete_node requires 1-50 explicit node IDs")
         clean_ops.append(op)
     with LOCK:
         action = {
@@ -282,11 +298,12 @@ def queue_action(body: dict) -> dict:
             "summary": str(body.get("summary", "Agent canvas changes"))[:300],
             "ops": clean_ops,
             "status": "pending",
+            "policyVersion": AGENT_POLICY_VERSION,
             "createdAt": int(time.time() * 1000),
         }
         NEXT_ACTION_ID += 1
         ACTIONS.append(action)
-    return {"ok": True, "action": action, "reviewRequired": True}
+    return {"ok": True, "action": action, "reviewRequired": True, "policyVersion": AGENT_POLICY_VERSION}
 
 
 def mcp_tools() -> list[dict]:
@@ -303,13 +320,13 @@ def mcp_tools() -> list[dict]:
         },
         {
             "name": "eliora_propose_canvas_ops",
-            "description": "Propose structured canvas changes. The browser user must approve them; approved changes are undoable.",
+            "description": "Propose structured canvas changes. Compose scope is default (no delete); Full scope still requires browser review. Delete-all is never accepted and approved changes are undoable.",
             "inputSchema": {
                 "type": "object",
                 "properties": {
                     "clientId": {"type": "string"},
                     "summary": {"type": "string"},
-                    "ops": {"type": "array", "minItems": 1, "maxItems": 50, "items": {"type": "object"}},
+                    "ops": {"type": "array", "minItems": 1, "maxItems": MAX_ACTION_OPS, "items": {"type": "object"}},
                 },
                 "required": ["clientId", "ops"],
                 "additionalProperties": False,

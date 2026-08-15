@@ -12,6 +12,7 @@
     "astro": "astro",
     "agents:export": "node scripts/export-agent-status.mjs",
     "agents:validate": "node scripts/validate-agent-status.mjs",
+    "test:canvas-contract": "node scripts/test-infinite-canvas-contract.mjs",
     "agents:watch": "node scripts/campaign-watch.mjs",
     "agents:sync": "node scripts/campaign-watch.mjs && node scripts/export-agent-status.mjs && node scripts/validate-agent-status.mjs"
   },
