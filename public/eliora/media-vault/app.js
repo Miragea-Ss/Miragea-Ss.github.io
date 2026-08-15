@@ -145,6 +145,12 @@ function setLanguage(language) {
   document.documentElement.lang = language === 'zh' ? 'zh-CN' : language;
   document.title = copy[language].pageTitle;
   document.querySelector('meta[name="description"]').content = copy[language].description;
+  document.querySelectorAll('meta[property="og:title"], meta[name="twitter:title"]').forEach((meta) => {
+    meta.content = copy[language].pageTitle;
+  });
+  document.querySelectorAll('meta[property="og:description"], meta[name="twitter:description"]').forEach((meta) => {
+    meta.content = copy[language].description;
+  });
   document.querySelectorAll('[data-copy]').forEach((element) => {
     const value = copy[language][element.dataset.copy];
     if (value) element.textContent = value;

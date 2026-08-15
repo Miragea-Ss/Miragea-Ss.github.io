@@ -231,7 +231,7 @@ const copy = {
         <p class="mt-5 max-w-3xl leading-8 text-stone-300">{copy.heroNote}</p>
         <div class="mt-9 flex flex-wrap gap-3">
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-cyan-200/90 px-5 font-bold text-black transition hover:bg-cyan-100" href="/eliora/infinite-canvas.html">{copy.heroCanvas}</a>
-          <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-orange-300/90 px-5 font-bold text-black transition hover:bg-orange-200" href="/eliora/media-vault/">{copy.heroVault}</a>
+          <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-orange-300/90 px-5 font-bold text-black transition hover:bg-orange-200" href={`/eliora/media-vault/?lang=${lang}`}>{copy.heroVault}</a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-stone-100 px-5 font-bold text-black transition hover:bg-rose-200" href={`/eliora/atelier/${lang}/contact/`}>{copy.enterpriseContact}</a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-amber-200/30 px-5 font-bold text-amber-100 transition hover:border-amber-200/60" href="/eliora/index.html">{copy.enterEliora}</a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 px-5 font-bold text-stone-100 transition hover:border-white/35" href={`/eliora/atelier/${lang}/`}>{copy.enterAtelier}</a>
@@ -249,7 +249,7 @@ const copy = {
           <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black to-transparent"></div>
           <span class="brand-moon-orb brand-moon-orb--miragea brand-moon-orb--strong mirage-logo-orb absolute -bottom-8 left-4 z-10 h-[66px] w-[66px] [--brand-logo-scale:1] [--brand-glow-inset:-16%]" aria-label="Miragea logo">
             <span class="moon-glow" aria-hidden="true"></span>
-            <img class="brand-moon-logo" src="/assets/brand/miragea-logo-transparent.png" alt="Miragea logo" />
+            <img class="brand-moon-logo" src="/assets/brand/miragea-logo-256.webp" alt="Miragea logo" width="256" height="256" decoding="async" />
           </span>
         </div>
         <div class="grid grid-cols-[76px_1fr] items-center gap-4 p-5 pt-9">
@@ -301,7 +301,7 @@ const copy = {
           <div class="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-cyan-400/10 blur-2xl transition group-hover:bg-cyan-300/20"></div>
         </a>
         <a
-          href="/eliora/media-vault/"
+          href={`/eliora/media-vault/?lang=${lang}`}
           class="group relative overflow-hidden rounded-2xl border border-orange-300/30 bg-gradient-to-br from-orange-950/45 via-black/60 to-black p-7 transition duration-500 hover:-translate-y-1 hover:border-orange-200/60 hover:shadow-[0_0_40px_rgba(255,140,60,.16)]"
         >
           <span class="mb-4 block text-xs uppercase tracking-[0.18em] text-orange-200">{copy.liveVaultKicker}</span>

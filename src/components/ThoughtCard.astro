@@ -14,6 +14,11 @@ const thoughtHref = post.slug.includes('/')
 // === アートロジック ===
 const glowColor = post.data.confidence > 80 ? 'shadow-rose-900/60' : 'shadow-cyan-900/40';
 const borderColor = post.data.confidence > 80 ? 'border-rose-500/30' : 'border-cyan-500/30';
+const cardCover = post.data.cover === '/images/S01.png'
+  ? '/images/S01-card.webp'
+  : post.data.cover === '/images/ERK_.png'
+    ? '/images/ERK-card.webp'
+    : post.data.cover;
 ---
 
 <!-- ここが重要！全体をリンクタグ(a)で包みました -->
@@ -25,8 +30,10 @@ const borderColor = post.data.confidence > 80 ? 'border-rose-500/30' : 'border-c
     <!-- カバー画像があれば表示 -->
     {post.data.cover && (
       <img 
-        src={post.data.cover} 
+        src={cardCover}
         alt={post.data.title} 
+        loading="lazy"
+        decoding="async"
         class="w-full h-48 object-cover rounded-lg mb-6 opacity-80 group-hover:opacity-100 transition duration-500" 
       />
     )}
@@ -49,9 +56,9 @@ const borderColor = post.data.confidence > 80 ? 'border-rose-500/30' : 'border-c
     </p>
 
     <!-- タグ -->
-    <div class="mt-4 flex gap-2">
+    <div class="mt-4 flex flex-wrap gap-2">
       {post.data.topics.map((tag) => (
-        <span class="text-xs border border-white/10 px-2 py-1 rounded text-gray-400">
+        <span class="max-w-full break-words rounded border border-white/10 px-2 py-1 text-xs text-gray-400">
           #{tag}
         </span>
       ))}

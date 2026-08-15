@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Eliora Work Canvas</title>
     <meta name="description" content="Eliora Work Canvas — Local-first infinite canvas. No real-name China APIs. llama.cpp + ComfyUI. International BYOK. EN/JA. Boards stay in your browser." />
+    <link rel="canonical" href="https://miragea-ss.github.io/eliora/infinite-canvas.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Miragea · Eliora" />
+    <meta property="og:title" content="Eliora Work Canvas" />
+    <meta property="og:description" content="Local-first infinite canvas for ideas, images, llama.cpp, ComfyUI, and international BYOK providers. No real-name China API dependency." />
+    <meta property="og:url" content="https://miragea-ss.github.io/eliora/infinite-canvas.html" />
+    <meta property="og:image" content="https://miragea-ss.github.io/eliora/assets/images/miragea-portrait.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="/assets/brand/brand-glow.css" />
     <style>
       :root {
@@ -22,6 +30,7 @@
         --green: #9ed79d;
       }
       * { box-sizing: border-box; }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
       html, body { height: 100%; margin: 0; overflow: hidden; }
       body {
         background:
@@ -1589,10 +1598,11 @@
     </style>
   </head>
   <body>
+    <h1 class="sr-only">Eliora Work Canvas — local-first infinite canvas for AI creation</h1>
     <div class="app">
       <header class="bar">
         <a class="brand" href="./index.html">
-          <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--soft" aria-label="Eliora logo"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/eliora-logo-transparent.png" alt="Eliora logo" /></span>
+          <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--soft" aria-label="Eliora logo"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/eliora-logo-256.webp" alt="Eliora logo" width="256" height="256" decoding="async" /></span>
           <span><strong data-i18n="brandTitle">Eliora Work Canvas</strong><span data-i18n="brandSub">Place · Connect · Generate · Local-first</span></span>
         </a>
         <div class="tools" data-i18n-aria="toolsAria" aria-label="Canvas tools">
@@ -1621,7 +1631,7 @@
           <button id="openHelp" type="button" data-i18n="helpBtn" data-i18n-title="helpTitle" title="Shortcuts &amp; help (?)">Help</button>
           <a class="tool-link" id="openComfyTop" href="http://127.0.0.1:8188/" target="_blank" rel="noreferrer" data-i18n="openComfy" data-i18n-title="openComfyTitle" title="Open ComfyUI">ComfyUI</a>
           <a class="tool-link" href="/eliora/downloads/Eliora-Infinite-Canvas-Local-Kit-2026-08-06.zip" download data-i18n="downloadLocalKit" data-i18n-title="downloadLocalKitTitle" title="Download the one-click local kit">Local Kit</a>
-          <a class="tool-link" href="/eliora/media-vault/" data-i18n="openVault" data-i18n-title="openVaultTitle" title="Open Media Vault">Vault</a>
+          <a class="tool-link" id="openVaultTop" href="/eliora/media-vault/?lang=en" data-i18n="openVault" data-i18n-title="openVaultTitle" title="Open Media Vault">Vault</a>
           <a class="tool-link" href="/eliora/index.html" data-i18n="backEliora" data-i18n-title="backElioraTitle" title="Back to Eliora">Eliora</a>
           <a class="tool-link" href="/" data-i18n="backMiragea" data-i18n-title="backMirageaTitle" title="Back to Miragea">Miragea</a>
         </div>
@@ -3041,6 +3051,8 @@
       function applyI18n() {
         document.documentElement.lang = uiLang === 'ja' ? 'ja' : 'en';
         document.title = t('brandTitle');
+        const vaultLink = $('openVaultTop');
+        if (vaultLink) vaultLink.href = `/eliora/media-vault/?lang=${uiLang}`;
         document.querySelectorAll('[data-i18n]').forEach((el) => { el.textContent = t(el.dataset.i18n); });
         document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
           const key = el.dataset.i18nPlaceholder;

@@ -5,29 +5,55 @@ import { ViewTransitions } from 'astro:transitions';
 interface Props {
   title: string;
   lang?: 'en' | 'ja' | 'zh';
+  description?: string;
   robots?: string;
   mirror?: boolean;
 }
 
-const { title, lang = 'en', robots, mirror = false } = Astro.props;
+const descriptions = {
+  en: "Miragea's permanent archive of films, words, perception, AI production systems, and the Eliora studio.",
+  ja: 'Mirageaの映像・言葉・知覚・AI制作システムとElioraスタジオを結ぶ恒久アーカイブ。',
+  zh: 'Miragea 的影像、文字、感知、AI 创作系统与 Eliora 工作室永久档案。',
+};
+const { title, lang = 'en', description = descriptions[lang], robots, mirror = false } = Astro.props;
 const homeHref = mirror ? `/${lang}/mirror/` : `/${lang}/`;
+const requestedPath = Astro.url.pathname;
+const canonicalPath = requestedPath === '/' ? '/en/' : requestedPath;
+const canonicalUrl = new URL(canonicalPath, Astro.site);
+const socialImage = new URL('/eliora/assets/images/miragea-portrait.webp', Astro.site);
+const isLocaleHome = /^\/(en|ja|zh)\/$/.test(canonicalPath);
 ---
 
 <!doctype html>
 <html lang={lang === 'zh' ? 'zh' : lang === 'ja' ? 'ja' : 'en'}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Miragea's Perception Archive" />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     {robots && <meta name="robots" content={robots} />}
+    <link rel="canonical" href={canonicalUrl} />
+    {isLocaleHome && <link rel="alternate" hreflang="en" href={new URL('/en/', Astro.site)} />}
+    {isLocaleHome && <link rel="alternate" hreflang="ja" href={new URL('/ja/', Astro.site)} />}
+    {isLocaleHome && <link rel="alternate" hreflang="zh" href={new URL('/zh/', Astro.site)} />}
+    {isLocaleHome && <link rel="alternate" hreflang="x-default" href={new URL('/en/', Astro.site)} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Miragea" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
     <link rel="stylesheet" href="/assets/brand/brand-glow.css" />
     <title>{title}</title>
     <ViewTransitions />
     </head>
-  <body class="bg-black text-gray-200 antialiased">
+  <body class="overflow-x-hidden bg-black text-gray-200 antialiased">
     <header class="fixed left-0 top-0 z-50 p-5">
       <a href={homeHref} class="group flex items-center p-0 transition" aria-label="Miragea home">
-        <span class="brand-moon-orb brand-moon-orb--miragea brand-moon-orb--strong mirage-logo-orb h-16 w-16 transition [--brand-logo-scale:1] [--brand-glow-inset:-16%]" aria-label="Miragea logo"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/miragea-logo-transparent.png" alt="Miragea logo" /></span>
+        <span class="brand-moon-orb brand-moon-orb--miragea brand-moon-orb--strong mirage-logo-orb h-16 w-16 transition [--brand-logo-scale:1] [--brand-glow-inset:-16%]" aria-label="Miragea logo"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/miragea-logo-256.webp" alt="Miragea logo" width="256" height="256" decoding="async" /></span>
       </a>
     </header>
 
