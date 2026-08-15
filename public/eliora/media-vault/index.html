@@ -22,7 +22,7 @@
   <meta name="twitter:description" content="Miragea / EX_Her の映像作品、言葉、AI制作、GeekSpell、Elioraの実用システムを映像でたどる案内ページ。" />
   <meta name="twitter:image" content="https://miragea-ss.github.io/eliora/assets/images/miragea-portrait.webp" />
   <link rel="icon" href="../../favicon.svg" />
-  <link rel="stylesheet" href="./styles.css?v=portrait-20260815e" />
+  <link rel="stylesheet" href="./styles.css?v=portrait-20260815f" />
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ</a>
@@ -39,7 +39,7 @@
       </span>
     </a>
 
-    <nav aria-label="Primary navigation">
+    <nav class="desktop-nav" aria-label="Primary navigation">
       <a href="#collection" data-copy="navCollection">収蔵内容</a>
       <a href="#sites" data-copy="navSites">サイト</a>
       <a href="#watch" data-copy="navWatch">映像</a>
@@ -50,6 +50,12 @@
       <button type="button" data-language="ja" aria-pressed="true">JP</button>
       <button type="button" data-language="zh">ZH</button>
     </div>
+
+    <nav class="mobile-nav" aria-label="スマートフォンナビゲーション" data-copy-aria="mobileNavLabel">
+      <a href="#collection" data-copy="navCollection">収蔵内容</a>
+      <a href="#sites" data-copy="navSites">サイト</a>
+      <a href="#watch" data-copy="navWatch">映像</a>
+    </nav>
   </header>
 
   <main id="main">
@@ -226,6 +232,6 @@
     <span data-copy="footerLine">Art × words × nervous system × working AI systems</span>
   </footer>
 
-  <script src="./app.js?v=portrait-20260815d" defer></script>
+  <script src="./app.js?v=portrait-20260815e" defer></script>
 </body>
 </html>

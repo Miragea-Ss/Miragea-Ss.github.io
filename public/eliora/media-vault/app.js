@@ -2,7 +2,7 @@ const copy = {
   ja: {
     pageTitle: 'Miragea — 映像でたどる作品・サイト・AI制作',
     description: 'Miragea / EX_Her の映像作品、言葉、AI制作、GeekSpell、Elioraの実用システムを映像でたどる案内ページ。',
-    brandLine: '映像・言葉・AI制作の航路', navCollection: '収蔵内容', navSites: 'サイト', navWatch: '映像',
+    brandLine: '映像・言葉・AI制作の航路', navCollection: '収蔵内容', navSites: 'サイト', navWatch: '映像', mobileNavLabel: 'スマートフォンナビゲーション',
     heroKicker: 'MIRAGEA / EX_HER · VIDEO PORTRAIT', heroTitle: '世界を感じ、映像にし、動く仕組みへ。',
     heroBody: 'ここはMirageaの作品と活動を、映像からたどる入口です。幻想、宇宙、HSPの知覚、音楽映像、AI制作の研究、そして制作を支えるElioraの実用システムを集めています。',
     heroWatch: '映像から見る', heroArchive: 'Miragea Archiveへ', signalLanguages: '言語の入口', signalSeries: 'GeekSpell公開回', signalLayers: '創作と実装の層',
@@ -30,7 +30,7 @@ const copy = {
   en: {
     pageTitle: 'Miragea — A video portrait of the archive and the work',
     description: 'Enter the films, words, AI production research, GeekSpell series, and working Eliora systems of Miragea / EX_Her.',
-    brandLine: 'Film · words · working AI systems', navCollection: 'Collection', navSites: 'Sites', navWatch: 'Watch',
+    brandLine: 'Film · words · working AI systems', navCollection: 'Collection', navSites: 'Sites', navWatch: 'Watch', mobileNavLabel: 'Smartphone navigation',
     heroKicker: 'MIRAGEA / EX_HER · VIDEO PORTRAIT', heroTitle: 'Perceive the world. Film it. Build what makes it move.',
     heroBody: 'This is a video-led entrance to the work of Miragea: fantasy and cosmos, HSP perception, music-films, AI production research, and the practical Eliora systems that carry the work into repeatable production.',
     heroWatch: 'Watch the work', heroArchive: 'Enter Miragea Archive', signalLanguages: 'language routes', signalSeries: 'GeekSpell episodes', signalLayers: 'creative & system layers',
@@ -58,7 +58,7 @@ const copy = {
   zh: {
     pageTitle: 'Miragea — 用影像走进作品、网站与 AI 创作',
     description: '通过影像了解 Miragea / EX_Her 的作品、文字、AI 创作研究、极客魔咒系列与 Eliora 实用系统。',
-    brandLine: '影像 · 文字 · AI 创作航线', navCollection: '收藏内容', navSites: '网站', navWatch: '影像',
+    brandLine: '影像 · 文字 · AI 创作航线', navCollection: '收藏内容', navSites: '网站', navWatch: '影像', mobileNavLabel: '手机导航',
     heroKicker: 'MIRAGEA / EX_HER · VIDEO PORTRAIT', heroTitle: '感知世界，将它拍成影像，再把创作变成能运行的系统。',
     heroBody: '这里是通过影像进入 Miragea 作品与活动的入口：幻想、宇宙、HSP 感知、音乐影像、AI 创作研究，以及支撑这些创作的 Eliora 实用系统。',
     heroWatch: '从影像开始', heroArchive: '进入 Miragea 档案', signalLanguages: '语言入口', signalSeries: '极客魔咒公开集', signalLayers: '创作与系统两层',
