@@ -2307,7 +2307,8 @@
       const $ = (id) => document.getElementById(id);
       const uiLangKey = 'eliora-canvas-lang-v1';
       const assetManifestKey = 'eliora-asset-manifest-v1';
-      let uiLang = localStorage.getItem(uiLangKey) || 'en';
+      const requestedUiLang = new URLSearchParams(location.search).get('lang');
+      let uiLang = ['en', 'ja'].includes(requestedUiLang) ? requestedUiLang : (localStorage.getItem(uiLangKey) || 'en');
       let assetManifest = [];
       const STR = {
         en: {
@@ -11977,6 +11978,11 @@
       setUiLang(uiLang);
       bindOnboarding();
       bindHelp();
+      const requestedGuide = new URLSearchParams(location.search).get('guide');
+      if (['start', 'operate', 'compare'].includes(requestedGuide)) {
+        helpTab = requestedGuide;
+        setTimeout(showHelp, 120);
+      }
       load();
       if ($('localAgentMode')) $('localAgentMode').value = localStorage.getItem(localAgentModeKey) === 'off' ? 'off' : 'review';
       if ($('localAgentScope')) $('localAgentScope').value = localStorage.getItem(localAgentScopeKey) === 'full' ? 'full' : 'compose';

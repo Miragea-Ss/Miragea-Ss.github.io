@@ -16,7 +16,10 @@ const copy = {
     elioraTitle: '創作を、使える仕組みに変える実装層。', elioraBody: 'AI制作、ComfyUI、ローカル推論、ワークフロー自動化、Infinite Canvas。Elioraは創造を再現可能なプロダクトへ変えます。', openEliora: 'Elioraを開く',
     sitesKicker: 'PLACES I BUILD', sitesTitle: '作品と活動への6つの入口', sitesIntro: '見る、読む、学ぶ、つくる。目的に合う入口から、Mirageaの活動へ進めます。',
     siteArchive: '作品、知覚、言葉、EXシステムを保存する本体アーカイブ。', siteEliora: 'AI制作、業務自動化、PoC、実用ワークフローのスタジオ。',
-    siteCanvas: '画像、プロンプト、ローカルLLM、ComfyUIをつなぐ無限キャンバス。', siteGeekspell: 'AIエージェントを安全に使いこなすための多言語映像シリーズ。',
+    canvasKicker: 'LOCAL CREATION · 登録不要', siteCanvas: '登録なしで今すぐ使えます。カード、接続、ボードはこのブラウザ内に保存。自分のPCでLocal Kitを起動すれば、ComfyUI・llama.cpp・安全なAgentまで利用できます。',
+    canvasPolicy: 'Elioraの主要機能に中国の実名認証は不要です。OpenRouterなどの国際BYOKは任意で接続できます。', canvasTrustLabel: 'Infinite Canvasの利用条件',
+    canvasTrustBrowser: '今すぐ開始・Elioraアカウント不要', canvasTrustLocal: 'ローカルComfyUI・自由なWorkflow JSON', canvasTrustAgent: 'OpenRouter・承認制Agent',
+    openCanvasNow: '登録なしでキャンバスを開く ↗', openCanvasGuide: '最初の5手順を見る', siteGeekspell: 'AIエージェントを安全に使いこなすための多言語映像シリーズ。',
     atelierName: '宇宙工房', siteAtelier: '日本・英語圏・中国語圏ごとに編集された制作と仕事の入口。', siteGithub: '公開コード、サイト、AI制作システムの技術的な記録。', openSite: 'サイトを開く ↗',
     watchKicker: 'WATCH THE WORK', watchTitle: '映像から、私の仕事を知る', watchIntro: 'GeekSpellは、私がAIエージェントと制作するときに使う考え方を、短い映像で共有するシリーズです。',
     chooseVideo: '下の映像を選んで再生', nowPlaying: 'NOW PLAYING', openPlatform: '配信サイトで見る',
@@ -41,7 +44,10 @@ const copy = {
     elioraTitle: 'The implementation layer that turns creation into a working system.', elioraBody: 'AI production, ComfyUI, local inference, workflow automation, and Infinite Canvas. Eliora makes creative processes repeatable.', openEliora: 'Open Eliora',
     sitesKicker: 'PLACES I BUILD', sitesTitle: 'Six routes into the work', sitesIntro: 'Watch, read, learn, or build. Choose the route that matches what you came to find.',
     siteArchive: 'The permanent archive for work, perception, words, and the EX system.', siteEliora: 'Studio for AI production, automation, PoCs, and practical workflows.',
-    siteCanvas: 'An infinite canvas connecting images, prompts, local LLMs, and ComfyUI.', siteGeekspell: 'A multilingual video series for using AI agents with clarity and control.',
+    canvasKicker: 'LOCAL CREATION · NO SIGN-UP', siteCanvas: 'Use it immediately without registering. Cards, connections, and boards stay in this browser. Start the Local Kit on your own PC to add ComfyUI, llama.cpp, and safe Agent workflows.',
+    canvasPolicy: 'Eliora core features require no Chinese real-name verification. International BYOK services such as OpenRouter are optional.', canvasTrustLabel: 'Infinite Canvas access and connection options',
+    canvasTrustBrowser: 'Start now · no Eliora account', canvasTrustLocal: 'Local ComfyUI · any workflow JSON', canvasTrustAgent: 'OpenRouter · review-gated Agent',
+    openCanvasNow: 'Open canvas — no sign-up ↗', openCanvasGuide: 'See the five-step guide', siteGeekspell: 'A multilingual video series for using AI agents with clarity and control.',
     atelierName: 'Cosmic Atelier', siteAtelier: 'Region-specific entrances to creative work and collaboration in EN, JP, and ZH.', siteGithub: 'Public code and technical records for the sites and AI production systems.', openSite: 'Open site ↗',
     watchKicker: 'WATCH THE WORK', watchTitle: 'Meet my work through video', watchIntro: 'GeekSpell shares the thinking I use when working with AI agents—turned into short, practical films.',
     chooseVideo: 'Choose a video below', nowPlaying: 'NOW PLAYING', openPlatform: 'Watch on the platform',
@@ -66,7 +72,10 @@ const copy = {
     elioraTitle: '把创作变成可用系统的实现层。', elioraBody: 'AI 制作、ComfyUI、本地推理、工作流自动化与 Infinite Canvas。Eliora 让创造可以复现。', openEliora: '打开 Eliora',
     sitesKicker: 'PLACES I BUILD', sitesTitle: '进入作品与活动的六个入口', sitesIntro: '观看、阅读、学习或创作。请选择与你目的相符的入口。',
     siteArchive: '保存作品、感知、文字与 EX 系统的永久档案。', siteEliora: 'AI 制作、业务自动化、PoC 与实用工作流工作室。',
-    siteCanvas: '连接图像、提示词、本地 LLM 与 ComfyUI 的无限画布。', siteGeekspell: '帮助你清晰、安全地使用 AI Agent 的多语言影像系列。',
+    canvasKicker: 'LOCAL CREATION · 无需注册', siteCanvas: '无需注册即可直接使用。卡片、连线和画布保存在当前浏览器；在自己的电脑启动 Local Kit 后，可使用本地 ComfyUI、llama.cpp 和需要人工确认的 Agent。',
+    canvasPolicy: 'Eliora 核心功能不需要中国实名认证。OpenRouter 等国际 BYOK 服务均为可选连接。', canvasTrustLabel: 'Infinite Canvas 使用与连接条件',
+    canvasTrustBrowser: '立即开始・无需 Eliora 账号', canvasTrustLocal: '本地 ComfyUI・自由导入 Workflow JSON', canvasTrustAgent: 'OpenRouter・人工审核 Agent',
+    openCanvasNow: '无需注册，打开画布 ↗', openCanvasGuide: '查看五步入门', siteGeekspell: '帮助你清晰、安全地使用 AI Agent 的多语言影像系列。',
     atelierName: '宇宙工房', siteAtelier: '针对英语、日本与中文市场分别编辑的创作与合作入口。', siteGithub: '网站、公开代码与 AI 制作系统的技术记录。', openSite: '打开网站 ↗',
     watchKicker: 'WATCH THE WORK', watchTitle: '通过影像了解我的工作', watchIntro: '极客魔咒把我与 AI Agent 协作时使用的思考方法，制作成简洁实用的影像。',
     chooseVideo: '从下方选择影像', nowPlaying: 'NOW PLAYING', openPlatform: '前往播放平台',
@@ -156,8 +165,17 @@ function setLanguage(language) {
     const value = copy[language][element.dataset.copy];
     if (value) element.textContent = value;
   });
+  document.querySelectorAll('[data-copy-aria]').forEach((element) => {
+    const value = copy[language][element.dataset.copyAria];
+    if (value) element.setAttribute('aria-label', value);
+  });
   document.querySelectorAll('[data-route]').forEach((link) => {
     link.href = routeMap[language][link.dataset.route];
+  });
+  const canvasLanguage = language === 'ja' ? 'ja' : 'en';
+  document.querySelectorAll('[data-canvas-link]').forEach((link) => {
+    const guide = link.dataset.canvasLink === 'guide' ? '&guide=start' : '';
+    link.href = `../infinite-canvas.html?lang=${canvasLanguage}${guide}`;
   });
   languageButtons.forEach((button) => {
     button.setAttribute('aria-pressed', String(button.dataset.language === language));

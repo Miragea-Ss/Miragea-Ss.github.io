@@ -10,7 +10,7 @@
   <link rel="alternate" hreflang="en" href="https://miragea-ss.github.io/eliora/media-vault/?lang=en" />
   <link rel="alternate" hreflang="ja" href="https://miragea-ss.github.io/eliora/media-vault/?lang=ja" />
   <link rel="alternate" hreflang="zh" href="https://miragea-ss.github.io/eliora/media-vault/?lang=zh" />
-  <link rel="alternate" hreflang="x-default" href="https://miragea-ss.github.io/eliora/media-vault/?lang=ja" />
+  <link rel="alternate" hreflang="x-default" href="https://miragea-ss.github.io/eliora/media-vault/?lang=en" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Miragea" />
   <meta property="og:title" content="Miragea — 映像でたどる作品・サイト・AI制作" />
@@ -22,7 +22,7 @@
   <meta name="twitter:description" content="Miragea / EX_Her の映像作品、言葉、AI制作、GeekSpell、Elioraの実用システムを映像でたどる案内ページ。" />
   <meta name="twitter:image" content="https://miragea-ss.github.io/eliora/assets/images/miragea-portrait.webp" />
   <link rel="icon" href="../../favicon.svg" />
-  <link rel="stylesheet" href="./styles.css?v=portrait-20260815d" />
+  <link rel="stylesheet" href="./styles.css?v=portrait-20260815e" />
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ</a>
@@ -139,11 +139,25 @@
           <p data-copy="siteEliora">AI制作、業務自動化、PoC、実用ワークフローのスタジオ。</p>
           <b data-copy="openSite">サイトを開く ↗</b>
         </a>
-        <a class="site-card gold-card" href="../infinite-canvas.html">
-          <span>LOCAL CREATION</span><strong>Infinite Canvas</strong>
-          <p data-copy="siteCanvas">画像、プロンプト、ローカルLLM、ComfyUIをつなぐ無限キャンバス。</p>
-          <b data-copy="openSite">サイトを開く ↗</b>
-        </a>
+        <article class="site-card gold-card canvas-entry">
+          <div class="canvas-entry-copy">
+            <span data-copy="canvasKicker">LOCAL CREATION · 登録不要</span>
+            <strong>Infinite Canvas</strong>
+            <p data-copy="siteCanvas">登録なしで今すぐ使えます。カード、接続、ボードはこのブラウザ内に保存。自分のPCでLocal Kitを起動すれば、ComfyUI・llama.cpp・安全なAgentまで利用できます。</p>
+            <p class="canvas-policy" data-copy="canvasPolicy">Elioraの主要機能に中国の実名認証は不要です。OpenRouterなどの国際BYOKは任意で接続できます。</p>
+          </div>
+          <div class="canvas-entry-use">
+            <ul class="canvas-trust" data-copy-aria="canvasTrustLabel" aria-label="利用条件">
+              <li data-copy="canvasTrustBrowser">今すぐ開始・Elioraアカウント不要</li>
+              <li data-copy="canvasTrustLocal">ローカルComfyUI・自由なWorkflow JSON</li>
+              <li data-copy="canvasTrustAgent">OpenRouter・承認制Agent</li>
+            </ul>
+            <div class="canvas-actions">
+              <a class="canvas-action primary" href="../infinite-canvas.html?lang=ja" data-canvas-link="open" data-copy="openCanvasNow">登録なしでキャンバスを開く ↗</a>
+              <a class="canvas-action secondary" href="../infinite-canvas.html?lang=ja&amp;guide=start" data-canvas-link="guide" data-copy="openCanvasGuide">最初の5手順を見る</a>
+            </div>
+          </div>
+        </article>
         <a class="site-card violet-card" href="/ja/geekspell/" data-route="geekspell">
           <span>VIDEO SERIES</span><strong>GeekSpell</strong>
           <p data-copy="siteGeekspell">AIエージェントを安全に使いこなすための多言語映像シリーズ。</p>
@@ -212,6 +226,6 @@
     <span data-copy="footerLine">Art × words × nervous system × working AI systems</span>
   </footer>
 
-  <script src="./app.js?v=portrait-20260815c" defer></script>
+  <script src="./app.js?v=portrait-20260815d" defer></script>
 </body>
 </html>

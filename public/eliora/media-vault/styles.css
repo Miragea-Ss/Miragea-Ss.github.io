@@ -123,7 +123,7 @@ h1 { max-width: 900px; margin: 0; font-family: var(--serif); font-size: clamp(48
 .collection-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .collection-grid article { min-height: 285px; padding: 28px 26px; border-right: 1px solid var(--line); }
 .collection-grid article:last-child { border-right: 0; }
-.collection-grid span, .site-card > span { color: var(--muted); font: 700 10px ui-monospace, Consolas, monospace; letter-spacing: .12em; }
+.collection-grid span, .site-card > span, .canvas-entry-copy > span { color: var(--muted); font: 700 10px ui-monospace, Consolas, monospace; letter-spacing: .12em; }
 .collection-grid h3 { margin: 56px 0 15px; font: 400 25px var(--serif); }
 .collection-grid p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
 
@@ -147,6 +147,20 @@ h1 { max-width: 900px; margin: 0; font-family: var(--serif); font-size: clamp(48
 .site-card strong { margin-top: 38px; font: 400 clamp(25px, 2vw, 34px) var(--serif); }
 .site-card p { margin: 14px 0 28px; color: var(--muted); font-size: 14px; line-height: 1.7; }
 .site-card b { margin-top: auto; font-size: 12px; }
+.canvas-entry { grid-column: 1 / -1; min-height: 0; padding: clamp(28px, 4vw, 48px); display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: clamp(28px, 5vw, 72px); align-items: end; }
+.canvas-entry:hover { transform: none; }
+.canvas-entry-copy, .canvas-entry-use { position: relative; z-index: 1; }
+.canvas-entry strong { display: block; margin-top: 18px; font-size: clamp(34px, 4vw, 58px); }
+.canvas-entry p { max-width: 760px; margin-bottom: 14px; font-size: 15px; }
+.canvas-entry .canvas-policy { margin: 0; color: #c9b98f; font-size: 12px; line-height: 1.65; }
+.canvas-trust { margin: 0 0 20px; padding: 0; display: grid; gap: 8px; list-style: none; }
+.canvas-trust li { position: relative; padding-left: 21px; color: #cbc8c1; font-size: 12px; line-height: 1.55; }
+.canvas-trust li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); font-weight: 800; }
+.canvas-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.canvas-action { min-height: 46px; padding: 0 17px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line-strong); border-radius: 5px; font-size: 12px; font-weight: 800; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+.canvas-action:hover { transform: translateY(-2px); border-color: rgba(233,188,104,.72); }
+.canvas-action.primary { color: #11100c; border-color: var(--gold); background: var(--gold); }
+.canvas-action.secondary { background: rgba(255,255,255,.035); }
 .cyan-card { --accent: rgba(123,220,232,.55); --accent-border: rgba(123,220,232,.58); }
 .rose-card { --accent: rgba(241,132,161,.55); --accent-border: rgba(241,132,161,.58); }
 .gold-card, .amber-card { --accent: rgba(233,188,104,.55); --accent-border: rgba(233,188,104,.58); }
@@ -194,6 +208,7 @@ footer { min-height: 86px; padding: 24px clamp(22px, 6vw, 92px); display: flex; 
   .collection-grid article:nth-child(2) { border-right: 0; }
   .collection-grid article:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .site-grid { grid-template-columns: repeat(2, 1fr); }
+  .canvas-entry { grid-template-columns: 1fr; }
   .video-stage { grid-template-columns: 1fr; }
   .now-playing { border-top: 1px solid var(--line); border-left: 0; }
   .closing { grid-template-columns: 72px 1fr; }
@@ -214,6 +229,8 @@ footer { min-height: 86px; padding: 24px clamp(22px, 6vw, 92px); display: flex; 
   .hero-visual img { width: min(86vw, 340px); }
   .hero-visual > p { right: 2%; bottom: 2%; }
   .collection-grid, .identity, .site-grid, .video-list { grid-template-columns: 1fr; }
+  .canvas-entry { grid-column: auto; padding: 28px 22px; gap: 24px; }
+  .canvas-actions { display: grid; }
   .collection-grid article { min-height: 230px; border-right: 0; border-bottom: 1px solid var(--line); }
   .collection-grid article:last-child { border-bottom: 0; }
   .collection-grid h3 { margin-top: 36px; }

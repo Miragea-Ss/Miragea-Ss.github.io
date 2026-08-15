@@ -52,6 +52,8 @@ const checks = [
   ['fixture contains future DEV field', fixture.includes('future-field')],
   ['product charter forbids real-name dependency', charter.includes('No Chinese real-name-verification service is required')],
   ['public guide has three usable sections', canvas.includes("data-help-tab=\"start\"") && canvas.includes("data-help-tab=\"operate\"") && canvas.includes("data-help-tab=\"compare\"")],
+  ['public guide supports a direct start link', canvas.includes("get('guide')") && canvas.includes("setTimeout(showHelp, 120)")],
+  ['public entry can request the supported interface language', canvas.includes("get('lang')") && canvas.includes("['en', 'ja'].includes(requestedUiLang)")],
   ['public guide explains local Comfy launch order', canvas.includes('START-ELIORA-CANVAS.bat') && canvas.includes('ComfyUIを開くだけでは足りません')],
   ['comparison is presented as purpose map, not universal ranking', canvas.includes('This is a purpose map, not a universal winner table.') && canvas.includes('総合順位ではなく「目的の地図」')],
   ['comparison links every requested official repository', [
