@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-15T06:19:53.994Z
+# lastWatch: 2026-08-16T06:22:18.353Z
 contests:
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
@@ -52,10 +52,10 @@ contests:
       en: Aug 02 - 24, 2026
       ja: Aug 02 - 24, 2026
       zh: Aug 02 - 24, 2026
-    sourceNote: Devpost auto · prize~979950 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~1038450 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 979950
+    prizeHint: 1038450
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 10300
     submitUrl: https://celesta-exoplanet-challenge.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-15T06:19:53.994Z
+  lastWatch: 2026-08-16T06:22:18.353Z
   source: devpost-auto+manual
   added: 42
-  updated: 18
-  scanned: 62
+  updated: 17
+  scanned: 61
   kept: 40
