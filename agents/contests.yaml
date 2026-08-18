@@ -1,20 +1,6 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-17T12:36:39.374Z
+# lastWatch: 2026-08-18T06:25:00.177Z
 contests:
-  - at: 2026-08-11T06:46:50.154Z
-    type: devpost-auto
-    title: Agents for Humans Hackathon
-    url: https://agentsforhumans.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 10 - Sep 14, 2026
-      ja: Aug 10 - Sep 14, 2026
-      zh: Aug 10 - Sep 14, 2026
-    sourceNote: Devpost auto · prize~40000 · score 115 · Amazon
-    auto: true
-    joinScore: 115
-    prizeHint: 40000
-    submitUrl: https://agentsforhumans.devpost.com/challenges/start_a_submission
   - at: 2026-08-05T08:15:57.248Z
     type: devpost-auto
     title: All Things Agentic Hackathon
@@ -29,6 +15,20 @@ contests:
     joinScore: 115
     prizeHint: 180000
     submitUrl: https://allthingsagentichackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-07-28T08:13:55.985Z
+    type: devpost-auto
+    title: "Agentic Cinema: The Blockbuster Hackathon"
+    url: https://agentic-cinema.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 27 - Sep 09, 2026
+      ja: Jul 27 - Sep 09, 2026
+      zh: Jul 27 - Sep 09, 2026
+    sourceNote: Devpost auto · prize~75000 · score 115 · Google
+    auto: true
+    joinScore: 115
+    prizeHint: 75000
+    submitUrl: https://agentic-cinema.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: "Build with DataHub: The Agent Hackathon"
@@ -43,6 +43,34 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-08-18T06:25:00.136Z
+    type: devpost-auto
+    title: DevNetwork [API + Cloud + AI] Hackathon 2026
+    url: https://api-cloud-ai-hackathon-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 17 - Sep 03, 2026
+      ja: Aug 17 - Sep 03, 2026
+      zh: Aug 17 - Sep 03, 2026
+    sourceNote: Devpost auto · prize~39500 · score 110 · DevNetwork
+    auto: true
+    joinScore: 110
+    prizeHint: 39500
+    submitUrl: https://api-cloud-ai-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-08-11T06:46:50.154Z
+    type: devpost-auto
+    title: Agents for Humans Hackathon
+    url: https://agentsforhumans.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 10 - Sep 14, 2026
+      ja: Aug 10 - Sep 14, 2026
+      zh: Aug 10 - Sep 14, 2026
+    sourceNote: Devpost auto · prize~40000 · score 110 · Amazon
+    auto: true
+    joinScore: 110
+    prizeHint: 40000
+    submitUrl: https://agentsforhumans.devpost.com/challenges/start_a_submission
   - at: 2026-08-02T08:04:47.056Z
     type: devpost-auto
     title: Reverie Hacks 2026
@@ -52,25 +80,11 @@ contests:
       en: Aug 02 - 24, 2026
       ja: Aug 02 - 24, 2026
       zh: Aug 02 - 24, 2026
-    sourceNote: Devpost auto · prize~1067700 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~1096950 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 1067700
+    prizeHint: 1096950
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-28T08:13:55.985Z
-    type: devpost-auto
-    title: "Agentic Cinema: The Blockbuster Hackathon"
-    url: https://agentic-cinema.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 27 - Sep 09, 2026
-      ja: Jul 27 - Sep 09, 2026
-      zh: Jul 27 - Sep 09, 2026
-    sourceNote: Devpost auto · prize~75000 · score 110 · Google
-    auto: true
-    joinScore: 110
-    prizeHint: 75000
-    submitUrl: https://agentic-cinema.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
     title: Google x IITG AI Hackathon
@@ -477,6 +491,34 @@ contests:
     joinScore: 98
     prizeHint: 17500
     submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
+  - at: 2026-07-24T08:07:03.516Z
+    type: devpost-auto
+    title: "CALL-E: Your Code Is Calling"
+    url: https://call-e.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 23 - Sep 14, 2026
+      ja: Jul 23 - Sep 14, 2026
+      zh: Jul 23 - Sep 14, 2026
+    sourceNote: Devpost auto · prize~10000 · score 97 · CALL-E
+    auto: true
+    joinScore: 97
+    prizeHint: 10000
+    submitUrl: https://call-e.devpost.com/challenges/start_a_submission
+  - at: 2026-08-18T06:25:00.136Z
+    type: devpost-auto
+    title: Global Innovation Build Challenge V2
+    url: https://gibc-v2.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 11 - Sep 21, 2026
+      ja: Jul 11 - Sep 21, 2026
+      zh: Jul 11 - Sep 21, 2026
+    sourceNote: "Devpost auto · prize~148445 · score 92 · Kang Chiao International School Student "
+    auto: true
+    joinScore: 92
+    prizeHint: 148445
+    submitUrl: https://gibc-v2.devpost.com/challenges/start_a_submission
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
     title: ML Empowerment Build Challenge 2.0
@@ -505,20 +547,6 @@ contests:
     joinScore: 92
     prizeHint: 14500
     submitUrl: https://caspian.devpost.com/challenges/start_a_submission
-  - at: 2026-07-24T08:07:03.516Z
-    type: devpost-auto
-    title: "CALL-E: Your Code Is Calling"
-    url: https://call-e.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 23 - Sep 14, 2026
-      ja: Jul 23 - Sep 14, 2026
-      zh: Jul 23 - Sep 14, 2026
-    sourceNote: Devpost auto · prize~10000 · score 92 · CALL-E
-    auto: true
-    joinScore: 92
-    prizeHint: 10000
-    submitUrl: https://call-e.devpost.com/challenges/start_a_submission
   - at: 2026-07-18T07:26:45.820Z
     type: devpost-auto
     title: Code Carnage
@@ -533,38 +561,10 @@ contests:
     joinScore: 92
     prizeHint: 10000
     submitUrl: https://code-carnage.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: Build with Gemini XPRIZE
-    url: https://xprize.devpost.com/
-    ongoing: true
-    period:
-      en: May 19 - Aug 17, 2026
-      ja: May 19 - Aug 17, 2026
-      zh: May 19 - Aug 17, 2026
-    sourceNote: Devpost auto · prize~2000000 · score 92 · XPRIZE
-    auto: true
-    joinScore: 92
-    prizeHint: 2000000
-    submitUrl: https://xprize.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: Africa Deep Tech Challenge 2026
-    url: https://adtc-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 17 - Aug 25, 2026
-      ja: Jun 17 - Aug 25, 2026
-      zh: Jun 17 - Aug 25, 2026
-    sourceNote: Devpost auto · prize~16500 · score 92 · Africa Deep Tech Foundation
-    auto: true
-    joinScore: 92
-    prizeHint: 16500
-    submitUrl: https://adtc-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-17T12:36:39.374Z
+  lastWatch: 2026-08-18T06:25:00.177Z
   source: devpost-auto+manual
-  added: 39
-  updated: 17
-  scanned: 57
+  added: 40
+  updated: 14
+  scanned: 55
   kept: 40
