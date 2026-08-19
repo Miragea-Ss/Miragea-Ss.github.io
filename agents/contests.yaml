@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-18T06:25:00.177Z
+# lastWatch: 2026-08-19T06:25:19.292Z
 contests:
   - at: 2026-08-05T08:15:57.248Z
     type: devpost-auto
@@ -80,10 +80,10 @@ contests:
       en: Aug 02 - 24, 2026
       ja: Aug 02 - 24, 2026
       zh: Aug 02 - 24, 2026
-    sourceNote: Devpost auto · prize~1096950 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~1302600 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 1096950
+    prizeHint: 1302600
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
@@ -178,10 +178,10 @@ contests:
       en: May 22 - Sep 05, 2026
       ja: May 22 - Sep 05, 2026
       zh: May 22 - Sep 05, 2026
-    sourceNote: Devpost auto · prize~32785 · score 110 · Dialogate
+    sourceNote: Devpost auto · prize~35785 · score 110 · Dialogate
     auto: true
     joinScore: 110
-    prizeHint: 32785
+    prizeHint: 35785
     submitUrl: https://volthacks.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
@@ -295,6 +295,48 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-08-19T06:25:19.267Z
+    type: devpost-auto
+    title: Prometheus September AI Challenge 2
+    url: https://prometheus-september-ai-2.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 19 - Sep 12, 2026
+      ja: Aug 19 - Sep 12, 2026
+      zh: Aug 19 - Sep 12, 2026
+    sourceNote: Devpost auto · prize~1500 · score 98 · Prometheus CS
+    auto: true
+    joinScore: 98
+    prizeHint: 1500
+    submitUrl: https://prometheus-september-ai-2.devpost.com/challenges/start_a_submission
+  - at: 2026-08-19T06:25:19.267Z
+    type: devpost-auto
+    title: Prometheus September AI Challenge
+    url: https://prometheus-sept-ai-classic.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 19 - Sep 05, 2026
+      ja: Aug 19 - Sep 05, 2026
+      zh: Aug 19 - Sep 05, 2026
+    sourceNote: Devpost auto · prize~1500 · score 98 · Prometheus CS
+    auto: true
+    joinScore: 98
+    prizeHint: 1500
+    submitUrl: https://prometheus-sept-ai-classic.devpost.com/challenges/start_a_submission
+  - at: 2026-08-19T06:25:19.267Z
+    type: devpost-auto
+    title: Prometheus August AI Challenge
+    url: https://august-ai-challenge-31059.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 18 - 30, 2026
+      ja: Aug 18 - 30, 2026
+      zh: Aug 18 - 30, 2026
+    sourceNote: Devpost auto · prize~1500 · score 98 · Prometheus CS
+    auto: true
+    joinScore: 98
+    prizeHint: 1500
+    submitUrl: https://august-ai-challenge-31059.devpost.com/challenges/start_a_submission
   - at: 2026-08-17T06:32:54.207Z
     type: devpost-auto
     title: OregonHacks
@@ -505,66 +547,24 @@ contests:
     joinScore: 97
     prizeHint: 10000
     submitUrl: https://call-e.devpost.com/challenges/start_a_submission
-  - at: 2026-08-18T06:25:00.136Z
+  - at: 2026-08-19T06:25:19.267Z
     type: devpost-auto
-    title: Global Innovation Build Challenge V2
-    url: https://gibc-v2.devpost.com/
+    title: Africa Deep Tech Challenge 2026
+    url: https://adtc-2026.devpost.com/
     ongoing: true
     period:
-      en: Jul 11 - Sep 21, 2026
-      ja: Jul 11 - Sep 21, 2026
-      zh: Jul 11 - Sep 21, 2026
-    sourceNote: "Devpost auto · prize~148445 · score 92 · Kang Chiao International School Student "
+      en: Jun 17 - Aug 25, 2026
+      ja: Jun 17 - Aug 25, 2026
+      zh: Jun 17 - Aug 25, 2026
+    sourceNote: Devpost auto · prize~16500 · score 92 · Africa Deep Tech Foundation
     auto: true
     joinScore: 92
-    prizeHint: 148445
-    submitUrl: https://gibc-v2.devpost.com/challenges/start_a_submission
-  - at: 2026-08-11T06:46:50.154Z
-    type: devpost-auto
-    title: ML Empowerment Build Challenge 2.0
-    url: https://ml-empowerment-2.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 30 - Aug 15, 2026
-      ja: Jun 30 - Aug 15, 2026
-      zh: Jun 30 - Aug 15, 2026
-    sourceNote: Devpost auto · prize~73645 · score 92 · ML Empowerment Foundation
-    auto: true
-    joinScore: 92
-    prizeHint: 73645
-    submitUrl: https://ml-empowerment-2.devpost.com/challenges/start_a_submission
-  - at: 2026-08-03T09:23:18.630Z
-    type: devpost-auto
-    title: "Caspian Buildathon: Build agents that can reach anyone"
-    url: https://caspian.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 28 - Aug 16, 2026
-      ja: Jul 28 - Aug 16, 2026
-      zh: Jul 28 - Aug 16, 2026
-    sourceNote: Devpost auto · prize~14500 · score 92 · BITS Pilani
-    auto: true
-    joinScore: 92
-    prizeHint: 14500
-    submitUrl: https://caspian.devpost.com/challenges/start_a_submission
-  - at: 2026-07-18T07:26:45.820Z
-    type: devpost-auto
-    title: Code Carnage
-    url: https://code-carnage.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 18 - Aug 18, 2026
-      ja: Jul 18 - Aug 18, 2026
-      zh: Jul 18 - Aug 18, 2026
-    sourceNote: Devpost auto · prize~10000 · score 92 · HackFinity
-    auto: true
-    joinScore: 92
-    prizeHint: 10000
-    submitUrl: https://code-carnage.devpost.com/challenges/start_a_submission
+    prizeHint: 16500
+    submitUrl: https://adtc-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-18T06:25:00.177Z
+  lastWatch: 2026-08-19T06:25:19.292Z
   source: devpost-auto+manual
-  added: 40
+  added: 42
   updated: 14
-  scanned: 55
+  scanned: 57
   kept: 40
