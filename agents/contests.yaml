@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-19T06:25:19.292Z
+# lastWatch: 2026-08-20T06:26:46.731Z
 contests:
   - at: 2026-08-05T08:15:57.248Z
     type: devpost-auto
@@ -80,10 +80,10 @@ contests:
       en: Aug 02 - 24, 2026
       ja: Aug 02 - 24, 2026
       zh: Aug 02 - 24, 2026
-    sourceNote: Devpost auto · prize~1302600 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~1447350 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 1302600
+    prizeHint: 1447350
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
@@ -547,24 +547,24 @@ contests:
     joinScore: 97
     prizeHint: 10000
     submitUrl: https://call-e.devpost.com/challenges/start_a_submission
-  - at: 2026-08-19T06:25:19.267Z
+  - at: 2026-08-20T06:26:46.706Z
     type: devpost-auto
-    title: Africa Deep Tech Challenge 2026
-    url: https://adtc-2026.devpost.com/
+    title: Global Innovation Build Challenge V2
+    url: https://gibc-v2.devpost.com/
     ongoing: true
     period:
-      en: Jun 17 - Aug 25, 2026
-      ja: Jun 17 - Aug 25, 2026
-      zh: Jun 17 - Aug 25, 2026
-    sourceNote: Devpost auto · prize~16500 · score 92 · Africa Deep Tech Foundation
+      en: Jul 11 - Sep 21, 2026
+      ja: Jul 11 - Sep 21, 2026
+      zh: Jul 11 - Sep 21, 2026
+    sourceNote: "Devpost auto · prize~148445 · score 92 · Kang Chiao International School Student "
     auto: true
     joinScore: 92
-    prizeHint: 16500
-    submitUrl: https://adtc-2026.devpost.com/challenges/start_a_submission
+    prizeHint: 148445
+    submitUrl: https://gibc-v2.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-19T06:25:19.292Z
+  lastWatch: 2026-08-20T06:26:46.731Z
   source: devpost-auto+manual
-  added: 42
-  updated: 14
+  added: 39
+  updated: 17
   scanned: 57
   kept: 40
