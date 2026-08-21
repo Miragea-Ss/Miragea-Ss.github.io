@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-20T06:26:46.731Z
+# lastWatch: 2026-08-21T06:27:53.136Z
 contests:
   - at: 2026-08-05T08:15:57.248Z
     type: devpost-auto
@@ -43,6 +43,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-08-21T06:27:53.110Z
+    type: devpost-auto
+    title: AI Builders Hackathon
+    url: https://ai-builders-hackathon-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 21 - Sep 15, 2026
+      ja: Aug 21 - Sep 15, 2026
+      zh: Aug 21 - Sep 15, 2026
+    sourceNote: Devpost auto · prize~35076 · score 110 · OSC
+    auto: true
+    joinScore: 110
+    prizeHint: 35076
+    submitUrl: https://ai-builders-hackathon-2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-18T06:25:00.136Z
     type: devpost-auto
     title: DevNetwork [API + Cloud + AI] Hackathon 2026
@@ -80,10 +94,10 @@ contests:
       en: Aug 02 - 24, 2026
       ja: Aug 02 - 24, 2026
       zh: Aug 02 - 24, 2026
-    sourceNote: Devpost auto · prize~1447350 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~2208664 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 1447350
+    prizeHint: 2208664
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
@@ -295,6 +309,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-08-21T06:27:53.110Z
+    type: devpost-auto
+    title: NextStep Hacks 2026
+    url: https://nextstep2026.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 21 - 23, 2026
+      ja: Aug 21 - 23, 2026
+      zh: Aug 21 - 23, 2026
+    sourceNote: Devpost auto · prize~1750 · score 98 · HackAlphaX
+    auto: true
+    joinScore: 98
+    prizeHint: 1750
+    submitUrl: https://nextstep2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-19T06:25:19.267Z
     type: devpost-auto
     title: Prometheus September AI Challenge 2
@@ -533,38 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 17500
     submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
-  - at: 2026-07-24T08:07:03.516Z
-    type: devpost-auto
-    title: "CALL-E: Your Code Is Calling"
-    url: https://call-e.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 23 - Sep 14, 2026
-      ja: Jul 23 - Sep 14, 2026
-      zh: Jul 23 - Sep 14, 2026
-    sourceNote: Devpost auto · prize~10000 · score 97 · CALL-E
-    auto: true
-    joinScore: 97
-    prizeHint: 10000
-    submitUrl: https://call-e.devpost.com/challenges/start_a_submission
-  - at: 2026-08-20T06:26:46.706Z
-    type: devpost-auto
-    title: Global Innovation Build Challenge V2
-    url: https://gibc-v2.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 11 - Sep 21, 2026
-      ja: Jul 11 - Sep 21, 2026
-      zh: Jul 11 - Sep 21, 2026
-    sourceNote: "Devpost auto · prize~148445 · score 92 · Kang Chiao International School Student "
-    auto: true
-    joinScore: 92
-    prizeHint: 148445
-    submitUrl: https://gibc-v2.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-20T06:26:46.731Z
+  lastWatch: 2026-08-21T06:27:53.136Z
   source: devpost-auto+manual
-  added: 39
-  updated: 17
-  scanned: 57
+  added: 43
+  updated: 16
+  scanned: 59
   kept: 40

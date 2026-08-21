@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-20T06:26:46.796Z",
+  "generatedAt": "2026-08-21T06:27:53.200Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-08-20T06:26:46.731Z",
+      "lastRun": "2026-08-21T06:27:53.136Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -49,6 +49,18 @@
             "en": "Jul 06 - Aug 10, 2026",
             "ja": "Jul 06 - Aug 10, 2026",
             "zh": "Jul 06 - Aug 10, 2026"
+          }
+        },
+        {
+          "at": "2026-08-21T06:27:53.110Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) AI Builders Hackathon",
+          "url": "https://ai-builders-hackathon-2026.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Aug 21 - Sep 15, 2026",
+            "ja": "Aug 21 - Sep 15, 2026",
+            "zh": "Aug 21 - Sep 15, 2026"
           }
         },
         {
@@ -121,18 +133,6 @@
             "en": "Jun 22 - Aug 03, 2026",
             "ja": "Jun 22 - Aug 03, 2026",
             "zh": "Jun 22 - Aug 03, 2026"
-          }
-        },
-        {
-          "at": "2026-07-09T18:41:49.379Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) NandaHack",
-          "url": "https://nandahack.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Jul 06 - 10, 2026",
-            "ja": "Jul 06 - 10, 2026",
-            "zh": "Jul 06 - 10, 2026"
           }
         }
       ]
