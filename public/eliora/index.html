@@ -228,6 +228,23 @@
       .signal-row:hover { border-color: rgba(123,216,232,.42); background: rgba(255,255,255,.07); transform: translateX(4px); }
       .signal-row b { color: var(--text); font-size: 14px; }
       .signal-row span { color: var(--cyan); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; font-weight: 800; }
+      .business-banner {
+        padding: 38px 0;
+        border-top: 1px solid rgba(245,184,100,.18);
+        border-bottom: 1px solid rgba(245,184,100,.18);
+        background: rgba(42, 17, 7, .46);
+      }
+      .business-banner-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+      }
+      .business-banner-copy { max-width: 790px; }
+      .business-banner .eyebrow { margin-bottom: 12px; }
+      .business-banner h2 { font-size: clamp(30px, 3.2vw, 44px); }
+      .business-banner p { margin: 16px 0 0; color: var(--muted); line-height: 1.9; }
+      .business-banner .button { flex: 0 0 auto; }
       section { padding: 86px 0; }
       .section-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 28px; }
       h2 { margin: 0; font-size: clamp(36px, 5vw, 68px); line-height: 1; font-weight: 250; letter-spacing: 0; }
@@ -300,6 +317,7 @@
         .hero-media { min-height: auto; border-left: 0; padding-left: 0; }
         .grid.three, .grid.two { grid-template-columns: 1fr; }
         .section-head { align-items: flex-start; flex-direction: column; }
+        .business-banner-inner { align-items: flex-start; flex-direction: column; }
       }
       @media (prefers-reduced-motion: reduce) {
         .brand-moon-orb > .moon-glow { animation: none; }
@@ -371,6 +389,17 @@
               <a class="signal-row atelier-row" href="/eliora/atelier/en/contact/" data-contact-link><b data-i18n="signalContact">Project inquiry form</b><span data-i18n="signalContactStatus">open</span></a>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section class="business-banner" aria-labelledby="business-banner-title">
+        <div class="wrap business-banner-inner">
+          <div class="business-banner-copy">
+            <div class="eyebrow" data-i18n="businessEyebrow">For business &amp; production teams</div>
+            <h2 id="business-banner-title" data-i18n="businessTitle">ComfyUI automation · PoC · enterprise workflows</h2>
+            <p data-i18n="businessLead">Reproducible pipelines, local bf16/fp16 operation, API export, and batch production — scoped through a fixed inquiry form with email reply within 3 business days.</p>
+          </div>
+          <a class="button primary" href="/eliora/atelier/en/contact/" data-contact-link data-i18n="businessCta">Project inquiry</a>
         </div>
       </section>
 
@@ -466,6 +495,10 @@
           title: 'Eliora',
           lead: 'ComfyUI automation, reproducible pipelines, and enterprise PoC for production teams — not one-off image requests.',
           note: 'Local bf16/fp16 stacks, API export, batch production, visual planning, and consulting — built by Miragea · Eliora.',
+          businessEyebrow: 'For business & production teams',
+          businessTitle: 'ComfyUI automation · PoC · enterprise workflows',
+          businessLead: 'Reproducible pipelines, local bf16/fp16 operation, API export, and batch production — scoped through a fixed inquiry form with email reply within 3 business days.',
+          businessCta: 'Project inquiry',
           navContact: 'Project inquiry',
           navAtelier: 'Cosmic Atelier',
           navCanvas: 'Canvas',
@@ -531,6 +564,10 @@
           title: 'Eliora',
           lead: 'ComfyUI業務自動化、再現性のあるパイプライン、企業向けPoC — 単発画像依頼ではありません。',
           note: 'ローカルbf16/fp16運用、API化、バッチ量産、視覚プランニング、コンサルティング — Miragea · Elioraが設計・実装します。',
+          businessEyebrow: '企業・制作チーム向け',
+          businessTitle: 'ComfyUI業務自動化 · PoC · 企業ワークフロー',
+          businessLead: '再現性のあるパイプライン、ローカルbf16/fp16運用、API化、バッチ量産。固定お問い合わせフォームからご連絡いただければ、3営業日以内にメールで返信します。',
+          businessCta: 'お仕事のご相談',
           navContact: 'お仕事のご相談',
           navAtelier: '宇宙AIアトリエ',
           navCanvas: 'Canvas',
@@ -596,6 +633,10 @@
           title: 'Eliora',
           lead: 'ComfyUI 自动化、可复现管线与企业 PoC — 非单张图片定制需求。',
           note: '本地 bf16/fp16、API 导出、批量生产、视觉规划与咨询 — 由 Miragea · Eliora 设计与交付。',
+          businessEyebrow: '面向企业与制作团队',
+          businessTitle: 'ComfyUI 自动化 · PoC · 企业工作流',
+          businessLead: '可复现管线、本地 bf16/fp16 运行、API 导出与批量生产。通过固定咨询表单联系，3 个工作日内邮件回复。',
+          businessCta: '项目咨询',
           navContact: '项目咨询',
           navAtelier: '宇宙 AI 工坊',
           navCanvas: 'Canvas',
