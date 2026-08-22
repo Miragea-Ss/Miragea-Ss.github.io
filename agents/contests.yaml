@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-21T06:27:53.136Z
+# lastWatch: 2026-08-22T06:21:26.888Z
 contests:
   - at: 2026-08-05T08:15:57.248Z
     type: devpost-auto
@@ -52,10 +52,10 @@ contests:
       en: Aug 21 - Sep 15, 2026
       ja: Aug 21 - Sep 15, 2026
       zh: Aug 21 - Sep 15, 2026
-    sourceNote: Devpost auto · prize~35076 · score 110 · OSC
+    sourceNote: Devpost auto · prize~33900 · score 110 · OSC
     auto: true
     joinScore: 110
-    prizeHint: 35076
+    prizeHint: 33900
     submitUrl: https://ai-builders-hackathon-2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-18T06:25:00.136Z
     type: devpost-auto
@@ -94,10 +94,10 @@ contests:
       en: Aug 02 - 24, 2026
       ja: Aug 02 - 24, 2026
       zh: Aug 02 - 24, 2026
-    sourceNote: Devpost auto · prize~2208664 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~2876914 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 2208664
+    prizeHint: 2876914
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
@@ -315,9 +315,9 @@ contests:
     url: https://nextstep2026.devpost.com/
     ongoing: true
     period:
-      en: Aug 21 - 23, 2026
-      ja: Aug 21 - 23, 2026
-      zh: Aug 21 - 23, 2026
+      en: Aug 21 - Sep 13, 2026
+      ja: Aug 21 - Sep 13, 2026
+      zh: Aug 21 - Sep 13, 2026
     sourceNote: Devpost auto · prize~1750 · score 98 · HackAlphaX
     auto: true
     joinScore: 98
@@ -562,9 +562,9 @@ contests:
     prizeHint: 17500
     submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-21T06:27:53.136Z
+  lastWatch: 2026-08-22T06:21:26.888Z
   source: devpost-auto+manual
-  added: 43
+  added: 42
   updated: 16
-  scanned: 59
+  scanned: 60
   kept: 40

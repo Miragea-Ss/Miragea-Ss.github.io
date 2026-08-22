@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T06:27:53.146Z",
+  "generatedAt": "2026-08-22T06:21:26.899Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -59,7 +59,7 @@
       "url": "https://ai-builders-hackathon-2026.devpost.com/",
       "submitUrl": "https://ai-builders-hackathon-2026.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 35076,
+      "prizeHint": 33900,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -107,7 +107,7 @@
       "url": "https://reverie-hacks-2026.devpost.com/",
       "submitUrl": "https://reverie-hacks-2026.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 2208664,
+      "prizeHint": 2876914,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
