@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-22T06:21:26.888Z
+# lastWatch: 2026-08-23T06:22:47.280Z
 contests:
   - at: 2026-08-05T08:15:57.248Z
     type: devpost-auto
@@ -94,10 +94,10 @@ contests:
       en: Aug 02 - 24, 2026
       ja: Aug 02 - 24, 2026
       zh: Aug 02 - 24, 2026
-    sourceNote: Devpost auto · prize~2876914 · score 110 · ReverieHacks
+    sourceNote: Devpost auto · prize~3047814 · score 110 · ReverieHacks
     auto: true
     joinScore: 110
-    prizeHint: 2876914
+    prizeHint: 3047814
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-07-20T08:39:54.613Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 17500
     submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-22T06:21:26.888Z
+  lastWatch: 2026-08-23T06:22:47.280Z
   source: devpost-auto+manual
-  added: 42
+  added: 40
   updated: 16
-  scanned: 60
+  scanned: 58
   kept: 40
