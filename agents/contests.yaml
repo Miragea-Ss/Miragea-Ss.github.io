@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-24T12:42:05.945Z
+# lastWatch: 2026-08-25T06:27:53.638Z
 contests:
   - at: 2026-08-05T08:15:57.248Z
     type: devpost-auto
@@ -99,20 +99,6 @@ contests:
     joinScore: 110
     prizeHint: 3047814
     submitUrl: https://reverie-hacks-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-20T08:39:54.613Z
-    type: devpost-auto
-    title: Google x IITG AI Hackathon
-    url: https://google-ai-workshop-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 24 - Jul 20, 2026
-      ja: Jun 24 - Jul 20, 2026
-      zh: Jun 24 - Jul 20, 2026
-    sourceNote: Devpost auto · prize~40500 · score 110 · google build with ai
-    auto: true
-    joinScore: 110
-    prizeHint: 40500
-    submitUrl: https://google-ai-workshop-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-07-14T07:46:44.834Z
     type: devpost-auto
     title: OpenAI Build Week
@@ -561,10 +547,24 @@ contests:
     joinScore: 98
     prizeHint: 17500
     submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
+  - at: 2026-08-25T06:27:53.602Z
+    type: devpost-auto
+    title: "CALL-E: Your Code Is Calling"
+    url: https://call-e.devpost.com/
+    ongoing: true
+    period:
+      en: Jul 23 - Sep 14, 2026
+      ja: Jul 23 - Sep 14, 2026
+      zh: Jul 23 - Sep 14, 2026
+    sourceNote: Devpost auto · prize~10000 · score 97 · CALL-E
+    auto: true
+    joinScore: 97
+    prizeHint: 10000
+    submitUrl: https://call-e.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-24T12:42:05.945Z
+  lastWatch: 2026-08-25T06:27:53.638Z
   source: devpost-auto+manual
-  added: 36
-  updated: 15
+  added: 35
+  updated: 16
   scanned: 53
   kept: 40
