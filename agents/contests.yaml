@@ -1,6 +1,20 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-25T06:27:53.638Z
+# lastWatch: 2026-08-26T06:29:31.724Z
 contests:
+  - at: 2026-08-11T06:46:50.154Z
+    type: devpost-auto
+    title: Agents for Humans Hackathon
+    url: https://agentsforhumans.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 10 - Sep 14, 2026
+      ja: Aug 10 - Sep 14, 2026
+      zh: Aug 10 - Sep 14, 2026
+    sourceNote: Devpost auto · prize~40000 · score 115 · Amazon
+    auto: true
+    joinScore: 115
+    prizeHint: 40000
+    submitUrl: https://agentsforhumans.devpost.com/challenges/start_a_submission
   - at: 2026-08-05T08:15:57.248Z
     type: devpost-auto
     title: All Things Agentic Hackathon
@@ -71,20 +85,6 @@ contests:
     joinScore: 110
     prizeHint: 39500
     submitUrl: https://api-cloud-ai-hackathon-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-08-11T06:46:50.154Z
-    type: devpost-auto
-    title: Agents for Humans Hackathon
-    url: https://agentsforhumans.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 10 - Sep 14, 2026
-      ja: Aug 10 - Sep 14, 2026
-      zh: Aug 10 - Sep 14, 2026
-    sourceNote: Devpost auto · prize~40000 · score 110 · Amazon
-    auto: true
-    joinScore: 110
-    prizeHint: 40000
-    submitUrl: https://agentsforhumans.devpost.com/challenges/start_a_submission
   - at: 2026-08-02T08:04:47.056Z
     type: devpost-auto
     title: Reverie Hacks 2026
@@ -259,9 +259,9 @@ contests:
     url: https://the-great-agent-hackathon.devpost.com/
     ongoing: true
     period:
-      en: Jul 23 - Aug 25, 2026
-      ja: Jul 23 - Aug 25, 2026
-      zh: Jul 23 - Aug 25, 2026
+      en: Jul 23 - Aug 30, 2026
+      ja: Jul 23 - Aug 30, 2026
+      zh: Jul 23 - Aug 30, 2026
     sourceNote: Devpost auto · prize~100000 · score 102 · Women In Product India
     auto: true
     joinScore: 102
@@ -547,24 +547,24 @@ contests:
     joinScore: 98
     prizeHint: 17500
     submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
-  - at: 2026-08-25T06:27:53.602Z
+  - at: 2026-08-26T06:29:31.691Z
     type: devpost-auto
-    title: "CALL-E: Your Code Is Calling"
-    url: https://call-e.devpost.com/
+    title: The WebMCP Challenge
+    url: https://webmcp.devpost.com/
     ongoing: true
     period:
-      en: Jul 23 - Sep 14, 2026
-      ja: Jul 23 - Sep 14, 2026
-      zh: Jul 23 - Sep 14, 2026
-    sourceNote: Devpost auto · prize~10000 · score 97 · CALL-E
+      en: Aug 25 - Sep 03, 2026
+      ja: Aug 25 - Sep 03, 2026
+      zh: Aug 25 - Sep 03, 2026
+    sourceNote: Devpost auto · prize~35000 · score 92 · OpenAI
     auto: true
-    joinScore: 97
-    prizeHint: 10000
-    submitUrl: https://call-e.devpost.com/challenges/start_a_submission
+    joinScore: 92
+    prizeHint: 35000
+    submitUrl: https://webmcp.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-25T06:27:53.638Z
+  lastWatch: 2026-08-26T06:29:31.724Z
   source: devpost-auto+manual
   added: 35
-  updated: 16
-  scanned: 53
+  updated: 15
+  scanned: 51
   kept: 40
