@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-26T06:29:31.724Z
+# lastWatch: 2026-08-27T17:04:06.301Z
 contests:
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
@@ -57,6 +57,34 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-08-27T17:04:06.269Z
+    type: devpost-auto
+    title: Nebius x NVIDIA Global AI Hackathon
+    url: https://nebiusglobalaihackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 26 - Oct 30, 2026
+      ja: Aug 26 - Oct 30, 2026
+      zh: Aug 26 - Oct 30, 2026
+    sourceNote: Devpost auto · prize~50000 · score 110 · nebius
+    auto: true
+    joinScore: 110
+    prizeHint: 50000
+    submitUrl: https://nebiusglobalaihackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-08-27T17:04:06.269Z
+    type: devpost-auto
+    title: OpenCV AI Competition 2026, powered by AWS
+    url: https://opencv26.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 26 - Oct 27, 2026
+      ja: Aug 26 - Oct 27, 2026
+      zh: Aug 26 - Oct 27, 2026
+    sourceNote: Devpost auto · prize~12000 · score 110 · OpenCV
+    auto: true
+    joinScore: 110
+    prizeHint: 12000
+    submitUrl: https://opencv26.devpost.com/challenges/start_a_submission
   - at: 2026-08-21T06:27:53.110Z
     type: devpost-auto
     title: AI Builders Hackathon
@@ -533,38 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 8000
     submitUrl: https://arm-ai-optimization-challenge.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: The Rice University Urban Sustainability Hackathon
-    url: https://rice-urban-sustainability.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 23 - Sep 18, 2026
-      ja: Jun 23 - Sep 18, 2026
-      zh: Jun 23 - Sep 18, 2026
-    sourceNote: Devpost auto · prize~17500 · score 98 · Rice University
-    auto: true
-    joinScore: 98
-    prizeHint: 17500
-    submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
-  - at: 2026-08-26T06:29:31.691Z
-    type: devpost-auto
-    title: The WebMCP Challenge
-    url: https://webmcp.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 25 - Sep 03, 2026
-      ja: Aug 25 - Sep 03, 2026
-      zh: Aug 25 - Sep 03, 2026
-    sourceNote: Devpost auto · prize~35000 · score 92 · OpenAI
-    auto: true
-    joinScore: 92
-    prizeHint: 35000
-    submitUrl: https://webmcp.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-26T06:29:31.724Z
+  lastWatch: 2026-08-27T17:04:06.301Z
   source: devpost-auto+manual
-  added: 35
+  added: 38
   updated: 15
-  scanned: 51
+  scanned: 55
   kept: 40

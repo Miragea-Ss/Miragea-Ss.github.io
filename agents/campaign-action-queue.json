@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T06:29:31.737Z",
+  "generatedAt": "2026-08-27T17:04:06.314Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -71,6 +71,38 @@
       "status": "recommended"
     },
     {
+      "title": "Nebius x NVIDIA Global AI Hackathon",
+      "url": "https://nebiusglobalaihackathon.devpost.com/",
+      "submitUrl": "https://nebiusglobalaihackathon.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 50000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "OpenCV AI Competition 2026, powered by AWS",
+      "url": "https://opencv26.devpost.com/",
+      "submitUrl": "https://opencv26.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 12000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
       "title": "AI Builders Hackathon",
       "url": "https://ai-builders-hackathon-2026.devpost.com/",
       "submitUrl": "https://ai-builders-hackathon-2026.devpost.com/challenges/start_a_submission",
@@ -92,38 +124,6 @@
       "submitUrl": "https://api-cloud-ai-hackathon-2026.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 39500,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "Reverie Hacks 2026",
-      "url": "https://reverie-hacks-2026.devpost.com/",
-      "submitUrl": "https://reverie-hacks-2026.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 3047814,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "OpenAI Build Week",
-      "url": "https://openai.devpost.com/",
-      "submitUrl": "https://openai.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 100000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
