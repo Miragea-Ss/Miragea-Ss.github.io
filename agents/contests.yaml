@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-28T17:52:21.510Z
+# lastWatch: 2026-08-29T11:56:42.535Z
 contests:
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
@@ -353,7 +353,7 @@ contests:
     submitUrl: https://nextstep2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-19T06:25:19.267Z
     type: devpost-auto
-    title: Prometheus September AI Challenge 2
+    title: SPEED September AI Challenge 2
     url: https://prometheus-september-ai-2.devpost.com/
     ongoing: true
     period:
@@ -367,7 +367,7 @@ contests:
     submitUrl: https://prometheus-september-ai-2.devpost.com/challenges/start_a_submission
   - at: 2026-08-19T06:25:19.267Z
     type: devpost-auto
-    title: Prometheus September AI Challenge
+    title: SPEED September AI Challenge
     url: https://prometheus-sept-ai-classic.devpost.com/
     ongoing: true
     period:
@@ -381,7 +381,7 @@ contests:
     submitUrl: https://prometheus-sept-ai-classic.devpost.com/challenges/start_a_submission
   - at: 2026-08-19T06:25:19.267Z
     type: devpost-auto
-    title: Prometheus August AI Challenge
+    title: SPEED August AI Challenge
     url: https://august-ai-challenge-31059.devpost.com/
     ongoing: true
     period:
@@ -562,9 +562,9 @@ contests:
     prizeHint: 8750
     submitUrl: https://cockroachdb-ai.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-28T17:52:21.510Z
+  lastWatch: 2026-08-29T11:56:42.535Z
   source: devpost-auto+manual
-  added: 38
-  updated: 15
-  scanned: 54
+  added: 39
+  updated: 16
+  scanned: 56
   kept: 40
