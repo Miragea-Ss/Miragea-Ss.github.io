@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-29T11:56:42.535Z
+# lastWatch: 2026-08-30T10:53:52.445Z
 contests:
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
@@ -239,6 +239,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-08-30T10:53:52.413Z
+    type: devpost-auto
+    title: KJSSE CSI Gemini Hackday
+    url: https://kjsse-csi-gemini-hackday.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 29 - 30, 2026
+      ja: Aug 29 - 30, 2026
+      zh: Aug 29 - 30, 2026
+    sourceNote: Devpost auto · prize~10000 · score 102 · MLH
+    auto: true
+    joinScore: 102
+    prizeHint: 10000
+    submitUrl: https://kjsse-csi-gemini-hackday.devpost.com/challenges/start_a_submission
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
     title: INNOVIK 6.0 – International Hackathon 2026 | Indore Edition
@@ -323,6 +337,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-08-30T10:53:52.413Z
+    type: devpost-auto
+    title: Prometheus September AI Challenge (Hybrid)
+    url: https://prometheus-aug-ml-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 30 - Sep 27, 2026
+      ja: Aug 30 - Sep 27, 2026
+      zh: Aug 30 - Sep 27, 2026
+    sourceNote: Devpost auto · prize~1500 · score 98 · Prometheus CS
+    auto: true
+    joinScore: 98
+    prizeHint: 1500
+    submitUrl: https://prometheus-aug-ml-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-08-28T17:52:21.475Z
     type: devpost-auto
     title: The Rice University Urban Sustainability Hackathon
@@ -353,14 +381,14 @@ contests:
     submitUrl: https://nextstep2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-19T06:25:19.267Z
     type: devpost-auto
-    title: SPEED September AI Challenge 2
+    title: SPEED October AI Challenge
     url: https://prometheus-september-ai-2.devpost.com/
     ongoing: true
     period:
-      en: Aug 19 - Sep 12, 2026
-      ja: Aug 19 - Sep 12, 2026
-      zh: Aug 19 - Sep 12, 2026
-    sourceNote: Devpost auto · prize~1500 · score 98 · Prometheus CS
+      en: Aug 19 - Oct 14, 2026
+      ja: Aug 19 - Oct 14, 2026
+      zh: Aug 19 - Oct 14, 2026
+    sourceNote: Devpost auto · prize~1500 · score 98 · SPEED
     auto: true
     joinScore: 98
     prizeHint: 1500
@@ -371,10 +399,10 @@ contests:
     url: https://prometheus-sept-ai-classic.devpost.com/
     ongoing: true
     period:
-      en: Aug 19 - Sep 05, 2026
-      ja: Aug 19 - Sep 05, 2026
-      zh: Aug 19 - Sep 05, 2026
-    sourceNote: Devpost auto · prize~1500 · score 98 · Prometheus CS
+      en: Aug 19 - Sep 20, 2026
+      ja: Aug 19 - Sep 20, 2026
+      zh: Aug 19 - Sep 20, 2026
+    sourceNote: Devpost auto · prize~1500 · score 98 · SPEED
     auto: true
     joinScore: 98
     prizeHint: 1500
@@ -385,10 +413,10 @@ contests:
     url: https://august-ai-challenge-31059.devpost.com/
     ongoing: true
     period:
-      en: Aug 18 - 31, 2026
-      ja: Aug 18 - 31, 2026
-      zh: Aug 18 - 31, 2026
-    sourceNote: Devpost auto · prize~1500 · score 98 · Prometheus CS
+      en: Aug 18 - Sep 03, 2026
+      ja: Aug 18 - Sep 03, 2026
+      zh: Aug 18 - Sep 03, 2026
+    sourceNote: Devpost auto · prize~1500 · score 98 · SPEED
     auto: true
     joinScore: 98
     prizeHint: 1500
@@ -533,38 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 1500
     submitUrl: https://prometheus-july-ai-challenge.devpost.com/challenges/start_a_submission
-  - at: 2026-07-11T07:39:48.543Z
-    type: devpost-auto
-    title: TechCommons Hacks
-    url: https://techcommons-hacks.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 11 - 20, 2026
-      ja: Jul 11 - 20, 2026
-      zh: Jul 11 - 20, 2026
-    sourceNote: Devpost auto · prize~2800 · score 98 · TechCommons
-    auto: true
-    joinScore: 98
-    prizeHint: 2800
-    submitUrl: https://techcommons-hacks.devpost.com/challenges/start_a_submission
-  - at: 2026-07-09T18:41:49.379Z
-    type: devpost-auto
-    title: CockroachDB × AWS Hackathon - Build with Agentic Memory
-    url: https://cockroachdb-ai.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 30 - Aug 18, 2026
-      ja: Jun 30 - Aug 18, 2026
-      zh: Jun 30 - Aug 18, 2026
-    sourceNote: Devpost auto · prize~8750 · score 98 · Cockroach Labs
-    auto: true
-    joinScore: 98
-    prizeHint: 8750
-    submitUrl: https://cockroachdb-ai.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-29T11:56:42.535Z
+  lastWatch: 2026-08-30T10:53:52.445Z
   source: devpost-auto+manual
-  added: 39
+  added: 38
   updated: 16
-  scanned: 56
+  scanned: 55
   kept: 40
