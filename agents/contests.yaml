@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-30T10:53:52.445Z
+# lastWatch: 2026-08-31T12:07:29.590Z
 contests:
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
@@ -469,9 +469,9 @@ contests:
     url: https://hack-the-habitat-2026.devpost.com/
     ongoing: true
     period:
-      en: Aug 07 - 31, 2026
-      ja: Aug 07 - 31, 2026
-      zh: Aug 07 - 31, 2026
+      en: Aug 07 - Sep 01, 2026
+      ja: Aug 07 - Sep 01, 2026
+      zh: Aug 07 - Sep 01, 2026
     sourceNote: Devpost auto · prize~1000 · score 98 · Hack the Habitat
     auto: true
     joinScore: 98
@@ -562,7 +562,7 @@ contests:
     prizeHint: 1500
     submitUrl: https://prometheus-july-ai-challenge.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-30T10:53:52.445Z
+  lastWatch: 2026-08-31T12:07:29.590Z
   source: devpost-auto+manual
   added: 38
   updated: 16
