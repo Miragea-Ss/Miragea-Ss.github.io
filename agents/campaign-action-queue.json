@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-31T12:07:29.601Z",
+  "generatedAt": "2026-08-31T18:43:02.485Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -7,27 +7,11 @@
   },
   "recommended": [
     {
-      "title": "Agents for Humans Hackathon",
-      "url": "https://agentsforhumans.devpost.com/",
-      "submitUrl": "https://agentsforhumans.devpost.com/challenges/start_a_submission",
+      "title": "Nebius x NVIDIA Global AI Hackathon",
+      "url": "https://nebiusglobalaihackathon.devpost.com/",
+      "submitUrl": "https://nebiusglobalaihackathon.devpost.com/challenges/start_a_submission",
       "joinScore": 115,
-      "prizeHint": 40000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "All Things Agentic Hackathon",
-      "url": "https://allthingsagentichackathon.devpost.com/",
-      "submitUrl": "https://allthingsagentichackathon.devpost.com/challenges/start_a_submission",
-      "joinScore": 115,
-      "prizeHint": 180000,
+      "prizeHint": 50000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -71,11 +55,11 @@
       "status": "recommended"
     },
     {
-      "title": "Nebius x NVIDIA Global AI Hackathon",
-      "url": "https://nebiusglobalaihackathon.devpost.com/",
-      "submitUrl": "https://nebiusglobalaihackathon.devpost.com/challenges/start_a_submission",
+      "title": "Build, Ship, Shape: Amazon Developer Hackathon",
+      "url": "https://amazonappdev2026.devpost.com/",
+      "submitUrl": "https://amazonappdev2026.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 50000,
+      "prizeHint": 138000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -124,6 +108,22 @@
       "submitUrl": "https://api-cloud-ai-hackathon-2026.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 39500,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "Agents for Humans Hackathon",
+      "url": "https://agentsforhumans.devpost.com/",
+      "submitUrl": "https://agentsforhumans.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 40000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

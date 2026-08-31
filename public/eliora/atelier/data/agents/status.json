@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-31T12:07:29.670Z",
+  "generatedAt": "2026-08-31T18:43:02.550Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-08-31T12:07:29.590Z",
+      "lastRun": "2026-08-31T18:43:02.471Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -16,27 +16,15 @@
       },
       "events": [
         {
-          "at": "2026-08-11T06:46:50.154Z",
+          "at": "2026-08-27T17:04:06.269Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) Agents for Humans Hackathon",
-          "url": "https://agentsforhumans.devpost.com/",
+          "title": "★ JOIN? (115) Nebius x NVIDIA Global AI Hackathon",
+          "url": "https://nebiusglobalaihackathon.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Aug 10 - Sep 14, 2026",
-            "ja": "Aug 10 - Sep 14, 2026",
-            "zh": "Aug 10 - Sep 14, 2026"
-          }
-        },
-        {
-          "at": "2026-08-05T08:15:57.248Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (115) All Things Agentic Hackathon",
-          "url": "https://allthingsagentichackathon.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Aug 04 - 31, 2026",
-            "ja": "Aug 04 - 31, 2026",
-            "zh": "Aug 04 - 31, 2026"
+            "en": "Aug 26 - Oct 30, 2026",
+            "ja": "Aug 26 - Oct 30, 2026",
+            "zh": "Aug 26 - Oct 30, 2026"
           }
         },
         {
@@ -64,15 +52,15 @@
           }
         },
         {
-          "at": "2026-08-27T17:04:06.269Z",
+          "at": "2026-08-31T18:43:02.432Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (110) Nebius x NVIDIA Global AI Hackathon",
-          "url": "https://nebiusglobalaihackathon.devpost.com/",
+          "title": "★ JOIN? (110) Build, Ship, Shape: Amazon Developer Hackathon",
+          "url": "https://amazonappdev2026.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Aug 26 - Oct 30, 2026",
-            "ja": "Aug 26 - Oct 30, 2026",
-            "zh": "Aug 26 - Oct 30, 2026"
+            "en": "Aug 31 - Oct 23, 2026",
+            "ja": "Aug 31 - Oct 23, 2026",
+            "zh": "Aug 31 - Oct 23, 2026"
           }
         },
         {
@@ -112,6 +100,30 @@
           }
         },
         {
+          "at": "2026-08-11T06:46:50.154Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Agents for Humans Hackathon",
+          "url": "https://agentsforhumans.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Aug 10 - Sep 14, 2026",
+            "ja": "Aug 10 - Sep 14, 2026",
+            "zh": "Aug 10 - Sep 14, 2026"
+          }
+        },
+        {
+          "at": "2026-08-05T08:15:57.248Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) All Things Agentic Hackathon",
+          "url": "https://allthingsagentichackathon.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Aug 04 - 31, 2026",
+            "ja": "Aug 04 - 31, 2026",
+            "zh": "Aug 04 - 31, 2026"
+          }
+        },
+        {
           "at": "2026-08-02T08:04:47.056Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) Reverie Hacks 2026",
@@ -121,18 +133,6 @@
             "en": "Aug 02 - 24, 2026",
             "ja": "Aug 02 - 24, 2026",
             "zh": "Aug 02 - 24, 2026"
-          }
-        },
-        {
-          "at": "2026-07-14T07:46:44.834Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) OpenAI Build Week",
-          "url": "https://openai.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Jul 13 - 21, 2026",
-            "ja": "Jul 13 - 21, 2026",
-            "zh": "Jul 13 - 21, 2026"
           }
         }
       ]

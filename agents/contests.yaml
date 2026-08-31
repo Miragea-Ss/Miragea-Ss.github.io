@@ -1,34 +1,20 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-31T12:07:29.590Z
+# lastWatch: 2026-08-31T18:43:02.471Z
 contests:
-  - at: 2026-08-11T06:46:50.154Z
+  - at: 2026-08-27T17:04:06.269Z
     type: devpost-auto
-    title: Agents for Humans Hackathon
-    url: https://agentsforhumans.devpost.com/
+    title: Nebius x NVIDIA Global AI Hackathon
+    url: https://nebiusglobalaihackathon.devpost.com/
     ongoing: true
     period:
-      en: Aug 10 - Sep 14, 2026
-      ja: Aug 10 - Sep 14, 2026
-      zh: Aug 10 - Sep 14, 2026
-    sourceNote: Devpost auto · prize~40000 · score 115 · Amazon
+      en: Aug 26 - Oct 30, 2026
+      ja: Aug 26 - Oct 30, 2026
+      zh: Aug 26 - Oct 30, 2026
+    sourceNote: Devpost auto · prize~50000 · score 115 · nebius
     auto: true
     joinScore: 115
-    prizeHint: 40000
-    submitUrl: https://agentsforhumans.devpost.com/challenges/start_a_submission
-  - at: 2026-08-05T08:15:57.248Z
-    type: devpost-auto
-    title: All Things Agentic Hackathon
-    url: https://allthingsagentichackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 04 - 31, 2026
-      ja: Aug 04 - 31, 2026
-      zh: Aug 04 - 31, 2026
-    sourceNote: Devpost auto · prize~180000 · score 115 · Google
-    auto: true
-    joinScore: 115
-    prizeHint: 180000
-    submitUrl: https://allthingsagentichackathon.devpost.com/challenges/start_a_submission
+    prizeHint: 50000
+    submitUrl: https://nebiusglobalaihackathon.devpost.com/challenges/start_a_submission
   - at: 2026-07-28T08:13:55.985Z
     type: devpost-auto
     title: "Agentic Cinema: The Blockbuster Hackathon"
@@ -57,20 +43,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
-  - at: 2026-08-27T17:04:06.269Z
+  - at: 2026-08-31T18:43:02.432Z
     type: devpost-auto
-    title: Nebius x NVIDIA Global AI Hackathon
-    url: https://nebiusglobalaihackathon.devpost.com/
+    title: "Build, Ship, Shape: Amazon Developer Hackathon"
+    url: https://amazonappdev2026.devpost.com/
     ongoing: true
     period:
-      en: Aug 26 - Oct 30, 2026
-      ja: Aug 26 - Oct 30, 2026
-      zh: Aug 26 - Oct 30, 2026
-    sourceNote: Devpost auto · prize~50000 · score 110 · nebius
+      en: Aug 31 - Oct 23, 2026
+      ja: Aug 31 - Oct 23, 2026
+      zh: Aug 31 - Oct 23, 2026
+    sourceNote: Devpost auto · prize~138000 · score 110 · Amazon
     auto: true
     joinScore: 110
-    prizeHint: 50000
-    submitUrl: https://nebiusglobalaihackathon.devpost.com/challenges/start_a_submission
+    prizeHint: 138000
+    submitUrl: https://amazonappdev2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-27T17:04:06.269Z
     type: devpost-auto
     title: OpenCV AI Competition 2026, powered by AWS
@@ -113,6 +99,34 @@ contests:
     joinScore: 110
     prizeHint: 39500
     submitUrl: https://api-cloud-ai-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-08-11T06:46:50.154Z
+    type: devpost-auto
+    title: Agents for Humans Hackathon
+    url: https://agentsforhumans.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 10 - Sep 14, 2026
+      ja: Aug 10 - Sep 14, 2026
+      zh: Aug 10 - Sep 14, 2026
+    sourceNote: Devpost auto · prize~40000 · score 110 · Amazon
+    auto: true
+    joinScore: 110
+    prizeHint: 40000
+    submitUrl: https://agentsforhumans.devpost.com/challenges/start_a_submission
+  - at: 2026-08-05T08:15:57.248Z
+    type: devpost-auto
+    title: All Things Agentic Hackathon
+    url: https://allthingsagentichackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 04 - 31, 2026
+      ja: Aug 04 - 31, 2026
+      zh: Aug 04 - 31, 2026
+    sourceNote: Devpost auto · prize~180000 · score 110 · Google
+    auto: true
+    joinScore: 110
+    prizeHint: 180000
+    submitUrl: https://allthingsagentichackathon.devpost.com/challenges/start_a_submission
   - at: 2026-08-02T08:04:47.056Z
     type: devpost-auto
     title: Reverie Hacks 2026
@@ -547,24 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 3000
     submitUrl: https://devsunite-hiring-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-18T07:26:45.820Z
-    type: devpost-auto
-    title: Prometheus July AI Challenge
-    url: https://prometheus-july-ai-challenge.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 17 - 30, 2026
-      ja: Jul 17 - 30, 2026
-      zh: Jul 17 - 30, 2026
-    sourceNote: Devpost auto · prize~1500 · score 98 · Prometheus
-    auto: true
-    joinScore: 98
-    prizeHint: 1500
-    submitUrl: https://prometheus-july-ai-challenge.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-31T12:07:29.590Z
+  lastWatch: 2026-08-31T18:43:02.471Z
   source: devpost-auto+manual
-  added: 38
+  added: 39
   updated: 16
-  scanned: 55
+  scanned: 56
   kept: 40
