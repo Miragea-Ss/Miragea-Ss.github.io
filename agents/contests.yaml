@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-08-31T18:43:02.471Z
+# lastWatch: 2026-09-01T10:44:46.651Z
 contests:
   - at: 2026-08-27T17:04:06.269Z
     type: devpost-auto
@@ -43,6 +43,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-09-01T10:44:46.620Z
+    type: devpost-auto
+    title: "GatewayHacks 2026 | Software & AI "
+    url: https://gatewayhacks-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 01 - Oct 02, 2026
+      ja: Sep 01 - Oct 02, 2026
+      zh: Sep 01 - Oct 02, 2026
+    sourceNote: Devpost auto · prize~591585 · score 110 · GatewayGS
+    auto: true
+    joinScore: 110
+    prizeHint: 591585
+    submitUrl: https://gatewayhacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-31T18:43:02.432Z
     type: devpost-auto
     title: "Build, Ship, Shape: Amazon Developer Hackathon"
@@ -253,6 +267,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-09-01T10:44:46.620Z
+    type: devpost-auto
+    title: Next Gen Hackathon 2026 -Bengaluru
+    url: https://next-gen-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 01 - Oct 23, 2026
+      ja: Sep 01 - Oct 23, 2026
+      zh: Sep 01 - Oct 23, 2026
+    sourceNote: Devpost auto · prize~50000 · score 102 · RAAIF
+    auto: true
+    joinScore: 102
+    prizeHint: 50000
+    submitUrl: https://next-gen-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-08-30T10:53:52.413Z
     type: devpost-auto
     title: KJSSE CSI Gemini Hackday
@@ -351,6 +379,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-09-01T10:44:46.620Z
+    type: devpost-auto
+    title: AI Content Engine Hackathon
+    url: https://ai-content-engine-hacks.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 01 - 08, 2026
+      ja: Sep 01 - 08, 2026
+      zh: Sep 01 - 08, 2026
+    sourceNote: Devpost auto · prize~2000 · score 98 · NA
+    auto: true
+    joinScore: 98
+    prizeHint: 2000
+    submitUrl: https://ai-content-engine-hacks.devpost.com/challenges/start_a_submission
   - at: 2026-08-30T10:53:52.413Z
     type: devpost-auto
     title: Prometheus September AI Challenge (Hybrid)
@@ -519,52 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 3979
     submitUrl: https://hacksocial2026.devpost.com/challenges/start_a_submission
-  - at: 2026-08-01T08:03:00.216Z
-    type: devpost-auto
-    title: IncludAI - The Neurodiversity Hackathon, in Partnership with Stanford NNEA
-    url: https://includai-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 01 - 09, 2026
-      ja: Aug 01 - 09, 2026
-      zh: Aug 01 - 09, 2026
-    sourceNote: Devpost auto · prize~3000 · score 98 · IncludEDU, partner w Stanford NNEA
-    auto: true
-    joinScore: 98
-    prizeHint: 3000
-    submitUrl: https://includai-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-25T07:50:00.535Z
-    type: devpost-auto
-    title: The Email Game
-    url: https://the-email-game.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 24 - Aug 01, 2026
-      ja: Jul 24 - Aug 01, 2026
-      zh: Jul 24 - Aug 01, 2026
-    sourceNote: Devpost auto · prize~1700 · score 98 · WithAI Research
-    auto: true
-    joinScore: 98
-    prizeHint: 1700
-    submitUrl: https://the-email-game.devpost.com/challenges/start_a_submission
-  - at: 2026-07-25T07:50:00.535Z
-    type: devpost-auto
-    title: DevsUnite Hiring Hackathon
-    url: https://devsunite-hiring-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 24 - 25, 2026
-      ja: Jul 24 - 25, 2026
-      zh: Jul 24 - 25, 2026
-    sourceNote: Devpost auto · prize~3000 · score 98 · DevsUnite
-    auto: true
-    joinScore: 98
-    prizeHint: 3000
-    submitUrl: https://devsunite-hiring-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-08-31T18:43:02.471Z
+  lastWatch: 2026-09-01T10:44:46.651Z
   source: devpost-auto+manual
-  added: 39
-  updated: 16
-  scanned: 56
+  added: 41
+  updated: 14
+  scanned: 57
   kept: 40

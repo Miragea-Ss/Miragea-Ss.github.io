@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-08-31T18:43:02.550Z",
+  "generatedAt": "2026-09-01T10:44:46.734Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-08-31T18:43:02.471Z",
+      "lastRun": "2026-09-01T10:44:46.651Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -49,6 +49,18 @@
             "en": "Jul 06 - Aug 10, 2026",
             "ja": "Jul 06 - Aug 10, 2026",
             "zh": "Jul 06 - Aug 10, 2026"
+          }
+        },
+        {
+          "at": "2026-09-01T10:44:46.620Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) GatewayHacks 2026 | Software & AI ",
+          "url": "https://gatewayhacks-2026.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Sep 01 - Oct 02, 2026",
+            "ja": "Sep 01 - Oct 02, 2026",
+            "zh": "Sep 01 - Oct 02, 2026"
           }
         },
         {
@@ -121,18 +133,6 @@
             "en": "Aug 04 - 31, 2026",
             "ja": "Aug 04 - 31, 2026",
             "zh": "Aug 04 - 31, 2026"
-          }
-        },
-        {
-          "at": "2026-08-02T08:04:47.056Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Reverie Hacks 2026",
-          "url": "https://reverie-hacks-2026.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Aug 02 - 24, 2026",
-            "ja": "Aug 02 - 24, 2026",
-            "zh": "Aug 02 - 24, 2026"
           }
         }
       ]
