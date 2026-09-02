@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-01T10:44:46.651Z
+# lastWatch: 2026-09-02T10:09:56.548Z
 contests:
   - at: 2026-08-27T17:04:06.269Z
     type: devpost-auto
@@ -80,10 +80,10 @@ contests:
       en: Aug 26 - Oct 27, 2026
       ja: Aug 26 - Oct 27, 2026
       zh: Aug 26 - Oct 27, 2026
-    sourceNote: Devpost auto · prize~12000 · score 110 · OpenCV
+    sourceNote: Devpost auto · prize~20250 · score 110 · OpenCV
     auto: true
     joinScore: 110
-    prizeHint: 12000
+    prizeHint: 20250
     submitUrl: https://opencv26.devpost.com/challenges/start_a_submission
   - at: 2026-08-21T06:27:53.110Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 3979
     submitUrl: https://hacksocial2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-01T10:44:46.651Z
+  lastWatch: 2026-09-02T10:09:56.548Z
   source: devpost-auto+manual
-  added: 41
-  updated: 14
-  scanned: 57
+  added: 37
+  updated: 17
+  scanned: 55
   kept: 40
