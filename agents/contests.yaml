@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-02T10:09:56.548Z
+# lastWatch: 2026-09-03T10:21:28.468Z
 contests:
   - at: 2026-08-27T17:04:06.269Z
     type: devpost-auto
@@ -52,10 +52,10 @@ contests:
       en: Sep 01 - Oct 02, 2026
       ja: Sep 01 - Oct 02, 2026
       zh: Sep 01 - Oct 02, 2026
-    sourceNote: Devpost auto · prize~591585 · score 110 · GatewayGS
+    sourceNote: Devpost auto · prize~814585 · score 110 · GatewayGS
     auto: true
     joinScore: 110
-    prizeHint: 591585
+    prizeHint: 814585
     submitUrl: https://gatewayhacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-08-31T18:43:02.432Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 3979
     submitUrl: https://hacksocial2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-02T10:09:56.548Z
+  lastWatch: 2026-09-03T10:21:28.468Z
   source: devpost-auto+manual
   added: 37
   updated: 17
-  scanned: 55
+  scanned: 54
   kept: 40
