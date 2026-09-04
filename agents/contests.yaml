@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-03T10:21:28.468Z
+# lastWatch: 2026-09-04T10:10:22.382Z
 contests:
   - at: 2026-08-27T17:04:06.269Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 3979
     submitUrl: https://hacksocial2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-03T10:21:28.468Z
+  lastWatch: 2026-09-04T10:10:22.382Z
   source: devpost-auto+manual
-  added: 37
-  updated: 17
-  scanned: 54
+  added: 36
+  updated: 15
+  scanned: 51
   kept: 40
