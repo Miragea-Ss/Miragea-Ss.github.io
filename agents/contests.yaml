@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-04T10:10:22.382Z
+# lastWatch: 2026-09-05T09:38:08.495Z
 contests:
   - at: 2026-08-27T17:04:06.269Z
     type: devpost-auto
@@ -379,6 +379,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-09-05T09:38:08.458Z
+    type: devpost-auto
+    title: Hyperbloom September - AI/ML
+    url: https://hyperbloom-september.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 25 - Sep 14, 2026
+      ja: Aug 25 - Sep 14, 2026
+      zh: Aug 25 - Sep 14, 2026
+    sourceNote: Devpost auto · prize~1710 · score 98 · hyperbloom hacks
+    auto: true
+    joinScore: 98
+    prizeHint: 1710
+    submitUrl: https://hyperbloom-september.devpost.com/challenges/start_a_submission
   - at: 2026-09-01T10:44:46.620Z
     type: devpost-auto
     title: AI Content Engine Hackathon
@@ -547,24 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 11000
     submitUrl: https://youtube-automate-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-08-01T08:03:00.216Z
-    type: devpost-auto
-    title: Hacksocial 2026
-    url: https://hacksocial2026.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 01 - 31, 2026
-      ja: Aug 01 - 31, 2026
-      zh: Aug 01 - 31, 2026
-    sourceNote: Devpost auto · prize~3979 · score 98 · Hacksocial
-    auto: true
-    joinScore: 98
-    prizeHint: 3979
-    submitUrl: https://hacksocial2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-04T10:10:22.382Z
+  lastWatch: 2026-09-05T09:38:08.495Z
   source: devpost-auto+manual
   added: 36
-  updated: 15
-  scanned: 51
+  updated: 12
+  scanned: 49
   kept: 40
