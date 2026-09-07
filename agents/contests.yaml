@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-07T11:00:50.905Z
+# lastWatch: 2026-09-07T17:11:07.740Z
 contests:
   - at: 2026-08-27T17:04:06.269Z
     type: devpost-auto
@@ -562,7 +562,7 @@ contests:
     prizeHint: 11000
     submitUrl: https://youtube-automate-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-07T11:00:50.905Z
+  lastWatch: 2026-09-07T17:11:07.740Z
   source: devpost-auto+manual
   added: 35
   updated: 13
