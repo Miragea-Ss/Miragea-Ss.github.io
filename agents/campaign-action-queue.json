@@ -1,11 +1,27 @@
 {
-  "generatedAt": "2026-09-08T10:15:52.662Z",
+  "generatedAt": "2026-09-09T10:21:51.392Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
     "zh": "自动监视发现与打分；报名需人工确认；奖金实名领取为手动。"
   },
   "recommended": [
+    {
+      "title": "Build, Ship, Shape: Amazon Developer Hackathon",
+      "url": "https://amazonappdev2026.devpost.com/",
+      "submitUrl": "https://amazonappdev2026.devpost.com/challenges/start_a_submission",
+      "joinScore": 115,
+      "prizeHint": 138000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
     {
       "title": "Nebius x NVIDIA Global AI Hackathon",
       "url": "https://nebiusglobalaihackathon.devpost.com/",
@@ -23,11 +39,11 @@
       "status": "recommended"
     },
     {
-      "title": "Agentic Cinema: The Blockbuster Hackathon",
-      "url": "https://agentic-cinema.devpost.com/",
-      "submitUrl": "https://agentic-cinema.devpost.com/challenges/start_a_submission",
+      "title": "Agents for Humans Hackathon",
+      "url": "https://agentsforhumans.devpost.com/",
+      "submitUrl": "https://agentsforhumans.devpost.com/challenges/start_a_submission",
       "joinScore": 115,
-      "prizeHint": 75000,
+      "prizeHint": 40000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -60,22 +76,6 @@
       "submitUrl": "https://gatewayhacks-2026.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 1007085,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "Build, Ship, Shape: Amazon Developer Hackathon",
-      "url": "https://amazonappdev2026.devpost.com/",
-      "submitUrl": "https://amazonappdev2026.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 138000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

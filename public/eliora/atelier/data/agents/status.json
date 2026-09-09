@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-08T10:15:52.745Z",
+  "generatedAt": "2026-09-09T10:21:51.620Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-09-08T10:15:52.649Z",
+      "lastRun": "2026-09-09T10:21:51.378Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -15,6 +15,18 @@
         "autoTracked": 40
       },
       "events": [
+        {
+          "at": "2026-08-31T18:43:02.432Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (115) Build, Ship, Shape: Amazon Developer Hackathon",
+          "url": "https://amazonappdev2026.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Aug 31 - Oct 23, 2026",
+            "ja": "Aug 31 - Oct 23, 2026",
+            "zh": "Aug 31 - Oct 23, 2026"
+          }
+        },
         {
           "at": "2026-08-27T17:04:06.269Z",
           "type": "devpost-auto",
@@ -28,15 +40,15 @@
           }
         },
         {
-          "at": "2026-07-28T08:13:55.985Z",
+          "at": "2026-08-11T06:46:50.154Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) Agentic Cinema: The Blockbuster Hackathon",
-          "url": "https://agentic-cinema.devpost.com/",
+          "title": "★ JOIN? (115) Agents for Humans Hackathon",
+          "url": "https://agentsforhumans.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Jul 27 - Sep 09, 2026",
-            "ja": "Jul 27 - Sep 09, 2026",
-            "zh": "Jul 27 - Sep 09, 2026"
+            "en": "Aug 10 - Sep 14, 2026",
+            "ja": "Aug 10 - Sep 14, 2026",
+            "zh": "Aug 10 - Sep 14, 2026"
           }
         },
         {
@@ -61,18 +73,6 @@
             "en": "Sep 01 - Oct 02, 2026",
             "ja": "Sep 01 - Oct 02, 2026",
             "zh": "Sep 01 - Oct 02, 2026"
-          }
-        },
-        {
-          "at": "2026-08-31T18:43:02.432Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Build, Ship, Shape: Amazon Developer Hackathon",
-          "url": "https://amazonappdev2026.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Aug 31 - Oct 23, 2026",
-            "ja": "Aug 31 - Oct 23, 2026",
-            "zh": "Aug 31 - Oct 23, 2026"
           }
         },
         {
@@ -112,18 +112,6 @@
           }
         },
         {
-          "at": "2026-08-11T06:46:50.154Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Agents for Humans Hackathon",
-          "url": "https://agentsforhumans.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Aug 10 - Sep 14, 2026",
-            "ja": "Aug 10 - Sep 14, 2026",
-            "zh": "Aug 10 - Sep 14, 2026"
-          }
-        },
-        {
           "at": "2026-08-05T08:15:57.248Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) All Things Agentic Hackathon",
@@ -133,6 +121,18 @@
             "en": "Aug 04 - 31, 2026",
             "ja": "Aug 04 - 31, 2026",
             "zh": "Aug 04 - 31, 2026"
+          }
+        },
+        {
+          "at": "2026-08-02T08:04:47.056Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Reverie Hacks 2026",
+          "url": "https://reverie-hacks-2026.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Aug 02 - 24, 2026",
+            "ja": "Aug 02 - 24, 2026",
+            "zh": "Aug 02 - 24, 2026"
           }
         }
       ]
