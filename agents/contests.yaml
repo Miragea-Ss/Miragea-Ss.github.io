@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-09T10:21:51.378Z
+# lastWatch: 2026-09-10T10:14:23.205Z
 contests:
   - at: 2026-08-31T18:43:02.432Z
     type: devpost-auto
@@ -267,6 +267,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-09-10T10:14:23.171Z
+    type: devpost-auto
+    title: HackSprint
+    url: https://hacksprint.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 09 - Oct 05, 2026
+      ja: Sep 09 - Oct 05, 2026
+      zh: Sep 09 - Oct 05, 2026
+    sourceNote: Devpost auto · prize~300000 · score 102 · commudle
+    auto: true
+    joinScore: 102
+    prizeHint: 300000
+    submitUrl: https://hacksprint.devpost.com/challenges/start_a_submission
   - at: 2026-09-01T10:44:46.620Z
     type: devpost-auto
     title: Next Gen Hackathon 2026 -Bengaluru
@@ -379,6 +393,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-09-10T10:14:23.171Z
+    type: devpost-auto
+    title: TechCommons Hacks V2 - Hacks to Inspire
+    url: https://techcommons-hacks-v2.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 10 - 17, 2026
+      ja: Sep 10 - 17, 2026
+      zh: Sep 10 - 17, 2026
+    sourceNote: Devpost auto · prize~6300 · score 98 · TechCommons
+    auto: true
+    joinScore: 98
+    prizeHint: 6300
+    submitUrl: https://techcommons-hacks-v2.devpost.com/challenges/start_a_submission
   - at: 2026-09-05T09:38:08.458Z
     type: devpost-auto
     title: Hyperbloom September - AI/ML
@@ -399,9 +427,9 @@ contests:
     url: https://ai-content-engine-hacks.devpost.com/
     ongoing: true
     period:
-      en: Sep 01 - 08, 2026
-      ja: Sep 01 - 08, 2026
-      zh: Sep 01 - 08, 2026
+      en: Sep 01 - 10, 2026
+      ja: Sep 01 - 10, 2026
+      zh: Sep 01 - 10, 2026
     sourceNote: Devpost auto · prize~2000 · score 98 · NA
     auto: true
     joinScore: 98
@@ -441,9 +469,9 @@ contests:
     url: https://nextstep2026.devpost.com/
     ongoing: true
     period:
-      en: Aug 21 - Sep 13, 2026
-      ja: Aug 21 - Sep 13, 2026
-      zh: Aug 21 - Sep 13, 2026
+      en: Aug 21 - Sep 20, 2026
+      ja: Aug 21 - Sep 20, 2026
+      zh: Aug 21 - Sep 20, 2026
     sourceNote: Devpost auto · prize~1750 · score 98 · HackAlphaX
     auto: true
     joinScore: 98
@@ -533,38 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 5000
     submitUrl: https://cs-girlies-wellness-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-08-08T06:33:48.436Z
-    type: devpost-auto
-    title: Hack the Habitat
-    url: https://hack-the-habitat-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 07 - Sep 01, 2026
-      ja: Aug 07 - Sep 01, 2026
-      zh: Aug 07 - Sep 01, 2026
-    sourceNote: Devpost auto · prize~1000 · score 98 · Hack the Habitat
-    auto: true
-    joinScore: 98
-    prizeHint: 1000
-    submitUrl: https://hack-the-habitat-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-08-04T08:19:41.074Z
-    type: devpost-auto
-    title: YouTube Automation Hackathon
-    url: https://youtube-automate-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 03 - 09, 2026
-      ja: Aug 03 - 09, 2026
-      zh: Aug 03 - 09, 2026
-    sourceNote: Devpost auto · prize~11000 · score 98 · n/a
-    auto: true
-    joinScore: 98
-    prizeHint: 11000
-    submitUrl: https://youtube-automate-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-09T10:21:51.378Z
+  lastWatch: 2026-09-10T10:14:23.205Z
   source: devpost-auto+manual
-  added: 35
+  added: 37
   updated: 12
-  scanned: 48
+  scanned: 51
   kept: 40
