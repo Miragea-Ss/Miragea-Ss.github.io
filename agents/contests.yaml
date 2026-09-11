@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-10T10:14:23.205Z
+# lastWatch: 2026-09-11T10:11:55.718Z
 contests:
   - at: 2026-08-31T18:43:02.432Z
     type: devpost-auto
@@ -57,6 +57,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-09-10T10:14:23.171Z
+    type: devpost-auto
+    title: TechCommons Hacks V2 - Hacks to Inspire
+    url: https://techcommons-hacks-v2.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 10 - 17, 2026
+      ja: Sep 10 - 17, 2026
+      zh: Sep 10 - 17, 2026
+    sourceNote: Devpost auto · prize~29900 · score 110 · TechCommons
+    auto: true
+    joinScore: 110
+    prizeHint: 29900
+    submitUrl: https://techcommons-hacks-v2.devpost.com/challenges/start_a_submission
   - at: 2026-09-01T10:44:46.620Z
     type: devpost-auto
     title: "GatewayHacks 2026 | Software & AI "
@@ -393,20 +407,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-09-10T10:14:23.171Z
+  - at: 2026-09-11T10:11:55.684Z
     type: devpost-auto
-    title: TechCommons Hacks V2 - Hacks to Inspire
-    url: https://techcommons-hacks-v2.devpost.com/
+    title: Shared OS Hackathon
+    url: https://shared-os-hackathon.devpost.com/
     ongoing: true
     period:
-      en: Sep 10 - 17, 2026
-      ja: Sep 10 - 17, 2026
-      zh: Sep 10 - 17, 2026
-    sourceNote: Devpost auto · prize~6300 · score 98 · TechCommons
+      en: Sep 11 - 13, 2026
+      ja: Sep 11 - 13, 2026
+      zh: Sep 11 - 13, 2026
+    sourceNote: Devpost auto · prize~5500 · score 98 · Systemind, Inc
     auto: true
     joinScore: 98
-    prizeHint: 6300
-    submitUrl: https://techcommons-hacks-v2.devpost.com/challenges/start_a_submission
+    prizeHint: 5500
+    submitUrl: https://shared-os-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-09-05T09:38:08.458Z
     type: devpost-auto
     title: Hyperbloom September - AI/ML
@@ -547,24 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 6600
     submitUrl: https://impactforge26.devpost.com/challenges/start_a_submission
-  - at: 2026-08-15T06:19:53.941Z
-    type: devpost-auto
-    title: CS Girlies Annual Hackathon - Technology For Wellness
-    url: https://cs-girlies-wellness-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 14 - 16, 2026
-      ja: Aug 14 - 16, 2026
-      zh: Aug 14 - 16, 2026
-    sourceNote: Devpost auto · prize~5000 · score 98 · Computer Science Girlies
-    auto: true
-    joinScore: 98
-    prizeHint: 5000
-    submitUrl: https://cs-girlies-wellness-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-10T10:14:23.205Z
+  lastWatch: 2026-09-11T10:11:55.718Z
   source: devpost-auto+manual
-  added: 37
+  added: 40
   updated: 12
-  scanned: 51
+  scanned: 53
   kept: 40

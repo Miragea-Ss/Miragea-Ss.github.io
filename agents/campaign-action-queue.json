@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-10T10:14:23.219Z",
+  "generatedAt": "2026-09-11T10:11:55.730Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -71,6 +71,22 @@
       "status": "recommended"
     },
     {
+      "title": "TechCommons Hacks V2 - Hacks to Inspire",
+      "url": "https://techcommons-hacks-v2.devpost.com/",
+      "submitUrl": "https://techcommons-hacks-v2.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 29900,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
       "title": "GatewayHacks 2026 | Software & AI ",
       "url": "https://gatewayhacks-2026.devpost.com/",
       "submitUrl": "https://gatewayhacks-2026.devpost.com/challenges/start_a_submission",
@@ -108,22 +124,6 @@
       "submitUrl": "https://ai-builders-hackathon-2026.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 33900,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "DevNetwork [API + Cloud + AI] Hackathon 2026",
-      "url": "https://api-cloud-ai-hackathon-2026.devpost.com/",
-      "submitUrl": "https://api-cloud-ai-hackathon-2026.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 39500,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
