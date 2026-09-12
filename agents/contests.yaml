@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-11T10:11:55.718Z
+# lastWatch: 2026-09-12T09:46:14.183Z
 contests:
   - at: 2026-08-31T18:43:02.432Z
     type: devpost-auto
@@ -562,7 +562,7 @@ contests:
     prizeHint: 6600
     submitUrl: https://impactforge26.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-11T10:11:55.718Z
+  lastWatch: 2026-09-12T09:46:14.183Z
   source: devpost-auto+manual
   added: 40
   updated: 12
