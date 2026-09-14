@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-14T11:13:09.481Z
+# lastWatch: 2026-09-14T17:37:54.027Z
 contests:
   - at: 2026-08-31T18:43:02.432Z
     type: devpost-auto
@@ -57,6 +57,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-09-14T17:37:53.989Z
+    type: devpost-auto
+    title: AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon
+    url: https://aws-cds-partner.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 14 - Oct 28, 2026
+      ja: Sep 14 - Oct 28, 2026
+      zh: Sep 14 - Oct 28, 2026
+    sourceNote: Devpost auto · prize~40000 · score 110 · AWS
+    auto: true
+    joinScore: 110
+    prizeHint: 40000
+    submitUrl: https://aws-cds-partner.devpost.com/challenges/start_a_submission
   - at: 2026-09-10T10:14:23.171Z
     type: devpost-auto
     title: TechCommons Hacks V2 - Hacks to Inspire
@@ -407,6 +421,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-09-14T17:37:53.989Z
+    type: devpost-auto
+    title: OneAquaHealth IEEE Global Hackathon
+    url: https://oneaquahealth-ieee-hackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 14 - Oct 01, 2026
+      ja: Sep 14 - Oct 01, 2026
+      zh: Sep 14 - Oct 01, 2026
+    sourceNote: Devpost auto · prize~3500 · score 98 · OneAquaHealth
+    auto: true
+    joinScore: 98
+    prizeHint: 3500
+    submitUrl: https://oneaquahealth-ieee-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-09-11T10:11:55.684Z
     type: devpost-auto
     title: Shared OS Hackathon
@@ -533,38 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 1500
     submitUrl: https://august-ai-challenge-31059.devpost.com/challenges/start_a_submission
-  - at: 2026-08-17T06:32:54.207Z
-    type: devpost-auto
-    title: OregonHacks
-    url: https://oregonhacks.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 15 - 17, 2026
-      ja: Aug 15 - 17, 2026
-      zh: Aug 15 - 17, 2026
-    sourceNote: Devpost auto · prize~63580 · score 98 · OregonHacks
-    auto: true
-    joinScore: 98
-    prizeHint: 63580
-    submitUrl: https://oregonhacks.devpost.com/challenges/start_a_submission
-  - at: 2026-08-15T06:19:53.941Z
-    type: devpost-auto
-    title: "Impact Forge: Summer 2026 Hackathon"
-    url: https://impactforge26.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 14 - 16, 2026
-      ja: Aug 14 - 16, 2026
-      zh: Aug 14 - 16, 2026
-    sourceNote: Devpost auto · prize~6600 · score 98 · ImpactForge
-    auto: true
-    joinScore: 98
-    prizeHint: 6600
-    submitUrl: https://impactforge26.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-14T11:13:09.481Z
+  lastWatch: 2026-09-14T17:37:54.027Z
   source: devpost-auto+manual
-  added: 32
+  added: 34
   updated: 10
-  scanned: 44
+  scanned: 46
   kept: 40
