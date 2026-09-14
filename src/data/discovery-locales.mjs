@@ -1,0 +1,105 @@
+// Build-time translations shared by the customer pages. English remains the source copy.
+export const phrases = [
+['Discovery stages','業務改善の各段階','业务改进各阶段'],['Continue to The Work','日々の仕事の紹介へ','查看日常工作'],['Everyday work and repeated operations','日々の仕事と繰り返す作業','日常工作与重复操作'],['Evidence of work','業務を把握するための資料','用于了解业务的资料'],['Example inquiry workflow','問い合わせ業務の流れの例','咨询处理流程示例'],['Selected build workflow','制作する仕組みの流れ','待构建的工作流程'],['Examples of managed operation events','継続サポートの対応例','持续支持事项示例'],['From inquiry to delivery','相談から納品まで','从咨询到交付'],['Eliora operating loop','Elioraの支援の流れ','Eliora 的服务流程'],
+['Miragea senses the signal.','Mirageaは、変化の兆しを捉える。','Miragea 捕捉变化的信号。'],
+['Eliora traces the system.','Elioraは、仕事の仕組みを描く。','Eliora 理清工作的脉络。'],
+['AI Workflow Discovery & Build','AIによる業務分析・仕組みづくり','AI 业务分析与工作流构建'],
+['Turn repeated admin, document work and customer inquiries into a clearer, more manageable process. Eliora helps you decide what to automate, then builds the agreed workflow around your business.','繰り返す事務作業、資料整理、問い合わせ対応を、見通しよく進められる業務へ。Elioraが自動化する範囲を一緒に見極め、あなたの仕事に合う仕組みをつくります。','让重复的行政事务、文档整理和客户咨询处理变得清晰、有序。Eliora 与您一起判断哪些环节适合自动化，再按双方确定的范围构建适合您业务的工作流。'],
+['Your team is already a system.','日々の仕事には、すでに流れがある。','日常工作中，早已有一套流程。'],
+['It just may not have been designed as one.','その流れを、整理する機会がなかっただけかもしれません。','只是这套流程，可能还没有经过系统梳理。'],
+['Copying between email and spreadsheets. Searching the same documents. Preparing quotes from scratch. Waiting for one person who knows every step. Bring us the task that keeps taking time from your real work.','メールから表への転記。同じ資料の検索。毎回一からつくる見積書。手順を知る一人への確認待ち。本来の仕事の時間を奪っている作業を、ご相談ください。','从邮件向表格反复转录、重复查找同一份资料、每次从头制作报价单，或等待唯一熟悉流程的同事。把这些占用您重要工作时间的任务交给我们一起梳理。'],
+['We find a machine workflow inside the work humans already do.','今ある仕事の中から、機械に任せられる流れを見つけます。','从现有业务中，找出可以交给机器执行的工作流程。'],
+['Less preparation. Your decisions.','準備の負担を減らし、判断はあなたのチームに。','减少准备工作，决策仍由您的团队掌握。'],
+['◇ YOUR TEAM DECIDES','◇ チームが判断','◇ 团队决策'],['● THE WORKFLOW PREPARES','● 仕組みが準備','● 工作流准备'],
+['Your decisions → Automated preparation → Your review → Approved result','方針の決定 → 自動で準備 → 担当者が確認 → 承認済みの成果','确定要求 → 自动准备 → 人工审核 → 已批准的结果'],
+['Your decisions','方針の決定','确定要求'],['Automated preparation','自動で準備','自动准备'],['Your review','担当者の確認','人工审核'],['Approved result','承認済みの成果','已批准的结果'],
+['You agree the task, its limits and who has the final say. Eliora documents those requirements with you.','対象の作業、任せる範囲、最終判断をする担当者を合意し、Elioraが要件として整理します。','双方确认任务、执行边界及最终决策人，Eliora 将这些要求整理成文。'],
+['The workflow searches, organizes and drafts within the scope you approved.','合意した範囲内で、検索・整理・下書き作成を進めます。','工作流在您批准的范围内完成搜索、整理和草拟。'],
+['Your designated reviewer can approve, correct or stop the prepared result before it proceeds.','指定した担当者が結果を確認し、次へ進む前に承認・修正・停止できます。','指定审核人可以在进入下一步之前批准、修改或停止已准备的结果。'],
+['The reviewed result is ready for its agreed next step.','確認を終えた成果を、合意した次の工程へ進めます。','审核通过的结果进入双方约定的下一环节。'],
+['Explore how your team stays in control at each step.','各項目を開くと、チームが確認・判断する役割をご覧いただけます。','展开各环节，了解您的团队如何保持审核与决策权。'],
+['Let the workflow handle agreed preparation steps while your team keeps control of important decisions. We define who reviews the result and where approval is required before anything proceeds.','合意した準備作業を仕組みに任せ、大切な判断はチームに残します。誰が結果を確認し、どの段階で承認するかを、あらかじめ明確にします。','将约定的准备工作交给工作流，重要决策仍由团队掌握。我们会事先明确由谁审核结果，以及哪些环节必须获得批准。'],
+['Show us the work.','まず、今の仕事を教えてください。','先告诉我们，您现在如何工作。'],
+['Not the AI you think you need.','使うAIが決まっていなくても大丈夫です。','不必先决定使用哪种 AI。'],['The work you actually do.','日々の実際の作業から始めましょう。','从您每天实际做的工作开始。'],
+['Repeated · Manual · Waiting · Knowledge · Private · Approval','繰り返し · 手作業 · 確認待ち · ノウハウ · 機密性 · 承認','重复 · 手工操作 · 等待 · 经验知识 · 保密 · 审批'],
+['You do not need an AI specification to start. Describe the task, where it gets stuck and what a useful result would look like. We help you clarify the rest.','技術仕様書は必要ありません。どんな作業で、どこに困り、どうなれば助かるかをお聞かせください。必要な条件はElioraが一緒に整理します。','无需准备 AI 技术规格书。请说明任务、遇到的阻碍，以及您期待的结果，其余条件由 Eliora 与您一起梳理。'],
+['Work becomes structure.','作業の流れを、見える形に。','让工作流程清晰可见。'],
+['Human time · Wait · Transfer · Error · Data · Authority','作業時間 · 待ち時間 · 引き継ぎ · 誤り · データ · 判断権限','人工耗时 · 等待 · 交接 · 错误 · 数据 · 决策权限'],
+['You receive a map of the current process: the steps, handoffs, delays and decisions. It gives your team a shared picture of what can change and what needs to stay under human control.','作業手順、引き継ぎ、待ち時間、判断の箇所をまとめた業務マップをお渡しします。改善できる部分と、人が管理すべき部分をチームで共有できます。','您将收到一份现状流程图，涵盖操作步骤、交接、等待和决策节点，帮助团队共同理解哪些环节可以改进，哪些仍需人工控制。'],
+['Not everything worth automating is worth automating first.','自動化できることから、優先すべき仕事を見極める。','从可自动化的任务中，找出最值得先做的一项。'],
+['Automation Signal','自動化の適合度','自动化适合度'],['Illustrative benchmark','仕組みを説明するための数値例','仅用于说明方法的示例数据'],['HIGH / READY','適合度：高い','适合度：高'],['14.2 h / month recoverable','削減可能時間の例：月14.2時間','可节省时间示例：每月 14.2 小时'],
+['A person can review before action','実行前に担当者が確認できる','执行前可由专人审核'],['Suitable digital files are available','利用できるデジタル資料がある','有适用的电子资料'],['Errors can be detected and contained','誤りを検知し、影響を抑えられる','能够发现错误并控制影响'],['BUILD CANDIDATE','制作候補','可考虑实施'],
+['How do we choose where to start?','何から始めるか、どう決めますか？','如何决定从哪里开始？'],
+['We compare the time a task takes, the effort to improve it, the quality of its inputs and the consequences of errors. You receive prioritized opportunities with reasons, assumptions and limits.','作業時間、改善に必要な手間、入力資料の質、誤りの影響を比較します。優先順位を付けた改善案を、根拠・前提・制約とともにご提案します。','我们比较任务耗时、改进成本、输入资料质量及出错后果，为您提供按优先级排列的改进建议，并说明依据、前提和限制。'],
+['The figures above illustrate the method. Your estimate is based on your own workflow; these figures are not customer results or a promise of savings.','上の数値は説明用の例です。お客様の見積もりは実際の業務をもとに算出します。顧客実績や削減効果を保証する数値ではありません。','以上数字仅用于说明方法。您的评估将基于实际业务，这些数字不是客户成果，也不代表节省效果的承诺。'],
+['We find where automation should stop, too.','自動化を止めるべき場所も、見極めます。','也明确哪些环节应当停止自动执行。'],['Your team keeps the final say.','最終判断は、お客様のチームに。','最终决定权始终在您的团队手中。'],['● PREPARED AUTOMATICALLY','● 自動で準備','● 自动准备'],['◇ REVIEWED BY YOUR TEAM','◇ チームが確認','◇ 团队审核'],
+['Draft / Search / Classify','下書き・検索・分類','草拟 / 搜索 / 分类'],['MACHINE','自動処理','自动处理'],['Recommend','提案','提出建议'],['CONTROLLED','条件を定めて実行','在约定条件下执行'],['Approve / Professional judgment','承認・専門的な判断','审批 / 专业判断'],['HUMAN','担当者が判断','人工决策'],
+['One workflow. Not twenty.','まず、一つの仕事を確かな仕組みに。','先把一项工作，做成可靠的流程。'],
+['Start with one agreed workflow, a clear scope and a result your team can evaluate.','対象を一つに絞り、範囲と評価できる成果を合意して始めます。','从一项双方确认的工作流开始，明确范围，并约定团队可以检验的成果。'],
+['Your proposal identifies what will be built, which tools it will connect to, what you need to provide and how completion will be judged. The delivery can include the working workflow, its configuration, operating instructions and test results, as agreed in your scope.','提案書には、つくるもの、接続するツール、ご用意いただく資料、完成の判定方法を明記します。合意した範囲に応じて、動作するワークフロー、設定、操作説明、検証結果を納品します。','方案中会明确构建内容、连接的工具、您需要提供的资料及验收方式。根据约定范围，交付物可包括可运行的工作流、配置、操作说明和测试结果。'],
+['If we cannot measure the improvement, we have not proved the workflow.','改善を測り、導入する価値を確かめます。','用可核查的结果，验证改进是否有价值。'],['31h','31時間','31小时'],['7h','7時間','7小时'],['24 human hours recovered / month','人の作業時間を月24時間削減した場合の例','人工耗时每月减少 24 小时的示例'],
+['What will you be able to check?','どのような結果を確認できますか？','您可以核查哪些结果？'],
+['We compare representative tasks before and after, including review time, corrections, output quality and operating costs. You receive the test conditions and results so you can judge whether the workflow meets the agreed criteria.','代表的な作業について、確認・修正の時間、成果の品質、運用費用を導入前後で比較します。検証条件と結果をお渡しし、合意した基準を満たすかご確認いただけます。','我们对代表性任务进行前后对比，涵盖审核与修改时间、输出质量及运行成本。您将收到测试条件和结果，以判断工作流是否达到约定标准。'],
+['This comparison is illustrative. Your project needs its own baseline and measured results.','この比較は説明用の例です。お客様の案件では、現状の値と実測結果を別途記録します。','此对比仅为示例。您的项目将单独记录现状基准与实测结果。'],
+['A workflow is not finished when it works once.','納品後も、使い続けられるように。','交付之后，也要能够持续使用。'],['Know how your workflow will be supported after delivery.','納品後のサポート範囲も、事前に明確にします。','交付后的支持范围，也会事先明确。'],
+['CHANGES REVIEWED','変更内容の確認','确认变更'],['BUSINESS RULES UPDATED','業務ルールの更新','更新业务规则'],['REFERENCE MATERIAL UPDATED','参照資料の更新','更新参考资料'],['PROBLEMS IDENTIFIED','問題の把握','识别问题'],['YOUR CONTACT NOTIFIED','担当者への連絡','通知指定联系人'],['EXISTING TASKS RECHECKED','既存業務の再検証','重新验证现有任务'],['WORKING VERSION RETAINED','動作確認済み版の保持','保留已验证可用的版本'],
+['Support that fits your operation','運用に合わせたサポート','适合您业务的支持'],
+['Where ongoing support is agreed, Eliora checks relevant changes, retests the workflow and helps investigate failures. Your support scope sets out responsibilities, maintenance coverage and fees before service begins.','継続サポートをご契約いただいた場合、Elioraが変更点の確認、再検証、問題調査を支援します。担当範囲、保守内容、料金は開始前に合意します。','如双方约定持续支持，Eliora 将协助检查相关变更、重新测试工作流并排查故障。职责、维护范围和费用均在服务开始前确定。'],
+['Where the machine runs matters.','業務と資料に合う、実行環境を。','选择适合业务与资料的运行环境。'],['ONLINE SERVICE','オンラインサービス','在线服务'],['managed infrastructure','運用基盤を利用','使用托管基础设施'],['DEDICATED ENVIRONMENT','専用環境','专用环境'],['controlled access','アクセスを管理','控制访问权限'],['YOUR HARDWARE','お持ちの機器','您现有的设备'],['use suitable equipment','適した機器を活用','利用适用设备'],['LOCAL PROCESSING','ローカル処理','本地处理'],['agreed data boundaries','資料の扱いを合意','明确数据处理边界'],
+['We help you choose a setup that fits your data, budget and team.','資料の扱い、ご予算、チームに合う環境選びを支援します。','我们协助您选择符合数据要求、预算和团队情况的环境。'],
+['For workflows suited to managed online services, we explain the proposed providers, data handling and recurring costs.','オンラインサービスが適する業務では、利用するサービス、資料の扱い、継続費用をご説明します。','对于适合在线服务的工作流，我们会说明拟使用的服务商、数据处理方式及持续费用。'],
+['When your work needs a dedicated environment, we assess isolation, access and maintenance requirements with you.','専用環境が必要な場合は、分離の方法、アクセス権、保守条件を一緒に確認します。','如需专用环境，我们与您一起评估隔离方式、访问权限及维护要求。'],
+['If you already have suitable hardware, we assess whether it can support the agreed workflow and explain its capacity and maintenance needs.','お持ちの機器を使う場合は、対象業務を実行できるか確認し、処理能力や保守上の条件をご説明します。','如使用您现有的设备，我们会评估其能否支持约定的工作流，并说明处理能力与维护要求。'],
+['When your materials need to remain on a local machine, we assess an appropriate local workflow and verify its data connections before delivery.','資料をローカルに保つ必要がある場合は、適した構成を検討し、納品前に外部とのデータ接続を確認します。','如资料需要保留在本地，我们会评估适当的本地方案，并在交付前核查其数据连接。'],
+['EVERY WORKFLOW LEAVES A TRACE.','仕事の仕組みを、引き継げる知識に。','让工作流程成为可传承的知识。'],['Keep the knowledge that makes your workflow useful.','使い続けるための知識も、お渡しします。','将持续使用所需的知识一并交付。'],
+['Your handover documents the agreed process, operating steps and review responsibilities, so your team can understand how to use it and what to do when something needs attention.','合意した業務の流れ、操作手順、確認担当の役割を文書にまとめます。使い方と、問題が起きたときの対応をチームで共有できます。','交付文档会记录约定流程、操作步骤及审核职责，帮助团队掌握使用方法，并了解遇到问题时应如何处理。'],
+['We agree how your materials may be accessed, stored and retained before receiving sensitive files.','機密資料をお預かりする前に、アクセス方法、保存先、保管条件を合意します。','接收敏感资料之前，我们会与您约定访问方式、存储位置及保留条件。'],
+['One observes what is emerging.','Mirageaは、新しい可能性を見つける。','Miragea 发现正在涌现的可能。'],['One turns observable work into systems that can run.','Elioraは、目の前の仕事を動く仕組みへ。','Eliora 将眼前的工作转化为可运行的流程。'],['Atelier — production capability','Atelier — 制作サービス','Atelier — 制作服务'],
+['Bring us the work.','その仕事を、ご相談ください。','把这项工作，与我们聊一聊。'],['A workflow.','日々の業務の流れ。','日常业务流程。'],['A repeated task.','何度も繰り返す作業。','不断重复的任务。'],['A process that depends too much on one person.','一人に頼りきっている手順。','过度依赖某个人的流程。'],['A pile of documents.','積み上がった資料。','堆积的文档。'],['A sequence nobody has had time to redesign.','見直す時間がなかった仕事の進め方。','一直没有时间重新梳理的工作方式。'],['From your first inquiry to a clear handover.','最初のご相談から、納品まで。','从初次咨询，到清晰交付。'],
+['01 / Consultation','01 / 相談','01 / 咨询'],['02 / Review','02 / 内容確認','02 / 需求确认'],['03 / Proposal & estimate','03 / 提案・見積','03 / 方案与报价'],['04 / Agreement','04 / 合意','04 / 达成协议'],['05 / Build & validate','05 / 制作・検証','05 / 制作与验证'],['06 / Delivery','06 / 納品','06 / 交付'],
+['Tell us about one repeated task and the result you want.','繰り返している作業と、実現したい結果をお聞かせください。','请告诉我们一项重复性任务，以及您希望实现的结果。'],
+['We clarify your process, tools, constraints and priorities with you.','作業の流れ、利用ツール、制約、優先事項を一緒に整理します。','我们与您共同梳理流程、工具、限制和优先事项。'],
+['You receive a proposed scope, deliverables, schedule and fee.','対象範囲、成果物、予定、料金をご提案します。','您将收到包含范围、交付物、时间安排和费用的方案。'],
+['You approve the scope and terms before paid work begins.','有料の作業を始める前に、範囲と条件をご確認・承認いただきます。','付费工作开始前，由您确认并批准范围与条款。'],
+['We develop the agreed workflow and test it against agreed examples and quality criteria.','合意した仕組みを制作し、確認用の事例と品質基準に沿って検証します。','我们构建约定的工作流，并按照双方确认的样例和质量标准进行验证。'],
+['You receive the agreed deliverables, test results and guidance for using them. Ongoing support is scoped separately.','合意した成果物、検証結果、利用ガイドをお渡しします。継続サポートは別途ご相談となります。','您将收到约定的成果、测试结果和使用指南。持续支持另行商定。'],
+['A scoped, paid service. We agree the work, fee and deliverables before starting.','個別に範囲を定める有料サービスです。作業内容・料金・成果物は開始前に合意します。','本服务按项目范围收费。工作内容、费用与交付物均在开始前确定。'],['Discuss your workflow →','仕事の改善を相談する →','咨询业务改进 →'],['What to bring to the conversation','相談でお聞かせいただきたいこと','咨询时可提供的信息'],
+['Make room for better work.','大切な仕事に、時間を取り戻す。','把时间留给重要的工作。'],['Tell us what keeps repeating.','繰り返している作業を教えてください。','请告诉我们哪些工作总在重复。'],['We will help you define a practical next step.','実行できる次の一歩を、一緒に見つけます。','我们与您一起确定切实可行的下一步。'],
+['Describe one task, the tools you use and the result you want. You do not need to choose an AI model or prepare a technical specification. Services are individually scoped and priced. An inquiry does not commit you to paid work.','一つの作業、使っているツール、実現したい結果をお聞かせください。AIの選定や技術仕様書の準備は不要です。サービス内容と料金は個別にご提案します。お問い合わせだけで有料の契約は始まりません。','请描述一项任务、使用的工具和期望结果。无需选择 AI 模型或准备技术规格书。服务范围与费用按项目商定，提交咨询并不代表同意付费委托。'],
+['What keeps repeating?','何が繰り返されていますか？','哪些工作在反复进行？'],['Describe the work','作業の内容','工作内容'],['Where does the work happen?','どのツールで作業していますか？','您使用哪些工具完成工作？'],['How often?','どのくらいの頻度ですか？','发生频率如何？'],['Frequency','頻度','频率'],['Select a frequency','頻度を選択','请选择频率'],['Daily','毎日','每天'],['Weekly','毎週','每周'],['Monthly','毎月','每月'],['Irregular but expensive','不定期だが負担が大きい','不定期，但成本较高'],
+['What makes it painful?','何が負担になっていますか？','主要困难是什么？'],['Time','作業時間','耗时'],['Waiting','待ち時間','等待'],['Errors','間違い・手戻り','错误与返工'],['Searching','資料の検索','查找资料'],['Copying','転記','重复转录'],['Knowledge trapped in one person','特定の人だけが手順を知っている','流程知识集中在一个人身上'],['Privacy','機密情報の扱い','敏感信息处理'],['Volume','処理する量','处理量'],
+['What happens if it goes wrong?','間違えた場合、どんな影響がありますか？','如果出错，会造成什么影响？'],['Impact','誤りの影響','错误的影响'],['Select an impact','影響を選択','请选择影响程度'],['Low impact','影響は小さい','影响较小'],['Needs correction','確認・修正が必要','需要检查与修正'],['Financial / operational impact','金銭・業務への影響がある','影响财务或业务运行'],['Professional / safety-critical','専門判断・安全に関わる','涉及专业判断或安全'],
+['Can a person review the final result?','担当者が最終結果を確認できますか？','能否由专人审核最终结果？'],['Human review','担当者による確認','人工审核'],['Select an answer','回答を選択','请选择'],['Yes','はい','可以'],['Sometimes','一部の場合は可能','部分情况可以'],['No','いいえ','不可以'],['Not sure','まだ分からない','尚不确定'],['Where can we reply?','返信先を教えてください','请留下回复联系方式'],['Name','お名前','姓名'],['Company','会社・組織名（任意）','公司或组织（选填）'],
+['Describe the process without passwords, confidential records or personal information about other people. We can agree a suitable way to exchange sensitive materials after scoping.','パスワード、機密資料、第三者の個人情報は記入せず、作業の流れをご説明ください。機密資料の受け渡し方法は、内容確認後にご相談します。','请描述工作流程，不要填写密码、机密记录或他人的个人信息。敏感资料的传递方式将在明确需求后另行商定。'],
+['I agree to send my inquiry through FormSubmit so Eliora can respond.','返信を受けるため、FormSubmitを通じてElioraへ相談内容を送信することに同意します。','我同意通过 FormSubmit 向 Eliora 发送咨询内容，以便获得回复。'],['Send your inquiry →','相談内容を送信する →','提交咨询 →'],['From a conversation to a clear handover.','ご相談から、納品までの流れ。','从咨询到交付的流程。'],
+['Understand where to start: a process map, prioritized improvements and an estimate with explicit assumptions.','業務マップ、優先順位を付けた改善案、前提を明記した効果の見込みで、着手する対象を見極めます。','通过流程图、有优先级的改进建议及注明前提的预估，明确从哪里开始。'],
+['Put one agreed improvement into practice: a working workflow, review steps, test results and operating guidance.','合意した改善を形にします。動作するワークフロー、確認手順、検証結果、操作ガイドをご提供します。','将一项约定的改进落实为可运行的工作流，并提供审核步骤、测试结果和操作指南。'],
+['Keep the workflow useful as your needs change, with maintenance responsibilities and fees agreed separately.','業務の変化に合わせて使い続けられるよう、保守の担当範囲と料金を別途合意して支援します。','根据业务变化提供持续支持，维护职责与费用另行商定。'],['← Return to Discovery','← 業務分析・仕組みづくりへ戻る','← 返回业务分析与工作流构建'],
+['What comes in, what happens, and what should come out?','何を受け取り、どんな作業をして、何を完成させますか？','输入是什么、需要进行哪些操作、最终应产出什么？'],['Leave this empty','この欄は空欄にしてください','请将此栏留空'],
+['Online inquiries are currently unavailable. You can save your brief for a later conversation. Saving does not send it to Eliora.','現在、オンライン送信はご利用いただけません。相談内容を保存できますが、保存だけではElioraへ送信されません。','在线咨询暂不可用。您可以保存需求说明，保存操作不会将其发送给 Eliora。'],['Save your brief ↓','相談内容を保存 ↓','保存需求说明 ↓'],['You can print this form to keep your brief. Online inquiries are currently unavailable.','このフォームを印刷して保管できます。オンライン送信は現在ご利用いただけません。','您可以打印此表单留存。在线提交暂不可用。'],
+['Email','メール','电子邮件'],['Spreadsheet','表計算','电子表格'],['Documents','文書','文档'],['Browser','ブラウザ','浏览器'],['Internal system','社内システム','内部系统'],['Images / Video','画像・動画','图片 / 视频'],['Other','その他','其他'],['Screen recording','画面録画','屏幕录制'],['Form','フォーム','表单'],['SOP','業務手順書','标准操作流程'],['Image','画像','图片'],['Ticket','対応チケット','工单'],
+['WORKFLOW SCAN','業務分析','业务分析'],['AUTOMATION SPRINT','仕組みの制作','工作流构建'],['ONGOING SUPPORT','継続サポート','持续支持'],['YOUR NEXT STEPS','相談後の流れ','咨询后的流程'],['ELIORA / WORKFLOW SCAN','ELIORA / 業務改善のご相談','ELIORA / 业务改进咨询'],
+['Skip to content','本文へ移動','跳至正文'],['Workflow Discovery','業務分析・仕組みづくり','业务分析与工作流构建'],['Discovery','業務改善','业务改进'],['Atelier','制作サービス','制作服务'],['START A SCAN ↗','仕事を相談する ↗','咨询业务改进 ↗'],['English canonical page','Discoveryホーム','Discovery 首页'],
+['SIGNAL','相談','咨询'],['MAP','業務整理','流程梳理'],['SCORE','優先度の評価','优先级评估'],['BUILD','制作','构建'],['PROVE','検証','验证'],['RUN','運用','运行维护'],['THE WORK','日々の仕事','日常工作'],
+['EMAIL','メール','邮件'],['SPREADSHEET','表計算','表格'],['SEARCH','検索','搜索'],['COPY','コピー','复制'],['PASTE','貼り付け','粘贴'],['CHECK','確認','检查'],['WAIT','待機','等待'],['APPROVE','承認','批准'],['REWRITE','書き直し','重写'],['TRANSFER','引き継ぎ','交接'],['SEARCH AGAIN','再検索','再次搜索'],['WAIT AGAIN','再び待機','再次等待'],['REPEAT','繰り返し','重复'],['DRAFT','下書き','草拟'],['EVALUATE','評価','评估'],['INQUIRY','問い合わせ','咨询'],['EXTRACT','情報の抽出','提取信息'],['SEND','送信','发送'],['ARCHIVE','保管','归档'],['INPUT','入力','输入'],['● EXECUTE','● 自動処理','● 自动处理'],['● EVALUATE','● 結果の評価','● 结果评估'],['◇ APPROVE','◇ 担当者の承認','◇ 人工批准'],['OUTPUT','成果','输出'],
+['01 / ARRIVAL','01 / はじめに','01 / 概览'],['02 / THE WORK','02 / 日々の仕事','02 / 日常工作'],['03 / CORE STATEMENT','03 / 私たちの役割','03 / 我们的工作'],['04 / LIVING WORKFLOW','04 / 仕事を進める仕組み','04 / 工作如何运行'],['05 / SIGNAL','05 / 相談','05 / 咨询'],['06 / MAP','06 / 業務整理','06 / 流程梳理'],['07 / SCORE','07 / 優先度の評価','07 / 优先级评估'],['08 / THE BOUNDARY','08 / 人が判断する境界','08 / 人工决策的边界'],['09 / BUILD','09 / 制作','09 / 构建'],['10 / PROVE','10 / 検証','10 / 验证'],['11 / RUN','11 / 運用','11 / 运行维护'],['12 / DEPLOYMENT','12 / 実行環境','12 / 运行环境'],['13 / MEMORY','13 / 知識の引き継ぎ','13 / 知识交付'],['14 / MIRAGEA / ELIORA RELATIONSHIP','14 / MIRAGEA と ELIORA','14 / MIRAGEA 与 ELIORA'],['15 / ENTRY','15 / ご依頼の流れ','15 / 委托流程'],
+['SIGNAL → MAP → SCORE → BUILD → PROVE → RUN','相談 → 業務整理 → 評価 → 制作 → 検証 → 運用','咨询 → 梳理 → 评估 → 构建 → 验证 → 运行维护'],
+['Eliora · AI Workflow Discovery & Build','Eliora · AIによる業務分析・仕組みづくり','Eliora · AI 业务分析与工作流构建'],
+];
+
+const normalize=s=>s.replace(/&amp;/g,'&').replace(/&#39;|&#x27;/g,"'").replace(/&quot;/g,'"').replace(/&gt;/g,'>').replace(/&lt;/g,'<').replace(/\s+/g,' ').trim();
+const escape=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const lookup=new Map(phrases.map(row=>[normalize(row[0]),row]));
+export function translate(text,lang){if(lang==='en')return text;const key=normalize(text);const match=lookup.get(key);if(match)return match[lang==='ja'?1:2];
+ if(key.endsWith(' / What this means for you'))return translate(key.replace(' / What this means for you',''),lang)+(lang==='ja'?' / お客様にとっての選択肢':' / 对您的意义');
+ return text;
+}
+export function localizedHtml(html,lang){if(lang==='en')return html;
+ // Keep stable field values while translating option labels for the reader.
+ html=html.replace(/<option(?![^>]*\bvalue=)([^>]*)>([^<]*)<\/option>/g,(_,attrs,label)=>`<option${attrs} value="${escape(normalize(label))}">${label}</option>`);
+ return html.replace(/(<script\b[\s\S]*?<\/script>|<style\b[\s\S]*?<\/style>|<!--[\s\S]*?-->|<[^>]+>)|([^<]+)/gi,(whole,tag,text)=>{
+  if(text){const translated=translate(text,lang);return translated===text?text:text.replace(/\S[\s\S]*\S|\S/,escape(translated));}
+  if(/^<(script|style)\b|^<!--/i.test(tag))return tag;
+  return tag.replace(/(placeholder|aria-label|alt)="([^"]*)"/g,(_,name,value)=>`${name}="${escape(translate(normalize(value),lang))}"`).replace(/href="([^"]*)"/g,(_,url)=>{let next=url.replace('/eliora/discovery/en/',`/eliora/discovery/${lang}/`).replace('/eliora/discovery/scan/',`/eliora/discovery/${lang}/scan/`).replace('/eliora/atelier/en/',`/eliora/atelier/${lang}/`);if(next==='/en/')next=`/${lang}/`;return `href="${next}"`;});
+ });
+}

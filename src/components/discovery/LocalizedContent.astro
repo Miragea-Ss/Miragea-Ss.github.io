@@ -1,0 +1,6 @@
+---
+import {localizedHtml} from '../../data/discovery-locales.mjs';
+const {lang='en'}=Astro.props;
+const html=localizedHtml(await Astro.slots.render('default'),lang);
+---
+<Fragment set:html={html}/>

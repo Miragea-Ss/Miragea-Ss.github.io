@@ -1,6 +1,9 @@
 const origin = 'https://miragea-ss.github.io';
 
 const routes = [
+  '/eliora/discovery/en/', '/eliora/discovery/scan/',
+  '/eliora/discovery/ja/', '/eliora/discovery/zh/',
+  '/eliora/discovery/ja/scan/', '/eliora/discovery/zh/scan/',
   '/en/', '/ja/', '/zh/',
   '/en/geekspell/', '/ja/geekspell/', '/zh/geekspell/',
   '/eliora/', '/eliora/index.html', '/eliora/infinite-canvas.html', '/eliora/media-vault/',

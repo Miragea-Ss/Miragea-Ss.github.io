@@ -1,0 +1,176 @@
+---
+import WorkflowGraph from './WorkflowGraph.astro';
+import SignalField from './SignalField.astro';
+import EngagementSteps from './EngagementSteps.astro';
+import { workflowStages, mapSteps, livingWorkflow } from '../../data/discovery';
+const metrics = livingWorkflow.metrics;
+---
+<main id="main" class="discovery-main">
+  <div class="discovery-instrument">
+  <section id="arrival" class="discovery-section discovery-arrival" aria-labelledby="arrival-title">
+    <p class="discovery-eyebrow"><span>01 / ARRIVAL</span><span aria-hidden="true">FIELD / 001</span></p>
+    <SignalField mode="arrival" />
+    <h1 id="arrival-title"><span>Miragea senses the signal.</span><span>Eliora traces the system.</span></h1>
+    <p class="discovery-subtitle">AI Workflow Discovery &amp; Build</p>
+    <p class="customer-intro">Turn repeated admin, document work and customer inquiries into a clearer, more manageable process. Eliora helps you decide what to automate, then builds the agreed workflow around your business.</p>
+    <a class="instrument-scroll" href="#the-work" aria-label="Continue to The Work"><span aria-hidden="true">↓</span> THE WORK</a>
+  </section>
+
+  <section id="the-work" class="discovery-section" aria-labelledby="work-title">
+    <p class="discovery-eyebrow"><span>02 / THE WORK</span><span aria-hidden="true">FIELD / 002</span></p>
+    <div class="work-introduction">
+    <h2 id="work-title">Your team is already a system.</h2>
+    <p class="discovery-lead">It just may not have been designed as one.</p>
+    <p>Copying between email and spreadsheets. Searching the same documents. Preparing quotes from scratch. Waiting for one person who knows every step. Bring us the task that keeps taking time from your real work.</p>
+    </div>
+    <SignalField mode="work" />
+  </section>
+
+  <section id="core-statement" class="discovery-section discovery-pause" aria-labelledby="core-title">
+    <p class="discovery-eyebrow"><span>03 / CORE STATEMENT</span><span aria-hidden="true">FIELD / 003</span></p>
+    <div class="core-axis" aria-hidden="true"><span></span></div>
+    <h2 id="core-title">We find a machine workflow inside the work humans already do.</h2>
+  </section>
+
+  <section id="living-workflow" class="discovery-section" aria-labelledby="living-title">
+    <p class="discovery-eyebrow"><span>04 / LIVING WORKFLOW</span><span aria-hidden="true">FIELD / 004</span></p>
+    <div class="workflow-introduction">
+    <h2 id="living-title">Less preparation. Your decisions.</h2>
+    <p class="workflow-legend"><span class="human-authority">◇ YOUR TEAM DECIDES</span><span class="machine-execution">● THE WORKFLOW PREPARES</span></p>
+    </div>
+    <WorkflowGraph />
+    <p class="customer-explanation">Let the workflow handle agreed preparation steps while your team keeps control of important decisions. We define who reviews the result and where approval is required before anything proceeds.</p>
+  </section>
+  </div>
+
+  <section id="signal" class="discovery-section" aria-labelledby="signal-title">
+    <p class="discovery-eyebrow">05 / SIGNAL</p>
+    <h2 id="signal-title">Show us the work.</h2>
+    <p class="discovery-lead">Not the AI you think you need.<br />The work you actually do.</p>
+    <ul class="discovery-inline-list" aria-label="Evidence of work">
+      {['Email', 'Spreadsheet', 'PDF', 'Screen recording', 'Form', 'SOP', 'Image', 'Ticket'].map((item) => <li>{item}</li>)}
+    </ul>
+    <p class="discovery-note">Repeated · Manual · Waiting · Knowledge · Private · Approval</p>
+    <p>You do not need an AI specification to start. Describe the task, where it gets stuck and what a useful result would look like. We help you clarify the rest.</p>
+  </section>
+
+  <section id="map" class="discovery-section" aria-labelledby="map-title">
+    <p class="discovery-eyebrow">06 / MAP</p>
+    <h2 id="map-title">Work becomes structure.</h2>
+    <ol class="discovery-path" aria-label="Example inquiry workflow">
+      {mapSteps.map((step) => <li class:list={{ 'human-authority': step === 'APPROVE' }}>{step === 'APPROVE' && <span aria-hidden="true">◇ </span>}{step}</li>)}
+    </ol>
+    <p class="discovery-note">Human time · Wait · Transfer · Error · Data · Authority</p>
+    <p>You receive a map of the current process: the steps, handoffs, delays and decisions. It gives your team a shared picture of what can change and what needs to stay under human control.</p>
+  </section>
+
+  <section id="score" class="discovery-section" aria-labelledby="score-title">
+    <p class="discovery-eyebrow">07 / SCORE</p>
+    <h2 id="score-title">Not everything worth automating is worth automating first.</h2>
+    <figure class="discovery-reading" aria-labelledby="score-caption">
+      <figcaption id="score-caption">Automation Signal <strong class="benchmark-label">Illustrative benchmark</strong></figcaption>
+      <p class="discovery-number machine-execution">82 <span>HIGH / READY</span></p>
+      <p>14.2 h / month recoverable</p>
+      <ul class="discovery-facts"><li>A person can review before action</li><li>Suitable digital files are available</li><li>Errors can be detected and contained</li></ul>
+      <p class="discovery-classification">BUILD CANDIDATE</p>
+      <details class="discovery-explanation"><summary>How do we choose where to start?</summary><p>We compare the time a task takes, the effort to improve it, the quality of its inputs and the consequences of errors. You receive prioritized opportunities with reasons, assumptions and limits.</p><p>The figures above illustrate the method. Your estimate is based on your own workflow; these figures are not customer results or a promise of savings.</p></details>
+    </figure>
+  </section>
+
+  <section id="boundary" class="discovery-section discovery-pause" aria-labelledby="boundary-title">
+    <p class="discovery-eyebrow">08 / THE BOUNDARY</p>
+    <h2 id="boundary-title">We find where automation should stop, too.</h2>
+    <p class="discovery-lead">Your team keeps the final say.</p>
+    <svg class="boundary-diagram" viewBox="0 0 1000 180" aria-hidden="true" focusable="false">
+      <g class="boundary-machine-paths" fill="none">
+        <path d="M20 30H260L430 90H610M20 90H610M20 150H260L430 90" />
+        <circle cx="20" cy="30" r="4"/><circle cx="20" cy="90" r="4"/><circle cx="20" cy="150" r="4"/>
+      </g>
+      <path class="boundary-stop" d="M620 65V115" />
+      <path class="boundary-decision-path" d="M710 90H970" />
+      <path class="boundary-decision" d="M710 78L722 90L710 102L698 90Z" />
+      <circle class="boundary-output" cx="970" cy="90" r="5" />
+    </svg>
+    <p class="boundary-trace"><span class="machine-execution">● PREPARED AUTOMATICALLY</span><span aria-hidden="true"> → </span><span class="human-authority">◇ REVIEWED BY YOUR TEAM</span></p>
+    <dl class="discovery-boundaries">
+      <div><dt>Draft / Search / Classify</dt><dd>MACHINE</dd></div>
+      <div><dt>Recommend</dt><dd>CONTROLLED</dd></div>
+      <div class="human-authority"><dt>Approve / Professional judgment</dt><dd>HUMAN</dd></div>
+    </dl>
+  </section>
+
+  <section id="build" class="discovery-section" aria-labelledby="build-title">
+    <p class="discovery-eyebrow">09 / BUILD</p>
+    <h2 id="build-title">One workflow. Not twenty.</h2>
+    <p class="discovery-lead">Start with one agreed workflow, a clear scope and a result your team can evaluate.</p>
+    <p>Your proposal identifies what will be built, which tools it will connect to, what you need to provide and how completion will be judged. The delivery can include the working workflow, its configuration, operating instructions and test results, as agreed in your scope.</p>
+    <ol class="discovery-path" aria-label="Selected build workflow">
+      <li>INPUT</li><li class="machine-execution">● EXECUTE</li><li class="machine-execution">● EVALUATE</li><li class="human-authority">◇ APPROVE</li><li>OUTPUT</li>
+    </ol>
+  </section>
+
+  <section id="prove" class="discovery-section" aria-labelledby="prove-title">
+    <p class="discovery-eyebrow">10 / PROVE</p>
+    <h2 id="prove-title">If we cannot measure the improvement, we have not proved the workflow.</h2>
+    <figure class="discovery-reading" aria-labelledby="prove-caption">
+      <figcaption id="prove-caption" class="benchmark-label">Illustrative benchmark</figcaption>
+      <p class="discovery-number proof-values"><span class="proof-before">{metrics.beforeHours}h</span> <span class="proof-arrow">→</span> <span class="proof-after">{metrics.afterHours}h</span></p>
+      <svg class="proof-measurement" viewBox="0 0 620 94" aria-hidden="true" focusable="false">
+        <path class="measurement-axis" d="M0 0V94M155 0V94M310 0V94M465 0V94M620 0V94" />
+        <path class="measurement-before" d="M0 24H620" />
+        <path class="measurement-after" d={`M0 70H${620 * metrics.afterHours / metrics.beforeHours}`} />
+        <circle cx={620 * metrics.afterHours / metrics.beforeHours} cy="70" r="4" />
+      </svg>
+      <p class="discovery-lead">{metrics.beforeHours - metrics.afterHours} human hours recovered / month</p>
+      <details class="discovery-explanation"><summary>What will you be able to check?</summary><p>We compare representative tasks before and after, including review time, corrections, output quality and operating costs. You receive the test conditions and results so you can judge whether the workflow meets the agreed criteria.</p><p>This comparison is illustrative. Your project needs its own baseline and measured results.</p></details>
+    </figure>
+  </section>
+
+  <section id="run" class="discovery-section" aria-labelledby="run-title">
+    <p class="discovery-eyebrow">11 / RUN</p>
+    <h2 id="run-title">A workflow is not finished when it works once.</h2>
+    <p class="discovery-lead">Know how your workflow will be supported after delivery.</p>
+    <ul class="discovery-inline-list" aria-label="Examples of managed operation events">
+      {['CHANGES REVIEWED', 'BUSINESS RULES UPDATED', 'REFERENCE MATERIAL UPDATED', 'PROBLEMS IDENTIFIED', 'YOUR CONTACT NOTIFIED', 'EXISTING TASKS RECHECKED', 'WORKING VERSION RETAINED'].map((event) => <li class:list={{ 'human-authority': event === 'YOUR CONTACT NOTIFIED' }}>{event}</li>)}
+    </ul>
+    <details class="discovery-explanation"><summary>Support that fits your operation</summary><p>Where ongoing support is agreed, Eliora checks relevant changes, retests the workflow and helps investigate failures. Your support scope sets out responsibilities, maintenance coverage and fees before service begins.</p></details>
+  </section>
+
+  <section id="deployment" class="discovery-section" aria-labelledby="deployment-title">
+    <p class="discovery-eyebrow">12 / DEPLOYMENT</p>
+    <h2 id="deployment-title">Where the machine runs matters.</h2>
+    <dl class="deployment-modes"><div><dt>ONLINE SERVICE</dt><dd>managed infrastructure</dd></div><div><dt>DEDICATED ENVIRONMENT</dt><dd>controlled access</dd></div><div><dt>YOUR HARDWARE</dt><dd>use suitable equipment</dd></div><div><dt>LOCAL PROCESSING</dt><dd>agreed data boundaries</dd></div></dl>
+    <p class="discovery-lead">We help you choose a setup that fits your data, budget and team.</p>
+    <div class="deployment-details">{[{name:'ONLINE SERVICE',text:'For workflows suited to managed online services, we explain the proposed providers, data handling and recurring costs.'},{name:'DEDICATED ENVIRONMENT',text:'When your work needs a dedicated environment, we assess isolation, access and maintenance requirements with you.'},{name:'YOUR HARDWARE',text:'If you already have suitable hardware, we assess whether it can support the agreed workflow and explain its capacity and maintenance needs.'},{name:'LOCAL PROCESSING',text:'When your materials need to remain on a local machine, we assess an appropriate local workflow and verify its data connections before delivery.'}].map(mode=><details class="discovery-explanation"><summary>{mode.name} / What this means for you</summary><p>{mode.text}</p></details>)}</div>
+  </section>
+
+  <section id="memory" class="discovery-section" aria-labelledby="memory-title">
+    <p class="discovery-eyebrow">13 / MEMORY</p>
+    <h2 id="memory-title">EVERY WORKFLOW LEAVES A TRACE.</h2>
+    <p class="discovery-lead">Keep the knowledge that makes your workflow useful.</p>
+    <p>Your handover documents the agreed process, operating steps and review responsibilities, so your team can understand how to use it and what to do when something needs attention.</p>
+    <p class="discovery-note">We agree how your materials may be accessed, stored and retained before receiving sensitive files.</p>
+    <svg class="memory-traces" viewBox="0 0 180 320" aria-hidden="true" focusable="false">
+      <g fill="none"><path d="M20 0V80L80 140V320"/><path d="M60 0V70L110 120V320"/><path d="M100 0V60L140 100V320"/></g>
+      <g><circle cx="80" cy="210" r="3"/><circle cx="110" cy="250" r="3"/><circle cx="140" cy="180" r="3"/></g>
+    </svg>
+  </section>
+
+  <section id="relationship" class="discovery-section" aria-labelledby="relationship-title">
+    <p class="discovery-eyebrow">14 / MIRAGEA / ELIORA RELATIONSHIP</p>
+    <h2 id="relationship-title"><span>Miragea senses the signal.</span><span>Eliora traces the system.</span></h2>
+    <p class="discovery-lead">One observes what is emerging.<br />One turns observable work into systems that can run.</p>
+    <p><a href="/en/">Miragea</a> · <a href="/eliora/">Eliora</a> · <a href="/eliora/atelier/en/">Atelier — production capability</a></p>
+  </section>
+
+  <section id="entry" class="discovery-section" aria-labelledby="entry-title">
+    <p class="discovery-eyebrow">15 / ENTRY</p>
+    <h2 id="entry-title">Bring us the work.</h2>
+    <p class="discovery-lead">A workflow.<br />A repeated task.<br />A process that depends too much on one person.<br />A pile of documents.<br />A sequence nobody has had time to redesign.</p>
+    <p>From your first inquiry to a clear handover.</p>
+    <EngagementSteps />
+    <p class="discovery-note">A scoped, paid service. We agree the work, fee and deliverables before starting.</p>
+    <div class="discovery-actions"><a href="/eliora/discovery/scan/" class="discovery-cta">Discuss your workflow →</a><a href="#signal">What to bring to the conversation</a></div>
+    <p class="discovery-loop" aria-label="Eliora operating loop">{workflowStages.join(' → ')}</p>
+  </section>
+</main>

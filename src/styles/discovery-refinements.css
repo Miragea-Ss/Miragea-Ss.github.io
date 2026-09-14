@@ -1,0 +1,22 @@
+/* Translated captions participate in layout, never cover the following paragraph. */
+@font-face{font-family:'Discovery Sans SC';src:url('/assets/fonts/discovery/noto-sans-sc.woff') format('woff');font-weight:400;font-display:swap}
+@font-face{font-family:'Discovery Serif SC';src:url('/assets/fonts/discovery/noto-serif-sc.woff') format('woff');font-weight:500;font-display:swap}
+.discovery-instrument .workflow-graph{display:flex;flex-direction:column}
+.discovery-instrument .workflow-graph .constellation-surface{order:0;flex-shrink:0}
+.discovery-instrument .workflow-graph .graph-interaction-note{order:1;margin:32px 0 0}
+.discovery-instrument .workflow-graph figcaption{position:static;order:2;max-width:100%;padding:0;margin:16px 0 0;line-height:1.9}
+.discovery-instrument #living-workflow>.customer-explanation{clear:both;margin:36px 0 0;max-width:65ch}
+.discovery-brand{gap:20px}
+.discovery-brand .brand-moon-orb{width:64px;height:64px}
+.discovery-brand .brand-moon-logo{animation:none;width:100%;height:100%}
+.discovery .language-switch{display:flex;gap:7px;flex-wrap:nowrap;padding:12px 14px;border:1px solid rgba(244,238,228,.12);border-radius:0 0 0 18px;background:rgba(0,0,0,.32);backdrop-filter:blur(18px);margin-left:12px}
+.discovery .language-switch a{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-width:46px;min-height:44px;padding:0 10px;border:1px solid rgba(244,238,228,.14);border-radius:8px;background:rgba(255,255,255,.045);color:#f4eee4;font:700 14px/1 system-ui,sans-serif;text-decoration:none}
+.discovery .language-switch a[aria-current=page]{background:#f4eee4;color:#050505;border-color:#f4eee4}
+.discovery .language-switch a:hover{border-color:#c9a962}
+html[lang=zh-CN],html[lang=zh-CN] .discovery,html[lang=zh-CN] .discovery-instrument{--font-explanation:'Discovery Sans SC','Noto Sans SC','Microsoft YaHei',sans-serif;--font-reading:'Discovery Serif SC','Noto Serif SC',serif;--font-idea:var(--font-reading);--font-instrument:var(--font-explanation)}
+html[lang=zh-CN] .discovery{font-family:var(--font-explanation);font-weight:400;line-height:1.9;-webkit-font-smoothing:antialiased}
+html[lang=zh-CN] .discovery :is(h1,h2),html[lang=zh-CN] .discovery-instrument #arrival h1 span{font-family:var(--font-reading);font-weight:500;letter-spacing:.025em;line-height:1.6;font-style:normal}
+html[lang=zh-CN] .discovery :is(p,li,dt,dd,label,input,textarea,select,summary){font-family:var(--font-explanation)}
+html[lang=zh-CN] .discovery-instrument .graph-interaction-note,html[lang=zh-CN] .discovery-instrument .workflow-graph figcaption{font-family:var(--font-explanation)}
+@media(min-width:1450px){.discovery .language-switch{position:fixed;top:0;right:0;z-index:40;margin:0;padding:18px 22px}.discovery-header{padding-right:180px;box-sizing:border-box}}
+@media(max-width:600px){.discovery-brand .brand-moon-orb{width:52px;height:52px}.discovery .language-switch{margin:0;padding:8px 10px;border-radius:12px}.discovery-instrument .workflow-graph figcaption{font-size:13px}.discovery-instrument #living-workflow>.customer-explanation{margin-top:28px}.discovery .language-switch a{min-width:44px}}

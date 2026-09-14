@@ -1,0 +1,38 @@
+---
+import DiscoveryLayout from '../../../../site-layouts/DiscoveryLayout.astro';
+import EngagementSteps from '../../../../components/discovery/EngagementSteps.astro';
+import '../../../../styles/scan.css';
+import { isContactFormReady, contactFormPostUrl, contactFormNext, CONTACT_SITE } from '../../../../data/contact-config';
+import {contactCopy} from '../../../../data/contact-copy';
+const {lang='en'}=Astro.props as {lang?:'en'|'ja'|'zh'};
+const path=lang==='en'?'/eliora/discovery/scan/':`/eliora/discovery/${lang}/scan/`;
+const ready=isContactFormReady();
+---
+<DiscoveryLayout lang={lang} title="Workflow Scan — Show us the work | Eliora" description="Describe one repeated task. Begin a scoped Workflow Scan with Eliora." canonicalPath={path}>
+<main id="main" class="scan-page">
+<section class="scan-intro"><p class="scan-label">ELIORA / WORKFLOW SCAN</p><h1>Make room for better work.</h1><p>Tell us what keeps repeating.<br/>We will help you define a practical next step.</p><p class="scan-note">Describe one task, the tools you use and the result you want. You do not need to choose an AI model or prepare a technical specification. Services are individually scoped and priced. An inquiry does not commit you to paid work.</p></section>
+<form id="scan-form" class="scan-form" action={ready?contactFormPostUrl():undefined} method="POST" data-ready={String(ready)}>
+<input type="hidden" name="_subject" value={{en:'[Eliora] Workflow Scan inquiry',ja:'[Eliora] 業務改善のご相談',zh:'[Eliora] 业务改进咨询'}[lang]}/><input type="hidden" name="_template" value="table"/><input type="hidden" name="locale" value={lang}/>
+<input type="hidden" name="_next" value={contactFormNext(lang)}/>
+<input type="hidden" name="_url" value={`${CONTACT_SITE}${path}`}/>
+<input type="hidden" name="_autoresponse" value={contactCopy[lang].autoresponse}/>
+<div class="scan-honey" aria-hidden="true"><label>Leave this empty<input name="_honey" tabindex="-1" autocomplete="off"/></label></div>
+<fieldset><legend><span>01</span> What keeps repeating?</legend><label class="scan-field" for="work">Describe the work<textarea id="work" name="work" rows="5" minlength="20" maxlength="6000" required placeholder="What comes in, what happens, and what should come out?"></textarea></label></fieldset>
+<fieldset><legend><span>02</span> Where does the work happen?</legend><div class="scan-options">{['Email','Spreadsheet','Documents','Browser','Internal system','Images / Video','Other'].map(v=><label><input type="checkbox" name="tools" value={v}/>{v}</label>)}</div></fieldset>
+<fieldset><legend><span>03</span> How often?</legend><label class="scan-field" for="frequency">Frequency<select id="frequency" name="frequency" required><option value="">Select a frequency</option>{['Daily','Weekly','Monthly','Irregular but expensive'].map(v=><option>{v}</option>)}</select></label></fieldset>
+<fieldset><legend><span>04</span> What makes it painful?</legend><div class="scan-options">{['Time','Waiting','Errors','Searching','Copying','Knowledge trapped in one person','Privacy','Volume','Other'].map(v=><label><input type="checkbox" name="pain" value={v}/>{v}</label>)}</div></fieldset>
+<fieldset><legend><span>05</span> What happens if it goes wrong?</legend><label class="scan-field" for="impact">Impact<select id="impact" name="impact" required><option value="">Select an impact</option>{['Low impact','Needs correction','Financial / operational impact','Professional / safety-critical'].map(v=><option>{v}</option>)}</select></label></fieldset>
+<fieldset><legend><span>06</span> Can a person review the final result?</legend><label class="scan-field" for="review">Human review<select id="review" name="review" required><option value="">Select an answer</option>{['Yes','Sometimes','No','Not sure'].map(v=><option>{v}</option>)}</select></label></fieldset>
+<fieldset><legend><span>07</span> Where can we reply?</legend><div class="scan-contact"><label class="scan-field" for="scan-name">Name<input id="scan-name" name="name" autocomplete="name" required maxlength="120"/></label><label class="scan-field" for="scan-company">Company<input id="scan-company" name="company" autocomplete="organization" maxlength="160"/></label><label class="scan-field" for="scan-email">Email<input id="scan-email" name="email" type="email" autocomplete="email" required maxlength="254"/></label></div></fieldset>
+<p class="scan-note">Describe the process without passwords, confidential records or personal information about other people. We can agree a suitable way to exchange sensitive materials after scoping.</p>
+{ready?<><label class="scan-consent"><input type="checkbox" name="consent" required/>I agree to send my inquiry through FormSubmit so Eliora can respond.</label><button class="scan-primary" type="submit">Send your inquiry →</button></>:<><p class="scan-note">Online inquiries are currently unavailable. You can save your brief for a later conversation. Saving does not send it to Eliora.</p><button class="scan-primary" type="button" id="save-brief">Save your brief ↓</button><noscript><p>You can print this form to keep your brief. Online inquiries are currently unavailable.</p></noscript></>}
+<p id="scan-status" role="status" aria-live="polite"></p>
+</form>
+<section class="scan-deliverables"><p class="scan-label">YOUR NEXT STEPS</p><h2>From a conversation to a clear handover.</h2><EngagementSteps /><dl><div><dt>WORKFLOW SCAN</dt><dd>Understand where to start: a process map, prioritized improvements and an estimate with explicit assumptions.</dd></div><div><dt>AUTOMATION SPRINT</dt><dd>Put one agreed improvement into practice: a working workflow, review steps, test results and operating guidance.</dd></div><div><dt>ONGOING SUPPORT</dt><dd>Keep the workflow useful as your needs change, with maintenance responsibilities and fees agreed separately.</dd></div></dl><a href="/eliora/discovery/en/">← Return to Discovery</a></section>
+</main>
+<script>
+const form=document.querySelector<HTMLFormElement>('#scan-form')!;
+form.addEventListener('submit',event=>{if(form.dataset.ready!=='true')event.preventDefault();});
+document.querySelector('#save-brief')?.addEventListener('click',()=>{if(!form.reportValidity())return;const data=new FormData(form);const brief={schema:'eliora-workflow-inquiry-v1',locale:data.get('locale'),created:new Date().toISOString(),status:'not_sent',work:data.get('work'),tools:data.getAll('tools'),frequency:data.get('frequency'),pain:data.getAll('pain'),impact:data.get('impact'),review:data.get('review'),name:data.get('name'),company:data.get('company'),email:data.get('email')};const url=URL.createObjectURL(new Blob([JSON.stringify(brief,null,2)],{type:'application/json'}));const link=document.createElement('a');link.href=url;link.download='eliora-workflow-brief.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);const messages:Record<string,string>={en:'Your brief was saved. It has not been sent to Eliora.',ja:'相談内容を保存しました。Elioraには送信されていません。','zh-CN':'需求说明已保存，尚未发送给 Eliora。'};document.querySelector('#scan-status')!.textContent=messages[document.documentElement.lang]||messages.en;});
+</script>
+</DiscoveryLayout>

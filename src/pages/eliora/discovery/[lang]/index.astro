@@ -1,0 +1,10 @@
+---
+import DiscoveryLayout from '../../../../site-layouts/DiscoveryLayout.astro';
+import DiscoveryPage from '../../../../components/discovery/DiscoveryPage.astro';
+import { discoveryLanguages } from '../../../../data/discovery';
+export function getStaticPaths() {
+  return discoveryLanguages.map((lang) => ({ params: { lang } }));
+}
+const lang=Astro.params.lang as 'en'|'ja'|'zh';
+---
+<DiscoveryLayout lang={lang} canonicalPath={`/eliora/discovery/${lang}/`}><DiscoveryPage /></DiscoveryLayout>

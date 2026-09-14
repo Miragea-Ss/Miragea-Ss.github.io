@@ -1,0 +1,29 @@
+.discovery-exercise{grid-column:1/-1;border-top:1px solid var(--glass-border);margin-top:32px;padding-top:24px}
+.language-switch{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.language-switch a{color:var(--moonlight);text-decoration:none;padding:8px 0;white-space:nowrap}.language-switch a[aria-current]{color:var(--champagne);border-bottom:1px solid currentColor}
+html:is([lang=ja],[lang=zh-CN]) .discovery{font-family:var(--font-explanation),'Yu Gothic','Microsoft YaHei',sans-serif;line-height:1.9}
+html:is([lang=ja],[lang=zh-CN]) :is(h1,h2){line-height:1.55;word-break:normal;overflow-wrap:break-word}
+html:is([lang=ja],[lang=zh-CN]) .discovery-arrival h1{max-width:100%}
+html:is([lang=ja],[lang=zh-CN]) .discovery-arrival h1 span{font-family:'Yu Mincho','Noto Serif CJK SC','SimSun',serif;font-style:normal}
+html:is([lang=ja],[lang=zh-CN]) .discovery-instrument #arrival h1 span:last-child{font-size:clamp(30px,4.4vw,60px);max-width:15em;line-height:1.5;letter-spacing:0}
+html:is([lang=ja],[lang=zh-CN]) .discovery-instrument #arrival h1 span:first-child{max-width:100%;line-height:1.6;letter-spacing:0}
+html:is([lang=ja],[lang=zh-CN]) .discovery-section h2{max-width:100%}
+html:is([lang=ja],[lang=zh-CN]) .workflow-node{max-width:min(260px,70vw)}
+html:is([lang=ja],[lang=zh-CN]) .scan-intro h1{font-size:clamp(32px,5vw,64px);line-height:1.5;text-wrap:balance}
+@media(max-width:600px){.language-switch{margin-left:0;gap:18px}.discovery-header .discovery-language{margin-left:0}.discovery-header nav{order:4}html:is([lang=ja],[lang=zh-CN]) .discovery-instrument #arrival h1 span:last-child{font-size:30px;margin-left:0;max-width:100%}html:is([lang=ja],[lang=zh-CN]) .discovery-instrument #arrival h1 span:first-child{font-size:24px}}
+.customer-intro{position:relative;z-index:1;max-width:52ch;font:16px/1.8 var(--font-explanation);color:var(--moonlight);margin:24px 0 0 13%}.customer-explanation{max-width:65ch;font:17px/1.8 var(--font-explanation);color:var(--moonlight)}#entry .engagement-steps{grid-column:1/-1}@media(max-width:700px){.customer-intro{margin-left:0;font-size:15px}}
+.discovery-explanation{border-top:1px solid var(--glass-border);padding:18px 0;margin-top:22px;font:15px/1.8 var(--font-explanation);color:var(--moonlight)}.discovery-explanation summary{cursor:pointer;min-height:32px}.discovery-explanation p{max-width:65ch}.deployment-details{grid-column:1/-1;margin-top:24px}.discovery-stage-nav{box-sizing:border-box;width:100%}
+.discovery-exercise button{font:inherit;font-size:14px;color:var(--moonlight);background:transparent;border:1px solid var(--glass-border);padding:12px 18px;min-height:44px;cursor:pointer;margin:0 12px 12px 0}
+.discovery-exercise button:hover,.discovery-exercise button[aria-pressed=true]{border-color:var(--champagne);color:var(--champagne)}
+.discovery-exercise button:disabled{opacity:.4;cursor:default}
+.discovery-exercise p{max-width:65ch;line-height:1.7}
+.workflow-graph[data-example-state=waiting] [data-node-id=gate] summary{color:var(--champagne);filter:drop-shadow(0 0 8px #c9a96280)}
+.workflow-graph[data-example-state=approved] [data-node-id=output] summary{color:var(--champagne)}
+.workflow-graph[data-example-state=approved] .graph-link[data-from=gate]{stroke:var(--champagne);stroke-dasharray:none;opacity:1}
+.discovery-exercise [role=status]{color:var(--champagne);min-height:3.4em}
+.discovery-stage-nav{display:flex;flex-wrap:wrap;gap:12px 24px;max-width:1120px;margin:0 auto;padding:20px 24px;border-bottom:1px solid var(--glass-border);font:12px var(--font-instrument,monospace)}
+.discovery-stage-nav a{padding:8px 0;text-decoration:none;color:var(--moonlight)}
+.discovery :focus-visible{outline:2px solid var(--champagne);outline-offset:5px}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}.discovery-brand img{animation:eliora-breathe 7s ease-in-out infinite}.discovery-exercise button{transition:border-color .2s,color .2s}@keyframes eliora-breathe{50%{filter:drop-shadow(0 0 10px #c8d0e050)}}}
+.local-review{border-top:1px solid var(--glass-border);padding-top:24px;margin-top:40px;color:var(--moonlight)}.local-review a{color:inherit}.local-review button{display:block}
+@media(max-width:600px){.discovery-header{flex-wrap:wrap;gap:14px}.discovery-header nav{flex-wrap:nowrap;gap:6px;justify-content:space-between;font-size:14px}.discovery-header nav a{padding:8px 4px}.discovery-stage-nav{gap:8px 18px}.discovery-exercise button{width:100%;margin-right:0}.workflow-node p{overflow-wrap:anywhere}}
+@media print{.discovery-header,.discovery-footer,.discovery-stage-nav{display:none}.discovery{background:white;color:#111}.discovery-section{break-inside:avoid}}

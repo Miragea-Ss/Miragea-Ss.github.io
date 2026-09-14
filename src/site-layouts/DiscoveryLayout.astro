@@ -1,0 +1,67 @@
+---
+import '../styles/discovery.css';
+import '../styles/discovery-instrument.css';
+import '../styles/discovery-foundation.css';
+import '../styles/discovery-integration.css';
+import '../styles/discovery-experience.css';
+import '../styles/discovery-refinements.css';
+import { discoveryMeta } from '../data/discovery';
+import LocalizedContent from '../components/discovery/LocalizedContent.astro';
+const {lang='en',canonicalPath='/eliora/discovery/en/'}=Astro.props as {lang?:'en'|'ja'|'zh';canonicalPath?:string};
+const scan=canonicalPath.includes('/scan/');
+const meta={en:{title:discoveryMeta.title,description:discoveryMeta.description},ja:{title:'Eliora — AIによる業務分析・仕組みづくり',description:'見積作成・資料整理・問い合わせ対応など、繰り返す仕事を整理。業務分析から提案・制作・検証・納品まで、Elioraが支援します。'},zh:{title:'Eliora — AI 业务分析与工作流构建',description:'梳理报价制作、文档整理与客户咨询等重复工作。Eliora 提供从业务分析、方案报价到构建、验证和交付的服务。'}}[lang];
+const title=lang==='en'?(Astro.props.title||meta.title):scan?(lang==='ja'?'業務改善のご相談 | Eliora':'业务改进咨询 | Eliora'):meta.title;
+const description=lang==='en'?(Astro.props.description||meta.description):meta.description;
+const home=(l:string)=>`/eliora/discovery/${l}/`;
+const scanPath=(l:string)=>l==='en'?'/eliora/discovery/scan/':`${home(l)}scan/`;
+const canonical = new URL(canonicalPath, Astro.site);
+const socialImage = new URL('/assets/brand/eliora-logo-256.webp', Astro.site);
+---
+<!doctype html>
+<html lang={lang==='zh'?'zh-CN':lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/brand/brand-glow.css"/>
+    <!-- Same Atelier families, self-hosted so the visual identity also works offline. -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {['en','ja','zh'].map(l=><link rel="alternate" hreflang={l==='zh'?'zh-Hans':l} href={new URL(scan?scanPath(l):home(l),Astro.site)}/>)}
+    <link rel="alternate" hreflang="x-default" href={new URL(scan?scanPath('en'):home('en'),Astro.site)}/>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Eliora" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Eliora logo" />
+    <meta property="og:locale" content={{en:'en_US',ja:'ja_JP',zh:'zh_CN'}[lang]} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+  </head>
+  <body class="discovery">
+    <a class="discovery-skip" href="#main">{{en:'Skip to content',ja:'本文へ移動',zh:'跳至正文'}[lang]}</a>
+    <header class="discovery-header">
+      <a class="discovery-brand" href="/eliora/" aria-label={{en:'Eliora home',ja:'Elioraホーム',zh:'Eliora 首页'}[lang]}>
+        <span class="brand-moon-orb brand-moon-orb--eliora brand-moon-orb--strong"><span class="moon-glow" aria-hidden="true"></span><img class="brand-moon-logo" src="/assets/brand/eliora-logo-256.webp" alt="" width="64" height="64" /></span>
+        <span>Eliora <small>{{en:'Workflow Discovery',ja:'業務分析・仕組みづくり',zh:'业务分析与工作流构建'}[lang]}</small></span>
+      </a>
+      <nav aria-label={{en:'Eliora navigation',ja:'Elioraのページ案内',zh:'Eliora 页面导航'}[lang]}>
+        <a href="/eliora/">Eliora</a>
+        <a href={home(lang)} aria-current={scan?undefined:'page'}>{{en:'Discovery',ja:'業務改善',zh:'业务改进'}[lang]}</a>
+        <a href={`/eliora/atelier/${lang}/`}>Atelier</a>
+        <a href={`/${lang}/`}>Miragea</a>
+      </nav>
+      <div class="discovery-language language-switch" role="navigation" aria-label={{en:'Choose language',ja:'言語を選択',zh:'选择语言'}[lang]}>{[['en','EN','English'],['ja','JA','日本語'],['zh','ZH','简体中文']].map(([l,label,name])=><a href={scan?scanPath(l):home(l)} lang={l==='zh'?'zh-CN':l} hreflang={l==='zh'?'zh-Hans':l} aria-label={name} aria-current={l===lang?'page':undefined}>{label}</a>)}</div>
+    </header>
+    <LocalizedContent lang={lang}><nav class="discovery-stage-nav" aria-label="Discovery stages">{['signal','map','score','build','prove','run'].map(stage=><a href={`/eliora/discovery/en/#${stage}`}>{stage.toUpperCase()}</a>)}<a href="/eliora/discovery/scan/">START A SCAN ↗</a></nav>
+    <slot /></LocalizedContent>
+    <footer class="discovery-footer">
+      <span>{meta.title}</span>
+      <a href={home(lang)}>{{en:'Discovery home',ja:'Discoveryホーム',zh:'Discovery 首页'}[lang]}</a>
+    </footer>
+  </body>
+</html>

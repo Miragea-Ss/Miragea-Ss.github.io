@@ -1,0 +1,6 @@
+---
+import ScanPage from '../../scan/index.astro';
+export function getStaticPaths(){return ['ja','zh'].map(lang=>({params:{lang}}));}
+const lang=Astro.params.lang as 'ja'|'zh';
+---
+<ScanPage lang={lang}/>

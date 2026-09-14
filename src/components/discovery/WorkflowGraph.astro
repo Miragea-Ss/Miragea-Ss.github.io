@@ -1,0 +1,45 @@
+---
+import { livingWorkflow } from '../../data/discovery';
+const positions = {
+  authority: { x: 62, y: 12 },
+  execution: { x: 38, y: 42 },
+  gate: { x: 70, y: 70 },
+  output: { x: 54, y: 93 },
+};
+const point = (id: string) => positions[id as keyof typeof positions];
+const branches = [
+  { label: 'SEARCH', x: 15, y: 32 },
+  { label: 'DRAFT', x: 19, y: 68 },
+  { label: 'EVALUATE', x: 52, y: 62 },
+];
+---
+<figure class="workflow-graph" aria-labelledby="workflow-caption">
+  <figcaption id="workflow-caption">Your decisions → Automated preparation → Your review → Approved result</figcaption>
+  <div class="constellation-surface">
+    <svg class="constellation-lines" viewBox="0 0 1000 640" preserveAspectRatio="none" aria-hidden="true">
+      <path class="graph-orbit" d="M 150 205 L 380 269 L 190 435 L 520 397 L 700 448 M 380 269 L 520 397 M 620 77 L 830 230 L 700 448" />
+      <path class="graph-coordinate" d="M 0 269 H 1000 M 380 0 V 640" />
+      {livingWorkflow.edges.map(edge => <path class:list={['graph-link', `graph-link--${edge.state}`]} data-from={edge.from} data-to={edge.to} d={`M ${point(edge.from).x * 10} ${point(edge.from).y * 6.4} L ${point(edge.to).x * 10} ${point(edge.to).y * 6.4}`} />)}
+      <circle class="graph-observed" cx="830" cy="230" r="2" />
+      <circle class="graph-observed" cx="860" cy="530" r="2" />
+      <path class="graph-orbit" d="M 700 448 L 860 530" />
+    </svg>
+    {branches.map(branch => <span class="graph-branch machine-execution" style={`--x:${branch.x}%;--y:${branch.y}%`}><i aria-hidden="true"></i><span>{branch.label}</span></span>)}
+  <ol class="workflow-nodes">
+    {livingWorkflow.nodes.map((node) => {
+      const edge = livingWorkflow.edges.find((candidate) => candidate.from === node.id);
+      const human = node.type === 'human' || node.type === 'approval';
+      return (
+        <li class="workflow-step" data-node-id={node.id} data-node-type={node.type} data-state={node.state} style={`--x:${point(node.id).x}%;--y:${point(node.id).y}%`}>
+          <details class:list={['workflow-node', { 'human-authority': human, 'machine-execution': node.type === 'machine' }]}>
+            <summary><span class="graph-node-symbol" aria-hidden="true">{human ? '◇' : node.type === 'machine' ? '●' : '○'}</span><span class="graph-node-name">{node.label}</span></summary>
+            <p>{node.description}</p>
+          </details>
+          {edge && <span class="workflow-edge" data-from={edge.from} data-to={edge.to} data-state={edge.state} aria-hidden="true">↓</span>}
+        </li>
+      );
+    })}
+  </ol>
+  </div>
+  <p class="graph-interaction-note">Explore how your team stays in control at each step.</p>
+</figure>

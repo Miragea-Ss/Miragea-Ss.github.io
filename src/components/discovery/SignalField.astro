@@ -1,0 +1,16 @@
+---
+import { workSignals } from '../../data/discovery';
+interface Props { mode: 'arrival' | 'work' }
+const { mode } = Astro.props;
+const positions = [[12,18],[47,9],[73,22],[28,35],[56,40],[85,48],[15,62],[62,66],[38,79],[79,87],[43,55],[87,12],[10,90]];
+const connections = [[0,3],[1,4],[2,4],[3,10],[4,10],[4,7],[5,7],[6,10],[7,8],[8,9],[10,8],[11,2],[12,6]];
+---
+<div class:list={['signal-field', `signal-field--${mode}`]} aria-hidden={mode === 'arrival' ? 'true' : undefined} aria-label={mode === 'work' ? 'Everyday work and repeated operations' : undefined}>
+  <svg viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true" class="signal-field-lines">
+    {connections.map(([a,b]) => <path d={`M ${positions[a][0]*10} ${positions[a][1]*6} L ${positions[b][0]*10} ${positions[b][1]*6}`} />)}
+    <path class="signal-route" d="M 120 108 L 280 210 L 430 330 L 380 474 L 790 522" />
+    {positions.map(([x,y]) => <circle cx={x*10} cy={y*6} r="2" />)}
+    <circle class="signal-origin" cx="120" cy="108" r="4" />
+  </svg>
+  {mode === 'work' && workSignals.map((signal,i) => <span class="signal-word" style={`--x:${positions[i][0]}%;--y:${positions[i][1]}%`}>{signal}</span>)}
+</div>
