@@ -1,6 +1,20 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-14T17:37:54.027Z
+# lastWatch: 2026-09-15T10:40:07.273Z
 contests:
+  - at: 2026-09-14T17:37:53.989Z
+    type: devpost-auto
+    title: AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon
+    url: https://aws-cds-partner.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 14 - Oct 28, 2026
+      ja: Sep 14 - Oct 28, 2026
+      zh: Sep 14 - Oct 28, 2026
+    sourceNote: Devpost auto · prize~40000 · score 115 · AWS
+    auto: true
+    joinScore: 115
+    prizeHint: 40000
+    submitUrl: https://aws-cds-partner.devpost.com/challenges/start_a_submission
   - at: 2026-08-31T18:43:02.432Z
     type: devpost-auto
     title: "Build, Ship, Shape: Amazon Developer Hackathon"
@@ -57,20 +71,6 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
-  - at: 2026-09-14T17:37:53.989Z
-    type: devpost-auto
-    title: AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon
-    url: https://aws-cds-partner.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 14 - Oct 28, 2026
-      ja: Sep 14 - Oct 28, 2026
-      zh: Sep 14 - Oct 28, 2026
-    sourceNote: Devpost auto · prize~40000 · score 110 · AWS
-    auto: true
-    joinScore: 110
-    prizeHint: 40000
-    submitUrl: https://aws-cds-partner.devpost.com/challenges/start_a_submission
   - at: 2026-09-10T10:14:23.171Z
     type: devpost-auto
     title: TechCommons Hacks V2 - Hacks to Inspire
@@ -421,6 +421,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-09-15T10:40:07.231Z
+    type: devpost-auto
+    title: "DSH Hacks V2 "
+    url: https://dsh-hacks-v2.devpost.com/
+    ongoing: true
+    period:
+      en: Jun 24 - Nov 08, 2026
+      ja: Jun 24 - Nov 08, 2026
+      zh: Jun 24 - Nov 08, 2026
+    sourceNote: Devpost auto · prize~42234 · score 98 · STEMise
+    auto: true
+    joinScore: 98
+    prizeHint: 42234
+    submitUrl: https://dsh-hacks-v2.devpost.com/challenges/start_a_submission
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
     title: OneAquaHealth IEEE Global Hackathon
@@ -547,22 +561,8 @@ contests:
     joinScore: 98
     prizeHint: 1500
     submitUrl: https://prometheus-sept-ai-classic.devpost.com/challenges/start_a_submission
-  - at: 2026-08-19T06:25:19.267Z
-    type: devpost-auto
-    title: SPEED August AI Challenge
-    url: https://august-ai-challenge-31059.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 18 - Sep 03, 2026
-      ja: Aug 18 - Sep 03, 2026
-      zh: Aug 18 - Sep 03, 2026
-    sourceNote: Devpost auto · prize~1500 · score 98 · SPEED
-    auto: true
-    joinScore: 98
-    prizeHint: 1500
-    submitUrl: https://august-ai-challenge-31059.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-14T17:37:54.027Z
+  lastWatch: 2026-09-15T10:40:07.273Z
   source: devpost-auto+manual
   added: 34
   updated: 10
