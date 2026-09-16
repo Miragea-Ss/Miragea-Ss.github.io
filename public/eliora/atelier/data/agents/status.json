@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-15T10:40:07.367Z",
+  "generatedAt": "2026-09-16T10:28:22.084Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-09-15T10:40:07.273Z",
+      "lastRun": "2026-09-16T10:28:21.879Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -82,9 +82,9 @@
           "url": "https://techcommons-hacks-v2.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Sep 10 - 17, 2026",
-            "ja": "Sep 10 - 17, 2026",
-            "zh": "Sep 10 - 17, 2026"
+            "en": "Sep 10 - 18, 2026",
+            "ja": "Sep 10 - 18, 2026",
+            "zh": "Sep 10 - 18, 2026"
           }
         },
         {
