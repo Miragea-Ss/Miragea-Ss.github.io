@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-16T10:28:21.879Z
+# lastWatch: 2026-09-17T10:38:20.577Z
 contests:
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 1500
     submitUrl: https://prometheus-sept-ai-classic.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-16T10:28:21.879Z
+  lastWatch: 2026-09-17T10:38:20.577Z
   source: devpost-auto+manual
-  added: 35
+  added: 33
   updated: 10
-  scanned: 47
+  scanned: 46
   kept: 40
