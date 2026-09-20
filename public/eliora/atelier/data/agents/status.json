@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-19T09:55:39.440Z",
+  "generatedAt": "2026-09-20T10:16:48.860Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-09-19T09:55:39.363Z",
+      "lastRun": "2026-09-20T10:16:48.775Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -76,6 +76,18 @@
           }
         },
         {
+          "at": "2026-09-20T10:16:48.736Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) TLN Hackathon 2026",
+          "url": "https://tln-cybersecurity-challenge.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Sep 19 - 20, 2026",
+            "ja": "Sep 19 - 20, 2026",
+            "zh": "Sep 19 - 20, 2026"
+          }
+        },
+        {
           "at": "2026-09-10T10:14:23.171Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) TechCommons Hacks V2 - Hacks to Inspire",
@@ -121,18 +133,6 @@
             "en": "Aug 21 - Sep 15, 2026",
             "ja": "Aug 21 - Sep 15, 2026",
             "zh": "Aug 21 - Sep 15, 2026"
-          }
-        },
-        {
-          "at": "2026-08-18T06:25:00.136Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) DevNetwork [API + Cloud + AI] Hackathon 2026",
-          "url": "https://api-cloud-ai-hackathon-2026.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Aug 17 - Sep 03, 2026",
-            "ja": "Aug 17 - Sep 03, 2026",
-            "zh": "Aug 17 - Sep 03, 2026"
           }
         }
       ]

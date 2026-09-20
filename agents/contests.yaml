@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-19T09:55:39.363Z
+# lastWatch: 2026-09-20T10:16:48.775Z
 contests:
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
@@ -71,6 +71,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-09-20T10:16:48.736Z
+    type: devpost-auto
+    title: TLN Hackathon 2026
+    url: https://tln-cybersecurity-challenge.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 19 - 20, 2026
+      ja: Sep 19 - 20, 2026
+      zh: Sep 19 - 20, 2026
+    sourceNote: Devpost auto · prize~207193 · score 110 · Tech Literacy Network
+    auto: true
+    joinScore: 110
+    prizeHint: 207193
+    submitUrl: https://tln-cybersecurity-challenge.devpost.com/challenges/start_a_submission
   - at: 2026-09-10T10:14:23.171Z
     type: devpost-auto
     title: TechCommons Hacks V2 - Hacks to Inspire
@@ -547,24 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 1500
     submitUrl: https://prometheus-sept-ai-classic.devpost.com/challenges/start_a_submission
-  - at: 2026-09-19T09:55:39.327Z
-    type: devpost-auto
-    title: Galuxium Nexus V2
-    url: https://galuxium-nexus-v2-29411.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 15 - Oct 31, 2026
-      ja: Jul 15 - Oct 31, 2026
-      zh: Jul 15 - Oct 31, 2026
-    sourceNote: Devpost auto · prize~14944 · score 92 · Galuxium
-    auto: true
-    joinScore: 92
-    prizeHint: 14944
-    submitUrl: https://galuxium-nexus-v2-29411.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-19T09:55:39.363Z
+  lastWatch: 2026-09-20T10:16:48.775Z
   source: devpost-auto+manual
-  added: 45
-  updated: 7
-  scanned: 55
+  added: 42
+  updated: 8
+  scanned: 53
   kept: 40
