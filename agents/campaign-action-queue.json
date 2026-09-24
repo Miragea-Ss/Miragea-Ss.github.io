@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-23T10:27:07.959Z",
+  "generatedAt": "2026-09-24T10:43:55.744Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -87,6 +87,22 @@
       "status": "recommended"
     },
     {
+      "title": "DecentraHack 2.0",
+      "url": "https://decentrahack-2-0.devpost.com/",
+      "submitUrl": "https://decentrahack-2-0.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 15000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
       "title": "TLN Hackathon 2026",
       "url": "https://tln-cybersecurity-challenge.devpost.com/",
       "submitUrl": "https://tln-cybersecurity-challenge.devpost.com/challenges/start_a_submission",
@@ -108,22 +124,6 @@
       "submitUrl": "https://techcommons-hacks-v2.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 29900,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "GatewayHacks 2026 | Software & AI ",
-      "url": "https://gatewayhacks-2026.devpost.com/",
-      "submitUrl": "https://gatewayhacks-2026.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 1007085,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

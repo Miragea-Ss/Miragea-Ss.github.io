@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-23T10:27:08.016Z",
+  "generatedAt": "2026-09-24T10:43:55.810Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-09-23T10:27:07.951Z",
+      "lastRun": "2026-09-24T10:43:55.732Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -76,6 +76,18 @@
           }
         },
         {
+          "at": "2026-09-24T10:43:55.685Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) DecentraHack 2.0",
+          "url": "https://decentrahack-2-0.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Sep 24 - 30, 2026",
+            "ja": "Sep 24 - 30, 2026",
+            "zh": "Sep 24 - 30, 2026"
+          }
+        },
+        {
           "at": "2026-09-20T10:16:48.736Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) TLN Hackathon 2026",
@@ -121,18 +133,6 @@
             "en": "Aug 26 - Oct 27, 2026",
             "ja": "Aug 26 - Oct 27, 2026",
             "zh": "Aug 26 - Oct 27, 2026"
-          }
-        },
-        {
-          "at": "2026-08-21T06:27:53.110Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) AI Builders Hackathon",
-          "url": "https://ai-builders-hackathon-2026.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Aug 21 - Sep 15, 2026",
-            "ja": "Aug 21 - Sep 15, 2026",
-            "zh": "Aug 21 - Sep 15, 2026"
           }
         }
       ]

@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-23T10:27:07.951Z
+# lastWatch: 2026-09-24T10:43:55.732Z
 contests:
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
@@ -71,6 +71,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-09-24T10:43:55.685Z
+    type: devpost-auto
+    title: DecentraHack 2.0
+    url: https://decentrahack-2-0.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 24 - 30, 2026
+      ja: Sep 24 - 30, 2026
+      zh: Sep 24 - 30, 2026
+    sourceNote: Devpost auto · prize~15000 · score 110 · pimpri chinchwad college of engineering
+    auto: true
+    joinScore: 110
+    prizeHint: 15000
+    submitUrl: https://decentrahack-2-0.devpost.com/challenges/start_a_submission
   - at: 2026-09-20T10:16:48.736Z
     type: devpost-auto
     title: TLN Hackathon 2026
@@ -547,24 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 1750
     submitUrl: https://nextstep2026.devpost.com/challenges/start_a_submission
-  - at: 2026-08-19T06:25:19.267Z
-    type: devpost-auto
-    title: SPEED October AI Challenge
-    url: https://prometheus-september-ai-2.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 19 - Oct 14, 2026
-      ja: Aug 19 - Oct 14, 2026
-      zh: Aug 19 - Oct 14, 2026
-    sourceNote: Devpost auto · prize~1500 · score 98 · SPEED
-    auto: true
-    joinScore: 98
-    prizeHint: 1500
-    submitUrl: https://prometheus-september-ai-2.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-23T10:27:07.951Z
+  lastWatch: 2026-09-24T10:43:55.732Z
   source: devpost-auto+manual
-  added: 38
-  updated: 6
+  added: 37
+  updated: 7
   scanned: 48
   kept: 40
