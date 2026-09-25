@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-24T10:43:55.810Z",
+  "generatedAt": "2026-09-25T10:47:47.246Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-09-24T10:43:55.732Z",
+      "lastRun": "2026-09-25T10:47:46.680Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -76,6 +76,18 @@
           }
         },
         {
+          "at": "2026-09-25T10:47:46.645Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Meta VR Start Developer Competition 2026",
+          "url": "https://start-developer-competition-26.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Sep 24 - Nov 18, 2026",
+            "ja": "Sep 24 - Nov 18, 2026",
+            "zh": "Sep 24 - Nov 18, 2026"
+          }
+        },
+        {
           "at": "2026-09-24T10:43:55.685Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) DecentraHack 2.0",
@@ -121,18 +133,6 @@
             "en": "Sep 01 - Oct 02, 2026",
             "ja": "Sep 01 - Oct 02, 2026",
             "zh": "Sep 01 - Oct 02, 2026"
-          }
-        },
-        {
-          "at": "2026-08-27T17:04:06.269Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) OpenCV AI Competition 2026, powered by AWS",
-          "url": "https://opencv26.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Aug 26 - Oct 27, 2026",
-            "ja": "Aug 26 - Oct 27, 2026",
-            "zh": "Aug 26 - Oct 27, 2026"
           }
         }
       ]

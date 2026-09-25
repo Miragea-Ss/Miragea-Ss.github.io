@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-24T10:43:55.732Z
+# lastWatch: 2026-09-25T10:47:46.680Z
 contests:
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
@@ -71,6 +71,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-09-25T10:47:46.645Z
+    type: devpost-auto
+    title: Meta VR Start Developer Competition 2026
+    url: https://start-developer-competition-26.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 24 - Nov 18, 2026
+      ja: Sep 24 - Nov 18, 2026
+      zh: Sep 24 - Nov 18, 2026
+    sourceNote: Devpost auto · prize~1000000 · score 110 · Meta
+    auto: true
+    joinScore: 110
+    prizeHint: 1000000
+    submitUrl: https://start-developer-competition-26.devpost.com/challenges/start_a_submission
   - at: 2026-09-24T10:43:55.685Z
     type: devpost-auto
     title: DecentraHack 2.0
@@ -547,24 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 17500
     submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
-  - at: 2026-08-21T06:27:53.110Z
-    type: devpost-auto
-    title: NextStep Hacks 2026
-    url: https://nextstep2026.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 21 - Sep 20, 2026
-      ja: Aug 21 - Sep 20, 2026
-      zh: Aug 21 - Sep 20, 2026
-    sourceNote: Devpost auto · prize~1750 · score 98 · HackAlphaX
-    auto: true
-    joinScore: 98
-    prizeHint: 1750
-    submitUrl: https://nextstep2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-24T10:43:55.732Z
+  lastWatch: 2026-09-25T10:47:46.680Z
   source: devpost-auto+manual
-  added: 37
-  updated: 7
-  scanned: 48
+  added: 38
+  updated: 8
+  scanned: 51
   kept: 40
