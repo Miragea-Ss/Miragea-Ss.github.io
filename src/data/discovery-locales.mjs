@@ -40,7 +40,7 @@ export const phrases = [
 ['A person can review before action','実行前に担当者が確認できる','执行前可由专人审核'],['Suitable digital files are available','利用できるデジタル資料がある','有适用的电子资料'],['Errors can be detected and contained','誤りを検知し、影響を抑えられる','能够发现错误并控制影响'],['BUILD CANDIDATE','制作候補','可考虑实施'],
 ['How do we choose where to start?','何から始めるか、どう決めますか？','如何决定从哪里开始？'],
 ['We compare the time a task takes, the effort to improve it, the quality of its inputs and the consequences of errors. You receive prioritized opportunities with reasons, assumptions and limits.','作業時間、改善に必要な手間、入力資料の質、誤りの影響を比較します。優先順位を付けた改善案を、根拠・前提・制約とともにご提案します。','我们比较任务耗时、改进成本、输入资料质量及出错后果，为您提供按优先级排列的改进建议，并说明依据、前提和限制。'],
-['The figures above illustrate the method. Your estimate is based on your own workflow; these figures are not customer results or a promise of savings.','上の数値は説明用の例です。お客様の見積もりは実際の業務をもとに算出します。顧客実績や削減効果を保証する数値ではありません。','以上数字仅用于说明方法。您的评估将基于实际业务，这些数字不是客户成果，也不代表节省效果的承诺。'],
+['The three checks above are the method. Your estimate is based on your own workflow. They are not customer results or a promise of savings.','上の3つは確認の方法です。見積もりは実際の業務をもとに算出します。顧客実績や削減効果の約束ではありません。','上面三项是检查方法。评估将基于您的实际业务。它们不是客户成果，也不是节省效果的承诺。'],
 ['We find where automation should stop, too.','自動化を止めるべき場所も、見極めます。','也明确哪些环节应当停止自动执行。'],['Your team keeps the final say.','最終判断は、お客様のチームに。','最终决定权始终在您的团队手中。'],['● PREPARED AUTOMATICALLY','● 自動で準備','● 自动准备'],['◇ REVIEWED BY YOUR TEAM','◇ チームが確認','◇ 团队审核'],
 ['Draft / Search / Classify','下書き・検索・分類','草拟 / 搜索 / 分类'],['MACHINE','自動処理','自动处理'],['Recommend','提案','提出建议'],['CONTROLLED','条件を定めて実行','在约定条件下执行'],['Approve / Professional judgment','承認・専門的な判断','审批 / 专业判断'],['HUMAN','担当者が判断','人工决策'],
 ['One workflow. Not twenty.','まず、一つの仕事を確かな仕組みに。','先把一项工作，做成可靠的流程。'],
