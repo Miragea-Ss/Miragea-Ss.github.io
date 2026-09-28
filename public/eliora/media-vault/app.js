@@ -16,8 +16,9 @@ const copy = {
     collectionFourTitle: '動く制作システム', collectionFourBody: 'Elioraでは、Infinite Canvas、ComfyUI、自動化、ローカルAIを、創作と仕事につながる道具として実装します。',
     mirageaTitle: '感じた世界を残す、創作者の記憶層。', mirageaBody: 'アート、映像、言葉、音楽、知覚、世界観。Mirageaは作品と、その作品が生まれる源を保存する恒久的なアーカイブです。', openMiragea: 'Mirageaを開く',
     elioraTitle: '創作を、使える仕組みに変える実装層。', elioraBody: 'AI制作、ComfyUI、ローカル推論、ワークフロー自動化、Infinite Canvas。Elioraは創造を再現可能なプロダクトへ変えます。', openEliora: 'Elioraを開く',
-    sitesKicker: 'PLACES I BUILD', sitesTitle: '作品と活動への6つの入口', sitesIntro: '見る、読む、学ぶ、つくる。目的に合う入口から、Mirageaの活動へ進めます。',
+    sitesKicker: 'PLACES I BUILD', sitesTitle: '作品と活動への入口', sitesIntro: '見る、読む、学ぶ、つくる。目的に合う入口から、Mirageaの活動へ進めます。新しい仕事はここに足します。',
     siteArchive: '作品、知覚、言葉、EXシステムを保存する本体アーカイブ。', siteEliora: 'AI制作、業務自動化、PoC、実用ワークフローのスタジオ。',
+    siteDiscovery: '繰り返す仕事の相談から納品まで。業務の相談は25,000円、仕組みの制作は67,000円、継続は月17,000円。いずれも税別です。',
     canvasKicker: 'LOCAL CREATION · 登録不要', siteCanvas: '登録なしで今すぐ使えます。カード、接続、ボードはこのブラウザ内に保存。自分のPCでLocal Kitを起動すれば、ComfyUI・llama.cpp・安全なAgentまで利用できます。',
     canvasPolicy: 'Elioraの主要機能に中国の実名認証は不要です。OpenRouterなどの国際BYOKは任意で接続できます。', canvasTrustLabel: 'Infinite Canvasの利用条件',
     canvasTrustBrowser: '今すぐ開始・Elioraアカウント不要', canvasTrustLocal: 'ローカルComfyUI・自由なWorkflow JSON', canvasTrustAgent: 'OpenRouter・承認制Agent',
@@ -51,8 +52,9 @@ const copy = {
     collectionFourTitle: 'Systems that work', collectionFourBody: 'Eliora builds Infinite Canvas, ComfyUI, automation, and local AI into tools for creative and commercial production.',
     mirageaTitle: 'The memory layer of a creator who records what she perceives.', mirageaBody: 'Art, film, words, music, perception, and worldbuilding. Miragea preserves both the work and the source from which it emerged.', openMiragea: 'Open Miragea',
     elioraTitle: 'The implementation layer that turns creation into a working system.', elioraBody: 'AI production, ComfyUI, local inference, workflow automation, and Infinite Canvas. Eliora makes creative processes repeatable.', openEliora: 'Open Eliora',
-    sitesKicker: 'PLACES I BUILD', sitesTitle: 'Six routes into the work', sitesIntro: 'Watch, read, learn, or build. Choose the route that matches what you came to find.',
+    sitesKicker: 'PLACES I BUILD', sitesTitle: 'Routes into the work', sitesIntro: 'Watch, read, learn, or build. New work is added here as it is published.',
     siteArchive: 'The permanent archive for work, perception, words, and the EX system.', siteEliora: 'Studio for AI production, automation, PoCs, and practical workflows.',
+    siteDiscovery: 'From one repeated task to delivery. Workflow Scan ¥25,000, one agreed build ¥67,000, monthly support ¥17,000, before tax.',
     canvasKicker: 'LOCAL CREATION · NO SIGN-UP', siteCanvas: 'Use it immediately without registering. Cards, connections, and boards stay in this browser. Start the Local Kit on your own PC to add ComfyUI, llama.cpp, and safe Agent workflows.',
     canvasPolicy: 'Eliora core features require no Chinese real-name verification. International BYOK services such as OpenRouter are optional.', canvasTrustLabel: 'Infinite Canvas access and connection options',
     canvasTrustBrowser: 'Start now · no Eliora account', canvasTrustLocal: 'Local ComfyUI · any workflow JSON', canvasTrustAgent: 'OpenRouter · review-gated Agent',
@@ -86,8 +88,9 @@ const copy = {
     collectionFourTitle: '真正运行的系统', collectionFourBody: 'Eliora 把 Infinite Canvas、ComfyUI、自动化和本地 AI 做成连接创作与工作的工具。',
     mirageaTitle: '保存所感世界的创作者记忆层。', mirageaBody: '艺术、影像、文字、音乐、感知与世界观。Miragea 保存作品，也保存作品诞生的源头。', openMiragea: '打开 Miragea',
     elioraTitle: '把创作变成可用系统的实现层。', elioraBody: 'AI 制作、ComfyUI、本地推理、工作流自动化与 Infinite Canvas。Eliora 让创造可以复现。', openEliora: '打开 Eliora',
-    sitesKicker: 'PLACES I BUILD', sitesTitle: '进入作品与活动的六个入口', sitesIntro: '观看、阅读、学习或创作。请选择与你目的相符的入口。',
+    sitesKicker: 'PLACES I BUILD', sitesTitle: '进入作品与活动的入口', sitesIntro: '观看、阅读、学习或创作。新的工作会陆续加在这里。',
     siteArchive: '保存作品、感知、文字与 EX 系统的永久档案。', siteEliora: 'AI 制作、业务自动化、PoC 与实用工作流工作室。',
+    siteDiscovery: '从一项重复工作到交付。业务咨询25,000日元，约定制作67,000日元，持续支持每月17,000日元，均不含税。',
     canvasKicker: 'LOCAL CREATION · 无需注册', siteCanvas: '无需注册即可直接使用。卡片、连线和画布保存在当前浏览器；在自己的电脑启动 Local Kit 后，可使用本地 ComfyUI、llama.cpp 和需要人工确认的 Agent。',
     canvasPolicy: 'Eliora 核心功能不需要中国实名认证。OpenRouter 等国际 BYOK 服务均为可选连接。', canvasTrustLabel: 'Infinite Canvas 使用与连接条件',
     canvasTrustBrowser: '立即开始・无需 Eliora 账号', canvasTrustLocal: '本地 ComfyUI・自由导入 Workflow JSON', canvasTrustAgent: 'OpenRouter・人工审核 Agent',
@@ -110,24 +113,33 @@ const videos = {
   ja: [
     { episode: 'EP09', title: '権限とサンドボックス', description: 'AIエージェントに何を許し、何を人間の承認に残すか。安全な制作の境界を整理します。', platform: 'YouTube · JP', embed: 'https://www.youtube-nocookie.com/embed/tlN_uW7Duls', url: 'https://youtu.be/tlN_uW7Duls' },
     { episode: 'EP08', title: 'Briefから納品まで', description: '曖昧な依頼を、検証できる成果物へ変換するための制作設計です。', platform: 'YouTube · JP', embed: 'https://www.youtube-nocookie.com/embed/NFG9GJRcrCw', url: 'https://youtu.be/NFG9GJRcrCw' },
-    { episode: 'EP06', title: 'AI Agent Team', description: '複数の専門Agentを、一つの目的と承認境界のもとで働かせる方法を紹介します。', platform: 'YouTube · JP', embed: 'https://www.youtube-nocookie.com/embed/AfOZBpSBuO4', url: 'https://youtu.be/AfOZBpSBuO4' }
+    { episode: 'EP06', title: 'AI Agent Team', description: '複数の専門Agentを、一つの目的と承認境界のもとで働かせる方法を紹介します。', platform: 'YouTube · JP', embed: 'https://www.youtube-nocookie.com/embed/AfOZBpSBuO4', url: 'https://youtu.be/AfOZBpSBuO4' },
+    { episode: 'FILM', title: 'Kardashev Type-II - Morning Whisper Blues Vol.01', description: 'GitHub Pagesの容量制限を避けるため、動画本体はX投稿で連携します。', platform: 'X', url: 'https://x.com/Miragea_S/status/2000229459916681467?s=20' },
+    { episode: 'FILM', title: 'If this lullaby becomes your nightly crave', description: '夜の声、音楽、映像、欲望をX外部作品として連携します。', platform: 'X', url: 'https://x.com/Miragea_S/status/1966830399239450670?s=20' },
+    { episode: 'FILM', title: 'Fleeting dreams, hearts adrift', description: '映像も歌もMiragea自作の作品として、X投稿を本体ホストにして連携します。', platform: 'X', url: 'https://x.com/Miragea_S/status/1775247380688097359?s=20' }
   ],
   en: [
     { episode: 'EP09', title: 'Permissions & Sandboxes', description: 'A practical boundary between what an AI agent may do and what must remain under human approval.', platform: 'YouTube · EN', embed: 'https://www.youtube-nocookie.com/embed/yQW4TAupqcM', url: 'https://youtu.be/yQW4TAupqcM' },
     { episode: 'EP08', title: 'From Brief to Delivery', description: 'How an ambiguous request becomes a scoped, testable, and accountable deliverable.', platform: 'YouTube · EN', embed: 'https://www.youtube-nocookie.com/embed/S4m23evHRTM', url: 'https://youtu.be/S4m23evHRTM' },
-    { episode: 'EP06', title: 'The AI Agent Team', description: 'Coordinating specialist agents around one objective, one source of truth, and clear approval gates.', platform: 'YouTube · EN', embed: 'https://www.youtube-nocookie.com/embed/lrjdhYpkUxk', url: 'https://youtu.be/lrjdhYpkUxk' }
+    { episode: 'EP06', title: 'The AI Agent Team', description: 'Coordinating specialist agents around one objective, one source of truth, and clear approval gates.', platform: 'YouTube · EN', embed: 'https://www.youtube-nocookie.com/embed/lrjdhYpkUxk', url: 'https://youtu.be/lrjdhYpkUxk' },
+    { episode: 'FILM', title: 'Kardashev Type-II - Morning Whisper Blues Vol.01', description: 'Large video work hosted on X to avoid GitHub Pages file-size limits.', platform: 'X', url: 'https://x.com/Miragea_S/status/2000229459916681467?s=20' },
+    { episode: 'FILM', title: 'If this lullaby becomes your nightly crave', description: 'Night voice, music, image, and desire connected as an external X work.', platform: 'X', url: 'https://x.com/Miragea_S/status/1966830399239450670?s=20' },
+    { episode: 'FILM', title: 'Fleeting dreams, hearts adrift', description: 'Original Miragea video and song work linked through X as the source host.', platform: 'X', url: 'https://x.com/Miragea_S/status/1775247380688097359?s=20' }
   ],
   zh: [
     { episode: 'EP09', title: '权限与沙盒', description: '区分 AI Agent 可以执行的操作，以及必须保留给人的授权与确认。', platform: 'Bilibili · ZH', embed: 'https://player.bilibili.com/player.html?bvid=BV1gh3P6ZErW&page=1&high_quality=1&danmaku=0', url: 'https://www.bilibili.com/video/BV1gh3P6ZErW/' },
     { episode: 'EP08', title: '从 Brief 到交付', description: '把模糊需求转换成有边界、可测试、可验收的成果。', platform: 'Bilibili · ZH', embed: 'https://player.bilibili.com/player.html?bvid=BV1b1gm6VERp&page=1&high_quality=1&danmaku=0', url: 'https://www.bilibili.com/video/BV1b1gm6VERp/' },
-    { episode: 'EP06', title: 'AI Agent Team', description: '让多个专业 Agent 围绕同一目标、同一事实源和明确授权边界协作。', platform: 'Bilibili · ZH', embed: 'https://player.bilibili.com/player.html?bvid=BV1zWNU6UEeq&page=1&high_quality=1&danmaku=0', url: 'https://www.bilibili.com/video/BV1zWNU6UEeq/' }
+    { episode: 'EP06', title: 'AI Agent Team', description: '让多个专业 Agent 围绕同一目标、同一事实源和明确授权边界协作。', platform: 'Bilibili · ZH', embed: 'https://player.bilibili.com/player.html?bvid=BV1zWNU6UEeq&page=1&high_quality=1&danmaku=0', url: 'https://www.bilibili.com/video/BV1zWNU6UEeq/' },
+    { episode: 'FILM', title: 'Kardashev Type-II - Morning Whisper Blues Vol.01', description: '为了避开 GitHub Pages 的文件大小限制，视频本体通过 X 帖子联动。', platform: 'X', url: 'https://x.com/Miragea_S/status/2000229459916681467?s=20' },
+    { episode: 'FILM', title: 'If this lullaby becomes your nightly crave', description: '夜的声音、音乐、影像与欲望，作为 X 外部作品联动。', platform: 'X', url: 'https://x.com/Miragea_S/status/1966830399239450670?s=20' },
+    { episode: 'FILM', title: 'Fleeting dreams, hearts adrift', description: '影像和歌曲都是 Miragea 自作，通过 X 原帖作为作品本体联动。', platform: 'X', url: 'https://x.com/Miragea_S/status/1775247380688097359?s=20' }
   ]
 };
 
 const routeMap = {
-  en: { archive: '/en/', geekspell: '/en/geekspell/', atelier: '/eliora/atelier/en/' },
-  ja: { archive: '/ja/', geekspell: '/ja/geekspell/', atelier: '/eliora/atelier/ja/' },
-  zh: { archive: '/zh/', geekspell: '/zh/geekspell/', atelier: '/eliora/atelier/zh/' }
+  en: { archive: '/en/', geekspell: '/en/geekspell/', atelier: '/eliora/atelier/en/', discovery: '/eliora/discovery/en/' },
+  ja: { archive: '/ja/', geekspell: '/ja/geekspell/', atelier: '/eliora/atelier/ja/', discovery: '/eliora/discovery/ja/' },
+  zh: { archive: '/zh/', geekspell: '/zh/geekspell/', atelier: '/eliora/atelier/zh/', discovery: '/eliora/discovery/zh/' }
 };
 
 const languageButtons = [...document.querySelectorAll('[data-language]')];
@@ -148,7 +160,7 @@ let currentVideo = 0;
 function selectVideo(index, { load = false } = {}) {
   const item = videos[currentLanguage][index];
   currentVideo = index;
-  if (load) {
+  if (load && item.embed) {
     player.src = item.embed;
     player.title = item.title;
     placeholder.hidden = true;
@@ -176,7 +188,7 @@ function renderVideos() {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'video-card';
-    button.innerHTML = `<span>${item.episode} · ${item.platform}</span><strong>${item.title}</strong><small>▶ PLAY</small>`;
+    button.innerHTML = `<span>${item.episode} · ${item.platform}</span><strong>${item.title}</strong><small>${item.embed ? '▶ PLAY' : '↗ OPEN'}</small>`;
     button.addEventListener('click', () => setVideo(index));
     videoList.append(button);
   });
