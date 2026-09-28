@@ -60,7 +60,8 @@ img { max-width: 100%; display: block; }
   padding: 18px 0;
   border-bottom: 1px solid var(--glass-border);
   flex-wrap: wrap;
-  background: rgba(10,10,15,.42);
+  background: rgba(26,26,62,.88);
+  border-bottom-color: rgba(46,74,158,.45);
   backdrop-filter: blur(12px);
 }
 .topbar .brand .brand-moon-orb { --brand-glow-opacity: .35; }

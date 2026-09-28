@@ -50,8 +50,8 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-
   grid-template-columns: minmax(220px, 1fr) auto minmax(220px, 1fr);
   align-items: center;
   gap: 28px;
-  border-bottom: 1px solid rgba(255,255,255,.10);
-  background: rgba(7,8,11,.42);
+  border-bottom: 1px solid rgba(241,132,161,.28);
+  background: rgba(32,12,20,.88);
   backdrop-filter: blur(12px);
 }
 
