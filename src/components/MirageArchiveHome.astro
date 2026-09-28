@@ -75,6 +75,7 @@ const copy = {
     liveSpellCta: 'Open GeekSpell',
     heroCanvas: 'Infinite Canvas',
     heroVault: 'Video Portrait',
+    heroDiscovery: 'Discovery',
   },
   ja: {
     eyebrow: 'EX_Her · 知覚アーカイブ / 芸術 × 言葉 × 神経系',
@@ -138,6 +139,7 @@ const copy = {
     liveSpellCta: 'ギークスペルを開く',
     heroCanvas: 'Infinite Canvas',
     heroVault: '映像で知るMiragea',
+    heroDiscovery: '業務改善',
   },
   zh: {
     eyebrow: 'EX_Her · 感知档案 / 艺术 × 文字 × 神经系统',
@@ -201,6 +203,7 @@ const copy = {
     liveSpellCta: '打开工作室',
     heroCanvas: 'Infinite Canvas',
     heroVault: 'Miragea 影像介绍',
+    heroDiscovery: '业务改进',
   },
 }[lang];
 ---
@@ -220,6 +223,7 @@ const copy = {
         <div class="mt-9 flex flex-wrap gap-3">
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-cyan-200/90 px-5 font-bold text-black transition hover:bg-cyan-100" href="/eliora/infinite-canvas.html">{copy.heroCanvas}</a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-orange-300/90 px-5 font-bold text-black transition hover:bg-orange-200" href={`/eliora/media-vault/?lang=${lang}`}>{copy.heroVault}</a>
+          <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 px-5 font-bold text-stone-100 transition hover:border-white/35" href={`/eliora/discovery/${lang}/`}>{copy.heroDiscovery}</a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg bg-stone-100 px-5 font-bold text-black transition hover:bg-rose-200" href={`/eliora/atelier/${lang}/contact/`}>{copy.enterpriseContact}</a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-amber-200/30 px-5 font-bold text-amber-100 transition hover:border-amber-200/60" href="/eliora/index.html">{copy.enterEliora}</a>
           <a class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/15 px-5 font-bold text-stone-100 transition hover:border-white/35" href={`/eliora/atelier/${lang}/`}>{copy.enterAtelier}</a>
