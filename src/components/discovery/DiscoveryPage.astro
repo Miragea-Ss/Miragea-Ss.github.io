@@ -133,7 +133,7 @@ const metrics = livingWorkflow.metrics;
     <ul class="discovery-inline-list" aria-label="Examples of managed operation events">
       {['CHANGES REVIEWED', 'BUSINESS RULES UPDATED', 'REFERENCE MATERIAL UPDATED', 'PROBLEMS IDENTIFIED', 'YOUR CONTACT NOTIFIED', 'EXISTING TASKS RECHECKED', 'WORKING VERSION RETAINED'].map((event) => <li class:list={{ 'human-authority': event === 'YOUR CONTACT NOTIFIED' }}>{event}</li>)}
     </ul>
-    <details class="discovery-explanation"><summary>Support that fits your operation</summary><p>Where ongoing support is agreed, Eliora checks relevant changes, retests the workflow and helps investigate failures. Your support scope sets out responsibilities, maintenance coverage and fees before service begins.</p></details>
+    <details class="discovery-explanation"><summary>Support that fits your operation</summary><p>Monthly support is ¥17,000 before tax for one delivered workflow: fault repair, two small text changes, and one monthly check, on business days. New workflows are a separate contract.</p></details>
   </section>
 
   <section id="deployment" class="discovery-section" aria-labelledby="deployment-title">
@@ -169,7 +169,7 @@ const metrics = livingWorkflow.metrics;
     <p class="discovery-lead">A workflow.<br />A repeated task.<br />A process that depends too much on one person.<br />A pile of documents.<br />A sequence nobody has had time to redesign.</p>
     <p>From your first inquiry to a clear handover.</p>
     <EngagementSteps />
-    <p class="discovery-note">A scoped, paid service. We agree the work, fee and deliverables before starting.</p>
+    <p class="discovery-note">Published prices exclude tax: Workflow Scan ¥25,000, one agreed build ¥67,000, monthly support ¥17,000. Paid work starts only after you approve the scope.</p>
     <div class="discovery-actions"><a href="/eliora/discovery/scan/" class="discovery-cta">Discuss your workflow →</a><a href="#signal">What to bring to the conversation</a></div>
     <p class="discovery-loop" aria-label="Eliora operating loop">{workflowStages.join(' → ')}</p>
   </section>
