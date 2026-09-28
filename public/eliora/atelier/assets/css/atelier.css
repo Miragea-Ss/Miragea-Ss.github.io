@@ -60,9 +60,10 @@ img { max-width: 100%; display: block; }
   padding: 18px 0;
   border-bottom: 1px solid var(--glass-border);
   flex-wrap: wrap;
-  background: transparent;
+  background: rgba(10,10,15,.42);
+  backdrop-filter: blur(12px);
 }
-.topbar .brand .brand-moon-orb { --brand-glow-opacity: 0; }
+.topbar .brand .brand-moon-orb { --brand-glow-opacity: .35; }
 
 .brand { display: flex; align-items: center; gap: 14px; }
 
