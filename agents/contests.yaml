@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-27T11:00:42.475Z
+# lastWatch: 2026-09-28T12:20:00.313Z
 contests:
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 17500
     submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-27T11:00:42.475Z
+  lastWatch: 2026-09-28T12:20:00.313Z
   source: devpost-auto+manual
-  added: 47
+  added: 33
   updated: 9
-  scanned: 59
+  scanned: 46
   kept: 40
