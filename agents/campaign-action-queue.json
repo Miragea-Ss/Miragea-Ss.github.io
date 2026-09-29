@@ -1,11 +1,27 @@
 {
-  "generatedAt": "2026-09-28T19:12:17.847Z",
+  "generatedAt": "2026-09-29T11:47:14.690Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
     "zh": "自动监视发现与打分；报名需人工确认；奖金实名领取为手动。"
   },
   "recommended": [
+    {
+      "title": "Meta VR Start Developer Competition 2026",
+      "url": "https://start-developer-competition-26.devpost.com/",
+      "submitUrl": "https://start-developer-competition-26.devpost.com/challenges/start_a_submission",
+      "joinScore": 115,
+      "prizeHint": 1000000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
     {
       "title": "AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon",
       "url": "https://aws-cds-partner.devpost.com/",
@@ -28,22 +44,6 @@
       "submitUrl": "https://amazonappdev2026.devpost.com/challenges/start_a_submission",
       "joinScore": 115,
       "prizeHint": 138000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "Nebius x NVIDIA Global AI Hackathon",
-      "url": "https://nebiusglobalaihackathon.devpost.com/",
-      "submitUrl": "https://nebiusglobalaihackathon.devpost.com/challenges/start_a_submission",
-      "joinScore": 115,
-      "prizeHint": 50000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -87,22 +87,6 @@
       "status": "recommended"
     },
     {
-      "title": "Meta VR Start Developer Competition 2026",
-      "url": "https://start-developer-competition-26.devpost.com/",
-      "submitUrl": "https://start-developer-competition-26.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 1000000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
       "title": "DecentraHack 2.0",
       "url": "https://decentrahack-2-0.devpost.com/",
       "submitUrl": "https://decentrahack-2-0.devpost.com/challenges/start_a_submission",
@@ -124,6 +108,22 @@
       "submitUrl": "https://tln-cybersecurity-challenge.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 207193,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "TechCommons Hacks V2 - Hacks to Inspire",
+      "url": "https://techcommons-hacks-v2.devpost.com/",
+      "submitUrl": "https://techcommons-hacks-v2.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 29900,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
