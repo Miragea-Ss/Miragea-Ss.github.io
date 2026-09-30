@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-09-29T11:47:14.735Z",
+  "generatedAt": "2026-09-30T11:33:42.800Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-09-29T11:47:14.682Z",
+      "lastRun": "2026-09-30T11:33:42.722Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -76,6 +76,18 @@
           }
         },
         {
+          "at": "2026-09-30T11:33:42.689Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Multimodal AI Hackathon 2026",
+          "url": "https://multimodal-ai-hackathon-2026-7.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Sep 29 - Oct 14, 2026",
+            "ja": "Sep 29 - Oct 14, 2026",
+            "zh": "Sep 29 - Oct 14, 2026"
+          }
+        },
+        {
           "at": "2026-09-24T10:43:55.685Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) DecentraHack 2.0",
@@ -121,18 +133,6 @@
             "en": "Sep 01 - Oct 02, 2026",
             "ja": "Sep 01 - Oct 02, 2026",
             "zh": "Sep 01 - Oct 02, 2026"
-          }
-        },
-        {
-          "at": "2026-08-27T17:04:06.269Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Nebius x NVIDIA Global AI Hackathon",
-          "url": "https://nebiusglobalaihackathon.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Aug 26 - Oct 30, 2026",
-            "ja": "Aug 26 - Oct 30, 2026",
-            "zh": "Aug 26 - Oct 30, 2026"
           }
         }
       ]

@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-29T11:47:14.682Z
+# lastWatch: 2026-09-30T11:33:42.722Z
 contests:
   - at: 2026-09-25T10:47:46.645Z
     type: devpost-auto
@@ -71,6 +71,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-09-30T11:33:42.689Z
+    type: devpost-auto
+    title: Multimodal AI Hackathon 2026
+    url: https://multimodal-ai-hackathon-2026-7.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 29 - Oct 14, 2026
+      ja: Sep 29 - Oct 14, 2026
+      zh: Sep 29 - Oct 14, 2026
+    sourceNote: Devpost auto · prize~100000 · score 110 · Kamand Prompt, IIT Mandi
+    auto: true
+    joinScore: 110
+    prizeHint: 100000
+    submitUrl: https://multimodal-ai-hackathon-2026-7.devpost.com/challenges/start_a_submission
   - at: 2026-09-24T10:43:55.685Z
     type: devpost-auto
     title: DecentraHack 2.0
@@ -477,6 +491,20 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-09-30T11:33:42.689Z
+    type: devpost-auto
+    title: YouCam API Skin AI & eCommerce VTO Hackathon
+    url: https://youcam-api-skin-ai-ecommerce.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 29 - Nov 02, 2026
+      ja: Sep 29 - Nov 02, 2026
+      zh: Sep 29 - Nov 02, 2026
+    sourceNote: Devpost auto · prize~6000 · score 98 · Perfect Corp
+    auto: true
+    joinScore: 98
+    prizeHint: 6000
+    submitUrl: https://youcam-api-skin-ai-ecommerce.devpost.com/challenges/start_a_submission
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
     title: OneAquaHealth IEEE Global Hackathon
@@ -533,38 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 2000
     submitUrl: https://ai-content-engine-hacks.devpost.com/challenges/start_a_submission
-  - at: 2026-08-30T10:53:52.413Z
-    type: devpost-auto
-    title: Prometheus September AI Challenge (Hybrid)
-    url: https://prometheus-aug-ml-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 30 - Sep 27, 2026
-      ja: Aug 30 - Sep 27, 2026
-      zh: Aug 30 - Sep 27, 2026
-    sourceNote: Devpost auto · prize~1500 · score 98 · Prometheus CS
-    auto: true
-    joinScore: 98
-    prizeHint: 1500
-    submitUrl: https://prometheus-aug-ml-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-08-28T17:52:21.475Z
-    type: devpost-auto
-    title: The Rice University Urban Sustainability Hackathon
-    url: https://rice-urban-sustainability.devpost.com/
-    ongoing: true
-    period:
-      en: Jun 23 - Sep 18, 2026
-      ja: Jun 23 - Sep 18, 2026
-      zh: Jun 23 - Sep 18, 2026
-    sourceNote: Devpost auto · prize~17500 · score 98 · Rice University
-    auto: true
-    joinScore: 98
-    prizeHint: 17500
-    submitUrl: https://rice-urban-sustainability.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-29T11:47:14.682Z
+  lastWatch: 2026-09-30T11:33:42.722Z
   source: devpost-auto+manual
-  added: 34
+  added: 35
   updated: 9
-  scanned: 47
+  scanned: 48
   kept: 40
