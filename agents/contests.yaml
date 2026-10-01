@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-09-30T11:33:42.722Z
+# lastWatch: 2026-10-01T12:02:41.597Z
 contests:
   - at: 2026-09-25T10:47:46.645Z
     type: devpost-auto
@@ -71,6 +71,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-10-01T12:02:41.564Z
+    type: devpost-auto
+    title: Qloo Agentic Hackathon
+    url: https://qloo.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 30 - Oct 30, 2026
+      ja: Sep 30 - Oct 30, 2026
+      zh: Sep 30 - Oct 30, 2026
+    sourceNote: Devpost auto · prize~25000 · score 110 · Qloo
+    auto: true
+    joinScore: 110
+    prizeHint: 25000
+    submitUrl: https://qloo.devpost.com/challenges/start_a_submission
   - at: 2026-09-30T11:33:42.689Z
     type: devpost-auto
     title: Multimodal AI Hackathon 2026
@@ -365,6 +379,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-10-01T12:02:41.564Z
+    type: devpost-auto
+    title: Hack Apertus
+    url: https://hackapertus.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 01 - 16, 2026
+      ja: Oct 01 - 16, 2026
+      zh: Oct 01 - 16, 2026
+    sourceNote: Devpost auto · prize~10680 · score 102 · aiLights Association
+    auto: true
+    joinScore: 102
+    prizeHint: 10680
+    submitUrl: https://hackapertus.devpost.com/challenges/start_a_submission
   - at: 2026-09-10T10:14:23.171Z
     type: devpost-auto
     title: HackSprint
@@ -533,38 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 5500
     submitUrl: https://shared-os-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-09-05T09:38:08.458Z
-    type: devpost-auto
-    title: Hyperbloom September - AI/ML
-    url: https://hyperbloom-september.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 25 - Sep 14, 2026
-      ja: Aug 25 - Sep 14, 2026
-      zh: Aug 25 - Sep 14, 2026
-    sourceNote: Devpost auto · prize~1710 · score 98 · hyperbloom hacks
-    auto: true
-    joinScore: 98
-    prizeHint: 1710
-    submitUrl: https://hyperbloom-september.devpost.com/challenges/start_a_submission
-  - at: 2026-09-01T10:44:46.620Z
-    type: devpost-auto
-    title: AI Content Engine Hackathon
-    url: https://ai-content-engine-hacks.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 01 - 10, 2026
-      ja: Sep 01 - 10, 2026
-      zh: Sep 01 - 10, 2026
-    sourceNote: Devpost auto · prize~2000 · score 98 · NA
-    auto: true
-    joinScore: 98
-    prizeHint: 2000
-    submitUrl: https://ai-content-engine-hacks.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-09-30T11:33:42.722Z
+  lastWatch: 2026-10-01T12:02:41.597Z
   source: devpost-auto+manual
-  added: 35
-  updated: 9
-  scanned: 48
+  added: 33
+  updated: 10
+  scanned: 45
   kept: 40
