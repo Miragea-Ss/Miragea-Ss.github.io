@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T12:02:41.610Z",
+  "generatedAt": "2026-10-02T11:33:42.410Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -87,43 +87,43 @@
       "status": "recommended"
     },
     {
+      "title": "PayPal AI Hackathon",
+      "url": "https://paypalaihackathon.devpost.com/",
+      "submitUrl": "https://paypalaihackathon.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 67500,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "ForgeHacks Online 2026",
+      "url": "https://forgehacks-2026.devpost.com/",
+      "submitUrl": "https://forgehacks-2026.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 672570,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
       "title": "Qloo Agentic Hackathon",
       "url": "https://qloo.devpost.com/",
       "submitUrl": "https://qloo.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 25000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "Multimodal AI Hackathon 2026",
-      "url": "https://multimodal-ai-hackathon-2026-7.devpost.com/",
-      "submitUrl": "https://multimodal-ai-hackathon-2026-7.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 100000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "DecentraHack 2.0",
-      "url": "https://decentrahack-2-0.devpost.com/",
-      "submitUrl": "https://decentrahack-2-0.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 15000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

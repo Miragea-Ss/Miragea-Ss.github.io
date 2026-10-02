@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-01T12:02:41.597Z
+# lastWatch: 2026-10-02T11:33:42.398Z
 contests:
   - at: 2026-09-25T10:47:46.645Z
     type: devpost-auto
@@ -71,6 +71,34 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-10-02T11:33:42.363Z
+    type: devpost-auto
+    title: PayPal AI Hackathon
+    url: https://paypalaihackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 01 - Nov 12, 2026
+      ja: Oct 01 - Nov 12, 2026
+      zh: Oct 01 - Nov 12, 2026
+    sourceNote: Devpost auto · prize~67500 · score 110 · PayPal
+    auto: true
+    joinScore: 110
+    prizeHint: 67500
+    submitUrl: https://paypalaihackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-10-02T11:33:42.363Z
+    type: devpost-auto
+    title: ForgeHacks Online 2026
+    url: https://forgehacks-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 01 - 10, 2026
+      ja: Oct 01 - 10, 2026
+      zh: Oct 01 - 10, 2026
+    sourceNote: Devpost auto · prize~672570 · score 110 · ForgeHacks
+    auto: true
+    joinScore: 110
+    prizeHint: 672570
+    submitUrl: https://forgehacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-10-01T12:02:41.564Z
     type: devpost-auto
     title: Qloo Agentic Hackathon
@@ -533,38 +561,10 @@ contests:
     joinScore: 98
     prizeHint: 6000
     submitUrl: https://youcam-api-skin-ai-ecommerce.devpost.com/challenges/start_a_submission
-  - at: 2026-09-14T17:37:53.989Z
-    type: devpost-auto
-    title: OneAquaHealth IEEE Global Hackathon
-    url: https://oneaquahealth-ieee-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 14 - Oct 05, 2026
-      ja: Sep 14 - Oct 05, 2026
-      zh: Sep 14 - Oct 05, 2026
-    sourceNote: Devpost auto · prize~3500 · score 98 · OneAquaHealth
-    auto: true
-    joinScore: 98
-    prizeHint: 3500
-    submitUrl: https://oneaquahealth-ieee-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-09-11T10:11:55.684Z
-    type: devpost-auto
-    title: Shared OS Hackathon
-    url: https://shared-os-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 11 - 13, 2026
-      ja: Sep 11 - 13, 2026
-      zh: Sep 11 - 13, 2026
-    sourceNote: Devpost auto · prize~5500 · score 98 · Systemind, Inc
-    auto: true
-    joinScore: 98
-    prizeHint: 5500
-    submitUrl: https://shared-os-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-01T12:02:41.597Z
+  lastWatch: 2026-10-02T11:33:42.398Z
   source: devpost-auto+manual
-  added: 33
-  updated: 10
-  scanned: 45
+  added: 32
+  updated: 12
+  scanned: 48
   kept: 40
