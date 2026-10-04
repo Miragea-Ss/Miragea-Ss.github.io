@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-03T10:48:00.911Z
+# lastWatch: 2026-10-04T11:30:09.804Z
 contests:
   - at: 2026-09-25T10:47:46.645Z
     type: devpost-auto
@@ -94,10 +94,10 @@ contests:
       en: Oct 01 - 10, 2026
       ja: Oct 01 - 10, 2026
       zh: Oct 01 - 10, 2026
-    sourceNote: Devpost auto · prize~868165 · score 110 · ForgeHacks
+    sourceNote: Devpost auto · prize~977280 · score 110 · ForgeHacks
     auto: true
     joinScore: 110
-    prizeHint: 868165
+    prizeHint: 977280
     submitUrl: https://forgehacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-10-01T12:02:41.564Z
     type: devpost-auto
@@ -547,24 +547,24 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-10-03T10:48:00.886Z
+  - at: 2026-10-04T11:30:09.783Z
     type: devpost-auto
-    title: OneAquaHealth IEEE Global Hackathon
-    url: https://oneaquahealth-ieee-hackathon.devpost.com/
+    title: InterWell Hack2.0
+    url: https://interwell-hack2-0.devpost.com/
     ongoing: true
     period:
-      en: Sep 14 - Oct 05, 2026
-      ja: Sep 14 - Oct 05, 2026
-      zh: Sep 14 - Oct 05, 2026
-    sourceNote: Devpost auto · prize~3500 · score 98 · OneAquaHealth
+      en: Oct 03 - 31, 2026
+      ja: Oct 03 - 31, 2026
+      zh: Oct 03 - 31, 2026
+    sourceNote: Devpost auto · prize~1000 · score 98 · InternWell-SLIET
     auto: true
     joinScore: 98
-    prizeHint: 3500
-    submitUrl: https://oneaquahealth-ieee-hackathon.devpost.com/challenges/start_a_submission
+    prizeHint: 1000
+    submitUrl: https://interwell-hack2-0.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-03T10:48:00.911Z
+  lastWatch: 2026-10-04T11:30:09.804Z
   source: devpost-auto+manual
   added: 36
   updated: 13
-  scanned: 53
+  scanned: 54
   kept: 40
