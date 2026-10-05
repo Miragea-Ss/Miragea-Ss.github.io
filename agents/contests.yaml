@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-04T11:30:09.804Z
+# lastWatch: 2026-10-05T12:59:51.534Z
 contests:
   - at: 2026-09-25T10:47:46.645Z
     type: devpost-auto
@@ -94,10 +94,10 @@ contests:
       en: Oct 01 - 10, 2026
       ja: Oct 01 - 10, 2026
       zh: Oct 01 - 10, 2026
-    sourceNote: Devpost auto · prize~977280 · score 110 · ForgeHacks
+    sourceNote: Devpost auto · prize~1097385 · score 110 · ForgeHacks
     auto: true
     joinScore: 110
-    prizeHint: 977280
+    prizeHint: 1097385
     submitUrl: https://forgehacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-10-01T12:02:41.564Z
     type: devpost-auto
@@ -547,24 +547,24 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-10-04T11:30:09.783Z
+  - at: 2026-10-05T12:59:51.499Z
     type: devpost-auto
-    title: InterWell Hack2.0
-    url: https://interwell-hack2-0.devpost.com/
+    title: YouCam API Skin AI & eCommerce VTO Hackathon
+    url: https://youcam-api-skin-ai-ecommerce.devpost.com/
     ongoing: true
     period:
-      en: Oct 03 - 31, 2026
-      ja: Oct 03 - 31, 2026
-      zh: Oct 03 - 31, 2026
-    sourceNote: Devpost auto · prize~1000 · score 98 · InternWell-SLIET
+      en: Sep 29 - Nov 02, 2026
+      ja: Sep 29 - Nov 02, 2026
+      zh: Sep 29 - Nov 02, 2026
+    sourceNote: Devpost auto · prize~6000 · score 98 · Perfect Corp
     auto: true
     joinScore: 98
-    prizeHint: 1000
-    submitUrl: https://interwell-hack2-0.devpost.com/challenges/start_a_submission
+    prizeHint: 6000
+    submitUrl: https://youcam-api-skin-ai-ecommerce.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-04T11:30:09.804Z
+  lastWatch: 2026-10-05T12:59:51.534Z
   source: devpost-auto+manual
-  added: 36
+  added: 28
   updated: 13
-  scanned: 54
+  scanned: 44
   kept: 40
