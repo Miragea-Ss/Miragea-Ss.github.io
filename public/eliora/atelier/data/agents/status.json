@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-05T12:59:51.614Z",
+  "generatedAt": "2026-10-06T12:24:16.410Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-10-05T12:59:51.534Z",
+      "lastRun": "2026-10-06T12:24:16.331Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -16,39 +16,27 @@
       },
       "events": [
         {
-          "at": "2026-09-25T10:47:46.645Z",
+          "at": "2026-10-02T11:33:42.363Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) Meta VR Start Developer Competition 2026",
-          "url": "https://start-developer-competition-26.devpost.com/",
+          "title": "★ JOIN? (115) PayPal AI Hackathon",
+          "url": "https://paypalaihackathon.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Sep 24 - Nov 18, 2026",
-            "ja": "Sep 24 - Nov 18, 2026",
-            "zh": "Sep 24 - Nov 18, 2026"
+            "en": "Oct 01 - Nov 12, 2026",
+            "ja": "Oct 01 - Nov 12, 2026",
+            "zh": "Oct 01 - Nov 12, 2026"
           }
         },
         {
-          "at": "2026-09-14T17:37:53.989Z",
+          "at": "2026-10-01T12:02:41.564Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon",
-          "url": "https://aws-cds-partner.devpost.com/",
+          "title": "★ JOIN? (115) Qloo Agentic Hackathon",
+          "url": "https://qloo.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Sep 14 - Oct 28, 2026",
-            "ja": "Sep 14 - Oct 28, 2026",
-            "zh": "Sep 14 - Oct 28, 2026"
-          }
-        },
-        {
-          "at": "2026-08-31T18:43:02.432Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (115) Build, Ship, Shape: Amazon Developer Hackathon",
-          "url": "https://amazonappdev2026.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Aug 31 - Oct 23, 2026",
-            "ja": "Aug 31 - Oct 23, 2026",
-            "zh": "Aug 31 - Oct 23, 2026"
+            "en": "Sep 30 - Oct 30, 2026",
+            "ja": "Sep 30 - Oct 30, 2026",
+            "zh": "Sep 30 - Oct 30, 2026"
           }
         },
         {
@@ -78,18 +66,6 @@
         {
           "at": "2026-10-02T11:33:42.363Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (110) PayPal AI Hackathon",
-          "url": "https://paypalaihackathon.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Oct 01 - Nov 12, 2026",
-            "ja": "Oct 01 - Nov 12, 2026",
-            "zh": "Oct 01 - Nov 12, 2026"
-          }
-        },
-        {
-          "at": "2026-10-02T11:33:42.363Z",
-          "type": "devpost-auto",
           "title": "★ JOIN? (110) ForgeHacks Online 2026",
           "url": "https://forgehacks-2026.devpost.com/",
           "ongoing": true,
@@ -97,18 +73,6 @@
             "en": "Oct 01 - 10, 2026",
             "ja": "Oct 01 - 10, 2026",
             "zh": "Oct 01 - 10, 2026"
-          }
-        },
-        {
-          "at": "2026-10-01T12:02:41.564Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Qloo Agentic Hackathon",
-          "url": "https://qloo.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Sep 30 - Oct 30, 2026",
-            "ja": "Sep 30 - Oct 30, 2026",
-            "zh": "Sep 30 - Oct 30, 2026"
           }
         },
         {
@@ -124,6 +88,18 @@
           }
         },
         {
+          "at": "2026-09-25T10:47:46.645Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Meta VR Start Developer Competition 2026",
+          "url": "https://start-developer-competition-26.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Sep 24 - Nov 18, 2026",
+            "ja": "Sep 24 - Nov 18, 2026",
+            "zh": "Sep 24 - Nov 18, 2026"
+          }
+        },
+        {
           "at": "2026-09-24T10:43:55.685Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) DecentraHack 2.0",
@@ -133,6 +109,30 @@
             "en": "Sep 24 - 30, 2026",
             "ja": "Sep 24 - 30, 2026",
             "zh": "Sep 24 - 30, 2026"
+          }
+        },
+        {
+          "at": "2026-09-20T10:16:48.736Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) TLN Hackathon 2026",
+          "url": "https://tln-cybersecurity-challenge.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Sep 19 - 20, 2026",
+            "ja": "Sep 19 - 20, 2026",
+            "zh": "Sep 19 - 20, 2026"
+          }
+        },
+        {
+          "at": "2026-09-14T17:37:53.989Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon",
+          "url": "https://aws-cds-partner.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Sep 14 - Oct 28, 2026",
+            "ja": "Sep 14 - Oct 28, 2026",
+            "zh": "Sep 14 - Oct 28, 2026"
           }
         }
       ]
