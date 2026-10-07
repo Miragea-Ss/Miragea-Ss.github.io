@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-06T12:24:16.331Z
+# lastWatch: 2026-10-07T12:17:03.910Z
 contests:
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
@@ -66,10 +66,10 @@ contests:
       en: Oct 01 - 10, 2026
       ja: Oct 01 - 10, 2026
       zh: Oct 01 - 10, 2026
-    sourceNote: Devpost auto · prize~1218635 · score 110 · ForgeHacks
+    sourceNote: Devpost auto · prize~1323825 · score 110 · ForgeHacks
     auto: true
     joinScore: 110
-    prizeHint: 1218635
+    prizeHint: 1323825
     submitUrl: https://forgehacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-09-30T11:33:42.689Z
     type: devpost-auto
@@ -407,6 +407,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-10-07T12:17:03.874Z
+    type: devpost-auto
+    title: HACK PRADESH – RVIT Hackathon
+    url: https://hackpradesh.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 06 - 08, 2026
+      ja: Oct 06 - 08, 2026
+      zh: Oct 06 - 08, 2026
+    sourceNote: Devpost auto · prize~50000 · score 102 · RV Institute of Technology (RVIT)
+    auto: true
+    joinScore: 102
+    prizeHint: 50000
+    submitUrl: https://hackpradesh.devpost.com/challenges/start_a_submission
   - at: 2026-10-01T12:02:41.564Z
     type: devpost-auto
     title: Hack Apertus
@@ -547,24 +561,10 @@ contests:
     joinScore: 102
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-10-06T12:24:16.298Z
-    type: devpost-auto
-    title: InternWell Hack2.0
-    url: https://interwell-hack2-0.devpost.com/
-    ongoing: true
-    period:
-      en: Oct 03 - 31, 2026
-      ja: Oct 03 - 31, 2026
-      zh: Oct 03 - 31, 2026
-    sourceNote: Devpost auto · prize~1000 · score 98 · InternWell-SLIET
-    auto: true
-    joinScore: 98
-    prizeHint: 1000
-    submitUrl: https://interwell-hack2-0.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-06T12:24:16.331Z
+  lastWatch: 2026-10-07T12:17:03.910Z
   source: devpost-auto+manual
-  added: 30
+  added: 31
   updated: 13
-  scanned: 46
+  scanned: 47
   kept: 40
