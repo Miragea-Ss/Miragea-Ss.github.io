@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-07T12:17:03.910Z
+# lastWatch: 2026-10-08T12:27:05.246Z
 contests:
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
@@ -66,10 +66,10 @@ contests:
       en: Oct 01 - 10, 2026
       ja: Oct 01 - 10, 2026
       zh: Oct 01 - 10, 2026
-    sourceNote: Devpost auto · prize~1323825 · score 110 · ForgeHacks
+    sourceNote: Devpost auto · prize~1382700 · score 110 · ForgeHacks
     auto: true
     joinScore: 110
-    prizeHint: 1323825
+    prizeHint: 1382700
     submitUrl: https://forgehacks-2026.devpost.com/challenges/start_a_submission
   - at: 2026-09-30T11:33:42.689Z
     type: devpost-auto
@@ -562,7 +562,7 @@ contests:
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-07T12:17:03.910Z
+  lastWatch: 2026-10-08T12:27:05.246Z
   source: devpost-auto+manual
   added: 31
   updated: 13
