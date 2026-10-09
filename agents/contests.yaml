@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-08T12:27:05.246Z
+# lastWatch: 2026-10-09T12:16:08.548Z
 contests:
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 200000
     submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-08T12:27:05.246Z
+  lastWatch: 2026-10-09T12:16:08.548Z
   source: devpost-auto+manual
-  added: 31
-  updated: 13
-  scanned: 47
+  added: 32
+  updated: 12
+  scanned: 48
   kept: 40
