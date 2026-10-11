@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-10T11:33:47.294Z
+# lastWatch: 2026-10-11T11:47:22.200Z
 contests:
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
@@ -407,6 +407,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-10-11T11:47:22.182Z
+    type: devpost-auto
+    title: hackTurin
+    url: https://hackturin-2026.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 10 - 11, 2026
+      ja: Oct 10 - 11, 2026
+      zh: Oct 10 - 11, 2026
+    sourceNote: Devpost auto · prize~10000 · score 102 · apeira
+    auto: true
+    joinScore: 102
+    prizeHint: 10000
+    submitUrl: https://hackturin-2026.devpost.com/challenges/start_a_submission
   - at: 2026-10-07T12:17:03.874Z
     type: devpost-auto
     title: HACK PRADESH – RVIT Hackathon
@@ -547,24 +561,10 @@ contests:
     joinScore: 102
     prizeHint: 12750
     submitUrl: https://worlds-in-action-hack-02-la.devpost.com/challenges/start_a_submission
-  - at: 2026-07-16T07:55:21.086Z
-    type: devpost-auto
-    title: "INNOVIK 6.0 : International Hackathon 2026 "
-    url: https://innovik-6-0-hackathon-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 15 - Aug 15, 2026
-      ja: Jul 15 - Aug 15, 2026
-      zh: Jul 15 - Aug 15, 2026
-    sourceNote: Devpost auto · prize~200000 · score 102 · shekunj
-    auto: true
-    joinScore: 102
-    prizeHint: 200000
-    submitUrl: https://innovik-6-0-hackathon-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-10T11:33:47.294Z
+  lastWatch: 2026-10-11T11:47:22.200Z
   source: devpost-auto+manual
   added: 37
-  updated: 12
-  scanned: 53
+  updated: 11
+  scanned: 52
   kept: 40
