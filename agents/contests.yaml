@@ -1,34 +1,48 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-12T13:51:27.748Z
+# lastWatch: 2026-10-12T20:52:12.262Z
 contests:
-  - at: 2026-10-02T11:33:42.363Z
+  - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
-    title: PayPal AI Hackathon
-    url: https://paypalaihackathon.devpost.com/
+    title: AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon
+    url: https://aws-cds-partner.devpost.com/
     ongoing: true
     period:
-      en: Oct 01 - Nov 12, 2026
-      ja: Oct 01 - Nov 12, 2026
-      zh: Oct 01 - Nov 12, 2026
-    sourceNote: Devpost auto · prize~67500 · score 115 · PayPal
+      en: Sep 14 - Oct 28, 2026
+      ja: Sep 14 - Oct 28, 2026
+      zh: Sep 14 - Oct 28, 2026
+    sourceNote: Devpost auto · prize~40000 · score 115 · AWS
     auto: true
     joinScore: 115
-    prizeHint: 67500
-    submitUrl: https://paypalaihackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-10-01T12:02:41.564Z
+    prizeHint: 40000
+    submitUrl: https://aws-cds-partner.devpost.com/challenges/start_a_submission
+  - at: 2026-08-31T18:43:02.432Z
     type: devpost-auto
-    title: Qloo Agentic Hackathon
-    url: https://qloo.devpost.com/
+    title: "Build, Ship, Shape: Amazon Developer Hackathon"
+    url: https://amazonappdev2026.devpost.com/
     ongoing: true
     period:
-      en: Sep 30 - Oct 30, 2026
-      ja: Sep 30 - Oct 30, 2026
-      zh: Sep 30 - Oct 30, 2026
-    sourceNote: Devpost auto · prize~25000 · score 115 · Qloo
+      en: Aug 31 - Oct 23, 2026
+      ja: Aug 31 - Oct 23, 2026
+      zh: Aug 31 - Oct 23, 2026
+    sourceNote: Devpost auto · prize~138000 · score 115 · Amazon
     auto: true
     joinScore: 115
-    prizeHint: 25000
-    submitUrl: https://qloo.devpost.com/challenges/start_a_submission
+    prizeHint: 138000
+    submitUrl: https://amazonappdev2026.devpost.com/challenges/start_a_submission
+  - at: 2026-08-27T17:04:06.269Z
+    type: devpost-auto
+    title: Nebius x NVIDIA Global AI Hackathon
+    url: https://nebiusglobalaihackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Aug 26 - Oct 30, 2026
+      ja: Aug 26 - Oct 30, 2026
+      zh: Aug 26 - Oct 30, 2026
+    sourceNote: Devpost auto · prize~50000 · score 115 · nebius
+    auto: true
+    joinScore: 115
+    prizeHint: 50000
+    submitUrl: https://nebiusglobalaihackathon.devpost.com/challenges/start_a_submission
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
     title: Agents for Humans Hackathon
@@ -59,6 +73,20 @@ contests:
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
+    title: PayPal AI Hackathon
+    url: https://paypalaihackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 01 - Nov 12, 2026
+      ja: Oct 01 - Nov 12, 2026
+      zh: Oct 01 - Nov 12, 2026
+    sourceNote: Devpost auto · prize~67500 · score 110 · PayPal
+    auto: true
+    joinScore: 110
+    prizeHint: 67500
+    submitUrl: https://paypalaihackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-10-02T11:33:42.363Z
+    type: devpost-auto
     title: ForgeHacks Online 2026
     url: https://forgehacks-2026.devpost.com/
     ongoing: true
@@ -71,6 +99,20 @@ contests:
     joinScore: 110
     prizeHint: 1382700
     submitUrl: https://forgehacks-2026.devpost.com/challenges/start_a_submission
+  - at: 2026-10-01T12:02:41.564Z
+    type: devpost-auto
+    title: Qloo Agentic Hackathon
+    url: https://qloo.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 30 - Oct 30, 2026
+      ja: Sep 30 - Oct 30, 2026
+      zh: Sep 30 - Oct 30, 2026
+    sourceNote: Devpost auto · prize~25000 · score 110 · Qloo
+    auto: true
+    joinScore: 110
+    prizeHint: 25000
+    submitUrl: https://qloo.devpost.com/challenges/start_a_submission
   - at: 2026-09-30T11:33:42.689Z
     type: devpost-auto
     title: Multimodal AI Hackathon 2026
@@ -127,20 +169,6 @@ contests:
     joinScore: 110
     prizeHint: 207193
     submitUrl: https://tln-cybersecurity-challenge.devpost.com/challenges/start_a_submission
-  - at: 2026-09-14T17:37:53.989Z
-    type: devpost-auto
-    title: AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon
-    url: https://aws-cds-partner.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 14 - Oct 28, 2026
-      ja: Sep 14 - Oct 28, 2026
-      zh: Sep 14 - Oct 28, 2026
-    sourceNote: Devpost auto · prize~40000 · score 110 · AWS
-    auto: true
-    joinScore: 110
-    prizeHint: 40000
-    submitUrl: https://aws-cds-partner.devpost.com/challenges/start_a_submission
   - at: 2026-09-10T10:14:23.171Z
     type: devpost-auto
     title: TechCommons Hacks V2 - Hacks to Inspire
@@ -169,34 +197,6 @@ contests:
     joinScore: 110
     prizeHint: 1007085
     submitUrl: https://gatewayhacks-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-08-31T18:43:02.432Z
-    type: devpost-auto
-    title: "Build, Ship, Shape: Amazon Developer Hackathon"
-    url: https://amazonappdev2026.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 31 - Oct 23, 2026
-      ja: Aug 31 - Oct 23, 2026
-      zh: Aug 31 - Oct 23, 2026
-    sourceNote: Devpost auto · prize~138000 · score 110 · Amazon
-    auto: true
-    joinScore: 110
-    prizeHint: 138000
-    submitUrl: https://amazonappdev2026.devpost.com/challenges/start_a_submission
-  - at: 2026-08-27T17:04:06.269Z
-    type: devpost-auto
-    title: Nebius x NVIDIA Global AI Hackathon
-    url: https://nebiusglobalaihackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 26 - Oct 30, 2026
-      ja: Aug 26 - Oct 30, 2026
-      zh: Aug 26 - Oct 30, 2026
-    sourceNote: Devpost auto · prize~50000 · score 110 · nebius
-    auto: true
-    joinScore: 110
-    prizeHint: 50000
-    submitUrl: https://nebiusglobalaihackathon.devpost.com/challenges/start_a_submission
   - at: 2026-08-27T17:04:06.269Z
     type: devpost-auto
     title: OpenCV AI Competition 2026, powered by AWS
@@ -365,20 +365,20 @@ contests:
     joinScore: 110
     prizeHint: 35785
     submitUrl: https://volthacks.devpost.com/challenges/start_a_submission
-  - at: 2026-10-05T12:59:51.499Z
+  - at: 2026-10-12T20:52:12.204Z
     type: devpost-auto
-    title: YouCam API Skin AI & eCommerce VTO Hackathon
-    url: https://youcam-api-skin-ai-ecommerce.devpost.com/
+    title: "Build With AI: Basics"
+    url: https://learn-ai-basics.devpost.com/
     ongoing: true
     period:
-      en: Sep 29 - Nov 02, 2026
-      ja: Sep 29 - Nov 02, 2026
-      zh: Sep 29 - Nov 02, 2026
-    sourceNote: Devpost auto · prize~6000 · score 103 · Perfect Corp
+      en: Sep 22 - Oct 26, 2026
+      ja: Sep 22 - Oct 26, 2026
+      zh: Sep 22 - Oct 26, 2026
+    sourceNote: Devpost auto · prize~2500 · score 103 · Devpost
     auto: true
     joinScore: 103
-    prizeHint: 6000
-    submitUrl: https://youcam-api-skin-ai-ecommerce.devpost.com/challenges/start_a_submission
+    prizeHint: 2500
+    submitUrl: https://learn-ai-basics.devpost.com/challenges/start_a_submission
   - at: 2026-07-09T18:41:49.379Z
     type: devpost-auto
     title: Reddit’s Games with a Hook Hackathon
@@ -562,9 +562,9 @@ contests:
     prizeHint: 12750
     submitUrl: https://worlds-in-action-hack-02-la.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-12T13:51:27.748Z
+  lastWatch: 2026-10-12T20:52:12.262Z
   source: devpost-auto+manual
-  added: 28
+  added: 30
   updated: 11
-  scanned: 42
+  scanned: 44
   kept: 40
