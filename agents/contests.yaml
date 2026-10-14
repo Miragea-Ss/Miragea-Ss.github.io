@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-13T13:09:24.471Z
+# lastWatch: 2026-10-14T10:50:06.961Z
 contests:
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 12750
     submitUrl: https://worlds-in-action-hack-02-la.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-13T13:09:24.471Z
+  lastWatch: 2026-10-14T10:50:06.961Z
   source: devpost-auto+manual
   added: 30
   updated: 11
-  scanned: 44
+  scanned: 45
   kept: 40
