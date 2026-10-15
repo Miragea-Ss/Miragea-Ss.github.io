@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-14T10:50:06.961Z
+# lastWatch: 2026-10-15T10:32:33.920Z
 contests:
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
@@ -407,6 +407,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-10-15T10:32:33.900Z
+    type: devpost-auto
+    title: Hackfest Season - 1
+    url: https://hackfest-season-1.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 15 - 18, 2026
+      ja: Oct 15 - 18, 2026
+      zh: Oct 15 - 18, 2026
+    sourceNote: Devpost auto · prize~600000 · score 102 · Sai Vidya Institute of Technology
+    auto: true
+    joinScore: 102
+    prizeHint: 600000
+    submitUrl: https://hackfest-season-1.devpost.com/challenges/start_a_submission
   - at: 2026-10-11T11:47:22.182Z
     type: devpost-auto
     title: hackTurin
@@ -547,24 +561,10 @@ contests:
     joinScore: 102
     prizeHint: 100000
     submitUrl: https://the-great-agent-hackathon.devpost.com/challenges/start_a_submission
-  - at: 2026-07-19T07:58:25.788Z
-    type: devpost-auto
-    title: Worlds in Action Hack [02-LA]
-    url: https://worlds-in-action-hack-02-la.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 18 - 19, 2026
-      ja: Jul 18 - 19, 2026
-      zh: Jul 18 - 19, 2026
-    sourceNote: Devpost auto · prize~12750 · score 102 · SensAI Hack
-    auto: true
-    joinScore: 102
-    prizeHint: 12750
-    submitUrl: https://worlds-in-action-hack-02-la.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-14T10:50:06.961Z
+  lastWatch: 2026-10-15T10:32:33.920Z
   source: devpost-auto+manual
-  added: 30
-  updated: 11
-  scanned: 45
+  added: 35
+  updated: 10
+  scanned: 48
   kept: 40
