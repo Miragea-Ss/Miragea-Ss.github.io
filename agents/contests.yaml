@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-15T10:32:33.920Z
+# lastWatch: 2026-10-16T10:19:33.315Z
 contests:
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
@@ -71,6 +71,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-10-16T10:19:33.279Z
+    type: devpost-auto
+    title: HackWithAditya
+    url: https://hackwithaditya.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 16 - Nov 25, 2026
+      ja: Oct 16 - Nov 25, 2026
+      zh: Oct 16 - Nov 25, 2026
+    sourceNote: Devpost auto · prize~500000 · score 110 · Aditya University
+    auto: true
+    joinScore: 110
+    prizeHint: 500000
+    submitUrl: https://hackwithaditya.devpost.com/challenges/start_a_submission
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
     title: PayPal AI Hackathon
@@ -547,24 +561,10 @@ contests:
     joinScore: 102
     prizeHint: 20000
     submitUrl: https://ntu-cctf-snz-innovatex-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-07-24T08:07:03.516Z
-    type: devpost-auto
-    title: The Great Agent Hackathon
-    url: https://the-great-agent-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 23 - Aug 30, 2026
-      ja: Jul 23 - Aug 30, 2026
-      zh: Jul 23 - Aug 30, 2026
-    sourceNote: Devpost auto · prize~100000 · score 102 · Women In Product India
-    auto: true
-    joinScore: 102
-    prizeHint: 100000
-    submitUrl: https://the-great-agent-hackathon.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-15T10:32:33.920Z
+  lastWatch: 2026-10-16T10:19:33.315Z
   source: devpost-auto+manual
-  added: 35
+  added: 42
   updated: 10
-  scanned: 48
+  scanned: 55
   kept: 40

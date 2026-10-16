@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-15T10:32:33.983Z",
+  "generatedAt": "2026-10-16T10:19:33.399Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-10-15T10:32:33.920Z",
+      "lastRun": "2026-10-16T10:19:33.315Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -76,6 +76,18 @@
           }
         },
         {
+          "at": "2026-10-16T10:19:33.279Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) HackWithAditya",
+          "url": "https://hackwithaditya.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Oct 16 - Nov 25, 2026",
+            "ja": "Oct 16 - Nov 25, 2026",
+            "zh": "Oct 16 - Nov 25, 2026"
+          }
+        },
+        {
           "at": "2026-10-02T11:33:42.363Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) PayPal AI Hackathon",
@@ -121,18 +133,6 @@
             "en": "Sep 29 - Oct 14, 2026",
             "ja": "Sep 29 - Oct 14, 2026",
             "zh": "Sep 29 - Oct 14, 2026"
-          }
-        },
-        {
-          "at": "2026-09-25T10:47:46.645Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Meta VR Start Developer Competition 2026",
-          "url": "https://start-developer-competition-26.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Sep 24 - Nov 18, 2026",
-            "ja": "Sep 24 - Nov 18, 2026",
-            "zh": "Sep 24 - Nov 18, 2026"
           }
         }
       ]
