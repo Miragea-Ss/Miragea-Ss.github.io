@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-16T10:19:33.315Z
+# lastWatch: 2026-10-17T09:52:54.130Z
 contests:
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
@@ -500,10 +500,10 @@ contests:
       en: Sep 01 - Oct 23, 2026
       ja: Sep 01 - Oct 23, 2026
       zh: Sep 01 - Oct 23, 2026
-    sourceNote: Devpost auto · prize~50000 · score 102 · RAAIF
+    sourceNote: Devpost auto · prize~40000 · score 102 · RAAIF
     auto: true
     joinScore: 102
-    prizeHint: 50000
+    prizeHint: 40000
     submitUrl: https://next-gen-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-08-30T10:53:52.413Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 20000
     submitUrl: https://ntu-cctf-snz-innovatex-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-16T10:19:33.315Z
+  lastWatch: 2026-10-17T09:52:54.130Z
   source: devpost-auto+manual
-  added: 42
-  updated: 10
-  scanned: 55
+  added: 45
+  updated: 11
+  scanned: 59
   kept: 40
