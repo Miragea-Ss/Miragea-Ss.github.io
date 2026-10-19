@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-18T10:05:14.870Z
+# lastWatch: 2026-10-19T11:32:01.441Z
 contests:
   - at: 2026-09-14T17:37:53.989Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 20000
     submitUrl: https://ntu-cctf-snz-innovatex-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-18T10:05:14.870Z
+  lastWatch: 2026-10-19T11:32:01.441Z
   source: devpost-auto+manual
-  added: 50
-  updated: 11
-  scanned: 63
+  added: 47
+  updated: 10
+  scanned: 59
   kept: 40
