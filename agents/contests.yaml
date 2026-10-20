@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-19T18:18:03.375Z
+# lastWatch: 2026-10-20T10:37:25.409Z
 contests:
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
@@ -29,20 +29,6 @@ contests:
     joinScore: 115
     prizeHint: 25000
     submitUrl: https://qloo.devpost.com/challenges/start_a_submission
-  - at: 2026-09-14T17:37:53.989Z
-    type: devpost-auto
-    title: AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon
-    url: https://aws-cds-partner.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 14 - Oct 28, 2026
-      ja: Sep 14 - Oct 28, 2026
-      zh: Sep 14 - Oct 28, 2026
-    sourceNote: Devpost auto · prize~40000 · score 115 · AWS
-    auto: true
-    joinScore: 115
-    prizeHint: 40000
-    submitUrl: https://aws-cds-partner.devpost.com/challenges/start_a_submission
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
     title: Agents for Humans Hackathon
@@ -155,6 +141,20 @@ contests:
     joinScore: 110
     prizeHint: 207193
     submitUrl: https://tln-cybersecurity-challenge.devpost.com/challenges/start_a_submission
+  - at: 2026-09-14T17:37:53.989Z
+    type: devpost-auto
+    title: AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon
+    url: https://aws-cds-partner.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 14 - Oct 28, 2026
+      ja: Sep 14 - Oct 28, 2026
+      zh: Sep 14 - Oct 28, 2026
+    sourceNote: Devpost auto · prize~40000 · score 110 · AWS
+    auto: true
+    joinScore: 110
+    prizeHint: 40000
+    submitUrl: https://aws-cds-partner.devpost.com/challenges/start_a_submission
   - at: 2026-09-10T10:14:23.171Z
     type: devpost-auto
     title: TechCommons Hacks V2 - Hacks to Inspire
@@ -477,20 +477,6 @@ contests:
     joinScore: 102
     prizeHint: 300000
     submitUrl: https://hacksprint.devpost.com/challenges/start_a_submission
-  - at: 2026-09-01T10:44:46.620Z
-    type: devpost-auto
-    title: Next Gen Hackathon 2026 -Bengaluru
-    url: https://next-gen-hackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 01 - Oct 23, 2026
-      ja: Sep 01 - Oct 23, 2026
-      zh: Sep 01 - Oct 23, 2026
-    sourceNote: Devpost auto · prize~40000 · score 102 · RAAIF
-    auto: true
-    joinScore: 102
-    prizeHint: 40000
-    submitUrl: https://next-gen-hackathon.devpost.com/challenges/start_a_submission
   - at: 2026-08-30T10:53:52.413Z
     type: devpost-auto
     title: KJSSE CSI Gemini Hackday
@@ -547,24 +533,38 @@ contests:
     joinScore: 102
     prizeHint: 20000
     submitUrl: https://ntu-cctf-snz-innovatex-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-10-19T18:18:03.350Z
+  - at: 2026-10-20T10:37:25.385Z
     type: devpost-auto
-    title: Herhack
-    url: https://herhack.devpost.com/
+    title: InternWell Hack 2.0
+    url: https://interwell-hack2-0.devpost.com/
     ongoing: true
     period:
-      en: Oct 17 - Nov 10, 2026
-      ja: Oct 17 - Nov 10, 2026
-      zh: Oct 17 - Nov 10, 2026
-    sourceNote: Devpost auto · prize~200000 · score 98 · Echelon institute of technology
+      en: Oct 03 - 20, 2026
+      ja: Oct 03 - 20, 2026
+      zh: Oct 03 - 20, 2026
+    sourceNote: Devpost auto · prize~1000 · score 98 · InternWell-SLIET
     auto: true
     joinScore: 98
-    prizeHint: 200000
-    submitUrl: https://herhack.devpost.com/challenges/start_a_submission
+    prizeHint: 1000
+    submitUrl: https://interwell-hack2-0.devpost.com/challenges/start_a_submission
+  - at: 2026-10-20T10:37:25.385Z
+    type: devpost-auto
+    title: "Build With AI: Basics"
+    url: https://learn-ai-basics.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 22 - Oct 26, 2026
+      ja: Sep 22 - Oct 26, 2026
+      zh: Sep 22 - Oct 26, 2026
+    sourceNote: Devpost auto · prize~2500 · score 98 · Devpost
+    auto: true
+    joinScore: 98
+    prizeHint: 2500
+    submitUrl: https://learn-ai-basics.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-19T18:18:03.375Z
+  lastWatch: 2026-10-20T10:37:25.409Z
   source: devpost-auto+manual
-  added: 47
+  added: 48
   updated: 10
-  scanned: 59
+  scanned: 60
   kept: 40

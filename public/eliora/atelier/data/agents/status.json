@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-19T18:18:03.441Z",
+  "generatedAt": "2026-10-20T10:37:25.474Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-10-19T18:18:03.375Z",
+      "lastRun": "2026-10-20T10:37:25.409Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -37,18 +37,6 @@
             "en": "Sep 30 - Oct 30, 2026",
             "ja": "Sep 30 - Oct 30, 2026",
             "zh": "Sep 30 - Oct 30, 2026"
-          }
-        },
-        {
-          "at": "2026-09-14T17:37:53.989Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (115) AWS Communication Developer Services (CDS) Agentic AI Partner Hackathon",
-          "url": "https://aws-cds-partner.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Sep 14 - Oct 28, 2026",
-            "ja": "Sep 14 - Oct 28, 2026",
-            "zh": "Sep 14 - Oct 28, 2026"
           }
         },
         {
@@ -133,6 +121,18 @@
             "en": "Sep 24 - 30, 2026",
             "ja": "Sep 24 - 30, 2026",
             "zh": "Sep 24 - 30, 2026"
+          }
+        },
+        {
+          "at": "2026-09-20T10:16:48.736Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) TLN Hackathon 2026",
+          "url": "https://tln-cybersecurity-challenge.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Sep 19 - 20, 2026",
+            "ja": "Sep 19 - 20, 2026",
+            "zh": "Sep 19 - 20, 2026"
           }
         }
       ]
