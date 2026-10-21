@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-20T10:37:25.409Z
+# lastWatch: 2026-10-21T10:48:57.362Z
 contests:
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
@@ -407,6 +407,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-10-21T10:48:57.323Z
+    type: devpost-auto
+    title: Engage 6.0 – Code with AI Hackathon
+    url: https://engage6.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 21 - 27, 2026
+      ja: Oct 21 - 27, 2026
+      zh: Oct 21 - 27, 2026
+    sourceNote: Devpost auto · prize~45000 · score 102 · The Northcap University
+    auto: true
+    joinScore: 102
+    prizeHint: 45000
+    submitUrl: https://engage6.devpost.com/challenges/start_a_submission
   - at: 2026-10-15T10:32:33.900Z
     type: devpost-auto
     title: Hackfest Season - 1
@@ -533,38 +547,24 @@ contests:
     joinScore: 102
     prizeHint: 20000
     submitUrl: https://ntu-cctf-snz-innovatex-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-10-20T10:37:25.385Z
+  - at: 2026-10-21T10:48:57.323Z
     type: devpost-auto
-    title: InternWell Hack 2.0
-    url: https://interwell-hack2-0.devpost.com/
+    title: Herhack
+    url: https://herhack.devpost.com/
     ongoing: true
     period:
-      en: Oct 03 - 20, 2026
-      ja: Oct 03 - 20, 2026
-      zh: Oct 03 - 20, 2026
-    sourceNote: Devpost auto · prize~1000 · score 98 · InternWell-SLIET
+      en: Oct 17 - Nov 10, 2026
+      ja: Oct 17 - Nov 10, 2026
+      zh: Oct 17 - Nov 10, 2026
+    sourceNote: Devpost auto · prize~200000 · score 98 · Echelon institute of technology
     auto: true
     joinScore: 98
-    prizeHint: 1000
-    submitUrl: https://interwell-hack2-0.devpost.com/challenges/start_a_submission
-  - at: 2026-10-20T10:37:25.385Z
-    type: devpost-auto
-    title: "Build With AI: Basics"
-    url: https://learn-ai-basics.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 22 - Oct 26, 2026
-      ja: Sep 22 - Oct 26, 2026
-      zh: Sep 22 - Oct 26, 2026
-    sourceNote: Devpost auto · prize~2500 · score 98 · Devpost
-    auto: true
-    joinScore: 98
-    prizeHint: 2500
-    submitUrl: https://learn-ai-basics.devpost.com/challenges/start_a_submission
+    prizeHint: 200000
+    submitUrl: https://herhack.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-20T10:37:25.409Z
+  lastWatch: 2026-10-21T10:48:57.362Z
   source: devpost-auto+manual
-  added: 48
-  updated: 10
-  scanned: 60
+  added: 46
+  updated: 9
+  scanned: 56
   kept: 40
