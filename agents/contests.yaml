@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-21T10:48:57.362Z
+# lastWatch: 2026-10-22T10:49:41.667Z
 contests:
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
@@ -547,24 +547,24 @@ contests:
     joinScore: 102
     prizeHint: 20000
     submitUrl: https://ntu-cctf-snz-innovatex-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-10-21T10:48:57.323Z
+  - at: 2026-10-22T10:49:41.633Z
     type: devpost-auto
-    title: Herhack
-    url: https://herhack.devpost.com/
+    title: "Build With AI: Basics"
+    url: https://learn-ai-basics.devpost.com/
     ongoing: true
     period:
-      en: Oct 17 - Nov 10, 2026
-      ja: Oct 17 - Nov 10, 2026
-      zh: Oct 17 - Nov 10, 2026
-    sourceNote: Devpost auto · prize~200000 · score 98 · Echelon institute of technology
+      en: Sep 22 - Oct 26, 2026
+      ja: Sep 22 - Oct 26, 2026
+      zh: Sep 22 - Oct 26, 2026
+    sourceNote: Devpost auto · prize~2500 · score 98 · Devpost
     auto: true
     joinScore: 98
-    prizeHint: 200000
-    submitUrl: https://herhack.devpost.com/challenges/start_a_submission
+    prizeHint: 2500
+    submitUrl: https://learn-ai-basics.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-21T10:48:57.362Z
+  lastWatch: 2026-10-22T10:49:41.667Z
   source: devpost-auto+manual
   added: 46
-  updated: 9
-  scanned: 56
+  updated: 10
+  scanned: 57
   kept: 40
