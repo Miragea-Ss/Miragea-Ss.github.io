@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-22T10:49:41.681Z",
+  "generatedAt": "2026-10-23T10:41:44.659Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -71,6 +71,22 @@
       "status": "recommended"
     },
     {
+      "title": "UGREEN Hackathon 2026 on AI NAS",
+      "url": "https://ugreenhackathon.devpost.com/",
+      "submitUrl": "https://ugreenhackathon.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 46000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
       "title": "HackWithAditya",
       "url": "https://hackwithaditya.devpost.com/",
       "submitUrl": "https://hackwithaditya.devpost.com/challenges/start_a_submission",
@@ -108,22 +124,6 @@
       "submitUrl": "https://multimodal-ai-hackathon-2026-7.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 100000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "Meta VR Start Developer Competition 2026",
-      "url": "https://start-developer-competition-26.devpost.com/",
-      "submitUrl": "https://start-developer-competition-26.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 1000000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

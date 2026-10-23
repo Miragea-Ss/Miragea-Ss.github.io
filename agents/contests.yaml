@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-22T10:49:41.667Z
+# lastWatch: 2026-10-23T10:41:44.645Z
 contests:
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
@@ -57,6 +57,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-10-23T10:41:44.605Z
+    type: devpost-auto
+    title: UGREEN Hackathon 2026 on AI NAS
+    url: https://ugreenhackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 22 - Nov 16, 2026
+      ja: Oct 22 - Nov 16, 2026
+      zh: Oct 22 - Nov 16, 2026
+    sourceNote: Devpost auto · prize~46000 · score 110 · UGREEN
+    auto: true
+    joinScore: 110
+    prizeHint: 46000
+    submitUrl: https://ugreenhackathon.devpost.com/challenges/start_a_submission
   - at: 2026-10-16T10:19:33.279Z
     type: devpost-auto
     title: HackWithAditya
@@ -547,24 +561,10 @@ contests:
     joinScore: 102
     prizeHint: 20000
     submitUrl: https://ntu-cctf-snz-innovatex-2026.devpost.com/challenges/start_a_submission
-  - at: 2026-10-22T10:49:41.633Z
-    type: devpost-auto
-    title: "Build With AI: Basics"
-    url: https://learn-ai-basics.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 22 - Oct 26, 2026
-      ja: Sep 22 - Oct 26, 2026
-      zh: Sep 22 - Oct 26, 2026
-    sourceNote: Devpost auto · prize~2500 · score 98 · Devpost
-    auto: true
-    joinScore: 98
-    prizeHint: 2500
-    submitUrl: https://learn-ai-basics.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-22T10:49:41.667Z
+  lastWatch: 2026-10-23T10:41:44.645Z
   source: devpost-auto+manual
-  added: 46
+  added: 45
   updated: 10
-  scanned: 57
+  scanned: 56
   kept: 40
