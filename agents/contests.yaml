@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-23T10:41:44.645Z
+# lastWatch: 2026-10-24T09:58:16.323Z
 contests:
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
@@ -57,6 +57,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-10-24T09:58:16.287Z
+    type: devpost-auto
+    title: Codex x TwitchCon Hackathon
+    url: https://twitchcon-codex.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 23 - Nov 02, 2026
+      ja: Oct 23 - Nov 02, 2026
+      zh: Oct 23 - Nov 02, 2026
+    sourceNote: Devpost auto · prize~25000 · score 110 · Twitch
+    auto: true
+    joinScore: 110
+    prizeHint: 25000
+    submitUrl: https://twitchcon-codex.devpost.com/challenges/start_a_submission
   - at: 2026-10-23T10:41:44.605Z
     type: devpost-auto
     title: UGREEN Hackathon 2026 on AI NAS
@@ -547,24 +561,10 @@ contests:
     joinScore: 102
     prizeHint: 50000
     submitUrl: https://vidhyarthi-sewa-eduhack.devpost.com/challenges/start_a_submission
-  - at: 2026-07-27T09:30:05.248Z
-    type: devpost-auto
-    title: NTU InnovateX Hackathon 2026
-    url: https://ntu-cctf-snz-innovatex-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Jul 27 - Aug 14, 2026
-      ja: Jul 27 - Aug 14, 2026
-      zh: Jul 27 - Aug 14, 2026
-    sourceNote: Devpost auto · prize~20000 · score 102 · nanyang technological university
-    auto: true
-    joinScore: 102
-    prizeHint: 20000
-    submitUrl: https://ntu-cctf-snz-innovatex-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-23T10:41:44.645Z
+  lastWatch: 2026-10-24T09:58:16.323Z
   source: devpost-auto+manual
-  added: 45
-  updated: 10
+  added: 46
+  updated: 9
   scanned: 56
   kept: 40
