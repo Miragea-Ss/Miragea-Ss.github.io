@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-24T09:58:16.323Z
+# lastWatch: 2026-10-25T10:22:22.694Z
 contests:
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 50000
     submitUrl: https://vidhyarthi-sewa-eduhack.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-24T09:58:16.323Z
+  lastWatch: 2026-10-25T10:22:22.694Z
   source: devpost-auto+manual
-  added: 46
-  updated: 9
-  scanned: 56
+  added: 50
+  updated: 10
+  scanned: 62
   kept: 40
