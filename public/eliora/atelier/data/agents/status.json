@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-10-26T11:50:47.844Z",
+  "generatedAt": "2026-10-26T18:11:35.810Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-10-26T11:50:47.777Z",
+      "lastRun": "2026-10-26T18:11:35.643Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -16,27 +16,27 @@
       },
       "events": [
         {
-          "at": "2026-10-02T11:33:42.363Z",
+          "at": "2026-10-24T09:58:16.287Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) PayPal AI Hackathon",
-          "url": "https://paypalaihackathon.devpost.com/",
+          "title": "★ JOIN? (115) Codex x TwitchCon Hackathon",
+          "url": "https://twitchcon-codex.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Oct 01 - Nov 12, 2026",
-            "ja": "Oct 01 - Nov 12, 2026",
-            "zh": "Oct 01 - Nov 12, 2026"
+            "en": "Oct 23 - Nov 02, 2026",
+            "ja": "Oct 23 - Nov 02, 2026",
+            "zh": "Oct 23 - Nov 02, 2026"
           }
         },
         {
-          "at": "2026-10-01T12:02:41.564Z",
+          "at": "2026-09-25T10:47:46.645Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) Qloo Agentic Hackathon",
-          "url": "https://qloo.devpost.com/",
+          "title": "★ JOIN? (115) Meta VR Start Developer Competition 2026",
+          "url": "https://start-developer-competition-26.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Sep 30 - Oct 30, 2026",
-            "ja": "Sep 30 - Oct 30, 2026",
-            "zh": "Sep 30 - Oct 30, 2026"
+            "en": "Sep 24 - Nov 18, 2026",
+            "ja": "Sep 24 - Nov 18, 2026",
+            "zh": "Sep 24 - Nov 18, 2026"
           }
         },
         {
@@ -61,18 +61,6 @@
             "en": "Jul 06 - Aug 10, 2026",
             "ja": "Jul 06 - Aug 10, 2026",
             "zh": "Jul 06 - Aug 10, 2026"
-          }
-        },
-        {
-          "at": "2026-10-24T09:58:16.287Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Codex x TwitchCon Hackathon",
-          "url": "https://twitchcon-codex.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Oct 23 - Nov 02, 2026",
-            "ja": "Oct 23 - Nov 02, 2026",
-            "zh": "Oct 23 - Nov 02, 2026"
           }
         },
         {
@@ -102,6 +90,18 @@
         {
           "at": "2026-10-02T11:33:42.363Z",
           "type": "devpost-auto",
+          "title": "★ JOIN? (110) PayPal AI Hackathon",
+          "url": "https://paypalaihackathon.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Oct 01 - Nov 12, 2026",
+            "ja": "Oct 01 - Nov 12, 2026",
+            "zh": "Oct 01 - Nov 12, 2026"
+          }
+        },
+        {
+          "at": "2026-10-02T11:33:42.363Z",
+          "type": "devpost-auto",
           "title": "★ JOIN? (110) ForgeHacks Online 2026",
           "url": "https://forgehacks-2026.devpost.com/",
           "ongoing": true,
@@ -109,6 +109,18 @@
             "en": "Oct 01 - 10, 2026",
             "ja": "Oct 01 - 10, 2026",
             "zh": "Oct 01 - 10, 2026"
+          }
+        },
+        {
+          "at": "2026-10-01T12:02:41.564Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Qloo Agentic Hackathon",
+          "url": "https://qloo.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Sep 30 - Oct 30, 2026",
+            "ja": "Sep 30 - Oct 30, 2026",
+            "zh": "Sep 30 - Oct 30, 2026"
           }
         },
         {
@@ -121,18 +133,6 @@
             "en": "Sep 29 - Oct 14, 2026",
             "ja": "Sep 29 - Oct 14, 2026",
             "zh": "Sep 29 - Oct 14, 2026"
-          }
-        },
-        {
-          "at": "2026-09-25T10:47:46.645Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Meta VR Start Developer Competition 2026",
-          "url": "https://start-developer-competition-26.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Sep 24 - Nov 18, 2026",
-            "ja": "Sep 24 - Nov 18, 2026",
-            "zh": "Sep 24 - Nov 18, 2026"
           }
         }
       ]
