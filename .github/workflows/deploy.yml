@@ -32,49 +32,30 @@ jobs:
       - name: Run UI contract checks
         run: npm run test:canvas-contract && npm run test:media-vault-responsive
 
-      - name: Check contact inbox configuration
+      - name: Check Web3Forms access key (warning only)
         env:
-          SECRET_CONTACT_INBOX: ${{ secrets.CONTACT_INBOX }}
-          VAR_CONTACT_INBOX: ${{ vars.CONTACT_INBOX }}
-          SECRET_FORM_SUBMIT_TOKEN: ${{ secrets.FORM_SUBMIT_TOKEN }}
-          VAR_FORM_SUBMIT_TOKEN: ${{ vars.FORM_SUBMIT_TOKEN }}
+          SECRET_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+          VAR_WEB3FORMS_ACCESS_KEY: ${{ vars.WEB3FORMS_ACCESS_KEY }}
         run: |
-          if [ -n "$SECRET_FORM_SUBMIT_TOKEN" ]; then
-            echo "OK: secrets.FORM_SUBMIT_TOKEN is set (length ${#SECRET_FORM_SUBMIT_TOKEN})"
-          elif [ -n "$VAR_FORM_SUBMIT_TOKEN" ]; then
-            echo "OK: vars.FORM_SUBMIT_TOKEN is set (length ${#VAR_FORM_SUBMIT_TOKEN})"
-          elif [ -n "$SECRET_CONTACT_INBOX" ]; then
-            echo "OK: secrets.CONTACT_INBOX is set (length ${#SECRET_CONTACT_INBOX})"
-          elif [ -n "$VAR_CONTACT_INBOX" ]; then
-            echo "OK: vars.CONTACT_INBOX is set (length ${#VAR_CONTACT_INBOX})"
+          if [ -n "$SECRET_WEB3FORMS_ACCESS_KEY" ]; then
+            echo "OK: secrets.WEB3FORMS_ACCESS_KEY is set (length ${#SECRET_WEB3FORMS_ACCESS_KEY})"
+          elif [ -n "$VAR_WEB3FORMS_ACCESS_KEY" ]; then
+            echo "OK: vars.WEB3FORMS_ACCESS_KEY is set (length ${#VAR_WEB3FORMS_ACCESS_KEY})"
           else
-            echo "::error::No contact inbox configured."
-            echo "Add Repository secret CONTACT_INBOX with your inquiry inbox email"
-            echo "  Settings → Secrets and variables → Actions → Repository secrets → New secret"
-            echo "Or add Repository variable CONTACT_INBOX (Variables tab)."
-            exit 1
+            echo "::warning::WEB3FORMS_ACCESS_KEY is not set as a secret or variable. The key in src/data/contact-config.ts is used (placeholder WEB3FORMS_KEY_PENDING = forms will not deliver)."
           fi
 
       - name: Build
         env:
-          SECRET_CONTACT_INBOX: ${{ secrets.CONTACT_INBOX }}
-          VAR_CONTACT_INBOX: ${{ vars.CONTACT_INBOX }}
-          SECRET_FORM_SUBMIT_TOKEN: ${{ secrets.FORM_SUBMIT_TOKEN }}
-          VAR_FORM_SUBMIT_TOKEN: ${{ vars.FORM_SUBMIT_TOKEN }}
+          SECRET_WEB3FORMS_ACCESS_KEY: ${{ secrets.WEB3FORMS_ACCESS_KEY }}
+          VAR_WEB3FORMS_ACCESS_KEY: ${{ vars.WEB3FORMS_ACCESS_KEY }}
         run: |
-          if [ -n "$SECRET_CONTACT_INBOX" ]; then
-            export PUBLIC_CONTACT_INBOX="$SECRET_CONTACT_INBOX"
-            echo "Contact: using secrets.CONTACT_INBOX"
-          elif [ -n "$VAR_CONTACT_INBOX" ]; then
-            export PUBLIC_CONTACT_INBOX="$VAR_CONTACT_INBOX"
-            echo "Contact: using vars.CONTACT_INBOX"
-          fi
-          if [ -n "$SECRET_FORM_SUBMIT_TOKEN" ]; then
-            export PUBLIC_FORM_SUBMIT_TOKEN="$SECRET_FORM_SUBMIT_TOKEN"
-            echo "Contact: FORM_SUBMIT_TOKEN also set (used only after inbox activation)"
-          elif [ -n "$VAR_FORM_SUBMIT_TOKEN" ]; then
-            export PUBLIC_FORM_SUBMIT_TOKEN="$VAR_FORM_SUBMIT_TOKEN"
-            echo "Contact: vars.FORM_SUBMIT_TOKEN also set (used only after inbox activation)"
+          if [ -n "$SECRET_WEB3FORMS_ACCESS_KEY" ]; then
+            export PUBLIC_WEB3FORMS_ACCESS_KEY="$SECRET_WEB3FORMS_ACCESS_KEY"
+            echo "Contact: using secrets.WEB3FORMS_ACCESS_KEY"
+          elif [ -n "$VAR_WEB3FORMS_ACCESS_KEY" ]; then
+            export PUBLIC_WEB3FORMS_ACCESS_KEY="$VAR_WEB3FORMS_ACCESS_KEY"
+            echo "Contact: using vars.WEB3FORMS_ACCESS_KEY"
           fi
           npm run build
 
@@ -83,11 +64,14 @@ jobs:
 
       - name: Verify contact form is wired
         run: |
-          if grep -q 'formsubmit.co/' dist/eliora/atelier/ja/contact/index.html; then
-            echo "OK: FormSubmit endpoint present in built contact page"
+          if grep -q 'https://api.web3forms.com/submit' dist/eliora/atelier/ja/contact/index.html; then
+            echo "OK: Web3Forms endpoint present in built contact page"
           else
-            echo "::error::Built contact page has no FormSubmit endpoint. Set secrets.CONTACT_INBOX (or vars.CONTACT_INBOX) and redeploy."
+            echo "::error::Built contact page has no Web3Forms endpoint."
             exit 1
+          fi
+          if grep -q 'WEB3FORMS_KEY_PENDING' dist/eliora/atelier/ja/contact/index.html; then
+            echo "::warning::Built contact page still has the placeholder access key (WEB3FORMS_KEY_PENDING)."
           fi
 
       - name: Setup Pages

@@ -11,7 +11,6 @@ export interface ContactCopy {
   successTitle: string;
   successLead: string;
   successPoints: string[];
-  autoresponse: string;
   formAutoreplyHint: string;
   backHome: string;
   fields: {
@@ -53,15 +52,13 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       'Fixed package: Reproducible Pipeline Package (ComfyUI), $5,000 (excl. tax; Japanese consumption tax applies only to Japan-based clients), 10 business days. One reproducible workflow, input and output spec, and a runbook. One revision included. One-off image generation is out of scope.',
     successTitle: 'Inquiry received',
     successLead:
-      'Your message reached Miragea · Eliora. A confirmation email was sent to the address you entered.',
+      'Your message was sent to Miragea · Eliora.',
     successPoints: [
-      'An auto-reply email has been sent to your inbox (check spam if needed).',
+      'No automatic confirmation email is sent.',
       'Miragea · Eliora (principal) will reply within 3 business days.',
     ],
-    autoresponse:
-      'Thank you for contacting Miragea · Eliora. [Auto-reply] Your inquiry was received successfully. I will respond to the email address you provided within 3 business days. Please do not reply to this automated message.',
     formAutoreplyHint:
-      'After you send, an auto-reply confirmation goes to your email. Personal reply within 3 business days.',
+      'No automatic confirmation email is sent. Personal reply within 3 business days.',
     backHome: '← Back to Atelier home',
     fields: {
       name: 'Your name',
@@ -109,15 +106,13 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
       '定価: ComfyUI 再現パイプライン パッケージ、800,000円（税込880,000円）、納期10営業日。表示は税別価格。再現できるワークフロー1本、入出力の仕様、実行手順を納品する。修正1回を含む。単発の画像生成は対象外。',
     successTitle: 'お問い合わせを受け付けました',
     successLead:
-      'お問い合わせは正常に届きました。ご記入のメールアドレスへ自動返信メールをお送りしています。',
+      'お問い合わせを送信しました。',
     successPoints: [
-      '受付確認の自動返信メールを送信しました（届かない場合は迷惑メールをご確認ください）。',
+      '自動返信メールは送信されません。',
       '内容を確認のうえ、3営業日以内にMiragea · Eliora（担当）よりご記入のメールアドレスへ返信します。',
     ],
-    autoresponse:
-      'お問い合わせありがとうございます。Miragea · Elioraです。【自動返信】お問い合わせは正常に届きました。内容を確認のうえ、3営業日以内にご記入のメールアドレスへ返信いたします。※本メールへの返信は受け付けておりません。',
     formAutoreplyHint:
-      '送信後、ご記入のメールアドレスへ受付確認の自動返信をお送りします。担当からの返信は3営業日以内です。',
+      '自動返信メールは送信されません。担当からの返信は3営業日以内です。',
     backHome: '← アトリエホームへ',
     fields: {
       name: 'お名前',
@@ -163,14 +158,12 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
     offer:
       '套餐：ComfyUI 可复现工作流套餐，价格面议（人民币标价，不含税；日本消费税仅适用于日本境内客户），10 个工作日。交付一条可复现工作流、输入输出规格和运行步骤。含 1 次修改。不含单张出图。',
     successTitle: '咨询已受理',
-    successLead: '您的咨询已成功送达。已向填写的邮箱发送自动确认邮件。',
+    successLead: '您的咨询已成功提交。',
     successPoints: [
-      '自动确认邮件已发送（如未收到请查看垃圾邮件）。',
+      '不会发送自动确认邮件。',
       'Miragea · Eliora（负责人）将在 3 个工作日内回复您填写的邮箱。',
     ],
-    autoresponse:
-      '感谢您联系 Miragea · Eliora。【自动回复】您的咨询已成功送达。我将在 3 个工作日内回复您填写的邮箱。请勿回复本自动邮件。',
-    formAutoreplyHint: '提交后，系统会向您的邮箱发送自动确认。人工回复将在 3 个工作日内发出。',
+    formAutoreplyHint: '提交后不会发送自动确认邮件。人工回复将在 3 个工作日内发出。',
     backHome: '← 返回工坊首页',
     fields: {
       name: '姓名',
