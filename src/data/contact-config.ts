@@ -4,7 +4,7 @@ import type { AtelierLang } from './atelier-copy';
  * Web3Forms 送信設定
  *
  * ★ アクセスキーを入れる場所（ここ1か所）:
- *    下の WEB3FORMS_ACCESS_KEY_DEFAULT を Web3Forms の Access Key に置き換える。
+ *    下の WEB3FORMS_ACCESS_KEY_DEFAULT に Web3Forms の Access Key を設定済み（2026-10-31）。変更する場合はここを置き換える。
  *    または GitHub の Secret / Variable `WEB3FORMS_ACCESS_KEY` を設定する
  *    （deploy.yml がビルド時に PUBLIC_WEB3FORMS_ACCESS_KEY として渡す。Secret が優先）。
  *
@@ -12,7 +12,7 @@ import type { AtelierLang } from './atelier-copy';
  * 未設定（プレースホルダのまま）でもビルドは通りますが、警告を出します。送信は失敗します。
  */
 export const WEB3FORMS_KEY_PLACEHOLDER = 'WEB3FORMS_KEY_PENDING';
-const WEB3FORMS_ACCESS_KEY_DEFAULT = WEB3FORMS_KEY_PLACEHOLDER;
+const WEB3FORMS_ACCESS_KEY_DEFAULT = '67882b18-c2a0-4090-a722-cfd312cede61';
 const WEB3FORMS_ACCESS_KEY: string =
   (import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY as string | undefined)?.trim() || WEB3FORMS_ACCESS_KEY_DEFAULT;
 
