@@ -253,6 +253,12 @@
       .section-head p { margin: 0; max-width: 560px; color: var(--muted); line-height: 1.75; }
       .grid { display: grid; gap: 14px; }
       .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .eliora-work .section-head { display: block; margin-bottom: 22px; }
+      .eliora-work .section-head .eyebrow { margin-bottom: 10px; }
+      .eliora-work .section-head h2 { font-size: clamp(26px, 3vw, 38px); max-width: 24ch; }
+      .eliora-work .card p { font-size: 14px; }
+      .eliora-work .card .tag { display: inline-block; margin-bottom: 10px; }
       .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .card {
         border: 1px solid var(--line);
@@ -317,7 +323,7 @@
         .topbar { align-items: flex-start; flex-direction: column; }
         .hero { grid-template-columns: 1fr; min-height: auto; }
         .hero-media { min-height: auto; border-left: 0; padding-left: 0; }
-        .grid.three, .grid.two { grid-template-columns: 1fr; }
+        .grid.three, .grid.two, .grid.four { grid-template-columns: 1fr; }
         .section-head { align-items: flex-start; flex-direction: column; }
         .business-banner-inner { align-items: flex-start; flex-direction: column; }
       }
@@ -403,6 +409,23 @@
             <p data-i18n="businessLead">Reproducible pipelines, local bf16/fp16 operation, API export, and batch production — scoped through a fixed inquiry form with email reply within 3 business days.</p>
           </div>
           <a class="button primary" href="/eliora/atelier/en/contact/" data-contact-link data-i18n="businessCta">Project inquiry</a>
+        </div>
+      </section>
+
+      <section class="wrap eliora-work" id="work-with-eliora" aria-labelledby="work-title">
+        <div class="section-head">
+          <div class="eyebrow" data-i18n="wkEyebrow">Work with Eliora</div>
+          <h2 id="work-title" data-i18n="wkTitle">Reproducible AI production for teams, on hardware you control</h2>
+        </div>
+        <div class="grid four">
+          <article class="card"><span class="tag" data-i18n="wkK1">What I build</span><p data-i18n="wkV1"></p></article>
+          <article class="card"><span class="tag" data-i18n="wkK2">For whom</span><p data-i18n="wkV2"></p></article>
+          <article class="card"><span class="tag" data-i18n="wkK3">Fees (JPY)</span><p data-i18n="wkV3"></p></article>
+          <article class="card"><span class="tag" data-i18n="wkK4">Evidence</span><p data-i18n="wkV4"></p></article>
+        </div>
+        <div class="actions" style="margin-top:20px">
+          <a class="button primary" href="/eliora/atelier/en/services/" data-services-link data-i18n="wkCta1">Services &amp; pricing</a>
+          <a class="button" href="/eliora/atelier/en/contact/" data-contact-link data-i18n="wkCta2">Project inquiry</a>
         </div>
       </section>
 
@@ -502,6 +525,18 @@
           businessTitle: 'ComfyUI automation · PoC · enterprise workflows',
           businessLead: 'Reproducible pipelines, local bf16/fp16 operation, API export, and batch production — scoped through a fixed inquiry form with email reply within 3 business days.',
           businessCta: 'Project inquiry',
+          wkEyebrow: 'Work with Eliora',
+          wkTitle: 'Reproducible AI production for teams, on hardware you control',
+          wkK1: 'What I build',
+          wkV1: 'Workflows your team can re-run with the same result: ComfyUI pipelines with fixed inputs and a runbook, and local-AI automation for invoices, inquiries and internal documents.',
+          wkK2: 'For whom',
+          wkV2: 'Studios, agencies and in-house teams that need documented, repeatable AI work rather than one-off generations.',
+          wkK3: 'Fees (JPY)',
+          wkV3: 'Diagnosis ¥30,000 · Build ¥150,000 · Document-AI PoC ¥300,000 · Pipeline package ¥800,000 (before tax)',
+          wkK4: 'Evidence',
+          wkV4: 'Scope, specification and runbook delivered in writing. In-house tests on synthetic data: invoices 24/24 · inquiries 14/14 · document Q&A 13/13.',
+          wkCta1: 'Services & pricing',
+          wkCta2: 'Project inquiry',
           navContact: 'Project inquiry',
           navAtelier: 'Cosmic Atelier',
           navCanvas: 'Canvas',
@@ -571,6 +606,18 @@
           businessTitle: 'ComfyUI業務自動化 · PoC · 企業ワークフロー',
           businessLead: '再現性のあるパイプライン、ローカルbf16/fp16運用、API化、バッチ量産。固定お問い合わせフォームからご連絡いただければ、3営業日以内にメールで返信します。',
           businessCta: 'お仕事のご相談',
+          wkEyebrow: 'お仕事のご相談',
+          wkTitle: '社内の手作業を、手元のAIで自動化します',
+          wkK1: 'できること',
+          wkV1: '請求書・問い合わせ・社内文書の業務を、手元のPCで動くローカルAIで自動化します。データはクラウドAIに送りません。',
+          wkK2: '対象',
+          wkV2: '繰り返しの事務作業を抱える、中小企業・個人事業主・小さなチーム。',
+          wkK3: '料金（基本料金）',
+          wkV3: '診断 30,000円 · 構築 150,000円 · 社内文書AIのPoC 300,000円',
+          wkK4: '根拠',
+          wkV4: '自社検証・合成データ：請求書 24/24 · 問い合わせ 14/14 · 社内文書Q&A 13/13。',
+          wkCta1: 'サービスと料金',
+          wkCta2: 'お問い合わせ',
           navContact: 'お仕事のご相談',
           navAtelier: '宇宙AIアトリエ',
           navCanvas: 'Canvas',
@@ -640,6 +687,18 @@
           businessTitle: 'ComfyUI 自动化 · PoC · 企业工作流',
           businessLead: '可复现管线、本地 bf16/fp16 运行、API 导出与批量生产。通过固定咨询表单联系，3 个工作日内邮件回复。',
           businessCta: '项目咨询',
+          wkEyebrow: '与 Eliora 合作',
+          wkTitle: '3D + AI 的可控工作流，也能接手您的重复杂务',
+          wkK1: '能做什么',
+          wkV1: '把 3D+AI 创作中打磨的“可控工作流”思路，用在您的创作与业务上：ComfyUI 工作流搭建，以及用本地 AI 处理发票、咨询和资料。',
+          wkK2: '适合谁',
+          wkV2: '个人创作者、小型工作室与个体经营者——想把重复工作交给流程，把时间留给创作的人。',
+          wkK3: '价格（日元）',
+          wkV3: '诊断 30,000 · 搭建 150,000 · 文档 AI PoC 300,000 · ComfyUI 工作流套餐 800,000（税前）',
+          wkK4: '依据',
+          wkV4: '自有验证·合成数据：发票 24/24 · 咨询 14/14 · 文档问答 13/13。',
+          wkCta1: '服务与价格',
+          wkCta2: '项目咨询',
           navContact: '项目咨询',
           navAtelier: '宇宙 AI 工坊',
           navCanvas: 'Canvas',
@@ -718,6 +777,9 @@
         document.querySelectorAll('[data-atelier-hub-link]').forEach((node) => {
           node.setAttribute('href', '/eliora/atelier/' + current + '/atelier/');
         });
+        document.querySelectorAll('[data-services-link]').forEach((node) => {
+          node.setAttribute('href', '/eliora/atelier/' + current + '/services/');
+        });
         document.querySelectorAll('[data-contact-link]').forEach((node) => {
           node.setAttribute('href', '/eliora/atelier/' + current + '/contact/');
         });
@@ -749,7 +811,8 @@
       document.querySelectorAll('[data-lang]').forEach((button) => {
         button.addEventListener('click', () => setLanguage(button.dataset.lang));
       });
-      setLanguage(localStorage.getItem('eliora-lang') || 'en');
+      const queryLang = new URLSearchParams(location.search).get('lang');
+      setLanguage(['en', 'ja', 'zh'].includes(queryLang) ? queryLang : localStorage.getItem('eliora-lang') || 'en');
     </script>
   </body>
 </html>
