@@ -103,6 +103,22 @@ const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(
       <p class="contact-note svc-pricenote">{copy.priceNote}</p>
     </section>
 
+    <section class="block" id="compare">
+      <div class="section-label">{copy.compare.label}</div>
+      <h2 class="section-title">{copy.compare.title}</h2>
+      <div class="svc-compare glass-panel">
+        {
+          copy.compare.rows.map((r) => (
+            <div class="svc-compare-row">
+              <div class="svc-compare-k">{r.k}</div>
+              <div class="svc-compare-v">{r.v}</div>
+            </div>
+          ))
+        }
+      </div>
+      <p class="svc-compare-link"><a href={copy.compare.link.href} style="color:var(--champagne)">{copy.compare.link.label} →</a></p>
+    </section>
+
     {
       copy.offers.map((o) => (
         <section class="block svc-detail" id={o.id}>
@@ -203,6 +219,25 @@ const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(
       ))
     }
 
+    {
+      copy.production && (
+        <section class="block svc-detail svc-production" id="production">
+          <div class="section-label">{copy.production.label}</div>
+          <h2 class="svc-title">{copy.production.title}</h2>
+          <p class="svc-catch">{copy.production.lead}</p>
+          <div class="glass-panel svc-sec svc-prod-box">
+            <ul class="svc-ul">{copy.production.items.map((x) => <li>{x}</li>)}</ul>
+            <p>{copy.production.outOfScope}</p>
+            <dl class="svc-prod-facts">
+              <div><dt>{copy.priceLabel}</dt><dd class="svc-price svc-price--lg">{copy.pricePrefix}{yen(copy.production.price)}<small>{copy.priceUnit}</small> <span class="svc-tax">{copy.production.priceNote}</span></dd></div>
+              <div><dt>{copy.daysLabel}</dt><dd>{copy.production.days}</dd></div>
+            </dl>
+            <a class="btn btn-primary" href={contactPath}>{copy.production.button}</a>
+          </div>
+        </section>
+      )
+    }
+
     <section class="block svc-cta glass-panel">
       <div class="section-label">{copy.cta.label}</div>
       <h2 class="section-title">{copy.cta.title}</h2>
@@ -264,6 +299,19 @@ const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(
   .svc-price--lg { font-size: 1.9rem; }
   .svc-days { font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; color: var(--muted); }
   .svc-pricenote { margin: 22px 0 0; }
+  .svc-compare { padding: 6px 22px; }
+  .svc-compare-row { display: grid; grid-template-columns: minmax(180px, 0.9fr) 2fr; gap: 8px 28px; padding: 16px 0; }
+  .svc-compare-row + .svc-compare-row { border-top: 1px solid var(--glass-border); }
+  .svc-compare-k { font-family: var(--svc-serif); font-size: 1rem; color: var(--text); }
+  .svc-compare-v { color: var(--moonlight); font-size: 0.92rem; line-height: 1.8; }
+  .svc-compare-link { margin: 16px 0 0; font-size: 0.92rem; }
+  .svc-production { margin-top: 8px; }
+  .svc-prod-box { max-width: 720px; margin-top: 18px; }
+  .svc-prod-facts { display: flex; flex-wrap: wrap; gap: 8px 36px; margin: 18px 0; }
+  .svc-prod-facts dt { font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; letter-spacing: 0.12em; color: var(--champagne); text-transform: uppercase; }
+  .svc-prod-facts dd { margin: 4px 0 0; }
+  .svc-tax { font-size: 0.72rem; opacity: 0.75; margin-left: 6px; }
+  @media (max-width: 720px) { .svc-compare-row { grid-template-columns: 1fr; } }
 
   .svc-detail { border-top: 1px solid var(--glass-border); scroll-margin-top: 16px; }
   .svc-head { max-width: 860px; margin-bottom: 28px; }

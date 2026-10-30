@@ -2,6 +2,7 @@
 import type { AtelierHomeCopy, AtelierLang } from '../../data/atelier-copy';
 import AtelierTopbar from './AtelierTopbar.astro';
 import AtelierWorkflows from './AtelierWorkflows.astro';
+import BizStrip from '../BizStrip.astro';
 
 interface Props {
   lang: AtelierLang;
@@ -61,6 +62,8 @@ const hub = `/eliora/atelier/${lang}/atelier/`;
         </div>
       </aside>
     </section>
+
+    <BizStrip lang={lang} tone="atelier" />
 
     <section class="atelier-section" id="atelier">
       <div class="stale-banner" role="status">{copy.atelierSection.staleBanner}</div>

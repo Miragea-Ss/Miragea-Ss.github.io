@@ -22,6 +22,13 @@ export interface ServicesPageCopy {
   detailLabels: { included: string; options: string; faq: string; terms: string; contact: string };
   cta: { label: string; title: string; lead: string; button: string };
   priceNote: string;
+  /** "How is this different from Discovery?" block (scope comparison). */
+  compare: { label: string; title: string; rows: { k: string; v: string }[]; link: { label: string; href: string } };
+  /** Optional production-pipeline block (en / zh), mirrors the fixed package on the contact page. */
+  production?: {
+    label: string; title: string; lead: string; items: string[]; outOfScope: string;
+    price: number; priceNote: string; days: string; button: string;
+  };
   offers: ServiceOffer[];
 }
 
@@ -72,6 +79,17 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
     },
     priceNote:
       '表示価格は基本料金です。範囲を超える場合は、有料オプションまたは個別のお見積りでご案内します。請求・お支払い・税表記の詳細は、お見積り時にご案内します。',
+    compare: {
+      label: 'Which one?',
+      title: 'Discoveryとの違い（どちらを選ぶか）',
+      rows: [
+        { k: '1つの業務の流れを整理したい', v: 'Discovery「業務分析」（25,000円）：繰り返している1つの業務について、業務マップと次の一手を整理します。' },
+        { k: '最大5業務を比べて、どれをAI化するか決めたい', v: 'この「診断」（30,000円・7日）：5業務を採点し、ローカル／クラウドの判定、効果とコストの概算、90日の進め方をPDFにまとめます。' },
+        { k: 'ツール連携や運用まで含めて、仕組みを作りたい', v: 'Discovery「仕組みの制作」（67,000円）：データの扱いに合わせ、オンライン／専用環境／自社PC／ローカルから実行方法を選び、範囲は個別に合意します。' },
+        { k: 'ローカルAIで作り、自分のサンプルで精度を測りたい', v: 'この「構築」（150,000円・21日）：請求書・問い合わせ・文書Q&Aから1つを、ローカルAIで構築。精度レポートと30日の質問対応つきです。' },
+      ],
+      link: { label: 'Discoveryを見る', href: '/eliora/discovery/ja/' },
+    },
     offers: servicesOffers.ja,
   },
   en: {
@@ -82,13 +100,13 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
     },
     brandSubtitle: 'Services & Pricing',
     navLabel: 'Services',
-    badge: 'Local AI · Business automation',
+    badge: 'Enterprise · Reproducible AI',
     hero: {
-      line1: 'Automate routine work',
-      emphasis: 'with private AI',
-      line2: ' on your own PC',
+      line1: 'Reproducible AI production',
+      emphasis: 'for your team,',
+      line2: ' on hardware you control',
       lead:
-        'Invoices, inquiries and internal documents, handled by local AI that runs on your own PC. Your data is never sent to a cloud AI service. I diagnose before I build, and I measure accuracy in numbers afterwards.',
+        'Documented workflows your team can re-run and check: local-AI automation for invoices, inquiries and internal documents, and ComfyUI pipelines with fixed inputs and a runbook. Accuracy is measured in numbers, and your data is never sent to a cloud AI service.',
       primary: 'Contact & consult',
       secondary: 'See services & pricing',
     },
@@ -120,6 +138,33 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
     },
     priceNote:
       'Prices are base fees in Japanese yen. Anything beyond scope is handled with paid options or an individual quote. Invoicing, payment and tax details are given with the quote.',
+    compare: {
+      label: 'Which one?',
+      title: 'How this differs from Discovery',
+      rows: [
+        { k: 'Understand one repeated workflow', v: 'Discovery “Workflow Scan” (¥25,000): a process map and the next step for one repeated task.' },
+        { k: 'Compare up to 5 tasks and decide which to automate', v: 'This “Diagnosis” (¥30,000, 7 days): five tasks scored, a local-vs-cloud verdict, a cost and benefit estimate and a 90-day roadmap, as a PDF report.' },
+        { k: 'Build a workflow, including tool connections and operation', v: 'Discovery “Automation Sprint” (¥67,000): the setup (online service, dedicated environment, your hardware or local) is chosen to fit your data, and the scope is agreed individually.' },
+        { k: 'Build with local AI and measure accuracy on your own samples', v: 'This “Build” (¥150,000, 21 days): one of invoices, inquiries or document Q&A on local AI, delivered with an accuracy report and 30 days of Q&A.' },
+      ],
+      link: { label: 'See Discovery', href: '/eliora/discovery/en/' },
+    },
+    production: {
+      label: 'Production pipelines',
+      title: 'Reproducible pipeline package (ComfyUI)',
+      lead: 'For studios, agencies and in-house teams that need the same result on every run, not one-off images. This is the fixed package already listed on the inquiry page.',
+      items: [
+        'One reproducible workflow on a local bf16/fp16 stack',
+        'Input and output specification',
+        'A runbook your team can follow',
+        'One revision included',
+      ],
+      outOfScope: 'One-off image generation is out of scope.',
+      price: 800000,
+      priceNote: 'Before tax',
+      days: '10 business days',
+      button: 'Ask about a pipeline',
+    },
     offers: servicesOffers.en,
   },
   zh: {
@@ -130,13 +175,13 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
     },
     brandSubtitle: '服务与价格',
     navLabel: '服务',
-    badge: '本地 AI · 业务自动化',
+    badge: '创作者 · 3D+AI 工作流',
     hero: {
-      line1: '把公司里的重复工作，',
-      emphasis: '交给自己 PC 上的 AI',
+      line1: '3D + AI 的可控工作流，',
+      emphasis: '也能接手您的重复杂务',
       line2: '',
       lead:
-        '发票、咨询、内部文档的处理，用运行在您自己 PC 内的本地 AI 自动化，数据不会发送到云端 AI 服务。先诊断再搭建，搭建之后用数字确认精度。',
+        '把我在 3D+AI 创作中打磨的“可控工作流”思路，用在您的创作与业务上：ComfyUI 工作流搭建，以及用运行在您自己 PC 内的本地 AI 处理发票、咨询和资料。数据不会发送到云端 AI 服务，精度用数字确认。',
       primary: '咨询与洽谈',
       secondary: '查看服务与价格',
     },
@@ -168,6 +213,33 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
     },
     priceNote:
       '所示为基础价格（日元）。超出范围的部分，通过付费选项或单独报价处理。开票、付款与税务表示等细节，在报价时说明。',
+    compare: {
+      label: 'Which one?',
+      title: '与 Discovery 的区别（怎么选）',
+      rows: [
+        { k: '想先梳理一项重复工作的流程', v: 'Discovery「业务分析」（25,000 日元）：针对一项反复进行的工作，整理流程图和下一步。' },
+        { k: '想比较最多 5 项工作，决定先把哪项 AI 化', v: '本页的「诊断」（30,000 日元 · 7 天）：对 5 项工作评分，给出本地/云端判定、效果与成本估算和 90 天计划，汇总为 PDF 报告。' },
+        { k: '想搭建工作流，包括工具对接与运行', v: 'Discovery「工作流构建」（67,000 日元）：根据数据情况，从在线服务/专用环境/自有硬件/本地中选择运行方式，范围单独约定。' },
+        { k: '想用本地 AI 搭建，并用自己的样本测精度', v: '本页的「搭建」（150,000 日元 · 21 天）：在发票、咨询、文档问答中选一项，用本地 AI 搭建，附精度报告和 30 天答疑。' },
+      ],
+      link: { label: '查看 Discovery', href: '/eliora/discovery/zh/' },
+    },
+    production: {
+      label: 'ComfyUI 工作流',
+      title: '可控 ComfyUI 工作流搭建（固定套餐）',
+      lead: '面向创作者、小型工作室与团队：需要每次都得到同样结果的工作流，而不是一次性出图。这是咨询页上已经列出的固定套餐。',
+      items: [
+        '在本地 bf16/fp16 环境上交付一条可复现工作流',
+        '输入输出规格',
+        '可照着执行的运行步骤',
+        '含 1 次修改',
+      ],
+      outOfScope: '不含单张出图。',
+      price: 800000,
+      priceNote: '税前',
+      days: '10 个工作日',
+      button: '咨询工作流搭建',
+    },
     offers: servicesOffers.zh,
   },
 };

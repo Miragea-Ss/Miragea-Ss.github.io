@@ -655,7 +655,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "price": 30000,
       "days": 7,
       "lead": [
-        "Thanks for visiting. This is Miragea · Eliora, building private AI automation for business.",
+        "Thanks for visiting. This is Miragea · Eliora, building reproducible, private AI workflows for teams.",
         "“I want AI to take work off my plate, but I don’t know where to start.”",
         "“I’m not sure it is safe to put internal documents or client information into a cloud AI.”",
         "For small and mid-sized companies and independent professionals, this report decides whether a task is worth automating before anything is built. If a task is better left alone, I will say so."
@@ -843,7 +843,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "price": 150000,
       "days": 21,
       "lead": [
-        "Thanks for visiting. This is Miragea · Eliora, automating repetitive in-house tasks with AI, one task at a time.",
+        "Thanks for visiting. This is Miragea · Eliora, turning repetitive in-house tasks into reproducible AI workflows, one task at a time.",
         "Copying invoice data, sorting inquiry emails, hunting through manuals. Small chores add up to a lot of time every month. This service takes one of them and builds a tool that automates it with local AI (AI that runs on a PC inside your company, without sending data to the cloud)."
       ],
       "sections": [
@@ -1276,7 +1276,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "price": 30000,
       "days": 7,
       "lead": [
-        "感谢您的关注。我是 Miragea · Eliora，专注于企业私有 AI 自动化。",
+        "感谢您的关注。我是 Miragea · Eliora，平时做 3D+AI 创作，也把其中的可控工作流方法用于私有 AI 自动化。",
         "“想用 AI 减轻工作量，但不知道从哪里开始。”",
         "“把内部资料和客户信息放进云端 AI，总觉得不放心。”",
         "面向中小企业和个体经营者，这份诊断报告会在搭建之前先判断“这件事值不值得做”。如果某项业务不适合 AI 化，我也会如实建议暂缓。"
@@ -1464,7 +1464,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "price": 150000,
       "days": 21,
       "lead": [
-        "感谢您的关注。我是 Miragea · Eliora，用 AI 把公司里“每月重复的手工活”一项一项自动化。",
+        "感谢您的关注。我是 Miragea · Eliora，用 AI 把创作与业务里“每月重复的手工活”一项一项自动化。",
         "发票数据的转录、咨询邮件的分类、翻找手册的时间。每一项都很小，但积累起来每月会占用大量时间。本服务会从中选出一项业务，用本地 AI（不把数据发送到云端、在您自己 PC 内运行的 AI）搭建自动化工具。"
       ],
       "sections": [
