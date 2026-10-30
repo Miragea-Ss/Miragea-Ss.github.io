@@ -147,6 +147,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       { href: '#studio', label: 'Studio' },
       { href: '/eliora/atelier/en/atelier/', label: 'Atelier Ops' },
       { href: '#series', label: 'Series' },
+      { href: '/eliora/atelier/en/services/', label: 'Services' },
       { href: '/eliora/atelier/en/contact/', label: 'Contact' },
     ],
     regionTags,
@@ -157,6 +158,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         'ComfyUI pipelines, local bf16/fp16 operation, API export, and batch production. I build systems that automate creative work — not single images on demand.',
       ctas: [
         { href: '/eliora/atelier/en/contact/', label: 'Project inquiry', variant: 'primary' },
+        { href: '/eliora/atelier/en/services/', label: 'Services & pricing', variant: 'secondary' },
         { href: '#studio', label: 'View workflows', variant: 'secondary' },
         { href: '/eliora/atelier/en/atelier/', label: 'Atelier Ops →', variant: 'agent' },
       ],
@@ -454,6 +456,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       { href: '#studio', label: '工作室' },
       { href: '/eliora/atelier/zh/atelier/', label: '工坊运作' },
       { href: '#bts', label: '制作解说' },
+      { href: '/eliora/atelier/zh/services/', label: '服务' },
       { href: '/eliora/atelier/zh/contact/', label: '联系' },
     ],
     regionTags,
@@ -464,6 +467,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         '一边构建作品世界，一边把制作过程完整展示出来。把日本/英语圈的 AI 趋势翻译成中文创作者能用的工作流与解说。',
       ctas: [
         { href: '/eliora/atelier/zh/contact/', label: '项目咨询', variant: 'primary' },
+        { href: '/eliora/atelier/zh/services/', label: '服务与价格', variant: 'secondary' },
         { href: '#studio', label: '获取工作流', variant: 'secondary' },
         { href: '/eliora/atelier/zh/atelier/', label: '打开 4 个 Agent →', variant: 'agent' },
       ],
@@ -590,6 +594,7 @@ export const atelierHubCopy: Record<AtelierLang, AtelierHubCopy> = {
       { href: '/eliora/atelier/en/#works', label: 'Works' },
       { href: '/eliora/atelier/en/#studio', label: 'Studio' },
       { href: '/eliora/atelier/en/atelier/', label: 'Atelier Ops' },
+      { href: '/eliora/atelier/en/services/', label: 'Services' },
     ],
     staleBanner: 'Agent status may be stale.',
     hero: {
@@ -664,6 +669,7 @@ export const atelierHubCopy: Record<AtelierLang, AtelierHubCopy> = {
       { href: '/eliora/atelier/zh/#bts', label: '制作解说' },
       { href: '/eliora/atelier/zh/#studio', label: '工作室' },
       { href: '/eliora/atelier/zh/atelier/', label: '工坊运作' },
+      { href: '/eliora/atelier/zh/services/', label: '服务' },
     ],
     staleBanner: 'Agent 状态可能已过期。',
     hero: {

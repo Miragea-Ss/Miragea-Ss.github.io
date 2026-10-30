@@ -1,18 +1,22 @@
 ---
 import AtelierLayout from '../../../../../site-layouts/AtelierLayout.astro';
 import AtelierServices from '../../../../../components/atelier/AtelierServices.astro';
-import type { AtelierLang } from '../../../../../data/atelier-copy';
+import { atelierLanguages, type AtelierLang } from '../../../../../data/atelier-copy';
 import { servicesPageCopy } from '../../../../../data/services-page-copy';
 
-// Services page is Japanese-only for now (en / zh are intentionally not generated).
 export function getStaticPaths() {
-  return [{ params: { lang: 'ja' } }];
+  return atelierLanguages.map((lang) => ({ params: { lang } }));
 }
 
-const lang = 'ja' as AtelierLang;
-const copy = servicesPageCopy.ja;
+const { lang } = Astro.params as { lang: AtelierLang };
+const copy = servicesPageCopy[lang];
 ---
 
-<AtelierLayout title={copy.meta.title} description={copy.meta.description} lang={lang}>
+<AtelierLayout
+  title={copy.meta.title}
+  description={copy.meta.description}
+  lang={lang}
+  image={lang === "ja" ? "/eliora/atelier/assets/img/services/shindan-main.webp" : `/eliora/atelier/assets/img/services/${lang}/shindan-main.webp`}
+>
   <AtelierServices lang={lang} copy={copy} />
 </AtelierLayout>

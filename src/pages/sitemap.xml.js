@@ -11,6 +11,7 @@ const routes = [
   '/eliora/atelier/en/', '/eliora/atelier/ja/', '/eliora/atelier/zh/',
   '/eliora/atelier/en/atelier/', '/eliora/atelier/ja/atelier/', '/eliora/atelier/zh/atelier/',
   '/eliora/atelier/en/contact/', '/eliora/atelier/ja/contact/', '/eliora/atelier/zh/contact/',
+  '/eliora/atelier/en/services/', '/eliora/atelier/ja/services/', '/eliora/atelier/zh/services/',
 ];
 
 export function GET() {

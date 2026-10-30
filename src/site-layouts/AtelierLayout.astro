@@ -5,9 +5,22 @@ interface Props {
   title: string;
   description: string;
   lang: AtelierLang;
+  /** Absolute-path image used for og:image / twitter:image. */
+  image?: string;
 }
 
-const { title, description, lang } = Astro.props;
+const { title, description, lang, image = '/eliora/assets/images/miragea-portrait.webp' } = Astro.props;
+
+const SITE = 'https://miragea-ss.github.io';
+const pathname = Astro.url.pathname;
+const canonical = `${SITE}${pathname}`;
+const langs: AtelierLang[] = ['en', 'ja', 'zh'];
+const alternates = langs.map((l) => ({
+  hreflang: l,
+  href: `${SITE}${pathname.replace(`/eliora/atelier/${lang}/`, `/eliora/atelier/${l}/`)}`,
+}));
+const ogLocale = lang === 'ja' ? 'ja_JP' : lang === 'zh' ? 'zh_CN' : 'en_US';
+const ogImage = `${SITE}${image}`;
 
 const htmlLang = lang === 'zh' ? 'zh' : lang === 'ja' ? 'ja' : 'en';
 
@@ -26,6 +39,18 @@ const fontHref =
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    <link rel="alternate" hreflang="x-default" href={alternates[0].href} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Miragea · Eliora" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={ogLocale} />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href={fontHref} rel="stylesheet" />

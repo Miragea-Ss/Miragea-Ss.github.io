@@ -15,17 +15,17 @@ const homeCopy = atelierHomeCopy[lang];
 const homePath = `/eliora/atelier/${lang}/`;
 const servicesPath = `${homePath}services/`;
 const contactPath = atelierContactPath(lang);
-const img = '/eliora/atelier/assets/img/services/';
+const img = lang === 'ja' ? '/eliora/atelier/assets/img/services/' : `/eliora/atelier/assets/img/services/${lang}/`;
 const yen = (n: number) => n.toLocaleString('ja-JP');
 
 const nav = homeCopy.nav.map((item) => ({
   ...item,
   href: item.href.startsWith('#') ? `${homePath}${item.href}` : item.href,
 }));
-const isNote = (h: string) => /実績|検証/.test(h);
+const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(h);
 ---
 
-<div class="wrap svc-page">
+<div class="wrap svc-page" data-lang={lang}>
   <AtelierTopbar
     lang={lang}
     brandSubtitle={copy.brandSubtitle}
@@ -52,7 +52,7 @@ const isNote = (h: string) => /実績|検証/.test(h);
       <aside class="glass-panel" aria-label="Service menu">
         <div class="panel-header">
           <span>{copy.panelHeader}</span>
-          <span class="live"><span class="agent-dot pulse"></span> 3 services</span>
+          <span class="live"><span class="agent-dot pulse"></span> {copy.panelCount}</span>
         </div>
         <ul class="svc-menu">
           {
@@ -61,7 +61,7 @@ const isNote = (h: string) => /実績|検証/.test(h);
                 <a href={`#${o.id}`}>
                   <span class="svc-menu-ep">{o.eyebrow}</span>
                   <span class="svc-menu-name">{o.short}</span>
-                  <span class="svc-menu-price">{yen(o.price)}<small>{copy.priceUnit}</small></span>
+                  <span class="svc-menu-price">{copy.pricePrefix}{yen(o.price)}<small>{copy.priceUnit}</small></span>
                 </a>
               </li>
             ))
@@ -81,7 +81,7 @@ const isNote = (h: string) => /実績|検証/.test(h);
               <img
                 class="svc-card-img"
                 src={`${img}${o.id}-main.webp`}
-                alt={`${o.short}のサービス紹介画像`}
+                alt={`${o.short}${copy.altCard}`}
                 width="1220"
                 height="1016"
                 loading="lazy"
@@ -92,8 +92,8 @@ const isNote = (h: string) => /実績|検証/.test(h);
                 <h3>{o.short}</h3>
                 <p>{o.summary}</p>
                 <div class="svc-card-meta">
-                  <span class="svc-price">{yen(o.price)}<small>{copy.priceUnit}</small></span>
-                  <span class="svc-days">{o.days}日</span>
+                  <span class="svc-price">{copy.pricePrefix}{yen(o.price)}<small>{copy.priceUnit}</small></span>
+                  <span class="svc-days">{o.days}{copy.daysSuffix}</span>
                 </div>
               </div>
             </a>
@@ -115,15 +115,15 @@ const isNote = (h: string) => /実績|検証/.test(h);
           <div class="svc-grid">
             <aside class="svc-side">
               <figure class="svc-fig glass-panel">
-                <img src={`${img}${o.id}-main.webp`} alt={`${o.short} メイン画像`} width="1220" height="1016" loading="lazy" decoding="async" />
+                <img src={`${img}${o.id}-main.webp`} alt={`${o.short}${copy.altMain}`} width="1220" height="1016" loading="lazy" decoding="async" />
               </figure>
               <figure class="svc-fig glass-panel">
-                <img src={`${img}${o.id}-sub.webp`} alt={`${o.short} 内容の概要`} width="1220" height="1016" loading="lazy" decoding="async" />
+                <img src={`${img}${o.id}-sub.webp`} alt={`${o.short}${copy.altSub}`} width="1220" height="1016" loading="lazy" decoding="async" />
               </figure>
               <div class="glass-panel svc-facts">
                 <dl>
-                  <div><dt>{copy.priceLabel}</dt><dd class="svc-price svc-price--lg">{yen(o.price)}<small>{copy.priceUnit}</small></dd></div>
-                  <div><dt>{copy.daysLabel}</dt><dd>{o.days}日</dd></div>
+                  <div><dt>{copy.priceLabel}</dt><dd class="svc-price svc-price--lg">{copy.pricePrefix}{yen(o.price)}<small>{copy.priceUnit}</small></dd></div>
+                  <div><dt>{copy.daysLabel}</dt><dd>{o.days}{copy.daysSuffix}</dd></div>
                 </dl>
                 <a class="btn btn-primary" href={contactPath}>{copy.hero.primary}</a>
               </div>
@@ -160,7 +160,7 @@ const isNote = (h: string) => /実績|検証/.test(h);
                   o.options.map((op) => (
                     <li>
                       <span>{op.text}</span>
-                      <b>+{yen(op.price)}<small>{copy.priceUnit}</small></b>
+                      <b>+{copy.pricePrefix}{yen(op.price)}<small>{copy.priceUnit}</small></b>
                     </li>
                   ))
                 }
@@ -238,6 +238,9 @@ const isNote = (h: string) => /実績|検証/.test(h);
 </div>
 
 <style>
+  .svc-page { --svc-serif: "Noto Serif JP", "Playfair Display", serif; }
+  .svc-page[data-lang='zh'] { --svc-serif: "Noto Serif SC", "Playfair Display", serif; }
+  .svc-page[data-lang='en'] { --svc-serif: "Playfair Display", "Source Serif 4", serif; }
   .svc-hero-lead { max-width: 46ch; }
   .svc-menu { list-style: none; margin: 0; padding: 6px 0; }
   .svc-menu li + li { border-top: 1px solid var(--glass-border); }
@@ -247,14 +250,14 @@ const isNote = (h: string) => /実績|検証/.test(h);
   }
   .svc-menu a:hover { background: rgba(46, 74, 158, 0.18); }
   .svc-menu-ep { font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; letter-spacing: 0.12em; color: var(--champagne); }
-  .svc-menu-name { font-family: "Noto Serif JP", "Playfair Display", serif; font-size: 1rem; }
+  .svc-menu-name { font-family: var(--svc-serif); font-size: 1rem; }
   .svc-menu-price { font-family: "Playfair Display", serif; font-size: 1.15rem; color: var(--moonlight); }
   small { font-size: 0.7em; margin-left: 2px; opacity: 0.8; }
 
   .svc-cards { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
   .svc-card-img { width: 100%; height: auto; aspect-ratio: 6 / 5; object-fit: cover; border-bottom: 1px solid var(--glass-border); }
   .svc-card .work-body { padding: 18px 18px 20px; }
-  .svc-card .work-body h3 { font-family: "Noto Serif JP", "Playfair Display", serif; font-size: 1.1rem; margin-bottom: 8px; }
+  .svc-card .work-body h3 { font-family: var(--svc-serif); font-size: 1.1rem; margin-bottom: 8px; }
   .svc-ep { font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; letter-spacing: 0.14em; color: var(--champagne); margin-bottom: 6px; }
   .svc-card-meta { display: flex; align-items: baseline; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--glass-border); }
   .svc-price { font-family: "Playfair Display", serif; font-size: 1.35rem; color: var(--text); }
@@ -264,7 +267,7 @@ const isNote = (h: string) => /実績|検証/.test(h);
 
   .svc-detail { border-top: 1px solid var(--glass-border); scroll-margin-top: 16px; }
   .svc-head { max-width: 860px; margin-bottom: 28px; }
-  .svc-title { font-family: "Noto Serif JP", "Playfair Display", serif; font-size: clamp(1.45rem, 3vw, 2.1rem); line-height: 1.35; margin: 4px 0 10px; }
+  .svc-title { font-family: var(--svc-serif); font-size: clamp(1.45rem, 3vw, 2.1rem); line-height: 1.35; margin: 4px 0 10px; }
   .svc-catch { margin: 0; font-size: 1.02rem; color: var(--moonlight); }
 
   .svc-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
@@ -290,7 +293,7 @@ const isNote = (h: string) => /実績|検証/.test(h);
   }
   .svc-block-title::after { content: ""; flex: 1; height: 1px; background: var(--glass-border); }
   .svc-sec { padding: 20px 22px; }
-  .svc-sec h3 { margin: 0 0 10px; font-family: "Noto Serif JP", serif; font-size: 1.02rem; font-weight: 600; color: var(--text); }
+  .svc-sec h3 { margin: 0 0 10px; font-family: var(--svc-serif); font-size: 1.02rem; font-weight: 600; color: var(--text); }
   .svc-sec p { margin: 0 0 8px; font-size: 0.9rem; line-height: 1.8; color: var(--moonlight); }
   .svc-sec--note { border-left: 2px solid rgba(201, 169, 98, 0.55); background: rgba(201, 169, 98, 0.05); }
   .svc-ul, .svc-ol, .svc-cl { margin: 0 0 8px; padding: 0; list-style: none; display: grid; gap: 6px; }
