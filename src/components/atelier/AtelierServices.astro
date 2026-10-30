@@ -17,6 +17,7 @@ const servicesPath = `${homePath}services/`;
 const contactPath = atelierContactPath(lang);
 const img = lang === 'ja' ? '/eliora/atelier/assets/img/services/' : `/eliora/atelier/assets/img/services/${lang}/`;
 const yen = (n: number) => n.toLocaleString('ja-JP');
+const taxIn = (n: number) => `${copy.taxOpen}${copy.pricePrefix}${yen(Math.round(n * 1.1))}${copy.taxUnit}${copy.taxClose}`;
 
 const nav = homeCopy.nav.map((item) => ({
   ...item,
@@ -61,7 +62,7 @@ const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(
                 <a href={`#${o.id}`}>
                   <span class="svc-menu-ep">{o.eyebrow}</span>
                   <span class="svc-menu-name">{o.short}</span>
-                  <span class="svc-menu-price">{copy.pricePrefix}{yen(o.price)}<small>{copy.priceUnit}</small></span>
+                  <span class="svc-menu-price">{copy.pricePrefix}{yen(o.price)}<small>{copy.priceUnit}</small><span class="svc-taxline">{taxIn(o.price)}</span></span>
                 </a>
               </li>
             ))
@@ -92,7 +93,7 @@ const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(
                 <h3>{o.short}</h3>
                 <p>{o.summary}</p>
                 <div class="svc-card-meta">
-                  <span class="svc-price">{copy.pricePrefix}{yen(o.price)}<small>{copy.priceUnit}</small></span>
+                  <span class="svc-price">{copy.pricePrefix}{yen(o.price)}<small>{copy.priceUnit}</small><span class="svc-taxline">{taxIn(o.price)}</span></span>
                   <span class="svc-days">{o.days}{copy.daysSuffix}</span>
                 </div>
               </div>
@@ -138,7 +139,7 @@ const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(
               </figure>
               <div class="glass-panel svc-facts">
                 <dl>
-                  <div><dt>{copy.priceLabel}</dt><dd class="svc-price svc-price--lg">{copy.pricePrefix}{yen(o.price)}<small>{copy.priceUnit}</small></dd></div>
+                  <div><dt>{copy.priceLabel}</dt><dd class="svc-price svc-price--lg">{copy.pricePrefix}{yen(o.price)}<small>{copy.priceUnit}</small><span class="svc-taxline">{taxIn(o.price)}</span></dd></div>
                   <div><dt>{copy.daysLabel}</dt><dd>{o.days}{copy.daysSuffix}</dd></div>
                 </dl>
                 <a class="btn btn-primary" href={contactPath}>{copy.hero.primary}</a>
@@ -176,7 +177,7 @@ const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(
                   o.options.map((op) => (
                     <li>
                       <span>{op.text}</span>
-                      <b>+{copy.pricePrefix}{yen(op.price)}<small>{copy.priceUnit}</small></b>
+                      <b>+{copy.pricePrefix}{yen(op.price)}<small>{copy.priceUnit}</small> <span class="svc-taxline svc-taxline--inline">{taxIn(op.price)}</span></b>
                     </li>
                   ))
                 }
@@ -229,7 +230,7 @@ const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(
             <ul class="svc-ul">{copy.production.items.map((x) => <li>{x}</li>)}</ul>
             <p>{copy.production.outOfScope}</p>
             <dl class="svc-prod-facts">
-              <div><dt>{copy.priceLabel}</dt><dd class="svc-price svc-price--lg">{copy.pricePrefix}{yen(copy.production.price)}<small>{copy.priceUnit}</small> <span class="svc-tax">{copy.production.priceNote}</span></dd></div>
+              <div><dt>{copy.priceLabel}</dt><dd class="svc-price svc-price--lg">{copy.pricePrefix}{yen(copy.production.price)}<small>{copy.priceUnit}</small><span class="svc-taxline">{taxIn(copy.production.price)}</span></dd></div>
               <div><dt>{copy.daysLabel}</dt><dd>{copy.production.days}</dd></div>
             </dl>
             <a class="btn btn-primary" href={contactPath}>{copy.production.button}</a>
@@ -310,7 +311,8 @@ const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(
   .svc-prod-facts { display: flex; flex-wrap: wrap; gap: 8px 36px; margin: 18px 0; }
   .svc-prod-facts dt { font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; letter-spacing: 0.12em; color: var(--champagne); text-transform: uppercase; }
   .svc-prod-facts dd { margin: 4px 0 0; }
-  .svc-tax { font-size: 0.72rem; opacity: 0.75; margin-left: 6px; }
+  .svc-taxline { display: block; font-family: inherit; font-size: 0.68rem; letter-spacing: 0.02em; opacity: 0.72; margin-top: 2px; line-height: 1.4; font-weight: 400; }
+  .svc-taxline--inline { display: inline; margin-left: 4px; }
   @media (max-width: 720px) { .svc-compare-row { grid-template-columns: 1fr; } }
 
   .svc-detail { border-top: 1px solid var(--glass-border); scroll-margin-top: 16px; }

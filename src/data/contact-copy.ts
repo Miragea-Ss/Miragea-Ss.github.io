@@ -50,7 +50,7 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
     note:
       'Typical scope: reproducible pipelines, local bf16/fp16 stacks, API export, batch production — not one-off image requests.',
     offer:
-      'Fixed package: Reproducible Pipeline Package (ComfyUI), ¥800,000 before tax, 10 business days. One reproducible workflow, input and output spec, and a runbook. One revision included. One-off image generation is out of scope.',
+      'Fixed package: Reproducible Pipeline Package (ComfyUI), ¥800,000 (excl. tax; ¥880,000 incl. tax), 10 business days. One reproducible workflow, input and output spec, and a runbook. One revision included. One-off image generation is out of scope.',
     successTitle: 'Inquiry received',
     successLead:
       'Your message reached Miragea · Eliora. A confirmation email was sent to the address you entered.',
@@ -106,7 +106,7 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
     note:
       '対象例：再現性のあるパイプライン、ローカルbf16/fp16運用、API化、バッチ量産 — 単発画像生成の依頼ではありません。',
     offer:
-      '定価: ComfyUI 再現パイプライン パッケージ、税抜80万円、納期10営業日。再現できるワークフロー1本、入出力の仕様、実行手順を納品する。修正1回を含む。単発の画像生成は対象外。',
+      '定価: ComfyUI 再現パイプライン パッケージ、800,000円（税込880,000円）、納期10営業日。表示は税別価格。再現できるワークフロー1本、入出力の仕様、実行手順を納品する。修正1回を含む。単発の画像生成は対象外。',
     successTitle: 'お問い合わせを受け付けました',
     successLead:
       'お問い合わせは正常に届きました。ご記入のメールアドレスへ自動返信メールをお送りしています。',
@@ -161,7 +161,7 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
     note:
       '适合：可复现管线、本地 bf16/fp16、API 化、批量生产 — 非单张图片定制。',
     offer:
-      '标价：ComfyUI 可复现工作流套餐，税前 80 万日元，10 个工作日。交付一条可复现工作流、输入输出规格和运行步骤。含 1 次修改。不含单张出图。',
+      '标价：ComfyUI 可复现工作流套餐，800,000日元（不含税，含税880,000日元），10 个工作日。交付一条可复现工作流、输入输出规格和运行步骤。含 1 次修改。不含单张出图。',
     successTitle: '咨询已受理',
     successLead: '您的咨询已成功送达。已向填写的邮箱发送自动确认邮件。',
     successPoints: [
