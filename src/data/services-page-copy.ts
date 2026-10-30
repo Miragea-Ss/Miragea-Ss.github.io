@@ -92,7 +92,7 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
       rows: [
         { k: '1つの業務の流れを整理したい', v: 'Discovery「業務分析」（25,000円・税込27,500円）：繰り返している1つの業務について、業務マップと次の一手を整理します。' },
         { k: '最大5業務を比べて、どれをAI化するか決めたい', v: 'この「診断」（30,000円・7日・税込33,000円）：5業務を採点し、ローカル／クラウドの判定、効果とコストの概算、90日の進め方をPDFにまとめます。' },
-        { k: 'ツール連携や運用まで含めて、仕組みを作りたい', v: 'Discovery「仕組みの制作」（67,000円・税込73,700円）：データの扱いに合わせ、オンライン／専用環境／自社PC／ローカルから実行方法を選び、範囲は個別に合意します。' },
+        { k: 'ツール連携や運用まで含めて、仕組みを作りたい', v: 'Discovery「仕組みの制作」（60,000円・14日・税込66,000円）：合意した1つの業務を、最大2つのツールをつないで動かします。修正1回、操作ガイドと検証記録つき。ローカルAIの構築と精度レポートは含みません（それは「構築」です）。' },
         { k: 'ローカルAIで作り、自分のサンプルで精度を測りたい', v: 'この「構築」（150,000円・21日・税込165,000円）：請求書・問い合わせ・文書Q&Aから1つを、ローカルAIで構築。精度レポートと30日の質問対応つきです。' },
       ],
       link: { label: 'Discoveryを見る', href: '/eliora/discovery/ja/' },
@@ -154,7 +154,7 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
       rows: [
         { k: 'Understand one repeated workflow', v: 'Discovery “Workflow Scan” (¥25,000; ¥27,500 incl. tax): a process map and the next step for one repeated task.' },
         { k: 'Compare up to 5 tasks and decide which to automate', v: 'This “Diagnosis” (¥30,000, 7 days; ¥33,000 incl. tax): five tasks scored, a local-vs-cloud verdict, a cost and benefit estimate and a 90-day roadmap, as a PDF report.' },
-        { k: 'Build a workflow, including tool connections and operation', v: 'Discovery “Automation Sprint” (¥67,000; ¥73,700 incl. tax): the setup (online service, dedicated environment, your hardware or local) is chosen to fit your data, and the scope is agreed individually.' },
+        { k: 'Build a workflow, including tool connections and operation', v: 'Discovery “Automation Sprint” (¥60,000, 14 days; ¥66,000 incl. tax): one agreed workflow connecting up to two tools, with one revision round, an operating guide and a test record. Local AI and an accuracy report are not included (that is the “Build”).' },
         { k: 'Build with local AI and measure accuracy on your own samples', v: 'This “Build” (¥150,000, 21 days; ¥165,000 incl. tax): one of invoices, inquiries or document Q&A on local AI, delivered with an accuracy report and 30 days of Q&A.' },
       ],
       link: { label: 'See Discovery', href: '/eliora/discovery/en/' },
@@ -231,7 +231,7 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
       rows: [
         { k: '想先梳理一项重复工作的流程', v: 'Discovery「业务分析」（25,000 日元，含税 27,500 日元）：针对一项反复进行的工作，整理流程图和下一步。' },
         { k: '想比较最多 5 项工作，决定先把哪项 AI 化', v: '本页的「诊断」（30,000 日元 · 7 天，含税 33,000 日元）：对 5 项工作评分，给出本地/云端判定、效果与成本估算和 90 天计划，汇总为 PDF 报告。' },
-        { k: '想搭建工作流，包括工具对接与运行', v: 'Discovery「工作流构建」（67,000 日元，含税 73,700 日元）：根据数据情况，从在线服务/专用环境/自有硬件/本地中选择运行方式，范围单独约定。' },
+        { k: '想搭建工作流，包括工具对接与运行', v: 'Discovery「工作流构建」（60,000 日元 · 14 天，含税 66,000 日元）：针对一项约定的工作流，对接最多两个工具，含一轮修改、操作指南和测试记录。不含本地 AI 与精度报告（那是「搭建」）。' },
         { k: '想用本地 AI 搭建，并用自己的样本测精度', v: '本页的「搭建」（150,000 日元 · 21 天，含税 165,000 日元）：在发票、咨询、文档问答中选一项，用本地 AI 搭建，附精度报告和 30 天答疑。' },
       ],
       link: { label: '查看 Discovery', href: '/eliora/discovery/zh/' },

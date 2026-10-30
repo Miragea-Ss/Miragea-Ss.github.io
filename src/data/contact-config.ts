@@ -8,8 +8,8 @@ import type { AtelierLang } from './atelier-copy';
  *    （トークンは有効化前だと FormSubmit がメール形式エラーを返す）
  */
 const FORM_SUBMIT_TOKEN = import.meta.env.PUBLIC_FORM_SUBMIT_TOKEN ?? '';
-// Same public receiving address as the live Atelier contact form, verified 2026-09-15.
-const CONTACT_INBOX = import.meta.env.PUBLIC_CONTACT_INBOX ?? (FORM_SUBMIT_TOKEN ? '' : 'wolf6gl@gmail.com');
+// Receiving address (owner updated 2026-10-31). Overridden at build time by CONTACT_INBOX secret/variable if set.
+const CONTACT_INBOX = import.meta.env.PUBLIC_CONTACT_INBOX ?? (FORM_SUBMIT_TOKEN ? '' : 'miragea.ss.studio@gmail.com');
 
 function isEmailEndpoint(value: string): boolean {
   return value.includes('@');

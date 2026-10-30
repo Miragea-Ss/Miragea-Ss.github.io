@@ -383,7 +383,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
                 "AIの出力には誤りが含まれる場合があります。重要な業務では、人による最終確認を前提にご利用ください",
                 "修正は仕様の範囲内で2回まで。仕様変更は別途お見積りです",
                 "個人情報を大量に扱う案件、24時間運用・稼働保証が必要な案件、医療・法律などの専門判断は、お受けできません",
-                "納品後の保守・改善（月額30,000円〜）は、別途お見積りでご案内します",
+                "納品後の保守・改善（月額30,000円〜、税込33,000円〜）は、別途お見積りでご案内します",
                 "訪問や、お客様のPCへの遠隔接続は行いません"
               ]
             }
@@ -420,7 +420,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
         },
         {
           "q": "毎月の費用はかかりますか？",
-          "a": "お客様側で運用する場合（方式②）、AIの従量課金（API料金）やサーバー代は発生しません。お客様のPCの電気代などは別途かかります。納品後の保守・改善をご希望の場合のみ、月額30,000円〜でご案内します。"
+          "a": "お客様側で運用する場合（方式②）、AIの従量課金（API料金）やサーバー代は発生しません。お客様のPCの電気代などは別途かかります。納品後の保守・改善をご希望の場合のみ、月額30,000円〜（税込33,000円〜）でご案内します。"
         },
         {
           "q": "提供方式②で必要なPCの条件は？",
@@ -585,7 +585,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
                 "本サービスは検証版（PoC）です。本番運用での稼働や可用性は保証しません",
                 "AIの回答には誤りが含まれる場合があります。精度の数値は検証時点のものです",
                 "修正は仕様の範囲内で2回まで。仕様変更・範囲の追加は別途お見積りです",
-                "PoC後の保守・改善（月額30,000円〜）は、別途お見積りでご案内します",
+                "PoC後の保守・改善（月額30,000円〜、税込33,000円〜）は、別途お見積りでご案内します",
                 "個人情報を大量に扱う案件、24時間運用・稼働保証が必要な案件、医療・法律などの専門判断は、お受けできません",
                 "訪問や、お客様のPCへの遠隔接続は行いません"
               ]
@@ -639,7 +639,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
         },
         {
           "q": "PoCの後の保守は頼めますか？",
-          "a": "はい。保守・改善（月額30,000円〜）を、別途お見積りでご案内します。"
+          "a": "はい。保守・改善（月額30,000円〜、税込33,000円〜）を、別途お見積りでご案内します。"
         }
       ]
     }
@@ -1004,7 +1004,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
                 "AI output can contain errors. For important work, please keep a human final check",
                 "Fixes: up to 2 within the agreed specification. Spec changes are quoted separately",
                 "I cannot take work that handles large volumes of personal data, needs 24/7 operation or uptime guarantees, or requires medical or legal judgement",
-                "Maintenance and improvements after delivery (from JPY 30,000 per month) are quoted separately",
+                "Maintenance and improvements after delivery (from JPY 30,000 per month excl. tax; JPY 33,000 incl. tax) are quoted separately",
                 "I do not visit and I do not remotely connect to your PC"
               ]
             }
@@ -1041,7 +1041,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
         },
         {
           "q": "Are there monthly costs?",
-          "a": "When you run it yourself (mode ②), there are no pay-per-use AI (API) fees or server fees. Electricity for your own PC is yours. Only if you want maintenance and improvement after delivery, it starts from JPY 30,000 per month."
+          "a": "When you run it yourself (mode ②), there are no pay-per-use AI (API) fees or server fees. Electricity for your own PC is yours. Only if you want maintenance and improvement after delivery, it starts from JPY 30,000 per month (excl. tax; JPY 33,000 incl. tax)."
         },
         {
           "q": "What PC do I need for mode ②?",
@@ -1206,7 +1206,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
                 "This is a proof of concept. I do not guarantee production operation or availability",
                 "AI answers can contain errors, and accuracy figures are valid at the time of validation",
                 "Fixes: up to 2 within the agreed specification. Spec changes or additions are quoted separately",
-                "Maintenance and improvements after the PoC (from JPY 30,000 per month) are quoted separately",
+                "Maintenance and improvements after the PoC (from JPY 30,000 per month excl. tax; JPY 33,000 incl. tax) are quoted separately",
                 "I cannot take work that handles large volumes of personal data, needs 24/7 operation or uptime guarantees, or requires medical or legal judgement",
                 "I do not visit and I do not remotely connect to your PC"
               ]
@@ -1260,7 +1260,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
         },
         {
           "q": "Can I ask for maintenance after the PoC?",
-          "a": "Yes. Maintenance and improvements (from JPY 30,000 per month) are quoted separately."
+          "a": "Yes. Maintenance and improvements (from JPY 30,000 per month excl. tax; JPY 33,000 incl. tax) are quoted separately."
         }
       ]
     }
@@ -1625,7 +1625,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
                 "AI 的输出可能有误。重要业务请务必保留人工最终确认",
                 "修改：在约定规格范围内最多 2 次，规格变更另行报价",
                 "无法承接大量处理个人信息、需要 24 小时运行或可用性保证、涉及医疗或法律专业判断的业务",
-                "交付后的维护与改进（每月 30,000 日元起）另行报价",
+                "交付后的维护与改进（每月 30,000 日元起，含税 33,000 日元起）另行报价",
                 "不上门，也不远程连接您的 PC"
               ]
             }
@@ -1662,7 +1662,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
         },
         {
           "q": "每月需要付费吗？",
-          "a": "由您自行运行时（方式②），没有按量计费的 AI（API）费用和服务器费用。您自己 PC 的电费另计。只有需要交付后维护与改进时，才按每月 30,000 日元起另行报价。"
+          "a": "由您自行运行时（方式②），没有按量计费的 AI（API）费用和服务器费用。您自己 PC 的电费另计。只有需要交付后维护与改进时，才按每月 30,000 日元起（不含税，含税 33,000 日元起）另行报价。"
         },
         {
           "q": "方式②需要什么样的 PC？",
@@ -1827,7 +1827,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
                 "本服务为验证版（PoC），不保证正式运行时的稳定性与可用性",
                 "AI 的回答可能有误，精度数字仅为验证时点的结果",
                 "修改：在约定规格范围内最多 2 次，规格变更或范围追加另行报价",
-                "PoC 后的维护与改进（每月 30,000 日元起）另行报价",
+                "PoC 后的维护与改进（每月 30,000 日元起，含税 33,000 日元起）另行报价",
                 "无法承接大量处理个人信息、需要 24 小时运行或可用性保证、涉及医疗或法律专业判断的业务",
                 "不上门，也不远程连接您的 PC"
               ]
@@ -1881,7 +1881,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
         },
         {
           "q": "PoC 之后可以委托维护吗？",
-          "a": "可以。维护与改进（每月 30,000 日元起）另行报价。"
+          "a": "可以。维护与改进（每月 30,000 日元起，含税 33,000 日元起）另行报价。"
         }
       ]
     }
