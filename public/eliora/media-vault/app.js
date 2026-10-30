@@ -90,7 +90,7 @@ const copy = {
     elioraTitle: '把创作变成可用系统的实现层。', elioraBody: 'AI 制作、ComfyUI、本地推理、工作流自动化与 Infinite Canvas。Eliora 让创造可以复现。', openEliora: '打开 Eliora',
     sitesKicker: 'PLACES I BUILD', sitesTitle: '进入作品与活动的入口', sitesIntro: '观看、阅读、学习或创作。新的工作会陆续加在这里。',
     siteArchive: '保存作品、感知、文字与 EX 系统的永久档案。', siteEliora: 'AI 制作、业务自动化、PoC 与实用工作流工作室。',
-    siteDiscovery: '从一项重复工作到交付。业务咨询25,000日元（不含税，含税27,500日元），约定制作60,000日元（含税66,000日元），持续支持每月17,000日元（含税18,700日元）。',
+    siteDiscovery: '从一项重复工作到交付。业务咨询1,500元，约定制作3,500元，持续支持每月700元；价格以人民币标价，不含税，日本消费税（10%）仅适用于日本境内客户。',
     canvasKicker: 'LOCAL CREATION · 无需注册', siteCanvas: '无需注册即可直接使用。卡片、连线和画布保存在当前浏览器；在自己的电脑启动 Local Kit 后，可使用本地 ComfyUI、llama.cpp 和需要人工确认的 Agent。',
     canvasPolicy: 'Eliora 核心功能不需要中国实名认证。OpenRouter 等国际 BYOK 服务均为可选连接。', canvasTrustLabel: 'Infinite Canvas 使用与连接条件',
     canvasTrustBrowser: '立即开始・无需 Eliora 账号', canvasTrustLocal: '本地 ComfyUI・自由导入 Workflow JSON', canvasTrustAgent: 'OpenRouter・人工审核 Agent',

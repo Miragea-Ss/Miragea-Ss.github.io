@@ -1273,7 +1273,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "summary": "在动手搭建之前，先判断哪些业务值得用 AI 自动化的诊断报告。",
       "title": "出具 AI 业务自动化诊断报告",
       "catch": "包括“不建议 AI 化”的结论，客观公正地诊断",
-      "price": 30000,
+      "price": 3000,
       "days": 7,
       "lead": [
         "感谢您的关注。我是 Miragea · Eliora，平时做 3D+AI 创作，也把其中的可控工作流方法用于私有 AI 自动化。",
@@ -1416,19 +1416,19 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "options": [
         {
           "text": "增加 1 项诊断业务（基础价格包含 5 项）",
-          "price": 10000
+          "price": 1000
         },
         {
           "text": "基于诊断结果，为 1 项业务制作可运行的演示（使用虚构数据）",
-          "price": 40000
+          "price": 4000
         },
         {
           "text": "报告 3 个工作日内交付",
-          "price": 10000
+          "price": 1000
         },
         {
           "text": "就报告内容追加 1 轮问答",
-          "price": 5000
+          "price": 500
         }
       ],
       "faq": [
@@ -1461,7 +1461,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "summary": "把发票、咨询和内部文档的处理，用运行在您自己 PC 上的 AI 自动化。",
       "title": "搭建发票、咨询和文档的 AI 自动化",
       "catch": "没有每月 AI 使用费，AI 在您自己的 PC 上运行",
-      "price": 150000,
+      "price": 12000,
       "days": 21,
       "lead": [
         "感谢您的关注。我是 Miragea · Eliora，用 AI 把创作与业务里“每月重复的手工活”一项一项自动化。",
@@ -1625,7 +1625,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
                 "AI 的输出可能有误。重要业务请务必保留人工最终确认",
                 "修改：在约定规格范围内最多 2 次，规格变更另行报价",
                 "无法承接大量处理个人信息、需要 24 小时运行或可用性保证、涉及医疗或法律专业判断的业务",
-                "交付后的维护与改进（每月 30,000 日元起，含税 33,000 日元起）另行报价",
+                "交付后的维护与改进（每月 1,500 元起，不含税）另行报价",
                 "不上门，也不远程连接您的 PC"
               ]
             }
@@ -1636,23 +1636,23 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "options": [
         {
           "text": "追加功能：在 A、B、C 中再增加一种类型",
-          "price": 60000
+          "price": 4800
         },
         {
           "text": "追加定制输出字段、分类类别、回答格式",
-          "price": 20000
+          "price": 1600
         },
         {
           "text": "制作带截图的操作手册",
-          "price": 10000
+          "price": 800
         },
         {
           "text": "交付后答疑从 30 天延长到 60 天",
-          "price": 15000
+          "price": 1200
         },
         {
           "text": "加急交付：14 天内交付",
-          "price": 30000
+          "price": 2400
         }
       ],
       "faq": [
@@ -1662,7 +1662,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
         },
         {
           "q": "每月需要付费吗？",
-          "a": "由您自行运行时（方式②），没有按量计费的 AI（API）费用和服务器费用。您自己 PC 的电费另计。只有需要交付后维护与改进时，才按每月 30,000 日元起（不含税，含税 33,000 日元起）另行报价。"
+          "a": "由您自行运行时（方式②），没有按量计费的 AI（API）费用和服务器费用。您自己 PC 的电费另计。只有需要交付后维护与改进时，才按每月 1,500 元起（不含税）另行报价。"
         },
         {
           "q": "方式②需要什么样的 PC？",
@@ -1685,7 +1685,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "summary": "基于您自己的文档实测，再决定是否引入的内部文档问答 AI。",
       "title": "搭建基于内部文档回答的 AI 验证版（PoC）",
       "catch": "附出处回答，“资料中没有”的情形也会实测",
-      "price": 300000,
+      "price": 15000,
       "days": 45,
       "lead": [
         "感谢您的关注。我是 Miragea · Eliora。",
@@ -1827,7 +1827,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
                 "本服务为验证版（PoC），不保证正式运行时的稳定性与可用性",
                 "AI 的回答可能有误，精度数字仅为验证时点的结果",
                 "修改：在约定规格范围内最多 2 次，规格变更或范围追加另行报价",
-                "PoC 后的维护与改进（每月 30,000 日元起，含税 33,000 日元起）另行报价",
+                "PoC 后的维护与改进（每月 1,500 元起，不含税）另行报价",
                 "无法承接大量处理个人信息、需要 24 小时运行或可用性保证、涉及医疗或法律专业判断的业务",
                 "不上门，也不远程连接您的 PC"
               ]
@@ -1839,27 +1839,27 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "options": [
         {
           "text": "追加 1 项目标业务（含问题集与精度评估）",
-          "price": 150000
+          "price": 7500
         },
         {
           "text": "追加 200 个目标文档",
-          "price": 50000
+          "price": 2500
         },
         {
           "text": "追加发票提取或咨询分类的验证（组合）",
-          "price": 80000
+          "price": 4000
         },
         {
           "text": "制作面向正式引入的设计文档（架构、运维、安全）",
-          "price": 50000
+          "price": 2500
         },
         {
           "text": "交付后答疑从 30 天延长到 60 天",
-          "price": 25000
+          "price": 1250
         },
         {
           "text": "加急交付：30 天内交付",
-          "price": 50000
+          "price": 2500
         }
       ],
       "faq": [
@@ -1881,7 +1881,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
         },
         {
           "q": "PoC 之后可以委托维护吗？",
-          "a": "可以。维护与改进（每月 30,000 日元起，含税 33,000 日元起）另行报价。"
+          "a": "可以。维护与改进（每月 1,500 元起，不含税）另行报价。"
         }
       ]
     }

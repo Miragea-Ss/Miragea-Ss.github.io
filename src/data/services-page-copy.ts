@@ -33,7 +33,7 @@ export interface ServicesPageCopy {
   /** Optional production-pipeline block (en / zh), mirrors the fixed package on the contact page. */
   production?: {
     label: string; title: string; lead: string; items: string[]; outOfScope: string;
-    price: number; days: string; button: string;
+    price: number; /** If set, shown instead of the numeric price (zh: 价格面议). */ priceText?: string; days: string; button: string;
   };
   offers: ServiceOffer[];
 }
@@ -203,10 +203,11 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
     offeringsLabel: 'Services',
     offeringsTitle: '三项服务',
     pricePrefix: '',
-    priceUnit: '日元',
-    taxOpen: '（不含税，含税',
-    taxUnit: '日元',
-    taxClose: '）',
+    priceUnit: ' 元',
+    taxOpen: '',
+    taxUnit: '',
+    taxClose: '',
+    taxNote: '（不含税）',
     daysLabel: '交付天数',
     daysSuffix: '天',
     priceLabel: '基础价格',
@@ -227,15 +228,15 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
       button: '打开咨询表单',
     },
     priceNote:
-      '所示为不含税的基础价格（日元），括号内为含 10% 消费税的价格。超出范围的部分，通过付费选项或单独报价处理。开票与付款等细节，在报价时说明。',
+      '所示为基础价格。价格以人民币标价，不含税。日本消费税（10%）仅适用于日本境内客户。超出范围的部分，通过付费选项或单独报价处理。开票与付款等细节，在报价时说明。',
     compare: {
       label: 'Which one?',
       title: '与 Discovery 的区别（怎么选）',
       rows: [
-        { k: '想先梳理一项重复工作的流程', v: 'Discovery「业务分析」（25,000 日元，含税 27,500 日元）：针对一项反复进行的工作，整理流程图和下一步。' },
-        { k: '想比较最多 5 项工作，决定先把哪项 AI 化', v: '本页的「诊断」（30,000 日元 · 7 天，含税 33,000 日元）：对 5 项工作评分，给出本地/云端判定、效果与成本估算和 90 天计划，汇总为 PDF 报告。' },
-        { k: '想搭建工作流，包括工具对接与运行', v: 'Discovery「工作流构建」（60,000 日元 · 14 天，含税 66,000 日元）：针对一项约定的工作流，对接最多两个工具，含一轮修改、操作指南和测试记录。不含本地 AI 与精度报告（那是「搭建」）。' },
-        { k: '想用本地 AI 搭建，并用自己的样本测精度', v: '本页的「搭建」（150,000 日元 · 21 天，含税 165,000 日元）：在发票、咨询、文档问答中选一项，用本地 AI 搭建，附精度报告和 30 天答疑。' },
+        { k: '想先梳理一项重复工作的流程', v: 'Discovery「业务分析」（1,500 元，不含税）：针对一项反复进行的工作，整理流程图和下一步。' },
+        { k: '想比较最多 5 项工作，决定先把哪项 AI 化', v: '本页的「诊断」（3,000 元 · 7 天，不含税）：对 5 项工作评分，给出本地/云端判定、效果与成本估算和 90 天计划，汇总为 PDF 报告。' },
+        { k: '想搭建工作流，包括工具对接与运行', v: 'Discovery「工作流构建」（3,500 元 · 14 天，不含税）：针对一项约定的工作流，对接最多两个工具，含一轮修改、操作指南和测试记录。不含本地 AI 与精度报告（那是「搭建」）。' },
+        { k: '想用本地 AI 搭建，并用自己的样本测精度', v: '本页的「搭建」（12,000 元 · 21 天，不含税）：在发票、咨询、文档问答中选一项，用本地 AI 搭建，附精度报告和 30 天答疑。' },
       ],
       link: { label: '查看 Discovery', href: '/eliora/discovery/zh/' },
     },
@@ -251,6 +252,7 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
       ],
       outOfScope: '不含单张出图。',
       price: 800000,
+      priceText: '价格面议',
       days: '10 个工作日',
       button: '咨询工作流搭建',
     },

@@ -230,7 +230,7 @@ const isNote = (h: string) => /実績|検証|Track record|经验与验证/.test(
             <ul class="svc-ul">{copy.production.items.map((x) => <li>{x}</li>)}</ul>
             <p>{copy.production.outOfScope}</p>
             <dl class="svc-prod-facts">
-              <div><dt>{copy.priceLabel}</dt><dd class="svc-price svc-price--lg">{copy.pricePrefix}{yen(copy.production.price)}<small>{copy.priceUnit}</small><span class="svc-taxline">{taxIn(copy.production.price)}</span></dd></div>
+              <div><dt>{copy.priceLabel}</dt><dd class="svc-price svc-price--lg">{copy.production.priceText ? copy.production.priceText : <>{copy.pricePrefix}{yen(copy.production.price)}<small>{copy.priceUnit}</small></>}{!copy.production.priceText && <span class="svc-taxline">{taxIn(copy.production.price)}</span>}</dd></div>
               <div><dt>{copy.daysLabel}</dt><dd>{copy.production.days}</dd></div>
             </dl>
             <a class="btn btn-primary" href={contactPath}>{copy.production.button}</a>
