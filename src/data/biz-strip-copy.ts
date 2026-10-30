@@ -19,7 +19,7 @@ export const bizStripCopy: Record<BizLang, BizStripCopy> = {
     cells: [
       { k: 'What I build', v: 'Workflows your team can re-run with the same result: ComfyUI pipelines with fixed inputs and a runbook, and local-AI automation for invoices, inquiries and internal documents.' },
       { k: 'For whom', v: 'Studios, agencies and in-house teams that need documented, repeatable AI work rather than one-off generations.' },
-      { k: 'Fees (JPY, excl. tax)', v: 'Diagnosis ¥30,000 (¥33,000 incl. tax) · Build ¥150,000 (¥165,000 incl. tax) · Document-AI PoC ¥300,000 (¥330,000 incl. tax) · Pipeline package ¥800,000 (¥880,000 incl. tax)' },
+      { k: 'Fees (USD, excl. tax)', v: 'Diagnosis $1,050 · Build $2,100 · Document-AI PoC $5,250 · Pipeline package $5,000. Japanese consumption tax applies only to Japan-based clients.' },
       { k: 'Evidence', v: 'Scope, specification and runbook delivered in writing. In-house tests on synthetic data: invoices 24/24 · inquiries 14/14 · document Q&A 13/13.' },
     ],
     actions: [

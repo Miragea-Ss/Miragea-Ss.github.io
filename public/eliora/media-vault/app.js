@@ -54,7 +54,7 @@ const copy = {
     elioraTitle: 'The implementation layer that turns creation into a working system.', elioraBody: 'AI production, ComfyUI, local inference, workflow automation, and Infinite Canvas. Eliora makes creative processes repeatable.', openEliora: 'Open Eliora',
     sitesKicker: 'PLACES I BUILD', sitesTitle: 'Routes into the work', sitesIntro: 'Watch, read, learn, or build. New work is added here as it is published.',
     siteArchive: 'The permanent archive for work, perception, words, and the EX system.', siteEliora: 'Studio for AI production, automation, PoCs, and practical workflows.',
-    siteDiscovery: 'From one repeated task to delivery. Workflow Scan ¥25,000 (excl. tax; ¥27,500 incl. tax), one agreed build ¥60,000 (¥66,000 incl. tax), monthly support ¥17,000 (¥18,700 incl. tax).',
+    siteDiscovery: 'From one repeated task to delivery. Workflow Scan $700, one agreed build $850, monthly support $300/month, all excluding tax. Japanese consumption tax applies only to Japan-based clients.',
     canvasKicker: 'LOCAL CREATION · NO SIGN-UP', siteCanvas: 'Use it immediately without registering. Cards, connections, and boards stay in this browser. Start the Local Kit on your own PC to add ComfyUI, llama.cpp, and safe Agent workflows.',
     canvasPolicy: 'Eliora core features require no Chinese real-name verification. International BYOK services such as OpenRouter are optional.', canvasTrustLabel: 'Infinite Canvas access and connection options',
     canvasTrustBrowser: 'Start now · no Eliora account', canvasTrustLocal: 'Local ComfyUI · any workflow JSON', canvasTrustAgent: 'OpenRouter · review-gated Agent',

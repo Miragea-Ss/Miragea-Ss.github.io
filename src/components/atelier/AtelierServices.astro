@@ -17,7 +17,7 @@ const servicesPath = `${homePath}services/`;
 const contactPath = atelierContactPath(lang);
 const img = lang === 'ja' ? '/eliora/atelier/assets/img/services/' : `/eliora/atelier/assets/img/services/${lang}/`;
 const yen = (n: number) => n.toLocaleString('ja-JP');
-const taxIn = (n: number) => `${copy.taxOpen}${copy.pricePrefix}${yen(Math.round(n * 1.1))}${copy.taxUnit}${copy.taxClose}`;
+const taxIn = (n: number) => copy.taxNote ?? `${copy.taxOpen}${copy.pricePrefix}${yen(Math.round(n * 1.1))}${copy.taxUnit}${copy.taxClose}`;
 
 const nav = homeCopy.nav.map((item) => ({
   ...item,

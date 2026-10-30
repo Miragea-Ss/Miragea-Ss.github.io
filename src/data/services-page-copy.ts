@@ -17,6 +17,8 @@ export interface ServicesPageCopy {
   taxOpen: string;
   taxUnit: string;
   taxClose: string;
+  /** If set (en/USD), shown instead of a computed tax-inclusive amount. */
+  taxNote?: string;
   daysLabel: string;
   daysSuffix: string;
   priceLabel: string;
@@ -122,11 +124,12 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
     panelFoot: 'Fully online · no site visits, no remote access to your PCs',
     offeringsLabel: 'Services',
     offeringsTitle: 'Three services',
-    pricePrefix: '¥',
-    priceUnit: ' JPY',
-    taxOpen: '(excl. tax; ',
+    pricePrefix: '$',
+    priceUnit: ' USD',
+    taxOpen: '',
     taxUnit: '',
-    taxClose: ' incl. tax)',
+    taxClose: '',
+    taxNote: '(excl. tax)',
     daysLabel: 'Delivery',
     daysSuffix: ' days',
     priceLabel: 'Base price',
@@ -147,15 +150,15 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
       button: 'Open the inquiry form',
     },
     priceNote:
-      'Prices are base fees in Japanese yen, excluding tax; the amount in brackets includes 10% consumption tax. Anything beyond scope is handled with paid options or an individual quote. Invoicing and payment details are given with the quote.',
+      'Prices are base fees in US dollars, excluding tax. Japanese consumption tax applies only to Japan-based clients. Anything beyond scope is handled with paid options or an individual quote. Invoicing and payment details are given with the quote.',
     compare: {
       label: 'Which one?',
       title: 'How this differs from Discovery',
       rows: [
-        { k: 'Understand one repeated workflow', v: 'Discovery “Workflow Scan” (¥25,000; ¥27,500 incl. tax): a process map and the next step for one repeated task.' },
-        { k: 'Compare up to 5 tasks and decide which to automate', v: 'This “Diagnosis” (¥30,000, 7 days; ¥33,000 incl. tax): five tasks scored, a local-vs-cloud verdict, a cost and benefit estimate and a 90-day roadmap, as a PDF report.' },
-        { k: 'Build a workflow, including tool connections and operation', v: 'Discovery “Automation Sprint” (¥60,000, 14 days; ¥66,000 incl. tax): one agreed workflow connecting up to two tools, with one revision round, an operating guide and a test record. Local AI and an accuracy report are not included (that is the “Build”).' },
-        { k: 'Build with local AI and measure accuracy on your own samples', v: 'This “Build” (¥150,000, 21 days; ¥165,000 incl. tax): one of invoices, inquiries or document Q&A on local AI, delivered with an accuracy report and 30 days of Q&A.' },
+        { k: 'Understand one repeated workflow', v: 'Discovery “Workflow Scan” ($700, excl. tax): a process map and the next step for one repeated task.' },
+        { k: 'Compare up to 5 tasks and decide which to automate', v: 'This “Diagnosis” ($1,050, 7 days; excl. tax): five tasks scored, a local-vs-cloud verdict, a cost and benefit estimate and a 90-day roadmap, as a PDF report.' },
+        { k: 'Build a workflow, including tool connections and operation', v: 'Discovery “Automation Sprint” ($850, 14 days; excl. tax): one agreed workflow connecting up to two tools, with one revision round, an operating guide and a test record. Local AI and an accuracy report are not included (that is the “Build”).' },
+        { k: 'Build with local AI and measure accuracy on your own samples', v: 'This “Build” ($2,100, 21 days; excl. tax): one of invoices, inquiries or document Q&A on local AI, delivered with an accuracy report and 30 days of Q&A.' },
       ],
       link: { label: 'See Discovery', href: '/eliora/discovery/en/' },
     },
@@ -170,7 +173,7 @@ export const servicesPageCopy: Record<ServicesLang, ServicesPageCopy> = {
         'One revision included',
       ],
       outOfScope: 'One-off image generation is out of scope.',
-      price: 800000,
+      price: 5000,
       days: '10 business days',
       button: 'Ask about a pipeline',
     },

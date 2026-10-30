@@ -652,7 +652,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "summary": "A diagnosis report that tells you which tasks are worth automating, before you build anything.",
       "title": "A diagnosis report: which of your tasks should be automated with AI?",
       "catch": "Including the call not to automate. An honest assessment.",
-      "price": 30000,
+      "price": 1050,
       "days": 7,
       "lead": [
         "Thanks for visiting. This is Miragea · Eliora, building reproducible, private AI workflows for teams.",
@@ -795,19 +795,19 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "options": [
         {
           "text": "Add one more task to the diagnosis (the base price covers 5 tasks)",
-          "price": 10000
+          "price": 350
         },
         {
           "text": "Build a working demo for one task from the result (synthetic data)",
-          "price": 40000
+          "price": 1400
         },
         {
           "text": "Deliver the report within 3 business days",
-          "price": 10000
+          "price": 350
         },
         {
           "text": "Answer one more round of questions about the report",
-          "price": 5000
+          "price": 175
         }
       ],
       "faq": [
@@ -840,7 +840,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "summary": "Automation for invoices, inquiries and internal documents, built on AI that runs on your own PC.",
       "title": "Build AI automation for invoices, inquiries and documents",
       "catch": "No monthly AI fees. AI that runs on your own PC.",
-      "price": 150000,
+      "price": 2100,
       "days": 21,
       "lead": [
         "Thanks for visiting. This is Miragea · Eliora, turning repetitive in-house tasks into reproducible AI workflows, one task at a time.",
@@ -1004,7 +1004,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
                 "AI output can contain errors. For important work, please keep a human final check",
                 "Fixes: up to 2 within the agreed specification. Spec changes are quoted separately",
                 "I cannot take work that handles large volumes of personal data, needs 24/7 operation or uptime guarantees, or requires medical or legal judgement",
-                "Maintenance and improvements after delivery (from JPY 30,000 per month excl. tax; JPY 33,000 incl. tax) are quoted separately",
+                "Maintenance and improvements after delivery (from $600 per month, excl. tax) are quoted separately",
                 "I do not visit and I do not remotely connect to your PC"
               ]
             }
@@ -1015,23 +1015,23 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "options": [
         {
           "text": "Additional function: add another of types A, B or C",
-          "price": 60000
+          "price": 840
         },
         {
           "text": "Customise output fields, categories or answer format",
-          "price": 20000
+          "price": 280
         },
         {
           "text": "Operating manual with screenshots",
-          "price": 10000
+          "price": 140
         },
         {
           "text": "Extend post-delivery support from 30 to 60 days",
-          "price": 15000
+          "price": 210
         },
         {
           "text": "Rush delivery: within 14 days",
-          "price": 30000
+          "price": 420
         }
       ],
       "faq": [
@@ -1041,7 +1041,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
         },
         {
           "q": "Are there monthly costs?",
-          "a": "When you run it yourself (mode ②), there are no pay-per-use AI (API) fees or server fees. Electricity for your own PC is yours. Only if you want maintenance and improvement after delivery, it starts from JPY 30,000 per month (excl. tax; JPY 33,000 incl. tax)."
+          "a": "When you run it yourself (mode ②), there are no pay-per-use AI (API) fees or server fees. Electricity for your own PC is yours. Only if you want maintenance and improvement after delivery, it starts from $600 per month (excl. tax)."
         },
         {
           "q": "What PC do I need for mode ②?",
@@ -1064,7 +1064,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "summary": "An AI that answers from your internal documents, measured on real data before you decide to adopt it.",
       "title": "Build a proof of concept for an AI that answers from your documents",
       "catch": "Answers with sources, and “not in the documents” is measured too.",
-      "price": 300000,
+      "price": 5250,
       "days": 45,
       "lead": [
         "Thanks for visiting. This is Miragea · Eliora.",
@@ -1206,7 +1206,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
                 "This is a proof of concept. I do not guarantee production operation or availability",
                 "AI answers can contain errors, and accuracy figures are valid at the time of validation",
                 "Fixes: up to 2 within the agreed specification. Spec changes or additions are quoted separately",
-                "Maintenance and improvements after the PoC (from JPY 30,000 per month excl. tax; JPY 33,000 incl. tax) are quoted separately",
+                "Maintenance and improvements after the PoC (from $600 per month, excl. tax) are quoted separately",
                 "I cannot take work that handles large volumes of personal data, needs 24/7 operation or uptime guarantees, or requires medical or legal judgement",
                 "I do not visit and I do not remotely connect to your PC"
               ]
@@ -1218,27 +1218,27 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
       "options": [
         {
           "text": "Add one more task (includes question set and evaluation)",
-          "price": 150000
+          "price": 2625
         },
         {
           "text": "Add 200 more documents",
-          "price": 50000
+          "price": 875
         },
         {
           "text": "Add validation of invoice extraction or inquiry classification",
-          "price": 80000
+          "price": 1400
         },
         {
           "text": "Design document for production use (architecture, operations, security)",
-          "price": 50000
+          "price": 875
         },
         {
           "text": "Extend post-delivery support from 30 to 60 days",
-          "price": 25000
+          "price": 440
         },
         {
           "text": "Rush delivery: within 30 days",
-          "price": 50000
+          "price": 875
         }
       ],
       "faq": [
@@ -1260,7 +1260,7 @@ export const servicesOffers: Record<ServicesLang, ServiceOffer[]> = {
         },
         {
           "q": "Can I ask for maintenance after the PoC?",
-          "a": "Yes. Maintenance and improvements (from JPY 30,000 per month excl. tax; JPY 33,000 incl. tax) are quoted separately."
+          "a": "Yes. Maintenance and improvements (from $600 per month, excl. tax) are quoted separately."
         }
       ]
     }

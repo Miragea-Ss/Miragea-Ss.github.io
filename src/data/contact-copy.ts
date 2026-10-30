@@ -50,7 +50,7 @@ export const contactCopy: Record<AtelierLang, ContactCopy> = {
     note:
       'Typical scope: reproducible pipelines, local bf16/fp16 stacks, API export, batch production — not one-off image requests.',
     offer:
-      'Fixed package: Reproducible Pipeline Package (ComfyUI), ¥800,000 (excl. tax; ¥880,000 incl. tax), 10 business days. One reproducible workflow, input and output spec, and a runbook. One revision included. One-off image generation is out of scope.',
+      'Fixed package: Reproducible Pipeline Package (ComfyUI), $5,000 (excl. tax; Japanese consumption tax applies only to Japan-based clients), 10 business days. One reproducible workflow, input and output spec, and a runbook. One revision included. One-off image generation is out of scope.',
     successTitle: 'Inquiry received',
     successLead:
       'Your message reached Miragea · Eliora. A confirmation email was sent to the address you entered.',
