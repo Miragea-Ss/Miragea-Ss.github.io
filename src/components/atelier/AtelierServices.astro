@@ -1,0 +1,338 @@
+---
+import type { AtelierLang } from '../../data/atelier-copy';
+import { atelierHomeCopy } from '../../data/atelier-copy';
+import type { ServicesPageCopy } from '../../data/services-page-copy';
+import { atelierContactPath } from '../../data/contact-config';
+import AtelierTopbar from './AtelierTopbar.astro';
+
+interface Props {
+  lang: AtelierLang;
+  copy: ServicesPageCopy;
+}
+
+const { lang, copy } = Astro.props;
+const homeCopy = atelierHomeCopy[lang];
+const homePath = `/eliora/atelier/${lang}/`;
+const servicesPath = `${homePath}services/`;
+const contactPath = atelierContactPath(lang);
+const img = '/eliora/atelier/assets/img/services/';
+const yen = (n: number) => n.toLocaleString('ja-JP');
+
+const nav = homeCopy.nav.map((item) => ({
+  ...item,
+  href: item.href.startsWith('#') ? `${homePath}${item.href}` : item.href,
+}));
+const isNote = (h: string) => /実績|検証/.test(h);
+---
+
+<div class="wrap svc-page">
+  <AtelierTopbar
+    lang={lang}
+    brandSubtitle={copy.brandSubtitle}
+    nav={nav}
+    regionTags={homeCopy.regionTags}
+    activeNav={servicesPath}
+  />
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="badge">{copy.badge}</span>
+        <h1>
+          {copy.hero.line1}
+          <br />
+          <em>{copy.hero.emphasis}</em>{copy.hero.line2}
+        </h1>
+        <p class="hero-lead svc-hero-lead">{copy.hero.lead}</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href={contactPath}>{copy.hero.primary}</a>
+          <a class="btn btn-secondary" href="#services">{copy.hero.secondary}</a>
+        </div>
+      </div>
+      <aside class="glass-panel" aria-label="Service menu">
+        <div class="panel-header">
+          <span>{copy.panelHeader}</span>
+          <span class="live"><span class="agent-dot pulse"></span> 3 services</span>
+        </div>
+        <ul class="svc-menu">
+          {
+            copy.offers.map((o) => (
+              <li>
+                <a href={`#${o.id}`}>
+                  <span class="svc-menu-ep">{o.eyebrow}</span>
+                  <span class="svc-menu-name">{o.short}</span>
+                  <span class="svc-menu-price">{yen(o.price)}<small>{copy.priceUnit}</small></span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="panel-footer">{copy.panelFoot}</div>
+      </aside>
+    </section>
+
+    <section class="block" id="services">
+      <div class="section-label">{copy.offeringsLabel}</div>
+      <h2 class="section-title">{copy.offeringsTitle}</h2>
+      <div class="svc-cards">
+        {
+          copy.offers.map((o) => (
+            <a class="work-card svc-card" href={`#${o.id}`}>
+              <img
+                class="svc-card-img"
+                src={`${img}${o.id}-main.webp`}
+                alt={`${o.short}のサービス紹介画像`}
+                width="1220"
+                height="1016"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="work-body">
+                <div class="svc-ep">{o.eyebrow}</div>
+                <h3>{o.short}</h3>
+                <p>{o.summary}</p>
+                <div class="svc-card-meta">
+                  <span class="svc-price">{yen(o.price)}<small>{copy.priceUnit}</small></span>
+                  <span class="svc-days">{o.days}日</span>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+      <p class="contact-note svc-pricenote">{copy.priceNote}</p>
+    </section>
+
+    {
+      copy.offers.map((o) => (
+        <section class="block svc-detail" id={o.id}>
+          <div class="svc-head">
+            <div class="section-label">{o.eyebrow}</div>
+            <h2 class="svc-title">{o.title}</h2>
+            <p class="svc-catch">{o.catch}</p>
+          </div>
+
+          <div class="svc-grid">
+            <aside class="svc-side">
+              <figure class="svc-fig glass-panel">
+                <img src={`${img}${o.id}-main.webp`} alt={`${o.short} メイン画像`} width="1220" height="1016" loading="lazy" decoding="async" />
+              </figure>
+              <figure class="svc-fig glass-panel">
+                <img src={`${img}${o.id}-sub.webp`} alt={`${o.short} 内容の概要`} width="1220" height="1016" loading="lazy" decoding="async" />
+              </figure>
+              <div class="glass-panel svc-facts">
+                <dl>
+                  <div><dt>{copy.priceLabel}</dt><dd class="svc-price svc-price--lg">{yen(o.price)}<small>{copy.priceUnit}</small></dd></div>
+                  <div><dt>{copy.daysLabel}</dt><dd>{o.days}日</dd></div>
+                </dl>
+                <a class="btn btn-primary" href={contactPath}>{copy.hero.primary}</a>
+              </div>
+            </aside>
+
+            <div class="svc-main">
+              <div class="svc-lead">
+                {o.lead.map((p) => <p>{p}</p>)}
+              </div>
+
+              <div class="svc-block-title">{copy.detailLabels.included}</div>
+              {
+                o.sections.map((s) => (
+                  <section class:list={['glass-panel', 'svc-sec', { 'svc-sec--note': isNote(s.h) }]}>
+                    <h3>{s.h}</h3>
+                    {s.items.map((it) =>
+                      it.t === 'ul' ? (
+                        <ul class="svc-ul">{it.l.map((x) => <li>{x}</li>)}</ul>
+                      ) : it.t === 'ol' ? (
+                        <ol class="svc-ol">{it.l.map((x) => <li>{x}</li>)}</ol>
+                      ) : it.t === 'cl' ? (
+                        <ul class="svc-cl">{it.l.map((x) => <li>{x}</li>)}</ul>
+                      ) : (
+                        it.l.map((x) => <p>{x}</p>)
+                      ),
+                    )}
+                  </section>
+                ))
+              }
+
+              <div class="svc-block-title">{copy.detailLabels.options}</div>
+              <ul class="glass-panel svc-options">
+                {
+                  o.options.map((op) => (
+                    <li>
+                      <span>{op.text}</span>
+                      <b>+{yen(op.price)}<small>{copy.priceUnit}</small></b>
+                    </li>
+                  ))
+                }
+              </ul>
+
+              <div class="svc-block-title">{copy.detailLabels.terms}</div>
+              {
+                o.reqSections.map((s) => (
+                  <section class="glass-panel svc-sec">
+                    <h3>{s.h}</h3>
+                    {s.items.map((it) =>
+                      it.t === 'ul' ? (
+                        <ul class="svc-ul">{it.l.map((x) => <li>{x}</li>)}</ul>
+                      ) : it.t === 'ol' ? (
+                        <ol class="svc-ol">{it.l.map((x) => <li>{x}</li>)}</ol>
+                      ) : (
+                        it.l.map((x) => <p>{x}</p>)
+                      ),
+                    )}
+                  </section>
+                ))
+              }
+
+              <p class="contact-note svc-quote"><strong>{copy.detailLabels.contact}</strong><br />{o.quote}</p>
+
+              <div class="svc-block-title">{copy.detailLabels.faq}</div>
+              <div class="svc-faq">
+                {
+                  o.faq.map((f) => (
+                    <details class="glass-panel">
+                      <summary>{f.q}</summary>
+                      <p>{f.a}</p>
+                    </details>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </section>
+      ))
+    }
+
+    <section class="block svc-cta glass-panel">
+      <div class="section-label">{copy.cta.label}</div>
+      <h2 class="section-title">{copy.cta.title}</h2>
+      <p class="svc-cta-lead">{copy.cta.lead}</p>
+      <a class="btn btn-primary" href={contactPath}>{copy.cta.button}</a>
+    </section>
+  </main>
+
+  <footer id="profile">
+    <div class="footer-grid">
+      {
+        homeCopy.footer.columns.map((col) => (
+          <div>
+            <strong>{col.title}</strong>
+            <br />
+            {col.body}
+            {
+              col.link && (
+                <>
+                  <br />
+                  <a href={col.link.href} style="color:var(--champagne)">{col.link.label}</a>
+                </>
+              )
+            }
+          </div>
+        ))
+      }
+    </div>
+    <div class="footer-links">
+      {homeCopy.footer.links.map((link) => <a href={link.href}>{link.label}</a>)}
+    </div>
+  </footer>
+</div>
+
+<style>
+  .svc-hero-lead { max-width: 46ch; }
+  .svc-menu { list-style: none; margin: 0; padding: 6px 0; }
+  .svc-menu li + li { border-top: 1px solid var(--glass-border); }
+  .svc-menu a {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 4px 14px; align-items: baseline;
+    padding: 16px 20px; transition: background var(--motion-base);
+  }
+  .svc-menu a:hover { background: rgba(46, 74, 158, 0.18); }
+  .svc-menu-ep { font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; letter-spacing: 0.12em; color: var(--champagne); }
+  .svc-menu-name { font-family: "Noto Serif JP", "Playfair Display", serif; font-size: 1rem; }
+  .svc-menu-price { font-family: "Playfair Display", serif; font-size: 1.15rem; color: var(--moonlight); }
+  small { font-size: 0.7em; margin-left: 2px; opacity: 0.8; }
+
+  .svc-cards { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+  .svc-card-img { width: 100%; height: auto; aspect-ratio: 6 / 5; object-fit: cover; border-bottom: 1px solid var(--glass-border); }
+  .svc-card .work-body { padding: 18px 18px 20px; }
+  .svc-card .work-body h3 { font-family: "Noto Serif JP", "Playfair Display", serif; font-size: 1.1rem; margin-bottom: 8px; }
+  .svc-ep { font-family: "IBM Plex Mono", monospace; font-size: 0.64rem; letter-spacing: 0.14em; color: var(--champagne); margin-bottom: 6px; }
+  .svc-card-meta { display: flex; align-items: baseline; justify-content: space-between; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--glass-border); }
+  .svc-price { font-family: "Playfair Display", serif; font-size: 1.35rem; color: var(--text); }
+  .svc-price--lg { font-size: 1.9rem; }
+  .svc-days { font-family: "IBM Plex Mono", monospace; font-size: 0.74rem; color: var(--muted); }
+  .svc-pricenote { margin: 22px 0 0; }
+
+  .svc-detail { border-top: 1px solid var(--glass-border); scroll-margin-top: 16px; }
+  .svc-head { max-width: 860px; margin-bottom: 28px; }
+  .svc-title { font-family: "Noto Serif JP", "Playfair Display", serif; font-size: clamp(1.45rem, 3vw, 2.1rem); line-height: 1.35; margin: 4px 0 10px; }
+  .svc-catch { margin: 0; font-size: 1.02rem; color: var(--moonlight); }
+
+  .svc-grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+  @media (min-width: 1024px) {
+    .svc-grid { grid-template-columns: minmax(300px, 4fr) 8fr; align-items: start; }
+    .svc-side { position: sticky; top: 20px; }
+  }
+  .svc-side { display: flex; flex-direction: column; gap: 14px; }
+  .svc-fig { margin: 0; }
+  .svc-fig img { width: 100%; height: auto; }
+  .svc-facts { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+  .svc-facts dl { margin: 0; display: grid; gap: 12px; }
+  .svc-facts dl div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--glass-border); }
+  .svc-facts dt { font-family: "IBM Plex Mono", monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); }
+  .svc-facts dd { margin: 0; font-size: 1.05rem; }
+  .svc-facts .btn { justify-content: center; }
+
+  .svc-main { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+  .svc-lead p { margin: 0 0 10px; color: var(--moonlight); font-size: 0.97rem; line-height: 1.85; }
+  .svc-block-title {
+    margin-top: 26px; font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--champagne); display: flex; align-items: center; gap: 12px;
+  }
+  .svc-block-title::after { content: ""; flex: 1; height: 1px; background: var(--glass-border); }
+  .svc-sec { padding: 20px 22px; }
+  .svc-sec h3 { margin: 0 0 10px; font-family: "Noto Serif JP", serif; font-size: 1.02rem; font-weight: 600; color: var(--text); }
+  .svc-sec p { margin: 0 0 8px; font-size: 0.9rem; line-height: 1.8; color: var(--moonlight); }
+  .svc-sec--note { border-left: 2px solid rgba(201, 169, 98, 0.55); background: rgba(201, 169, 98, 0.05); }
+  .svc-ul, .svc-ol, .svc-cl { margin: 0 0 8px; padding: 0; list-style: none; display: grid; gap: 6px; }
+  .svc-ul li, .svc-ol li, .svc-cl li { font-size: 0.9rem; line-height: 1.75; color: var(--moonlight); }
+  .svc-ul li { position: relative; padding-left: 18px; }
+  .svc-ul li::before { content: ""; position: absolute; left: 3px; top: 0.78em; width: 5px; height: 5px; border-radius: 50%; background: var(--champagne); }
+  .svc-ol { counter-reset: step; }
+  .svc-ol li { counter-increment: step; position: relative; padding-left: 38px; }
+  .svc-ol li::before {
+    content: counter(step); position: absolute; left: 0; top: 0.12em; width: 24px; height: 24px; border-radius: 50%;
+    display: grid; place-items: center; font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; color: var(--champagne);
+    border: 1px solid rgba(201, 169, 98, 0.5); background: rgba(201, 169, 98, 0.08);
+  }
+  .svc-cl li { padding: 8px 12px; border-radius: 8px; background: rgba(10, 10, 15, 0.35); border: 1px solid var(--glass-border); }
+
+  .svc-options { list-style: none; margin: 0; padding: 4px 0; }
+  .svc-options li { display: flex; justify-content: space-between; gap: 18px; align-items: baseline; padding: 14px 22px; font-size: 0.9rem; color: var(--moonlight); }
+  .svc-options li + li { border-top: 1px solid var(--glass-border); }
+  .svc-options b { flex: none; font-family: "Playfair Display", serif; font-size: 1.05rem; color: var(--champagne); font-weight: 600; white-space: nowrap; }
+  .svc-quote { max-width: none; margin: 8px 0 0; }
+  .svc-quote strong { color: var(--moonlight); font-weight: 600; }
+
+  .svc-faq { display: grid; gap: 10px; }
+  .svc-faq details { padding: 0; }
+  .svc-faq summary { cursor: pointer; padding: 16px 22px; font-weight: 600; font-size: 0.92rem; list-style: none; display: flex; gap: 12px; align-items: baseline; }
+  .svc-faq summary::-webkit-details-marker { display: none; }
+  .svc-faq summary::before { content: "Q"; font-family: "IBM Plex Mono", monospace; color: var(--champagne); font-size: 0.78rem; }
+  .svc-faq summary::after { content: "+"; margin-left: auto; color: var(--champagne); font-size: 1.1rem; }
+  .svc-faq details[open] summary::after { content: "−"; }
+  .svc-faq details p { margin: 0; padding: 0 22px 18px 44px; font-size: 0.88rem; line-height: 1.8; color: var(--muted); }
+
+  .svc-cta { margin: 24px 0 8px; padding: 40px 32px; text-align: center; background: linear-gradient(160deg, rgba(46, 74, 158, 0.28), rgba(10, 10, 15, 0.7)); }
+  .svc-cta .section-title { margin-bottom: 14px; }
+  .svc-cta-lead { max-width: 52ch; margin: 0 auto 24px; color: var(--moonlight); font-size: 0.95rem; line-height: 1.8; }
+
+  @media (max-width: 640px) {
+    .svc-sec { padding: 16px; }
+    .svc-options li { padding: 12px 16px; flex-direction: column; gap: 4px; }
+    .svc-faq summary { padding: 14px 16px; }
+    .svc-faq details p { padding: 0 16px 16px 16px; }
+    .svc-cta { padding: 30px 18px; }
+    .svc-menu a { grid-template-columns: 1fr auto; }
+    .svc-menu-ep { grid-column: 1 / -1; }
+  }
+</style>

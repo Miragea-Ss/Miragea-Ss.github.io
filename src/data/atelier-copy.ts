@@ -297,6 +297,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
       { href: '#studio', label: 'スタジオ' },
       { href: '/eliora/atelier/ja/atelier/', label: 'アトリエ運用' },
       { href: '#learn', label: '講座' },
+      { href: '/eliora/atelier/ja/services/', label: 'サービス' },
       { href: '/eliora/atelier/ja/contact/', label: 'お問い合わせ' },
     ],
     regionTags,
@@ -307,6 +308,7 @@ export const atelierHomeCopy: Record<AtelierLang, AtelierHomeCopy> = {
         '画像一枚ではなく、企業の制作業務を自動化する仕組みを売る。ComfyUI・ローカルAI・API化で、制御・量産・再現性を実装するワークフローアーキテクト。',
       ctas: [
         { href: '#studio', label: 'ワークフローを見る', variant: 'primary' },
+        { href: '/eliora/atelier/ja/services/', label: 'サービスと料金', variant: 'secondary' },
         { href: '/eliora/atelier/ja/atelier/', label: '4つのAgent →', variant: 'agent' },
         { href: '/eliora/atelier/ja/contact/', label: 'お仕事のご相談', variant: 'secondary' },
       ],
@@ -625,6 +627,7 @@ export const atelierHubCopy: Record<AtelierLang, AtelierHubCopy> = {
       { href: '/eliora/atelier/ja/#works', label: '作品' },
       { href: '/eliora/atelier/ja/#studio', label: 'スタジオ' },
       { href: '/eliora/atelier/ja/atelier/', label: 'アトリエ運用' },
+      { href: '/eliora/atelier/ja/services/', label: 'サービス' },
     ],
     staleBanner: 'Agentステータスが古い可能性があります。',
     hero: {
