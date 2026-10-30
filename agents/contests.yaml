@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-10-29T11:57:19.442Z
+# lastWatch: 2026-10-30T11:50:53.628Z
 contests:
   - at: 2026-10-24T09:58:16.287Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 200000
     submitUrl: https://innovik6-indore.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-10-29T11:57:19.442Z
+  lastWatch: 2026-10-30T11:50:53.628Z
   source: devpost-auto+manual
-  added: 36
+  added: 35
   updated: 8
-  scanned: 46
+  scanned: 45
   kept: 40
