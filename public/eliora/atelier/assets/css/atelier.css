@@ -860,3 +860,12 @@ footer {
 .contact-success-list li + li {
   margin-top: 8px;
 }
+
+/* Compact variant for the continuing-series strip (small, secondary section) */
+.series-compact { padding-top: 20px; padding-bottom: 20px; }
+.series-compact .section-title { font-size: 1.05rem; margin-bottom: 10px; }
+.series-compact .series-rail { gap: 10px; }
+.series-compact .series-card { flex: 0 0 180px; padding: 10px 12px; border-radius: 10px; }
+.series-compact .series-card h4 { font-size: 0.9rem; margin: 0; }
+.series-compact .series-card p { display: none; }
+.series-compact .channel-strip { margin-top: 8px; }

@@ -12,6 +12,24 @@ interface Props {
 
 const { thoughts, lang = 'en' } = Astro.props;
 const exItems = getExCards(lang);
+const geekHub = `/${lang}/geekspell/`;
+const geekChips = {
+  en: [
+    { href: '/en/geekspell/ep02-grok45/', label: 'EP02 Grok 4.5' },
+    { href: '/en/geekspell/ep03-agent-command/', label: 'EP03 Agent commands' },
+  ],
+  ja: [
+    { href: '/ja/geekspell/ep01-codex-language/', label: 'EP01 Codex' },
+    { href: '/ja/geekspell/ep02-grok45/', label: 'EP02 Grok 4.5' },
+    { href: '/ja/geekspell/ep03-agent-command/', label: 'EP03 Agent 命令' },
+  ],
+  zh: [
+    { href: '/zh/geekspell/ep01-codex-language/', label: 'EP01 Codex' },
+    { href: '/zh/geekspell/ep02-grok45/', label: 'EP02 Grok 4.5' },
+    { href: '/zh/geekspell/ep03-agent-command/', label: 'EP03 Agent 命令' },
+  ],
+}[lang];
+
 
 const copy = {
   en: {
@@ -270,7 +288,7 @@ const copy = {
         <h2 class="text-4xl font-light tracking-normal md:text-6xl">{copy.liveTitle}</h2>
         <p class="max-w-xl leading-8 text-stone-400">{copy.liveCopy}</p>
       </div>
-      <div class="grid gap-4 lg:grid-cols-3">
+      <div class="grid gap-4 lg:grid-cols-2">
         <a
           href="/eliora/infinite-canvas.html"
           class="group relative overflow-hidden rounded-2xl border border-cyan-200/25 bg-gradient-to-br from-cyan-950/40 via-black/60 to-black p-7 transition duration-500 hover:-translate-y-1 hover:border-cyan-200/55 hover:shadow-[0_0_40px_rgba(94,240,208,.15)]"
@@ -296,19 +314,6 @@ const copy = {
             <span class="transition group-hover:translate-x-1">→</span>
           </span>
           <div class="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-orange-400/10 blur-2xl transition group-hover:bg-orange-300/20"></div>
-        </a>
-        <a
-          href={lang === 'ja' ? '/ja/geekspell/' : lang === 'zh' ? '/zh/geekspell/' : '/en/geekspell/'}
-          class="group relative overflow-hidden rounded-2xl border border-violet-300/30 bg-gradient-to-br from-violet-950/45 via-black/60 to-black p-7 transition duration-500 hover:-translate-y-1 hover:border-violet-200/55 hover:shadow-[0_0_40px_rgba(167,139,250,.16)]"
-        >
-          <span class="mb-4 block text-xs uppercase tracking-[0.18em] text-violet-200">{copy.liveSpellKicker}</span>
-          <h3 class="mb-3 text-3xl font-light text-stone-50">{copy.liveSpellTitle}</h3>
-          <p class="mb-8 min-h-[4.5rem] leading-7 text-stone-400">{copy.liveSpellCopy}</p>
-          <span class="inline-flex items-center gap-2 font-bold text-violet-100 group-hover:text-violet-50">
-            {copy.liveSpellCta}
-            <span class="transition group-hover:translate-x-1">→</span>
-          </span>
-          <div class="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-violet-400/10 blur-2xl transition group-hover:bg-violet-300/20"></div>
         </a>
       </div>
     </div>
@@ -392,84 +397,17 @@ const copy = {
           <p class="mb-5 leading-8 text-stone-400">{copy.layer3Copy}</p>
           <a class="font-bold text-amber-100" href={`/eliora/atelier/${lang}/`}>{copy.enterAtelier} →</a>
         </article>
-        <article class="rounded-lg border border-violet-300/25 bg-black/55 p-6 md:col-span-3 md:grid md:grid-cols-2 md:gap-8">
-          <div>
-            <span class="mb-4 block text-xs uppercase tracking-[0.16em] text-violet-200">
-              {copy.geekSpellKicker}
-            </span>
-            <h3 class="mb-3 text-2xl">{copy.geekSpellTitle}</h3>
-            <p class="mb-5 leading-8 text-stone-400">{copy.geekSpellCopy}</p>
-            <a
-              class="font-bold text-violet-100"
-              href={lang === 'ja' ? '/ja/geekspell/' : lang === 'zh' ? '/zh/geekspell/' : '/en/geekspell/'}
-            >
-              {copy.geekSpellOpen} →
-            </a>
+        <article class="flex flex-wrap items-center gap-x-6 gap-y-3 rounded-lg border border-violet-300/20 bg-black/40 px-5 py-4 md:col-span-3">
+          <div class="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-4 gap-y-1">
+            <span class="text-xs uppercase tracking-[0.16em] text-violet-200">{copy.geekSpellKicker}</span>
+            <strong class="text-base font-medium text-stone-100">{copy.geekSpellTitle}</strong>
+            <span class="text-sm text-stone-400">{copy.geekSpellCopy}</span>
           </div>
-          <div class="mt-6 flex flex-col justify-center gap-3 border-t border-white/10 pt-6 md:mt-0 md:border-l md:border-t-0 md:pl-8 md:pt-0">
-            {lang === 'zh' && (
-              <>
-                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/zh/geekspell/ep01-codex-language/">
-                  EP01 · Codex 语言咒语 →
-                </a>
-                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/zh/geekspell/ep02-grok45/">
-                  EP02 · 榨干 Grok 4.5 →
-                </a>
-                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/zh/geekspell/ep03-agent-command/">
-                  EP03 · Agent 命令与意图 →
-                </a>
-                <a
-                  class="text-sm text-stone-400 transition hover:text-amber-100"
-                  href="https://space.bilibili.com/1321407655"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  B站 · 极客魔咒工作室 ↗
-                </a>
-              </>
-            )}
-            {lang === 'ja' && (
-              <>
-                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/ja/geekspell/ep01-codex-language/">
-                  EP01 · Codex の言語選択（YouTube）→
-                </a>
-                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/ja/geekspell/ep02-grok45/">
-                  EP02 · Grok 4.5 入門（YouTube）→
-                </a>
-                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/ja/geekspell/ep03-agent-command/">
-                  EP03 · Agent 命令（YouTube）→
-                </a>
-                <a
-                  class="text-sm text-stone-400 transition hover:text-amber-100"
-                  href="https://youtu.be/ezmy029b_2c"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  YouTube · EP03 ↗
-                </a>
-              </>
-            )}
-            {lang === 'en' && (
-              <>
-                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/en/geekspell/ep02-grok45/">
-                  EP02 · Grok 4.5 (YouTube) →
-                </a>
-                <a class="text-sm text-stone-300 transition hover:text-rose-200" href="/en/geekspell/ep03-agent-command/">
-                  EP03 · Agent commands (YouTube) →
-                </a>
-                <a
-                  class="text-sm text-stone-400 transition hover:text-amber-100"
-                  href="https://youtu.be/nDQf0em9yUk"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  YouTube · EP03 ↗
-                </a>
-                <a class="text-sm text-stone-400 transition hover:text-amber-100" href="/zh/geekspell/">
-                  Chinese GeekSpell →
-                </a>
-              </>
-            )}
+          <div class="flex flex-wrap items-center gap-2">
+            {geekChips.map((c) => (
+              <a class="rounded-full border border-white/10 px-3 py-1 text-xs text-stone-300 transition hover:border-rose-200/50 hover:text-rose-200" href={c.href}>{c.label}</a>
+            ))}
+            <a class="text-sm font-bold text-violet-100" href={geekHub}>{copy.geekSpellOpen} →</a>
           </div>
         </article>
       </div>

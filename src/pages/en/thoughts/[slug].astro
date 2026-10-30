@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../../site-layouts/Layout.astro';
+import WorkCta from '../../../components/WorkCta.astro';
 
 export async function getStaticPaths() {
   const entries = await getCollection('thoughts');
@@ -31,6 +32,7 @@ const { Content } = await render(entry);
         <Content />
       </div>
       <a href="/en/" class="mt-14 inline-flex text-gray-400 transition hover:text-white">Back to Archive</a>
+      <WorkCta lang="en" variant="soft" />
     </article>
   </main>
 </Layout>

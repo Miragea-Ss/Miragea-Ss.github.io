@@ -22,6 +22,26 @@ const canonicalPath = requestedPath === '/' ? '/en/' : requestedPath;
 const canonicalUrl = new URL(canonicalPath, Astro.site);
 const socialImage = new URL('/eliora/assets/images/miragea-portrait.webp', Astro.site);
 const isLocaleHome = /^\/(en|ja|zh)\/$/.test(canonicalPath);
+
+// hreflang for GeekSpell hubs/episodes and thoughts articles: link the same page in the other languages
+// when that page exists (e.g. the zh series has no EP05 yet).
+const geekspellPages = new Set(
+  Object.keys(import.meta.glob('../pages/*/geekspell/**/index.astro')).map(
+    (k) => k.replace('../pages', '').replace('index.astro', ''),
+  ),
+);
+const sectionMatch = canonicalPath.match(/^\/(en|ja|zh)\/(geekspell|thoughts)\/(.*)$/);
+const langAlternates: { hreflang: string; href: URL }[] = [];
+if (sectionMatch) {
+  const [, , section, rest] = sectionMatch;
+  for (const l of ['en', 'ja', 'zh'] as const) {
+    const target = `/${l}/${section}/${rest}`;
+    if (section === 'geekspell' && !geekspellPages.has(target)) continue;
+    langAlternates.push({ hreflang: l, href: new URL(target, Astro.site) });
+  }
+}
+const xDefault = langAlternates.find((a) => a.hreflang === 'en');
+const ogLocale = { en: 'en_US', ja: 'ja_JP', zh: 'zh_CN' }[lang];
 ---
 
 <!doctype html>
@@ -36,6 +56,11 @@ const isLocaleHome = /^\/(en|ja|zh)\/$/.test(canonicalPath);
     {isLocaleHome && <link rel="alternate" hreflang="ja" href={new URL('/ja/', Astro.site)} />}
     {isLocaleHome && <link rel="alternate" hreflang="zh" href={new URL('/zh/', Astro.site)} />}
     {isLocaleHome && <link rel="alternate" hreflang="x-default" href={new URL('/en/', Astro.site)} />}
+    {langAlternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
+    {xDefault && <link rel="alternate" hreflang="x-default" href={xDefault.href} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <meta property="og:locale" content={ogLocale} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Miragea" />
     <meta property="og:title" content={title} />

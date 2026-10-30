@@ -1,3 +1,5 @@
+import { getCollection } from 'astro:content';
+
 const origin = 'https://miragea-ss.github.io';
 
 const routes = [
@@ -14,8 +16,22 @@ const routes = [
   '/eliora/atelier/en/services/', '/eliora/atelier/ja/services/', '/eliora/atelier/zh/services/',
 ];
 
-export function GET() {
-  const urls = routes
+// Pages that are plain files under src/pages (GeekSpell hubs and episodes in en/ja/zh).
+const geekspellRoutes = Object.keys(import.meta.glob('./*/geekspell/**/index.astro')).map((key) =>
+  key.replace('./', '/').replace('index.astro', ''),
+);
+
+export async function GET() {
+  const thoughts = await getCollection('thoughts');
+  const thoughtRoutes = ['/thoughts/'];
+  for (const entry of thoughts) {
+    thoughtRoutes.push(`/thoughts/${entry.id}/`);
+    if (!entry.id.includes('/')) {
+      thoughtRoutes.push(`/en/thoughts/${entry.id}/`, `/ja/thoughts/${entry.id}/`, `/zh/thoughts/${entry.id}/`);
+    }
+  }
+  const all = [...new Set([...routes, ...geekspellRoutes, ...thoughtRoutes])].sort();
+  const urls = all
     .map((route) => `  <url><loc>${origin}${route}</loc></url>`)
     .join('\n');
 

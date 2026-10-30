@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../site-layouts/Layout.astro';
+import WorkCta from '../../components/WorkCta.astro';
 
 // 魔法: 全ての記事のURLを自動で作る
 export async function getStaticPaths() {
@@ -49,6 +50,7 @@ const { Content } = await render(entry);
         <a href="/" class="text-gray-400 hover:text-white transition">← Back to Archive</a>
       </div>
 
+      <WorkCta lang="en" variant="soft" />
     </article>
   </main>
 </Layout>

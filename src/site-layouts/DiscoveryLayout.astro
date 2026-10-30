@@ -27,6 +27,8 @@ const socialImage = new URL('/assets/brand/eliora-logo-256.webp', Astro.site);
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
     {['en','ja','zh'].map(l=><link rel="alternate" hreflang={l==='zh'?'zh-Hans':l} href={new URL(scan?scanPath(l):home(l),Astro.site)}/>)}
     <link rel="alternate" hreflang="x-default" href={new URL(scan?scanPath('en'):home('en'),Astro.site)}/>
     <meta property="og:type" content="website" />
