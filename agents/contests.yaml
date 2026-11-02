@@ -1,34 +1,48 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-02T14:09:41.537Z
+# lastWatch: 2026-11-02T21:22:11.105Z
 contests:
-  - at: 2026-10-24T09:58:16.287Z
+  - at: 2026-11-02T21:22:11.062Z
     type: devpost-auto
-    title: Codex x TwitchCon Hackathon
-    url: https://twitchcon-codex.devpost.com/
+    title: QNX Global Hackathon
+    url: https://qnx.devpost.com/
     ongoing: true
     period:
-      en: Oct 23 - Nov 02, 2026
-      ja: Oct 23 - Nov 02, 2026
-      zh: Oct 23 - Nov 02, 2026
-    sourceNote: Devpost auto · prize~25000 · score 115 · Twitch
+      en: Nov 02 - Dec 15, 2026
+      ja: Nov 02 - Dec 15, 2026
+      zh: Nov 02 - Dec 15, 2026
+    sourceNote: Devpost auto · prize~50000 · score 115 · QNX
     auto: true
     joinScore: 115
-    prizeHint: 25000
-    submitUrl: https://twitchcon-codex.devpost.com/challenges/start_a_submission
-  - at: 2026-09-25T10:47:46.645Z
+    prizeHint: 50000
+    submitUrl: https://qnx.devpost.com/challenges/start_a_submission
+  - at: 2026-11-02T21:22:11.062Z
     type: devpost-auto
-    title: Meta VR Start Developer Competition 2026
-    url: https://start-developer-competition-26.devpost.com/
+    title: AWS MSP AI Hackathon
+    url: https://aws-agentic-msp.devpost.com/
     ongoing: true
     period:
-      en: Sep 24 - Nov 18, 2026
-      ja: Sep 24 - Nov 18, 2026
-      zh: Sep 24 - Nov 18, 2026
-    sourceNote: Devpost auto · prize~1000000 · score 115 · Meta
+      en: Nov 02 - Dec 11, 2026
+      ja: Nov 02 - Dec 11, 2026
+      zh: Nov 02 - Dec 11, 2026
+    sourceNote: Devpost auto · prize~64000 · score 115 · AWS
     auto: true
     joinScore: 115
-    prizeHint: 1000000
-    submitUrl: https://start-developer-competition-26.devpost.com/challenges/start_a_submission
+    prizeHint: 64000
+    submitUrl: https://aws-agentic-msp.devpost.com/challenges/start_a_submission
+  - at: 2026-10-02T11:33:42.363Z
+    type: devpost-auto
+    title: PayPal AI Hackathon
+    url: https://paypalaihackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 01 - Nov 12, 2026
+      ja: Oct 01 - Nov 12, 2026
+      zh: Oct 01 - Nov 12, 2026
+    sourceNote: Devpost auto · prize~67500 · score 115 · PayPal
+    auto: true
+    joinScore: 115
+    prizeHint: 67500
+    submitUrl: https://paypalaihackathon.devpost.com/challenges/start_a_submission
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
     title: Agents for Humans Hackathon
@@ -57,6 +71,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-10-24T09:58:16.287Z
+    type: devpost-auto
+    title: Codex x TwitchCon Hackathon
+    url: https://twitchcon-codex.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 23 - Nov 02, 2026
+      ja: Oct 23 - Nov 02, 2026
+      zh: Oct 23 - Nov 02, 2026
+    sourceNote: Devpost auto · prize~25000 · score 110 · Twitch
+    auto: true
+    joinScore: 110
+    prizeHint: 25000
+    submitUrl: https://twitchcon-codex.devpost.com/challenges/start_a_submission
   - at: 2026-10-23T10:41:44.605Z
     type: devpost-auto
     title: UGREEN Hackathon 2026 on AI NAS
@@ -85,20 +113,6 @@ contests:
     joinScore: 110
     prizeHint: 500000
     submitUrl: https://hackwithaditya.devpost.com/challenges/start_a_submission
-  - at: 2026-10-02T11:33:42.363Z
-    type: devpost-auto
-    title: PayPal AI Hackathon
-    url: https://paypalaihackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Oct 01 - Nov 12, 2026
-      ja: Oct 01 - Nov 12, 2026
-      zh: Oct 01 - Nov 12, 2026
-    sourceNote: Devpost auto · prize~67500 · score 110 · PayPal
-    auto: true
-    joinScore: 110
-    prizeHint: 67500
-    submitUrl: https://paypalaihackathon.devpost.com/challenges/start_a_submission
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
     title: ForgeHacks Online 2026
@@ -141,6 +155,20 @@ contests:
     joinScore: 110
     prizeHint: 100000
     submitUrl: https://multimodal-ai-hackathon-2026-7.devpost.com/challenges/start_a_submission
+  - at: 2026-09-25T10:47:46.645Z
+    type: devpost-auto
+    title: Meta VR Start Developer Competition 2026
+    url: https://start-developer-competition-26.devpost.com/
+    ongoing: true
+    period:
+      en: Sep 24 - Nov 18, 2026
+      ja: Sep 24 - Nov 18, 2026
+      zh: Sep 24 - Nov 18, 2026
+    sourceNote: Devpost auto · prize~1000000 · score 110 · Meta
+    auto: true
+    joinScore: 110
+    prizeHint: 1000000
+    submitUrl: https://start-developer-competition-26.devpost.com/challenges/start_a_submission
   - at: 2026-09-24T10:43:55.685Z
     type: devpost-auto
     title: DecentraHack 2.0
@@ -533,38 +561,10 @@ contests:
     joinScore: 102
     prizeHint: 300000
     submitUrl: https://hacksprint.devpost.com/challenges/start_a_submission
-  - at: 2026-08-30T10:53:52.413Z
-    type: devpost-auto
-    title: KJSSE CSI Gemini Hackday
-    url: https://kjsse-csi-gemini-hackday.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 29 - 30, 2026
-      ja: Aug 29 - 30, 2026
-      zh: Aug 29 - 30, 2026
-    sourceNote: Devpost auto · prize~10000 · score 102 · MLH
-    auto: true
-    joinScore: 102
-    prizeHint: 10000
-    submitUrl: https://kjsse-csi-gemini-hackday.devpost.com/challenges/start_a_submission
-  - at: 2026-08-11T06:46:50.154Z
-    type: devpost-auto
-    title: INNOVIK 6.0 – International Hackathon 2026 | Indore Edition
-    url: https://innovik6-indore.devpost.com/
-    ongoing: true
-    period:
-      en: Aug 10 - 25, 2026
-      ja: Aug 10 - 25, 2026
-      zh: Aug 10 - 25, 2026
-    sourceNote: Devpost auto · prize~200000 · score 102 · VITM
-    auto: true
-    joinScore: 102
-    prizeHint: 200000
-    submitUrl: https://innovik6-indore.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-02T14:09:41.537Z
+  lastWatch: 2026-11-02T21:22:11.105Z
   source: devpost-auto+manual
-  added: 38
-  updated: 6
-  scanned: 45
+  added: 40
+  updated: 5
+  scanned: 47
   kept: 40

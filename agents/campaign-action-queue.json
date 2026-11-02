@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-02T14:09:41.551Z",
+  "generatedAt": "2026-11-02T21:22:11.119Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -7,11 +7,11 @@
   },
   "recommended": [
     {
-      "title": "Codex x TwitchCon Hackathon",
-      "url": "https://twitchcon-codex.devpost.com/",
-      "submitUrl": "https://twitchcon-codex.devpost.com/challenges/start_a_submission",
+      "title": "QNX Global Hackathon",
+      "url": "https://qnx.devpost.com/",
+      "submitUrl": "https://qnx.devpost.com/challenges/start_a_submission",
       "joinScore": 115,
-      "prizeHint": 25000,
+      "prizeHint": 50000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -23,11 +23,27 @@
       "status": "recommended"
     },
     {
-      "title": "Meta VR Start Developer Competition 2026",
-      "url": "https://start-developer-competition-26.devpost.com/",
-      "submitUrl": "https://start-developer-competition-26.devpost.com/challenges/start_a_submission",
+      "title": "AWS MSP AI Hackathon",
+      "url": "https://aws-agentic-msp.devpost.com/",
+      "submitUrl": "https://aws-agentic-msp.devpost.com/challenges/start_a_submission",
       "joinScore": 115,
-      "prizeHint": 1000000,
+      "prizeHint": 64000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "PayPal AI Hackathon",
+      "url": "https://paypalaihackathon.devpost.com/",
+      "submitUrl": "https://paypalaihackathon.devpost.com/challenges/start_a_submission",
+      "joinScore": 115,
+      "prizeHint": 67500,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -71,6 +87,22 @@
       "status": "recommended"
     },
     {
+      "title": "Codex x TwitchCon Hackathon",
+      "url": "https://twitchcon-codex.devpost.com/",
+      "submitUrl": "https://twitchcon-codex.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 25000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
       "title": "UGREEN Hackathon 2026 on AI NAS",
       "url": "https://ugreenhackathon.devpost.com/",
       "submitUrl": "https://ugreenhackathon.devpost.com/challenges/start_a_submission",
@@ -92,38 +124,6 @@
       "submitUrl": "https://hackwithaditya.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 500000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "PayPal AI Hackathon",
-      "url": "https://paypalaihackathon.devpost.com/",
-      "submitUrl": "https://paypalaihackathon.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 67500,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "ForgeHacks Online 2026",
-      "url": "https://forgehacks-2026.devpost.com/",
-      "submitUrl": "https://forgehacks-2026.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 1382700,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
