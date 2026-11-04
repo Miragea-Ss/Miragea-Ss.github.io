@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-03T13:14:10.155Z
+# lastWatch: 2026-11-04T13:28:03.824Z
 contests:
   - at: 2026-11-02T21:22:11.062Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 300000
     submitUrl: https://hacksprint.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-03T13:14:10.155Z
+  lastWatch: 2026-11-04T13:28:03.824Z
   source: devpost-auto+manual
-  added: 39
+  added: 41
   updated: 6
-  scanned: 46
+  scanned: 48
   kept: 40
