@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-04T13:28:03.824Z
+# lastWatch: 2026-11-05T13:41:39.699Z
 contests:
   - at: 2026-11-02T21:22:11.062Z
     type: devpost-auto
@@ -477,6 +477,20 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-11-05T13:41:39.680Z
+    type: devpost-auto
+    title: Health Hackathon 3.0
+    url: https://health-hack-3.devpost.com/
+    ongoing: true
+    period:
+      en: Nov 04 - 11, 2026
+      ja: Nov 04 - 11, 2026
+      zh: Nov 04 - 11, 2026
+    sourceNote: Devpost auto · prize~200000 · score 102 · VIT Bhopal University
+    auto: true
+    joinScore: 102
+    prizeHint: 200000
+    submitUrl: https://health-hack-3.devpost.com/challenges/start_a_submission
   - at: 2026-10-21T10:48:57.323Z
     type: devpost-auto
     title: Engage 6.0 – Code with AI Hackathon
@@ -547,24 +561,10 @@ contests:
     joinScore: 102
     prizeHint: 10680
     submitUrl: https://hackapertus.devpost.com/challenges/start_a_submission
-  - at: 2026-09-10T10:14:23.171Z
-    type: devpost-auto
-    title: HackSprint
-    url: https://hacksprint.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 09 - Oct 05, 2026
-      ja: Sep 09 - Oct 05, 2026
-      zh: Sep 09 - Oct 05, 2026
-    sourceNote: Devpost auto · prize~300000 · score 102 · commudle
-    auto: true
-    joinScore: 102
-    prizeHint: 300000
-    submitUrl: https://hacksprint.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-04T13:28:03.824Z
+  lastWatch: 2026-11-05T13:41:39.699Z
   source: devpost-auto+manual
-  added: 41
+  added: 45
   updated: 6
-  scanned: 48
+  scanned: 52
   kept: 40
