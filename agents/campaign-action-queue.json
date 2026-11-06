@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-05T13:41:39.706Z",
+  "generatedAt": "2026-11-06T13:25:59.525Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -87,43 +87,43 @@
       "status": "recommended"
     },
     {
+      "title": "HackTheFashion Global'26",
+      "url": "https://hackthefashion-global26.devpost.com/",
+      "submitUrl": "https://hackthefashion-global26.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 45000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "Ctrl+V Hackathon",
+      "url": "https://ctrl-v-hackathon-31831.devpost.com/",
+      "submitUrl": "https://ctrl-v-hackathon-31831.devpost.com/challenges/start_a_submission",
+      "joinScore": 110,
+      "prizeHint": 28000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
       "title": "Codex x TwitchCon Hackathon",
       "url": "https://twitchcon-codex.devpost.com/",
       "submitUrl": "https://twitchcon-codex.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
       "prizeHint": 25000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "UGREEN Hackathon 2026 on AI NAS",
-      "url": "https://ugreenhackathon.devpost.com/",
-      "submitUrl": "https://ugreenhackathon.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 46000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
-      "title": "HackWithAditya",
-      "url": "https://hackwithaditya.devpost.com/",
-      "submitUrl": "https://hackwithaditya.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 500000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

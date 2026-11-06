@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-05T13:41:39.753Z",
+  "generatedAt": "2026-11-06T13:25:59.599Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-11-05T13:41:39.699Z",
+      "lastRun": "2026-11-06T13:25:59.513Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -76,6 +76,30 @@
           }
         },
         {
+          "at": "2026-11-06T13:25:59.476Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) HackTheFashion Global'26",
+          "url": "https://hackthefashion-global26.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Nov 06 - 25, 2026",
+            "ja": "Nov 06 - 25, 2026",
+            "zh": "Nov 06 - 25, 2026"
+          }
+        },
+        {
+          "at": "2026-11-06T13:25:59.476Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Ctrl+V Hackathon",
+          "url": "https://ctrl-v-hackathon-31831.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Nov 06 - 10, 2026",
+            "ja": "Nov 06 - 10, 2026",
+            "zh": "Nov 06 - 10, 2026"
+          }
+        },
+        {
           "at": "2026-10-24T09:58:16.287Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) Codex x TwitchCon Hackathon",
@@ -109,30 +133,6 @@
             "en": "Oct 16 - Nov 25, 2026",
             "ja": "Oct 16 - Nov 25, 2026",
             "zh": "Oct 16 - Nov 25, 2026"
-          }
-        },
-        {
-          "at": "2026-10-02T11:33:42.363Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) ForgeHacks Online 2026",
-          "url": "https://forgehacks-2026.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Oct 01 - 10, 2026",
-            "ja": "Oct 01 - 10, 2026",
-            "zh": "Oct 01 - 10, 2026"
-          }
-        },
-        {
-          "at": "2026-10-01T12:02:41.564Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Qloo Agentic Hackathon",
-          "url": "https://qloo.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Sep 30 - Oct 30, 2026",
-            "ja": "Sep 30 - Oct 30, 2026",
-            "zh": "Sep 30 - Oct 30, 2026"
           }
         }
       ]
