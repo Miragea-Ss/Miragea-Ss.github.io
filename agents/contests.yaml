@@ -1,48 +1,34 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-09T14:40:16.285Z
+# lastWatch: 2026-11-09T21:54:15.544Z
 contests:
-  - at: 2026-11-02T21:22:11.062Z
+  - at: 2026-10-23T10:41:44.605Z
     type: devpost-auto
-    title: QNX Global Hackathon
-    url: https://qnx.devpost.com/
+    title: UGREEN Hackathon 2026 on AI NAS
+    url: https://ugreenhackathon.devpost.com/
     ongoing: true
     period:
-      en: Nov 02 - Dec 15, 2026
-      ja: Nov 02 - Dec 15, 2026
-      zh: Nov 02 - Dec 15, 2026
-    sourceNote: Devpost auto · prize~50000 · score 115 · QNX
+      en: Oct 22 - Nov 16, 2026
+      ja: Oct 22 - Nov 16, 2026
+      zh: Oct 22 - Nov 16, 2026
+    sourceNote: Devpost auto · prize~46000 · score 115 · UGREEN
     auto: true
     joinScore: 115
-    prizeHint: 50000
-    submitUrl: https://qnx.devpost.com/challenges/start_a_submission
-  - at: 2026-11-02T21:22:11.062Z
+    prizeHint: 46000
+    submitUrl: https://ugreenhackathon.devpost.com/challenges/start_a_submission
+  - at: 2026-09-25T10:47:46.645Z
     type: devpost-auto
-    title: AWS MSP AI Hackathon
-    url: https://aws-agentic-msp.devpost.com/
+    title: Meta VR Start Developer Competition 2026
+    url: https://start-developer-competition-26.devpost.com/
     ongoing: true
     period:
-      en: Nov 02 - Dec 11, 2026
-      ja: Nov 02 - Dec 11, 2026
-      zh: Nov 02 - Dec 11, 2026
-    sourceNote: Devpost auto · prize~64000 · score 115 · AWS
+      en: Sep 24 - Nov 18, 2026
+      ja: Sep 24 - Nov 18, 2026
+      zh: Sep 24 - Nov 18, 2026
+    sourceNote: Devpost auto · prize~1000000 · score 115 · Meta
     auto: true
     joinScore: 115
-    prizeHint: 64000
-    submitUrl: https://aws-agentic-msp.devpost.com/challenges/start_a_submission
-  - at: 2026-10-02T11:33:42.363Z
-    type: devpost-auto
-    title: PayPal AI Hackathon
-    url: https://paypalaihackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Oct 01 - Nov 12, 2026
-      ja: Oct 01 - Nov 12, 2026
-      zh: Oct 01 - Nov 12, 2026
-    sourceNote: Devpost auto · prize~67500 · score 115 · PayPal
-    auto: true
-    joinScore: 115
-    prizeHint: 67500
-    submitUrl: https://paypalaihackathon.devpost.com/challenges/start_a_submission
+    prizeHint: 1000000
+    submitUrl: https://start-developer-competition-26.devpost.com/challenges/start_a_submission
   - at: 2026-08-11T06:46:50.154Z
     type: devpost-auto
     title: Agents for Humans Hackathon
@@ -99,6 +85,34 @@ contests:
     joinScore: 110
     prizeHint: 28000
     submitUrl: https://ctrl-v-hackathon-31831.devpost.com/challenges/start_a_submission
+  - at: 2026-11-02T21:22:11.062Z
+    type: devpost-auto
+    title: QNX Global Hackathon
+    url: https://qnx.devpost.com/
+    ongoing: true
+    period:
+      en: Nov 02 - Dec 15, 2026
+      ja: Nov 02 - Dec 15, 2026
+      zh: Nov 02 - Dec 15, 2026
+    sourceNote: Devpost auto · prize~50000 · score 110 · QNX
+    auto: true
+    joinScore: 110
+    prizeHint: 50000
+    submitUrl: https://qnx.devpost.com/challenges/start_a_submission
+  - at: 2026-11-02T21:22:11.062Z
+    type: devpost-auto
+    title: AWS MSP AI Hackathon
+    url: https://aws-agentic-msp.devpost.com/
+    ongoing: true
+    period:
+      en: Nov 02 - Dec 11, 2026
+      ja: Nov 02 - Dec 11, 2026
+      zh: Nov 02 - Dec 11, 2026
+    sourceNote: Devpost auto · prize~64000 · score 110 · AWS
+    auto: true
+    joinScore: 110
+    prizeHint: 64000
+    submitUrl: https://aws-agentic-msp.devpost.com/challenges/start_a_submission
   - at: 2026-10-24T09:58:16.287Z
     type: devpost-auto
     title: Codex x TwitchCon Hackathon
@@ -113,20 +127,6 @@ contests:
     joinScore: 110
     prizeHint: 25000
     submitUrl: https://twitchcon-codex.devpost.com/challenges/start_a_submission
-  - at: 2026-10-23T10:41:44.605Z
-    type: devpost-auto
-    title: UGREEN Hackathon 2026 on AI NAS
-    url: https://ugreenhackathon.devpost.com/
-    ongoing: true
-    period:
-      en: Oct 22 - Nov 16, 2026
-      ja: Oct 22 - Nov 16, 2026
-      zh: Oct 22 - Nov 16, 2026
-    sourceNote: Devpost auto · prize~46000 · score 110 · UGREEN
-    auto: true
-    joinScore: 110
-    prizeHint: 46000
-    submitUrl: https://ugreenhackathon.devpost.com/challenges/start_a_submission
   - at: 2026-10-16T10:19:33.279Z
     type: devpost-auto
     title: HackWithAditya
@@ -141,6 +141,20 @@ contests:
     joinScore: 110
     prizeHint: 500000
     submitUrl: https://hackwithaditya.devpost.com/challenges/start_a_submission
+  - at: 2026-10-02T11:33:42.363Z
+    type: devpost-auto
+    title: PayPal AI Hackathon
+    url: https://paypalaihackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Oct 01 - Nov 12, 2026
+      ja: Oct 01 - Nov 12, 2026
+      zh: Oct 01 - Nov 12, 2026
+    sourceNote: Devpost auto · prize~67500 · score 110 · PayPal
+    auto: true
+    joinScore: 110
+    prizeHint: 67500
+    submitUrl: https://paypalaihackathon.devpost.com/challenges/start_a_submission
   - at: 2026-10-02T11:33:42.363Z
     type: devpost-auto
     title: ForgeHacks Online 2026
@@ -183,20 +197,6 @@ contests:
     joinScore: 110
     prizeHint: 100000
     submitUrl: https://multimodal-ai-hackathon-2026-7.devpost.com/challenges/start_a_submission
-  - at: 2026-09-25T10:47:46.645Z
-    type: devpost-auto
-    title: Meta VR Start Developer Competition 2026
-    url: https://start-developer-competition-26.devpost.com/
-    ongoing: true
-    period:
-      en: Sep 24 - Nov 18, 2026
-      ja: Sep 24 - Nov 18, 2026
-      zh: Sep 24 - Nov 18, 2026
-    sourceNote: Devpost auto · prize~1000000 · score 110 · Meta
-    auto: true
-    joinScore: 110
-    prizeHint: 1000000
-    submitUrl: https://start-developer-competition-26.devpost.com/challenges/start_a_submission
   - at: 2026-09-24T10:43:55.685Z
     type: devpost-auto
     title: DecentraHack 2.0
@@ -562,9 +562,9 @@ contests:
     prizeHint: 10000
     submitUrl: https://hackturin-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-09T14:40:16.285Z
+  lastWatch: 2026-11-09T21:54:15.544Z
   source: devpost-auto+manual
-  added: 38
+  added: 37
   updated: 9
   scanned: 51
   kept: 40

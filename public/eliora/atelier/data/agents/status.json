@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-09T14:40:16.351Z",
+  "generatedAt": "2026-11-09T21:54:15.668Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-11-09T14:40:16.285Z",
+      "lastRun": "2026-11-09T21:54:15.544Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -16,39 +16,27 @@
       },
       "events": [
         {
-          "at": "2026-11-02T21:22:11.062Z",
+          "at": "2026-10-23T10:41:44.605Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) QNX Global Hackathon",
-          "url": "https://qnx.devpost.com/",
+          "title": "★ JOIN? (115) UGREEN Hackathon 2026 on AI NAS",
+          "url": "https://ugreenhackathon.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Nov 02 - Dec 15, 2026",
-            "ja": "Nov 02 - Dec 15, 2026",
-            "zh": "Nov 02 - Dec 15, 2026"
+            "en": "Oct 22 - Nov 16, 2026",
+            "ja": "Oct 22 - Nov 16, 2026",
+            "zh": "Oct 22 - Nov 16, 2026"
           }
         },
         {
-          "at": "2026-11-02T21:22:11.062Z",
+          "at": "2026-09-25T10:47:46.645Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) AWS MSP AI Hackathon",
-          "url": "https://aws-agentic-msp.devpost.com/",
+          "title": "★ JOIN? (115) Meta VR Start Developer Competition 2026",
+          "url": "https://start-developer-competition-26.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Nov 02 - Dec 11, 2026",
-            "ja": "Nov 02 - Dec 11, 2026",
-            "zh": "Nov 02 - Dec 11, 2026"
-          }
-        },
-        {
-          "at": "2026-10-02T11:33:42.363Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (115) PayPal AI Hackathon",
-          "url": "https://paypalaihackathon.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Oct 01 - Nov 12, 2026",
-            "ja": "Oct 01 - Nov 12, 2026",
-            "zh": "Oct 01 - Nov 12, 2026"
+            "en": "Sep 24 - Nov 18, 2026",
+            "ja": "Sep 24 - Nov 18, 2026",
+            "zh": "Sep 24 - Nov 18, 2026"
           }
         },
         {
@@ -100,6 +88,30 @@
           }
         },
         {
+          "at": "2026-11-02T21:22:11.062Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) QNX Global Hackathon",
+          "url": "https://qnx.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Nov 02 - Dec 15, 2026",
+            "ja": "Nov 02 - Dec 15, 2026",
+            "zh": "Nov 02 - Dec 15, 2026"
+          }
+        },
+        {
+          "at": "2026-11-02T21:22:11.062Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) AWS MSP AI Hackathon",
+          "url": "https://aws-agentic-msp.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Nov 02 - Dec 11, 2026",
+            "ja": "Nov 02 - Dec 11, 2026",
+            "zh": "Nov 02 - Dec 11, 2026"
+          }
+        },
+        {
           "at": "2026-10-24T09:58:16.287Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) Codex x TwitchCon Hackathon",
@@ -109,18 +121,6 @@
             "en": "Oct 23 - Nov 02, 2026",
             "ja": "Oct 23 - Nov 02, 2026",
             "zh": "Oct 23 - Nov 02, 2026"
-          }
-        },
-        {
-          "at": "2026-10-23T10:41:44.605Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) UGREEN Hackathon 2026 on AI NAS",
-          "url": "https://ugreenhackathon.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Oct 22 - Nov 16, 2026",
-            "ja": "Oct 22 - Nov 16, 2026",
-            "zh": "Oct 22 - Nov 16, 2026"
           }
         },
         {
