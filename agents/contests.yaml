@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-09T21:54:15.544Z
+# lastWatch: 2026-11-10T13:56:44.806Z
 contests:
   - at: 2026-10-23T10:41:44.605Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 10000
     submitUrl: https://hackturin-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-09T21:54:15.544Z
+  lastWatch: 2026-11-10T13:56:44.806Z
   source: devpost-auto+manual
-  added: 37
-  updated: 9
-  scanned: 51
+  added: 39
+  updated: 8
+  scanned: 52
   kept: 40
