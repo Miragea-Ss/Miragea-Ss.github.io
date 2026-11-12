@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-11T13:10:37.674Z
+# lastWatch: 2026-11-12T14:14:09.217Z
 contests:
   - at: 2026-10-23T10:41:44.605Z
     type: devpost-auto
@@ -57,6 +57,20 @@ contests:
     joinScore: 115
     prizeHint: 20500
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
+  - at: 2026-11-12T14:14:09.188Z
+    type: devpost-auto
+    title: "#BuildHybridAI 2026"
+    url: https://firebasehybridaihackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Nov 11 - 30, 2026
+      ja: Nov 11 - 30, 2026
+      zh: Nov 11 - 30, 2026
+    sourceNote: Devpost auto · prize~30000 · score 110 · Google
+    auto: true
+    joinScore: 110
+    prizeHint: 30000
+    submitUrl: https://firebasehybridaihackathon.devpost.com/challenges/start_a_submission
   - at: 2026-11-06T13:25:59.476Z
     type: devpost-auto
     title: HackTheFashion Global'26
@@ -547,24 +561,10 @@ contests:
     joinScore: 102
     prizeHint: 600000
     submitUrl: https://hackfest-season-1.devpost.com/challenges/start_a_submission
-  - at: 2026-10-11T11:47:22.182Z
-    type: devpost-auto
-    title: hackTurin
-    url: https://hackturin-2026.devpost.com/
-    ongoing: true
-    period:
-      en: Oct 10 - 11, 2026
-      ja: Oct 10 - 11, 2026
-      zh: Oct 10 - 11, 2026
-    sourceNote: Devpost auto · prize~10000 · score 102 · apeira
-    auto: true
-    joinScore: 102
-    prizeHint: 10000
-    submitUrl: https://hackturin-2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-11T13:10:37.674Z
+  lastWatch: 2026-11-12T14:14:09.217Z
   source: devpost-auto+manual
-  added: 40
-  updated: 7
+  added: 43
+  updated: 5
   scanned: 53
   kept: 40
