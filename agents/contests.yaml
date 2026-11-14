@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-13T13:37:10.945Z
+# lastWatch: 2026-11-14T12:41:37.468Z
 contests:
   - at: 2026-10-23T10:41:44.605Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 600000
     submitUrl: https://hackfest-season-1.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-13T13:37:10.945Z
+  lastWatch: 2026-11-14T12:41:37.468Z
   source: devpost-auto+manual
-  added: 46
+  added: 52
   updated: 5
-  scanned: 58
+  scanned: 65
   kept: 40
