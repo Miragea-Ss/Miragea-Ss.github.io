@@ -1,0 +1,4301 @@
+{
+ "id": "64d92216-a139-4d94-bf94-dfcdf5224aba",
+ "revision": 0,
+ "last_node_id": 443,
+ "last_link_id": 659,
+ "nodes": [
+  {
+   "id": 16,
+   "type": "KSampler",
+   "pos": [
+    4361.451019176861,
+    100
+   ],
+   "size": [
+    332,
+    695
+   ],
+   "flags": {},
+   "order": 82,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 591
+    },
+    {
+     "label": "positive",
+     "name": "positive",
+     "type": "CONDITIONING",
+     "link": 632
+    },
+    {
+     "label": "negative",
+     "name": "negative",
+     "type": "CONDITIONING",
+     "link": 633
+    },
+    {
+     "label": "latent_image",
+     "name": "latent_image",
+     "type": "LATENT",
+     "link": 495
+    },
+    {
+     "label": "seed",
+     "name": "seed",
+     "type": "INT",
+     "widget": {
+      "name": "seed"
+     },
+     "link": null
+    },
+    {
+     "label": "steps",
+     "name": "steps",
+     "type": "INT",
+     "widget": {
+      "name": "steps"
+     },
+     "link": 563
+    },
+    {
+     "label": "cfg",
+     "name": "cfg",
+     "type": "FLOAT",
+     "widget": {
+      "name": "cfg"
+     },
+     "link": 565
+    },
+    {
+     "label": "sampler_name",
+     "name": "sampler_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "sampler_name"
+     },
+     "link": null
+    },
+    {
+     "label": "scheduler",
+     "name": "scheduler",
+     "type": "COMBO",
+     "widget": {
+      "name": "scheduler"
+     },
+     "link": null
+    },
+    {
+     "label": "denoise",
+     "name": "denoise",
+     "type": "FLOAT",
+     "widget": {
+      "name": "denoise"
+     },
+     "link": 648
+    }
+   ],
+   "outputs": [
+    {
+     "label": "LATENT",
+     "name": "LATENT",
+     "type": "LATENT",
+     "links": [
+      27
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "KSampler",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "scheduler": true,
+      "denoise": true,
+      "seed": true,
+      "cfg": true,
+      "sampler_name": true,
+      "steps": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    0,
+    "randomize",
+    35,
+    3,
+    "euler",
+    "simple",
+    1
+   ],
+   "widgets_values_named": {
+    "seed": 0,
+    "control_after_generate": "randomize",
+    "steps": 35,
+    "cfg": 3,
+    "sampler_name": "euler",
+    "scheduler": "simple",
+    "denoise": 1
+   },
+   "title": "★ 1段目サンプラー（seed はここ）",
+   "color": "#432",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 19,
+   "type": "ResolutionSelector",
+   "pos": [
+    40,
+    1888
+   ],
+   "size": [
+    440,
+    190
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "showAdvanced": true,
+   "inputs": [
+    {
+     "label": "aspect_ratio",
+     "name": "aspect_ratio",
+     "type": "COMBO",
+     "widget": {
+      "name": "aspect_ratio"
+     },
+     "link": null
+    },
+    {
+     "label": "megapixels",
+     "name": "megapixels",
+     "type": "FLOAT",
+     "widget": {
+      "name": "megapixels"
+     },
+     "link": null
+    },
+    {
+     "label": "multiple",
+     "name": "multiple",
+     "type": "INT",
+     "widget": {
+      "name": "multiple"
+     },
+     "link": null
+    },
+    {
+     "label": "preview",
+     "name": "preview",
+     "shape": 7,
+     "type": "RESOLUTION_PREVIEW",
+     "widget": {
+      "name": "preview"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "width",
+     "name": "width",
+     "type": "INT",
+     "links": [
+      490
+     ]
+    },
+    {
+     "label": "height",
+     "name": "height",
+     "type": "INT",
+     "links": [
+      492
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "ResolutionSelector",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "preview": true,
+      "aspect_ratio": true,
+      "megapixels": true,
+      "multiple": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "16:9 (Widescreen)",
+    2,
+    8
+   ],
+   "widgets_values_named": {
+    "aspect_ratio": "16:9 (Widescreen)",
+    "megapixels": 2,
+    "multiple": 8
+   },
+   "color": "#432",
+   "bgcolor": "#653",
+   "title": "★ 画像サイズ（縦横比・メガピクセル）"
+  },
+  {
+   "id": 22,
+   "type": "EmptyLatentImage",
+   "pos": [
+    3222.4510191768613,
+    248
+   ],
+   "size": [
+    303,
+    110
+   ],
+   "flags": {
+    "collapsed": false
+   },
+   "order": 54,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "width",
+     "name": "width",
+     "type": "INT",
+     "widget": {
+      "name": "width"
+     },
+     "link": 491
+    },
+    {
+     "label": "height",
+     "name": "height",
+     "type": "INT",
+     "widget": {
+      "name": "height"
+     },
+     "link": 493
+    },
+    {
+     "label": "batch_size",
+     "name": "batch_size",
+     "type": "INT",
+     "widget": {
+      "name": "batch_size"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "LATENT",
+     "name": "LATENT",
+     "type": "LATENT",
+     "links": [
+      641
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "EmptyLatentImage",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "batch_size": true,
+      "width": true,
+      "height": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    1024,
+    1024,
+    1
+   ],
+   "widgets_values_named": {
+    "width": 1024,
+    "height": 1024,
+    "batch_size": 1
+   },
+   "title": "空の画像（文章から生成のとき）"
+  },
+  {
+   "id": 23,
+   "type": "VAEDecode",
+   "pos": [
+    4763.451019176861,
+    174
+   ],
+   "size": [
+    222,
+    60
+   ],
+   "flags": {
+    "collapsed": false
+   },
+   "order": 84,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "samples",
+     "name": "samples",
+     "type": "LATENT",
+     "link": 27
+    },
+    {
+     "label": "vae",
+     "name": "vae",
+     "type": "VAE",
+     "link": 487
+    }
+   ],
+   "outputs": [
+    {
+     "label": "IMAGE",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "links": [
+      659
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "VAEDecode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "color": "#332922",
+   "bgcolor": "#593930",
+   "title": "画像に戻す（1段目）"
+  },
+  {
+   "id": 25,
+   "type": "CLIPTextEncode",
+   "pos": [
+    2772.4510191768613,
+    174
+   ],
+   "size": [
+    380,
+    110
+   ],
+   "flags": {
+    "collapsed": false
+   },
+   "order": 62,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "clip",
+     "name": "clip",
+     "type": "CLIP",
+     "link": 30
+    },
+    {
+     "label": "text",
+     "name": "text",
+     "type": "STRING",
+     "widget": {
+      "name": "text"
+     },
+     "link": 550
+    }
+   ],
+   "outputs": [
+    {
+     "label": "CONDITIONING",
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "links": [
+      533
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "CLIPTextEncode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "text": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    ""
+   ],
+   "widgets_values_named": {
+    "text": ""
+   },
+   "color": "#232",
+   "bgcolor": "#353",
+   "title": "プロンプト変換（ポジティブ）"
+  },
+  {
+   "id": 26,
+   "type": "CLIPTextEncode",
+   "pos": [
+    750,
+    1304
+   ],
+   "size": [
+    640,
+    200
+   ],
+   "flags": {
+    "collapsed": false
+   },
+   "order": 48,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "clip",
+     "name": "clip",
+     "type": "CLIP",
+     "link": 31
+    },
+    {
+     "label": "text",
+     "name": "text",
+     "type": "STRING",
+     "widget": {
+      "name": "text"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "CONDITIONING",
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "links": [
+      535
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "CLIPTextEncode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "text": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "2D anime, cel shading, cartoon face, oversized anime eyes, thick outlines, flat shading, exaggerated facial proportions, mature woman, sharp jawline, prominent cheekbones, heavy makeup, doll-like plastic skin, waxy skin, rigid hair clumps, artificial hair strands, excessive sharpness, harsh contrast, oversaturated colors, flat lighting, cluttered background, multiple characters, text, watermark"
+   ],
+   "widgets_values_named": {
+    "text": "2D anime, cel shading, cartoon face, oversized anime eyes, thick outlines, flat shading, exaggerated facial proportions, mature woman, sharp jawline, prominent cheekbones, heavy makeup, doll-like plastic skin, waxy skin, rigid hair clumps, artificial hair strands, excessive sharpness, harsh contrast, oversaturated colors, flat lighting, cluttered background, multiple characters, text, watermark"
+   },
+   "color": "#322",
+   "bgcolor": "#533",
+   "title": "ネガティブプロンプト（通常はそのまま）"
+  },
+  {
+   "id": 27,
+   "type": "VAELoader",
+   "pos": [
+    1687,
+    650.9283167553839
+   ],
+   "size": [
+    386.31575698223514,
+    58
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "vae_name",
+     "name": "vae_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "vae_name"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "VAE",
+     "name": "VAE",
+     "type": "VAE",
+     "links": [
+      486
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "VAELoader",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "vae_name": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS\\flux2-vae.safetensors"
+   ],
+   "widgets_values_named": {
+    "vae_name": "MOSS\\flux2-vae.safetensors"
+   },
+   "color": "#432",
+   "bgcolor": "#653",
+   "title": "★ VAE（MOSS 用）"
+  },
+  {
+   "id": 28,
+   "type": "UNETLoader",
+   "pos": [
+    1687,
+    284.6758099859637
+   ],
+   "size": [
+    425.4510191768613,
+    109.96492251574966
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "unet_name",
+     "name": "unet_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "unet_name"
+     },
+     "link": null
+    },
+    {
+     "label": "weight_dtype",
+     "name": "weight_dtype",
+     "type": "COMBO",
+     "widget": {
+      "name": "weight_dtype"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "MODEL",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      588
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "UNETLoader",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "weight_dtype": true,
+      "unet_name": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS\\moss_image_sft_bf16.safetensors",
+    "default"
+   ],
+   "widgets_values_named": {
+    "unet_name": "MOSS\\moss_image_sft_bf16.safetensors",
+    "weight_dtype": "default"
+   },
+   "color": "#432",
+   "bgcolor": "#653",
+   "title": "★ MOSS SFT モデル"
+  },
+  {
+   "id": 29,
+   "type": "CLIPLoader",
+   "pos": [
+    1687,
+    468.6407325017134
+   ],
+   "size": [
+    382.4257030394924,
+    108.2875842536705
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "clip_name",
+     "name": "clip_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "clip_name"
+     },
+     "link": null
+    },
+    {
+     "label": "type",
+     "name": "type",
+     "type": "COMBO",
+     "widget": {
+      "name": "type"
+     },
+     "link": null
+    },
+    {
+     "label": "device",
+     "name": "device",
+     "shape": 7,
+     "type": "COMBO",
+     "widget": {
+      "name": "device"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "CLIP",
+     "name": "CLIP",
+     "type": "CLIP",
+     "links": [
+      30,
+      31
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "CLIPLoader",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "clip_name": true,
+      "type": true,
+      "device": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "Moss\\qwen3.5_9b_bf16.safetensors",
+    "moss_image",
+    "default"
+   ],
+   "widgets_values_named": {
+    "clip_name": "Moss\\qwen3.5_9b_bf16.safetensors",
+    "type": "moss_image",
+    "device": "default"
+   },
+   "color": "#432",
+   "bgcolor": "#653",
+   "title": "★ テキストエンコーダ（MOSS 用）"
+  },
+  {
+   "id": 76,
+   "type": "PrimitiveStringMultiline",
+   "pos": [
+    40,
+    1304
+   ],
+   "size": [
+    640,
+    300
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "value",
+     "name": "value",
+     "type": "STRING",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "STRING",
+     "name": "STRING",
+     "type": "STRING",
+     "links": [
+      481
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.16.3",
+    "Node name for S&R": "PrimitiveStringMultiline",
+    "hasSecondTab": false,
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "7.7"
+    },
+    "widget_ue_connectable": {
+     "value": true
+    },
+    "secondTabText": "Send Back",
+    "enableTabs": false,
+    "secondTabOffset": 80,
+    "tabWidth": 65,
+    "secondTabWidth": 65,
+    "tabXOffset": 10
+   },
+   "widgets_values": [
+    "A quiet portrait of an adult woman at dusk, soft cool light, pale skin with natural texture, dark hair moving slightly in the air, a faint blush, calm half-lowered gaze, clean negative space on the left side, shallow depth of field, gentle film grain, restrained and elegant mood, 16:9 widescreen"
+   ],
+   "widgets_values_named": {
+    "value": "A quiet portrait of an adult woman at dusk, soft cool light, pale skin with natural texture, dark hair moving slightly in the air, a faint blush, calm half-lowered gaze, clean negative space on the left side, shallow depth of field, gentle film grain, restrained and elegant mood, 16:9 widescreen"
+   },
+   "color": "#432",
+   "bgcolor": "#653",
+   "title": "★ ここにプロンプトを入力"
+  },
+  {
+   "id": 303,
+   "type": "easy setNode",
+   "pos": [
+    40,
+    1678
+   ],
+   "size": [
+    328.4995885583479,
+    99.67011320025696
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 49,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "STRING",
+     "name": "STRING",
+     "type": "STRING",
+     "link": 481
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": null
+    }
+   ],
+   "title": "➡️MOSS_shared_prompt",
+   "properties": {
+    "previousName": "MOSS_shared_prompt",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_shared_prompt"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_shared_prompt"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 308,
+   "type": "easy setNode",
+   "pos": [
+    1687,
+    782.9283167553839
+   ],
+   "size": [
+    263.9,
+    34
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 47,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "VAE",
+     "name": "VAE",
+     "type": "VAE",
+     "link": 486
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": null
+    }
+   ],
+   "title": "➡️MOSS_VAE_for_decode",
+   "properties": {
+    "previousName": "MOSS_VAE_for_decode",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_VAE_for_decode"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_VAE_for_decode"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 309,
+   "type": "easy getNode",
+   "pos": [
+    4763.451019176861,
+    100
+   ],
+   "size": [
+    263.9,
+    50
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 12,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "VAE",
+     "type": "VAE",
+     "slot_index": 0,
+     "links": [
+      487
+     ]
+    }
+   ],
+   "title": "⬅️MOSS_VAE_for_decode",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_VAE_for_decode"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_VAE_for_decode"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 312,
+   "type": "easy setNode",
+   "pos": [
+    40,
+    2152
+   ],
+   "size": [
+    210,
+    58
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 45,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "width",
+     "name": "width",
+     "type": "INT",
+     "link": 490
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": null
+    }
+   ],
+   "title": "➡️MOSS_width",
+   "properties": {
+    "previousName": "MOSS_width",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_width"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_width"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 313,
+   "type": "easy getNode",
+   "pos": [
+    3222.4510191768613,
+    100
+   ],
+   "size": [
+    210,
+    34
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 14,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "width",
+     "type": "INT",
+     "slot_index": 0,
+     "links": [
+      491
+     ]
+    }
+   ],
+   "title": "⬅️MOSS_width",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_width"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_width"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 314,
+   "type": "easy setNode",
+   "pos": [
+    40,
+    2226
+   ],
+   "size": [
+    210,
+    58
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 46,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "height",
+     "name": "height",
+     "type": "INT",
+     "link": 492
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": null
+    }
+   ],
+   "title": "➡️MOSS_height",
+   "properties": {
+    "previousName": "MOSS_height",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_height"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_height"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 315,
+   "type": "easy getNode",
+   "pos": [
+    3222.4510191768613,
+    174
+   ],
+   "size": [
+    210,
+    34
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 15,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "height",
+     "type": "INT",
+     "slot_index": 0,
+     "links": [
+      493
+     ]
+    }
+   ],
+   "title": "⬅️MOSS_height",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_height"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_height"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 316,
+   "type": "easy setNode",
+   "pos": [
+    3222.4510191768613,
+    764
+   ],
+   "size": [
+    233.9,
+    34
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 78,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "output",
+     "name": "output",
+     "type": "LATENT",
+     "link": 644
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": null
+    }
+   ],
+   "title": "➡️MOSS_initial_latent",
+   "properties": {
+    "previousName": "MOSS_initial_latent",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_initial_latent"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_initial_latent"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 317,
+   "type": "easy getNode",
+   "pos": [
+    4031.4510191768613,
+    248
+   ],
+   "size": [
+    233.9,
+    34
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 16,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "output",
+     "type": "LATENT",
+     "slot_index": 0,
+     "links": [
+      495
+     ]
+    }
+   ],
+   "title": "⬅️MOSS_initial_latent",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_initial_latent"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_initial_latent"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 346,
+   "type": "easy setNode",
+   "pos": [
+    2772.4510191768613,
+    358
+   ],
+   "size": [
+    245.9,
+    36
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 73,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "CONDITIONING",
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "link": 533
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": []
+    }
+   ],
+   "title": "➡️MOSS_plain_positive",
+   "properties": {
+    "previousName": "MOSS_plain_positive",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_plain_positive"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_plain_positive"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 347,
+   "type": "easy getNode",
+   "pos": [
+    4031.4510191768613,
+    100
+   ],
+   "size": [
+    245.9,
+    36
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 19,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "links": [
+      632
+     ]
+    }
+   ],
+   "title": "⬅️MOSS_plain_positive",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_plain_positive"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_plain_positive"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 348,
+   "type": "easy setNode",
+   "pos": [
+    750,
+    1578
+   ],
+   "size": [
+    251.9,
+    36
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 69,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "CONDITIONING",
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "link": 535
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": []
+    }
+   ],
+   "title": "➡️MOSS_plain_negative",
+   "properties": {
+    "previousName": "MOSS_plain_negative",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_plain_negative"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_plain_negative"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 349,
+   "type": "easy getNode",
+   "pos": [
+    4031.4510191768613,
+    174
+   ],
+   "size": [
+    251.9,
+    36
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 20,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "CONDITIONING",
+     "type": "CONDITIONING",
+     "links": [
+      633
+     ]
+    }
+   ],
+   "title": "⬅️MOSS_plain_negative",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_plain_negative"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_plain_negative"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 354,
+   "type": "Fast Groups Muter (rgthree)",
+   "pos": [
+    4017,
+    1075
+   ],
+   "size": [
+    420,
+    330
+   ],
+   "flags": {},
+   "order": 21,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "OPT_CONNECTION",
+     "name": "OPT_CONNECTION",
+     "type": "*",
+     "links": null
+    }
+   ],
+   "properties": {
+    "matchColors": "",
+    "matchTitle": "^MODE_",
+    "showNav": true,
+    "showAllGraphs": true,
+    "sort": "alphanumeric",
+    "customSortAlphabet": "",
+    "toggleRestriction": "default",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "title": "グループのオン／オフ",
+   "color": "#222",
+   "bgcolor": "#2b2b2b"
+  },
+  {
+   "id": 356,
+   "type": "PrimitiveInt",
+   "pos": [
+    3627,
+    1075
+   ],
+   "size": [
+    320,
+    80
+   ],
+   "flags": {},
+   "order": 23,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "value",
+     "name": "value",
+     "type": "INT",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "INT",
+     "name": "INT",
+     "type": "INT",
+     "links": [
+      562
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "PrimitiveInt",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    35,
+    "fixed"
+   ],
+   "widgets_values_named": {
+    "value": 35,
+    "control_after_generate": "fixed"
+   },
+   "color": "#222",
+   "bgcolor": "#2b2b2b",
+   "title": "1段目 ステップ数"
+  },
+  {
+   "id": 357,
+   "type": "PrimitiveFloat",
+   "pos": [
+    3627,
+    1303
+   ],
+   "size": [
+    320,
+    80
+   ],
+   "flags": {},
+   "order": 24,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "value",
+     "name": "value",
+     "type": "FLOAT",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "FLOAT",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      564
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "PrimitiveFloat",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    2.5
+   ],
+   "widgets_values_named": {
+    "value": 2.5
+   },
+   "color": "#222",
+   "bgcolor": "#2b2b2b",
+   "title": "1段目 CFG"
+  },
+  {
+   "id": 362,
+   "type": "easy getNode",
+   "pos": [
+    2772.4510191768613,
+    100
+   ],
+   "size": [
+    259.6,
+    58
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 27,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "STRING",
+     "type": "STRING",
+     "slot_index": 0,
+     "links": [
+      550
+     ]
+    }
+   ],
+   "title": "⬅️MOSS_shared_prompt",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_shared_prompt"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_shared_prompt"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 374,
+   "type": "easy setNode",
+   "pos": [
+    3627,
+    1229
+   ],
+   "size": [
+    223.60000000000002,
+    58
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 58,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "INT",
+     "name": "INT",
+     "type": "INT",
+     "link": 562
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": null
+    }
+   ],
+   "title": "➡️UI_moss_steps",
+   "properties": {
+    "previousName": "UI_moss_steps",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "UI_moss_steps"
+   ],
+   "widgets_values_named": {
+    "Constant": "UI_moss_steps"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 375,
+   "type": "easy getNode",
+   "pos": [
+    4031.4510191768613,
+    322
+   ],
+   "size": [
+    223.60000000000002,
+    58
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 29,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "INT",
+     "type": "INT",
+     "slot_index": 0,
+     "links": [
+      563
+     ]
+    }
+   ],
+   "title": "⬅️UI_moss_steps",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "UI_moss_steps"
+   ],
+   "widgets_values_named": {
+    "Constant": "UI_moss_steps"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 376,
+   "type": "easy setNode",
+   "pos": [
+    3627,
+    1457
+   ],
+   "size": [
+    220,
+    58
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 59,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "FLOAT",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "link": 564
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": null
+    }
+   ],
+   "title": "➡️UI_moss_cfg",
+   "properties": {
+    "previousName": "UI_moss_cfg",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "UI_moss_cfg"
+   ],
+   "widgets_values_named": {
+    "Constant": "UI_moss_cfg"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 377,
+   "type": "easy getNode",
+   "pos": [
+    4031.4510191768613,
+    396
+   ],
+   "size": [
+    220,
+    58
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 30,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "slot_index": 0,
+     "links": [
+      565
+     ]
+    }
+   ],
+   "title": "⬅️UI_moss_cfg",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "UI_moss_cfg"
+   ],
+   "widgets_values_named": {
+    "Constant": "UI_moss_cfg"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 394,
+   "type": "LoraLoaderModelOnly",
+   "pos": [
+    2182.4510191768613,
+    330
+   ],
+   "size": [
+    431.6938275159303,
+    137.95968402669607
+   ],
+   "flags": {},
+   "order": 75,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 650
+    },
+    {
+     "label": "lora_name",
+     "name": "lora_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "lora_name"
+     },
+     "link": null
+    },
+    {
+     "label": "strength_model",
+     "name": "strength_model",
+     "type": "FLOAT",
+     "widget": {
+      "name": "strength_model"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "MODEL",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      582
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.45.0",
+    "Node name for S&R": "LoraLoaderModelOnly",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "lora_name": true,
+      "strength_model": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "feverdream-epoch-07.safetensors",
+    0.5
+   ],
+   "widgets_values_named": {
+    "lora_name": "feverdream-epoch-07.safetensors",
+    "strength_model": 0.5
+   },
+   "color": "#432",
+   "title": "★ LoRA A（1段目）",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 395,
+   "type": "LoraLoaderModelOnly",
+   "pos": [
+    2182.4510191768613,
+    541.9596840266961
+   ],
+   "size": [
+    406.53508984543635,
+    137.95968402669607
+   ],
+   "flags": {},
+   "order": 79,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "model",
+     "name": "model",
+     "type": "MODEL",
+     "link": 582
+    },
+    {
+     "label": "lora_name",
+     "name": "lora_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "lora_name"
+     },
+     "link": null
+    },
+    {
+     "label": "strength_model",
+     "name": "strength_model",
+     "type": "FLOAT",
+     "widget": {
+      "name": "strength_model"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "MODEL",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      591
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.45.0",
+    "Node name for S&R": "LoraLoaderModelOnly",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "lora_name": true,
+      "strength_model": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS\\TJFilmMoss_V1.safetensors",
+    0.7000000000000002
+   ],
+   "widgets_values_named": {
+    "lora_name": "MOSS\\TJFilmMoss_V1.safetensors",
+    "strength_model": 0.7000000000000002
+   },
+   "color": "#432",
+   "title": "★ LoRA B（1段目）",
+   "bgcolor": "#653"
+  },
+  {
+   "id": 396,
+   "type": "MOSSMergePreset",
+   "pos": [
+    2182.4510191768613,
+    100
+   ],
+   "size": [
+    440,
+    156
+   ],
+   "flags": {
+    "collapsed": false
+   },
+   "order": 64,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "base_model",
+     "name": "base_model",
+     "type": "MODEL",
+     "link": 587
+    },
+    {
+     "label": "sft_model",
+     "name": "sft_model",
+     "type": "MODEL",
+     "link": 588
+    },
+    {
+     "label": "preset",
+     "name": "preset",
+     "type": "COMBO",
+     "widget": {
+      "name": "preset"
+     },
+     "link": null
+    },
+    {
+     "label": "strength",
+     "name": "strength",
+     "type": "FLOAT",
+     "widget": {
+      "name": "strength"
+     },
+     "link": null
+    },
+    {
+     "label": "merge_info",
+     "name": "merge_info",
+     "type": "STRING",
+     "widget": {
+      "name": "merge_info"
+     },
+     "link": null
+    },
+    {
+     "label": "m_video_embedder",
+     "name": "m_video_embedder",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_video_embedder"
+     },
+     "link": null
+    },
+    {
+     "label": "m_text_proj",
+     "name": "m_text_proj",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_text_proj"
+     },
+     "link": null
+    },
+    {
+     "label": "m_text_block0",
+     "name": "m_text_block0",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_text_block0"
+     },
+     "link": null
+    },
+    {
+     "label": "m_text_block1",
+     "name": "m_text_block1",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_text_block1"
+     },
+     "link": null
+    },
+    {
+     "label": "m_time",
+     "name": "m_time",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_time"
+     },
+     "link": null
+    },
+    {
+     "label": "m_shared",
+     "name": "m_shared",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_shared"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L00",
+     "name": "m_L00",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L00"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L01",
+     "name": "m_L01",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L01"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L02",
+     "name": "m_L02",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L02"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L03",
+     "name": "m_L03",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L03"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L04",
+     "name": "m_L04",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L04"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L05",
+     "name": "m_L05",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L05"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L06",
+     "name": "m_L06",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L06"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L07",
+     "name": "m_L07",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L07"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L08",
+     "name": "m_L08",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L08"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L09",
+     "name": "m_L09",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L09"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L10",
+     "name": "m_L10",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L10"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L11",
+     "name": "m_L11",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L11"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L12",
+     "name": "m_L12",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L12"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L13",
+     "name": "m_L13",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L13"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L14",
+     "name": "m_L14",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L14"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L15",
+     "name": "m_L15",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L15"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L16",
+     "name": "m_L16",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L16"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L17",
+     "name": "m_L17",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L17"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L18",
+     "name": "m_L18",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L18"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L19",
+     "name": "m_L19",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L19"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L20",
+     "name": "m_L20",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L20"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L21",
+     "name": "m_L21",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L21"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L22",
+     "name": "m_L22",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L22"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L23",
+     "name": "m_L23",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L23"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L24",
+     "name": "m_L24",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L24"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L25",
+     "name": "m_L25",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L25"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L26",
+     "name": "m_L26",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L26"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L27",
+     "name": "m_L27",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L27"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L28",
+     "name": "m_L28",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L28"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L29",
+     "name": "m_L29",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L29"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L30",
+     "name": "m_L30",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L30"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L31",
+     "name": "m_L31",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L31"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L32",
+     "name": "m_L32",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L32"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L33",
+     "name": "m_L33",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L33"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L34",
+     "name": "m_L34",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L34"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L35",
+     "name": "m_L35",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L35"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L36",
+     "name": "m_L36",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L36"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L37",
+     "name": "m_L37",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L37"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L38",
+     "name": "m_L38",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L38"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L39",
+     "name": "m_L39",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L39"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L40",
+     "name": "m_L40",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L40"
+     },
+     "link": null
+    },
+    {
+     "label": "m_L41",
+     "name": "m_L41",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_L41"
+     },
+     "link": null
+    },
+    {
+     "label": "m_final_norm",
+     "name": "m_final_norm",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_final_norm"
+     },
+     "link": null
+    },
+    {
+     "label": "m_final_linear",
+     "name": "m_final_linear",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_final_linear"
+     },
+     "link": null
+    },
+    {
+     "label": "m_head",
+     "name": "m_head",
+     "type": "FLOAT",
+     "widget": {
+      "name": "m_head"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "MODEL",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      650
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfyui-moss-merge-presets",
+    "ver": "1.0.2",
+    "Node name for S&R": "MOSSMergePreset",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "Balanced",
+    1,
+    "Balanced | strength 1.00\nvideo_embedder=0.20  text_proj=0.20  text_blocks=0.16/0.16\ntime_embedding=0.24  shared_modulation=0.20\nlayers: L00=0.15 L01=0.15 L02=0.15 L03=0.15 L04=0.15 L05=0.15 L06=0.15 L07=0.15 L08=0.20 L09=0.20 L10=0.20 L11=0.20 L12=0.20 L13=0.20 L14=0.30 L15=0.30 L16=0.30 L17=0.30 L18=0.30 L19=0.30 L20=0.30 L21=0.30 L22=0.45 L23=0.45 L24=0.45 L25=0.45 L26=0.45 L27=0.45 L28=0.45 L29=0.45 L30=0.60 L31=0.60 L32=0.60 L33=0.60 L34=0.60 L35=0.60 L36=0.72 L37=0.72 L38=0.72 L39=0.72 L40=0.72 L41=0.72\nfinal_norm=0.20  final_linear=0.35  video_head=0.20",
+    0.2,
+    0.2,
+    0.16,
+    0.16,
+    0.24,
+    0.2,
+    0.15,
+    0.15,
+    0.15,
+    0.15,
+    0.15,
+    0.15,
+    0.15,
+    0.15,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.3,
+    0.45,
+    0.45,
+    0.45,
+    0.45,
+    0.45,
+    0.45,
+    0.45,
+    0.45,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.6,
+    0.72,
+    0.72,
+    0.72,
+    0.72,
+    0.72,
+    0.72,
+    0.2,
+    0.35,
+    0.2
+   ],
+   "widgets_values_named": {
+    "preset": "Balanced",
+    "strength": 1,
+    "merge_info": "Balanced | strength 1.00\nvideo_embedder=0.20  text_proj=0.20  text_blocks=0.16/0.16\ntime_embedding=0.24  shared_modulation=0.20\nlayers: L00=0.15 L01=0.15 L02=0.15 L03=0.15 L04=0.15 L05=0.15 L06=0.15 L07=0.15 L08=0.20 L09=0.20 L10=0.20 L11=0.20 L12=0.20 L13=0.20 L14=0.30 L15=0.30 L16=0.30 L17=0.30 L18=0.30 L19=0.30 L20=0.30 L21=0.30 L22=0.45 L23=0.45 L24=0.45 L25=0.45 L26=0.45 L27=0.45 L28=0.45 L29=0.45 L30=0.60 L31=0.60 L32=0.60 L33=0.60 L34=0.60 L35=0.60 L36=0.72 L37=0.72 L38=0.72 L39=0.72 L40=0.72 L41=0.72\nfinal_norm=0.20  final_linear=0.35  video_head=0.20",
+    "m_video_embedder": 0.2,
+    "m_text_proj": 0.2,
+    "m_text_block0": 0.16,
+    "m_text_block1": 0.16,
+    "m_time": 0.24,
+    "m_shared": 0.2,
+    "m_L00": 0.15,
+    "m_L01": 0.15,
+    "m_L02": 0.15,
+    "m_L03": 0.15,
+    "m_L04": 0.15,
+    "m_L05": 0.15,
+    "m_L06": 0.15,
+    "m_L07": 0.15,
+    "m_L08": 0.2,
+    "m_L09": 0.2,
+    "m_L10": 0.2,
+    "m_L11": 0.2,
+    "m_L12": 0.2,
+    "m_L13": 0.2,
+    "m_L14": 0.3,
+    "m_L15": 0.3,
+    "m_L16": 0.3,
+    "m_L17": 0.3,
+    "m_L18": 0.3,
+    "m_L19": 0.3,
+    "m_L20": 0.3,
+    "m_L21": 0.3,
+    "m_L22": 0.45,
+    "m_L23": 0.45,
+    "m_L24": 0.45,
+    "m_L25": 0.45,
+    "m_L26": 0.45,
+    "m_L27": 0.45,
+    "m_L28": 0.45,
+    "m_L29": 0.45,
+    "m_L30": 0.6,
+    "m_L31": 0.6,
+    "m_L32": 0.6,
+    "m_L33": 0.6,
+    "m_L34": 0.6,
+    "m_L35": 0.6,
+    "m_L36": 0.72,
+    "m_L37": 0.72,
+    "m_L38": 0.72,
+    "m_L39": 0.72,
+    "m_L40": 0.72,
+    "m_L41": 0.72,
+    "m_final_norm": 0.2,
+    "m_final_linear": 0.35,
+    "m_head": 0.2
+   },
+   "title": "モデル融合（SFT ＋ Base）"
+  },
+  {
+   "id": 397,
+   "type": "UNETLoader",
+   "pos": [
+    1687,
+    100
+   ],
+   "size": [
+    424.0288880850816,
+    110.6758099859637
+   ],
+   "flags": {},
+   "order": 34,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "unet_name",
+     "name": "unet_name",
+     "type": "COMBO",
+     "widget": {
+      "name": "unet_name"
+     },
+     "link": null
+    },
+    {
+     "label": "weight_dtype",
+     "name": "weight_dtype",
+     "type": "COMBO",
+     "widget": {
+      "name": "weight_dtype"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "MODEL",
+     "name": "MODEL",
+     "type": "MODEL",
+     "links": [
+      587
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "UNETLoader",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {
+      "weight_dtype": true,
+      "unet_name": true
+     },
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS\\moss_image_base_bf16.safetensors",
+    "default"
+   ],
+   "widgets_values_named": {
+    "unet_name": "MOSS\\moss_image_base_bf16.safetensors",
+    "weight_dtype": "default"
+   },
+   "color": "#432",
+   "bgcolor": "#653",
+   "title": "★ MOSS Base モデル"
+  },
+  {
+   "id": 415,
+   "type": "PrimitiveBoolean",
+   "pos": [
+    40,
+    910
+   ],
+   "size": [
+    447,
+    110
+   ],
+   "flags": {
+    "collapsed": false
+   },
+   "order": 35,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "value",
+     "name": "value",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "BOOLEAN",
+     "name": "BOOLEAN",
+     "type": "BOOLEAN",
+     "links": [
+      635
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.42.4",
+    "Node name for S&R": "PrimitiveBoolean",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    false
+   ],
+   "widgets_values_named": {
+    "value": false
+   },
+   "color": "#432",
+   "bgcolor": "#653",
+   "textcolor": "#ffffff",
+   "extensions": {
+    "textcolor": "#ffffff"
+   },
+   "title": "★ 文字→画像 / 参照画像 切替（False＝文章から）"
+  },
+  {
+   "id": 416,
+   "type": "easy setNode",
+   "pos": [
+    40,
+    1094
+   ],
+   "size": [
+    298.9064696902007,
+    99.67011320025696
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 65,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "BOOLEAN",
+     "name": "BOOLEAN",
+     "type": "BOOLEAN",
+     "link": 635
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": []
+    }
+   ],
+   "title": "➡️UI_img2img_enabled",
+   "properties": {
+    "previousName": "UI_img2img_enabled",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "UI_img2img_enabled"
+   ],
+   "widgets_values_named": {
+    "Constant": "UI_img2img_enabled"
+   },
+   "color": "#274435",
+   "bgcolor": "#375a46"
+  },
+  {
+   "id": 417,
+   "type": "PrimitiveFloat",
+   "pos": [
+    557,
+    910
+   ],
+   "size": [
+    320,
+    110
+   ],
+   "flags": {},
+   "order": 36,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "value",
+     "name": "value",
+     "type": "FLOAT",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "FLOAT",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      636
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "PrimitiveFloat",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    0.8
+   ],
+   "widgets_values_named": {
+    "value": 0.8
+   },
+   "color": "#5a6484",
+   "bgcolor": "#2e3652",
+   "title": "参照画像モード用：変化の強さ"
+  },
+  {
+   "id": 418,
+   "type": "easy setNode",
+   "pos": [
+    557,
+    1094
+   ],
+   "size": [
+    235,
+    58
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 66,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "FLOAT",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "link": 636
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": []
+    }
+   ],
+   "title": "➡️UI_img2img_denoise",
+   "properties": {
+    "previousName": "UI_img2img_denoise",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "UI_img2img_denoise"
+   ],
+   "widgets_values_named": {
+    "Constant": "UI_img2img_denoise"
+   },
+   "color": "#274435",
+   "bgcolor": "#375a46"
+  },
+  {
+   "id": 419,
+   "type": "LoadImage",
+   "pos": [
+    1687,
+    1075
+   ],
+   "size": [
+    460,
+    560
+   ],
+   "flags": {},
+   "order": 37,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "image",
+     "name": "image",
+     "type": "COMBO",
+     "widget": {
+      "name": "image"
+     },
+     "link": null
+    },
+    {
+     "label": "upload",
+     "name": "upload",
+     "type": "IMAGEUPLOAD",
+     "widget": {
+      "name": "upload"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "IMAGE",
+     "name": "IMAGE",
+     "type": "IMAGE",
+     "slot_index": 0,
+     "links": [
+      637
+     ]
+    },
+    {
+     "label": "MASK",
+     "name": "MASK",
+     "type": "MASK",
+     "slot_index": 1,
+     "links": []
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.42.4",
+    "Node name for S&R": "LoadImage",
+    "ue_properties": {
+     "widget_ue_connectable": {
+      "image": true
+     },
+     "input_ue_unconnectable": {},
+     "version": "7.8"
+    },
+    "widget_ue_connectable": {
+     "image": true,
+     "upload": true
+    }
+   },
+   "widgets_values": [
+    "example.png",
+    "image"
+   ],
+   "widgets_values_named": {
+    "image": "example.png",
+    "upload": "image"
+   },
+   "color": "#432",
+   "bgcolor": "#653",
+   "textcolor": "#FFFFFF",
+   "extensions": {
+    "textcolor": "#FFFFFF"
+   },
+   "title": "★ 参照画像を選ぶ（任意）"
+  },
+  {
+   "id": 420,
+   "type": "LayerUtility: ImageScaleByAspectRatio V2",
+   "pos": [
+    2217,
+    1075
+   ],
+   "size": [
+    340,
+    330
+   ],
+   "flags": {},
+   "order": 67,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "image",
+     "name": "image",
+     "shape": 7,
+     "type": "IMAGE",
+     "link": 637
+    },
+    {
+     "label": "mask",
+     "name": "mask",
+     "shape": 7,
+     "type": "MASK",
+     "link": null
+    },
+    {
+     "label": "aspect_ratio",
+     "name": "aspect_ratio",
+     "type": "COMBO",
+     "widget": {
+      "name": "aspect_ratio"
+     },
+     "link": null
+    },
+    {
+     "label": "proportional_width",
+     "name": "proportional_width",
+     "type": "INT",
+     "widget": {
+      "name": "proportional_width"
+     },
+     "link": null
+    },
+    {
+     "label": "proportional_height",
+     "name": "proportional_height",
+     "type": "INT",
+     "widget": {
+      "name": "proportional_height"
+     },
+     "link": null
+    },
+    {
+     "label": "fit",
+     "name": "fit",
+     "type": "COMBO",
+     "widget": {
+      "name": "fit"
+     },
+     "link": null
+    },
+    {
+     "label": "method",
+     "name": "method",
+     "type": "COMBO",
+     "widget": {
+      "name": "method"
+     },
+     "link": null
+    },
+    {
+     "label": "round_to_multiple",
+     "name": "round_to_multiple",
+     "type": "COMBO",
+     "widget": {
+      "name": "round_to_multiple"
+     },
+     "link": null
+    },
+    {
+     "label": "scale_to_side",
+     "name": "scale_to_side",
+     "type": "COMBO",
+     "widget": {
+      "name": "scale_to_side"
+     },
+     "link": null
+    },
+    {
+     "label": "scale_to_length",
+     "name": "scale_to_length",
+     "type": "INT",
+     "widget": {
+      "name": "scale_to_length"
+     },
+     "link": null
+    },
+    {
+     "label": "background_color",
+     "name": "background_color",
+     "type": "STRING",
+     "widget": {
+      "name": "background_color"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "image",
+     "name": "image",
+     "type": "IMAGE",
+     "links": [
+      638
+     ]
+    },
+    {
+     "label": "mask",
+     "name": "mask",
+     "type": "MASK",
+     "links": []
+    },
+    {
+     "label": "original_size",
+     "name": "original_size",
+     "type": "BOX",
+     "links": []
+    },
+    {
+     "label": "width",
+     "name": "width",
+     "type": "INT",
+     "links": []
+    },
+    {
+     "label": "height",
+     "name": "height",
+     "type": "INT",
+     "links": []
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfyui_layerstyle",
+    "ver": "51977b27869af9369e3d11a75d6fe8eb706f9821",
+    "Node name for S&R": "LayerUtility: ImageScaleByAspectRatio V2",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "7.8"
+    },
+    "widget_ue_connectable": {
+     "fit": true,
+     "aspect_ratio": true,
+     "method": true,
+     "background_color": true,
+     "round_to_multiple": true,
+     "scale_to_side": true,
+     "proportional_height": true,
+     "proportional_width": true,
+     "scale_to_length": true
+    }
+   },
+   "widgets_values": [
+    "original",
+    1,
+    1,
+    "letterbox",
+    "lanczos",
+    "8",
+    "longest",
+    2048,
+    "#000000"
+   ],
+   "widgets_values_named": {
+    "aspect_ratio": "original",
+    "proportional_width": 1,
+    "proportional_height": 1,
+    "fit": "letterbox",
+    "method": "lanczos",
+    "round_to_multiple": "8",
+    "scale_to_side": "longest",
+    "scale_to_length": 2048,
+    "background_color": "#000000"
+   },
+   "color": "#233",
+   "bgcolor": "#355",
+   "textcolor": "#FFFFFF",
+   "extensions": {
+    "textcolor": "#FFFFFF"
+   },
+   "title": "サイズを整える"
+  },
+  {
+   "id": 421,
+   "type": "VAEEncode",
+   "pos": [
+    2627,
+    1149
+   ],
+   "size": [
+    220,
+    60
+   ],
+   "flags": {},
+   "order": 76,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "pixels",
+     "name": "pixels",
+     "type": "IMAGE",
+     "link": 638
+    },
+    {
+     "label": "vae",
+     "name": "vae",
+     "type": "VAE",
+     "link": 639
+    }
+   ],
+   "outputs": [
+    {
+     "label": "LATENT",
+     "name": "LATENT",
+     "type": "LATENT",
+     "links": [
+      640
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.43.1",
+    "Node name for S&R": "VAEEncode",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "8.0"
+    },
+    "widget_ue_connectable": {}
+   },
+   "color": "#233",
+   "bgcolor": "#355",
+   "title": "latent に変換"
+  },
+  {
+   "id": 422,
+   "type": "easy getNode",
+   "pos": [
+    2627,
+    1075
+   ],
+   "size": [
+    267,
+    34
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 38,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "VAE",
+     "type": "VAE",
+     "slot_index": 0,
+     "links": [
+      639
+     ]
+    }
+   ],
+   "title": "⬅️MOSS_VAE_for_decode",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_VAE_for_decode"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_VAE_for_decode"
+   },
+   "color": "#233",
+   "bgcolor": "#355"
+  },
+  {
+   "id": 423,
+   "type": "easy setNode",
+   "pos": [
+    2627,
+    1283
+   ],
+   "size": [
+    275,
+    58
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 80,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "LATENT",
+     "name": "LATENT",
+     "type": "LATENT",
+     "link": 640
+    }
+   ],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "*",
+     "type": "*",
+     "links": []
+    }
+   ],
+   "title": "➡️MOSS_img2img_latent",
+   "properties": {
+    "previousName": "MOSS_img2img_latent",
+    "Node name for S&R": "easy setNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_img2img_latent"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_img2img_latent"
+   },
+   "color": "#274435",
+   "bgcolor": "#375a46"
+  },
+  {
+   "id": 424,
+   "type": "ComfySwitchNode",
+   "pos": [
+    3222.4510191768613,
+    580
+   ],
+   "size": [
+    300,
+    110
+   ],
+   "flags": {},
+   "order": 72,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "on_false",
+     "name": "on_false",
+     "shape": 7,
+     "type": "*",
+     "link": 641
+    },
+    {
+     "label": "on_true",
+     "name": "on_true",
+     "shape": 7,
+     "type": "LATENT",
+     "link": 642
+    },
+    {
+     "label": "switch",
+     "name": "switch",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "switch"
+     },
+     "link": 643
+    }
+   ],
+   "outputs": [
+    {
+     "label": "output",
+     "name": "output",
+     "type": "LATENT",
+     "links": [
+      644
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.42.5",
+    "Node name for S&R": "ComfySwitchNode",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "7.8"
+    },
+    "widget_ue_connectable": {
+     "switch": true
+    }
+   },
+   "widgets_values": [
+    false
+   ],
+   "widgets_values_named": {
+    "switch": false
+   },
+   "color": "#233",
+   "bgcolor": "#355",
+   "textcolor": "#FFFFFF",
+   "extensions": {
+    "textcolor": "#FFFFFF"
+   },
+   "title": "切替：出発点の latent"
+  },
+  {
+   "id": 425,
+   "type": "easy getNode",
+   "pos": [
+    3222.4510191768613,
+    432
+   ],
+   "size": [
+    278,
+    34
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 39,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "LATENT",
+     "type": "LATENT",
+     "slot_index": 0,
+     "links": [
+      642
+     ]
+    }
+   ],
+   "title": "⬅️MOSS_img2img_latent",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "MOSS_img2img_latent"
+   ],
+   "widgets_values_named": {
+    "Constant": "MOSS_img2img_latent"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 426,
+   "type": "easy getNode",
+   "pos": [
+    3222.4510191768613,
+    506
+   ],
+   "size": [
+    260,
+    34
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 40,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "BOOLEAN",
+     "type": "BOOLEAN",
+     "slot_index": 0,
+     "links": [
+      643,
+      647
+     ]
+    }
+   ],
+   "title": "⬅️UI_img2img_enabled",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "UI_img2img_enabled"
+   ],
+   "widgets_values_named": {
+    "Constant": "UI_img2img_enabled"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 427,
+   "type": "PrimitiveFloat",
+   "pos": [
+    3595.4510191768613,
+    100
+   ],
+   "size": [
+    366,
+    75
+   ],
+   "flags": {},
+   "order": 41,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "value",
+     "name": "value",
+     "type": "FLOAT",
+     "widget": {
+      "name": "value"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "FLOAT",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "links": [
+      645
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.41.0",
+    "Node name for S&R": "PrimitiveFloat",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    1
+   ],
+   "widgets_values_named": {
+    "value": 1
+   },
+   "color": "#2d384b",
+   "bgcolor": "#405064",
+   "title": "変化の強さ（文章から生成のときは 1.0）"
+  },
+  {
+   "id": 428,
+   "type": "easy getNode",
+   "pos": [
+    3595.4510191768613,
+    249
+   ],
+   "size": [
+    275,
+    34
+   ],
+   "flags": {
+    "collapsed": true
+   },
+   "order": 42,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "label": "*",
+     "name": "FLOAT",
+     "type": "FLOAT",
+     "slot_index": 0,
+     "links": [
+      646
+     ]
+    }
+   ],
+   "title": "⬅️UI_img2img_denoise",
+   "properties": {
+    "Node name for S&R": "easy getNode",
+    "ue_properties": {
+     "version": "7.8",
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {}
+    }
+   },
+   "widgets_values": [
+    "UI_img2img_denoise"
+   ],
+   "widgets_values_named": {
+    "Constant": "UI_img2img_denoise"
+   },
+   "color": "#2a363b",
+   "bgcolor": "#3f5159"
+  },
+  {
+   "id": 429,
+   "type": "ComfySwitchNode",
+   "pos": [
+    3595.4510191768613,
+    323
+   ],
+   "size": [
+    300,
+    110
+   ],
+   "flags": {},
+   "order": 68,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "on_false",
+     "name": "on_false",
+     "shape": 7,
+     "type": "*",
+     "link": 645
+    },
+    {
+     "label": "on_true",
+     "name": "on_true",
+     "shape": 7,
+     "type": "FLOAT",
+     "link": 646
+    },
+    {
+     "label": "switch",
+     "name": "switch",
+     "type": "BOOLEAN",
+     "widget": {
+      "name": "switch"
+     },
+     "link": 647
+    }
+   ],
+   "outputs": [
+    {
+     "label": "output",
+     "name": "output",
+     "type": "FLOAT",
+     "links": [
+      648
+     ]
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.42.5",
+    "Node name for S&R": "ComfySwitchNode",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "7.8"
+    },
+    "widget_ue_connectable": {
+     "switch": true
+    }
+   },
+   "widgets_values": [
+    false
+   ],
+   "widgets_values_named": {
+    "switch": false
+   },
+   "color": "#233",
+   "bgcolor": "#355",
+   "textcolor": "#FFFFFF",
+   "extensions": {
+    "textcolor": "#FFFFFF"
+   },
+   "title": "切替：変化の強さ"
+  },
+  {
+   "id": 430,
+   "type": "MarkdownNote",
+   "pos": [
+    947,
+    910
+   ],
+   "size": [
+    520,
+    150
+   ],
+   "flags": {},
+   "order": 43,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "7.8"
+    },
+    "widget_ue_connectable": {}
+   },
+   "widgets_values": [
+    "## ★ 切替スイッチは、すぐ下の PrimitiveBoolean ひとつだけ ★\n**False = 文章から生成（既定。参照画像は使いません）**\n**True = 参照画像から再生成（左下の LoadImage に、ご自身が権利をお持ちの画像を指定。隣の PrimitiveFloat で変化の強さを調整、既定 0.8）**\nPrimitiveBoolean の値を変えるだけで、初期の latent と1段目の denoise が切り替わります。"
+   ],
+   "widgets_values_named": {
+    "text": "## ★ 切替スイッチは、すぐ下の PrimitiveBoolean ひとつだけ ★\n**False = 文章から生成（既定。参照画像は使いません）**\n**True = 参照画像から再生成（左下の LoadImage に、ご自身が権利をお持ちの画像を指定。隣の PrimitiveFloat で変化の強さを調整、既定 0.8）**\nPrimitiveBoolean の値を変えるだけで、初期の latent と1段目の denoise が切り替わります。"
+   },
+   "color": "#324a5e",
+   "bgcolor": "#193045",
+   "textcolor": "#FFFFFF",
+   "extensions": {
+    "textcolor": "#FFFFFF"
+   },
+   "title": "切替のしくみ"
+  },
+  {
+   "id": 431,
+   "type": "MarkdownNote",
+   "pos": [
+    2957,
+    1075
+   ],
+   "size": [
+    520,
+    170
+   ],
+   "flags": {},
+   "order": 44,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "7.8"
+    },
+    "widget_ue_connectable": {}
+   },
+   "widgets_values": [
+    "## 任意：上の PrimitiveBoolean を True にしたときだけ必要\nLoadImage に参照画像を指定すると、縦横比を保ったまま縮小・VAE エンコードして1段目に渡します。\nFalse のときは EmptyLatentImage から文章で生成し、denoise は自動で 1.0 になります。\n※ 初期値の example.png は ComfyUI 標準の入力画像です（スイッチが False の間は使われません）。\n※ 他人の作品や、権利をお持ちでない画像は使わないでください。"
+   ],
+   "widgets_values_named": {
+    "text": "## 任意：上の PrimitiveBoolean を True にしたときだけ必要\nLoadImage に参照画像を指定すると、縦横比を保ったまま縮小・VAE エンコードして1段目に渡します。\nFalse のときは EmptyLatentImage から文章で生成し、denoise は自動で 1.0 になります。\n※ 初期値の example.png は ComfyUI 標準の入力画像です（スイッチが False の間は使われません）。\n※ 他人の作品や、権利をお持ちでない画像は使わないでください。"
+   },
+   "color": "#323",
+   "bgcolor": "#535",
+   "textcolor": "#FFFFFF",
+   "extensions": {
+    "textcolor": "#FFFFFF"
+   },
+   "title": "参照画像モードについて"
+  },
+  {
+   "id": 437,
+   "type": "SaveImage",
+   "pos": [
+    5093.451019176861,
+    100
+   ],
+   "size": [
+    560,
+    560
+   ],
+   "flags": {},
+   "order": 88,
+   "mode": 0,
+   "inputs": [
+    {
+     "label": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "link": 659
+    },
+    {
+     "label": "filename_prefix",
+     "name": "filename_prefix",
+     "type": "STRING",
+     "widget": {
+      "name": "filename_prefix"
+     },
+     "link": null
+    }
+   ],
+   "outputs": [
+    {
+     "label": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "links": []
+    },
+    {
+     "label": "images",
+     "name": "images",
+     "type": "IMAGE",
+     "links": []
+    }
+   ],
+   "properties": {
+    "cnr_id": "comfy-core",
+    "ver": "0.14.1",
+    "Node name for S&R": "SaveImage",
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "7.6.2"
+    },
+    "widget_ue_connectable": {
+     "filename_prefix": true
+    }
+   },
+   "widgets_values": [
+    "MODE01_MOSS_SFT_%date:yyyyMMddhhmmss%"
+   ],
+   "widgets_values_named": {
+    "filename_prefix": "MODE01_MOSS_SFT_%date:yyyyMMddhhmmss%"
+   },
+   "title": "保存：1段目の画像（MODE 01）"
+  },
+  {
+   "id": 443,
+   "type": "MarkdownNote",
+   "pos": [
+    40,
+    100
+   ],
+   "size": [
+    900,
+    600
+   ],
+   "flags": {},
+   "order": 43,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [],
+   "properties": {
+    "ue_properties": {
+     "widget_ue_connectable": {},
+     "input_ue_unconnectable": {},
+     "version": "7.8"
+    },
+    "widget_ue_connectable": {}
+   },
+   "widgets_values": [
+    "## はじめに（無料サンプル・最初の1枚まで）\n**黄色のノード（★）だけ**を触れば動きます。ほかはそのままで大丈夫です。\n1. ① のスイッチが **False**（文章から生成）か確認します。\n2. ② の「★ ここにプロンプトを入力」に、作りたい絵を書きます。\n3. ④ の ★ モデルが赤いときは、手元のファイルを選び直します。\n4. 画面上の **Run（実行）** を押します。\n5. ⑤ に画像が出ます（output フォルダにも保存）。\n\n### モデルの置き場所（ComfyUI/models/ の下）\n- `diffusion_models/`　MOSS SFT・MOSS Base\n- `text_encoders/`　Qwen3.5 9B\n- `vae/`　FLUX.2 VAE\n- `loras/`　LoRA（★ A・B）\n\n参照画像から作るときは ⑥ を使います（ご自身が権利をお持ちの画像のみ）。\nこのワークフローはお手元の PC の ComfyUI で、ローカル実行します。\n\n**この無料サンプルは「1段目」だけです。二段階仕上げの完全版は、有料版に入っています。**\n"
+   ],
+   "widgets_values_named": {
+    "text": "## はじめに（無料サンプル・最初の1枚まで）\n**黄色のノード（★）だけ**を触れば動きます。ほかはそのままで大丈夫です。\n1. ① のスイッチが **False**（文章から生成）か確認します。\n2. ② の「★ ここにプロンプトを入力」に、作りたい絵を書きます。\n3. ④ の ★ モデルが赤いときは、手元のファイルを選び直します。\n4. 画面上の **Run（実行）** を押します。\n5. ⑤ に画像が出ます（output フォルダにも保存）。\n\n### モデルの置き場所（ComfyUI/models/ の下）\n- `diffusion_models/`　MOSS SFT・MOSS Base\n- `text_encoders/`　Qwen3.5 9B\n- `vae/`　FLUX.2 VAE\n- `loras/`　LoRA（★ A・B）\n\n参照画像から作るときは ⑥ を使います（ご自身が権利をお持ちの画像のみ）。\nこのワークフローはお手元の PC の ComfyUI で、ローカル実行します。\n\n**この無料サンプルは「1段目」だけです。二段階仕上げの完全版は、有料版に入っています。**\n"
+   },
+   "color": "#324a5e",
+   "bgcolor": "#193045",
+   "textcolor": "#FFFFFF",
+   "extensions": {
+    "textcolor": "#FFFFFF"
+   },
+   "title": "はじめに（最初の1枚）"
+  }
+ ],
+ "links": [
+  [
+   27,
+   16,
+   0,
+   23,
+   0,
+   "LATENT"
+  ],
+  [
+   30,
+   29,
+   0,
+   25,
+   0,
+   "CLIP"
+  ],
+  [
+   31,
+   29,
+   0,
+   26,
+   0,
+   "CLIP"
+  ],
+  [
+   481,
+   76,
+   0,
+   303,
+   0,
+   "STRING"
+  ],
+  [
+   486,
+   27,
+   0,
+   308,
+   0,
+   "VAE"
+  ],
+  [
+   487,
+   309,
+   0,
+   23,
+   1,
+   "VAE"
+  ],
+  [
+   490,
+   19,
+   0,
+   312,
+   0,
+   "INT"
+  ],
+  [
+   491,
+   313,
+   0,
+   22,
+   0,
+   "INT"
+  ],
+  [
+   492,
+   19,
+   1,
+   314,
+   0,
+   "INT"
+  ],
+  [
+   493,
+   315,
+   0,
+   22,
+   1,
+   "INT"
+  ],
+  [
+   495,
+   317,
+   0,
+   16,
+   3,
+   "LATENT"
+  ],
+  [
+   533,
+   25,
+   0,
+   346,
+   0,
+   "CONDITIONING"
+  ],
+  [
+   535,
+   26,
+   0,
+   348,
+   0,
+   "CONDITIONING"
+  ],
+  [
+   550,
+   362,
+   0,
+   25,
+   1,
+   "STRING"
+  ],
+  [
+   562,
+   356,
+   0,
+   374,
+   0,
+   "INT"
+  ],
+  [
+   563,
+   375,
+   0,
+   16,
+   5,
+   "INT"
+  ],
+  [
+   564,
+   357,
+   0,
+   376,
+   0,
+   "FLOAT"
+  ],
+  [
+   565,
+   377,
+   0,
+   16,
+   6,
+   "FLOAT"
+  ],
+  [
+   582,
+   394,
+   0,
+   395,
+   0,
+   "MODEL"
+  ],
+  [
+   587,
+   397,
+   0,
+   396,
+   0,
+   "MODEL"
+  ],
+  [
+   588,
+   28,
+   0,
+   396,
+   1,
+   "MODEL"
+  ],
+  [
+   591,
+   395,
+   0,
+   16,
+   0,
+   "MODEL"
+  ],
+  [
+   632,
+   347,
+   0,
+   16,
+   1,
+   "CONDITIONING"
+  ],
+  [
+   633,
+   349,
+   0,
+   16,
+   2,
+   "CONDITIONING"
+  ],
+  [
+   635,
+   415,
+   0,
+   416,
+   0,
+   "BOOLEAN"
+  ],
+  [
+   636,
+   417,
+   0,
+   418,
+   0,
+   "FLOAT"
+  ],
+  [
+   637,
+   419,
+   0,
+   420,
+   0,
+   "IMAGE"
+  ],
+  [
+   638,
+   420,
+   0,
+   421,
+   0,
+   "IMAGE"
+  ],
+  [
+   639,
+   422,
+   0,
+   421,
+   1,
+   "VAE"
+  ],
+  [
+   640,
+   421,
+   0,
+   423,
+   0,
+   "LATENT"
+  ],
+  [
+   641,
+   22,
+   0,
+   424,
+   0,
+   "LATENT"
+  ],
+  [
+   642,
+   425,
+   0,
+   424,
+   1,
+   "*"
+  ],
+  [
+   643,
+   426,
+   0,
+   424,
+   2,
+   "BOOLEAN"
+  ],
+  [
+   644,
+   424,
+   0,
+   316,
+   0,
+   "LATENT"
+  ],
+  [
+   645,
+   427,
+   0,
+   429,
+   0,
+   "FLOAT"
+  ],
+  [
+   646,
+   428,
+   0,
+   429,
+   1,
+   "*"
+  ],
+  [
+   647,
+   426,
+   0,
+   429,
+   2,
+   "BOOLEAN"
+  ],
+  [
+   648,
+   429,
+   0,
+   16,
+   9,
+   "FLOAT"
+  ],
+  [
+   650,
+   396,
+   0,
+   394,
+   0,
+   "MODEL"
+  ],
+  [
+   659,
+   23,
+   0,
+   437,
+   0,
+   "IMAGE"
+  ]
+ ],
+ "groups": [
+  {
+   "id": 200,
+   "title": "はじめに（まずここから）",
+   "bounding": [
+    0,
+    0,
+    980,
+    740
+   ],
+   "color": "#b58b2a",
+   "font_size": 28,
+   "flags": {}
+  },
+  {
+   "id": 210,
+   "title": "① 生成方法の切替",
+   "bounding": [
+    0,
+    810,
+    1507,
+    324
+   ],
+   "color": "#b58b2a",
+   "font_size": 28,
+   "flags": {}
+  },
+  {
+   "id": 211,
+   "title": "② プロンプト入力",
+   "bounding": [
+    0,
+    1204,
+    1430,
+    514
+   ],
+   "color": "#b58b2a",
+   "font_size": 28,
+   "flags": {}
+  },
+  {
+   "id": 212,
+   "title": "③ 画像サイズ",
+   "bounding": [
+    0,
+    1788,
+    520,
+    478
+   ],
+   "color": "#b58b2a",
+   "font_size": 28,
+   "flags": {}
+  },
+  {
+   "id": 201,
+   "title": "④ モデル読み込み（1段目：MOSS）",
+   "bounding": [
+    1647,
+    0,
+    1015.4510191768613,
+    822.9283167553839
+   ],
+   "color": "#3f789e",
+   "font_size": 28,
+   "flags": {}
+  },
+  {
+   "id": 202,
+   "title": "⑤ 1段目：生成して保存（MODE 01）",
+   "bounding": [
+    2732.4510191768613,
+    0,
+    2961,
+    835
+   ],
+   "color": "#b8575f",
+   "font_size": 28,
+   "flags": {}
+  },
+  {
+   "id": 209,
+   "title": "⑥ 参照画像（任意・使わなければ操作不要）",
+   "bounding": [
+    1647,
+    975,
+    1870,
+    700
+   ],
+   "color": "#8a6fb5",
+   "font_size": 28,
+   "flags": {}
+  },
+  {
+   "id": 208,
+   "title": "⑦ 上級者向け（通常は触らない）",
+   "bounding": [
+    3587,
+    975,
+    890,
+    522
+   ],
+   "color": "#666666",
+   "font_size": 28,
+   "flags": {}
+  }
+ ],
+ "config": {},
+ "extra": {
+  "frontendVersion": "1.59.1",
+  "ds": {
+   "scale": 0.18,
+   "offset": [
+    40,
+    60
+   ]
+  }
+ },
+ "version": 0.4,
+ "seed_widgets": {
+  "16": 0
+ }
+}
