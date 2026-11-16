@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-15T13:08:41.604Z
+# lastWatch: 2026-11-16T14:16:21.130Z
 contests:
   - at: 2026-10-23T10:41:44.605Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 45000
     submitUrl: https://engage6.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-15T13:08:41.604Z
+  lastWatch: 2026-11-16T14:16:21.130Z
   source: devpost-auto+manual
-  added: 50
+  added: 39
   updated: 5
-  scanned: 61
+  scanned: 50
   kept: 40
