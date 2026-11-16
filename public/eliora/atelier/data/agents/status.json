@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-16T14:16:21.197Z",
+  "generatedAt": "2026-11-16T21:36:51.272Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-11-16T14:16:21.130Z",
+      "lastRun": "2026-11-16T21:36:51.218Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -16,6 +16,30 @@
       },
       "events": [
         {
+          "at": "2026-11-12T14:14:09.188Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (115) #BuildHybridAI 2026",
+          "url": "https://firebasehybridaihackathon.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Nov 11 - 30, 2026",
+            "ja": "Nov 11 - 30, 2026",
+            "zh": "Nov 11 - 30, 2026"
+          }
+        },
+        {
+          "at": "2026-11-02T21:22:11.062Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (115) QNX Global Hackathon",
+          "url": "https://qnx.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Nov 02 - Dec 15, 2026",
+            "ja": "Nov 02 - Dec 15, 2026",
+            "zh": "Nov 02 - Dec 15, 2026"
+          }
+        },
+        {
           "at": "2026-10-23T10:41:44.605Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (115) UGREEN Hackathon 2026 on AI NAS",
@@ -25,18 +49,6 @@
             "en": "Oct 22 - Nov 16, 2026",
             "ja": "Oct 22 - Nov 16, 2026",
             "zh": "Oct 22 - Nov 16, 2026"
-          }
-        },
-        {
-          "at": "2026-09-25T10:47:46.645Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (115) Meta VR Start Developer Competition 2026",
-          "url": "https://start-developer-competition-26.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Sep 24 - Nov 18, 2026",
-            "ja": "Sep 24 - Nov 18, 2026",
-            "zh": "Sep 24 - Nov 18, 2026"
           }
         },
         {
@@ -61,18 +73,6 @@
             "en": "Jul 06 - Aug 10, 2026",
             "ja": "Jul 06 - Aug 10, 2026",
             "zh": "Jul 06 - Aug 10, 2026"
-          }
-        },
-        {
-          "at": "2026-11-12T14:14:09.188Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) #BuildHybridAI 2026",
-          "url": "https://firebasehybridaihackathon.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Nov 11 - 30, 2026",
-            "ja": "Nov 11 - 30, 2026",
-            "zh": "Nov 11 - 30, 2026"
           }
         },
         {
@@ -102,18 +102,6 @@
         {
           "at": "2026-11-02T21:22:11.062Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (110) QNX Global Hackathon",
-          "url": "https://qnx.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Nov 02 - Dec 15, 2026",
-            "ja": "Nov 02 - Dec 15, 2026",
-            "zh": "Nov 02 - Dec 15, 2026"
-          }
-        },
-        {
-          "at": "2026-11-02T21:22:11.062Z",
-          "type": "devpost-auto",
           "title": "★ JOIN? (110) AWS MSP AI Hackathon",
           "url": "https://aws-agentic-msp.devpost.com/",
           "ongoing": true,
@@ -133,6 +121,18 @@
             "en": "Oct 23 - Nov 02, 2026",
             "ja": "Oct 23 - Nov 02, 2026",
             "zh": "Oct 23 - Nov 02, 2026"
+          }
+        },
+        {
+          "at": "2026-10-16T10:19:33.279Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) HackWithAditya",
+          "url": "https://hackwithaditya.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Oct 16 - Nov 25, 2026",
+            "ja": "Oct 16 - Nov 25, 2026",
+            "zh": "Oct 16 - Nov 25, 2026"
           }
         }
       ]

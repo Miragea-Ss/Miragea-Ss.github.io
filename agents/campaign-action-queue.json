@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T14:16:21.139Z",
+  "generatedAt": "2026-11-16T21:36:51.226Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -7,11 +7,11 @@
   },
   "recommended": [
     {
-      "title": "UGREEN Hackathon 2026 on AI NAS",
-      "url": "https://ugreenhackathon.devpost.com/",
-      "submitUrl": "https://ugreenhackathon.devpost.com/challenges/start_a_submission",
+      "title": "#BuildHybridAI 2026",
+      "url": "https://firebasehybridaihackathon.devpost.com/",
+      "submitUrl": "https://firebasehybridaihackathon.devpost.com/challenges/start_a_submission",
       "joinScore": 115,
-      "prizeHint": 46000,
+      "prizeHint": 30000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -23,11 +23,27 @@
       "status": "recommended"
     },
     {
-      "title": "Meta VR Start Developer Competition 2026",
-      "url": "https://start-developer-competition-26.devpost.com/",
-      "submitUrl": "https://start-developer-competition-26.devpost.com/challenges/start_a_submission",
+      "title": "QNX Global Hackathon",
+      "url": "https://qnx.devpost.com/",
+      "submitUrl": "https://qnx.devpost.com/challenges/start_a_submission",
       "joinScore": 115,
-      "prizeHint": 1000000,
+      "prizeHint": 50000,
+      "reason": "Meaningful prize + AI/creative fit",
+      "nextSteps": [
+        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
+        "2. Register with Miragea/Eliora identity (Devpost account).",
+        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
+        "4. Export stills + 30–90s demo from Eliora pipelines.",
+        "5. Submit before deadline; track in publish-manifest after ship."
+      ],
+      "status": "recommended"
+    },
+    {
+      "title": "UGREEN Hackathon 2026 on AI NAS",
+      "url": "https://ugreenhackathon.devpost.com/",
+      "submitUrl": "https://ugreenhackathon.devpost.com/challenges/start_a_submission",
+      "joinScore": 115,
+      "prizeHint": 46000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -71,22 +87,6 @@
       "status": "recommended"
     },
     {
-      "title": "#BuildHybridAI 2026",
-      "url": "https://firebasehybridaihackathon.devpost.com/",
-      "submitUrl": "https://firebasehybridaihackathon.devpost.com/challenges/start_a_submission",
-      "joinScore": 110,
-      "prizeHint": 30000,
-      "reason": "Meaningful prize + AI/creative fit",
-      "nextSteps": [
-        "1. Open submitUrl and confirm eligibility (region, team size, theme).",
-        "2. Register with Miragea/Eliora identity (Devpost account).",
-        "3. Draft entry with Infinite Canvas / ComfyUI / GeekSpell brand edge.",
-        "4. Export stills + 30–90s demo from Eliora pipelines.",
-        "5. Submit before deadline; track in publish-manifest after ship."
-      ],
-      "status": "recommended"
-    },
-    {
       "title": "HackTheFashion Global'26",
       "url": "https://hackthefashion-global26.devpost.com/",
       "submitUrl": "https://hackthefashion-global26.devpost.com/challenges/start_a_submission",
@@ -119,11 +119,11 @@
       "status": "recommended"
     },
     {
-      "title": "QNX Global Hackathon",
-      "url": "https://qnx.devpost.com/",
-      "submitUrl": "https://qnx.devpost.com/challenges/start_a_submission",
+      "title": "AWS MSP AI Hackathon",
+      "url": "https://aws-agentic-msp.devpost.com/",
+      "submitUrl": "https://aws-agentic-msp.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 50000,
+      "prizeHint": 64000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
