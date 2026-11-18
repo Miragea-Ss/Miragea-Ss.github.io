@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-17T15:08:15.862Z",
+  "generatedAt": "2026-11-18T14:46:49.681Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-11-17T15:08:15.812Z",
+      "lastRun": "2026-11-18T14:46:49.598Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -76,6 +76,30 @@
           }
         },
         {
+          "at": "2026-11-18T14:46:49.561Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Build with AI - Pico Space Program",
+          "url": "https://pico-space-program.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Nov 18, 2026 - Feb 01, 2027",
+            "ja": "Nov 18, 2026 - Feb 01, 2027",
+            "zh": "Nov 18, 2026 - Feb 01, 2027"
+          }
+        },
+        {
+          "at": "2026-11-18T14:46:49.561Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) Cloud9 x JetBrains: Sky's The Limit Hackathon 2026",
+          "url": "https://cloud9.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Nov 17, 2026 - Jan 12, 2027",
+            "ja": "Nov 17, 2026 - Jan 12, 2027",
+            "zh": "Nov 17, 2026 - Jan 12, 2027"
+          }
+        },
+        {
           "at": "2026-11-06T13:25:59.476Z",
           "type": "devpost-auto",
           "title": "★ JOIN? (110) HackTheFashion Global'26",
@@ -109,30 +133,6 @@
             "en": "Nov 02 - Dec 11, 2026",
             "ja": "Nov 02 - Dec 11, 2026",
             "zh": "Nov 02 - Dec 11, 2026"
-          }
-        },
-        {
-          "at": "2026-10-24T09:58:16.287Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) Codex x TwitchCon Hackathon",
-          "url": "https://twitchcon-codex.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Oct 23 - Nov 02, 2026",
-            "ja": "Oct 23 - Nov 02, 2026",
-            "zh": "Oct 23 - Nov 02, 2026"
-          }
-        },
-        {
-          "at": "2026-10-16T10:19:33.279Z",
-          "type": "devpost-auto",
-          "title": "★ JOIN? (110) HackWithAditya",
-          "url": "https://hackwithaditya.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Oct 16 - Nov 25, 2026",
-            "ja": "Oct 16 - Nov 25, 2026",
-            "zh": "Oct 16 - Nov 25, 2026"
           }
         }
       ]
