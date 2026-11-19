@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-18T14:46:49.681Z",
+  "generatedAt": "2026-11-19T14:53:38.001Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-11-18T14:46:49.598Z",
+      "lastRun": "2026-11-19T14:53:37.918Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
