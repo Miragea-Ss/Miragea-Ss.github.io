@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-20T14:34:43.433Z
+# lastWatch: 2026-11-21T13:52:46.779Z
 contests:
   - at: 2026-11-12T14:14:09.188Z
     type: devpost-auto
@@ -562,9 +562,9 @@ contests:
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-20T14:34:43.433Z
+  lastWatch: 2026-11-21T13:52:46.779Z
   source: devpost-auto+manual
-  added: 46
+  added: 47
   updated: 7
-  scanned: 54
+  scanned: 56
   kept: 40
