@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-23T16:48:34.375Z",
+  "generatedAt": "2026-11-23T23:21:02.586Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-11-23T16:48:34.296Z",
+      "lastRun": "2026-11-23T23:21:02.520Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -16,15 +16,15 @@
       },
       "events": [
         {
-          "at": "2026-11-12T14:14:09.188Z",
+          "at": "2026-11-18T14:46:49.561Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) #BuildHybridAI 2026",
-          "url": "https://firebasehybridaihackathon.devpost.com/",
+          "title": "★ JOIN? (115) Build with AI - Pico Space Program",
+          "url": "https://pico-space-program.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Nov 11 - 30, 2026",
-            "ja": "Nov 11 - 30, 2026",
-            "zh": "Nov 11 - 30, 2026"
+            "en": "Nov 18, 2026 - Feb 01, 2027",
+            "ja": "Nov 18, 2026 - Feb 01, 2027",
+            "zh": "Nov 18, 2026 - Feb 01, 2027"
           }
         },
         {
@@ -78,18 +78,6 @@
         {
           "at": "2026-11-18T14:46:49.561Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (110) Build with AI - Pico Space Program",
-          "url": "https://pico-space-program.devpost.com/",
-          "ongoing": true,
-          "period": {
-            "en": "Nov 18, 2026 - Feb 01, 2027",
-            "ja": "Nov 18, 2026 - Feb 01, 2027",
-            "zh": "Nov 18, 2026 - Feb 01, 2027"
-          }
-        },
-        {
-          "at": "2026-11-18T14:46:49.561Z",
-          "type": "devpost-auto",
           "title": "★ JOIN? (110) Cloud9 x JetBrains: Sky's The Limit Hackathon 2026",
           "url": "https://cloud9.devpost.com/",
           "ongoing": true,
@@ -97,6 +85,18 @@
             "en": "Nov 17, 2026 - Jan 12, 2027",
             "ja": "Nov 17, 2026 - Jan 12, 2027",
             "zh": "Nov 17, 2026 - Jan 12, 2027"
+          }
+        },
+        {
+          "at": "2026-11-12T14:14:09.188Z",
+          "type": "devpost-auto",
+          "title": "★ JOIN? (110) #BuildHybridAI 2026",
+          "url": "https://firebasehybridaihackathon.devpost.com/",
+          "ongoing": true,
+          "period": {
+            "en": "Nov 11 - 30, 2026",
+            "ja": "Nov 11 - 30, 2026",
+            "zh": "Nov 11 - 30, 2026"
           }
         },
         {

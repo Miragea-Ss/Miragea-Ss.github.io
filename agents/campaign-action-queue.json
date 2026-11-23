@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-23T16:48:34.309Z",
+  "generatedAt": "2026-11-23T23:21:02.530Z",
   "policy": {
     "en": "Auto-watch finds & ranks. Human approves join. Prize KYC is manual.",
     "ja": "自動監視で発見・採点。参加登録は人間が承認。賞金の本人確認は手動。",
@@ -7,11 +7,11 @@
   },
   "recommended": [
     {
-      "title": "#BuildHybridAI 2026",
-      "url": "https://firebasehybridaihackathon.devpost.com/",
-      "submitUrl": "https://firebasehybridaihackathon.devpost.com/challenges/start_a_submission",
+      "title": "Build with AI - Pico Space Program",
+      "url": "https://pico-space-program.devpost.com/",
+      "submitUrl": "https://pico-space-program.devpost.com/challenges/start_a_submission",
       "joinScore": 115,
-      "prizeHint": 30000,
+      "prizeHint": 50000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -87,11 +87,11 @@
       "status": "recommended"
     },
     {
-      "title": "Build with AI - Pico Space Program",
-      "url": "https://pico-space-program.devpost.com/",
-      "submitUrl": "https://pico-space-program.devpost.com/challenges/start_a_submission",
+      "title": "Cloud9 x JetBrains: Sky's The Limit Hackathon 2026",
+      "url": "https://cloud9.devpost.com/",
+      "submitUrl": "https://cloud9.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 50000,
+      "prizeHint": 25000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",
@@ -103,11 +103,11 @@
       "status": "recommended"
     },
     {
-      "title": "Cloud9 x JetBrains: Sky's The Limit Hackathon 2026",
-      "url": "https://cloud9.devpost.com/",
-      "submitUrl": "https://cloud9.devpost.com/challenges/start_a_submission",
+      "title": "#BuildHybridAI 2026",
+      "url": "https://firebasehybridaihackathon.devpost.com/",
+      "submitUrl": "https://firebasehybridaihackathon.devpost.com/challenges/start_a_submission",
       "joinScore": 110,
-      "prizeHint": 25000,
+      "prizeHint": 30000,
       "reason": "Meaningful prize + AI/creative fit",
       "nextSteps": [
         "1. Open submitUrl and confirm eligibility (region, team size, theme).",

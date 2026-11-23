@@ -1,20 +1,20 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-23T16:48:34.296Z
+# lastWatch: 2026-11-23T23:21:02.520Z
 contests:
-  - at: 2026-11-12T14:14:09.188Z
+  - at: 2026-11-18T14:46:49.561Z
     type: devpost-auto
-    title: "#BuildHybridAI 2026"
-    url: https://firebasehybridaihackathon.devpost.com/
+    title: Build with AI - Pico Space Program
+    url: https://pico-space-program.devpost.com/
     ongoing: true
     period:
-      en: Nov 11 - 30, 2026
-      ja: Nov 11 - 30, 2026
-      zh: Nov 11 - 30, 2026
-    sourceNote: Devpost auto · prize~30000 · score 115 · Google
+      en: Nov 18, 2026 - Feb 01, 2027
+      ja: Nov 18, 2026 - Feb 01, 2027
+      zh: Nov 18, 2026 - Feb 01, 2027
+    sourceNote: Devpost auto · prize~50000 · score 115 · XR Bootcamp
     auto: true
     joinScore: 115
-    prizeHint: 30000
-    submitUrl: https://firebasehybridaihackathon.devpost.com/challenges/start_a_submission
+    prizeHint: 50000
+    submitUrl: https://pico-space-program.devpost.com/challenges/start_a_submission
   - at: 2026-11-02T21:22:11.062Z
     type: devpost-auto
     title: QNX Global Hackathon
@@ -73,20 +73,6 @@ contests:
     submitUrl: https://datahub.devpost.com/challenges/start_a_submission
   - at: 2026-11-18T14:46:49.561Z
     type: devpost-auto
-    title: Build with AI - Pico Space Program
-    url: https://pico-space-program.devpost.com/
-    ongoing: true
-    period:
-      en: Nov 18, 2026 - Feb 01, 2027
-      ja: Nov 18, 2026 - Feb 01, 2027
-      zh: Nov 18, 2026 - Feb 01, 2027
-    sourceNote: Devpost auto · prize~50000 · score 110 · XR Bootcamp
-    auto: true
-    joinScore: 110
-    prizeHint: 50000
-    submitUrl: https://pico-space-program.devpost.com/challenges/start_a_submission
-  - at: 2026-11-18T14:46:49.561Z
-    type: devpost-auto
     title: "Cloud9 x JetBrains: Sky's The Limit Hackathon 2026"
     url: https://cloud9.devpost.com/
     ongoing: true
@@ -99,6 +85,20 @@ contests:
     joinScore: 110
     prizeHint: 25000
     submitUrl: https://cloud9.devpost.com/challenges/start_a_submission
+  - at: 2026-11-12T14:14:09.188Z
+    type: devpost-auto
+    title: "#BuildHybridAI 2026"
+    url: https://firebasehybridaihackathon.devpost.com/
+    ongoing: true
+    period:
+      en: Nov 11 - 30, 2026
+      ja: Nov 11 - 30, 2026
+      zh: Nov 11 - 30, 2026
+    sourceNote: Devpost auto · prize~30000 · score 110 · Google
+    auto: true
+    joinScore: 110
+    prizeHint: 30000
+    submitUrl: https://firebasehybridaihackathon.devpost.com/challenges/start_a_submission
   - at: 2026-11-06T13:25:59.476Z
     type: devpost-auto
     title: HackTheFashion Global'26
@@ -505,20 +505,6 @@ contests:
     joinScore: 110
     prizeHint: 35785
     submitUrl: https://volthacks.devpost.com/challenges/start_a_submission
-  - at: 2026-11-16T21:36:51.196Z
-    type: devpost-auto
-    title: Reddit’s Game of the Day Hackathon
-    url: https://redditgameofday2026.devpost.com/
-    ongoing: true
-    period:
-      en: Nov 11 - Dec 08, 2026
-      ja: Nov 11 - Dec 08, 2026
-      zh: Nov 11 - Dec 08, 2026
-    sourceNote: Devpost auto · prize~35000 · score 103 · reddit
-    auto: true
-    joinScore: 103
-    prizeHint: 35000
-    submitUrl: https://redditgameofday2026.devpost.com/challenges/start_a_submission
   - at: 2026-10-26T18:11:35.617Z
     type: devpost-auto
     title: YouCam API Skin AI & eCommerce VTO Hackathon
@@ -561,10 +547,24 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
+  - at: 2026-11-23T23:21:02.495Z
+    type: devpost-auto
+    title: SLAY HACKS
+    url: https://slayy-hacks.devpost.com/
+    ongoing: true
+    period:
+      en: Nov 07 - Dec 07, 2026
+      ja: Nov 07 - Dec 07, 2026
+      zh: Nov 07 - Dec 07, 2026
+    sourceNote: Devpost auto · prize~4500 · score 98 · cite & slayy
+    auto: true
+    joinScore: 98
+    prizeHint: 4500
+    submitUrl: https://slayy-hacks.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-23T16:48:34.296Z
+  lastWatch: 2026-11-23T23:21:02.520Z
   source: devpost-auto+manual
-  added: 45
+  added: 44
   updated: 7
-  scanned: 54
+  scanned: 55
   kept: 40
