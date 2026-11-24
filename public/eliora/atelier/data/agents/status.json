@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-23T23:21:02.586Z",
+  "generatedAt": "2026-11-24T16:41:58.996Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-11-23T23:21:02.520Z",
+      "lastRun": "2026-11-24T16:41:58.900Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -30,13 +30,13 @@
         {
           "at": "2026-11-02T21:22:11.062Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) QNX Global Hackathon",
-          "url": "https://qnx.devpost.com/",
+          "title": "★ JOIN? (115) AWS MSP AI Hackathon",
+          "url": "https://aws-agentic-msp.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Nov 02 - Dec 15, 2026",
-            "ja": "Nov 02 - Dec 15, 2026",
-            "zh": "Nov 02 - Dec 15, 2026"
+            "en": "Nov 02 - Dec 11, 2026",
+            "ja": "Nov 02 - Dec 11, 2026",
+            "zh": "Nov 02 - Dec 11, 2026"
           }
         },
         {
@@ -126,13 +126,13 @@
         {
           "at": "2026-11-02T21:22:11.062Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (110) AWS MSP AI Hackathon",
-          "url": "https://aws-agentic-msp.devpost.com/",
+          "title": "★ JOIN? (110) QNX Global Hackathon",
+          "url": "https://qnx.devpost.com/",
           "ongoing": true,
           "period": {
-            "en": "Nov 02 - Dec 11, 2026",
-            "ja": "Nov 02 - Dec 11, 2026",
-            "zh": "Nov 02 - Dec 11, 2026"
+            "en": "Nov 02 - Dec 15, 2026",
+            "ja": "Nov 02 - Dec 15, 2026",
+            "zh": "Nov 02 - Dec 15, 2026"
           }
         }
       ]

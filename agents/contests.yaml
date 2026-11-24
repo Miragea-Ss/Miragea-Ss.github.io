@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-23T23:21:02.520Z
+# lastWatch: 2026-11-24T16:41:58.900Z
 contests:
   - at: 2026-11-18T14:46:49.561Z
     type: devpost-auto
@@ -17,18 +17,18 @@ contests:
     submitUrl: https://pico-space-program.devpost.com/challenges/start_a_submission
   - at: 2026-11-02T21:22:11.062Z
     type: devpost-auto
-    title: QNX Global Hackathon
-    url: https://qnx.devpost.com/
+    title: AWS MSP AI Hackathon
+    url: https://aws-agentic-msp.devpost.com/
     ongoing: true
     period:
-      en: Nov 02 - Dec 15, 2026
-      ja: Nov 02 - Dec 15, 2026
-      zh: Nov 02 - Dec 15, 2026
-    sourceNote: Devpost auto · prize~50000 · score 115 · QNX
+      en: Nov 02 - Dec 11, 2026
+      ja: Nov 02 - Dec 11, 2026
+      zh: Nov 02 - Dec 11, 2026
+    sourceNote: Devpost auto · prize~64000 · score 115 · AWS
     auto: true
     joinScore: 115
-    prizeHint: 50000
-    submitUrl: https://qnx.devpost.com/challenges/start_a_submission
+    prizeHint: 64000
+    submitUrl: https://aws-agentic-msp.devpost.com/challenges/start_a_submission
   - at: 2026-10-23T10:41:44.605Z
     type: devpost-auto
     title: UGREEN Hackathon 2026 on AI NAS
@@ -129,18 +129,18 @@ contests:
     submitUrl: https://ctrl-v-hackathon-31831.devpost.com/challenges/start_a_submission
   - at: 2026-11-02T21:22:11.062Z
     type: devpost-auto
-    title: AWS MSP AI Hackathon
-    url: https://aws-agentic-msp.devpost.com/
+    title: QNX Global Hackathon
+    url: https://qnx.devpost.com/
     ongoing: true
     period:
-      en: Nov 02 - Dec 11, 2026
-      ja: Nov 02 - Dec 11, 2026
-      zh: Nov 02 - Dec 11, 2026
-    sourceNote: Devpost auto · prize~64000 · score 110 · AWS
+      en: Nov 02 - Dec 15, 2026
+      ja: Nov 02 - Dec 15, 2026
+      zh: Nov 02 - Dec 15, 2026
+    sourceNote: Devpost auto · prize~50000 · score 110 · QNX
     auto: true
     joinScore: 110
-    prizeHint: 64000
-    submitUrl: https://aws-agentic-msp.devpost.com/challenges/start_a_submission
+    prizeHint: 50000
+    submitUrl: https://qnx.devpost.com/challenges/start_a_submission
   - at: 2026-10-24T09:58:16.287Z
     type: devpost-auto
     title: Codex x TwitchCon Hackathon
@@ -547,24 +547,24 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
-  - at: 2026-11-23T23:21:02.495Z
+  - at: 2026-11-24T16:41:58.858Z
     type: devpost-auto
-    title: SLAY HACKS
-    url: https://slayy-hacks.devpost.com/
+    title: Reddit’s Game of the Day Hackathon
+    url: https://redditgameofday2026.devpost.com/
     ongoing: true
     period:
-      en: Nov 07 - Dec 07, 2026
-      ja: Nov 07 - Dec 07, 2026
-      zh: Nov 07 - Dec 07, 2026
-    sourceNote: Devpost auto · prize~4500 · score 98 · cite & slayy
+      en: Nov 11 - Dec 08, 2026
+      ja: Nov 11 - Dec 08, 2026
+      zh: Nov 11 - Dec 08, 2026
+    sourceNote: Devpost auto · prize~35000 · score 98 · reddit
     auto: true
     joinScore: 98
-    prizeHint: 4500
-    submitUrl: https://slayy-hacks.devpost.com/challenges/start_a_submission
+    prizeHint: 35000
+    submitUrl: https://redditgameofday2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-23T23:21:02.520Z
+  lastWatch: 2026-11-24T16:41:58.900Z
   source: devpost-auto+manual
-  added: 44
+  added: 43
   updated: 7
   scanned: 55
   kept: 40
