@@ -1,5 +1,5 @@
 # campaign-watcher — auto + manual verified
-# lastWatch: 2026-11-25T16:26:05.681Z
+# lastWatch: 2026-11-26T15:59:49.694Z
 contests:
   - at: 2026-11-18T14:46:49.561Z
     type: devpost-auto
@@ -547,24 +547,24 @@ contests:
     joinScore: 103
     prizeHint: 6000
     submitUrl: https://youcam-api.devpost.com/challenges/start_a_submission
-  - at: 2026-11-25T16:26:05.659Z
+  - at: 2026-11-26T15:59:49.674Z
     type: devpost-auto
-    title: SLAY HACKS
-    url: https://slayy-hacks.devpost.com/
+    title: Reddit’s Game of the Day Hackathon
+    url: https://redditgameofday2026.devpost.com/
     ongoing: true
     period:
-      en: Nov 07 - Dec 07, 2026
-      ja: Nov 07 - Dec 07, 2026
-      zh: Nov 07 - Dec 07, 2026
-    sourceNote: Devpost auto · prize~4500 · score 98 · cite & slayy
+      en: Nov 11 - Dec 08, 2026
+      ja: Nov 11 - Dec 08, 2026
+      zh: Nov 11 - Dec 08, 2026
+    sourceNote: Devpost auto · prize~35000 · score 98 · reddit
     auto: true
     joinScore: 98
-    prizeHint: 4500
-    submitUrl: https://slayy-hacks.devpost.com/challenges/start_a_submission
+    prizeHint: 35000
+    submitUrl: https://redditgameofday2026.devpost.com/challenges/start_a_submission
 meta:
-  lastWatch: 2026-11-25T16:26:05.681Z
+  lastWatch: 2026-11-26T15:59:49.694Z
   source: devpost-auto+manual
   added: 43
-  updated: 7
-  scanned: 53
+  updated: 6
+  scanned: 52
   kept: 40
