@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-11-26T15:59:49.747Z",
+  "generatedAt": "2026-11-27T15:48:53.165Z",
   "agents": {
     "campaign-watcher": {
       "status": "active",
-      "lastRun": "2026-11-26T15:59:49.694Z",
+      "lastRun": "2026-11-27T15:48:53.090Z",
       "summary": {
         "en": "40 open · 40 join-worthy · auto-watch",
         "ja": "募集中40件 · 参加推奨40件 · 自動監視",
@@ -18,7 +18,7 @@
         {
           "at": "2026-11-18T14:46:49.561Z",
           "type": "devpost-auto",
-          "title": "★ JOIN? (115) Build with AI - Pico Space Program",
+          "title": "★ JOIN? (115) Build with AI - PICO Space Program",
           "url": "https://pico-space-program.devpost.com/",
           "ongoing": true,
           "period": {
